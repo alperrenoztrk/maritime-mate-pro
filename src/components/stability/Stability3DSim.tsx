@@ -26,6 +26,28 @@ import { ShipScene3D } from "./sim/ShipScene3D";
 import { keelWorldY } from "./sim/shipDraftGeometry";
 import { disposeHullGeometries } from "./sim/hullGeometry";
 import { disposeAllShipTextures } from "./sim/proceduralTextures";
+import { HarbourScene } from "./sim/HarbourScene";
+import { Anchor, Waves } from "lucide-react";
+import {
+  DOUGLAS_SEA_STATES,
+  KNOT_MS,
+  METRES_PER_UNIT,
+  SCENE_G,
+  buildSea,
+  deepWaterWavelength,
+  encounterPeriod,
+  representativeHs,
+  resonanceRisk,
+} from "@/lib/seakeeping";
+
+type SimMode = "harbour" | "passage";
+const HEADINGS = [
+  { deg: 180, label: "Head" },
+  { deg: 135, label: "Bow" },
+  { deg: 90, label: "Beam" },
+  { deg: 45, label: "Quarter" },
+  { deg: 0, label: "Following" },
+];
 
 /* ─── helpers ─── */
 const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
@@ -57,6 +79,12 @@ export const Stability3DSim = () => {
   const [heelAngle, setHeelAngle] = useState(0);
   const [shipType, setShipType] = useState<ShipType>("container");
   const [windMoment, setWindMoment] = useState(0); // external beam-wind heeling moment (t·m)
+  const [mode, setMode] = useState<SimMode>("passage");
+  const [seaCode, setSeaCode] = useState(4);
+  const [wavePeriod, setWavePeriod] = useState(9);
+  const [heading, setHeading] = useState(90);
+  const [speedKn, setSpeedKn] = useState(12);
+  const [pitchAngle, setPitchAngle] = useState(0);
   const activeShip = shipTypeOptions.find((o) => o.value === shipType);
 
   // Free cached hull geometries + canvas textures when leaving the route.
@@ -111,6 +139,27 @@ export const Stability3DSim = () => {
   const nearCapsize = absHeel >= 45;
 
   const handleHeelUpdate = useCallback((h: number) => setHeelAngle(h), []);
+  const handleMotion = useCallback((_r: number, p: number) => setPitchAngle(p), []);
+
+  // Harbour: sheltered basin, short low swell, ship stopped alongside.
+  const effHs = mode === "harbour" ? 0.2 : representativeHs(seaCode);
+  const effT = mode === "harbour" ? 5 : wavePeriod;
+  const effHeading = mode === "harbour" ? 120 : heading;
+  const effSpeed = mode === "harbour" ? 0 : speedKn;
+  const wavelength = deepWaterWavelength(effT);
+  const te = encounterPeriod(effT, effSpeed, effHeading);
+  const risk = resonanceRisk(rollingPeriod, te);
+  const sea = useMemo(
+    () => ({
+      waves: buildSea(effHs, effT, effHeading),
+      gravity: SCENE_G,
+      speedUnits: (effSpeed * KNOT_MS) / METRES_PER_UNIT,
+      hullCalm: mode === "harbour" ? 0.6 : 0.85,
+      rollOmega: isFinite(rollingPeriod) && rollingPeriod > 0 ? (2 * Math.PI) / rollingPeriod : 0.3,
+      rollZeta: 0.06,
+    }),
+    [effHs, effT, effHeading, effSpeed, mode, rollingPeriod]
+  );
 
   return (
     <Card className="border-primary/20 shadow-sm">
@@ -118,6 +167,27 @@ export const Stability3DSim = () => {
         <CardTitle className="text-base">3D Stability Simulation</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
+        {/* Mode selector */}
+        <div className="grid grid-cols-2 gap-2" role="tablist" aria-label="Simulation mode">
+          {([
+            { v: "harbour", label: "Harbour", Icon: Anchor },
+            { v: "passage", label: "Passage", Icon: Waves },
+          ] as const).map(({ v, label, Icon }) => (
+            <button
+              key={v}
+              role="tab"
+              aria-selected={mode === v}
+              onClick={() => setMode(v)}
+              className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition-colors ${
+                mode === v ? "border-primary bg-primary/15 text-primary" : "border-border/50 bg-muted/30 text-muted-foreground"
+              }`}
+            >
+              <Icon className="h-3.5 w-3.5" />
+              {label}
+            </button>
+          ))}
+        </div>
+
         {/* Ship-type selector */}
         <div className="flex flex-col gap-2 rounded-lg border border-border/40 bg-muted/30 p-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
@@ -178,6 +248,9 @@ export const Stability3DSim = () => {
                   draftM={draftInput}
                   rollDynamics={rollDynamics}
                   onHeelUpdate={handleHeelUpdate}
+                  onMotionUpdate={handleMotion}
+                  sea={sea}
+                  scenery={mode === "harbour" ? <HarbourScene /> : null}
                 >
                   <StabilityMarkers
                     kY={keelWorldY(draftInput)}
@@ -195,7 +268,7 @@ export const Stability3DSim = () => {
 
           {/* Interaction hint */}
           <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-md bg-background/70 px-2 py-1 text-micro text-muted-foreground shadow-sm">
-            Drag: rotate · Pan: zoom in
+            Drag: rotate · Pinch: zoom
           </div>
 
           {/* Live readout - top left */}
@@ -212,6 +285,8 @@ export const Stability3DSim = () => {
                 color={nearCapsize ? "#ef4444" : deckImmersed ? "#f59e0b" : undefined}
               />
               <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : "∞"} s`} />
+              <Row label="Pitch" value={`${THREE.MathUtils.radToDeg(pitchAngle).toFixed(1)}°`} />
+              <Row label="T (enc.)" value={`${isFinite(te) ? te.toFixed(1) : "∞"} s`} />
               <Row label="wind" value={windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m` : "—"} />
             </div>
           </div>
@@ -241,11 +316,67 @@ export const Stability3DSim = () => {
             >
               <AlertTriangle className="h-3.5 w-3.5" />
               {nearCapsize
-                ? `DANGER: ${absHeel.toFixed(0)}° meyil — alabora riski!`
+                ? `DANGER: ${absHeel.toFixed(0)}° heel — capsize risk!`
                 : `Deck edge immersed (φ_deck ${deckImmAngle.toFixed(0)}°)`}
             </div>
           )}
         </div>
+
+        {/* Sea state controls */}
+        {mode === "passage" ? (
+          <div className="space-y-3 rounded-lg border border-primary/25 bg-primary/5 p-3">
+            <div className="flex items-center justify-between gap-2">
+              <Label className="text-xs font-semibold">Sea state (Douglas)</Label>
+              <Select value={String(seaCode)} onValueChange={(v) => setSeaCode(Number(v))}>
+                <SelectTrigger className="h-8 w-44 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {DOUGLAS_SEA_STATES.map((d) => (
+                    <SelectItem key={d.code} value={String(d.code)} className="text-xs">
+                      {d.code} · {d.name} ({d.hs[0]}–{d.hs[1]} m)
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label className="mb-1.5 block text-xs font-semibold">Wave direction relative to ship</Label>
+              <div className="grid grid-cols-5 gap-1">
+                {HEADINGS.map((h) => (
+                  <button
+                    key={h.deg}
+                    onClick={() => setHeading(h.deg)}
+                    aria-pressed={heading === h.deg}
+                    className={`rounded-md border px-1 py-1.5 text-micro font-semibold ${
+                      heading === h.deg ? "border-primary bg-primary/15 text-primary" : "border-border/50 text-muted-foreground"
+                    }`}
+                  >
+                    {h.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <SliderControl label="Wave period (s)" value={wavePeriod} min={4} max={16} step={0.5} onChange={setWavePeriod} hint={`λ = g·T²/2π = ${wavelength.toFixed(0)} m`} />
+              <SliderControl label="Speed (kn)" value={speedKn} min={0} max={24} step={1} onChange={setSpeedKn} hint="Changes the encounter period with the waves." />
+            </div>
+            {risk !== "none" && (
+              <div className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/10 p-2 text-micro text-destructive">
+                <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                <span>
+                  {risk === "synchronous"
+                    ? `Synchronous rolling risk: encounter period (${te.toFixed(1)} s) ≈ roll period (${rollingPeriod.toFixed(1)} s). Alter course or speed.`
+                    : `Parametric rolling risk: encounter period (${te.toFixed(1)} s) ≈ ½ roll period (${(rollingPeriod / 2).toFixed(1)} s). Alter course or speed.`}
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-primary/25 bg-primary/5 p-3 text-micro text-muted-foreground">
+            Alongside in a sheltered basin: low swell (Hs 0.2 m, T 5 s), ship stopped. Switch to Passage to set sea state, wave direction and speed.
+          </div>
+        )}
 
         {/* Wind / heeling-moment slider — the "star" control */}
         <div className="rounded-lg border border-sky-500/30 bg-sky-500/5 p-3">
@@ -291,7 +422,7 @@ export const Stability3DSim = () => {
             hint="Draft. Affects displacement and KB."
           />
           <SliderControl
-            label="Cb (blok kts.)"
+            label="Cb (block coeff.)"
             value={cbInput}
             min={0.55}
             max={0.88}
@@ -310,16 +441,16 @@ export const Stability3DSim = () => {
               variant={imo.overallPass ? "default" : "destructive"}
               className="ml-auto text-micro px-1.5 py-0"
             >
-              {imo.overallPass ? "UYGUN" : "NOT SUITABLE"}
+              {imo.overallPass ? "PASS" : "NOT SUITABLE"}
             </Badge>
           </div>
           <div className="grid grid-cols-2 gap-x-4 gap-y-1">
             <IMOBadge label={`GM ≥ 0.15 m (${stability.gm.toFixed(2)})`} ok={imo.gmOk} />
             <IMOBadge label={`GZ₃₀° ≥ 0.20 m`} ok={imo.gzAt30Ok} />
             <IMOBadge label={`Angle of max GZ ≥ 25°`} ok={imo.maxGzAngleOk} />
-            <IMOBadge label={`Alan 0–30° ≥ 0.055 m·rad`} ok={imo.areaTo30Ok} />
-            <IMOBadge label={`Alan 0–40° ≥ 0.090 m·rad`} ok={imo.areaTo40Ok} />
-            <IMOBadge label={`Alan 30–40° ≥ 0.030 m·rad`} ok={imo.area30to40Ok} />
+            <IMOBadge label={`Area 0–30° ≥ 0.055 m·rad`} ok={imo.areaTo30Ok} />
+            <IMOBadge label={`Area 0–40° ≥ 0.090 m·rad`} ok={imo.areaTo40Ok} />
+            <IMOBadge label={`Area 30–40° ≥ 0.030 m·rad`} ok={imo.area30to40Ok} />
           </div>
         </div>
 
@@ -327,6 +458,7 @@ export const Stability3DSim = () => {
         <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-micro text-muted-foreground space-y-1">
           <div className="font-mono text-primary text-xs">GM = KM − KG</div>
           <div className="font-mono text-primary text-xs">GZ = sinφ · [GM + ½·BM·tan²φ]</div>
+          <div className="font-mono text-primary text-xs">Te = 2π / |ω − ω²·V·cos μ / g|</div>
           <div className="font-mono text-primary text-xs">KB ≈ ⅓(5T/2 − ∇/Awp)</div>
           <p className="mt-1 text-micro">
             At large angles (φ &gt; 15°) the wall-sided formula gives a far more accurate result than the linear approximation. Roll motion is modelled as a damped harmonic oscillator (ζ = 0.15).

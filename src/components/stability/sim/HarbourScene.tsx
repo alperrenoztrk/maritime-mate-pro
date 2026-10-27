@@ -50,17 +50,17 @@ export function HarbourScene() {
   return (
     <group>
       {/* Quay block: top at y≈0.12 (≈4 m above water), face at z = 1.05 */}
-      <mesh position={[0, -0.6, 2.05]} receiveShadow castShadow>
+      <mesh position={[0, -0.6, 1.72]} receiveShadow castShadow>
         <boxGeometry args={[9, 1.45, 2]} />
         <meshStandardMaterial map={concrete} roughness={0.92} color="#a3a6a8" />
       </mesh>
       {/* Yellow cope edge marking */}
-      <mesh position={[0, 0.135, 1.08]}>
+      <mesh position={[0, 0.135, 0.75]}>
         <boxGeometry args={[9, 0.02, 0.05]} />
         <meshStandardMaterial color="#d4a017" roughness={0.6} />
       </mesh>
       {bollards.map((x) => (
-        <group key={x} position={[x, 0.13, 1.25]}>
+        <group key={x} position={[x, 0.13, 0.92]}>
           <mesh castShadow position={[0, 0.05, 0]}>
             <cylinderGeometry args={[0.045, 0.055, 0.1, 14]} />
             <meshStandardMaterial color="#1e2326" metalness={0.6} roughness={0.5} />
@@ -72,7 +72,7 @@ export function HarbourScene() {
         </group>
       ))}
       {fenders.map((x) => (
-        <mesh key={x} position={[x, -0.05, 1.0]} rotation={[0, 0, 0]} castShadow>
+        <mesh key={x} position={[x, -0.05, 0.66]} rotation={[0, 0, 0]} castShadow>
           <cylinderGeometry args={[0.07, 0.07, 0.32, 16]} />
           <meshStandardMaterial color="#111315" roughness={0.85} />
         </mesh>
