@@ -102,7 +102,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Yüzen bir gemi, batan hacmi kadar suyun ağırlığına eşit bir kaldırma kuvvetiyle desteklenir. Dolayısıyla geminin toplam ağırlığı (deplasman, Δ), o draftta yer değiştirdiği su ağırlığına eşittir. Draft survey, yükleme öncesi ve sonrası deplasman farkından yük ağırlığını bulur: Yük = Δsonra − Δönce. Deplasman, geminin hidrostatik tablolarından (ya da deplasman ölçeğinden) ortalama drafta karşılık gelen değer okunarak elde edilir.",
         formula: {
-          text: "Yük = Δsonra − Δönce",
+          text: "Cargo = Δafter − Δbefore",
           description: "Δ: ilgili draftta okunan deplasman (ton); fark yüklenen/boşaltılan yük miktarıdır",
         },
       },
@@ -116,7 +116,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         content:
           "Hidrostatik tablolar standart deniz suyu yoğunluğuna (genelde 1.025 t/m³) göredir. Liman suyu yoğunluğu hidrometre ile ölçülür ve deplasman, gerçek yoğunluğa oranlanarak düzeltilir: Δgerçek = Δtablo × (ρgerçek / 1.025). Ayrıca trim için 'first ve second trim correction' uygulanır (LCF'in orta kesitten sapması nedeniyle). Bu düzeltmeler ihmal edilirse birkaç yüz tonluk hata oluşabilir.",
         formula: {
-          text: "Δgerçek = Δtablo × (ρliman / 1.025)",
+          text: "Δactual = Δtable × (ρport / 1.025)",
           description: "ρliman: hidrometre ile ölçülen liman suyu yoğunluğu (t/m³)",
         },
       },
@@ -334,7 +334,7 @@ export const cargoTopicContents: Record<string, TopicDetailContent> = {
         image: deckCraneImage,
         imageAlt: "Deck crane used for cargo handling",
         formula: {
-          text: "SWL = Kopma Yükü / Güvenlik Katsayısı",
+          text: "SWL = Breaking Load / Safety Factor",
           description: "Güvenlik katsayısı ekipman tipine ve kullanıma göre değişir (tipik 4–6)",
         },
       },

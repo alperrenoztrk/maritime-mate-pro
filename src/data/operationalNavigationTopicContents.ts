@@ -28,7 +28,7 @@ export const operationalNavigationTopicContents: Record<string, TopicDetailConte
         content:
           "Aynı zaman için çizilmiş DR mevkii ile bağımsız fix arasındaki vektör akıntının toplam etkisini gösterir. DR'den fix'e olan yön set, aradaki mesafenin geçen saate bölümü drift'tir. Tek bir karşılaştırma anlık sapma gösterebilir; güvenilir akıntı değerlendirmesi için art arda fixler, gelgit bilgisi, rüzgâr ve rota değişimleri birlikte incelenir.",
         formula: {
-          text: "Set = DR'den Fix'e hakiki yön | Drift (kn) = DR-Fix mesafesi (nm) / süre (h)",
+          text: "Set = true direction from DR to Fix | Drift (kn) = DR–Fix distance (nm) / time (h)",
           description: "Vektör yalnızca aynı zaman damgasına ait DR ve fix noktaları arasında çizilir.",
         },
       },
