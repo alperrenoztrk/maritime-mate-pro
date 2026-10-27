@@ -4,7 +4,8 @@ import { updateTopicProgress } from "@/utils/learningProgress";
 import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, CheckCircle2, RotateCcw, Sparkles, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, RotateCcw, Sparkles, Trophy } from "lucide-react";
+import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
@@ -39,6 +40,7 @@ export default function GuidedLessonSession() {
 
 function GuidedSession() {
   const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
+  const { goBack } = useBackNavigation();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle): "";
   const content = useMemo(() => {
     const topic = getBetaTopic(categoryId, decodedTitle);
@@ -140,7 +142,18 @@ function GuidedSession() {
     <div className="relative min-h-screen bg-background">
       <div className="surface-glass sticky top-0 z-10 border-b px-4 py-3 pt-[max(0.75rem,var(--safe-top))]">
         <div className="mx-auto flex max-w-2xl items-center gap-3">
-          {/* Back is global (AppNavBar + edge swipe) — no per-page duplicate. */}
+          {/* This immersive route hides AppNavBar; use the same logical back handler. */}
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 shrink-0 text-primary"
+            aria-label="Back"
+            title="Back"
+            onClick={() => goBack()}
+          >
+            <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+          </Button>
 
           <Progress value={finished ? 100 : progress} className="h-3 flex-1" />
           {hasFlow ? (
