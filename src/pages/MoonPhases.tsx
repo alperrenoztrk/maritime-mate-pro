@@ -96,23 +96,23 @@ const MoonPhases = () => {
     let phaseName = "";
 
     if (phasePosition < 0.0625) {
-      phaseName = "new moon";
+      phaseName = "New Moon";
     } else if (phasePosition < 0.1875) {
-      phaseName = "Hilal";
+      phaseName = "Waxing Crescent";
     } else if (phasePosition < 0.3125) {
       phaseName = "First Quarter";
     } else if (phasePosition < 0.4375) {
       phaseName = "Waxing Gibbous";
     } else if (phasePosition < 0.5625) {
-      phaseName = "Dolunay";
+      phaseName = "Full Moon";
     } else if (phasePosition < 0.6875) {
       phaseName = "Waning Gibbous";
     } else if (phasePosition < 0.8125) {
       phaseName = "Last Quarter";
     } else if (phasePosition < 0.9375) {
-      phaseName = "Son Hilal";
+      phaseName = "Waning Crescent";
     } else {
-      phaseName = "new moon";
+      phaseName = "New Moon";
     }
 
     setMoonPhase({

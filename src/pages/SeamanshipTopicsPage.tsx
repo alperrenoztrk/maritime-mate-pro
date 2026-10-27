@@ -201,8 +201,8 @@ const seamanshipTopics: SeamanshipMainTopic[] = [
     icon: Waves,
     subtopics: [
       { id: "heavy-weather-prep", title: "Storm preparations (sea securing)", hasContent: true },
-      { id: "parametric-rolling", title: "Parametric oscillation", hasContent: true },
-      { id: "synchronous-rolling", title: "Synchronous oscillation and broaching", hasContent: true },
+      { id: "parametric-rolling", title: "Parametric rolling", hasContent: true },
+      { id: "synchronous-rolling", title: "Synchronous rolling and broaching", hasContent: true },
       { id: "heavy-weather-nav", title: "Storm navigation strategies", hasContent: true },
       { id: "pooping-bow-dive", title: "Pooping and bow diving", hasContent: true },
       { id: "damage-assessment", title: "Storm damage assessment", hasContent: true },
@@ -875,7 +875,7 @@ In an emergency the chain can be let go on the run; but this carries the risk of
     keyPoints: [
       "While anchoring, the clutch is released and the brake is loosened in a controlled manner.",
       "While anchoring, clutch is engaged and the engine is started.",
-      "Hawse pipe: sidebar passage, spurling pipe: hatch passage",
+      "Hawse pipe: chain passage through the ship's side; spurling pipe: passage from the deck to the chain locker",
     ],
   },
   "anchoring-procedure": {
@@ -951,9 +951,9 @@ ALARM SETTINGS:
 
 An anchor watch alarm is set on modern ECDIS and GPS systems. It gives an audible and visual alarm when the ship moves outside the defined circle.`,
     formula: {
-      name: "Keel Circle Radius",
-      expression: "R = L + Zincir boyu",
-      description: "R: keel circle radius (m), L: ship length (LOA, m)",
+      name: "Swinging Circle Radius",
+      expression: "R = L + Chain length paid out",
+      description: "R: swinging circle radius (m), L: ship length (LOA, m)",
     },
     examples: [
       {
@@ -962,7 +962,7 @@ An anchor watch alarm is set on modern ECDIS and GPS systems. It gives an audibl
       },
     ],
     bulletPoints: [
-      "Keel circle = ship length + chain length",
+      "Swinging circle radius = ship length + length of chain paid out",
       "Continuous position control is made with GPS and radar",
       "ECDIS anchor alarm setting is standard practice",
       "Chain direction and vibration indicate signs of scanning",
@@ -1018,7 +1018,7 @@ Two anchors can be used when heavy weather is expected. Two methods:
   },
   "anchoring-maneuvers": {
     title: "Anchoring Maneuvering Techniques",
-    introduction: "Anchoring maneuver; It is done with different techniques depending on the swing area, bottom grip, air/current and harbor layout. Correct technique determines the safe swing and firm hold of the ship.",
+    introduction: "Anchoring is carried out with different techniques depending on the swinging room, the holding ground, the wind and current and the layout of the port. The right technique lets the ship swing safely and the anchor hold firmly.",
     content: `THE APPROACH:
 The ship always approaches the anchorage HEAD TO whichever is the stronger, the wind or the current. The ship is stopped over the position, or the anchor is let go while she is making very slight sternway, so that the chain does not pile up on the anchor. The chain is snubbed under control and the anchor is confirmed to be brought up.
 
@@ -1040,14 +1040,14 @@ In a strong offshore wind, the offshore anchor and a mooring line are used toget
 OPEN MOOR:
 The two anchors are laid at an angle of 60-90°; this limits the swing and improves holding when the current/wind changes direction.`,
     bulletPoints: [
-      "Approach always against wind/current; letting go on the spot",
+      "Always approach head to the wind/current; let go at the planned position",
       "Running moor: 1st anchor while making headway → second anchor → heave back and equalize",
-      "Standing moor: stop/slide back → 1st anchor → 2nd anchor → center",
-      "Mediterranean style: stern to dock, two anchors from bow",
-      "Baltic style: outer sidebar + mooring line together",
+      "Standing moor: stopped / slight sternway → 1st anchor → 2nd anchor → ship centred between the anchors",
+      "Mediterranean moor: stern to the quay, two anchors laid out from forward",
+      "Baltic moor: offshore anchor and a mooring line used together",
     ],
     keyPoints: [
-      "Two-bar moor (running/standing) restricts oscillation and increases grip",
+      "Mooring with two anchors (running/standing moor) limits the swing and improves holding",
       "A single anchor requires a wide swinging area; it is not suitable in a crowded anchorage",
       "At the time of letting go, the ship must have stopped or taken a very slight sternway.",
       "The maneuver is carried out with continuous communication between the bridge and the forecastle.",
@@ -1062,7 +1062,7 @@ The two anchors are laid at an angle of 60-90°; this limits the swing and impro
   // BÖLÜM 4 - PALAMAR VE BAĞLAMA
   // =====================================================
   "mooring-lines": {
-    title: "Mooring lines and Nomenclatures",
+    title: "Mooring Lines and Their Names",
     introduction: "Mooring lines used for secure mooring of the ship to the dock are named according to their locations and functions.",
     photos: [
       {
@@ -1073,15 +1073,15 @@ The two anchors are laid at an angle of 60-90°; this limits the swing and impro
       },
     ],
     table: {
-      title: "Mooring lines Task Table",
-      headers: ["Rope Name", "Location", "Tasks", "Direction"],
+      title: "Mooring Lines and Their Functions",
+      headers: ["Line", "Position", "Function", "Lead"],
       rows: [
-        ["Head Line", "Bow", "Prevents forward movement of the ship", "Forward-up"],
-        ["Stern Line", "Stern", "Prevents the ship from moving backwards", "Back-up"],
-        ["Forward Breast", "Bow", "Prevents drift away from dock", "Steep (to the dock)"],
-        ["After breast", "Stern", "Prevents drift away from dock", "Steep (to the dock)"],
-        ["Forward Spring", "Forward → towards the stern", "Prevents ship from rolling forward", "Cross backwards"],
-        ["After spring", "Aft → towards the bow", "Prevents ship from rolling back", "Cross forward"],
+        ["Head Line", "Bow", "Holds the bow and resists movement astern", "Leads forward"],
+        ["Stern Line", "Stern", "Holds the stern and resists movement ahead", "Leads aft"],
+        ["Forward Breast", "Bow", "Holds the bow alongside the quay", "At right angles to the quay"],
+        ["After Breast", "Stern", "Holds the stern alongside the quay", "At right angles to the quay"],
+        ["Forward Spring", "Forward → leads aft", "Prevents the ship moving ahead", "Leads aft"],
+        ["After Spring", "Aft → leads forward", "Prevents the ship moving astern", "Leads forward"],
       ],
     },
     content: `TYPES AND NAMES OF MOORING LINES:
@@ -1110,14 +1110,14 @@ MOORING LINE MATERIALS:
 
 Modern ships generally use polyester or HMPE ropes for mooring. Nylon is not preferred for mooring because of its high elasticity (excessive stretch allows unwanted movement). Nylon may however be used for buoy moorings in some ports.`,
     bulletPoints: [
-      "Springs are the most critical ties that prevent the ship from sliding back and forth.",
-      "Breast lines keep the ship close to port (transverse control)",
-      "Head/stern lines allow longitudinal shooting",
+      "Springs are the most important lines for preventing fore-and-aft movement (surging).",
+      "Breast lines hold the ship alongside (transverse restraint)",
+      "Head and stern lines give longitudinal and some transverse restraint",
       "Polyester or HMPE is preferred as mooring line",
     ],
     keyPoints: [
-      "Forward spring: prevents forward slip (extends aft)",
-      "After spring: prevents rolling back (extends towards the bow)",
+      "Forward spring: prevents the ship moving ahead (leads aft)",
+      "After spring: prevents the ship moving astern (leads forward)",
       "Nylon elasticity is a disadvantage for mooring",
     ],
   },
@@ -2414,8 +2414,8 @@ When heavy weather is expected the master issues a Heavy Weather Preparedness ci
     ],
   },
   "parametric-rolling": {
-    title: "Parametric Oscillation",
-    introduction: "Parametric oscillation is a dangerous rolling motion that develops when the wave encounter period is equal to half of the ship's natural oscillation period.",
+    title: "Parametric Rolling",
+    introduction: "Parametric rolling is a dangerous rolling motion that develops when the wave encounter period is equal to half of the ship's natural roll period.",
     content: `THE MECHANISM:
 
 Parametric rolling arises from the periodic change in the ship's waterplane area as a wave passes. When the wave crest is amidships the waterplane area decreases (GM falls); in the trough the waterplane area increases (GM rises). Under certain conditions this variation in GM creates resonance.
@@ -2439,7 +2439,7 @@ AVOIDANCE STRATEGIES:
     formula: {
       name: "Parametric Resonance Condition",
       expression: "Te ≈ Tr / 2",
-      description: "Te: wave encounter period (s), Tr: ship's natural oscillation period (s). When this condition is met, there is a risk of parametric oscillation.",
+      description: "Te: wave encounter period (s), Tr: ship's natural roll period (s). When this condition is met, there is a risk of parametric rolling.",
     },
     bulletPoints: [
       "Parametric resonance develops under the condition Te ≈ Tr/2",
@@ -2453,8 +2453,8 @@ AVOIDANCE STRATEGIES:
     ],
   },
   "synchronous-rolling": {
-    title: "Synchronous Oscillation and Broaching",
-    introduction: "Synchronous oscillation is a dangerous resonance state that develops when the wave encounter period is equal to the ship's natural oscillation period.",
+    title: "Synchronous Rolling and Broaching",
+    introduction: "Synchronous rolling is a dangerous resonance condition that develops when the wave encounter period is equal to the ship's natural roll period.",
     content: `SYNCHRONOUS ROLLING:
 
 When the wave encounter period (Te) equals the ship's natural roll period (Tr), each wave increases the roll (resonance). The roll angles grow progressively and can approach the point of capsize.
@@ -2477,7 +2477,7 @@ Avoiding broaching:
 - Reduce speed (below the wave speed)
 - Use the helm actively`,
     bulletPoints: [
-      "Te = Tr → synchronous oscillation (resonance), roll angles become larger",
+      "Te = Tr → synchronous rolling (resonance), roll angles become larger",
       "Broaching: uncontrolled turn with wave from stern, loss of rudder",
       "Change of speed and course are solutions to both dangers",
     ],
@@ -3357,7 +3357,7 @@ export default function SeamanshipTopicsPage() {
                   <div className="space-y-2 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
                     <div className="flex items-center gap-2">
                       <Anchor className="h-5 w-5 text-amber-500" />
-                      <h3 className="font-semibold text-foreground">Vineyard Making Step by Step</h3>
+                      <h3 className="font-semibold text-foreground">Knot Tying Step by Step</h3>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       All the seaman's knots, bends and splices are gathered in one place. For real knot-tying videos, step-by-step instructions, uses and tips, open the Sailor's Knots page.

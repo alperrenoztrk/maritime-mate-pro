@@ -1151,7 +1151,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const risk = v.prob * v.sev;
         const level = risk <= 4 ? "Low" : risk <= 9 ? "Medium" : risk <= 15 ? "High" : "Very High";
-        const color = risk <= 4 ? "Green" : risk <= 9 ? "Yellow" : risk <= 15 ? "Turuncu" : "Rejection";
+        const color = risk <= 4 ? "Green" : risk <= 9 ? "Yellow" : risk <= 15 ? "Turuncu" : "Red";
         return [
           { label: "Risk Score", value: `${risk}` },
           { label: "Risk Level", value: level },

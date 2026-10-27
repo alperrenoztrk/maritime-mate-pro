@@ -196,14 +196,14 @@ export default function StabilityGrainCalculationPage() {
       id: "heel",
       label: "Angle of heel",
       value: heelingAngle ? `${heelingAngle}°` : "—",
-      helper: "IMO limiti ≤ 12°",
+      helper: "IMO limit ≤ 12°",
       status: heelingAngle ? parseFloat(heelingAngle) <= 12 : null
     },
     {
       id: "gm",
       label: "Adjusted GM",
       value: correctedGM ? `${correctedGM} m` : "—",
-      helper: "IMO limiti ≥ 0.30 m",
+      helper: "IMO limit ≥ 0.30 m",
       status: correctedGM ? parseFloat(correctedGM) >= 0.30 : null
     }
   ];
@@ -539,7 +539,7 @@ export default function StabilityGrainCalculationPage() {
                             <Alert>
                               <AlertDescription>
                                 <p className="font-semibold text-xs">ΔM = MT1 × (ΔT / 1m)</p>
-                                <p className="font-bold">Trim Momenti = {trimMoment} ton·m</p>
+                                <p className="font-bold">Trimming Moment = {trimMoment} ton·m</p>
                               </AlertDescription>
                             </Alert>
                           )}

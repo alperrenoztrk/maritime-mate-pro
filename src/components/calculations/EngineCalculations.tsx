@@ -354,7 +354,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       }
       
       if (noxCalc.rate > selectedNoxLimit) {
-        warnings.push(`NOx emisyonu MARPOL Tier ${data.requiredNoxTier} exceeds the limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
+        warnings.push(`NOx emission exceeds the MARPOL Tier ${data.requiredNoxTier} limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
       }
       
       if (!ecaCompliance) {
@@ -423,16 +423,16 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
           { step: 1, title: "brake power", formula: "BP = Indicated Power × Mechanical Efficiency / 100", substitution: `BP = ${data.indicatedPower} × ${data.mechanicalEfficiency} / 100`, result: `BP = ${brakePower.toFixed(0)} kW` },
           { step: 2, title: "electric power", formula: "EP = BP × Generator Efficiency / 100", substitution: `EP = ${brakePower.toFixed(0)} × ${data.generatorEfficiency} / 100`, result: `EP = ${electricalPower.toFixed(0)} kW` },
           { step: 3, title: "Indicated thermal efficiency", formula: "ηi = (Pi × 3600) / (FC × LCV × 1000) × 100", result: `ηi = ${indicatedThermalEfficiency.toFixed(1)}%` },
-          { step: 4, title: "Total yield", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
+          { step: 4, title: "Overall efficiency", formula: "η = (EP × 3600) / (FC × LCV × 1000) × 100", result: `η = ${overallEfficiency.toFixed(1)}%` },
         ],
         emissions: [
-          { step: 1, title: "NOx emission", formula: `MARPOL Tier ${data.requiredNoxTier} limiti (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
+          { step: 1, title: "NOx emission", formula: `MARPOL Tier ${data.requiredNoxTier} limit (RPM=${data.engineRPM})`, result: `NOx = ${noxCalc.rate.toFixed(2)} g/kWh (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)` },
           { step: 2, title: "SOx emission", formula: "SOx = 2 × S% × FC", explanation: `Sulfur content:%${data.fuelSulfurContent}`, result: `SOx = ${soxEmissionRate.toFixed(2)} g/kWh` },
           { step: 3, title: "CO₂ emissions", formula: "CO₂ = FC × Emission Factor", explanation: `${data.fuelType} emission factor used`, result: `CO₂ = ${(co2DailyEmission/1000).toFixed(1)} tons/day` },
         ],
         changeover: [
-          { step: 1, title: "Transition time", formula: "Time = Preheat + (Pipe Volume / Flow Rate)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} dakika` },
-          { step: 2, title: "waste fuel", formula: "Waste = Pipe Volume × 1.1 (10% safety)", substitution: `Waste = ${data.pipelineVolume} × 1.1`, result: `Waste = ${fuelWasteVolume.toFixed(0)} L` },
+          { step: 1, title: "Changeover time", formula: "Time = Preheat + (Pipe Volume / Flow Rate)", substitution: `Duration = ${data.preheatingTime} + (${data.pipelineVolume} / ${data.changeoverFlowRate})`, result: `Duration = ${changeoverTime.toFixed(0)} min` },
+          { step: 2, title: "Fuel lost in changeover", formula: "Waste = Pipe Volume × 1.1 (10% safety)", substitution: `Waste = ${data.pipelineVolume} × 1.1`, result: `Waste = ${fuelWasteVolume.toFixed(0)} L` },
         ],
         cooling: [
           { step: 1, title: "Heat rejection rate", formula: "Q = Power × 0.4 (typical 40% heat rejection)", substitution: `Q = ${powerOutput.toFixed(0)} × 0.4`, result: `Q = ${heatRejectionRate.toFixed(0)} kW` },

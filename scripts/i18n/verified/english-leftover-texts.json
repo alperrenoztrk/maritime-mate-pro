@@ -10920,5 +10920,197 @@
   },
   "Ölçülen düşey açı θ = 2°": {
     "en": "Measured vertical angle θ = 2°"
+  },
+  "Otomatik (0.35×B)": {
+    "en": "Auto (0.35×B)"
+  },
+  "Hafif (< 10 knot)": {
+    "en": "Light (< 10 kn)"
+  },
+  "Orta (3-10 km)": {
+    "en": "Moderate (3–10 km)"
+  },
+  "Orta (10-20 knot)": {
+    "en": "Moderate (10–20 kn)"
+  },
+  "Hafif-orta (5-15 knot)": {
+    "en": "Light to moderate (5–15 kn)"
+  },
+  "Taban belirsiz": {
+    "en": "Indistinct base"
+  },
+  "Orta (5-10 km)": {
+    "en": "Moderate (5–10 km)"
+  },
+  "Artan (15-25 knot)": {
+    "en": "Increasing (15–25 kn)"
+  },
+  "Ch7 (IR8.7) - Orta seviye bulutlar": {
+    "en": "Ch7 (IR8.7) - Mid-level clouds"
+  },
+  "Orta (10-25 knot)": {
+    "en": "Moderate (10–25 kn)"
+  },
+  "Ters yumrular": {
+    "en": "Downward-hanging bulges"
+  },
+  "Artan": {
+    "en": "Increasing"
+  },
+  "Ch4 (IR3.9) - Huni bulut tespiti": {
+    "en": "Ch4 (IR3.9) - Funnel cloud detection"
+  },
+  "Ch4 (IR3.9) - Raf/rulo bulut, squall line": {
+    "en": "Ch4 (IR3.9) - Shelf/roll cloud, squall line"
+  },
+  "Dalga benzeri dalgalanmalar": {
+    "en": "Wave-like undulations"
+  },
+  "Gri-kahverengi": {
+    "en": "Grey-brown"
+  },
+  "Yapay": {
+    "en": "Artificial"
+  },
+  "Yapay bulut": {
+    "en": "Artificial cloud"
+  },
+  "Sarkan perdeler": {
+    "en": "Hanging streaks (fall streaks)"
+  },
+  "Kuru hava belirtisi": {
+    "en": "Sign of dry air"
+  },
+  "Kuru hava, ancak mikro patlama riski": {
+    "en": "Dry air, but a risk of microbursts"
+  },
+  "Kesme (shear)": {
+    "en": "Wind shear"
+  },
+  "Uyumsuz": {
+    "en": "Non-compliant"
+  },
+  "Turuncu": {
+    "en": "Orange"
+  },
+  "UYUMSUZ": {
+    "en": "NON-COMPLIANT"
+  },
+  "Steering gear yedeklilik": {
+    "en": "Steering gear redundancy"
+  },
+  "Marine fuel spesifikasyon parametreleri": {
+    "en": "Marine fuel specification parameters"
+  },
+  "Gemide uygulama": {
+    "en": "Shipboard application"
+  },
+  "Terimler": {
+    "en": "Terms"
+  },
+  "Kaynak durumu": {
+    "en": "Source status"
+  },
+  "Makine emniyeti": {
+    "en": "Machinery safety"
+  },
+  "Elektrik sistemleri": {
+    "en": "Electrical systems"
+  },
+  "SCBA olmadan duman dolu alana girilmez": {
+    "en": "Never enter a smoke-filled space without SCBA"
+  },
+  "Kabul edilebilir — sakin hava": {
+    "en": "Acceptable — calm weather"
+  },
+  "SOLAS Stabilite Kriterleri": {
+    "en": "SOLAS Stability Criteria"
+  },
+  "Yeni Ay": {
+    "en": "New Moon"
+  },
+  "Hilal (Büyüyen)": {
+    "en": "Waxing Crescent"
+  },
+  "İlk Dördün": {
+    "en": "First Quarter"
+  },
+  "Şişkin Ay (Büyüyen)": {
+    "en": "Waxing Gibbous"
+  },
+  "Dolunay": {
+    "en": "Full Moon"
+  },
+  "Şişkin Ay (Küçülen)": {
+    "en": "Waning Gibbous"
+  },
+  "Son Dördün": {
+    "en": "Last Quarter"
+  },
+  "Hilal (Küçülen)": {
+    "en": "Waning Crescent"
+  },
+  "Sizigi (Güçlü)": {
+    "en": "Spring tide (strong)"
+  },
+  "Yeni ay veya dolunay döneminde en güçlü gelgitler oluşur": {
+    "en": "The strongest tides occur around new moon and full moon"
+  },
+  "Kuadratur (Zayıf)": {
+    "en": "Neap tide (weak)"
+  },
+  "İlk veya son dördün döneminde zayıf gelgitler oluşur": {
+    "en": "Weak tides occur around the first and last quarter"
+  },
+  "Orta şiddette gelgit aktivitesi": {
+    "en": "Moderate tidal activity"
+  },
+  "Radar / ARPA takibi": {
+    "en": "Radar / ARPA tracking"
+  },
+  "COLREG uygulama": {
+    "en": "Applying COLREG"
+  },
+  "Logbook doldurma": {
+    "en": "Filling in the logbook"
+  },
+  "BNWAS / AIS kontrol": {
+    "en": "BNWAS / AIS check"
+  },
+  "Hatch cover operasyonu": {
+    "en": "Hatch cover operation"
+  },
+  "Cargo damage takibi": {
+    "en": "Cargo damage follow-up"
+  },
+  "Drill organizasyonu": {
+    "en": "Drill organisation"
+  },
+  "Boya & pas": {
+    "en": "Painting & rust removal"
+  },
+  "Yeni personel oryantasyonu": {
+    "en": "New crew familiarisation"
+  },
+  "Deficiency takibi": {
+    "en": "Deficiency follow-up"
+  },
+  "Adam denize": {
+    "en": "Man overboard"
+  },
+  "Kazan operasyonu": {
+    "en": "Boiler operation"
+  },
+  "Otomasyon sistemleri": {
+    "en": "Automation systems"
+  },
+  "Makine logbook": {
+    "en": "Engine logbook"
+  },
+  "Bunkering operasyonu": {
+    "en": "Bunkering operation"
+  },
+  "LO/FO analizleri": {
+    "en": "LO/FO analyses"
   }
 }

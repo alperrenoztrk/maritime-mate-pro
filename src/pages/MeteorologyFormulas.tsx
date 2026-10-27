@@ -31,9 +31,9 @@ const meteorologyFormulas = [
     icon: Waves,
     formula: "L = (g · T²) / (2π)",
     variables: [
-      "L: Dalgaboyu (m)",
+      "L: wavelength (m)",
       "g: gravitational acceleration = 9.81 m/s²",
-      "T: Dalga periyodu (s)",
+      "T: wave period (s)",
       "π ≈ 3.14159"
     ],
     note: "Deep water: Depth > L/2"
@@ -44,10 +44,10 @@ const meteorologyFormulas = [
     formula: "C = L / T = (g · T) / (2π) ≈ 1.56 · T",
     variables: [
       "C: wave speed (m/s)",
-      "L: Dalgaboyu (m)",
-      "T: Dalga periyodu (s)"
+      "L: wavelength (m)",
+      "T: wave period (s)"
     ],
-    note: "Knot cinsinden: C (kn) ≈ 3.03 · T"
+    note: "In knots: C (kn) ≈ 3.03 · T"
   },
   {
     title: "Beaufort Wind Speed",

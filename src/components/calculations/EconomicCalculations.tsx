@@ -82,8 +82,8 @@ export const EconomicCalculations = () => {
       profitability: tce > 15000 ? 'Excellent' : tce > 10000 ? 'Good' : tce > 5000 ? 'Fair' : 'Poor'
     });
     setCalcSteps(prev => ({ ...prev, tce: [
-      { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "Time Equivalent Rental (TCE) calculates daily earnings" },
-      { step: 2, title: "Net freight calculation", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Navlun = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Navlun = $${netFreight.toLocaleString()}` },
+      { step: 1, title: "Formula", formula: "TCE = (Gross Freight - Voyage Expenses) / Voyage Day", explanation: "The Time Charter Equivalent (TCE) gives the daily earnings of the voyage" },
+      { step: 2, title: "Net freight calculation", formula: "Net Freight = Gross Freight - Voyage Expenses", substitution: `Net Freight = $${freight.toLocaleString()} - $${expenses.toLocaleString()}`, result: `Net Freight = $${netFreight.toLocaleString()}` },
       { step: 3, title: "TCE calculation", formula: "TCE = Net Freight / Day", substitution: `TCE = $${netFreight.toLocaleString()} / ${days}`, result: `TCE = $${tce.toFixed(0)}/day` },
     ] }));
   };
@@ -136,14 +136,14 @@ export const EconomicCalculations = () => {
     setDemurrageResult(result);
     const demSteps: CalculationStep[] = [
       { step: 1, title: "Formula", formula: "Time Difference = Actual Time - Lay Time", explanation: "Positive difference means demurrage, negative difference means despatch" },
-      { step: 2, title: "Time difference calculation", formula: `Fark = ${actualHours} - ${layTimeHours}`, result: `Fark = ${timeDifference} clock` },
+      { step: 2, title: "Time difference calculation", formula: `Difference = ${actualHours} - ${layTimeHours}`, result: `Difference = ${timeDifference} hours` },
     ];
     if (timeDifference > 0) {
-      demSteps.push({ step: 3, title: "Demurrage calculation", formula: "Demurrage = Fark × Oran", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Demurrage calculation", formula: "Demurrage = Difference × Rate", substitution: `Demurrage = ${timeDifference} × $${rate}`, result: `Demurrage = $${result.amount.toFixed(2)}` });
     } else if (timeDifference < 0) {
-      demSteps.push({ step: 3, title: "Despatch account", formula: "Despatch = |Fark| × Oran × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
+      demSteps.push({ step: 3, title: "Despatch calculation", formula: "Despatch = |Difference| × Rate × 0.5", substitution: `Despatch = ${Math.abs(timeDifference)} × $${rate} × 0.5`, result: `Despatch = $${result.amount.toFixed(2)}` });
     } else {
-      demSteps.push({ step: 3, title: "Result", formula: "Fark = 0", result: "Completed on time, no payment" });
+      demSteps.push({ step: 3, title: "Result", formula: "Difference = 0", result: "Completed on time, no payment" });
     }
     setCalcSteps(prev => ({ ...prev, demurrage: demSteps }));
   };

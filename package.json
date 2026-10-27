@@ -59,6 +59,7 @@
     "i18n:audit": "node --import tsx scripts/i18n/audit-rendered.mjs",
     "i18n:audit-terms": "node --import tsx scripts/i18n/audit-terms.mjs",
     "i18n:scan-senses": "node scripts/i18n/scan-sense-errors.mjs",
+    "i18n:scan-turkish": "node --import tsx scripts/i18n/scan-turkish-leftovers.mjs",
     "i18n:paragraphs": "node scripts/i18n/extract-paragraphs.mjs && node --import tsx scripts/i18n/build-paragraph-pack.mjs",
     "i18n:repair": "node --import tsx scripts/i18n/repair-terms.mjs",
     "i18n:repair-en": "node scripts/i18n/repair-english-terminology.mjs",

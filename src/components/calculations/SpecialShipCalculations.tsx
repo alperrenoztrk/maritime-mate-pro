@@ -132,7 +132,7 @@ export const SpecialShipCalculations = ({ initialTab }: { initialTab?: string } 
     setCalcSteps(prev => ({ ...prev, lng: [
       { step: 1, title: "Formula", formula: "Total Loss = (Daily Boil-off% / 100) × Capacity × Day", explanation: "LNG evaporation loss calculation" },
       { step: 2, title: "Placement of values", formula: `Loss = (${dailyBoilOff} / 100) × ${capacity.toFixed(1)} × ${duration}`, result: `Total Loss = ${totalBoilOff.toFixed(1)} m³` },
-      { step: 3, title: "Remaining cargo", formula: "Remaining = Capacity - Total Loss", substitution: `Kalan = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Kalan Kargo = ${remainingCargo.toFixed(1)} m³` },
+      { step: 3, title: "Remaining cargo", formula: "Remaining = Capacity - Total Loss", substitution: `Remaining = ${capacity.toFixed(1)} - ${totalBoilOff.toFixed(1)}`, result: `Remaining Cargo = ${remainingCargo.toFixed(1)} m³` },
       { step: 4, title: "Loss percentage", formula: "Loss% = (Total Loss/Capacity) × 100", substitution: `Loss% = (${totalBoilOff.toFixed(1)} / ${capacity.toFixed(1)}) × 100`, result: `Loss = %${lossPercentage.toFixed(2)}` },
     ] }));
   };

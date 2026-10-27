@@ -2904,7 +2904,7 @@ CTS: ${currentResults.courseToSteerDeg.toFixed(1)}°\nSOG: ${currentResults.grou
                 `Current components: Cx = drift×sin(set) = ${drift.toFixed(2)}×sin(${set.toFixed(1)}°) = ${Cx.toFixed(3)}, Cy = drift×cos(set) = ${Cy.toFixed(3)}`,
                 `RHS = (Cy·sinD − Cx·cosD)/V = ${rhs.toFixed(4)} (D=${course.toFixed(1)}°, V=${speed.toFixed(2)} kn)`,
                 `CTS = D + asin(RHS) = ${headingDeg.toFixed(1)}°`,
-                `SOG = proje( Vgemi + C ) = ${currentResults.groundSpeedKn.toFixed(2)} kn`,
+                `SOG = |Vship + C| = ${currentResults.groundSpeedKn.toFixed(2)} kn`,
               ]}
             />
           </div>
@@ -3021,7 +3021,7 @@ Relative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-Calculated Height: ${sightResults.hcDeg.toFixed(2)}°\nAzimut: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
+Calculated Altitude (Hc): ${sightResults.hcDeg.toFixed(2)}°\nAzimuth: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA)`,
@@ -3160,10 +3160,10 @@ Lat: ${formatDecimalAsDMS(fixResults.three.fix.latDeg, true)}\nLon: ${formatDeci
         const lightHeightM = parseFloat(distanceInputs.lightHeight || "0");
         const distanceSteps: string[] = [];
         if (distanceInputs.type === "dip") {
-          distanceSteps.push(`Dip mesafesi = 2.075 × √H = 2.075 × √${heightM.toFixed(2)} = ${distanceResults.distanceNm.toFixed(2)} NM`);
+          distanceSteps.push(`Distance to horizon = 2.075 × √H = 2.075 × √${heightM.toFixed(2)} = ${distanceResults.distanceNm.toFixed(2)} NM`);
         }
         if (distanceInputs.type === "radar") {
-          distanceSteps.push(`Radar ufku = 2.35 × √H = 2.35 × √${heightM.toFixed(2)} = ${distanceResults.distanceNm.toFixed(2)} NM`);
+          distanceSteps.push(`Radar horizon = 2.35 × √H = 2.35 × √${heightM.toFixed(2)} = ${distanceResults.distanceNm.toFixed(2)} NM`);
         }
         if (distanceInputs.type === "light") {
           distanceSteps.push(`Range of light = 1.17 × (√H + √h) = 1.17 × (√${heightM.toFixed(2)} + √${lightHeightM.toFixed(2)}) = ${distanceResults.distanceNm.toFixed(2)} NM`);

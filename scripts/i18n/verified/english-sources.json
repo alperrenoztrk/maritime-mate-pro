@@ -1177,5 +1177,965 @@
  },
  "✗ Exceeds the IMO limit (&gt; 12°)": {
   "en": "✗ Exceeds the IMO limit (&gt; 12°)"
+ },
+ "— No.": {
+  "en": "— No."
+ },
+ "• Stability must be monitored continuously": {
+  "en": "• Stability must be monitored continuously"
+ },
+ "• The dock should be pumped out slowly and under control": {
+  "en": "• The dock should be pumped out slowly and under control"
+ },
+ "⚠ Valid only when GM": {
+  "en": "⚠ Valid only when GM"
+ },
+ "✓ Complies with SOLAS (≤ 12°)": {
+  "en": "✓ Complies with SOLAS (≤ 12°)"
+ },
+ "✗ Does not comply with SOLAS — exceeds 12°": {
+  "en": "✗ Does not comply with SOLAS — exceeds 12°"
+ },
+ "1 hour = 15° | 1 minute = 15′ | 1 second = 15″": {
+  "en": "1 hour = 15° | 1 minute = 15′ | 1 second = 15″"
+ },
+ "1′ altitude error ≈ 1 NM position error": {
+  "en": "1′ altitude error ≈ 1 NM position error"
+ },
+ "15° of longitude = 1 hour | 1° of longitude = 4 minutes": {
+  "en": "15° of longitude = 1 hour | 1° of longitude = 4 minutes"
+ },
+ "2. Transverse Stability": {
+  "en": "2. Transverse Stability"
+ },
+ "2. Transverse Stability Calculations": {
+  "en": "2. Transverse Stability Calculations"
+ },
+ "3. Longitudinal Stability (Trim)": {
+  "en": "3. Longitudinal Stability (Trim)"
+ },
+ "3. Longitudinal Stability (Trim) Calculations": {
+  "en": "3. Longitudinal Stability (Trim) Calculations"
+ },
+ "7. Cargo Calculations": {
+  "en": "7. Cargo Calculations"
+ },
+ "8. Roll Period": {
+  "en": "8. Roll Period"
+ },
+ "Accident chain: Latent Failure → Active Failure → Defence layer breach → Accident": {
+  "en": "Accident chain: Latent Failure → Active Failure → Defence layer breach → Accident"
+ },
+ "Actual depth = Charted depth (sounding) + Height of tide": {
+  "en": "Actual depth = Charted depth (sounding) + Height of tide"
+ },
+ "Add Compartment": {
+  "en": "Add Compartment"
+ },
+ "Aft → leads forward": {
+  "en": "Aft → leads forward"
+ },
+ "After Breast": {
+  "en": "After Breast"
+ },
+ "After Spring": {
+  "en": "After Spring"
+ },
+ "After spring: prevents the ship moving astern (leads forward)": {
+  "en": "After spring: prevents the ship moving astern (leads forward)"
+ },
+ "Alongside in a sheltered basin: low swell (Hs 0.2 m, T 5 s), ship stopped. Switch to Passage to set sea state, wave direction and speed.": {
+  "en": "Alongside in a sheltered basin: low swell (Hs 0.2 m, T 5 s), ship stopped. Switch to Passage to set sea state, wave direction and speed."
+ },
+ "Always approach head to the wind/current; let go at the planned position": {
+  "en": "Always approach head to the wind/current; let go at the planned position"
+ },
+ "Anchoring is carried out with different techniques depending on the swinging room, the holding ground, the wind and current and the layout of the port. The right technique lets the ship swing safely and the anchor hold firmly.": {
+  "en": "Anchoring is carried out with different techniques depending on the swinging room, the holding ground, the wind and current and the layout of the port. The right technique lets the ship swing safely and the anchor hold firmly."
+ },
+ "Angle": {
+  "en": "Angle"
+ },
+ "Approx. swing radius = chain paid out + distance hawse-to-stern + safety margin": {
+  "en": "Approx. swing radius = chain paid out + distance hawse-to-stern + safety margin"
+ },
+ "Approximate • Risky": {
+  "en": "Approximate • Risky"
+ },
+ "At right angles to the quay": {
+  "en": "At right angles to the quay"
+ },
+ "B³": {
+  "en": "B³"
+ },
+ "Baltic moor: offshore anchor and a mooring line used together": {
+  "en": "Baltic moor: offshore anchor and a mooring line used together"
+ },
+ "Basic Hydrostatics Calculated": {
+  "en": "Basic Hydrostatics Calculated"
+ },
+ "Beam": {
+  "en": "Beam"
+ },
+ "Box volume": {
+  "en": "Box volume"
+ },
+ "Bracket sum": {
+  "en": "Bracket sum"
+ },
+ "Breach categories: COLREG Rule X + SOLAS Chapter Y + STCW Regulation Z + ISM Non-Conformity": {
+  "en": "Breach categories: COLREG Rule X + SOLAS Chapter Y + STCW Regulation Z + ISM Non-Conformity"
+ },
+ "Breadth (B) - m": {
+  "en": "Breadth (B) - m"
+ },
+ "Breadth (m)": {
+  "en": "Breadth (m)"
+ },
+ "Breast lines hold the ship alongside (transverse restraint)": {
+  "en": "Breast lines hold the ship alongside (transverse restraint)"
+ },
+ "Bunker cost = Consumption (t) × Price ($/t)": {
+  "en": "Bunker cost = Consumption (t) × Price ($/t)"
+ },
+ "C (roll coefficient)": {
+  "en": "C (roll coefficient)"
+ },
+ "Calculate Roll Period": {
+  "en": "Calculate Roll Period"
+ },
+ "Cargo = Δafter − Δbefore": {
+  "en": "Cargo = Δafter − Δbefore"
+ },
+ "CDI": {
+  "en": "CDI"
+ },
+ "Changeover time": {
+  "en": "Changeover time"
+ },
+ "Class Annual Survey": {
+  "en": "Class Annual Survey"
+ },
+ "Clear": {
+  "en": "Clear"
+ },
+ "COG/SOG side = Heading/STW side + Set/Drift side": {
+  "en": "COG/SOG side = Heading/STW side + Set/Drift side"
+ },
+ "Comminuted food (≤25 mm) >3 nm · uncomminuted food >12 nm · plastics ALWAYS prohibited": {
+  "en": "Comminuted food (≤25 mm) >3 nm · uncomminuted food >12 nm · plastics ALWAYS prohibited"
+ },
+ "Compartment name": {
+  "en": "Compartment name"
+ },
+ "Compartment Name": {
+  "en": "Compartment Name"
+ },
+ "Complies": {
+  "en": "Complies"
+ },
+ "Correction Angle = Heading − Desired COG": {
+  "en": "Correction Angle = Heading − Desired COG"
+ },
+ "Critical GM in Dry Docking": {
+  "en": "Critical GM in Dry Docking"
+ },
+ "Crossing risk: Steady bearing (°) + Decreasing range (nm) + on own starboard side → give-way vessel identified": {
+  "en": "Crossing risk: Steady bearing (°) + Decreasing range (nm) + on own starboard side → give-way vessel identified"
+ },
+ "Cumulative change: 1st hr 1/12 | 2nd hr 3/12 | 3rd hr 6/12 | 4th hr 9/12 | 5th hr 11/12 | 6th hr 12/12": {
+  "en": "Cumulative change: 1st hr 1/12 | 2nd hr 3/12 | 3rd hr 6/12 | 4th hr 9/12 | 5th hr 11/12 | 6th hr 12/12"
+ },
+ "Cumulative: 1h → 1/12 | 2h → 3/12 | 3h → 6/12 | 4h → 9/12 | 5h → 11/12 | 6h → 12/12": {
+  "en": "Cumulative: 1h → 1/12 | 2h → 3/12 | 3h → 6/12 | 4h → 9/12 | 5h → 11/12 | 6h → 12/12"
+ },
+ "Current Vector = (Set, Drift)": {
+  "en": "Current Vector = (Set, Drift)"
+ },
+ "D-1: ≥95% exchange (>200 nm, >200 m depth) · D-2: organism limits by treatment": {
+  "en": "D-1: ≥95% exchange (>200 nm, >200 m depth) · D-2: organism limits by treatment"
+ },
+ "Damaged Area (m²)": {
+  "en": "Damaged Area (m²)"
+ },
+ "Damaged Stability": {
+  "en": "Damaged Stability"
+ },
+ "Deflection (m)": {
+  "en": "Deflection (m)"
+ },
+ "Demurrage = (Time used − Laytime) × Daily rate": {
+  "en": "Demurrage = (Time used − Laytime) × Daily rate"
+ },
+ "Denominator": {
+  "en": "Denominator"
+ },
+ "Dep = Δλ · cos φm (approx., at mean latitude) | Exact: Mercator sailing formulae": {
+  "en": "Dep = Δλ · cos φm (approx., at mean latitude) | Exact: Mercator sailing formulae"
+ },
+ "Depth = (Speed of sound × Elapsed time) / 2": {
+  "en": "Depth = (Speed of sound × Elapsed time) / 2"
+ },
+ "Derrick head height": {
+  "en": "Derrick head height"
+ },
+ "Derrick Lift GM Change = w × d / Δ": {
+  "en": "Derrick Lift GM Change = w × d / Δ"
+ },
+ "Despatch calculation": {
+  "en": "Despatch calculation"
+ },
+ "Discharge: ≤ 15 ppm + en route + OWS/monitor with 15 ppm alarm": {
+  "en": "Discharge: ≤ 15 ppm + en route + OWS/monitor with 15 ppm alarm"
+ },
+ "Discharge: en route ≥7 kn + >12 nm + depth ≥25 m + below-waterline outlet": {
+  "en": "Discharge: en route ≥7 kn + >12 nm + depth ≥25 m + below-waterline outlet"
+ },
+ "Displaced volume": {
+  "en": "Displaced volume"
+ },
+ "Displaced Volume (∇) - m³": {
+  "en": "Displaced Volume (∇) - m³"
+ },
+ "Distance (NM) ≈ 1.856 × Height (m) / Vertical angle (minutes)": {
+  "en": "Distance (NM) ≈ 1.856 × Height (m) / Vertical angle (minutes)"
+ },
+ "Distance = Speed × Time": {
+  "en": "Distance = Speed × Time"
+ },
+ "Distance = Speed × Time | DLat = D × cos(C) | Dep = D × sin(C)": {
+  "en": "Distance = Speed × Time | DLat = D × cos(C) | Dep = D × sin(C)"
+ },
+ "DLat = Arrival Latitude − Departure Latitude": {
+  "en": "DLat = Arrival Latitude − Departure Latitude"
+ },
+ "DLong = Arrival Longitude − Departure Longitude": {
+  "en": "DLong = Arrival Longitude − Departure Longitude"
+ },
+ "Does not comply": {
+  "en": "Does not comply"
+ },
+ "Draft Mark Value (ft)": {
+  "en": "Draft Mark Value (ft)"
+ },
+ "Draft Mark Value (m)": {
+  "en": "Draft Mark Value (m)"
+ },
+ "Draft Reading (Imperial)": {
+  "en": "Draft Reading (Imperial)"
+ },
+ "Drag: rotate · Pinch: zoom": {
+  "en": "Drag: rotate · Pinch: zoom"
+ },
+ "Earth turns 360° in 24 h → 15° in 1 h → 15′ in 1 min → 15″ in 1 s": {
+  "en": "Earth turns 360° in 24 h → 15° in 1 h → 15′ in 1 min → 15″ in 1 s"
+ },
+ "Effective area": {
+  "en": "Effective area"
+ },
+ "Effective area must be > 0": {
+  "en": "Effective area must be > 0"
+ },
+ "Enter a valid compartment name and data": {
+  "en": "Enter a valid compartment name and data"
+ },
+ "Enter valid base draft (ft)": {
+  "en": "Enter valid base draft (ft)"
+ },
+ "Enter valid pendulum length and deflection": {
+  "en": "Enter valid pendulum length and deflection"
+ },
+ "Enter valid trimming moment and MCT1cm": {
+  "en": "Enter valid trimming moment and MCT1cm"
+ },
+ "Enter valid Vhold and SF": {
+  "en": "Enter valid Vhold and SF"
+ },
+ "Enter valid w, hhook, hload, Δ": {
+  "en": "Enter valid w, hhook, hload, Δ"
+ },
+ "Enter valid w, L, B and damaged length Ld": {
+  "en": "Enter valid w, L, B and damaged length Ld"
+ },
+ "Enter valid w, L, B, damaged area and ρ": {
+  "en": "Enter valid w, L, B, damaged area and ρ"
+ },
+ "Enter valid weight and KG": {
+  "en": "Enter valid weight and KG"
+ },
+ "Established": {
+  "en": "Established"
+ },
+ "ETA = ETD + (D / SOGavg) + Pilot waiting + TSS delay": {
+  "en": "ETA = ETD + (D / SOGavg) + Pilot waiting + TSS delay"
+ },
+ "Flag State Inspection": {
+  "en": "Flag State Inspection"
+ },
+ "Flooded Volume (m³)": {
+  "en": "Flooded Volume (m³)"
+ },
+ "Following": {
+  "en": "Following"
+ },
+ "For the 1/3 rule, enter h and an odd number of ordinates (an even number of intervals)": {
+  "en": "For the 1/3 rule, enter h and an odd number of ordinates (an even number of intervals)"
+ },
+ "For the 3/8 rule, enter h and a number of intervals that is a multiple of 3": {
+  "en": "For the 3/8 rule, enter h and a number of intervals that is a multiple of 3"
+ },
+ "Forward → leads aft": {
+  "en": "Forward → leads aft"
+ },
+ "Forward Draft (dF) - m": {
+  "en": "Forward Draft (dF) - m"
+ },
+ "Forward spring: prevents the ship moving ahead (leads aft)": {
+  "en": "Forward spring: prevents the ship moving ahead (leads aft)"
+ },
+ "Free Surface Correction GGv = L × B³ / (12 × ∇)": {
+  "en": "Free Surface Correction GGv = L × B³ / (12 × ∇)"
+ },
+ "Free surface moment of a rectangular tank": {
+  "en": "Free surface moment of a rectangular tank"
+ },
+ "Freight = Cargo (t) × Rate ($/t)  ·  or  Lump sum (fixed amount)": {
+  "en": "Freight = Cargo (t) × Rate ($/t)  ·  or  Lump sum (fixed amount)"
+ },
+ "Fuel lost in changeover": {
+  "en": "Fuel lost in changeover"
+ },
+ "Function": {
+  "en": "Function"
+ },
+ "GG₁ (Derrick) Calculated": {
+  "en": "GG₁ (Derrick) Calculated"
+ },
+ "GG₁ in a derrick lift (GG₁ = w·(hhook − hload)/Δ)": {
+  "en": "GG₁ in a derrick lift (GG₁ = w·(hhook − hload)/Δ)"
+ },
+ "Global sulphur limit 0.50% · inside ECA 0.10%": {
+  "en": "Global sulphur limit 0.50% · inside ECA 0.10%"
+ },
+ "Great circle distance (nm) = θ × 60": {
+  "en": "Great circle distance (nm) = θ × 60"
+ },
+ "Ground Velocity Vector = Water Velocity Vector + Current Vector": {
+  "en": "Ground Velocity Vector = Water Velocity Vector + Current Vector"
+ },
+ "GZ Curve and Righting Moment": {
+  "en": "GZ Curve and Righting Moment"
+ },
+ "h derrick head (m)": {
+  "en": "h derrick head (m)"
+ },
+ "h load (m)": {
+  "en": "h load (m)"
+ },
+ "Harbour": {
+  "en": "Harbour"
+ },
+ "Hawse pipe: chain passage through the ship's side; spurling pipe: passage from the deck to the chain locker": {
+  "en": "Hawse pipe: chain passage through the ship's side; spurling pipe: passage from the deck to the chain locker"
+ },
+ "Head and stern lines give longitudinal and some transverse restraint": {
+  "en": "Head and stern lines give longitudinal and some transverse restraint"
+ },
+ "Head-on situation: reciprocal or nearly reciprocal courses → each vessel alters course to starboard": {
+  "en": "Head-on situation: reciprocal or nearly reciprocal courses → each vessel alters course to starboard"
+ },
+ "Heel Angle": {
+  "en": "Heel Angle"
+ },
+ "Heel Angle (grain shift) =": {
+  "en": "Heel Angle (grain shift) ="
+ },
+ "Heeling Moment (ton.m)": {
+  "en": "Heeling Moment (ton.m)"
+ },
+ "Height difference": {
+  "en": "Height difference"
+ },
+ "HM is the external heeling effect": {
+  "en": "HM is the external heeling effect"
+ },
+ "Hogging & Sagging Detection: Hogging: (dF + dA)/2 > dM Sagging: (dF + dA)/2 < dM": {
+  "en": "Hogging & Sagging Detection: Hogging: (dF + dA)/2 > dM Sagging: (dF + dA)/2 < dM"
+ },
+ "Holds the bow alongside the quay": {
+  "en": "Holds the bow alongside the quay"
+ },
+ "Holds the bow and resists movement astern": {
+  "en": "Holds the bow and resists movement astern"
+ },
+ "Holds the stern alongside the quay": {
+  "en": "Holds the stern alongside the quay"
+ },
+ "Holds the stern and resists movement ahead": {
+  "en": "Holds the stern and resists movement ahead"
+ },
+ "If HM > RMmax, there is a risk of capsizing": {
+  "en": "If HM > RMmax, there is a risk of capsizing"
+ },
+ "Imperial draft figures are 6 in high": {
+  "en": "Imperial draft figures are 6 in high"
+ },
+ "In a derrick or crane lift, the GM change is the lifted weight times the lever distance d, divided by the displacement.": {
+  "en": "In a derrick or crane lift, the GM change is the lifted weight times the lever distance d, divided by the displacement."
+ },
+ "In dry dock, the loss of GM caused by the upthrust P on the keel blocks is P × KM / Δ; the ship's GM must stay above this value": {
+  "en": "In dry dock, the loss of GM caused by the upthrust P on the keel blocks is P × KM / Δ; the ship's GM must stay above this value"
+ },
+ "In the damaged condition, the change of draft is the weight divided by the effective (intact) waterplane area.": {
+  "en": "In the damaged condition, the change of draft is the weight divided by the effective (intact) waterplane area."
+ },
+ "In the damaged condition, the draft increase depends on the intact waterplane area and the water density": {
+  "en": "In the damaged condition, the draft increase depends on the intact waterplane area and the water density"
+ },
+ "Inclining Experiment Result": {
+  "en": "Inclining Experiment Result"
+ },
+ "Initial GM": {
+  "en": "Initial GM"
+ },
+ "Initial GM:": {
+  "en": "Initial GM:"
+ },
+ "Inspection Checklists": {
+  "en": "Inspection Checklists"
+ },
+ "Inspection type": {
+  "en": "Inspection type"
+ },
+ "ISM Audit": {
+  "en": "ISM Audit"
+ },
+ "ISPS Audit": {
+  "en": "ISPS Audit"
+ },
+ "Ixx": {
+  "en": "Ixx"
+ },
+ "KG Adjustment": {
+  "en": "KG Adjustment"
+ },
+ "KM (height of the metacentre above the keel) is the sum of KG and GM": {
+  "en": "KM (height of the metacentre above the keel) is the sum of KG and GM"
+ },
+ "KM is the height of the centre of buoyancy (KB) plus the metacentric radius (BM)": {
+  "en": "KM is the height of the centre of buoyancy (KB) plus the metacentric radius (BM)"
+ },
+ "Knot Tying Step by Step": {
+  "en": "Knot Tying Step by Step"
+ },
+ "Lead": {
+  "en": "Lead"
+ },
+ "Leads aft": {
+  "en": "Leads aft"
+ },
+ "Leads forward": {
+  "en": "Leads forward"
+ },
+ "Leeway angle ≈ COG − Heading (no current, or corrected for known current)": {
+  "en": "Leeway angle ≈ COG − Heading (no current, or corrected for known current)"
+ },
+ "Lever h (m)": {
+  "en": "Lever h (m)"
+ },
+ "Line": {
+  "en": "Line"
+ },
+ "Longitude (°) × 4 = Time difference (minutes)": {
+  "en": "Longitude (°) × 4 = Time difference (minutes)"
+ },
+ "m)": {
+  "en": "m)"
+ },
+ "Maximum Cargo": {
+  "en": "Maximum Cargo"
+ },
+ "Maximum Righting Moment:": {
+  "en": "Maximum Righting Moment:"
+ },
+ "Mean Latitude = (Departure Latitude + Arrival Latitude) ÷ 2": {
+  "en": "Mean Latitude = (Departure Latitude + Arrival Latitude) ÷ 2"
+ },
+ "Mediterranean moor: stern to the quay, two anchors laid out from forward": {
+  "en": "Mediterranean moor: stern to the quay, two anchors laid out from forward"
+ },
+ "Met": {
+  "en": "Met"
+ },
+ "MHoT = MSD − Chart sounding = (Draft + Squat + Swell allowance + Min. UKC) − Chart sounding": {
+  "en": "MHoT = MSD − Chart sounding = (Draft + Squat + Swell allowance + Min. UKC) − Chart sounding"
+ },
+ "Middle (+3 in)": {
+  "en": "Middle (+3 in)"
+ },
+ "Middle (+5 cm)": {
+  "en": "Middle (+5 cm)"
+ },
+ "Midship draft": {
+  "en": "Midship draft"
+ },
+ "Midship Draft (dM) - m": {
+  "en": "Midship Draft (dM) - m"
+ },
+ "Midship section arched upward": {
+  "en": "Midship section arched upward"
+ },
+ "Midship section sagged downward": {
+  "en": "Midship section sagged downward"
+ },
+ "MLC 2006 Inspection": {
+  "en": "MLC 2006 Inspection"
+ },
+ "Moment and ΔGM": {
+  "en": "Moment and ΔGM"
+ },
+ "Mooring Lines and Their Functions": {
+  "en": "Mooring Lines and Their Functions"
+ },
+ "Mooring Lines and Their Names": {
+  "en": "Mooring Lines and Their Names"
+ },
+ "Mooring with two anchors (running/standing moor) limits the swing and improves holding": {
+  "en": "Mooring with two anchors (running/standing moor) limits the swing and improves holding"
+ },
+ "Narrow-angle cut → error grows | Right-angle cut → error minimised": {
+  "en": "Narrow-angle cut → error grows | Right-angle cut → error minimised"
+ },
+ "New density": {
+  "en": "New density"
+ },
+ "New temperature": {
+  "en": "New temperature"
+ },
+ "No.": {
+  "en": "No."
+ },
+ "North Component = Speed × cos Direction | East Component = Speed × sin Direction": {
+  "en": "North Component = Speed × cos Direction | East Component = Speed × sin Direction"
+ },
+ "Not met": {
+  "en": "Not met"
+ },
+ "Note: the KN CSV, Bonjean JSON and other text inputs are described in their own sections.": {
+  "en": "Note: the KN CSV, Bonjean JSON and other text inputs are described in their own sections."
+ },
+ "Nozzle Flow Rate (Q = K × √P):": {
+  "en": "Nozzle Flow Rate (Q = K × √P):"
+ },
+ "Numerator": {
+  "en": "Numerator"
+ },
+ "OK": {
+  "en": "OK"
+ },
+ "Old density": {
+  "en": "Old density"
+ },
+ "Old temperature": {
+  "en": "Old temperature"
+ },
+ "Overall efficiency": {
+  "en": "Overall efficiency"
+ },
+ "Overtaking: approaching from more than 22.5° abaft the beam (within the 135° sternlight arc) → overtaking vessel": {
+  "en": "Overtaking: approaching from more than 22.5° abaft the beam (within the 135° sternlight arc) → overtaking vessel"
+ },
+ "Parallel Sinkage (cm): Sinkage = w / TPC": {
+  "en": "Parallel Sinkage (cm): Sinkage = w / TPC"
+ },
+ "Parallel Sinkage = Weight Loaded / TPC": {
+  "en": "Parallel Sinkage = Weight Loaded / TPC"
+ },
+ "Parallel sinkage in cm is the weight loaded divided by TPC": {
+  "en": "Parallel sinkage in cm is the weight loaded divided by TPC"
+ },
+ "Parametric rolling": {
+  "en": "Parametric rolling"
+ },
+ "Parametric Rolling": {
+  "en": "Parametric Rolling"
+ },
+ "Parametric rolling is a dangerous rolling motion that develops when the wave encounter period is equal to half of the ship's natural roll period.": {
+  "en": "Parametric rolling is a dangerous rolling motion that develops when the wave encounter period is equal to half of the ship's natural roll period."
+ },
+ "PASS": {
+  "en": "PASS"
+ },
+ "Passage": {
+  "en": "Passage"
+ },
+ "Permissible Stowage Height =": {
+  "en": "Permissible Stowage Height ="
+ },
+ "PL (Permissible Deck Load, t/m²)": {
+  "en": "PL (Permissible Deck Load, t/m²)"
+ },
+ "Port Aft": {
+  "en": "Port Aft"
+ },
+ "Port Forward": {
+  "en": "Port Forward"
+ },
+ "Port Midship": {
+  "en": "Port Midship"
+ },
+ "Port State Control": {
+  "en": "Port State Control"
+ },
+ "Prevents the ship moving ahead": {
+  "en": "Prevents the ship moving ahead"
+ },
+ "Prevents the ship moving astern": {
+  "en": "Prevents the ship moving astern"
+ },
+ "PSC Risk Score = f(Flag, Class, Previous detentions, Age, Type)": {
+  "en": "PSC Risk Score = f(Flag, Class, Previous detentions, Age, Type)"
+ },
+ "Pseudo-range = c × Δt | True range = Pseudo-range − (clock error × c)": {
+  "en": "Pseudo-range = c × Δt | True range = Pseudo-range − (clock error × c)"
+ },
+ "Quarter": {
+  "en": "Quarter"
+ },
+ "R: swinging circle radius (m), L: ship length (LOA, m)": {
+  "en": "R: swinging circle radius (m), L: ship length (LOA, m)"
+ },
+ "Ratio": {
+  "en": "Ratio"
+ },
+ "Reciprocal Course = True Course ± 180°": {
+  "en": "Reciprocal Course = True Course ± 180°"
+ },
+ "Rest: ≥10 h in 24 h and ≥77 h in 7 days": {
+  "en": "Rest: ≥10 h in 24 h and ≥77 h in 7 days"
+ },
+ "RightShip Inspection": {
+  "en": "RightShip Inspection"
+ },
+ "Risk assessment: ΔBearing ≈ 0 + range decreasing → risk of collision EXISTS": {
+  "en": "Risk assessment: ΔBearing ≈ 0 + range decreasing → risk of collision EXISTS"
+ },
+ "Roll coefficient": {
+  "en": "Roll coefficient"
+ },
+ "Roll Period Calculated": {
+  "en": "Roll Period Calculated"
+ },
+ "S = Cb × V² / 100 (Barrass formula, open water) | In channel: Schannel = S × (1 + As/Ac)": {
+  "en": "S = Cb × V² / 100 (Barrass formula, open water) | In channel: Schannel = S × (1 + As/Ac)"
+ },
+ "Safe speed in fog: Vfog ≤ (Rradar × 60) / T_stop_min": {
+  "en": "Safe speed in fog: Vfog ≤ (Rradar × 60) / T_stop_min"
+ },
+ "Scope ≈ 5–6 × depth (normal), 8–10 × depth (heavy weather)": {
+  "en": "Scope ≈ 5–6 × depth (normal), 8–10 × depth (heavy weather)"
+ },
+ "Scope ≈ 5–6 × water depth (good weather), 7+ × (bad weather)": {
+  "en": "Scope ≈ 5–6 × water depth (good weather), 7+ × (bad weather)"
+ },
+ "Sea state (Douglas)": {
+  "en": "Sea state (Douglas)"
+ },
+ "Seakeeping Index": {
+  "en": "Seakeeping Index"
+ },
+ "Secondary HW time = Standard HW time + Time difference (HW) | Secondary HW height = Standard HW height × Factor (or + Difference)": {
+  "en": "Secondary HW time = Standard HW time + Time difference (HW) | Secondary HW height = Standard HW height × Factor (or + Difference)"
+ },
+ "Set = true direction from DR to Fix | Drift (kn) = DR–Fix distance (nm) / time (h)": {
+  "en": "Set = true direction from DR to Fix | Drift (kn) = DR–Fix distance (nm) / time (h)"
+ },
+ "SF (Stowage Factor, m³/t)": {
+  "en": "SF (Stowage Factor, m³/t)"
+ },
+ "Ship Simulator": {
+  "en": "Ship Simulator"
+ },
+ "SIRE 2.0 (OCIMF)": {
+  "en": "SIRE 2.0 (OCIMF)"
+ },
+ "Simplified Calculations (Risky) — Next Release Priorities": {
+  "en": "Simplified Calculations (Risky) — Next Release Priorities"
+ },
+ "Simulation mode": {
+  "en": "Simulation mode"
+ },
+ "SOG = | Water Velocity Vector + Current Vector |": {
+  "en": "SOG = | Water Velocity Vector + Current Vector |"
+ },
+ "Springs are the most important lines for preventing fore-and-aft movement (surging).": {
+  "en": "Springs are the most important lines for preventing fore-and-aft movement (surging)."
+ },
+ "Squat ∝ V² (increases with the square of speed)": {
+  "en": "Squat ∝ V² (increases with the square of speed)"
+ },
+ "Standing moor: stopped / slight sternway → 1st anchor → 2nd anchor → ship centred between the anchors": {
+  "en": "Standing moor: stopped / slight sternway → 1st anchor → 2nd anchor → ship centred between the anchors"
+ },
+ "Starboard Aft": {
+  "en": "Starboard Aft"
+ },
+ "Starboard Forward": {
+  "en": "Starboard Forward"
+ },
+ "Starboard Midship": {
+  "en": "Starboard Midship"
+ },
+ "Subdivision effect": {
+  "en": "Subdivision effect"
+ },
+ "Substituting values": {
+  "en": "Substituting values"
+ },
+ "Support reactions (simply supported beam)": {
+  "en": "Support reactions (simply supported beam)"
+ },
+ "Swinging Circle Radius": {
+  "en": "Swinging Circle Radius"
+ },
+ "Swinging circle radius = ship length + length of chain paid out": {
+  "en": "Swinging circle radius = ship length + length of chain paid out"
+ },
+ "Swinging radius ≈ (horizontal chain distance) + LOA": {
+  "en": "Swinging radius ≈ (horizontal chain distance) + LOA"
+ },
+ "SWL = Breaking Load / Safety Factor": {
+  "en": "SWL = Breaking Load / Safety Factor"
+ },
+ "Synchronous rolling and broaching": {
+  "en": "Synchronous rolling and broaching"
+ },
+ "Synchronous Rolling and Broaching": {
+  "en": "Synchronous Rolling and Broaching"
+ },
+ "Synchronous rolling is a dangerous resonance condition that develops when the wave encounter period is equal to the ship's natural roll period.": {
+  "en": "Synchronous rolling is a dangerous resonance condition that develops when the wave encounter period is equal to the ship's natural roll period."
+ },
+ "tan φ = Deflection / Pendulum Length": {
+  "en": "tan φ = Deflection / Pendulum Length"
+ },
+ "TCE = (Freight − Voyage costs) / Total voyage days": {
+  "en": "TCE = (Freight − Voyage costs) / Total voyage days"
+ },
+ "Te = Tr → synchronous rolling (resonance), roll angles become larger": {
+  "en": "Te = Tr → synchronous rolling (resonance), roll angles become larger"
+ },
+ "Te: wave encounter period (s), Tr: ship's natural roll period (s). When this condition is met, there is a risk of parametric rolling.": {
+  "en": "Te: wave encounter period (s), Tr: ship's natural roll period (s). When this condition is met, there is a risk of parametric rolling."
+ },
+ "TEM Model: Threat → Error → Undesired-state management": {
+  "en": "TEM Model: Threat → Error → Undesired-state management"
+ },
+ "Terminal Inspection": {
+  "en": "Terminal Inspection"
+ },
+ "Tf - Forward Draft (m)": {
+  "en": "Tf - Forward Draft (m)"
+ },
+ "The angle of heel due to grain shift is the grain heeling moment (GHM) divided by the product of displacement and GM. 57.3 = 180/π": {
+  "en": "The angle of heel due to grain shift is the grain heeling moment (GHM) divided by the product of displacement and GM. 57.3 = 180/π"
+ },
+ "The block coefficient is the ratio of the ship's underwater volume to the volume of the enclosing box L × B × T": {
+  "en": "The block coefficient is the ratio of the ship's underwater volume to the volume of the enclosing box L × B × T"
+ },
+ "The change of draft (mm) caused by the density change is calculated from the FWA": {
+  "en": "The change of draft (mm) caused by the density change is calculated from the FWA"
+ },
+ "The change of trim in cm is the total trimming moment divided by MCT": {
+  "en": "The change of trim in cm is the total trimming moment divided by MCT"
+ },
+ "The density change with temperature is the temperature difference multiplied by the coefficient": {
+  "en": "The density change with temperature is the temperature difference multiplied by the coefficient"
+ },
+ "The density correction is calculated from the difference between the actual water density and standard seawater (1.025 t/m³)": {
+  "en": "The density correction is calculated from the difference between the actual water density and standard seawater (1.025 t/m³)"
+ },
+ "The displacement in water of a different density is corrected by the density ratio": {
+  "en": "The displacement in water of a different density is corrected by the density ratio"
+ },
+ "The draft correction is the trim times the distance of the draft marks from the perpendicular, divided by LBP": {
+  "en": "The draft correction is the trim times the distance of the draft marks from the perpendicular, divided by LBP"
+ },
+ "The first trim correction gives the displacement difference caused by the trim (LCF not at midships)": {
+  "en": "The first trim correction gives the displacement difference caused by the trim (LCF not at midships)"
+ },
+ "The Fresh Water Allowance is the increase in mean draft when the ship passes from seawater (1.025 t/m³) into fresh water (1.000 t/m³)": {
+  "en": "The Fresh Water Allowance is the increase in mean draft when the ship passes from seawater (1.025 t/m³) into fresh water (1.000 t/m³)"
+ },
+ "The grain heeling moment is the volumetric heeling moment (VHM) divided by the stowage factor (SF)": {
+  "en": "The grain heeling moment is the volumetric heeling moment (VHM) divided by the stowage factor (SF)"
+ },
+ "The heel angle is the arctangent of the ratio GZ / GM": {
+  "en": "The heel angle is the arctangent of the ratio GZ / GM"
+ },
+ "The longitudinal centre of gravity is the total moment divided by the total weight": {
+  "en": "The longitudinal centre of gravity is the total moment divided by the total weight"
+ },
+ "The main steering gear must be able to put the rudder over from 35° on one side to 30° on the other side in not more than 28 seconds.": {
+  "en": "The main steering gear must be able to put the rudder over from 35° on one side to 30° on the other side in not more than 28 seconds."
+ },
+ "The maximum cargo quantity is the hold volume divided by the stowage factor": {
+  "en": "The maximum cargo quantity is the hold volume divided by the stowage factor"
+ },
+ "The mean draft is the arithmetic mean of the forward and aft drafts": {
+  "en": "The mean draft is the arithmetic mean of the forward and aft drafts"
+ },
+ "The mean of mean of means (MMM) gives the midship draft six times the weight of the forward and aft drafts": {
+  "en": "The mean of mean of means (MMM) gives the midship draft six times the weight of the forward and aft drafts"
+ },
+ "The mean of the forward and aft drafts is calculated": {
+  "en": "The mean of the forward and aft drafts is calculated"
+ },
+ "The metacentric height is KM minus the height of the centre of gravity (KG)": {
+  "en": "The metacentric height is KM minus the height of the centre of gravity (KG)"
+ },
+ "The metric reading is the value of the draft mark plus the correction for where the waterline cuts the 10 cm figure": {
+  "en": "The metric reading is the value of the draft mark plus the correction for where the waterline cuts the 10 cm figure"
+ },
+ "The new height of the centre of gravity is the total moment divided by the total weight": {
+  "en": "The new height of the centre of gravity is the total moment divided by the total weight"
+ },
+ "The permissible stowage height is the stowage factor multiplied by the permissible deck load": {
+  "en": "The permissible stowage height is the stowage factor multiplied by the permissible deck load"
+ },
+ "The pitch amplitude is the angular motion of the ship about its transverse axis in waves.": {
+  "en": "The pitch amplitude is the angular motion of the ship about its transverse axis in waves."
+ },
+ "The roll amplitude is the angular motion of the ship about its longitudinal axis in waves.": {
+  "en": "The roll amplitude is the angular motion of the ship about its longitudinal axis in waves."
+ },
+ "The roll period is the roll coefficient (C) times the breadth, divided by the square root of GM.": {
+  "en": "The roll period is the roll coefficient (C) times the breadth, divided by the square root of GM."
+ },
+ "The seakeeping index scores the overall seakeeping performance on a scale of 0-10.": {
+  "en": "The seakeeping index scores the overall seakeeping performance on a scale of 0-10."
+ },
+ "The second trim correction uses the change of MCT (ΔMCT) and becomes significant at large trims": {
+  "en": "The second trim correction uses the change of MCT (ΔMCT) and becomes significant at large trims"
+ },
+ "The shift of G (GG₁) is the weight moved times the distance moved, divided by the displacement": {
+  "en": "The shift of G (GG₁) is the weight moved times the distance moved, divided by the displacement"
+ },
+ "The Time Charter Equivalent (TCE) gives the daily earnings of the voyage": {
+  "en": "The Time Charter Equivalent (TCE) gives the daily earnings of the voyage"
+ },
+ "The trim (cm) is the displacement times the longitudinal distance BG, divided by MCT.": {
+  "en": "The trim (cm) is the displacement times the longitudinal distance BG, divided by MCT."
+ },
+ "The trim is shared equally forward and aft (assuming the LCF is at midships)": {
+  "en": "The trim is shared equally forward and aft (assuming the LCF is at midships)"
+ },
+ "The upthrust P at the keel blocks is MCT1cm times the trim (cm), divided by the distance t from the point of first contact to the LCF": {
+  "en": "The upthrust P at the keel blocks is MCT1cm times the trim (cm), divided by the distance t from the point of first contact to the LCF"
+ },
+ "The values must satisfy GM ≥ 0 and GZ ≥ 0.": {
+  "en": "The values must satisfy GM ≥ 0 and GZ ≥ 0."
+ },
+ "The values must satisfy KM > KG and GM ≥ 0.": {
+  "en": "The values must satisfy KM > KG and GM ≥ 0."
+ },
+ "The values must satisfy KM > KG.": {
+  "en": "The values must satisfy KM > KG."
+ },
+ "The vertical moment is the weight times its height above the keel (KG)": {
+  "en": "The vertical moment is the weight times its height above the keel (KG)"
+ },
+ "This is a simplified formula. An actual docking calculation requires a structural analysis.": {
+  "en": "This is a simplified formula. An actual docking calculation requires a structural analysis."
+ },
+ "Time (days) = Distance (nm) / (Speed (kn) × 24)": {
+  "en": "Time (days) = Distance (nm) / (Speed (kn) × 24)"
+ },
+ "Top (+10 cm)": {
+  "en": "Top (+10 cm)"
+ },
+ "Top (+6 in)": {
+  "en": "Top (+6 in)"
+ },
+ "Total inches": {
+  "en": "Total inches"
+ },
+ "Total weight": {
+  "en": "Total weight"
+ },
+ "Trim Change = Total Trimming Moment / MCT": {
+  "en": "Trim Change = Total Trimming Moment / MCT"
+ },
+ "Trim distribution": {
+  "en": "Trim distribution"
+ },
+ "True bearing = Compass bearing + compass error (E +, W −)": {
+  "en": "True bearing = Compass bearing + compass error (E +, W −)"
+ },
+ "True Bearing = Ship's True Heading + Relative Bearing": {
+  "en": "True Bearing = Ship's True Heading + Relative Bearing"
+ },
+ "True Course = Compass Course + Deviation + Variation | Compass Error = Deviation + Variation": {
+  "en": "True Course = Compass Course + Deviation + Variation | Compass Error = Deviation + Variation"
+ },
+ "UKC = (Charted depth + Height of tide) − (Draft + Squat + Swell allowance)": {
+  "en": "UKC = (Charted depth + Height of tide) − (Draft + Squat + Swell allowance)"
+ },
+ "Untreated >12 nm (≥4 kn, en route) · comminuted + disinfected >3 nm": {
+  "en": "Untreated >12 nm (≥4 kn, en route) · comminuted + disinfected >3 nm"
+ },
+ "Virtual rise of G from the free surface of a tank divided into n equal compartments": {
+  "en": "Virtual rise of G from the free surface of a tank divided into n equal compartments"
+ },
+ "Vol.": {
+  "en": "Vol."
+ },
+ "Water Velocity Vector = Ground Velocity Vector − Current Vector": {
+  "en": "Water Velocity Vector = Ground Velocity Vector − Current Vector"
+ },
+ "Wave direction relative to ship": {
+  "en": "Wave direction relative to ship"
+ },
+ "Weight loaded": {
+  "en": "Weight loaded"
+ },
+ "Weight Loaded (ton)": {
+  "en": "Weight Loaded (ton)"
+ },
+ "Went to press": {
+  "en": "Went to press"
+ },
+ "Wheel-over point distance ≈ Advance | Safe distance = Turn Radius + safety margin": {
+  "en": "Wheel-over point distance ≈ Advance | Safe distance = Turn Radius + safety margin"
+ },
+ "When a weight is lifted, it acts at the derrick head: the KG change is the weight times the height difference, divided by the displacement": {
+  "en": "When a weight is lifted, it acts at the derrick head: the KG change is the weight times the height difference, divided by the displacement"
+ },
+ "When the angle is doubled: d₁ = d₂ (isosceles triangle)": {
+  "en": "When the angle is doubled: d₁ = d₂ (isosceles triangle)"
+ },
+ "With the pendulum method, the heel angle is the arctangent of the deflection divided by the pendulum length": {
+  "en": "With the pendulum method, the heel angle is the arctangent of the deflection divided by the pendulum length"
+ },
+ "Δactual = Δtable × (ρport / 1.025)": {
+  "en": "Δactual = Δtable × (ρport / 1.025)"
+ },
+ "ρnew = ρold − [(Tnew − Told) × Coefficient]": {
+  "en": "ρnew = ρold − [(Tnew − Told) × Coefficient]"
+ },
+ "σhorizontal = HDOP × σmeasurement": {
+  "en": "σhorizontal = HDOP × σmeasurement"
+ },
+ "a: area of the wind heeling energy, b: reserve area under the righting arm (GZ) curve": {
+  "en": "a: area of the wind heeling energy, b: reserve area under the righting arm (GZ) curve"
+ },
+ "Free surface correction (virtual rise of G) of a rectangular tank holding liquid of seawater density: the tank's L × B³ / 12 divided by the ship's displaced volume ∇": {
+  "en": "Free surface correction (virtual rise of G) of a rectangular tank holding liquid of seawater density: the tank's L × B³ / 12 divided by the ship's displaced volume ∇"
+ },
+ "GZ is the righting arm, RM is the righting moment.": {
+  "en": "GZ is the righting arm, RM is the righting moment."
+ },
+ "The righting arm GZ is the KN value (cross curves) minus KG × sin θ": {
+  "en": "The righting arm GZ is the KN value (cross curves) minus KG × sin θ"
  }
 }

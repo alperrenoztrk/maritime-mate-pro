@@ -1220,10 +1220,10 @@ This point of balance is called the angle of equilibrium.
 
 If the heeling moment exceeds the righting moment the ship capsizes. The sources of heeling moment must therefore be calculated in advance and limited.`,
     bulletPoints: [
-      "HM is the exogenous reclining effect",
+      "HM is the external heeling effect",
       "Wind, wave, weight shift create HM",
-      "Denge: HM = RM",
-      "If HM > RMmax, there is a risk of tipping over",
+      "Equilibrium: HM = RM",
+      "If HM > RMmax, there is a risk of capsizing",
     ],
     formula: {
       name: "Heeling Moment (Wind)",
@@ -2788,8 +2788,8 @@ This criterion is particularly critical for ships with a large superstructure.`,
     ],
     formula: {
       name: "Weather Criterion",
-      expression: "b ≥ a; P = 504 N/m² (standart)",
-      description: "a: Wind tilt area, b: Straightening reserve area",
+      expression: "b ≥ a; P = 504 N/m² (standard)",
+      description: "a: area of the wind heeling energy, b: reserve area under the righting arm (GZ) curve",
     },
     keyPoints: [
       "Weather Criterion is mandatory for all ships",

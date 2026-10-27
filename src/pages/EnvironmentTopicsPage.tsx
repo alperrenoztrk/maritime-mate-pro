@@ -830,7 +830,7 @@ Quality standards for the treated effluent:
 These standards apply to ships built on or after 1 January 2010 and to passenger ships operating in the Baltic special area.`,
     formula: {
       name: "STP Quality Standards",
-      expression: "BOD₅ ≤ 25 mg/L | TSS ≤ 35 mg/L | Koliform ≤ 100 CFU/100mL",
+      expression: "BOD₅ ≤ 25 mg/L | TSS ≤ 35 mg/L | Coliform ≤ 100 CFU/100mL",
       description: "MEPC.227(64) standard. Mandatory for ships built after 2010 and Baltic cruise ships.",
     },
     bulletPoints: [

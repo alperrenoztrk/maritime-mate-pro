@@ -109,7 +109,7 @@ ${results.gm >= 1.0 ?
 
 ${!results.solas_uygunluk.genel_uygunluk ? 
   '• WARNING: SOLAS criteria not met - Port State Control risk' : 
-  '• SOLAS kriterleri tam uygunluk'
+  '• Full compliance with the SOLAS criteria'
 }
 
 EK NOTLAR
@@ -150,7 +150,7 @@ Stable Tales - Maritime Stability System
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Stabilite_Raporu_${reportData.gemi_adi.replace(/\s+/g, '_')}_${reportData.tarih}.txt`;
+    a.download = `Stability_Report_${reportData.gemi_adi.replace(/\s+/g, '_')}_${reportData.tarih}.txt`;
     a.click();
     URL.revokeObjectURL(url);
     toast.success("The report has been downloaded!");
@@ -170,7 +170,7 @@ Stable Tales - Maritime Stability System
       printWindow.document.write(`
         <html>
           <head>
-            <title>Stabilite Raporu</title>
+            <title>Stability Report</title>
             <style>
               body { font-family: 'Courier New', monospace; margin: 20px; }
               pre { white-space: pre-wrap; }
@@ -188,7 +188,7 @@ Stable Tales - Maritime Stability System
   };
 
   const emailReport = () => {
-    const subject = `Stabilite Raporu - ${reportData.gemi_adi} - ${reportData.tarih}`;
+    const subject = `Stability Report - ${reportData.gemi_adi} - ${reportData.tarih}`;
     const body = encodeURIComponent(generatedReport);
     const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${body}`;
     

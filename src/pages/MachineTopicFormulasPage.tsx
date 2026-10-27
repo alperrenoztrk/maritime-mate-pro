@@ -26,7 +26,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
         { name: "Carnot Efficiency", formula: "ηCarnot = 1 − (TL / TH)", variables: "TL: low temperature reservoir (K), TH: high temperature reservoir (K)" },
         { name: "Entropy Change", formula: "ΔS = Qrev / T", variables: "Qrev: reversible heat (kJ), T: absolute temperature (K)" },
         { name: "Ideal Gas Equation", formula: "PV = nRT", variables: "P: pressure (Pa), V: volume (m³), n: number of moles, R: 8.314 J/(mol·K), T: temperature (K)" },
-        { name: "Polytropic Process", formula: "P₁V₁ⁿ = P₂V₂ⁿ", variables: "n: politropik indeks (izotermik n=1, adyabatik n=γ)" },
+        { name: "Polytropic Process", formula: "P₁V₁ⁿ = P₂V₂ⁿ", variables: "n: polytropic index (isothermal n=1, adiabatic n=γ)" },
         { name: "Otto Cycle Efficiency", formula: "ηOtto = 1 − (1 / r^(γ−1))", variables: "r: compression ratio, γ: specific heat ratio (cp/cv)" },
       ],
     },
@@ -55,7 +55,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Pump Power", formula: "P = ρ·g·Q·H / η", variables: "Q: flow rate (m³/s), H: total head (m), η: efficiency" },
         { name: "NPSH (Net Positive Suction Head)", formula: "NPSHa = (Patm − Pvap) / (ρ·g) + zs − hf", variables: "Patm: atmospheric pressure, Pvap: vapour pressure, zs: suction lift" },
-        { name: "Affinity Laws (Flow Rate)", formula: "Q₂/Q₁ = n₂/n₁", variables: "Q: debi, n: devir" },
+        { name: "Affinity Laws (Flow Rate)", formula: "Q₂/Q₁ = n₂/n₁", variables: "Q: flow rate, n: speed" },
         { name: "Affinity Laws (Power)", formula: "P₂/P₁ = (n₂/n₁)³", variables: "P: power, n: speed" },
       ],
     },
@@ -73,7 +73,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
     {
       title: "Shaft and Bearing",
       formulas: [
-        { name: "Shaft Diameter (Torsion)", formula: "d = ∛(16T / π·τizin)", variables: "T: tork (N·m), τizin: izin verilen kayma gerilmesi (Pa)" },
+        { name: "Shaft Diameter (Torsion)", formula: "d = ∛(16T / π·τallow)", variables: "T: torque (N·m), τallow: allowable shear stress (Pa)" },
         { name: "Critical Speed", formula: "ncr = (60/2π)·√(g/δst)", variables: "δst: static deflection (m), g: gravity" },
         { name: "Bearing Life (L₁₀)", formula: "L₁₀ = (C/P)^p × 10⁶ revolutions", variables: "C: dynamic load rating, P: equivalent load, p: 3 (ball) or 10/3 (roller)" },
       ],
@@ -84,7 +84,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Engine Performance",
       formulas: [
         { name: "Indicated Power (IHP)", formula: "IHP = (Pmi × L × A × n × k) / 60000", variables: "Pmi: mean indicated pressure (bar), L: stroke (m), A: piston area (m²), n: speed (rpm), k: number of cylinders" },
-        { name: "Brake Power (BHP)", formula: "BHP = IHP × ηmech", variables: "ηmech: mekanik verim (0,85–0,92)" },
+        { name: "Brake Power (BHP)", formula: "BHP = IHP × ηmech", variables: "ηmech: mechanical efficiency (0.85–0.92)" },
         { name: "SFOC", formula: "SFOC = Fuel consumption (g/h) / BHP (kW)", variables: "Result: g/kW·h — a lower value is more efficient" },
         { name: "Mean Effective Pressure", formula: "MEP = (Wnet) / Vd", variables: "Wnet: net work per cycle, Vd: swept volume" },
         { name: "Compression Ratio", formula: "r = Vmax / Vmin", variables: "Vmax: volume at bottom dead centre, Vmin: volume at top dead centre" },
@@ -94,7 +94,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Combustion and Injection",
       formulas: [
         { name: "Excess Air Ratio", formula: "λ = m_air,actual / m_air,stoichiometric", variables: "λ > 1: lean mixture (typical diesel λ = 1.5–2.5)" },
-        { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Tipik: 300–1.000 bar (mekanik), 1.500–2.500 bar (common rail)" },
+        { name: "Injection Pressure", formula: "Pinj = F_spring / A_needle + P_cylinder", variables: "Typical: 300–1,000 bar (mechanical), 1,500–2,500 bar (common rail)" },
         { name: "Thermal Efficiency", formula: "ηth = BHP / (ṁ_fuel × Hu)", variables: "ṁ_fuel: fuel flow rate (kg/s), Hu: lower calorific value (kJ/kg)" },
       ],
     },
@@ -118,7 +118,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Cooling System",
       formulas: [
         { name: "Heat rejection", formula: "Q̇ = ṁ·cp·ΔT", variables: "ṁ: mass flow rate (kg/s), cp: specific heat (kJ/kg·K), ΔT: temperature difference" },
-        { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Tipik ΔT: HT devresi 5–8°C, LT devresi 10–15°C" },
+        { name: "Cooling Water Flow Rate", formula: "ṁ = Q̇ / (cp × ΔT)", variables: "Typical ΔT: HT circuit 5–8°C, LT circuit 10–15°C" },
       ],
     },
   ],
@@ -128,14 +128,14 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Electric Power", formula: "P = √3 × V × I × cos(φ)", variables: "V: line voltage (V), I: line current (A), cos(φ): power factor" },
         { name: "Frequency-Speed Relationship", formula: "f = (p × n) / 60", variables: "f: frequency (Hz), p: number of pole pairs, n: speed (rpm)" },
-        { name: "Generator Efficiency", formula: "η = Pelektrik / Pmekanik", variables: "Tipik: %92–96" },
+        { name: "Generator Efficiency", formula: "η = Pelectrical / Pmechanical", variables: "Typical: 92–96%" },
       ],
     },
     {
       title: "Boiler Calculations",
       formulas: [
         { name: "Boiler Efficiency", formula: "η = (ṁ_steam × Δh) / (ṁ_fuel × Hu)", variables: "Δh: enthalpy difference (kJ/kg), Hu: lower calorific value of the fuel" },
-        { name: "Steam Production", formula: "ṁbuhar = Q̇ / Δh", variables: "Q̇: heat input to the boiler (kW), Δh: enthalpy of evaporation" },
+        { name: "Steam Production", formula: "ṁsteam = Q̇ / Δh", variables: "Q̇: heat input to the boiler (kW), Δh: enthalpy of evaporation" },
       ],
     },
     {
@@ -188,13 +188,13 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
         { name: "Ohm's Law", formula: "V = I × R", variables: "V: voltage (V), I: current (A), R: resistance (Ω)" },
         { name: "Three Phase Power", formula: "P = √3 × VL × IL × cos(φ)", variables: "VL: line voltage, IL: line current, cos(φ): power factor" },
         { name: "Reactive Power", formula: "Q = √3 × VL × IL × sin(φ)", variables: "Unit: VAR (Volt-Ampere Reactive)" },
-        { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Birim: VA (Volt-Amper)" },
+        { name: "Apparent Power", formula: "S = √(P² + Q²) = √3 × VL × IL", variables: "Unit: VA (volt-ampere)" },
       ],
     },
     {
       title: "Protection and Cabling",
       formulas: [
-        { name: "Short Circuit Current", formula: "Isc = V / Ztoplam", variables: "Z: empedans (primer+trafo+kablo)" },
+        { name: "Short Circuit Current", formula: "Isc = V / Ztotal", variables: "Z: impedance (supply + transformer + cable)" },
         { name: "Voltage Drop", formula: "ΔV = I × (R·cos(φ) + X·sin(φ)) × L × 2", variables: "R: resistance per unit length (Ω/m), X: reactance per unit length, L: cable length" },
         { name: "Insulation Resistance", formula: "Riz ≥ (Vnominal + 1000) / 1000 MΩ", variables: "Minimum: 1 MΩ (SOLAS/IEC 60092)" },
       ],
@@ -223,7 +223,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       formulas: [
         { name: "Fuel Consumption Rate", formula: "FCrate = FCtotal / Voyage time", variables: "Unit: tonnes/day or tonnes/hour" },
         { name: "Remaining Fuel Estimate", formula: "Endurance (hours) = Fuel stock / FCrate", variables: "FCrate: hourly consumption (tonnes/hour)" },
-        { name: "Lubricating Oil Consumption", formula: "SLOC = Oil consumption (g/h) / BHP (kW)", variables: "Birim: g/kW·h, normal: 0,6–1,2 g/kW·h" },
+        { name: "Lubricating Oil Consumption", formula: "SLOC = Oil consumption (g/h) / BHP (kW)", variables: "Unit: g/kW·h, normal: 0.6–1.2 g/kW·h" },
       ],
     },
     {
@@ -257,7 +257,7 @@ const topicFormulas: Record<string, FormulaCategory[]> = {
       title: "Fire Safety",
       formulas: [
         { name: "Fire Triangle", formula: "Fuel + Oxygen + Heat = Fire", variables: "Removing one element extinguishes the fire" },
-        { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = Vhacim × 0,56 kg/m³ (min %40)", variables: "V: korunan hacim (m³), SOLAS II-2/Reg.10" },
+        { name: "CO₂ Quantity (by Volume)", formula: "mCO₂ = 0.40 × V / 0.56 m³/kg", variables: "V: gross volume of the largest machinery space (m³); free gas = 40% of V at 0.56 m³/kg (FSS Code Ch. 5, SOLAS II-2/Reg.10; cargo spaces use other percentages)" },
         { name: "Foam quantity", formula: "V_foam = A × t × application rate", variables: "A: area (m²), t: time (min), rate: L/m²·min" },
       ],
     },

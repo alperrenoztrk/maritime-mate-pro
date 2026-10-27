@@ -22,8 +22,8 @@ const details: Record<string, Detail> = {
   // 1. Introduction
   "giris": {
     title: "1. Introduction – Identifying Hogging and Sagging",
-    group: "Sign in",
-    content: `Hogging & Sagging Tespiti:
+    group: "Introduction",
+    content: `Hogging & Sagging Detection:
 Hogging: (dF + dA)/2 > dM
 Sagging: (dF + dA)/2 < dM`,
   },
@@ -82,8 +82,8 @@ GM change:
   "paralel-batma": {
     title: "3.2. Parallel Sinkage/Rise",
     group: "Longitudinal Equilibrium Calculations",
-    content: `Paralel Batma (cm):
-Batma = w / TPC`,
+    content: `Parallel Sinkage (cm):
+Sinkage = w / TPC`,
   },
   "draft-duzeltme": {
     title: "3.3. Forward/After Draft Correction",

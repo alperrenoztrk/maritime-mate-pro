@@ -35,7 +35,7 @@ function decimalToDMS(dec: number, isLat: boolean): string {
 
 function wmoText(code?: number): string {
   if (code === undefined) return "—";
-  if (code === 0) return "open";
+  if (code === 0) return "Clear";
   if (code === 1) return "Partly Cloudy";
   if (code === 2) return "Partly Cloudy";
   if (code === 3) return "Overcast";

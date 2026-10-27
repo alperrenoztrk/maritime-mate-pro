@@ -11,7 +11,7 @@ import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 
 function formatDateTr(dateStr: string): string {
   const date = new Date(dateStr);
-  const dayNames = ["Pazar", "Pazartesi", "Tuesday", "Wednesday", "Thursday", "Cuma", "Cumartesi"];
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const dayName = dayNames[date.getDay()];
   const d = String(date.getDate()).padStart(2, "0");
   const m = String(date.getMonth() + 1).padStart(2, "0");

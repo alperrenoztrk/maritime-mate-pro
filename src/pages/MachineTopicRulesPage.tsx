@@ -79,7 +79,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
       { subtitle: "Cooling System", content: ["Temperature and pressure are monitored in central cooling (HT/LT) circuits", "Seawater system is kept well maintained with anti-fouling/anodic protection"] },
     ]},
     { title: "Steering gear", source: { code: "SOLAS II-1/Reg.29", detail: "Steering gear yedeklilik" }, rules: [
-      { subtitle: "Redundancy and Performance", content: ["The main steering gear must be able to move the rudder 35°–35° (opposite) in 28 seconds.", "Auxiliary steering gear or two independent power units must be provided"] },
+      { subtitle: "Redundancy and Performance", content: ["The main steering gear must be able to put the rudder over from 35° on one side to 30° on the other side in not more than 28 seconds.", "Auxiliary steering gear or two independent power units must be provided"] },
       { subtitle: "Testing and Drill", content: ["Steering gear must be tested within 12 hours before departure", "Emergency steering drills should be performed every 3 months"] },
     ]},
   ],

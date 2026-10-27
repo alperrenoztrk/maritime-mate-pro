@@ -513,7 +513,7 @@ Whether the cargo will fit is checked by comparing this against the ship's bale/
     examples: [
       {
         problem: "3,000 tonnes of wheat (SF = 1.40 m³/t) is to be loaded. What hold volume is required?",
-        solution: "V = 3000 × 1.40 = 4200 m³ ambar hacmi gereklidir.",
+        solution: "V = 3000 × 1.40 = 4200 m³ of hold volume is required.",
       },
     ],
     keyPoints: [

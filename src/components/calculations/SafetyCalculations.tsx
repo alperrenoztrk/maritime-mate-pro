@@ -1089,7 +1089,7 @@ function StandaloneFireCalcs() {
           </div>
           {mistResult && (
             <div className="bg-primary/5 rounded-lg p-3">
-              <span className="text-xs text-muted-foreground">Nozul Debisi (Q = K × √P):</span>
+              <span className="text-xs text-muted-foreground">Nozzle Flow Rate (Q = K × √P):</span>
               <p className="text-lg font-bold">{mistResult} L/min</p>
             </div>
           )}

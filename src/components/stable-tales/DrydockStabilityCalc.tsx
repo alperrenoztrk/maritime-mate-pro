@@ -75,7 +75,7 @@ export const DrydockStabilityCalc = () => {
       const kren_momenti = vesselData.deplasman * kritik_gm * 9.81; // kN.m
       
       // Safety assessment
-      let güvenlik_durumu = 'safe';
+      let güvenlik_durumu = 'Safe';
       let güvenlik_rengi = 'default';
       const öneriler: string[] = [];
       
@@ -84,7 +84,7 @@ export const DrydockStabilityCalc = () => {
         güvenlik_rengi = 'default';
         öneriler.push('The drydocking operation can be carried out safely');
       } else if (mevcut_gm >= kritik_gm) {
-        güvenlik_durumu = 'safe';
+        güvenlik_durumu = 'Safe';
         güvenlik_rengi = 'secondary';
         öneriler.push('Careful operation recommended');
       } else {
@@ -241,7 +241,7 @@ export const DrydockStabilityCalc = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                {results.güvenlik_durumu === 'Very Safe' || results.güvenlik_durumu === 'safe' ? (
+                {results.güvenlik_durumu === 'Very Safe' || results.güvenlik_durumu === 'Safe' ? (
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 ) : (
                   <AlertTriangle className="h-5 w-5 text-red-500" />
@@ -313,7 +313,7 @@ export const DrydockStabilityCalc = () => {
                   GM_critical = 0.05 + (mean_block_spacing / 100)
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  This is the simplified formula. Structural analysis is required for actual calculation.
+                  This is a simplified formula. An actual docking calculation requires a structural analysis.
                 </p>
               </div>
 
@@ -324,8 +324,8 @@ export const DrydockStabilityCalc = () => {
                 <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
                   <li>• If GM &lt; critical GM, dry-docking is PROHIBITED</li>
                   <li>• Support points should be placed at equal intervals</li>
-                  <li>• Water draining should be done carefully.</li>
-                  <li>• Continuous Stability monitoring is a must</li>
+                  <li>• The dock should be pumped out slowly and under control</li>
+                  <li>• Stability must be monitored continuously</li>
                   <li>• An emergency plan should be kept ready</li>
                 </ul>
               </div>

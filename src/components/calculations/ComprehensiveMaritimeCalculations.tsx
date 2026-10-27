@@ -11,6 +11,8 @@ import { FormulaReference } from "@/components/ui/formula-reference";
 import { CalculationSteps } from "@/components/ui/calculation-steps";
 import type { CalculationStep } from "@/types/calculationSteps";
 
+const DRAFT_MARK_POSITION = { alt: "bottom", orta: "middle", top: "top" } as const;
+
 export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, showDraftSurvey = true }: { showLongitudinal?: boolean; showDraftSurvey?: boolean }) => {
   const { toast } = useToast();
   const [calcSteps, setCalcSteps] = useState<Record<string, CalculationStep[]>>({});
@@ -235,16 +237,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     
     const meanDraft = (dF + dA) / 2;
     const difference = dM - meanDraft;
-    const type = difference > 0 ? "Hogging" : "Sagging";
+    const type = difference < 0 ? "Hogging" : "Sagging";
     
     setHoggingSaggingResult({ type, difference: Math.abs(difference) });
     setCalcSteps(prev => ({
       ...prev,
       hoggingSagging: [
-        { step: 1, title: "Formula", formula: "Ortalama Draft = (dF + dA) / 2", explanation: "The average of fore and aft drafts is calculated" },
-        { step: 2, title: "Placement of values", formula: "Ortalama Draft = (dF + dA) / 2", substitution: `Ortalama Draft = (${dF} + ${dA}) / 2 = ${meanDraft.toFixed(3)} m` },
-        { step: 3, title: "Comparison", formula: "Fark = dM - Ortalama Draft", substitution: `Fark = ${dM} - ${meanDraft.toFixed(3)} = ${difference.toFixed(3)} m` },
-        { step: 4, title: "Result", formula: "dM > Ortalama ise Hogging, dM < Ortalama ise Sagging", result: `${type}: ${Math.abs(difference).toFixed(3)} m`, explanation: type === "Hogging" ? "The ship is in a state of hogging because the mediocre draft is greater than average" : "The ship is sagging because the mediocre draft is less than average" }
+        { step: 1, title: "Formula", formula: "Mean Draft = (dF + dA) / 2", explanation: "The mean of the forward and aft drafts is calculated" },
+        { step: 2, title: "Substituting values", formula: "Mean Draft = (dF + dA) / 2", substitution: `Mean Draft = (${dF} + ${dA}) / 2 = ${meanDraft.toFixed(3)} m` },
+        { step: 3, title: "Comparison", formula: "Difference = dM − Mean Draft", substitution: `Difference = ${dM} - ${meanDraft.toFixed(3)} = ${difference.toFixed(3)} m` },
+        { step: 4, title: "Result", formula: "dM < Mean → Hogging, dM > Mean → Sagging", result: `${type}: ${Math.abs(difference).toFixed(3)} m`, explanation: type === "Hogging" ? "The ship is hogging because the midship draft is less than the mean of the forward and aft drafts" : "The ship is sagging because the midship draft is greater than the mean of the forward and aft drafts" }
       ]
     }));
     toast({ title: "Calculation Completed", description: `${type}: ${Math.abs(difference).toFixed(3)} m` });
@@ -263,11 +265,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const newKG = totalMoment / totalWeight;
     setNewKGResult(newKG);
     setCalcSteps(prev => ({ ...prev, newKG: [
-      { step: 1, title: "Formula", formula: "New KG = Total Moment / Total Weight", explanation: "The new height of the center of gravity is found by dividing the total moments by the total weight" },
-      { step: 2, title: "Placement of values", formula: "KG = ΣM / ΣW", substitution: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "New KG = Total Moment / Total Weight", explanation: "The new height of the centre of gravity is the total moment divided by the total weight" },
+      { step: 2, title: "Substituting values", formula: "KG = ΣM / ΣW", substitution: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}` },
       { step: 3, title: "Result", formula: `KG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}`, result: `KG = ${newKG.toFixed(3)} m` }
     ] }));
-    toast({ title: "Calculation Completed", description: `New QA: ${newKG.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `New KG: ${newKG.toFixed(3)} m` });
   };
 
   // Heel Angle Calculation
@@ -281,20 +283,20 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       const angle = Math.atan(gz / gm) * (180 / Math.PI);
       setHeelAngleResult(angle);
       setCalcSteps(prev => ({ ...prev, heelAngle: [
-        { step: 1, title: "Formula", formula: "θ = arctan(GZ / GM) × (180/π)", explanation: "The angle of inclination is found by the arctangent of the ratio of the arm GZ to GM" },
-        { step: 2, title: "Placement of values", formula: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(4)}) × 57.2958`, substitution: `θ = arctan(${(gz/gm).toFixed(6)}) × 57.2958` },
+        { step: 1, title: "Formula", formula: "θ = arctan(GZ / GM) × (180/π)", explanation: "The heel angle is the arctangent of the ratio GZ / GM" },
+        { step: 2, title: "Substituting values", formula: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(4)}) × 57.2958`, substitution: `θ = arctan(${(gz/gm).toFixed(6)}) × 57.2958` },
         { step: 3, title: "Result", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
       ] }));
-      toast({ title: "Calculation Completed", description: `Inclination Angle: ${angle.toFixed(2)}°` });
+      toast({ title: "Calculation Completed", description: `Heel Angle: ${angle.toFixed(2)}°` });
     } else if (heelingMoment && displacement && gm) {
       const angle = Math.atan(heelingMoment / (displacement * gm)) * (180 / Math.PI);
       setHeelAngleResult(angle);
       setCalcSteps(prev => ({ ...prev, heelAngle: [
         { step: 1, title: "Formula", formula: "θ = arctan(Mheel / (Δ × GM)) × (180/π)", explanation: "The angle of heel is found from the ratio of the heeling moment to the product of displacement and GM." },
-        { step: 2, title: "Placement of values", formula: `θ = arctan(${heelingMoment.toFixed(2)} / (${displacement.toFixed(2)} × ${gm.toFixed(3)}))`, substitution: `θ = arctan(${heelingMoment.toFixed(2)} / ${(displacement*gm).toFixed(2)}) = arctan(${(heelingMoment/(displacement*gm)).toFixed(6)})` },
+        { step: 2, title: "Substituting values", formula: `θ = arctan(${heelingMoment.toFixed(2)} / (${displacement.toFixed(2)} × ${gm.toFixed(3)}))`, substitution: `θ = arctan(${heelingMoment.toFixed(2)} / ${(displacement*gm).toFixed(2)}) = arctan(${(heelingMoment/(displacement*gm)).toFixed(6)})` },
         { step: 3, title: "Result", formula: `θ = ${angle.toFixed(4)}°`, result: `θ = ${angle.toFixed(2)}°` }
       ] }));
-      toast({ title: "Calculation Completed", description: `Inclination Angle: ${angle.toFixed(2)}°` });
+      toast({ title: "Calculation Completed", description: `Heel Angle: ${angle.toFixed(2)}°` });
     } else {
       toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
     }
@@ -314,8 +316,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gmChange = (weight * leverArm) / displacement;
     setCraneGMResult(gmChange);
     setCalcSteps(prev => ({ ...prev, craneGM: [
-      { step: 1, title: "Formula", formula: "ΔGM = (W × d) / Δ", explanation: "In crane operation, GM change is found from the ratio of the lifted weight and arm length to the displacement." },
-      { step: 2, title: "Placement of values", formula: `ΔGM = (${weight.toFixed(2)} × ${leverArm.toFixed(2)}) / ${displacement.toFixed(2)}`, substitution: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "ΔGM = (W × d) / Δ", explanation: "In a derrick or crane lift, the GM change is the lifted weight times the lever distance d, divided by the displacement." },
+      { step: 2, title: "Substituting values", formula: `ΔGM = (${weight.toFixed(2)} × ${leverArm.toFixed(2)}) / ${displacement.toFixed(2)}`, substitution: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}` },
       { step: 3, title: "Result", formula: `ΔGM = ${(weight*leverArm).toFixed(2)} / ${displacement.toFixed(2)}`, result: `ΔGM = ${gmChange.toFixed(3)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `GM Change: ${gmChange.toFixed(3)} m` });
@@ -335,11 +337,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const criticalGM = (pressure * km) / displacement;
     setDrydockGMResult(criticalGM);
     setCalcSteps(prev => ({ ...prev, drydockGM: [
-      { step: 1, title: "Formula", formula: "GMkritik = (P × KM) / Δ", explanation: "In dry dock, critical GM is the ratio of keel pressure and KM multiplied by displacement" },
-      { step: 2, title: "Placement of values", formula: `GMk = (${pressure.toFixed(2)} × ${km.toFixed(3)}) / ${displacement.toFixed(2)}`, substitution: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}` },
-      { step: 3, title: "Result", formula: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}`, result: `GMkritik = ${criticalGM.toFixed(3)} m` }
+      { step: 1, title: "Formula", formula: "GMcrit = (P × KM) / Δ", explanation: "In dry dock, the loss of GM caused by the upthrust P on the keel blocks is P × KM / Δ; the ship's GM must stay above this value" },
+      { step: 2, title: "Substituting values", formula: `GMk = (${pressure.toFixed(2)} × ${km.toFixed(3)}) / ${displacement.toFixed(2)}`, substitution: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `GMk = ${(pressure*km).toFixed(2)} / ${displacement.toFixed(2)}`, result: `GMcrit = ${criticalGM.toFixed(3)} m` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Kritik GM: ${criticalGM.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `Critical GM: ${criticalGM.toFixed(3)} m` });
   };
 
   // 3. Trim Change
@@ -355,8 +357,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const trimChange = totalMoment / mct;
     setTrimChangeResult(trimChange);
     setCalcSteps(prev => ({ ...prev, trimChange: [
-      { step: 1, title: "Formula", formula: "ΔTrim = Total trimming moment / MCT", explanation: "Trim change is found in cm by dividing the total trim moment by the MCT value" },
-      { step: 2, title: "Placement of values", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "ΔTrim = Total trimming moment / MCT", explanation: "The change of trim in cm is the total trimming moment divided by MCT" },
+      { step: 2, title: "Substituting values", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}` },
       { step: 3, title: "Result", formula: `ΔTrim = ${totalMoment.toFixed(2)} / ${mct.toFixed(2)}`, result: `ΔTrim = ${trimChange.toFixed(2)} cm` }
     ] }));
     toast({ title: "Calculation Completed", description: `Trim Change: ${trimChange.toFixed(2)} cm` });
@@ -375,11 +377,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const sinkage = loadedWeight / tpc;
     setParallelSinkageResult(sinkage);
     setCalcSteps(prev => ({ ...prev, parallelSinkage: [
-      { step: 1, title: "Formula", formula: "Paralel Batma = W / TPC", explanation: "Sink in cm is calculated by dividing the loaded weight by TPC" },
-      { step: 2, title: "Placement of values", formula: `Batma = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}` },
-      { step: 3, title: "Result", formula: `Batma = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}`, result: `Batma = ${sinkage.toFixed(2)} cm` }
+      { step: 1, title: "Formula", formula: "Parallel Sinkage = w / TPC", explanation: "Parallel sinkage in cm is the weight loaded divided by TPC" },
+      { step: 2, title: "Substituting values", formula: `Sinkage = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}` },
+      { step: 3, title: "Result", formula: `Sinkage = ${loadedWeight.toFixed(2)} / ${tpc.toFixed(2)}`, result: `Sinkage = ${sinkage.toFixed(2)} cm` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Paralel Batma: ${sinkage.toFixed(2)} cm` });
+    toast({ title: "Calculation Completed", description: `Parallel Sinkage: ${sinkage.toFixed(2)} cm` });
   };
 
   // Draft Correction
@@ -396,11 +398,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const correction = (trim * distance) / lbp;
     setDraftCorrectionResult(correction);
     setCalcSteps(prev => ({ ...prev, draftCorrection: [
-      { step: 1, title: "Formula", formula: "Trim = (Trim × Distance) / LBP", explanation: "Draft correction is found from the ratio of trim and measuring point distance to LBP" },
-      { step: 2, title: "Placement of values", formula: `Correction = (${trim.toFixed(3)} × ${distance.toFixed(2)}) / ${lbp.toFixed(2)}`, substitution: `Correction = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "Correction = (Trim × Distance) / LBP", explanation: "The draft correction is the trim times the distance of the draft marks from the perpendicular, divided by LBP" },
+      { step: 2, title: "Substituting values", formula: `Correction = (${trim.toFixed(3)} × ${distance.toFixed(2)}) / ${lbp.toFixed(2)}`, substitution: `Correction = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}` },
       { step: 3, title: "Result", formula: `Correction = ${(trim*distance).toFixed(3)} / ${lbp.toFixed(2)}`, result: `Correction = ${correction.toFixed(3)} m` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Draft Fix: ${correction.toFixed(3)} m` });
+    toast({ title: "Calculation Completed", description: `Draft Correction: ${correction.toFixed(3)} m` });
   };
 
   // 4. MMM Draft
@@ -417,8 +419,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const mmm = (dF + dA + 6 * dM) / 8;
     setMmmDraftResult(mmm);
     setCalcSteps(prev => ({ ...prev, mmmDraft: [
-      { step: 1, title: "Formula", formula: "MMM = (dF + dA + 6×dM) / 8", explanation: "Mean of Means formula calculates average by giving 6x weight to mediocre draft" },
-      { step: 2, title: "Placement of values", formula: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + 6×${dM.toFixed(3)}) / 8`, substitution: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + ${(6*dM).toFixed(3)}) / 8 = ${(dF + dA + 6*dM).toFixed(3)} / 8` },
+      { step: 1, title: "Formula", formula: "MMM = (dF + dA + 6×dM) / 8", explanation: "The mean of mean of means (MMM) gives the midship draft six times the weight of the forward and aft drafts" },
+      { step: 2, title: "Substituting values", formula: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + 6×${dM.toFixed(3)}) / 8`, substitution: `MMM = (${dF.toFixed(3)} + ${dA.toFixed(3)} + ${(6*dM).toFixed(3)}) / 8 = ${(dF + dA + 6*dM).toFixed(3)} / 8` },
       { step: 3, title: "Result", formula: `MMM = ${(dF + dA + 6*dM).toFixed(3)} / 8`, result: `MMM = ${mmm.toFixed(3)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `MMM Draft: ${mmm.toFixed(3)} m` });
@@ -439,8 +441,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const correction = (trim * lcf * tpc * 100) / lbp;
     setTrimCorrection1Result(correction);
     setCalcSteps(prev => ({ ...prev, trimCorrection1: [
-      { step: 1, title: "Formula", formula: "Δ₁ = (Trim × LCF × TPC × 100) / LBP", explanation: "First trim correction calculates the displacement difference due to trim" },
-      { step: 2, title: "share account", formula: `Pay = ${trim.toFixed(3)} × ${lcf.toFixed(2)} × ${tpc.toFixed(2)} × 100`, substitution: `Pay = ${(trim*lcf*tpc*100).toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "Δ₁ = (Trim × LCF × TPC × 100) / LBP", explanation: "The first trim correction gives the displacement difference caused by the trim (LCF not at midships)" },
+      { step: 2, title: "Numerator", formula: `Numerator = ${trim.toFixed(3)} × ${lcf.toFixed(2)} × ${tpc.toFixed(2)} × 100`, substitution: `Numerator = ${(trim*lcf*tpc*100).toFixed(2)}` },
       { step: 3, title: "Result", formula: `Δ₁ = ${(trim*lcf*tpc*100).toFixed(2)} / ${lbp.toFixed(2)}`, result: `Δ₁ = ${correction.toFixed(2)} ton` }
     ] }));
     toast({ title: "Calculation Completed", description: `1. Trim Correction: ${correction.toFixed(2)} ton` });
@@ -461,9 +463,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const correction = (trimSq * mct * 50) / lbp;
     setTrimCorrection2Result(correction);
     setCalcSteps(prev => ({ ...prev, trimCorrection2: [
-      { step: 1, title: "Formula", formula: "Δ₂ = (Trim² × ΔMCT × 50) / LBP", explanation: "Second trim correction corrects quadratic difference in large trims" },
+      { step: 1, title: "Formula", formula: "Δ₂ = (Trim² × ΔMCT × 50) / LBP", explanation: "The second trim correction uses the change of MCT (ΔMCT) and becomes significant at large trims" },
       { step: 2, title: "Trim² calculation", formula: `Trim² = ${trim.toFixed(3)}² = ${trimSq.toFixed(4)}` },
-      { step: 3, title: "share account", formula: `Pay = ${trimSq.toFixed(4)} × ${mct.toFixed(2)} × 50`, substitution: `Pay = ${(trimSq*mct*50).toFixed(2)}` },
+      { step: 3, title: "Numerator", formula: `Numerator = ${trimSq.toFixed(4)} × ${mct.toFixed(2)} × 50`, substitution: `Numerator = ${(trimSq*mct*50).toFixed(2)}` },
       { step: 4, title: "Result", formula: `Δ₂ = ${(trimSq*mct*50).toFixed(2)} / ${lbp.toFixed(2)}`, result: `Δ₂ = ${correction.toFixed(2)} ton` }
     ] }));
     toast({ title: "Calculation Completed", description: `2. Trim Correction: ${correction.toFixed(2)} ton` });
@@ -482,8 +484,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const correction = displacement * (actualDensity / 1.025 - 1);
     setDensityCorrectionResult(correction);
     setCalcSteps(prev => ({ ...prev, densityCorrection: [
-      { step: 1, title: "Formula", formula: "Δcorrection = Δ × (ρactual / 1.025 - 1)", explanation: "Density correction is calculated from the difference between the actual water density and standard seawater" },
-      { step: 2, title: "rate calculation", formula: `ρactual / 1.025 = ${actualDensity.toFixed(3)} / 1.025 = ${(actualDensity/1.025).toFixed(6)}` },
+      { step: 1, title: "Formula", formula: "Δcorrection = Δ × (ρactual / 1.025 - 1)", explanation: "The density correction is calculated from the difference between the actual water density and standard seawater (1.025 t/m³)" },
+      { step: 2, title: "Ratio", formula: `ρactual / 1.025 = ${actualDensity.toFixed(3)} / 1.025 = ${(actualDensity/1.025).toFixed(6)}` },
       { step: 3, title: "Result", formula: `Correction = ${displacement.toFixed(2)} × (${(actualDensity/1.025).toFixed(6)} - 1)`, result: `Correction = ${correction.toFixed(2)} ton` }
     ] }));
     toast({ title: "Calculation Completed", description: `Density Correction: ${correction.toFixed(2)} ton` });
@@ -505,8 +507,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const cb = volume / boxVolume;
     setBlockCoefficientResult(cb);
     setCalcSteps(prev => ({ ...prev, blockCoefficient: [
-      { step: 1, title: "Formula", formula: "Cb = ∇ / (L × B × T)", explanation: "Block coefficient is the ratio of the ship's underwater volume to the box volume" },
-      { step: 2, title: "Box volume calculation", formula: `L × B × T = ${length.toFixed(2)} × ${breadth.toFixed(2)} × ${draft.toFixed(2)}`, result: `= ${boxVolume.toFixed(2)} m³` },
+      { step: 1, title: "Formula", formula: "Cb = ∇ / (L × B × T)", explanation: "The block coefficient is the ratio of the ship's underwater volume to the volume of the enclosing box L × B × T" },
+      { step: 2, title: "Box volume", formula: `L × B × T = ${length.toFixed(2)} × ${breadth.toFixed(2)} × ${draft.toFixed(2)}`, result: `= ${boxVolume.toFixed(2)} m³` },
       { step: 3, title: "Result", formula: `Cb = ${volume.toFixed(2)} / ${boxVolume.toFixed(2)}`, result: `Cb = ${cb.toFixed(3)}` }
     ] }));
     toast({ title: "Calculation Completed", description: `Block Coefficient (Cb): ${cb.toFixed(3)}` });
@@ -525,8 +527,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const fwa = displacement / (4 * tpc);
     setFwaResult(fwa);
     setCalcSteps(prev => ({ ...prev, fwa: [
-      { step: 1, title: "Formula", formula: "FWA = Δ / (4 × TPC)", explanation: "Fresh Water Allowance indicates how much longer the ship will sink in fresh water" },
-      { step: 2, title: "denominator calculation", formula: `4 × TPC = 4 × ${tpc.toFixed(2)} = ${(4*tpc).toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "FWA = Δ / (4 × TPC)", explanation: "The Fresh Water Allowance is the increase in mean draft when the ship passes from seawater (1.025 t/m³) into fresh water (1.000 t/m³)" },
+      { step: 2, title: "Denominator", formula: `4 × TPC = 4 × ${tpc.toFixed(2)} = ${(4*tpc).toFixed(2)}` },
       { step: 3, title: "Result", formula: `FWA = ${displacement.toFixed(2)} / ${(4*tpc).toFixed(2)}`, result: `FWA = ${fwa.toFixed(1)} mm` }
     ] }));
     toast({ title: "Calculation Completed", description: `FWA: ${fwa.toFixed(1)} mm` });
@@ -546,11 +548,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const newDisplacement = displacement * (newDensity / oldDensity);
     setDensityChangeResult(newDisplacement);
     setCalcSteps(prev => ({ ...prev, densityChange: [
-      { step: 1, title: "Formula", formula: "Δnew = Δ × (ρnew / ρold)", explanation: "Displacement in water of different density is corrected by density ratio" },
-      { step: 2, title: "rate calculation", formula: `ρnew / ρold = ${newDensity.toFixed(3)} / ${oldDensity.toFixed(3)} = ${(newDensity/oldDensity).toFixed(6)}` },
+      { step: 1, title: "Formula", formula: "Δnew = Δ × (ρnew / ρold)", explanation: "The displacement in water of a different density is corrected by the density ratio" },
+      { step: 2, title: "Ratio", formula: `ρnew / ρold = ${newDensity.toFixed(3)} / ${oldDensity.toFixed(3)} = ${(newDensity/oldDensity).toFixed(6)}` },
       { step: 3, title: "Result", formula: `Δnew = ${displacement.toFixed(2)} × ${(newDensity/oldDensity).toFixed(6)}`, result: `Δnew = ${newDisplacement.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Calculation Completed", description: `New Away: ${newDisplacement.toFixed(2)} ton` });
+    toast({ title: "Calculation Completed", description: `New Displacement: ${newDisplacement.toFixed(2)} ton` });
   };
 
   // 6. Grain Heel Angle
@@ -566,14 +568,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     
     const angle = (57.3 * ghm) / (displacement * gm);
     setGrainHeelResult(angle);
-    const status = angle <= 12 ? "SOLAS compliant" : "SOLAS not compliant";
+    const status = angle <= 12 ? "complies with SOLAS" : "does not comply with SOLAS";
     setCalcSteps(prev => ({ ...prev, grainHeel: [
-      { step: 1, title: "Formula", formula: "θ = (57.3 × GHM) / (Δ × GM)", explanation: "Grain clustering angle is found from the ratio of grain heeling moment (GHM) to the product of displacement and GM. 57.3 = 180/π" },
+      { step: 1, title: "Formula", formula: "θ = (57.3 × GHM) / (Δ × GM)", explanation: "The angle of heel due to grain shift is the grain heeling moment (GHM) divided by the product of displacement and GM. 57.3 = 180/π" },
       { step: 2, title: "share account", formula: `57.3 × GHM = 57.3 × ${ghm.toFixed(2)} = ${(57.3*ghm).toFixed(2)}` },
-      { step: 3, title: "denominator calculation", formula: `Δ × GM = ${displacement.toFixed(2)} × ${gm.toFixed(3)} = ${(displacement*gm).toFixed(2)}` },
+      { step: 3, title: "Denominator", formula: `Δ × GM = ${displacement.toFixed(2)} × ${gm.toFixed(3)} = ${(displacement*gm).toFixed(2)}` },
       { step: 4, title: "Result", formula: `θ = ${(57.3*ghm).toFixed(2)} / ${(displacement*gm).toFixed(2)}`, result: `θ = ${angle.toFixed(1)}° (${status})` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Clustering Angle: ${angle.toFixed(1)}° - ${status}` });
+    toast({ title: "Calculation Completed", description: `Heel Angle (grain shift): ${angle.toFixed(1)}° - ${status}` });
   };
 
   // GZ Lever
@@ -592,7 +594,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gz = kn - kg * sinAngle;
     setGzLeverResult(gz);
     setCalcSteps(prev => ({ ...prev, gzLever: [
-      { step: 1, title: "Formula", formula: "GZ = KN - KG × sin(θ)", explanation: "The GZ branch is found by subtracting the product KG and sin(θ) from the KN curve" },
+      { step: 1, title: "Formula", formula: "GZ = KN - KG × sin(θ)", explanation: "The righting arm GZ is the KN value (cross curves) minus KG × sin θ" },
       { step: 2, title: "sin(θ) calculation", formula: `sin(${angle.toFixed(1)}°) = sin(${angleRad.toFixed(6)} rad)`, result: `= ${sinAngle.toFixed(6)}` },
       { step: 3, title: "KG × sin(θ)", formula: `${kg.toFixed(3)} × ${sinAngle.toFixed(6)} = ${(kg*sinAngle).toFixed(4)}` },
       { step: 4, title: "Result", formula: `GZ = ${kn.toFixed(4)} - ${(kg*sinAngle).toFixed(4)}`, result: `GZ = ${gz.toFixed(4)} m` }
@@ -615,12 +617,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const fsm = (length * b3) / (12 * volume);
     setFreeSurfaceResult(fsm);
     setCalcSteps(prev => ({ ...prev, freeSurface: [
-      { step: 1, title: "Formula", formula: "FSM = (L × B³) / (12 × ∇)", explanation: "The free surface moment is calculated from the cube of the tank's length and width" },
-      { step: 2, title: "B³ account", formula: `B³ = ${breadth.toFixed(2)}³ = ${b3.toFixed(2)}` },
-      { step: 3, title: "share account", formula: `L × B³ = ${length.toFixed(2)} × ${b3.toFixed(2)} = ${(length*b3).toFixed(2)}` },
-      { step: 4, title: "Result", formula: `FSM = ${(length*b3).toFixed(2)} / (12 × ${volume.toFixed(2)}) = ${(length*b3).toFixed(2)} / ${(12*volume).toFixed(2)}`, result: `FSM = ${fsm.toFixed(4)} m` }
+      { step: 1, title: "Formula", formula: "GGv = (L × B³) / (12 × ∇)", explanation: "Free surface correction (virtual rise of G) of a rectangular tank holding liquid of seawater density: the tank's L × B³ / 12 divided by the ship's displaced volume ∇" },
+      { step: 2, title: "B³", formula: `B³ = ${breadth.toFixed(2)}³ = ${b3.toFixed(2)}` },
+      { step: 3, title: "Numerator", formula: `L × B³ = ${length.toFixed(2)} × ${b3.toFixed(2)} = ${(length*b3).toFixed(2)}` },
+      { step: 4, title: "Result", formula: `GGv = ${(length*b3).toFixed(2)} / (12 × ${volume.toFixed(2)}) = ${(length*b3).toFixed(2)} / ${(12*volume).toFixed(2)}`, result: `GGv = ${fsm.toFixed(4)} m` }
     ] }));
-    toast({ title: "Calculation Completed", description: `FSM: ${fsm.toFixed(4)} m` });
+    toast({ title: "Calculation Completed", description: `GGv: ${fsm.toFixed(4)} m` });
   };
 
   // Roll Period
@@ -638,12 +640,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const period = (cb * breadth) / sqrtGM;
     setRollPeriodResult(period);
     setCalcSteps(prev => ({ ...prev, rollPeriod: [
-      { step: 1, title: "Formula", formula: "T = C × B / √GM", explanation: "The roll period is found by multiplying the block coefficient (C) and the width and dividing by the square root of GM." },
-      { step: 2, title: "√GM account", formula: `√GM = √${gm.toFixed(3)} = ${sqrtGM.toFixed(4)}` },
-      { step: 3, title: "share account", formula: `C × B = ${cb.toFixed(3)} × ${breadth.toFixed(2)} = ${(cb*breadth).toFixed(3)}` },
-      { step: 4, title: "Result", formula: `T = ${(cb*breadth).toFixed(3)} / ${sqrtGM.toFixed(4)}`, result: `T = ${period.toFixed(2)} saniye` }
+      { step: 1, title: "Formula", formula: "T = C × B / √GM", explanation: "The roll period is the roll coefficient (C) times the breadth, divided by the square root of GM." },
+      { step: 2, title: "√GM", formula: `√GM = √${gm.toFixed(3)} = ${sqrtGM.toFixed(4)}` },
+      { step: 3, title: "Numerator", formula: `C × B = ${cb.toFixed(3)} × ${breadth.toFixed(2)} = ${(cb*breadth).toFixed(3)}` },
+      { step: 4, title: "Result", formula: `T = ${(cb*breadth).toFixed(3)} / ${sqrtGM.toFixed(4)}`, result: `T = ${period.toFixed(2)} s` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Yalpa Periyodu: ${period.toFixed(2)} saniye` });
+    toast({ title: "Calculation Completed", description: `Roll Period: ${period.toFixed(2)} s` });
   };
 
   // 7. Load Height
@@ -659,11 +661,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const height = sf * pl;
     setLoadHeightResult(height);
     setCalcSteps(prev => ({ ...prev, loadHeight: [
-      { step: 1, title: "Formula", formula: "h = SF × PL", explanation: "The permissible load height is the stacking factor multiplied by the permissible load" },
-      { step: 2, title: "Placement of values", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}` },
+      { step: 1, title: "Formula", formula: "h = SF × PL", explanation: "The permissible stowage height is the stowage factor multiplied by the permissible deck load" },
+      { step: 2, title: "Substituting values", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}` },
       { step: 3, title: "Result", formula: `h = ${sf.toFixed(3)} × ${pl.toFixed(3)}`, result: `h = ${height.toFixed(2)} m` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Permissible Load Height: ${height.toFixed(2)} m` });
+    toast({ title: "Calculation Completed", description: `Permissible Stowage Height: ${height.toFixed(2)} m` });
   };
 
   // Temperature Density Change
@@ -682,9 +684,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setTemperatureDensityResult(newDensity);
     const tempDiff = newTemp - oldTemp;
     setCalcSteps(prev => ({ ...prev, temperatureDensity: [
-      { step: 1, title: "Formula", formula: "ρnew = ρold - (ΔT × k)", explanation: "The effect of temperature change on density is calculated by multiplying the temperature difference and the coefficient" },
-      { step: 2, title: "temperature difference", formula: `ΔT = Tyeni - Teski = ${newTemp.toFixed(1)} - ${oldTemp.toFixed(1)} = ${tempDiff.toFixed(1)} °C` },
-      { step: 3, title: "Placement of values", formula: `ρnew = ${oldDensity.toFixed(4)} - (${tempDiff.toFixed(1)} × ${coefficient.toFixed(4)})`, substitution: `ρnew = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}` },
+      { step: 1, title: "Formula", formula: "ρnew = ρold - (ΔT × k)", explanation: "The density change with temperature is the temperature difference multiplied by the coefficient" },
+      { step: 2, title: "Temperature difference", formula: `ΔT = Tnew − Told = ${newTemp.toFixed(1)} - ${oldTemp.toFixed(1)} = ${tempDiff.toFixed(1)} °C` },
+      { step: 3, title: "Substituting values", formula: `ρnew = ${oldDensity.toFixed(4)} - (${tempDiff.toFixed(1)} × ${coefficient.toFixed(4)})`, substitution: `ρnew = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}` },
       { step: 4, title: "Result", formula: `ρnew = ${oldDensity.toFixed(4)} - ${(tempDiff * coefficient).toFixed(4)}`, result: `ρnew = ${newDensity.toFixed(4)} ton/m³` }
     ] }));
     toast({ title: "Calculation Completed", description: `New Density: ${newDensity.toFixed(4)} ton/m³` });
@@ -702,8 +704,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gg1 = (w * d) / delta;
     setGg1Result(gg1);
     setCalcSteps(prev => ({ ...prev, gg1: [
-      { step: 1, title: "Formula", formula: "GG₁ = (w × d) / Δ", explanation: "Center of gravity shift is the ratio of the weight carried and the distance multiplied by the displacement" },
-      { step: 2, title: "Placement of values", formula: `GG₁ = (${w.toFixed(2)} × ${d.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "GG₁ = (w × d) / Δ", explanation: "The shift of G (GG₁) is the weight moved times the distance moved, divided by the displacement" },
+      { step: 2, title: "Substituting values", formula: `GG₁ = (${w.toFixed(2)} × ${d.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}` },
       { step: 3, title: "Result", formula: `GG₁ = ${(w*d).toFixed(2)} / ${delta.toFixed(2)}`, result: `GG₁ = ${gg1.toFixed(4)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `GG₁ = ${gg1.toFixed(4)} m` });
@@ -713,17 +715,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const L = parseFloat(pendulumInputs.pendulumLength);
     const x = parseFloat(pendulumInputs.deflection);
     if (isNaN(L) || isNaN(x) || L === 0) {
-      toast({ title: "Error", description: "Enter valid pendulum length and deviation", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid pendulum length and deflection", variant: "destructive" });
       return;
     }
     const angle = Math.atan(x / L) * (180 / Math.PI);
     setPendulumResult(angle);
     setCalcSteps(prev => ({ ...prev, pendulumAngle: [
-      { step: 1, title: "Formula", formula: "θ = arctan(deviation / pendulum length) × (180/π)", explanation: "With the pendulum method, the angle of inclination is the arctangent of the ratio of the declination to the length of the pendulum" },
-      { step: 2, title: "rate calculation", formula: `sapma / boy = ${x.toFixed(3)} / ${L.toFixed(3)} = ${(x/L).toFixed(6)}` },
+      { step: 1, title: "Formula", formula: "θ = arctan(deflection / pendulum length) × (180/π)", explanation: "With the pendulum method, the heel angle is the arctangent of the deflection divided by the pendulum length" },
+      { step: 2, title: "Ratio", formula: `deflection / length = ${x.toFixed(3)} / ${L.toFixed(3)} = ${(x/L).toFixed(6)}` },
       { step: 3, title: "Result", formula: `θ = arctan(${(x/L).toFixed(6)}) × 57.2958`, result: `θ ≈ ${angle.toFixed(2)}°` }
     ] }));
-    toast({ title: "Calculation Completed", description: `Inclination Angle ≈ ${angle.toFixed(2)}°` });
+    toast({ title: "Calculation Completed", description: `Heel Angle ≈ ${angle.toFixed(2)}°` });
   };
 
   const calculateCraneVertical = () => {
@@ -739,9 +741,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaKG = (w * heightDiff) / delta; // meters
     setCraneVerticalResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, craneVertical: [
-      { step: 1, title: "Formula", formula: "ΔKG = (w × (hderrick - hload)) / Δ", explanation: "KG change in vertical lifting with a crane is the ratio of weight and height difference to displacement" },
-      { step: 2, title: "height difference", formula: `hderrick - hload = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
-      { step: 3, title: "Placement of values", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "ΔKG = (w × (hderrick - hload)) / Δ", explanation: "When a weight is lifted, it acts at the derrick head: the KG change is the weight times the height difference, divided by the displacement" },
+      { step: 2, title: "Height difference", formula: `hderrick - hload = ${hHook.toFixed(2)} - ${hLoad.toFixed(2)} = ${heightDiff.toFixed(2)} m` },
+      { step: 3, title: "Substituting values", formula: `ΔKG = (${w.toFixed(2)} × ${heightDiff.toFixed(2)}) / ${delta.toFixed(2)}`, substitution: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}` },
       { step: 4, title: "Result", formula: `ΔKG = ${(w*heightDiff).toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `ΔKG (vertical lift) = ${deltaKG.toFixed(4)} m` });
@@ -764,8 +766,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     }
     setDrydockReactionResult({ P, gmCritical });
     const drydockSteps: CalculationStep[] = [
-      { step: 1, title: "Formula", formula: "P = (MCT1cm × Trimcm) / t", explanation: "Dry dock keel pressure (P) is the product of MCT1cm and trim divided by the wedge distance" },
-      { step: 2, title: "Placement of values", formula: `P = (${mct1cm.toFixed(2)} × ${trimCm.toFixed(2)}) / ${t.toFixed(2)}`, substitution: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}` },
+      { step: 1, title: "Formula", formula: "P = (MCT1cm × Trimcm) / t", explanation: "The upthrust P at the keel blocks is MCT1cm times the trim (cm), divided by the distance t from the point of first contact to the LCF" },
+      { step: 2, title: "Substituting values", formula: `P = (${mct1cm.toFixed(2)} × ${trimCm.toFixed(2)}) / ${t.toFixed(2)}`, substitution: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}` },
       { step: 3, title: "P result", formula: `P = ${(mct1cm*trimCm).toFixed(2)} / ${t.toFixed(2)}`, result: `P = ${P.toFixed(2)} ton` },
     ];
     if (gmCritical != null) {
@@ -793,10 +795,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     }
     setFsmRectResult(result);
     const fsmSteps: CalculationStep[] = [
-      { step: 1, title: "Formula", formula: "FSM = (L × B³ / 12) × ρ", explanation: "Calculate free surface moment for rectangular tank" },
-      { step: 2, title: "B³ account", formula: `B³ = ${B.toFixed(2)}³ = ${b3.toFixed(2)}` },
-      { step: 3, title: "Ixx account", formula: `Ixx = ${L.toFixed(2)} × ${b3.toFixed(2)} / 12 = ${ixx.toFixed(2)} m⁴` },
-      { step: 4, title: "FSM account", formula: `FSM = ${ixx.toFixed(2)} × ${rho.toFixed(3)}`, result: `FSM = ${fsm.toFixed(2)} t·m` },
+      { step: 1, title: "Formula", formula: "FSM = (L × B³ / 12) × ρ", explanation: "Free surface moment of a rectangular tank" },
+      { step: 2, title: "B³", formula: `B³ = ${B.toFixed(2)}³ = ${b3.toFixed(2)}` },
+      { step: 3, title: "Ixx", formula: `Ixx = ${L.toFixed(2)} × ${b3.toFixed(2)} / 12 = ${ixx.toFixed(2)} m⁴` },
+      { step: 4, title: "FSM", formula: `FSM = ${ixx.toFixed(2)} × ${rho.toFixed(3)}`, result: `FSM = ${fsm.toFixed(2)} t·m` },
     ];
     if (result.deltaKG != null) {
       fsmSteps.push({ step: 5, title: "ΔKG calculation", formula: "ΔKG = FSM / Δ", substitution: `ΔKG = ${fsm.toFixed(2)} / ${delta.toFixed(2)}`, result: `ΔKG = ${result.deltaKG.toFixed(4)} m` });
@@ -812,7 +814,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const Ad = parseFloat(pontoonInputs.damagedArea);
     const rho = parseFloat(pontoonInputs.rho);
     if ([w, L, B, Ad, rho].some((v) => isNaN(v))) {
-      toast({ title: "Error", description: "Enter valid w, L, B, injured area and ρ", variant: "destructive" });
+      toast({ title: "Error", description: "Enter valid w, L, B, damaged area and ρ", variant: "destructive" });
       return;
     }
     const effectiveArea = Math.max(0, (L * B) - Ad);
@@ -823,8 +825,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaDraft = w / (effectiveArea * rho); // meters
     setPontoonResult(deltaDraft);
     setCalcSteps(prev => ({ ...prev, pontoon: [
-      { step: 1, title: "Formula", formula: "Δd = W / ((L×B - Adjusted) × ρ)", explanation: "Draft increase in injured state depends on effective area and density" },
-      { step: 2, title: "Active area", formula: `Aactive = L×B - Adjustable = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
+      { step: 1, title: "Formula", formula: "Δd = w / ((L×B − Ad) × ρ)", explanation: "In the damaged condition, the draft increase depends on the intact waterplane area and the water density" },
+      { step: 2, title: "Effective area", formula: `Aeff = L×B − Ad = ${L.toFixed(2)}×${B.toFixed(2)} - ${Ad.toFixed(2)} = ${effectiveArea.toFixed(2)} m²` },
       { step: 3, title: "Result", formula: `Δd = ${w.toFixed(2)} / (${effectiveArea.toFixed(2)} × ${rho.toFixed(3)})`, result: `Δd = ${deltaDraft.toFixed(3)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `Δd = ${deltaDraft.toFixed(3)} m` });
@@ -841,8 +843,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const dM = (dF + dA) / 2;
     setMeanDraftResult(dM);
     setCalcSteps(prev => ({ ...prev, meanDraft: [
-      { step: 1, title: "Formula", formula: "dM = (dF + dA) / 2", explanation: "Average draft is the arithmetic mean of fore and aft drafts" },
-      { step: 2, title: "Placement of values", formula: `dM = (${dF.toFixed(3)} + ${dA.toFixed(3)}) / 2 = ${(dF+dA).toFixed(3)} / 2` },
+      { step: 1, title: "Formula", formula: "dM = (dF + dA) / 2", explanation: "The mean draft is the arithmetic mean of the forward and aft drafts" },
+      { step: 2, title: "Substituting values", formula: `dM = (${dF.toFixed(3)} + ${dA.toFixed(3)}) / 2 = ${(dF+dA).toFixed(3)} / 2` },
       { step: 3, title: "Result", formula: `dM = ${(dF+dA).toFixed(3)} / 2`, result: `dM = ${dM.toFixed(3)} m` }
     ] }));
     toast({ title: "Calculation Completed", description: `dM = ${dM.toFixed(3)} m` });
@@ -856,7 +858,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const km = kg + gm;
     setKmFromKgGmResult(km);
     setCalcSteps(prev => ({ ...prev, kmFromKgGm: [
-      { step: 1, title: "Formula", formula: "KM = KG + GM", explanation: "Metacenter height is the sum of the center of gravity and the metacentric height" },
+      { step: 1, title: "Formula", formula: "KM = KG + GM", explanation: "KM (height of the metacentre above the keel) is the sum of KG and GM" },
       { step: 2, title: "Result", formula: `KM = ${kg.toFixed(3)} + ${gm.toFixed(3)}`, result: `KM = ${km.toFixed(3)} m` }
     ] }));
     toast({ title: "KM Calculated", description: `KM = ${km.toFixed(3)} m` });
@@ -869,7 +871,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const km = kb + bm;
     setKmFromKbBmResult(km);
     setCalcSteps(prev => ({ ...prev, kmFromKbBm: [
-      { step: 1, title: "Formula", formula: "KM = KB + BM", explanation: "KM is found by adding the metacentric radius (BM) from the center of buoyancy (KB)" },
+      { step: 1, title: "Formula", formula: "KM = KB + BM", explanation: "KM is the height of the centre of buoyancy (KB) plus the metacentric radius (BM)" },
       { step: 2, title: "Result", formula: `KM = ${kb.toFixed(3)} + ${bm.toFixed(3)}`, result: `KM = ${km.toFixed(3)} m` }
     ] }));
     toast({ title: "KM Calculated", description: `KM = ${km.toFixed(3)} m` });
@@ -882,7 +884,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const gm = km - kg;
     setGmFromKmKgResult(gm);
     setCalcSteps(prev => ({ ...prev, gmFromKmKg: [
-      { step: 1, title: "Formula", formula: "GM = KM - KG", explanation: "Metacentric height is found by subtracting the center of gravity height (KG) from KM" },
+      { step: 1, title: "Formula", formula: "GM = KM - KG", explanation: "The metacentric height is KM minus the height of the centre of gravity (KG)" },
       { step: 2, title: "Result", formula: `GM = ${km.toFixed(3)} - ${kg.toFixed(3)}`, result: `GM = ${gm.toFixed(3)} m` }
     ] }));
     toast({ title: "GM Calculated", description: `GM = ${gm.toFixed(3)} m` });
@@ -891,11 +893,11 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
   const calculateMoment = () => {
     const weight = parseFloat(momentInputs.weight);
     const kgDistance = parseFloat(momentInputs.kgDistance);
-    if (isNaN(weight) || isNaN(kgDistance)) { toast({ title: "Error", description: "Enter valid weight and KG distance", variant: "destructive" }); return; }
+    if (isNaN(weight) || isNaN(kgDistance)) { toast({ title: "Error", description: "Enter valid weight and KG", variant: "destructive" }); return; }
     const moment = weight * kgDistance;
     setMomentResult(moment);
     setCalcSteps(prev => ({ ...prev, moment: [
-      { step: 1, title: "Formula", formula: "Moment = W × KG", explanation: "Moment is the product of weight times the distance from the center of gravity" },
+      { step: 1, title: "Formula", formula: "Moment = W × KG", explanation: "The vertical moment is the weight times its height above the keel (KG)" },
       { step: 2, title: "Result", formula: `Moment = ${weight.toFixed(2)} × ${kgDistance.toFixed(2)}`, result: `Moment = ${moment.toFixed(2)} t·m` }
     ] }));
     toast({ title: "Moment Calculated", description: `Moment = ${moment.toFixed(2)} t·m` });
@@ -925,8 +927,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const angle = Math.atan(gz / gm) * (180 / Math.PI);
     setHeelWyResults({ gz, angle });
     setCalcSteps(prev => ({ ...prev, heelWy: [
-      { step: 1, title: "GZ account", formula: "GZ = (w × y) / Δ", substitution: `GZ = (${w.toFixed(2)} × ${y.toFixed(2)}) / ${Delta.toFixed(2)}`, result: `GZ = ${gz.toFixed(4)} m` },
-      { step: 2, title: "angle of inclination", formula: "θ = arctan(GZ / GM) × (180/π)", substitution: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(3)}) × 57.2958`, result: `θ = ${angle.toFixed(2)}°` }
+      { step: 1, title: "GZ", formula: "GZ = (w × y) / Δ", substitution: `GZ = (${w.toFixed(2)} × ${y.toFixed(2)}) / ${Delta.toFixed(2)}`, result: `GZ = ${gz.toFixed(4)} m` },
+      { step: 2, title: "Heel angle", formula: "θ = arctan(GZ / GM) × (180/π)", substitution: `θ = arctan(${gz.toFixed(4)} / ${gm.toFixed(3)}) × 57.2958`, result: `θ = ${angle.toFixed(2)}°` }
     ] }));
     toast({ title: "Calculation Completed", description: `GZ = ${gz.toFixed(4)} m, θ = ${angle.toFixed(2)}°` });
   };
@@ -939,7 +941,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const lcg = totalMoment / totalWeight;
     setLcgSimpleResult(lcg);
     setCalcSteps(prev => ({ ...prev, lcgSimple: [
-      { step: 1, title: "Formula", formula: "LCG = ΣM / ΣW", explanation: "Longitudinal center of gravity is calculated by dividing the total moment by the total weight" },
+      { step: 1, title: "Formula", formula: "LCG = ΣM / ΣW", explanation: "The longitudinal centre of gravity is the total moment divided by the total weight" },
       { step: 2, title: "Result", formula: `LCG = ${totalMoment.toFixed(2)} / ${totalWeight.toFixed(2)}`, result: `LCG = ${lcg.toFixed(2)} m` }
     ] }));
     toast({ title: "LCG Calculated", description: `LCG = ${lcg.toFixed(2)} m` });
@@ -953,7 +955,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const trimCm = (Delta * bg) / mct;
     setTrimBgResult(trimCm);
     setCalcSteps(prev => ({ ...prev, trimBg: [
-      { step: 1, title: "Formula", formula: "Trim = (Δ × BG) / MCT", explanation: "The trim amount is calculated by multiplying the displacement times the BG distance and dividing it by the MCT." },
+      { step: 1, title: "Formula", formula: "Trim = (Δ × BG) / MCT", explanation: "The trim (cm) is the displacement times the longitudinal distance BG, divided by MCT." },
       { step: 2, title: "Result", formula: `Trim = (${Delta.toFixed(2)} × ${bg.toFixed(3)}) / ${mct.toFixed(2)}`, result: `Trim = ${trimCm.toFixed(2)} cm` }
     ] }));
     toast({ title: "Trim Calculated", description: `Trim = ${trimCm.toFixed(2)} cm` });
@@ -966,10 +968,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const dA = +deltaTrim / 2;
     setDraftHalfTrimResults({ dF, dA });
     setCalcSteps(prev => ({ ...prev, halfTrimDrafts: [
-      { step: 1, title: "Formula", formula: "ΔdF = -Trim/2, ΔdA = +Trim/2", explanation: "Trim is distributed equally fore and aft (LCF midway assumption)" },
+      { step: 1, title: "Formula", formula: "ΔdF = -Trim/2, ΔdA = +Trim/2", explanation: "The trim is shared equally forward and aft (assuming the LCF is at midships)" },
       { step: 2, title: "Result", formula: `ΔdF = -${deltaTrim.toFixed(1)}/2 = ${dF.toFixed(1)} cm`, result: `ΔdA = +${deltaTrim.toFixed(1)}/2 = ${dA.toFixed(1)} cm` }
     ] }));
-    toast({ title: "distribution", description: `ΔdF = ${dF.toFixed(1)} cm, ΔdA = ${dA.toFixed(1)} cm` });
+    toast({ title: "Trim distribution", description: `ΔdF = ${dF.toFixed(1)} cm, ΔdA = ${dA.toFixed(1)} cm` });
   };
 
   // 5. Diğer
@@ -983,8 +985,8 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const m = V * rho;
     setVolumeMassResults({ V, m });
     setCalcSteps(prev => ({ ...prev, volumeMass: [
-      { step: 1, title: "volume calculation", formula: `V = L × B × H = ${L.toFixed(2)} × ${B.toFixed(2)} × ${H.toFixed(2)}`, result: `V = ${V.toFixed(3)} m³` },
-      { step: 2, title: "mass calculation", formula: `m = V × ρ = ${V.toFixed(3)} × ${rho.toFixed(3)}`, result: `m = ${m.toFixed(2)} t` }
+      { step: 1, title: "Volume", formula: `V = L × B × H = ${L.toFixed(2)} × ${B.toFixed(2)} × ${H.toFixed(2)}`, result: `V = ${V.toFixed(3)} m³` },
+      { step: 2, title: "Mass", formula: `m = V × ρ = ${V.toFixed(3)} × ${rho.toFixed(3)}`, result: `m = ${m.toFixed(2)} t` }
     ] }));
     toast({ title: "Calculation Completed", description: `V = ${V.toFixed(3)} m³, m = ${m.toFixed(2)} t` });
   };
@@ -996,7 +998,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaT = (fwa * (1025 - rho * 1000)) / 25;
     setDensityDraftResult(deltaT);
     setCalcSteps(prev => ({ ...prev, densityDraft: [
-      { step: 1, title: "Formula", formula: "ΔT = FWA × (1025 - ρ×1000) / 25", explanation: "The draft difference resulting from the density change is calculated" },
+      { step: 1, title: "Formula", formula: "ΔT = FWA × (1025 - ρ×1000) / 25", explanation: "The change of draft (mm) caused by the density change is calculated from the FWA" },
       { step: 2, title: "Result", formula: `ΔT = ${fwa.toFixed(1)} × (1025 - ${(rho*1000).toFixed(0)}) / 25 = ${fwa.toFixed(1)} × ${(1025-rho*1000).toFixed(0)} / 25`, result: `ΔT ≈ ${deltaT.toFixed(1)} mm` }
     ] }));
     toast({ title: "Draft Change", description: `ΔT ≈ ${deltaT.toFixed(1)} mm` });
@@ -1010,7 +1012,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const ghm = vhm / sf;
     setGhmResult(ghm);
     setCalcSteps(prev => ({ ...prev, ghm: [
-      { step: 1, title: "Formula", formula: "GHM = VHM / SF", explanation: "Grain Heeling Moment is found by dividing the Volumetric HM by the stacking factor" },
+      { step: 1, title: "Formula", formula: "GHM = VHM / SF", explanation: "The grain heeling moment is the volumetric heeling moment (VHM) divided by the stowage factor (SF)" },
       { step: 2, title: "Result", formula: `GHM = ${vhm.toFixed(2)} / ${sf.toFixed(2)}`, result: `GHM = ${ghm.toFixed(2)} t·m` }
     ] }));
     toast({ title: "GHM Calculated", description: `GHM = ${ghm.toFixed(2)} t·m` });
@@ -1024,7 +1026,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setSimpson13Result(A);
     setCalcSteps(prev => ({ ...prev, simpson13: [
       { step: 1, title: "Formula", formula: "A = (h/3) × [y₀ + 4y₁ + 2y₂ + 4y₃ + y₄]", explanation: "Area calculation with Simpson's 1/3 rule" },
-      { step: 2, title: "square brackets", formula: `[${Y0} + 4×${Y1} + 2×${Y2} + 4×${Y3} + ${Y4}]`, result: `= ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}` },
+      { step: 2, title: "Bracket sum", formula: `[${Y0} + 4×${Y1} + 2×${Y2} + 4×${Y3} + ${Y4}]`, result: `= ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}` },
       { step: 3, title: "Result", formula: `A = (${hh}/3) × ${(Y0 + 4*Y1 + 2*Y2 + 4*Y3 + Y4).toFixed(4)}`, result: `A = ${A.toFixed(4)}` }
     ] }));
     toast({ title: "Simpson 1/3", description: `A = ${A.toFixed(4)}` });
@@ -1038,7 +1040,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setSimpson38Result(A);
     setCalcSteps(prev => ({ ...prev, simpson38: [
       { step: 1, title: "Formula", formula: "A = (3h/8) × [y₀ + 3y₁ + 3y₂ + y₃]", explanation: "Area calculation with Simpson's 3/8 rule" },
-      { step: 2, title: "square brackets", formula: `[${Y0} + 3×${Y1} + 3×${Y2} + ${Y3}]`, result: `= ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}` },
+      { step: 2, title: "Bracket sum", formula: `[${Y0} + 3×${Y1} + 3×${Y2} + ${Y3}]`, result: `= ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}` },
       { step: 3, title: "Result", formula: `A = (3×${hh}/8) × ${(Y0 + 3*Y1 + 3*Y2 + Y3).toFixed(4)}`, result: `A = ${A.toFixed(4)}` }
     ] }));
     toast({ title: "Simpson 3/8", description: `A = ${A.toFixed(4)}` });
@@ -1057,10 +1059,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const deltaKG = (ixx / V) * (rhoFluid / rhoSea) * (1 / (n * n));
     setFsmGroupResult(deltaKG);
     setCalcSteps(prev => ({ ...prev, fsmGroup: [
-      { step: 1, title: "Formula", formula: "ΔKG = (L×B³/12/V) × (ρliquid/ρsea) × (1/n²)", explanation: "KG variation with free surface effect for split tank" },
-      { step: 2, title: "Ixx account", formula: `Ixx = ${L.toFixed(2)} × ${B.toFixed(2)}³ / 12 = ${ixx.toFixed(2)} m⁴` },
+      { step: 1, title: "Formula", formula: "ΔKG = (L×B³/12/V) × (ρliquid/ρsea) × (1/n²)", explanation: "Virtual rise of G from the free surface of a tank divided into n equal compartments" },
+      { step: 2, title: "Ixx", formula: `Ixx = ${L.toFixed(2)} × ${B.toFixed(2)}³ / 12 = ${ixx.toFixed(2)} m⁴` },
       { step: 3, title: "Density ratio", formula: `ρliquid/ρsea = ${rhoFluid.toFixed(3)} / ${rhoSea.toFixed(3)} = ${(rhoFluid/rhoSea).toFixed(4)}` },
-      { step: 4, title: "splitting effect", formula: `1/n² = 1/${n.toFixed(0)}² = ${(1/(n*n)).toFixed(4)}` },
+      { step: 4, title: "Subdivision effect", formula: `1/n² = 1/${n.toFixed(0)}² = ${(1/(n*n)).toFixed(4)}` },
       { step: 5, title: "Result", formula: `ΔKG = (${ixx.toFixed(2)} / ${V.toFixed(2)}) × ${(rhoFluid/rhoSea).toFixed(4)} × ${(1/(n*n)).toFixed(4)}`, result: `ΔKG = ${deltaKG.toFixed(4)} m` }
     ] }));
     toast({ title: "Free Surface", description: `ΔKG = ${deltaKG.toFixed(4)} m` });
@@ -1071,32 +1073,32 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const L = parseFloat(damagedDraftInputs.length);
     const B = parseFloat(damagedDraftInputs.breadth);
     const Ld = parseFloat(damagedDraftInputs.damagedLength);
-    if ([w, L, B, Ld].some(isNaN)) { toast({ title: "Error", description: "Enter valid w, L, B, L injured", variant: "destructive" }); return; }
+    if ([w, L, B, Ld].some(isNaN)) { toast({ title: "Error", description: "Enter valid w, L, B and damaged length Ld", variant: "destructive" }); return; }
     const effectiveArea = (L * B) - (Ld * B);
-    if (effectiveArea <= 0) { toast({ title: "Error", description: "Active area must be > 0", variant: "destructive" }); return; }
+    if (effectiveArea <= 0) { toast({ title: "Error", description: "Effective area must be > 0", variant: "destructive" }); return; }
     const deltaT = w / effectiveArea; // m (assuming ρ≈1 t/m³)
     setDamagedDraftResult(deltaT);
     setCalcSteps(prev => ({ ...prev, damagedDraft: [
-      { step: 1, title: "Formula", formula: "ΔT = W / Aetkin", explanation: "The change in draft in the injured state is calculated by dividing the weight by the effective wading area." },
-      { step: 2, title: "Active domain account", formula: "Aeffective = (L × B) - (Linjured × B)", substitution: `Aetkin = (${L.toFixed(2)} × ${B.toFixed(2)}) - (${Ld.toFixed(2)} × ${B.toFixed(2)}) = ${effectiveArea.toFixed(2)} m²` },
+      { step: 1, title: "Formula", formula: "ΔT = w / Aeff", explanation: "In the damaged condition, the change of draft is the weight divided by the effective (intact) waterplane area." },
+      { step: 2, title: "Effective area", formula: "Aeff = (L × B) − (Ld × B)", substitution: `Aeff = (${L.toFixed(2)} × ${B.toFixed(2)}) - (${Ld.toFixed(2)} × ${B.toFixed(2)}) = ${effectiveArea.toFixed(2)} m²` },
       { step: 3, title: "Result", formula: `ΔT = ${w.toFixed(2)} / ${effectiveArea.toFixed(2)}`, result: `ΔT = ${deltaT.toFixed(3)} m` }
     ] }));
-    toast({ title: "Injured Stability", description: `ΔT = ${deltaT.toFixed(3)} m` });
+    toast({ title: "Damaged Stability", description: `ΔT = ${deltaT.toFixed(3)} m` });
   };
 
   // 7. Yük – maksimum yük miktarı
   const calculateMaxCargo = () => {
     const Vh = parseFloat(maxCargoInputs.holdVolume);
     const SF = parseFloat(maxCargoInputs.stowageFactor);
-    if (isNaN(Vh) || isNaN(SF) || SF === 0) { toast({ title: "Error", description: "Enter valid Vambar and SF", variant: "destructive" }); return; }
+    if (isNaN(Vh) || isNaN(SF) || SF === 0) { toast({ title: "Error", description: "Enter valid Vhold and SF", variant: "destructive" }); return; }
     const wmax = Vh / SF;
     setMaxCargoResult(wmax);
     setCalcSteps(prev => ({ ...prev, maxCargo: [
-      { step: 1, title: "Formula", formula: "Wmax = Vambar / SF", explanation: "The maximum load amount is found by dividing the warehouse volume by the stacking factor" },
-      { step: 2, title: "Placement of values", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
+      { step: 1, title: "Formula", formula: "Wmax = Vhold / SF", explanation: "The maximum cargo quantity is the hold volume divided by the stowage factor" },
+      { step: 2, title: "Substituting values", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}` },
       { step: 3, title: "Result", formula: `Wmax = ${Vh.toFixed(2)} / ${SF.toFixed(3)}`, result: `Wmax = ${wmax.toFixed(2)} ton` }
     ] }));
-    toast({ title: "Maximum Load", description: `wmax = ${wmax.toFixed(2)} ton` });
+    toast({ title: "Maximum Cargo", description: `wmax = ${wmax.toFixed(2)} ton` });
   };
 
   // 8. Pratik
@@ -1109,16 +1111,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     if (metricDraftInputs.position === "top") { value = base + 0.10; offset = 0.10; }
     setMetricDraftResult(value);
     setCalcSteps(prev => ({ ...prev, metricDraft: [
-      { step: 1, title: "Formula", formula: "Draft = Base + Position Correction", explanation: "Metric draft reading is found by adding position correction to the base value" },
-      { step: 2, title: "Position correction", formula: `Pozisyon: ${metricDraftInputs.position} → Correction = ${offset.toFixed(2)} m` },
+      { step: 1, title: "Formula", formula: "Draft = Base + Position Correction", explanation: "The metric reading is the value of the draft mark plus the correction for where the waterline cuts the 10 cm figure" },
+      { step: 2, title: "Position correction", formula: `Position: ${DRAFT_MARK_POSITION[metricDraftInputs.position]} → Correction = ${offset.toFixed(2)} m` },
       { step: 3, title: "Result", formula: `Draft = ${base.toFixed(2)} + ${offset.toFixed(2)}`, result: `Draft = ${value.toFixed(2)} m` }
     ] }));
-    toast({ title: "Draft Reading (Meters)", description: `${value.toFixed(2)} m` });
+    toast({ title: "Draft Reading (Metric)", description: `${value.toFixed(2)} m` });
   };
 
   const calculateImperialDraftReading = () => {
     const baseFt = parseFloat(imperialDraftInputs.baseFeet);
-    if (isNaN(baseFt)) { toast({ title: "Error", description: "Enter current base draft (ft)", variant: "destructive" }); return; }
+    if (isNaN(baseFt)) { toast({ title: "Error", description: "Enter valid base draft (ft)", variant: "destructive" }); return; }
     let inches = 0;
     if (imperialDraftInputs.position === "orta") inches = 3;
     if (imperialDraftInputs.position === "top") inches = 6;
@@ -1127,12 +1129,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     const remInches = totalInches - feet * 12;
     setImperialDraftResult({ feet, inches: remInches });
     setCalcSteps(prev => ({ ...prev, imperialDraft: [
-      { step: 1, title: "Formula", formula: "Total Inches = Base(ft) × 12 + Position Inches", explanation: "Reading drafts with the imperial system" },
-      { step: 2, title: "Position correction", formula: `Pozisyon: ${imperialDraftInputs.position} → +${inches} inch` },
-      { step: 3, title: "total inches", formula: `${baseFt.toFixed(0)} × 12 + ${inches} = ${totalInches.toFixed(0)} inch` },
-      { step: 4, title: "Result", formula: `${totalInches.toFixed(0)} inch = ${feet} ft ${remInches.toFixed(0)} in`, result: `Draft = ${feet} ft ${remInches.toFixed(0)} in` }
+      { step: 1, title: "Formula", formula: "Total Inches = Base(ft) × 12 + Position Inches", explanation: "Imperial draft figures are 6 in high" },
+      { step: 2, title: "Position correction", formula: `Position: ${DRAFT_MARK_POSITION[imperialDraftInputs.position]} → +${inches} in` },
+      { step: 3, title: "Total inches", formula: `${baseFt.toFixed(0)} × 12 + ${inches} = ${totalInches.toFixed(0)} in` },
+      { step: 4, title: "Result", formula: `${totalInches.toFixed(0)} in = ${feet} ft ${remInches.toFixed(0)} in`, result: `Draft = ${feet} ft ${remInches.toFixed(0)} in` }
     ] }));
-    toast({ title: "Draft Reading (Royal)", description: `${feet} ft ${remInches.toFixed(0)} in` });
+    toast({ title: "Draft Reading (Imperial)", description: `${feet} ft ${remInches.toFixed(0)} in` });
   };
 
   const calculateAverageDrafts = () => {
@@ -1149,9 +1151,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
     setAvgDraftsResults({ dF, dM, dA });
     setCalcSteps(prev => ({ ...prev, avgDrafts: [
       { step: 1, title: "Formula", formula: "d = (Port + Starboard) / 2", explanation: "Port and starboard side drafts are averaged for each position" },
-      { step: 2, title: "chief draft", formula: `dF = (${pf.toFixed(3)} + ${sf.toFixed(3)}) / 2`, result: `dF = ${dF.toFixed(3)} m` },
-      { step: 3, title: "Mid draft", formula: `dM = (${pm.toFixed(3)} + ${sm.toFixed(3)}) / 2`, result: `dM = ${dM.toFixed(3)} m` },
-      { step: 4, title: "aphtha draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
+      { step: 2, title: "Forward draft", formula: `dF = (${pf.toFixed(3)} + ${sf.toFixed(3)}) / 2`, result: `dF = ${dF.toFixed(3)} m` },
+      { step: 3, title: "Midship draft", formula: `dM = (${pm.toFixed(3)} + ${sm.toFixed(3)}) / 2`, result: `dM = ${dM.toFixed(3)} m` },
+      { step: 4, title: "Aft draft", formula: `dA = (${pa.toFixed(3)} + ${sa.toFixed(3)}) / 2`, result: `dA = ${dA.toFixed(3)} m` }
     ] }));
     toast({ title: "Average Drafts", description: `dF=${dF.toFixed(3)}, dM=${dM.toFixed(3)}, dA=${dA.toFixed(3)} m` });
   };
@@ -1161,16 +1163,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
       <Tabs defaultValue="hogging" className="w-full">
         <TabsList className={`grid w-full ${showLongitudinal && showDraftSurvey ? 'grid-cols-8' : showLongitudinal || showDraftSurvey ? 'grid-cols-7' : 'grid-cols-6'}`}>
           <TabsTrigger value="hogging">1. Introduction</TabsTrigger>
-          <TabsTrigger value="transverse">2. Transverse Balance Calculations</TabsTrigger>
+          <TabsTrigger value="transverse">2. Transverse Stability</TabsTrigger>
           {showLongitudinal && (
-            <TabsTrigger value="longitudinal">3. Longitudinal Balance Calculations</TabsTrigger>
+            <TabsTrigger value="longitudinal">3. Longitudinal Stability (Trim)</TabsTrigger>
           )}
           {showDraftSurvey && (
             <TabsTrigger value="draft">4. Draft Survey</TabsTrigger>
           )}
           <TabsTrigger value="density">5. Pontoon and Density Calculations</TabsTrigger>
           <TabsTrigger value="solas">6. SOLAS Stability Criteria</TabsTrigger>
-          <TabsTrigger value="load">7. Load Calculations</TabsTrigger>
+          <TabsTrigger value="load">7. Cargo Calculations</TabsTrigger>
           <TabsTrigger value="practical">8. Practical Calculations</TabsTrigger>
         </TabsList>
 
@@ -1188,10 +1190,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Hogging/Sagging = (dF + dA)/2 compared to dM</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Head Draft (dF) - m</Label>
+                    <Label>Forward Draft (dF) - m</Label>
                     <Input
                       type="number"
-                      placeholder="chief draft"
+                      placeholder="Forward draft"
                       value={hoggingSaggingInputs.draftForward}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftForward: e.target.value }))}
                     />
@@ -1200,16 +1202,16 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>Aft Draft (dA) - m</Label>
                     <Input
                       type="number"
-                      placeholder="aphtha draft"
+                      placeholder="Aft draft"
                       value={hoggingSaggingInputs.draftAft}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftAft: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Mediocre Draft (dM) - m</Label>
+                    <Label>Midship Draft (dM) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Mediocre draft"
+                      placeholder="Midship draft"
                       value={hoggingSaggingInputs.draftMidship}
                       onChange={(e) => setHoggingSaggingInputs(prev => ({ ...prev, draftMidship: e.target.value }))}
                     />
@@ -1223,7 +1225,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-blue-500">
                     <p className="font-mono text-lg">{hoggingSaggingResult.type}: {hoggingSaggingResult.difference.toFixed(3)} m</p>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                      {hoggingSaggingResult.type === "Hogging" ? "Midships inclined upward" : "Midships inclined downward"}
+                      {hoggingSaggingResult.type === "Hogging" ? "Midship section arched upward" : "Midship section sagged downward"}
                     </p>
                   </div>
                 )}
@@ -1231,10 +1233,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
               </div>
 
               <div className="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Ortalama Draft (dM) = (dF + dA) / 2</h4>
+                <h4 className="font-semibold mb-3">Mean Draft (dM) = (dF + dA) / 2</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>Head Draft (dF) - m</Label>
+                    <Label>Forward Draft (dF) - m</Label>
                     <Input type="number" value={meanDraftInputs.draftForward} onChange={(e)=> setMeanDraftInputs(p=>({...p, draftForward: e.target.value}))} />
                   </div>
                   <div>
@@ -1263,7 +1265,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-green-700 dark:text-green-300">
                 <Shield className="h-5 w-5" />
-                2. Transverse Balance Calculations
+                2. Transverse Stability Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -1285,7 +1287,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>Total Weight (ton)</Label>
                     <Input
                       type="number"
-                      placeholder="total weight"
+                      placeholder="Total weight"
                       value={newKGInputs.totalWeight}
                       onChange={(e) => setNewKGInputs(prev => ({ ...prev, totalWeight: e.target.value }))}
                     />
@@ -1297,7 +1299,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {newKGResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-green-500">
-                    <p className="font-mono text-lg">Yeni KG = {newKGResult.toFixed(3)} m</p>
+                    <p className="font-mono text-lg">New KG = {newKGResult.toFixed(3)} m</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["newKG"] || []} />
@@ -1326,10 +1328,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Tilting Moment (ton.m)</Label>
+                    <Label>Heeling Moment (ton.m)</Label>
                     <Input
                       type="number"
-                      placeholder="tilting moment"
+                      placeholder="Heeling moment"
                       value={heelAngleInputs.heelingMoment}
                       onChange={(e) => setHeelAngleInputs(prev => ({ ...prev, heelingMoment: e.target.value }))}
                     />
@@ -1387,15 +1389,15 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Sarkaç ile Meyil Açısı */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">tan φ ≈ sin φ = Deviation / Pendulum Length</h4>
+                <h4 className="font-semibold mb-3">tan φ = Deflection / Pendulum Length</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Pendulum Length (m)</Label>
                     <Input type="number" placeholder="Length" value={pendulumInputs.pendulumLength} onChange={(e)=> setPendulumInputs(p=>({...p, pendulumLength:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Deviation (m)</Label>
-                    <Input type="number" placeholder="Deviation" value={pendulumInputs.deflection} onChange={(e)=> setPendulumInputs(p=>({...p, deflection:e.target.value}))} />
+                    <Label>Deflection (m)</Label>
+                    <Input type="number" placeholder="Deflection" value={pendulumInputs.deflection} onChange={(e)=> setPendulumInputs(p=>({...p, deflection:e.target.value}))} />
                   </div>
                   <Button onClick={calculatePendulumAngle} className="w-full">
                     <Calculator className="w-4 h-4 mr-2" />
@@ -1412,7 +1414,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Bumba ile Kaldırma Sonrası GM Değişimi */}
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Boom GM Change = w × Load Arm / Δ</h4>
+                <h4 className="font-semibold mb-3">Derrick Lift GM Change = w × d / Δ</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Weight (w) - tons</Label>
@@ -1424,10 +1426,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Load Arm (m)</Label>
+                    <Label>Distance d (m)</Label>
                     <Input
                       type="number"
-                      placeholder="load arm"
+                      placeholder="d"
                       value={craneGMInputs.leverArm}
                       onChange={(e) => setCraneGMInputs(prev => ({ ...prev, leverArm: e.target.value }))}
                     />
@@ -1463,12 +1465,12 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Input type="number" placeholder="w" value={craneVerticalInputs.weight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>hcunda (m)</Label>
-                    <Input type="number" placeholder="hook height" value={craneVerticalInputs.hookHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, hookHeight:e.target.value}))} />
+                    <Label>h derrick head (m)</Label>
+                    <Input type="number" placeholder="Derrick head height" value={craneVerticalInputs.hookHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, hookHeight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>hyuk (m)</Label>
-                    <Input type="number" placeholder="Starting height of the load" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
+                    <Label>h load (m)</Label>
+                    <Input type="number" placeholder="Initial height of the load" value={craneVerticalInputs.loadHeight} onChange={(e)=> setCraneVerticalInputs(p=>({...p, loadHeight:e.target.value}))} />
                   </div>
                   <div>
                     <Label>Displacement Δ (ton)</Label>
@@ -1573,14 +1575,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
               </div>
 
               <div className="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Torque and ΔGM</h4>
+                <h4 className="font-semibold mb-3">Moment and ΔGM</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Weight (t)</Label>
                     <Input type="number" value={momentInputs.weight} onChange={(e)=> setMomentInputs(p=>({...p, weight: e.target.value}))} />
                   </div>
                   <div>
-                    <Label>KG Distance (m)</Label>
+                    <Label>KG (m)</Label>
                     <Input type="number" value={momentInputs.kgDistance} onChange={(e)=> setMomentInputs(p=>({...p, kgDistance: e.target.value}))} />
                   </div>
                   <Button onClick={calculateMoment} className="w-full"><Calculator className="w-4 h-4 mr-2" />Moment = w×KG</Button>
@@ -1642,14 +1644,14 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-purple-700 dark:text-purple-300">
                 <BarChart3 className="h-5 w-5" />
-                3. Longitudinal Balance Calculations
+                3. Longitudinal Stability (Trim) Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               
               {/* Trim Değişimi */}
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Trim Change = Total Torque / MCT</h4>
+                <h4 className="font-semibold mb-3">Trim Change = Total Trimming Moment / MCT</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
                     <Label>Total Moment (ton.m)</Label>
@@ -1684,13 +1686,13 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Paralel Batma/Çıkma */}
               <div className="bg-purple-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Parallel Sinking = Load Loaded / TPC</h4>
+                <h4 className="font-semibold mb-3">Parallel Sinkage = Weight Loaded / TPC</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>Loaded Load (ton)</Label>
+                    <Label>Weight Loaded (ton)</Label>
                     <Input
                       type="number"
-                      placeholder="Loaded load"
+                      placeholder="Weight loaded"
                       value={parallelSinkageInputs.loadedWeight}
                       onChange={(e) => setParallelSinkageInputs(prev => ({ ...prev, loadedWeight: e.target.value }))}
                     />
@@ -1711,7 +1713,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {parallelSinkageResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-purple-500">
-                    <p className="font-mono text-lg">Paralel Batma = {parallelSinkageResult.toFixed(2)} cm</p>
+                    <p className="font-mono text-lg">Parallel Sinkage = {parallelSinkageResult.toFixed(2)} cm</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["parallelSinkage"] || []} />
@@ -1816,10 +1818,10 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Width (B) - m</Label>
+                    <Label>Breadth (B) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Width"
+                      placeholder="Breadth"
                       value={blockCoefficientInputs.breadth}
                       onChange={(e) => setBlockCoefficientInputs(prev => ({ ...prev, breadth: e.target.value }))}
                     />
@@ -1898,7 +1900,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>New Density (ton/m³)</Label>
                     <Input
                       type="number"
-                      placeholder="new intensity"
+                      placeholder="New density"
                       value={densityChangeInputs.newDensity}
                       onChange={(e) => setDensityChangeInputs(prev => ({ ...prev, newDensity: e.target.value }))}
                     />
@@ -1919,7 +1921,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {densityChangeResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-teal-500">
-                    <p className="font-mono text-lg">Yeni Deplasman = {densityChangeResult.toFixed(2)} ton</p>
+                    <p className="font-mono text-lg">New Displacement = {densityChangeResult.toFixed(2)} ton</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["densityChange"] || []} />
@@ -1927,22 +1929,22 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Duba – Yaralı Stabilite: Draft Değişimi */}
               <div className="bg-teal-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Δd = w / [(Length × Width − Wounded Area) × ρ]</h4>
+                <h4 className="font-semibold mb-3">Δd = w / [(L × B − Damaged Area) × ρ]</h4>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
                   <div>
                     <Label>w (ton)</Label>
                     <Input type="number" placeholder="Weight" value={pontoonInputs.weight} onChange={(e)=> setPontoonInputs(p=>({...p, weight:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Height (m)</Label>
+                    <Label>Length (m)</Label>
                     <Input type="number" placeholder="Length" value={pontoonInputs.length} onChange={(e)=> setPontoonInputs(p=>({...p, length:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Width (m)</Label>
-                    <Input type="number" placeholder="Most" value={pontoonInputs.breadth} onChange={(e)=> setPontoonInputs(p=>({...p, breadth:e.target.value}))} />
+                    <Label>Breadth (m)</Label>
+                    <Input type="number" placeholder="Breadth" value={pontoonInputs.breadth} onChange={(e)=> setPontoonInputs(p=>({...p, breadth:e.target.value}))} />
                   </div>
                   <div>
-                    <Label>Wounded Area (m²)</Label>
+                    <Label>Damaged Area (m²)</Label>
                     <Input type="number" placeholder="Area" value={pontoonInputs.damagedArea} onChange={(e)=> setPontoonInputs(p=>({...p, damagedArea:e.target.value}))} />
                   </div>
                   <div>
@@ -2014,9 +2016,9 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {grainHeelResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
-                    <p className="font-mono text-lg">Angle of Loll = {grainHeelResult.toFixed(1)}°</p>
+                    <p className="font-mono text-lg">Heel Angle (grain shift) = {grainHeelResult.toFixed(1)}°</p>
                     <p className="text-sm mt-1">
-                      {grainHeelResult <= 12 ? "✓ SOLAS Suitable" : "✗ Not SOLAS Conforming - Exceeds 12°"}
+                      {grainHeelResult <= 12 ? "✓ Complies with SOLAS (≤ 12°)" : "✗ Does not comply with SOLAS — exceeds 12°"}
                     </p>
                   </div>
                 )}
@@ -2050,7 +2052,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>Angle (θ) – degrees</Label>
                     <Input
                       type="number"
-                      placeholder="angle"
+                      placeholder="Angle"
                       value={gzLeverInputs.angle}
                       onChange={(e) => setGzLeverInputs(prev => ({ ...prev, angle: e.target.value }))}
                     />
@@ -2071,7 +2073,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Serbest Yüzey Etkisi */}
               <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">FSM = L × B³ / (12 × V)</h4>
+                <h4 className="font-semibold mb-3">Free Surface Correction GGv = L × B³ / (12 × ∇)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
                     <Label>Length (L) - m</Label>
@@ -2083,19 +2085,19 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>Width (B) - m</Label>
+                    <Label>Breadth (B) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Width"
+                      placeholder="Breadth"
                       value={freeSurfaceInputs.breadth}
                       onChange={(e) => setFreeSurfaceInputs(prev => ({ ...prev, breadth: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Volume (V) - m³</Label>
+                    <Label>Displaced Volume (∇) - m³</Label>
                     <Input
                       type="number"
-                      placeholder="Volume"
+                      placeholder="Displaced volume"
                       value={freeSurfaceInputs.volume}
                       onChange={(e) => setFreeSurfaceInputs(prev => ({ ...prev, volume: e.target.value }))}
                     />
@@ -2107,7 +2109,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {freeSurfaceResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
-                    <p className="font-mono text-lg">FSM = {freeSurfaceResult.toFixed(4)} m</p>
+                    <p className="font-mono text-lg">GGv = {freeSurfaceResult.toFixed(4)} m</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["freeSurface"] || []} />
@@ -2116,22 +2118,22 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Yalpa Periyodu */}
               <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">T = Cb × B / √GM</h4>
+                <h4 className="font-semibold mb-3">T = C × B / √GM</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                   <div>
-                    <Label>C b</Label>
+                    <Label>C (roll coefficient)</Label>
                     <Input
                       type="number"
-                      placeholder="Block coefficient"
+                      placeholder="Roll coefficient"
                       value={rollPeriodInputs.cb}
                       onChange={(e) => setRollPeriodInputs(prev => ({ ...prev, cb: e.target.value }))}
                     />
                   </div>
                   <div>
-                    <Label>Width (B) - m</Label>
+                    <Label>Breadth (B) - m</Label>
                     <Input
                       type="number"
-                      placeholder="Width"
+                      placeholder="Breadth"
                       value={rollPeriodInputs.breadth}
                       onChange={(e) => setRollPeriodInputs(prev => ({ ...prev, breadth: e.target.value }))}
                     />
@@ -2152,7 +2154,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {rollPeriodResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-red-500">
-                    <p className="font-mono text-lg">Yalpa Periyodu = {rollPeriodResult.toFixed(2)} saniye</p>
+                    <p className="font-mono text-lg">Roll Period = {rollPeriodResult.toFixed(2)} s</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["rollPeriod"] || []} />
@@ -2167,17 +2169,17 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
                 <Anchor className="h-5 w-5" />
-                7. Load Calculations
+                7. Cargo Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               
               {/* Müsaade Edilen Yük Yüksekliği */}
               <div className="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Height = SF × PL</h4>
+                <h4 className="font-semibold mb-3">Stowage Height = SF × PL</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                   <div>
-                    <Label>SF (Safety Factor)</Label>
+                    <Label>SF (Stowage Factor, m³/t)</Label>
                     <Input
                       type="number"
                       placeholder="SF"
@@ -2186,7 +2188,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     />
                   </div>
                   <div>
-                    <Label>PL (Load Limit)</Label>
+                    <Label>PL (Permissible Deck Load, t/m²)</Label>
                     <Input
                       type="number"
                       placeholder="PL"
@@ -2201,7 +2203,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 </div>
                 {loadHeightResult !== null && (
                   <div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded border-l-4 border-indigo-500">
-                    <p className="font-mono text-lg">Permissible Load Height = {loadHeightResult.toFixed(2)} m</p>
+                    <p className="font-mono text-lg">Permissible Stowage Height = {loadHeightResult.toFixed(2)} m</p>
                   </div>
                 )}
                 <CalculationSteps steps={calcSteps["loadHeight"] || []} />
@@ -2209,13 +2211,13 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
 
               {/* Sıcaklıkla Yoğunluk Değişimi */}
               <div className="bg-indigo-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Dyeni = Deski - [(Tyeni - Teski) × Coefficient]</h4>
+                <h4 className="font-semibold mb-3">ρnew = ρold − [(Tnew − Told) × Coefficient]</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
                     <Label>Old Density (ton/m³)</Label>
                     <Input
                       type="number"
-                      placeholder="old density"
+                      placeholder="Old density"
                       value={temperatureDensityInputs.oldDensity}
                       onChange={(e) => setTemperatureDensityInputs(prev => ({ ...prev, oldDensity: e.target.value }))}
                     />
@@ -2224,7 +2226,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>Old Temperature (°C)</Label>
                     <Input
                       type="number"
-                      placeholder="old temperature"
+                      placeholder="Old temperature"
                       value={temperatureDensityInputs.oldTemperature}
                       onChange={(e) => setTemperatureDensityInputs(prev => ({ ...prev, oldTemperature: e.target.value }))}
                     />
@@ -2233,7 +2235,7 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                     <Label>New Temperature (°C)</Label>
                     <Input
                       type="number"
-                      placeholder="new temperature"
+                      placeholder="New temperature"
                       value={temperatureDensityInputs.newTemperature}
                       onChange={(e) => setTemperatureDensityInputs(prev => ({ ...prev, newTemperature: e.target.value }))}
                     />
@@ -2276,53 +2278,53 @@ export const ComprehensiveMaritimeCalculations = ({ showLongitudinal = true, sho
                 <h4 className="font-semibold mb-3">Draft Reading (Metric)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Base Value (m)</Label>
+                    <Label>Draft Mark Value (m)</Label>
                     <Input type="number" value={metricDraftInputs.baseMeters} onChange={(e)=> setMetricDraftInputs(p=>({...p, baseMeters: e.target.value}))} />
                   </div>
                   <div className="md:col-span-2">
                     <Label>Position</Label>
                     <div className="grid grid-cols-3 gap-2">
                       <Button variant={metricDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'alt'}))}>Bottom</Button>
-                      <Button variant={metricDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'orta'}))}>Medium (+5cm)</Button>
-                      <Button variant={metricDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'top'}))}>Top (+10cm)</Button>
+                      <Button variant={metricDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'orta'}))}>Middle (+5 cm)</Button>
+                      <Button variant={metricDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setMetricDraftInputs(p=>({...p, position:'top'}))}>Top (+10 cm)</Button>
                     </div>
                   </div>
                   <Button onClick={calculateMetricDraftReading} className="w-full md:col-span-2"><Calculator className="w-4 h-4 mr-2" />Calculate</Button>
                 </div>
-                {metricDraftResult !== null && (<div className="mt-2 text-sm">Okuma = <span className="font-mono">{metricDraftResult.toFixed(2)} m</span></div>)}
+                {metricDraftResult !== null && (<div className="mt-2 text-sm">Reading = <span className="font-mono">{metricDraftResult.toFixed(2)} m</span></div>)}
                 <CalculationSteps steps={calcSteps["metricDraft"] || []} />
               </div>
 
               <div className="bg-slate-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h4 className="font-semibold mb-3">Draft Reading (Royal)</h4>
+                <h4 className="font-semibold mb-3">Draft Reading (Imperial)</h4>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                   <div>
-                    <Label>Base Value (ft)</Label>
+                    <Label>Draft Mark Value (ft)</Label>
                     <Input type="number" value={imperialDraftInputs.baseFeet} onChange={(e)=> setImperialDraftInputs(p=>({...p, baseFeet: e.target.value}))} />
                   </div>
                   <div className="md:col-span-2">
                     <Label>Position</Label>
                     <div className="grid grid-cols-3 gap-2">
                       <Button variant={imperialDraftInputs.position==='alt'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'alt'}))}>Bottom</Button>
-                      <Button variant={imperialDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'orta'}))}>Medium (+3in)</Button>
-                      <Button variant={imperialDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'top'}))}>Top (+6in)</Button>
+                      <Button variant={imperialDraftInputs.position==='orta'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'orta'}))}>Middle (+3 in)</Button>
+                      <Button variant={imperialDraftInputs.position==='top'? 'default':'outline'} onClick={()=> setImperialDraftInputs(p=>({...p, position:'top'}))}>Top (+6 in)</Button>
                     </div>
                   </div>
                   <Button onClick={calculateImperialDraftReading} className="w-full md:col-span-2"><Calculator className="w-4 h-4 mr-2" />Calculate</Button>
                 </div>
-                {imperialDraftResult && (<div className="mt-2 text-sm">Okuma = <span className="font-mono">{imperialDraftResult.feet} ft {imperialDraftResult.inches.toFixed(0)} in</span></div>)}
+                {imperialDraftResult && (<div className="mt-2 text-sm">Reading = <span className="font-mono">{imperialDraftResult.feet} ft {imperialDraftResult.inches.toFixed(0)} in</span></div>)}
                 <CalculationSteps steps={calcSteps["imperialDraft"] || []} />
               </div>
 
               <div className="bg-slate-50 dark:bg-gray-700 p-4 rounded-lg">
                 <h4 className="font-semibold mb-3">Average Drafts</h4>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-end">
-                  <div><Label>Head Port</Label><Input type="number" value={avgDraftsInputs.portForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portForward: e.target.value}))} /></div>
-                  <div><Label>Mediocre Port</Label><Input type="number" value={avgDraftsInputs.portMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portMidship: e.target.value}))} /></div>
-                  <div><Label>Aphthous Port</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
-                  <div><Label>Head Starboard</Label><Input type="number" value={avgDraftsInputs.starboardForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardForward: e.target.value}))} /></div>
-                  <div><Label>Mediocre Starboard</Label><Input type="number" value={avgDraftsInputs.starboardMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardMidship: e.target.value}))} /></div>
-                  <div><Label>Aphthous Starboard</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
+                  <div><Label>Port Forward</Label><Input type="number" value={avgDraftsInputs.portForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portForward: e.target.value}))} /></div>
+                  <div><Label>Port Midship</Label><Input type="number" value={avgDraftsInputs.portMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portMidship: e.target.value}))} /></div>
+                  <div><Label>Port Aft</Label><Input type="number" value={avgDraftsInputs.portAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, portAft: e.target.value}))} /></div>
+                  <div><Label>Starboard Forward</Label><Input type="number" value={avgDraftsInputs.starboardForward} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardForward: e.target.value}))} /></div>
+                  <div><Label>Starboard Midship</Label><Input type="number" value={avgDraftsInputs.starboardMidship} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardMidship: e.target.value}))} /></div>
+                  <div><Label>Starboard Aft</Label><Input type="number" value={avgDraftsInputs.starboardAft} onChange={(e)=> setAvgDraftsInputs(p=>({...p, starboardAft: e.target.value}))} /></div>
                 </div>
                 <div className="flex justify-end mt-3"><Button onClick={calculateAverageDrafts}><Calculator className="w-4 h-4 mr-2" />Calculate</Button></div>
                 {avgDraftsResults && (

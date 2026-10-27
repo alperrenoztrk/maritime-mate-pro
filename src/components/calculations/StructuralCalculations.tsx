@@ -269,15 +269,15 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 1,
         title: "Calculation of structural weight",
-        formula: "Wyapisal = Deplasman x 0.30",
-        substitution: `Wyapisal = ${data.displacement} x 0.30`,
-        result: `Wyapisal = ${structuralWeight.toFixed(1)} ton`,
+        formula: "Wstructural = Displacement x 0.30",
+        substitution: `Wstructural = ${data.displacement} x 0.30`,
+        result: `Wstructural = ${structuralWeight.toFixed(1)} ton`,
         explanation: "The structural weight of the ship is considered to be approximately 30% of the displacement."
       },
       {
         step: 2,
         title: "Calculation of distributed weight",
-        formula: "w = Wyapisal / L",
+        formula: "w = Wstructural / L",
         substitution: `w = ${structuralWeight.toFixed(1)} / ${data.L}`,
         result: `w = ${distributedWeight.toFixed(2)} ton/m`,
         explanation: "Structural weight is assumed to be uniformly distributed throughout the ship."
@@ -285,15 +285,15 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
       {
         step: 3,
         title: "Calculation of total load",
-        formula: "Qtoplam = w x L + Sigma(Pi)",
-        substitution: `Qtoplam = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
-        result: `Qtoplam = ${totalLoad.toFixed(1)} ton`,
-        explanation: `Distributed weight (${structuralWeight.toFixed(0)} tons) and ${loadPoints.length} point load (${totalConcentrated.toFixed(0)} tons) are collected.`
+        formula: "Qtotal = w x L + Sigma(Pi)",
+        substitution: `Qtotal = ${distributedWeight.toFixed(2)} x ${data.L} + ${totalConcentrated.toFixed(0)}`,
+        result: `Qtotal = ${totalLoad.toFixed(1)} ton`,
+        explanation: `Distributed weight (${structuralWeight.toFixed(0)} tons) and ${loadPoints.length} point load (${totalConcentrated.toFixed(0)} tons) are added together.`
       },
       {
         step: 4,
-        title: "Calculation of support response (simply supported beam)",
-        formula: "RAP = Qtoplam / 2",
+        title: "Support reactions (simply supported beam)",
+        formula: "RAP = Qtotal / 2",
         substitution: `RAP = ${totalLoad.toFixed(1)} / 2`,
         result: `RAP = ${reactionAP.toFixed(1)} ton`,
         explanation: "The ship is modeled as a simply supported beam, and the reactions are taken equal assuming symmetrical loading."
@@ -355,15 +355,15 @@ export const StructuralCalculations = ({ initialTab }: { initialTab?: string } =
         explanation: safetyFactor >= 2.0
           ? "Safety factor >= 2.0: The structure is in a safe condition."
           : safetyFactor >= 1.5
-            ? "Safety factor 1.5 to 2.0: In limit case, caution must be exercised."
+            ? "Safety factor 1.5 to 2.0: marginal condition, caution must be exercised."
             : "Safety factor < 1.5: The structure is unsafe, urgent action required!"
       },
       {
         step: 12,
         title: "Situation assessment",
-        formula: "SF >= 2.0 -> Secure | 1.5 <= SF < 2.0 -> Border | SF < 1.5 -> Unsafe",
-        result: `Durum: ${status === 'safe' ? 'SAFE' : status === 'marginal' ? 'SINIR DURUMDA' : 'UNSAFE'}`,
-        explanation: `Kritik kesit AP'den ${criticalPoint.position.toFixed(1)} m distance. Permissible deflection = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, hesaplanan sehim = ${deflection.toFixed(1)} mm.`
+        formula: "SF >= 2.0 -> Safe | 1.5 <= SF < 2.0 -> Marginal | SF < 1.5 -> Unsafe",
+        result: `Status: ${status === 'safe' ? 'SAFE' : status === 'marginal' ? 'MARGINAL' : 'UNSAFE'}`,
+        explanation: `Critical section ${criticalPoint.position.toFixed(1)} m from the AP. Permissible deflection = L/300 = ${(data.L * 1000 / 300).toFixed(1)} mm, calculated deflection = ${deflection.toFixed(1)} mm.`
       }
     ];
 

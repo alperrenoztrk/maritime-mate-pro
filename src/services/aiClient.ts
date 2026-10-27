@@ -212,26 +212,26 @@ export async function callMaritimeRegulationsAssistant(messages: AIMessage[], la
     
     if (last.includes('solas') || last.includes('güvenlik')) {
       return [
-        '⚓ SOLAS Konvansiyonu:',
+        '⚓ SOLAS Convention:',
         '→ IMO SOLAS 2020 Edition + Amendments',
-        '• Safety of Human Life at Sea',
+        '• Safety of Life at Sea',
         '• All safety procedures and equipment',
-        '• Zorunlu kontrol listeleri'
+        '• Mandatory checklists'
       ].join('\n');
     }
     
     if (last.includes('marpol') || last.includes('kirlilik')) {
       return [
-        '🛢️ MARPOL Konvansiyonu:',
+        '🛢️ MARPOL Convention:',
         '→ IMO MARPOL 73/78 Consolidated Edition',
         '• Pollution Prevention from Ships',
         '• Annex I-VI details',
-        '• Oil Record Book gereksinimleri'
+        '• Oil Record Book requirements'
       ].join('\n');
     }
     
     return [
-      '📚 Maritime Regulations Assistant - Mark',
+      '📚 Maritime Regulations Assistant',
       'What are you looking for information on?',
       '• Navigation (ALRS, NP, List of Lights)',
       '• Safety (SOLAS, LSA Code, FSS Code)', 
@@ -258,8 +258,8 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('eta') || last.includes('varış') || last.includes('zaman')) {
       return [
         '⏱️ ETA Calculations:',
-        '• Basic: T = Distance(nm) ÷ Speed(kn) per hour',
-        '• Flowing: SOG = √(V² + C² + 2VC cos α)',
+        '• Basic: T (h) = Distance (nm) ÷ Speed (kn)',
+        '• With current: SOG = √(V² + C² + 2VC cos α)',
         '• Weather factor: Pro 0.90-0.95, Con 1.10-1.25',
         'Ex: 240nm, 12kn → 20 hours; ETD 08:00 → ETA 04:00+1d'
       ].join('\n');
@@ -268,7 +268,7 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('büyük daire') || last.includes('great circle') || last.includes('gc')) {
       return [
         '🧭 Great Circle:',
-        '• Mesafe: d = arccos(sin φ₁ sin φ₂ + cos φ₁ cos φ₂ cos Δλ) × 3437.747nm',
+        '• Distance: d = arccos(sin φ₁ sin φ₂ + cos φ₁ cos φ₂ cos Δλ) × 3437.747 nm',
         '• First Course: C₁ = arctan2(sin Δλ cos φ₂, cos φ₁ sin φ₂ - sin φ₁ cos φ₂ cos Δλ)',
         '• Shortest distance but variable course'
       ].join('\n');
@@ -277,8 +277,8 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('rhumb') || last.includes('loxodrome') || last.includes('sabit kurs')) {
       return [
         '🧭 Rhumb Line (Loxodrome):',
-        '• Mesafe: d = 60√[(Δφ)² + (q×Δλ)²]',
-        '• Kurs: C = arctan(Δλ/Δq) - sabit kurs',
+        '• Distance: d = 60√[(Δφ)² + (q×Δλ)²]',
+        '• Course: C = arctan(Δλ/Δq) - constant course',
         '• q = log(tan(45°+φ₂/2) / tan(45°+φ₁/2)) / Δφ'
       ].join('\n');
     }
@@ -286,10 +286,10 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('plane') || last.includes('düzlem')) {
       return [
         '🧭 Plane Sailing:',
-        '• DLat = 60(φ₂-φ₁) deniz mili',
+        '• DLat = 60(φ₂-φ₁) nautical miles',
         '• Dep = 60(λ₂-λ₁) × cos φₘ',
-        '• Mesafe: d = √(DLat² + Dep²)',
-        '• Kurs: C = arctan(Dep/DLat)',
+        '• Distance: d = √(DLat² + Dep²)',
+        '• Course: C = arctan(Dep/DLat)',
         '• Ideal for short distances (<600nm)'
       ].join('\n');
     }
@@ -326,10 +326,10 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
 
     if (last.includes('bearing') || last.includes('açı') || last.includes('mesafe')) {
       return [
-        '📐 Bearing & Mesafe:',
-        '• Doubling Angle: Dist = Run × sin(2A) ÷ sin(A)',
-        '• Four Point (Bow & Beam): Dist = Run (45°→90° abeam)',
-        '• Special Angle: Dist = 0.707 × Run (22.5°→45°)',
+        '📐 Bearing & Distance:',
+        '• Doubling the angle on the bow: distance off at the 2nd bearing = distance run',
+        '• Four-point bearing (45° → 90°): distance off when abeam = distance run',
+        '• 22.5° → 45°: distance off when abeam ≈ 0.7 × distance run',
         '• Dip Horizon: d = 2.075√h nm',
         '• Radar Horizon: d = 2.35√h nm'
       ].join('\n');
@@ -337,9 +337,9 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
 
     if (last.includes('gelgit') || last.includes('tide') || last.includes('tidal')) {
       return [
-        '🌊 Tide - One in 12 Rule:',
-        '• 1.saat: R/12, 2.saat: 3R/12, 3.saat: 5R/12',
-        '• 4.saat: 6R/12, 5.saat: 9R/12, 6.saat: 11R/12',
+        '🌊 Tide - Rule of Twelfths:',
+        '• Cumulative rise: 1st hour R/12, 2nd hour 3R/12, 3rd hour 6R/12',
+        '• 4th hour 9R/12, 5th hour 11R/12, 6th hour 12R/12',
         '• Height: h = Range/2 × [1 - cos(π×t/6)]',
         '• Spring tide: New Moon/Full Moon, Neap: First/Last quarter'
       ].join('\n');
@@ -358,7 +358,7 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     if (last.includes('dönme') || last.includes('turning') || last.includes('manevra')) {
       return [
         '🚢 Turning Maneuvers:',
-        '• Tactical Diameter = 3.5 × Gemi Boyu',
+        '• Tactical diameter ≈ 3.5 × ship length (typical)',
         '• Advance = R × sin(Δφ/2)',
         '• Transfer = R × (1 - cos(Δφ/2))',
         '• ROT = 3438 × V ÷ R deg/min'
@@ -367,7 +367,7 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
 
     if (last.includes('hava') || last.includes('weather') || last.includes('rüzgar') || last.includes('beaufort')) {
       return [
-        '🌪️ Hava Durumu:',
+        '🌪️ Weather:',
         '• Beaufort → Wind: V = 2√(B³) kn',
         '• Wave Height: h = 0.025 × V² m',
         '• Leeway Angle: θ = k × (Vwind/Vship)²',
@@ -378,15 +378,15 @@ export async function callNavigationAssistant(messages: AIMessage[], language: s
     return [
       '🧭 Comprehensive Navigation Assistant - All Formulas Ready!',
       '',
-      '📍 Pozisyon: Great Circle, Rhumb Line, Plane Sailing, Mercator',
+      '📍 Position: Great Circle, Rhumb Line, Plane Sailing, Mercator',
       '⏱️ Time: ETA, Current triangle, Speed calculations',
       '📡 Radar: CPA/TCPA, ARPA, Collision risk',
       '🧭 Compass: Var/Dev/Gyro correction, Bearing calculation',
-      '🌊 Tide: One in 12 rule, Tidal stream',
+      '🌊 Tide: Rule of twelfths, Tidal stream',
       '⭐ Celestial: Sight reduction, Azimuth, Intercept',
-      '🚢 Manevra: Turning circle, ROT, Advance/Transfer',
+      '🚢 Manoeuvring: Turning circle, ROT, Advance/Transfer',
       '🌪️ Weather: Beaufort, Wave, Leeway, Wind force',
-      '🆘 Acil: Search patterns, Rescue calculations',
+      '🆘 Emergency: Search patterns, Rescue calculations',
       '',
       'Which calculation do you need help with?'
     ].join('\n');

@@ -112,7 +112,7 @@ const Formulas = () => {
   const suggestedQuestions = [
     "GM calculation formula",
     "How is the trim angle found?",
-    "Stabilite kriterleri nelerdir?",
+    "What are the stability criteria?",
     "Great circle cruise calculation",
     "How is SFOC calculated?",
     "Ballast water distribution",
@@ -328,7 +328,7 @@ Example questions:
                             if (navigator.share) {
                               navigator.share({
                                 title: 'Maritime Calculator — AI Response',
-                                text: `Soru: ${question}\n\nCevap: ${aiResponse}`
+                                text: `Question: ${question}\n\nAnswer: ${aiResponse}`
                               }).catch(() => {});
                             } else {
                               navigator.clipboard.writeText(`Soru: ${question}\n\nCevap: ${aiResponse}`);
@@ -543,13 +543,13 @@ Example questions:
                 <h4 className="font-semibold text-sm text-muted-foreground">Maritime questions:</h4>
                 <div className="grid gap-1">
                   <button 
-                    onClick={() => setQuestion("COLREG Kural 13 ne der?")}
+                    onClick={() => setQuestion("What does COLREG Rule 13 say?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
                     • COLREG rules
                   </button>
                   <button 
-                    onClick={() => setQuestion("MARPOL Annex VI emisyon limitleri nedir?")}
+                    onClick={() => setQuestion("What are the MARPOL Annex VI emission limits?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
                     • MARPOL requirements
@@ -573,7 +573,7 @@ Example questions:
                     • Communications
                   </button>
                   <button 
-                    onClick={() => setQuestion("Pilot merdiveni gereksinimleri nelerdir?")}
+                    onClick={() => setQuestion("What are the pilot ladder requirements?")}
                     className="text-left text-sm p-2 rounded hover:bg-muted/50 transition-colors"
                   >
                     • Operational safety
