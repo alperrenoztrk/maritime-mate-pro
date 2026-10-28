@@ -1,13 +1,17 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import fs from 'node:fs';
 
 import { getStaticTranslation, isDictionaryComplete, loadStaticDictionary } from './staticTranslations';
+
+const simulatorEntries = JSON.parse(fs.readFileSync('scripts/i18n/verified/ship-simulator-ui.json', 'utf8'));
+const sharedLearning = JSON.parse(fs.readFileSync('public/locales/shared/learning-guide.en.json', 'utf8'));
 
 const responses: Record<string, unknown> = {
   '/locales/de.json': { __version: 'x', Kaynak: 'Quelle', 'Baş kontrolü': 'Kopfkontrolle' },
   '/locales/fr.json': {},
   '/locales/shared/terminology-overrides.json': { de: { 'Baş kontrolü': 'Heading control' } },
-  '/locales/shared/learning-guide.en.json': { 'Learning map': 'Learning map' },
+  '/locales/shared/learning-guide.en.json': { ...sharedLearning, 'Learning map': 'Learning map' },
   '/locales/shared/lesson-paragraphs.en.json': {
     'Gemi havuza girdiğinde ağırlık takozlara biner.': 'When the ship enters the dry dock, its weight comes onto the keel blocks.',
     Kaynak: 'Source (English)',
@@ -47,4 +51,14 @@ test('reviewed terminology overrides a known bad locale entry without replacing 
   await loadStaticDictionary('de');
   assert.equal(getStaticTranslation('Baş kontrolü', 'de'), 'Heading control');
   assert.equal(getStaticTranslation('Kaynak', 'de'), 'Quelle');
+});
+
+test('all 14 new simulator entries are available offline through the shared fallback', async () => {
+  const keys = Object.keys(simulatorEntries);
+  assert.equal(keys.length, 14);
+  await loadStaticDictionary('de');
+  for (const key of keys) {
+    assert.equal(Object.prototype.hasOwnProperty.call(sharedLearning, key), true, `Missing generated entry: ${key}`);
+    assert.equal(typeof getStaticTranslation(key, 'de'), 'string', `Missing offline fallback: ${key}`);
+  }
 });
