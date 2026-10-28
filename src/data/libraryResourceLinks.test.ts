@@ -18,7 +18,8 @@ describe("library resources", () => {
   });
   it("includes the resources testers used", () => {
     const paths = items.map((i) => i.to);
-    for (const p of ["/exercises", "/glossary", "/beta/psc-checklist", "/seamanship/knots", "/lessons/stability/topics"]) assert.ok(paths.includes(p), p);
+    for (const p of ["/glossary", "/beta/psc-checklist", "/seamanship/knots", "/lessons/stability/topics"]) assert.ok(paths.includes(p), p);
+    assert.ok(!paths.includes("/exercises"), "exercises lives inside lesson tabs, not the library");
     assert.ok(paths.some((p) => p.startsWith("/machine/")), "engine library");
   });
 });

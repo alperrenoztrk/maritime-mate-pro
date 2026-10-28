@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { getBetaCategories } from "@/data/betaLessons";
-import { BookOpenText, ClipboardCheck, GraduationCap, Ship, Wrench } from "lucide-react";
+import { BookOpenText, GraduationCap, Ship, Wrench } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { useEntitlement } from "@/contexts/useEntitlement";
 import { PRO_GATING_ENABLED, isFreeLibraryKey } from "@/config/proGating";
@@ -58,12 +58,6 @@ export default function LessonsLibraryPage() {
   ];
 
   const practiceEntries = [
-    {
-      title: "Exercises",
-      to: "/exercises",
-      icon: ClipboardCheck,
-      accent: "accent-teal",
-    },
     {
       title: "Exam Preparation",
       to: "/exam-preparation",
