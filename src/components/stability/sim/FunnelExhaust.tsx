@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef } from "react";
+import { SimulationClock } from "./SimulationClock";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import type { ShipType } from "./ShipModel3D";
@@ -97,6 +98,7 @@ function makeSoftSmokeTexture(): THREE.CanvasTexture {
  * effect reads as engine exhaust rather than a cartoon smoke trail.
  */
 export function FunnelExhaust({ position, type }: FunnelExhaustProps) {
+  const simulation = useContext(SimulationClock);
   const points = useRef<THREE.Points>(null);
   const profile = PROFILES[type];
   const texture = useMemo(makeSoftSmokeTexture, []);
@@ -145,7 +147,7 @@ export function FunnelExhaust({ position, type }: FunnelExhaustProps) {
 
   useFrame(({ clock }) => {
     const attribute = geometry.getAttribute("position") as THREE.BufferAttribute;
-    const time = clock.getElapsedTime();
+    const time = simulation?.current.time ?? clock.getElapsedTime();
 
     seeds.forEach((seed, i) => {
       const life = (seed.phase + time * profile.cycleSpeed) % 1;

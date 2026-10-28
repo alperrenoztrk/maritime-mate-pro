@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { SimulationClock } from "./SimulationClock";
+import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { getHullSet, HALF, deckYAt } from "./hullGeometry";
@@ -180,12 +181,13 @@ function ContainerStacks() {
 /** Small animated ensign on a light plane — cheap (16×8 grid, no per-frame
  *  normal recompute; the wave is subtle enough that static normals read fine). */
 function Flag({ position }: { position: [number, number, number] }) {
+  const simulation = useContext(SimulationClock);
   const flagRef = useRef<THREE.Mesh>(null);
   const geometry = useMemo(() => new THREE.PlaneGeometry(0.7, 0.4, 16, 8), []);
 
   useFrame(({ clock }) => {
     if (!flagRef.current) return;
-    const time = clock.getElapsedTime();
+    const time = simulation?.current.time ?? clock.getElapsedTime();
     const positions = geometry.attributes.position as THREE.BufferAttribute;
     for (let i = 0; i < positions.count; i++) {
       const x = positions.getX(i);
@@ -205,6 +207,7 @@ function Flag({ position }: { position: [number, number, number] }) {
 
 /** Slowly idling screw propeller — merged twisted blades + boss, 1 draw call. */
 function Propeller({ shipType }: { shipType: ShipType }) {
+  const simulation = useContext(SimulationClock);
   const ref = useRef<THREE.Mesh>(null);
   const geometry = useMemo(
     () => buildPropeller(shipType === "tanker" || shipType === "bulk" ? 4 : 5, 0.14),
@@ -212,7 +215,7 @@ function Propeller({ shipType }: { shipType: ShipType }) {
   );
   useEffect(() => () => geometry.dispose(), [geometry]);
   useFrame((_, delta) => {
-    if (ref.current) ref.current.rotation.x += delta * 0.8;
+    if (ref.current) ref.current.rotation.x = simulation ? simulation.current.time * 0.8 : ref.current.rotation.x + delta * 0.8;
   });
   return (
     <mesh ref={ref} geometry={geometry} position={[-3.16, -0.44, 0]}>
