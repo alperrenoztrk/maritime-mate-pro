@@ -3,6 +3,12 @@ const input = 'scripts/i18n/verified/maritime-learning.json';
 const output = 'public/locales/shared/learning-guide.en.json';
 const entries = JSON.parse(fs.readFileSync(input, 'utf8'));
 const pack = Object.fromEntries(Object.entries(entries).map(([key, entry]) => [key, entry.en]));
+// Simulator learning copy shares the same runtime and coverage fallback.
+const simulatorEntries = JSON.parse(fs.readFileSync('scripts/i18n/verified/ship-simulator-ui.json', 'utf8'));
+for (const [key, entry] of Object.entries(simulatorEntries)) {
+  if (typeof entry.en !== 'string' || !entry.en.trim()) throw new Error(`Missing simulator English: ${key}`);
+  pack[key] = entry.en;
+}
 // Authored English cases are shared offline fallbacks in every language.
 // Select display fields explicitly: never translate stable IDs or metadata.
 const depthReviews = JSON.parse(fs.readFileSync('src/data/learningDepthReviews.json', 'utf8'));

@@ -1,0 +1,20 @@
+{
+  "At large angles (φ > 15°) the wall-sided formula gives a far more accurate result than the linear approximation. Wave-induced roll, pitch and heave use damped responses to the water surface along the hull. This model does not resolve breaking-wave impacts, flooding or parametric instability.": {
+    "en": "At large angles (φ > 15°) the wall-sided formula gives a far more accurate result than the linear approximation. Wave-induced roll, pitch and heave use damped responses to the water surface along the hull. This model does not resolve breaking-wave impacts, flooding or parametric instability."
+  },
+  "Detail": { "en": "Detail" },
+  "Head seas emphasise pitch; beam seas emphasise roll. Motion uses a simplified reference hull, not ship-specific response data.": {
+    "en": "Head seas emphasise pitch; beam seas emphasise roll. Motion uses a simplified reference hull, not ship-specific response data."
+  },
+  "Hydrostatic particulars": { "en": "Hydrostatic particulars" },
+  "m (requested": { "en": "m (requested" },
+  "m). Increase the period for taller waves.": { "en": "m). Increase the period for taller waves." },
+  "Restart": { "en": "Restart" },
+  "Sea state": { "en": "Sea state" },
+  "Ship type": { "en": "Ship type" },
+  "Simulation playback": { "en": "Simulation playback" },
+  "Stability markers": { "en": "Stability markers" },
+  "This short-period sea exceeds the steepness limit. Rendered Hs:": { "en": "This short-period sea exceeds the steepness limit. Rendered Hs:" },
+  "Water detail": { "en": "Water detail" },
+  "Wind heeling moment": { "en": "Wind heeling moment" }
+}
