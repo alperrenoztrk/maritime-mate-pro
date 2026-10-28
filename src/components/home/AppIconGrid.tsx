@@ -7,7 +7,6 @@ import {
   FlaskConical,
   Library,
   Settings,
-  Sparkles,
   StickyNote,
   type LucideIcon,
 } from "lucide-react";
@@ -26,7 +25,6 @@ const APPS: AppShortcut[] = [
   { label: "Learning map", to: "/lessons/map", icon: BookOpen },
   { label: "Lessons", to: "/lessons", icon: BookOpen },
   { label: "Saved", to: "/saved", icon: Bookmark },
-  { label: "Exercises", to: "/exercises", icon: Sparkles },
   { label: "Dictionary", to: "/glossary", icon: BookA },
   { label: "Beta", to: "/beta", icon: FlaskConical },
   { label: "Notes", to: "/notes", icon: StickyNote },

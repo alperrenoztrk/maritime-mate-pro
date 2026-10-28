@@ -8,7 +8,6 @@ import {
   RadioTower,
   ScrollText,
   Ship,
-  Sparkles,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -35,7 +34,6 @@ export const STATIC_SECTIONS: LibrarySection[] = [
     id: "practice",
     title: "Practice",
     items: [
-      { title: "Exercises", to: "/exercises", icon: Sparkles, accent: "accent-teal" },
       { title: "Exam Preparation", to: "/exam-preparation", icon: GraduationCap, accent: "accent-deep" },
     ],
   },
