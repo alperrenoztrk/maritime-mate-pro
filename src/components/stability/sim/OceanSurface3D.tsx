@@ -1,395 +1,152 @@
-import { useEffect, useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-import { getFoamAlphaTexture, getWaterNormalTexture } from "./proceduralTextures";
+import { useEffect, useMemo, type MutableRefObject } from 'react';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+import { WAVE_COUNT } from '@/lib/seakeeping';
+import type { OceanFrame } from '@/lib/oceanSimulation';
+import { getWaterNormalTexture } from './proceduralTextures';
 
-/**
- * Open-sea surface for the stability sim.
- *
- * The main surface uses a GPU Gerstner-wave sum with analytic normals, keeping
- * full PBR reflections and fog at zero per-frame CPU geometry cost. Swell is
- * damped inside a hull-hugging ELLIPSE (not the old wide circular disc) and a
- * fraction of the motion is retained right at the plating, so the sea stays
- * alive against the hull without destabilising the waterline.
- *
- * Ship/water contact is three physically legible layers instead of a uniform
- * foam ring: narrow hull-contact ribbons following the actual waterline
- * outline, a bow pressure wave and a widening V-shaped stern wake. All three
- * live in one heel-tracking group — pass `heelRef` and they shift leeward and
- * fade with the true heeled waterline. Fully procedural, offline-safe.
- */
-
-const USE_GPU_WAVES = true;
-
-// dirX, dirZ, steepness, wavelength. The near-hull multiplier below keeps a
-// light surface motion at the waterline instead of forcing an artificial calm.
-const WAVES: [number, number, number, number][] = [
-  [1.0, 0.25, 0.035, 9.0],
-  [0.65, 0.76, 0.042, 4.2],
-  [-0.4, 0.85, 0.04, 1.9],
-];
-
-const gerstnerChunk = /* glsl */ `
-uniform float uOceanTime;
-uniform float uOceanG;
-uniform vec2 uOceanDrift;
-uniform float uHullCalm;
-uniform vec4 uWave0;
-uniform vec4 uWave1;
-uniform vec4 uWave2;
-
-vec3 gerstnerWave(vec4 wave, vec3 p, inout vec3 tangent, inout vec3 binormal, float damp) {
-  float steepness = wave.z * damp;
-  float wavelength = wave.w;
-  float k = 6.28318530718 / wavelength;
-  float c = sqrt(uOceanG / k);
-  vec2 d = normalize(wave.xy);
-  float f = k * (dot(d, p.xy + uOceanDrift) - c * uOceanTime);
-  float a = steepness / k;
-
-  tangent += vec3(
-    -d.x * d.x * steepness * sin(f),
-    -d.x * d.y * steepness * sin(f),
-    d.x * steepness * cos(f)
-  );
-  binormal += vec3(
-    -d.x * d.y * steepness * sin(f),
-    -d.y * d.y * steepness * sin(f),
-    d.y * steepness * cos(f)
-  );
-  return vec3(d.x * a * cos(f), d.y * a * cos(f), a * sin(f));
+// Plane-local coordinates: (world x, −world z, world y). Both the GPU and
+// buoyancy sampler consume the same waves and integrated phases.
+const waveShader = /* glsl */ `
+uniform vec4 uWaves[${WAVE_COUNT}];
+uniform float uPhases[${WAVE_COUNT}];
+uniform float uChop;
+void seaSurface(vec2 p, out vec3 offset, out vec3 tx, out vec3 ty, out float compression) {
+  offset = vec3(0.0);
+  tx = vec3(1.0, 0.0, 0.0);
+  ty = vec3(0.0, 1.0, 0.0);
+  for (int i = 0; i < ${WAVE_COUNT}; i++) {
+    vec4 w = uWaves[i];
+    float k = 6.28318530718 / w.w;
+    float phase = k * dot(w.xy, p) + uPhases[i];
+    float s = sin(phase), c = cos(phase), a = w.z / k;
+    offset += vec3(uChop * w.xy * a * c, a * s);
+    tx += vec3(-uChop*w.x*w.x*w.z*s, -uChop*w.x*w.y*w.z*s, w.x*w.z*c);
+    ty += vec3(-uChop*w.x*w.y*w.z*s, -uChop*w.y*w.y*w.z*s, w.y*w.z*c);
+  }
+  compression = 1.0 - (tx.x * ty.y - tx.y * ty.x);
 }
 `;
-
-// Plane is authored in local XY (rotated -90° about X in the scene), so local
-// z is world up and local xy = (world x, -world z). The damp ellipse hugs the
-// hull footprint; 30% of the wave energy is kept alive at the plating.
-const gerstnerVertex = /* glsl */ `
-  float oceanDist = length(position.xy);
-  float hullDist = length(vec2(position.x / 3.4, position.y / 1.35));
-  float nearHullMotion = mix(uHullCalm, 1.0, smoothstep(0.95, 2.1, hullDist));
-  float horizonFlatten = 1.0 - smoothstep(16.0, 28.0, oceanDist);
-  float oceanDamp = nearHullMotion * horizonFlatten;
-  vec3 oceanTangent = vec3(1.0, 0.0, 0.0);
-  vec3 oceanBinormal = vec3(0.0, 1.0, 0.0);
-  vec3 oceanOffset = vec3(0.0);
-  oceanOffset += gerstnerWave(uWave0, position, oceanTangent, oceanBinormal, oceanDamp);
-  oceanOffset += gerstnerWave(uWave1, position, oceanTangent, oceanBinormal, oceanDamp);
-  oceanOffset += gerstnerWave(uWave2, position, oceanTangent, oceanBinormal, oceanDamp);
+const surfaceFragment = /* glsl */ `
+uniform sampler2D uRipple;
+uniform float uTime;
+uniform float uEnergy;
+uniform float uSpeed;
+uniform float uHeel;
+uniform float uWake;
+varying vec2 vSeaPoint;
+float seaNoise(vec2 p) {
+  vec2 i = floor(p), f = fract(p);
+  f = f*f*(3.0-2.0*f);
+  vec4 n = fract(sin(vec4(dot(i,vec2(127.1,311.7)), dot(i+vec2(1,0),vec2(127.1,311.7)),
+    dot(i+vec2(0,1),vec2(127.1,311.7)), dot(i+vec2(1),vec2(127.1,311.7))))*43758.5453);
+  return mix(mix(n.x,n.y,f.x),mix(n.z,n.w,f.x),f.y);
+}
 `;
-
-function makeWakeTexture(): THREE.CanvasTexture {
-  const canvas = document.createElement("canvas");
-  canvas.width = 512;
-  canvas.height = 160;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return new THREE.CanvasTexture(canvas);
-
-  const image = ctx.createImageData(canvas.width, canvas.height);
-  for (let y = 0; y < canvas.height; y++) {
-    const v = (y / (canvas.height - 1) - 0.5) * 2;
-    for (let x = 0; x < canvas.width; x++) {
-      const u = x / (canvas.width - 1);
-      const downstream = 1 - u; // stern is at the right-hand edge of the map
-      const halfWidth = 0.06 + downstream * 0.43;
-      const edgeDistance = Math.abs(Math.abs(v) - halfWidth);
-      const edge = Math.exp(-(edgeDistance * edgeDistance) / 0.008);
-      const coreWidth = 0.05 + downstream * 0.12;
-      const core = Math.exp(-(v * v) / Math.max(0.002, coreWidth * coreWidth)) * (1 - downstream * 0.72);
-      const breakup = 0.66 + 0.34 * Math.sin(x * 0.37 + y * 0.71) * Math.sin(x * 0.11 - y * 0.29);
-      const tailFade = 0.35 + 0.65 * Math.pow(u, 0.35);
-      const alpha = THREE.MathUtils.clamp((edge * 0.72 + core * 0.55) * breakup * tailFade, 0, 1);
-      const i = (y * canvas.width + x) * 4;
-      image.data[i] = 238;
-      image.data[i + 1] = 247;
-      image.data[i + 2] = 252;
-      image.data[i + 3] = Math.round(alpha * 255);
-    }
-  }
-  ctx.putImageData(image, 0, 0);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.wrapS = THREE.ClampToEdgeWrapping;
-  texture.wrapT = THREE.ClampToEdgeWrapping;
-  texture.minFilter = THREE.LinearMipmapLinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-  return texture;
-}
-
-function makeBowWaveTexture(): THREE.CanvasTexture {
-  const canvas = document.createElement("canvas");
-  canvas.width = 256;
-  canvas.height = 256;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return new THREE.CanvasTexture(canvas);
-
-  const image = ctx.createImageData(canvas.width, canvas.height);
-  for (let y = 0; y < canvas.height; y++) {
-    const v = (y / (canvas.height - 1) - 0.5) * 2;
-    for (let x = 0; x < canvas.width; x++) {
-      const u = (x / (canvas.width - 1) - 0.5) * 2;
-      const shiftedU = u + 0.18;
-      const radius = Math.sqrt(shiftedU * shiftedU + (v / 0.78) * (v / 0.78));
-      const crescent = Math.exp(-Math.pow((radius - 0.58) / 0.115, 2));
-      const forwardMask = THREE.MathUtils.smoothstep(u, -0.28, 0.72);
-      const shoulderBreakup = 0.72 + 0.28 * Math.sin(x * 0.22 + y * 0.37);
-      const alpha = THREE.MathUtils.clamp(crescent * forwardMask * shoulderBreakup, 0, 1);
-      const i = (y * canvas.width + x) * 4;
-      image.data[i] = 242;
-      image.data[i + 1] = 249;
-      image.data[i + 2] = 252;
-      image.data[i + 3] = Math.round(alpha * 210);
-    }
-  }
-  ctx.putImageData(image, 0, 0);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.minFilter = THREE.LinearMipmapLinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-  return texture;
-}
-
-function buildHullFoamRibbon(side: 1 | -1): THREE.BufferGeometry {
-  // World-space approximation of the scaled hull waterline, stern to bow.
-  const samples: Array<[number, number]> = [
-    [-2.82, 0.3],
-    [-2.45, 0.43],
-    [-1.65, 0.52],
-    [-0.45, 0.54],
-    [0.8, 0.53],
-    [1.8, 0.48],
-    [2.48, 0.34],
-    [2.83, 0.13],
-  ];
-  const width = 0.1;
-  const positions: number[] = [];
-  const uvs: number[] = [];
-  const indices: number[] = [];
-
-  samples.forEach(([x, halfBeam], i) => {
-    const inner = side * (halfBeam - width * 0.35);
-    const outer = side * (halfBeam + width);
-    positions.push(x, 0.018, inner, x, 0.022, outer);
-    const u = i / (samples.length - 1);
-    uvs.push(u * 4.5, 0, u * 4.5, 1);
-  });
-
-  for (let i = 0; i < samples.length - 1; i++) {
-    const a = i * 2;
-    const b = a + 1;
-    const c = a + 2;
-    const d = a + 3;
-    indices.push(a, c, d, a, d, b);
-  }
-
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
-  geometry.setIndex(indices);
-  geometry.computeVertexNormals();
+/** One draw call with a dense near field and coarse fogged horizon. */
+function oceanGeometry(high: boolean) {
+  const geometry = new THREE.PlaneGeometry(2, 2, high ? 192 : 128, high ? 192 : 128);
+  const position = geometry.attributes.position;
+  const spread = (v: number) => Math.sign(v) * 65 * Math.expm1(Math.abs(v) * 3.8) / Math.expm1(3.8);
+  for (let i = 0; i < position.count; i++) position.setXYZ(i, spread(position.getX(i)), spread(position.getY(i)), 0);
+  geometry.computeBoundingSphere();
   return geometry;
 }
-
-interface OceanSurface3DProps {
-  /** Live heel angle (radians) — contact foam/wake track the heeled waterline. */
-  heelRef?: React.MutableRefObject<number>;
-  /** Gerstner components in scene units; defaults to the gentle stability-page sea. */
-  waves?: [number, number, number, number][];
-  /** Scene gravity used for wave celerity (keep in sync with the ship sampler). */
-  gravity?: number;
-  /** Distance (scene units) the ship has advanced; water streams astern. */
-  driftRef?: React.MutableRefObject<number>;
-  /** Fraction of wave motion kept at the plating (0.3 calm-looking, 1 = full sea). */
-  hullCalm?: number;
-  /** Hide bow wave / stern wake overlays when the ship is stopped. */
-  showWake?: boolean;
+interface Props {
+  frame: MutableRefObject<OceanFrame>;
+  heelRef: MutableRefObject<number>;
+  wakeIntensity: number;
+  quality?: 'high' | 'balanced';
 }
-
-export function OceanSurface3D({ heelRef, waves = WAVES, gravity = 9.8, driftRef, hullCalm = 0.3, showWake = true }: OceanSurface3DProps) {
-  const timeUniform = useRef<{ value: number }>({ value: 0 });
-  const gUniform = useRef({ value: gravity });
-  const driftUniform = useRef({ value: new THREE.Vector2() });
-  const calmUniform = useRef({ value: hullCalm });
-  const waveUniforms = useRef(WAVES.map((w) => ({ value: new THREE.Vector4(...w) })));
-  gUniform.current.value = gravity;
-  calmUniform.current.value = hullCalm;
-  waves.slice(0, 3).forEach((w, i) => waveUniforms.current[i].value.set(w[0], w[1], w[2], w[3]));
-  const interactionGroup = useRef<THREE.Group>(null);
-
-  const normalTex = useMemo(() => {
-    const t = getWaterNormalTexture();
-    t.repeat.set(8, 8);
-    return t;
+export function OceanSurface3D({ frame, heelRef, wakeIntensity, quality = 'balanced' }: Props) {
+  const geometry = useMemo(() => oceanGeometry(quality === 'high'), [quality]);
+  const normalTexture = useMemo(() => {
+    const texture = getWaterNormalTexture().clone();
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    return texture;
   }, []);
-  const foamTex = useMemo(() => {
-    const t = getFoamAlphaTexture();
-    t.repeat.set(5, 1.2);
-    return t;
-  }, []);
-  const wakeTex = useMemo(makeWakeTexture, []);
-  const bowWaveTex = useMemo(makeBowWaveTexture, []);
-
+  const uniforms = useMemo(() => ({
+    uWaves: { value: Array.from({ length: WAVE_COUNT }, () => new THREE.Vector4(1, 0, 0, 1)) },
+    uPhases: { value: new Float32Array(WAVE_COUNT) },
+    uChop: { value: 0 }, uTime: { value: 0 }, uEnergy: { value: 0 },
+    uSpeed: { value: 0 }, uHeel: { value: 0 }, uWake: { value: 0 },
+    uRipple: { value: normalTexture },
+  }), [normalTexture]);
   const material = useMemo(() => {
-    const mat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#0b4168"),
-      roughness: 0.14,
-      metalness: 0,
-      normalMap: normalTex,
-      normalScale: new THREE.Vector2(0.32, 0.32),
-      envMapIntensity: 1.25,
-      transparent: true,
-      opacity: 0.965,
+    // Opaque deep water correctly occludes submerged plating; foam is shaded on
+    // the displaced surface rather than a transparent plane over the waves.
+    const mat = new THREE.MeshPhysicalMaterial({
+      color: '#063844', roughness: 0.18, metalness: 0, ior: 1.333, envMapIntensity: 1.35,
     });
-    if (USE_GPU_WAVES) {
-      mat.onBeforeCompile = (shader) => {
-        shader.uniforms.uOceanTime = timeUniform.current;
-        shader.uniforms.uOceanG = gUniform.current;
-        shader.uniforms.uOceanDrift = driftUniform.current;
-        shader.uniforms.uHullCalm = calmUniform.current;
-        waveUniforms.current.forEach((u, i) => {
-          shader.uniforms[`uWave${i}`] = u;
-        });
-        shader.vertexShader = shader.vertexShader
-          .replace("#include <common>", `#include <common>\n${gerstnerChunk}`)
-          .replace(
-            "#include <beginnormal_vertex>",
-            `${gerstnerVertex}
-             vec3 objectNormal = normalize(cross(oceanBinormal, oceanTangent));
-             #ifdef USE_TANGENT
-               vec3 objectTangent = vec3( tangent.xyz );
-             #endif`
-          )
-          .replace("#include <begin_vertex>", "vec3 transformed = vec3(position) + oceanOffset;");
-      };
-      mat.customProgramCacheKey = () => "ocean-gerstner-v4";
-    }
+    mat.onBeforeCompile = shader => {
+      Object.assign(shader.uniforms, uniforms);
+      shader.vertexShader = shader.vertexShader
+        .replace('#include <common>', `#include <common>\n${waveShader}\nvarying vec2 vSeaPoint;`)
+        .replace('#include <beginnormal_vertex>', `
+          vec3 displacement, tx, ty; float compression;
+          seaSurface(position.xy, displacement, tx, ty, compression);
+          vec3 objectNormal = normalize(cross(tx, ty));
+        `)
+        .replace('#include <begin_vertex>', `
+          vSeaPoint = position.xy;
+          vec3 transformed = position + displacement;
+        `);
+      shader.fragmentShader = shader.fragmentShader
+        .replace('#include <common>', `#include <common>\n${waveShader}\n${surfaceFragment}`)
+        .replace('#include <color_fragment>', `
+          #include <color_fragment>
+          vec3 oceanOffset, oceanTx, oceanTy; float compression;
+          seaSurface(vSeaPoint, oceanOffset, oceanTx, oceanTy, compression);
+          vec2 waterPoint = vSeaPoint + oceanOffset.xy;
+          float distanceFade = 1.0 - smoothstep(14.0, 45.0, length(vSeaPoint));
+          vec2 flow = waterPoint*7.0 + vec2(uTime*0.16, -uTime*0.11);
+          float bubbles = seaNoise(flow)*0.65 + seaNoise(flow*3.7)*0.35;
+          float crest = smoothstep(0.12, 0.40, compression) * smoothstep(0.28,0.72,bubbles);
+          crest *= smoothstep(0.045, 0.2, uEnergy);
+          float aft = max(0.0, -waterPoint.x-2.75);
+          float side = abs(waterPoint.y - sin(uHeel)*0.30);
+          float wakeWidth = 0.24 + aft*0.354;
+          float kelvin = exp(-pow((side-wakeWidth)/(0.055+aft*0.035),2.0));
+          float propWash = exp(-side*side/(0.025+aft*0.12));
+          float aftMask = 1.0-smoothstep(-3.1,-2.65,waterPoint.x);
+          float wake = (kelvin*0.65+propWash*0.48)*aftMask*exp(-aft*0.26);
+          float bow = exp(-pow((waterPoint.x-2.76)/0.36,2.0)-pow((side-0.22)/0.13,2.0));
+          float speedFade = smoothstep(0.002, 0.18, uSpeed) * uWake;
+          float wakeFoam = (wake+bow)*speedFade*smoothstep(0.22,0.66,bubbles);
+          float foam = clamp((crest + wakeFoam)*distanceFade,0.0,0.92);
+          float crestLight = smoothstep(-0.08,0.15,oceanOffset.z);
+          diffuseColor.rgb = mix(diffuseColor.rgb,vec3(0.018,0.16,0.18),crestLight*0.45);
+          diffuseColor.rgb = mix(diffuseColor.rgb,vec3(0.78,0.88,0.87),foam);
+        `)
+        .replace('#include <roughnessmap_fragment>', `
+          #include <roughnessmap_fragment>
+          roughnessFactor = mix(0.13,0.66,foam);
+        `)
+        .replace('#include <normal_fragment_maps>', `
+          // Analytic fragment normals preserve short waves beyond mesh spacing.
+          vec2 ripple1 = texture2D(uRipple,waterPoint*0.75+vec2(uTime*0.013,uTime*0.007)).xy*2.0-1.0;
+          vec2 ripple2 = texture2D(uRipple,waterPoint.yx*1.83+vec2(-uTime*0.009,uTime*0.017)).xy*2.0-1.0;
+          vec2 ripple = (ripple1+ripple2*0.45)*min(1.0,uEnergy*5.0)*distanceFade;
+          vec3 localSeaNormal = normalize(cross(oceanTx,oceanTy));
+          vec3 worldSeaNormal = normalize(vec3(localSeaNormal.x+ripple.x*0.22,localSeaNormal.z,-localSeaNormal.y+ripple.y*0.22));
+          normal = normalize(mat3(viewMatrix)*worldSeaNormal);
+        `);
+    };
+    mat.customProgramCacheKey = () => 'directional-ocean-v1';
     return mat;
-  }, [normalTex]);
-
-  const geometry = useMemo(() => new THREE.PlaneGeometry(70, 70, 96, 96), []);
-  const portFoamGeometry = useMemo(() => buildHullFoamRibbon(-1), []);
-  const starboardFoamGeometry = useMemo(() => buildHullFoamRibbon(1), []);
-  const wakeGeometry = useMemo(() => new THREE.PlaneGeometry(4.4, 2.05), []);
-  const bowWaveGeometry = useMemo(() => new THREE.PlaneGeometry(1.65, 1.55), []);
-
-  const foamMaterial = useMemo(
-    () =>
-      new THREE.MeshBasicMaterial({
-        color: "#eef7fb",
-        alphaMap: foamTex,
-        transparent: true,
-        opacity: 0.78,
-        depthWrite: false,
-        side: THREE.DoubleSide,
-      }),
-    [foamTex]
-  );
-  const wakeMaterial = useMemo(
-    () =>
-      new THREE.MeshBasicMaterial({
-        color: "#e7f3f8",
-        alphaMap: wakeTex,
-        transparent: true,
-        opacity: 0.58,
-        depthWrite: false,
-        side: THREE.DoubleSide,
-      }),
-    [wakeTex]
-  );
-  const bowWaveMaterial = useMemo(
-    () =>
-      new THREE.MeshBasicMaterial({
-        color: "#f0f8fb",
-        alphaMap: bowWaveTex,
-        transparent: true,
-        opacity: 0.64,
-        depthWrite: false,
-        side: THREE.DoubleSide,
-      }),
-    [bowWaveTex]
-  );
-
-  useFrame(({ clock }, delta) => {
-    timeUniform.current.value = clock.getElapsedTime();
-    driftUniform.current.value.set(driftRef?.current ?? 0, 0);
-    // Independent motion rates prevent the normal detail and foam from locking
-    // into the same obvious texture loop.
-    normalTex.offset.x += delta * 0.012;
-    normalTex.offset.y += delta * 0.006;
-    foamTex.offset.x += delta * 0.024;
-    foamTex.offset.y += delta * 0.004;
-    // Contact layers track the heeled waterline: shift leeward and fade so
-    // they never argue with the real hull/water intersection at big angles.
-    const heel = heelRef?.current ?? 0;
-    if (interactionGroup.current) interactionGroup.current.position.z = -Math.sin(heel) * 0.32;
-    const heelFade = Math.min(Math.abs(heel) / 0.44, 1);
-    foamMaterial.opacity = 0.78 - 0.38 * heelFade;
-    wakeMaterial.opacity = 0.58 - 0.2 * heelFade;
-    bowWaveMaterial.opacity = 0.64 - 0.24 * heelFade;
+  }, [uniforms]);
+  useFrame(() => {
+    const sea = frame.current;
+    let energy = 0;
+    sea.waves.forEach((w, i) => {
+      uniforms.uWaves.value[i].set(...w); uniforms.uPhases.value[i] = sea.phases[i]; energy += w[2];
+    });
+    uniforms.uChop.value = sea.chop; uniforms.uTime.value = sea.time;
+    uniforms.uEnergy.value = energy; uniforms.uSpeed.value = sea.speed;
+    uniforms.uHeel.value = heelRef.current; uniforms.uWake.value = wakeIntensity;
   });
-
-  useEffect(
-    () => () => {
-      geometry.dispose();
-      material.dispose();
-      portFoamGeometry.dispose();
-      starboardFoamGeometry.dispose();
-      wakeGeometry.dispose();
-      bowWaveGeometry.dispose();
-      foamMaterial.dispose();
-      wakeMaterial.dispose();
-      bowWaveMaterial.dispose();
-      wakeTex.dispose();
-      bowWaveTex.dispose();
-    },
-    [
-      geometry,
-      material,
-      portFoamGeometry,
-      starboardFoamGeometry,
-      wakeGeometry,
-      bowWaveGeometry,
-      foamMaterial,
-      wakeMaterial,
-      bowWaveMaterial,
-      wakeTex,
-      bowWaveTex,
-    ]
-  );
-
-  return (
-    <group>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} geometry={geometry} material={material} receiveShadow />
-
-      <group ref={interactionGroup}>
-        {/* Narrow, irregular contact foam follows the actual visual waterline
-            instead of forming a perfect ellipse around the ship. */}
-        <mesh geometry={portFoamGeometry} material={foamMaterial} renderOrder={2} />
-        <mesh geometry={starboardFoamGeometry} material={foamMaterial} renderOrder={2} />
-
-        {/* Bow pressure wave and a restrained V-shaped stern wake. Both are flat,
-            transparent overlays, so the GPU cost stays negligible on mobile. */}
-        {showWake && (<>
-        <mesh
-          rotation={[-Math.PI / 2, 0, 0]}
-          position={[3.1, 0.026, 0]}
-          geometry={bowWaveGeometry}
-          material={bowWaveMaterial}
-          renderOrder={2}
-        />
-        <mesh
-          rotation={[-Math.PI / 2, 0, 0]}
-          position={[-5.0, 0.024, 0]}
-          geometry={wakeGeometry}
-          material={wakeMaterial}
-          renderOrder={2}
-        />
-        </>)}
-      </group>
-    </group>
-  );
+  useEffect(() => () => geometry.dispose(), [geometry]);
+  useEffect(() => () => { material.dispose(); normalTexture.dispose(); }, [material, normalTexture]);
+  return <mesh name="ocean-surface" rotation={[-Math.PI / 2, 0, 0]} geometry={geometry} material={material} receiveShadow />;
 }
-
 export default OceanSurface3D;

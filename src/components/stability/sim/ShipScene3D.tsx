@@ -1,26 +1,25 @@
-import { useRef, type MutableRefObject, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, type MutableRefObject, type ReactNode } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { SceneEnvironment } from "./SceneEnvironment";
 import { OceanSurface3D } from "./OceanSurface3D";
-import { WakeEffects } from "./WakeEffects";
 import { ShipModel3D, type ShipType } from "./ShipModel3D";
 import { immersionFor, SHIP_SCALE_DEFAULT } from "./shipDraftGeometry";
-import { gerstnerHeight, type WaveComponent } from "@/lib/seakeeping";
+import { buildSea, SCENE_G, type WaveComponent } from "@/lib/seakeeping";
+import { advanceOcean, createOceanFrame, createVesselMotion, stepVesselMotion, waveTargets } from "@/lib/oceanSimulation";
+import { SimulationClock } from "./SimulationClock";
 
 /**
  * Sea-keeping input. When set, the ship heaves, rolls and pitches on the SAME
  * Gerstner sea the ocean shader draws: heave follows mean surface height under
  * the hull, roll/pitch are damped oscillators forced by the local wave slope
- * across the beam and along the length (Froude–Krylov, small-ship assumption).
+ * across the beam and along the length (distributed waterplane approximation).
  */
 export interface SeaMotion {
   waves: WaveComponent[];
   gravity: number;
   /** Ship speed in scene units per second (water drifts astern). */
   speedUnits: number;
-  /** Fraction of wave energy drawn at the hull plating. */
-  hullCalm: number;
   /** Natural roll circular frequency (rad/s) = 2π / Tr. */
   rollOmega: number;
   rollZeta: number;
@@ -55,14 +54,17 @@ export interface ShipScene3DProps {
   draftM?: number;
   /** Damped-spring roll parameters, or null for a critically-damped lerp. */
   rollDynamics?: { omega: number; zeta: number } | null;
-  /** Throttled (~12 Hz) live heel callback for HUD/GZ readouts. */
+  /** Throttled (10 Hz) live heel callback for HUD/GZ readouts. */
   onHeelUpdate?: (heelRad: number) => void;
-  /** Wake foam opacity; 0 removes the wake strips. */
+  /** Wake foam strength; 0 removes bow/stern foam. */
   wakeIntensity?: number;
   scale?: number;
   sea?: SeaMotion | null;
   /** Throttled live roll/pitch (radians) for the sea-keeping HUD. */
-  onMotionUpdate?: (rollRad: number, pitchRad: number) => void;
+  onMotionUpdate?: (rollRad: number, pitchRad: number, heaveUnits: number) => void;
+  paused?: boolean;
+  resetToken?: number;
+  quality?: 'high' | 'balanced';
   /** Extra scenery that does not move with the ship (e.g. harbour). */
   scenery?: ReactNode;
   /** Rendered inside the heeling group — markers tilt with the ship. */
@@ -81,6 +83,9 @@ export function ShipScene3D({
   sea = null,
   onMotionUpdate,
   scenery,
+  paused = false,
+  resetToken = 0,
+  quality = "balanced",
   children,
 }: ShipScene3DProps) {
   const heelGroup = useRef<THREE.Group>(null);
@@ -90,100 +95,65 @@ export function ShipScene3D({
   const trimRef = useRef(0);
   const immersionRef = useRef(immersionFor(draftM, scale));
   const lastReport = useRef(0);
-  const driftRef = useRef(0) as MutableRefObject<number>;
-  const rollV = useRef(0);
-  const roll = useRef(0);
-  const pitchV = useRef(0);
-  const pitch = useRef(0);
-  const heave = useRef(0);
+  const fallbackWaves = useMemo(() => buildSea(0.35, 8, 120), []);
+  const frame = useRef(createOceanFrame(sea?.waves ?? fallbackWaves));
+  const motion = useRef(createVesselMotion());
+  const totalHeel = useRef(0);
 
-  useFrame(({ clock }, delta) => {
-    const dt = Math.min(delta, 0.05);
+  useEffect(() => {
+    frame.current.time = 0;
+    frame.current.accumulator = 0;
+    frame.current.phases = createOceanFrame(frame.current.waves).phases;
+    motion.current = createVesselMotion();
+    velocityRef.current = 0;
+    heelRef.current = 0;
+    lastReport.current = -1;
+  }, [resetToken]);
 
-    if (rollDynamics) {
-      // damped harmonic oscillator: θ'' = -ω²(θ - θ_target) - 2ζωθ'
-      const { omega, zeta } = rollDynamics;
-      const error = heelRef.current - heelRad;
-      const accel = -omega * omega * error - 2 * zeta * omega * velocityRef.current;
-      velocityRef.current += accel * dt;
-      heelRef.current += velocityRef.current * dt;
-    } else {
-      heelRef.current += (heelRad - heelRef.current) * (1 - Math.exp(-6 * dt));
-      velocityRef.current = 0;
-    }
-    trimRef.current += (-trimRad - trimRef.current) * (1 - Math.exp(-6 * dt));
-    immersionRef.current += (immersionFor(draftM, scale) - immersionRef.current) * (1 - Math.exp(-2 * dt));
-
-    let waveRoll = 0;
-    let wavePitch = 0;
-    let heaveY = 0;
-    if (sea) {
-      driftRef.current += sea.speedUnits * dt;
-      const t = clock.elapsedTime;
-      const d = driftRef.current;
-      // Ship-local sample points in scene units (bow +x, starboard +z).
-      // Plane local coords: px = x + drift, py = −z.
-      const k = sea.hullCalm;
-      const h = (x: number, z: number) => gerstnerHeight(sea.waves, sea.gravity, x + d, -z, t) * k;
-      const halfL = 2.4 * (scale / SHIP_SCALE_DEFAULT);
-      const halfB = 0.45 * (scale / SHIP_SCALE_DEFAULT);
-      const hb = h(halfL, 0), hs = h(-halfL, 0), hp = h(0, -halfB), hst = h(0, halfB);
-      const hm = (hb + hs + hp + hst) / 4;
-      // Effective wave slope: +x bow up, +rotation.x heels toward +z (starboard).
-      const slopePitch = Math.atan2(hb - hs, 2 * halfL);
-      const slopeRoll = Math.atan2(hp - hst, 2 * halfB) * 0.5;
-
-      const wr = sea.rollOmega, zr = sea.rollZeta;
-      const rAcc = -wr * wr * (roll.current - slopeRoll) - 2 * zr * wr * rollV.current;
-      rollV.current += rAcc * dt;
-      roll.current = THREE.MathUtils.clamp(roll.current + rollV.current * dt, -0.7, 0.7);
-
-      // Pitch is heavily damped: long hulls follow the wave contour closely.
-      const wp = 2.2, zp = 0.7;
-      const pAcc = -wp * wp * (pitch.current - slopePitch) - 2 * zp * wp * pitchV.current;
-      pitchV.current += pAcc * dt;
-      pitch.current += pitchV.current * dt;
-
-      heave.current += (hm - heave.current) * (1 - Math.exp(-3 * dt));
-      waveRoll = roll.current;
-      wavePitch = pitch.current;
-      heaveY = heave.current;
-    }
-
+  // Update before the GPU material copies uniforms: one clock for every layer.
+  useFrame((_, delta) => {
+    advanceOcean(frame.current, sea?.waves ?? fallbackWaves, sea?.speedUnits ?? 0.08,
+      sea?.gravity ?? SCENE_G, delta, paused, dt => {
+        if (rollDynamics) {
+          const { omega, zeta } = rollDynamics;
+          const accel = -omega * omega * (heelRef.current - heelRad) - 2 * zeta * omega * velocityRef.current;
+          velocityRef.current += accel * dt;
+          heelRef.current += velocityRef.current * dt;
+        } else {
+          heelRef.current += (heelRad - heelRef.current) * (1 - Math.exp(-6 * dt));
+          velocityRef.current = 0;
+        }
+        trimRef.current += (-trimRad - trimRef.current) * (1 - Math.exp(-6 * dt));
+        immersionRef.current += (immersionFor(draftM, scale) - immersionRef.current) * (1 - Math.exp(-2 * dt));
+        if (sea) stepVesselMotion(motion.current, waveTargets(frame.current, scale / SHIP_SCALE_DEFAULT), sea.rollOmega, sea.rollZeta, dt);
+      });
+    const m = motion.current;
+    totalHeel.current = heelRef.current + (sea ? m.roll : 0);
     if (heelGroup.current) {
-      heelGroup.current.rotation.x = heelRef.current + waveRoll;
-      heelGroup.current.rotation.z = trimRef.current + wavePitch;
-      heelGroup.current.position.y = heaveY;
+      heelGroup.current.rotation.x = totalHeel.current;
+      heelGroup.current.rotation.z = trimRef.current + (sea ? m.pitch : 0);
+      heelGroup.current.position.y = sea ? m.heave : 0;
     }
-    if (immersionGroup.current) {
-      immersionGroup.current.position.y = -immersionRef.current;
+    if (immersionGroup.current) immersionGroup.current.position.y = -immersionRef.current;
+    if (frame.current.time - lastReport.current >= 0.1) {
+      onHeelUpdate?.(totalHeel.current);
+      onMotionUpdate?.(totalHeel.current, sea ? m.pitch : 0, sea ? m.heave : 0);
+      lastReport.current = frame.current.time;
     }
-
-    if (clock.elapsedTime - lastReport.current > 0.08) {
-      onHeelUpdate?.(heelRef.current + waveRoll);
-      onMotionUpdate?.(heelRef.current + waveRoll, wavePitch);
-      lastReport.current = clock.elapsedTime;
-    }
-  });
+  }, -1);
 
   return (
     <group>
       <SceneEnvironment />
-      <OceanSurface3D
-        heelRef={heelRef}
-        waves={sea?.waves}
-        gravity={sea?.gravity}
-        driftRef={sea ? driftRef : undefined}
-        hullCalm={sea?.hullCalm}
-        showWake={!sea || sea.speedUnits > 0.01}
-      />
+      <OceanSurface3D frame={frame} heelRef={totalHeel} wakeIntensity={wakeIntensity} quality={quality} />
       {scenery}
-      <WakeEffects heelRef={heelRef} intensity={sea && sea.speedUnits <= 0.01 ? 0 : wakeIntensity} scale={scale} />
 
       {/* heel/trim rig → immersion rig → vessel; markers ride the heel rig */}
-      <group ref={heelGroup}>
+      <group ref={heelGroup} name="vessel-motion">
         <group ref={immersionGroup}>
-          <ShipModel3D shipType={shipType} scale={scale} />
+          <SimulationClock.Provider value={frame}>
+            <ShipModel3D shipType={shipType} scale={scale} />
+          </SimulationClock.Provider>
         </group>
         {children}
       </group>

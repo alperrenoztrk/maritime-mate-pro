@@ -70,42 +70,40 @@ export function resonanceRisk(rollPeriodS: number, encounterS: number, tolerance
 /** Gerstner component in scene units: [dirX, dirY, steepness k·a, wavelength]. */
 export type WaveComponent = [number, number, number, number];
 
-/**
- * Builds a 3-component sea in scene units. Primary carries Hs/2 amplitude
- * along heading μ; two shorter components add natural irregularity.
- * Steepness is capped below the Stokes breaking limit (H/λ = 1/7).
- */
+/** Compact directional visual spectrum, normalised to Hs = 4√m₀.
+ * μ is the propagation angle: 180° head seas travel towards −x,
+ * matching encounterPeriod. Local y maps to world −z. */
+export const WAVE_COUNT = 12;
 export function buildSea(hsM: number, periodS: number, headingDeg: number): WaveComponent[] {
-  const lambdaM = deepWaterWavelength(periodS);
-  const comps: Array<[number, number, number]> = [
-    // [relative heading offset deg, wavelength factor, amplitude factor]
-    [0, 1, 1],
-    [28, 0.55, 0.35],
-    [-35, 0.3, 0.18],
+  const height = Number.isFinite(hsM) ? Math.max(0, hsM) : 0;
+  const period = Number.isFinite(periodS) ? Math.max(2, periodS) : 9;
+  const heading = Number.isFinite(headingDeg) ? headingDeg : 90;
+  const bands = [
+    [0, 1, 1], [12, 1.21, 0.74], [-14, 0.83, 0.66],
+    [24, 0.67, 0.47], [-25, 1.53, 0.43], [7, 0.52, 0.32],
+    [-9, 0.41, 0.24], [38, 0.34, 0.18], [-40, 0.27, 0.13],
+    [19, 1.89, 0.25], [-31, 0.22, 0.08], [51, 0.18, 0.055],
   ];
-  return comps.map(([off, lf, af]) => {
-    // Waves travel FROM μ toward the ship: head seas (180°) propagate toward −x.
-    const dirRad = ((headingDeg + 180 + off) * Math.PI) / 180;
-    const lambda = lambdaM * lf;
-    const a = (hsM / 2) * af;
-    const k = (2 * Math.PI) / lambda;
-    const steep = Math.min(k * a, Math.PI / 7);
-    return [Math.cos(dirRad), Math.sin(dirRad), steep, lambda / METRES_PER_UNIT];
+  const norm = Math.sqrt(bands.reduce((sum, b) => sum + b[2] ** 2, 0));
+  return bands.map(([offset, factor, weight]) => {
+    const direction = (heading + offset) * Math.PI / 180;
+    const wavelength = deepWaterWavelength(period) * factor / METRES_PER_UNIT;
+    const amplitude = height * weight / (Math.sqrt(8) * norm * METRES_PER_UNIT);
+    const steepness = Math.min(2 * Math.PI * amplitude / wavelength, 0.38);
+    return [Math.cos(direction), Math.sin(direction), steepness, wavelength];
   });
 }
-
-/** Scene-unit gravity so wave periods stay real-time at scene scale. */
 export const SCENE_G = G / METRES_PER_UNIT;
-
-/** Vertical Gerstner displacement at local plane point (px, py), matches the shader. */
+/** Height in material coordinates, before horizontal displacement. */
 export function gerstnerHeight(waves: WaveComponent[], g: number, px: number, py: number, t: number): number {
   let h = 0;
   for (const [dx, dy, steep, wl] of waves) {
-    const k = (2 * Math.PI) / wl;
-    const c = Math.sqrt(g / k);
-    const len = Math.hypot(dx, dy) || 1;
-    const f = k * ((dx / len) * px + (dy / len) * py - c * t);
-    h += (steep / k) * Math.sin(f);
+    const k = (2 * Math.PI) / wl, len = Math.hypot(dx, dy) || 1;
+    h += (steep / k) * Math.sin(k * ((dx / len) * px + (dy / len) * py) - Math.sqrt(g * k) * t);
   }
   return h;
+}
+/** Actual spectral Hs after limiting impossible height/period combinations. */
+export function spectralHs(waves: WaveComponent[]): number {
+  return 4 * METRES_PER_UNIT * Math.sqrt(waves.reduce((v, w) => v + (w[2] * w[3] / (2 * Math.PI)) ** 2 / 2, 0));
 }
