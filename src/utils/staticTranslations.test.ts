@@ -58,7 +58,7 @@ test('all 14 new simulator entries are available offline through the shared fall
   assert.equal(keys.length, 14);
   await loadStaticDictionary('de');
   for (const key of keys) {
-    assert.equal(Object.hasOwn(sharedLearning, key), true, `Missing generated entry: ${key}`);
+    assert.equal(Object.prototype.hasOwnProperty.call(sharedLearning, key), true, `Missing generated entry: ${key}`);
     assert.equal(typeof getStaticTranslation(key, 'de'), 'string', `Missing offline fallback: ${key}`);
   }
 });
