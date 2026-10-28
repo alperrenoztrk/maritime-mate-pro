@@ -10,27 +10,26 @@ interface KnotCardProps {
 
 /**
  * One maritime knot rendered as a collapsible accordion item. Shows a real,
- * verified knot-tying video (click-to-play), the alternate names, step-by-step
+ * verified knot-tying video (click-to-play), step-by-step
  * instructions (çıma / beden / kasa terminolojisiyle), usage, strength loss and
  * a practical tip. Every video is sourced from a reputable channel and was
  * checked to be live and embeddable. Must be rendered inside an <Accordion>.
  *
  * The Turkish name is the translation key, so it renders in the reader's
- * language. The English name is shown beside it for other languages, and the
- * Turkish names are listed untranslated for crews who know them that way.
+ * language. The English name is shown beside it for other languages. Turkish
+ * names (`aka`) are only used for search and are never displayed.
  */
 export default function KnotCard({ knotId }: KnotCardProps) {
   const { currentLanguage } = useLanguage();
   const def = SAILOR_KNOTS_BY_ID[knotId];
   if (!def) return null;
-  const turkishNames = [def.name, ...(def.aka ?? [])];
 
   return (
     <AccordionItem value={def.id} className="border-b border-border/40 last:border-b-0">
       <AccordionTrigger className="px-3 py-3 hover:no-underline">
         <div className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 pr-2 text-left">
           <span className="text-sm font-semibold text-foreground">{def.name}</span>
-          {currentLanguage !== "en" && (
+          {currentLanguage !== "en" && def.name !== def.nameEn && (
             <span translate="no" className="notranslate text-micro text-muted-foreground">
               {def.nameEn}
             </span>
@@ -46,21 +45,6 @@ export default function KnotCard({ knotId }: KnotCardProps) {
           poster={def.image}
           credit={def.videoCredit}
         />
-
-        {/* Turkish names (never translated) */}
-        <div className="mb-3 flex flex-wrap items-center gap-1.5">
-          <span className="text-micro uppercase tracking-wide text-muted-foreground/70">Turkish names</span>
-          {turkishNames.map((name) => (
-            <span
-              key={name}
-              lang="tr"
-              translate="no"
-              className="notranslate rounded-full bg-muted/50 px-2 py-0.5 text-micro text-muted-foreground"
-            >
-              {name}
-            </span>
-          ))}
-        </div>
 
         {/* Steps */}
         <ol className="space-y-2.5">

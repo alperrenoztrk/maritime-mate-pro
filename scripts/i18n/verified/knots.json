@@ -1546,5 +1546,332 @@
   "it": "Il nodo margherita è sicuro solo sotto tensione COSTANTE; se il carico viene meno, può sciogliersi. Quando lo si usa per escludere una parte usurata, assicurarsi che questa resti nel ramo centrale (senza carico).",
   "pt": "O catau só é seguro sob tensão CONSTANTE; se a carga sair, ele pode se desfazer. Ao usá-lo para tirar de serviço um trecho desgastado, verifique se esse trecho fica no ramo central (sem carga).",
   "nl": "Een trompetsteek is alleen veilig onder CONSTANTE spanning; valt de last weg, dan kan hij uit elkaar vallen. Zorg er bij het buiten gebruik stellen van een versleten stuk voor dat dit in het middelste (onbelaste) deel ligt."
+ },
+ "Maymun Yumruğu": {
+  "en": "Monkey's Fist"
+ },
+ "Atma halatının ucuna atılan top şeklindeki düğümdür. Halata ağırlık vererek rıhtıma veya başka bir gemiye daha uzağa ve isabetle atılmasını sağlar.": {
+  "en": "A ball-shaped knot tied in the end of a heaving line. It gives the line weight so that it can be thrown further and more accurately to the quay or to another ship."
+ },
+ "Birinci sarımlar": {
+  "en": "First set of turns"
+ },
+ "Halatı parmaklarınızın etrafına üç tur sarın.": {
+  "en": "Wrap the line three times round your fingers."
+ },
+ "İkinci sarımlar": {
+  "en": "Second set of turns"
+ },
+ "Çımayla bu turların etrafına, onlara dik olarak üç tur daha sarın.": {
+  "en": "With the working end, make three more turns round these turns, at right angles to them."
+ },
+ "Üçüncü sarımlar": {
+  "en": "Third set of turns"
+ },
+ "Çımayı birinci turların içinden ve ikinci turların etrafından geçirerek üç tur daha sarın.": {
+  "en": "Make three more turns, passing the working end inside the first set and round the second set."
+ },
+ "Sıkıp top şekli ver": {
+  "en": "Tighten into a ball"
+ },
+ "Boşluğu sarımlar boyunca sırayla alarak düğümü top şekline getirin ve çımayı bedene emniyetleyin.": {
+  "en": "Work the slack out through the turns one by one until the knot forms a ball, then secure the working end to the standing part."
+ },
+ "İçine metal veya ağır bir cisim koymayın: atma halatı karşıdaki personele isabet edebilir ve ağır bir maymun yumruğu ciddi yaralanmaya yol açar.": {
+  "en": "Do not put metal or any heavy object inside: the heaving line may strike the people receiving it, and a heavy monkey's fist can cause serious injury."
+ },
+ "Çifte Balıkçı Bağı": {
+  "en": "Double Fisherman's Knot"
+ },
+ "İki halatı uç uca kalıcı olarak ekler. Balıkçı bağının çifte düğümlü hâlidir; ince ve kaygan halatta daha emniyetlidir, ancak yük bindikten sonra zor çözülür.": {
+  "en": "Joins two ropes end to end permanently. It is the fisherman's knot tied with double knots; it is more secure in thin and slippery line, but is hard to untie once it has been loaded."
+ },
+ "Birinci çifte düğüm": {
+  "en": "First double knot"
+ },
+ "Birinci halatın çımasını her iki halatın etrafına, kendi bedenine doğru iki tur sarın ve bu turların içinden geçirip sıkın.": {
+  "en": "Wrap the working end of the first rope twice round both ropes, back towards its own standing part, then pass it through these turns and tighten."
+ },
+ "İkinci çifte düğüm": {
+  "en": "Second double knot"
+ },
+ "İkinci halatın çımasıyla aynı işlemi ters yönde tekrarlayın.": {
+  "en": "Repeat the same with the working end of the second rope, in the opposite direction."
+ },
+ "Doğru atılmış bağda bir yüzde iki çarpı (X), diğer yüzde dört paralel sarım görünür. Çımaları kısa kesmeyin.": {
+  "en": "When tied correctly, one side shows two crosses (X) and the other side four parallel turns. Do not cut the working ends short."
+ },
+ "Gözcükle kasa oluştur": {
+  "en": "Make a loop with the bight"
+ },
+ "Halatı ikiye katlayıp bir gözcük alın; bu çift halatla küçük bir kasa oluşturun.": {
+  "en": "Double the rope to form a bight and make a small loop with the doubled rope."
+ },
+ "Gözcüğü kasadan geçir": {
+  "en": "Pass the bight through the loop"
+ },
+ "Gözcüğün ucunu kasanın içinden aşağıdan yukarıya doğru geçirin.": {
+  "en": "Pass the end of the bight up through the loop from underneath."
+ },
+ "Gözcüğü düğümün etrafından geçir": {
+  "en": "Take the bight round the knot"
+ },
+ "Gözcüğün ucunu açın, iki büyük kasanın etrafından aşağı indirin ve bedenlerin arkasından yukarı getirin.": {
+  "en": "Open out the end of the bight, pass it down round the two large loops and bring it up behind the standing parts."
+ },
+ "Bedenleri çekerek gözcüğü düğümün üzerine oturtun; iki sabit kasa oluşur.": {
+  "en": "Pull on the standing parts to settle the bight on the knot; two fixed loops are formed."
+ },
+ "Bowline on a Bight": {
+  "en": "Bowline on a Bight"
+ },
+ "Halatın uçlarına gerek kalmadan, ortasında iki sabit kasa oluşturur. Kasalar yük altında kaymaz; yükü iki noktaya dağıtmak veya acil durumda bir kişiyi kaldırmak için kullanılır.": {
+  "en": "Forms two fixed loops in the middle of a rope without using its ends. The loops do not slip under load; it is used to spread a load between two points or, in an emergency, to lift a person."
+ },
+ "Düğümü sıkmadan önce iki kasanın boyunu ayarlayın. Uçlara ulaşılamayan uzun bir halatta hızlıca sabit kasa gerektiğinde işe yarar.": {
+  "en": "Adjust the size of the two loops before tightening the knot. Useful when a fixed loop is needed quickly in a long rope whose ends cannot be reached."
+ },
+ "Çımayı beden halatının etrafından geçirerek büyük bir kasa oluşturun.": {
+  "en": "Take the working end round the standing part to form a large loop."
+ },
+ "Küçük kasa oluştur": {
+  "en": "Make a small loop"
+ },
+ "Çımaya yakın kısımda, izbarçoda olduğu gibi küçük bir kasa oluşturun.": {
+  "en": "Make a small loop near the working end, as for a bowline."
+ },
+ "İzbarçoyu tamamla": {
+  "en": "Complete the bowline"
+ },
+ "Çımayı küçük kasadan yukarı geçirin, arkadan dolayın ve aynı kasadan geri sokun.": {
+  "en": "Pass the working end up through the small loop, round behind and back down through the same loop."
+ },
+ "İzbarçoyu sıkın; beden çekildikçe büyük kasa daralır.": {
+  "en": "Tighten the bowline; the large loop closes as the standing part is pulled."
+ },
+ "Running Bowline": {
+  "en": "Running Bowline"
+ },
+ "Halatın ucunda, beden çekildikçe daralan kayar bir kasa oluşturur. Ulaşılamayan bir cismi, örneğin denize düşmüş bir nesneyi yakalayıp almak için kullanılır.": {
+  "en": "Forms a running loop in the end of a rope that closes as the standing part is pulled. Used to catch and recover an object out of reach, such as something that has fallen overboard."
+ },
+ "Kayar kasa yük altında daraldığı için asla bir kişinin etrafına atılmaz; can kurtarmada sabit kasa veren izbarço kullanılır.": {
+  "en": "Because the running loop closes under load, never put it round a person; for rescue use the bowline, which gives a fixed loop."
+ },
+ "Gözcük al ve geri katla": {
+  "en": "Form a bight and fold it back"
+ },
+ "Halatta uzun bir gözcük alın ve gözcüğün ucunu bedenlerin üzerine geri katlayarak iki kulak oluşturun.": {
+  "en": "Form a long bight and fold its end back over the standing parts to make two ears."
+ },
+ "Kulakları kasaya çevir": {
+  "en": "Twist the ears into loops"
+ },
+ "Her kulağı yarım tur çevirerek iki küçük kasa oluşturun.": {
+  "en": "Give each ear a half twist to form two small loops."
+ },
+ "Kasaları iç içe geçir": {
+  "en": "Pass one loop through the other"
+ },
+ "Sol kasayı sağ kasanın içinden geçirin.": {
+  "en": "Pass the left loop through the right loop."
+ },
+ "Büyük kasaları çekip sıkın": {
+  "en": "Draw up the large loops and tighten"
+ },
+ "Her küçük kasanın içinden, alttaki büyük gözcüğün karşı kenarını yukarı çekin; iki büyük kasa oluşunca düğümü sıkın.": {
+  "en": "Reach through each small loop and draw up the opposite side of the large bight below; when the two large loops are formed, tighten the knot."
+ },
+ "Spanish Bowline": {
+  "en": "Spanish Bowline"
+ },
+ "Halatın ortasında iki sabit kasa oluşturur. Bir merdiveni veya acil durumda bir kişiyi kaldırmak ve yükü iki noktaya dağıtmak için kullanılır.": {
+  "en": "Forms two fixed loops in the middle of a rope. It is used to hoist a ladder or, in an emergency, a person, and to spread a load between two points."
+ },
+ "Sıkmadan önce iki kasanın boyunu eşitleyin; böylece kaldırılan yük dengeli asılır.": {
+  "en": "Equalise the two loops before tightening so that the load hangs level."
+ },
+ "Gevşek sekizli at": {
+  "en": "Tie a loose figure-of-eight"
+ },
+ "Çımadan yeterli boy bırakarak halata gevşek bir sekizli düğüm atın.": {
+  "en": "Leaving a long working end, tie a loose figure-of-eight knot in the rope."
+ },
+ "Nesneden geçir": {
+  "en": "Pass through the object"
+ },
+ "Çımayı ringin veya bağlanacak nesnenin içinden geçirin.": {
+  "en": "Pass the working end through the ring or the object to be secured."
+ },
+ "Sekizliyi takip et": {
+  "en": "Follow the figure-of-eight back"
+ },
+ "Çımayı ilk sekizlinin yolunu ters yönde birebir izleyerek geri geçirin.": {
+  "en": "Lead the working end back, following the path of the first figure-of-eight exactly in reverse."
+ },
+ "Dört kolu ayrı ayrı çekerek çift halat kısımlarının düzgün yan yana yattığından emin olun.": {
+  "en": "Pull each of the four parts in turn so that the paired parts lie neatly side by side."
+ },
+ "Figure 8 Loop": {
+  "en": "Figure 8 Loop"
+ },
+ "Halatın ucunda sabit ve çok emniyetli bir kasa oluşturur. Takip ederek atıldığı için kasa bir ringin veya kemerin içinden geçirilerek yapılabilir. Yük altında sıkışır ve zor çözülür.": {
+  "en": "Forms a very secure fixed loop in the end of a rope. Because it is tied by following through, the loop can be made through a ring or a harness. It jams under load and is hard to untie."
+ },
+ "Düğümden sonra çımada halat çapının birkaç katı uzunluk bırakın.": {
+  "en": "Leave a tail several rope diameters long beyond the knot."
+ },
+ "Kolları aç": {
+  "en": "Unlay the strands"
+ },
+ "Kolları beş-altı büküm boyunca açın ve her kolun ucunu bantlayın.": {
+  "en": "Unlay the strands for five or six turns of the lay and tape the end of each strand."
+ },
+ "Gözü oluştur, ilk kolu sok": {
+  "en": "Form the eye and make the first tuck"
+ },
+ "Halatı istenen göz boyunda bükün; ortadaki kolu bedenin bir kolunun altından, bükümün tersine sokun.": {
+  "en": "Bend the rope to the size of eye required and tuck the middle strand under one strand of the standing part, against the lay."
+ },
+ "İkinci ve üçüncü kolu sok": {
+  "en": "Tuck the second and third strands"
+ },
+ "İkinci kolu bir sonraki kolun altından sokun; halatı çevirip üçüncü kolu kalan kolun altından sokun. Her kol farklı bir aralıktan çıkmalıdır.": {
+  "en": "Tuck the second strand under the next strand; turn the rope over and tuck the third strand under the remaining strand. Each strand must come out at a different place."
+ },
+ "Sokmaları tamamla": {
+  "en": "Complete the tucks"
+ },
+ "Her kolu birinin üzerinden, diğerinin altından geçirerek sokmaları tekrarlayın; sentetik halatta en az beş tur yapın, sonra uçları kesin.": {
+  "en": "Continue tucking each strand over one and under one; make at least five rounds of tucks in synthetic rope, then trim the ends."
+ },
+ "Eye Splice": {
+  "en": "Eye Splice"
+ },
+ "Üç kollu halatın ucunda kalıcı bir göz oluşturur. Halatı düğümlerden çok daha az zayıflatır; palamar ve bağlama halatlarının gözleri bu yöntemle yapılır.": {
+  "en": "Forms a permanent eye in the end of a three-strand rope. It weakens the rope far less than a knot; the eyes of mooring lines are made this way."
+ },
+ "Sentetik halat kaygan olduğundan doğal lifli halattan daha fazla sokma ister. İlk sokma turu yanlış olursa ekleme bükülür; ilk turu dikkatle kontrol edin.": {
+  "en": "Synthetic rope is slippery and needs more tucks than natural fibre rope. If the first round of tucks is wrong the splice will twist, so check it carefully."
+ },
+ "Uzun gözcük al": {
+  "en": "Form a long bight"
+ },
+ "Halatın ucuna yakın uzun bir gözcük alın.": {
+  "en": "Form a long bight near the end of the line."
+ },
+ "Gözcüğü sar": {
+  "en": "Wrap the bight"
+ },
+ "Çımayı gözcüğün iki bacağının etrafına, gözcüğün ucuna doğru sık sarımlarla sarın.": {
+  "en": "Wrap the working end tightly round both legs of the bight, working towards the end of the bight."
+ },
+ "Çımayı gözden geçir": {
+  "en": "Pass the end through the eye"
+ },
+ "Yeterli sarımdan sonra çımayı gözcüğün ucunda kalan gözden geçirin.": {
+  "en": "After enough turns, pass the working end through the eye left at the end of the bight."
+ },
+ "Bedeni çekip kilitle": {
+  "en": "Pull the standing part to lock"
+ },
+ "Bedeni çekerek gözü sarımların içine alın ve çımayı kıstırın.": {
+  "en": "Pull the standing part to draw the eye into the turns and trap the working end."
+ },
+ "Heaving Line Knot": {
+  "en": "Heaving Line Knot"
+ },
+ "Atma halatının ucuna hızlıca ağırlık vermek için yapılan sarımlı düğümdür. Maymun yumruğundan daha çabuk atılır.": {
+  "en": "A wrapped knot that quickly adds weight to the end of a heaving line. It is quicker to tie than a monkey's fist."
+ },
+ "Sarımlar sık ve düzgün olmalıdır; gevşek sarımlar atış sırasında açılır.": {
+  "en": "Keep the turns close and even; loose turns open up when the line is thrown."
+ },
+ "Halatta bir kasa oluşturun ve kasayı bedenin üzerine yatırın.": {
+  "en": "Make a loop in the line and lay it over the standing part."
+ },
+ "Çubuğu geçir": {
+  "en": "Insert the spike"
+ },
+ "Çubuğu kasanın bir kenarının üzerinden, bedenin altından ve kasanın diğer kenarının üzerinden geçirin.": {
+  "en": "Pass the spike over one side of the loop, under the standing part and over the other side of the loop."
+ },
+ "Çekip kullan": {
+  "en": "Pull and use"
+ },
+ "Halatı çekerek bağı çubuğa oturtun ve çubuğu tutamak olarak kullanın.": {
+  "en": "Pull on the line to settle the hitch on the spike and use the spike as a handle."
+ },
+ "Marlinspike Hitch": {
+  "en": "Marlinspike Hitch"
+ },
+ "Halata geçici olarak bir çubuk takar; çubuk tutamak olarak kullanılarak sargılar ve sürçeler sıkıca çekilir.": {
+  "en": "Attaches a spike or bar to a line temporarily, so that it can be used as a handle to haul lashings and seizings tight."
+ },
+ "Çubuk çekilince bağ kendiliğinden çözülür; bu yüzden yalnızca çubuk takılıyken tutar.": {
+  "en": "When the spike is withdrawn the hitch falls apart, so it holds only while the spike is in place."
+ },
+ "Çımayı direğin etrafından veya ringin içinden geçirin.": {
+  "en": "Pass the working end round the post or through the ring."
+ },
+ "Kasa içinde iki volta": {
+  "en": "Two turns inside the loop"
+ },
+ "Çımayla, kasanın içinde kalacak şekilde bedenin etrafına iki volta atın; ikinci volta birinciyi sıkıştırsın.": {
+  "en": "Make two turns round the standing part inside the loop, the second turn jamming against the first."
+ },
+ "Dışarıda yarım anele": {
+  "en": "Half hitch outside the loop"
+ },
+ "Çımayla kasanın dışında bedenin etrafına bir yarım anele atın.": {
+  "en": "Finish with a half hitch round the standing part outside the loop."
+ },
+ "Kaydırıp ayarla": {
+  "en": "Slide to adjust"
+ },
+ "Bağı beden boyunca kaydırarak gerginliği ayarlayın; yük binince yerinde tutar.": {
+  "en": "Slide the hitch along the standing part to adjust the tension; under load it holds in place."
+ },
+ "Midshipman's Hitch": {
+  "en": "Midshipman's Hitch"
+ },
+ "Halatın ucunda gerginliği ayarlanabilen bir kasa oluşturur. Yük altında kaymadan tutar; yük kalkınca beden boyunca kaydırılarak gerginlik ayarlanır. Tente ve sabitleme halatlarında kullanılır.": {
+  "en": "Forms an adjustable loop in the end of a line. It holds without slipping under load and, when the load is off, can be slid along the standing part to adjust the tension. Used for awning and lashing lines."
+ },
+ "Kaygan halatta kasa içine bir volta daha ekleyin.": {
+  "en": "In slippery line, add one more turn inside the loop."
+ },
+ "Bedende kasa oluştur": {
+  "en": "Make a loop in the standing part"
+ },
+ "Halatın bir ucunu bağlayın ve beden halatının ortasında küçük bir kasa oluşturun.": {
+  "en": "Make one end fast and form a small loop in the middle of the standing part."
+ },
+ "Alt noktadan geçir": {
+  "en": "Pass round the lower point"
+ },
+ "Çımayı alttaki bağlama noktasının (ring, kanca) etrafından geçirin.": {
+  "en": "Pass the working end round the lower securing point (ring or hook)."
+ },
+ "Kasadan geçirip gerdir": {
+  "en": "Through the loop and haul taut"
+ },
+ "Çımayı kasanın içinden geçirin ve aşağı doğru çekerek halatı gerdirin.": {
+  "en": "Pass the working end through the loop and haul down on it to tension the line."
+ },
+ "İki yarım anele ile kilitle": {
+  "en": "Secure with two half hitches"
+ },
+ "Gerginliği korurken çımayı iki yarım anele ile bağlayın.": {
+  "en": "Holding the tension, make the working end fast with two half hitches."
+ },
+ "Trucker's Hitch": {
+  "en": "Trucker's Hitch"
+ },
+ "Halatı bir bağlama noktası üzerinden palanga etkisiyle sıkıca gerdirip bağlar. Güverte yükü, bot ve branda sabitlemede kullanılır.": {
+  "en": "Hauls a line taut over a securing point with the effect of a purchase and makes it fast. Used for lashing deck cargo, boats and covers."
+ },
+ "Kasa olarak kayar bir kasa kullanılırsa ağır yük altında devrilip çözülebilir; ağır yüklerde sabit bir kasa tercih edin.": {
+  "en": "A slipped loop can capsize under heavy load; for heavy loads use a fixed loop instead."
  }
 }

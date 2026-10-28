@@ -6,7 +6,10 @@
 // schools): adi düğüm, izbarço, kazık bağı, camadan, sancak (iskota) ve
 // çifte sancak, kropi/sekizli, iki yarım anele, camadan voltası, koç
 // boynuzuna volta, barbarişka, dülger bağı, demir bağı, balıkçı bağı,
-// yoma bağı and margarita (çürük bağı).
+// yoma bağı, margarita (çürük bağı), çifte balıkçı bağı and maymun yumruğu,
+// plus bowline on a bight, running and Spanish bowline, figure 8 loop, eye
+// splice, heaving line knot, marlinspike, midshipman's and trucker's hitch.
+// Knots whose Turkish name is not confirmed use the English name as `name`.
 //
 // Each knot is now demonstrated with a real, verified knot-tying VIDEO
 // (`videoId`, a YouTube id) instead of a static diagram. The old low-resolution,
@@ -31,7 +34,7 @@ export interface SailorKnot {
   id: string;
   name: string;
   nameEn: string;
-  /** Other common Turkish names, shown as small chips. */
+  /** Other common Turkish names; used for search only, never displayed. */
   aka?: string[];
   category: KnotCategory;
   /** What the knot is for, in one or two sentences. */
@@ -147,6 +150,39 @@ export const SAILOR_KNOTS: SailorKnot[] = [
     tip: "Yük taşıyan eklerde güvenilir DEĞİLDİR; farklı çaplı halatlarda kayar. Sadece toparlama/bağlama işi içindir, can emniyetinde kullanmayın.",
   },
 
+  {
+    id: "monkeys-fist",
+    name: "Maymun Yumruğu",
+    nameEn: "Monkey's Fist",
+    category: "durdurucu",
+    use: "Atma halatının ucuna atılan top şeklindeki düğümdür. Halata ağırlık vererek rıhtıma veya başka bir gemiye daha uzağa ve isabetle atılmasını sağlar.",
+    videoId: "gp9w-T2d_NY",
+    videoCredit: GROG,
+    steps: [
+      { title: "Birinci sarımlar", description: "Halatı parmaklarınızın etrafına üç tur sarın." },
+      { title: "İkinci sarımlar", description: "Çımayla bu turların etrafına, onlara dik olarak üç tur daha sarın." },
+      { title: "Üçüncü sarımlar", description: "Çımayı birinci turların içinden ve ikinci turların etrafından geçirerek üç tur daha sarın." },
+      { title: "Sıkıp top şekli ver", description: "Boşluğu sarımlar boyunca sırayla alarak düğümü top şekline getirin ve çımayı bedene emniyetleyin." },
+    ],
+    tip: "İçine metal veya ağır bir cisim koymayın: atma halatı karşıdaki personele isabet edebilir ve ağır bir maymun yumruğu ciddi yaralanmaya yol açar.",
+  },
+  {
+    id: "heaving-line-knot",
+    name: "Heaving Line Knot",
+    nameEn: "Heaving Line Knot",
+    category: "durdurucu",
+    use: "Atma halatının ucuna hızlıca ağırlık vermek için yapılan sarımlı düğümdür. Maymun yumruğundan daha çabuk atılır.",
+    videoId: "wMH4b1a0lVo",
+    videoCredit: GROG,
+    steps: [
+      { title: "Uzun gözcük al", description: "Halatın ucuna yakın uzun bir gözcük alın." },
+      { title: "Gözcüğü sar", description: "Çımayı gözcüğün iki bacağının etrafına, gözcüğün ucuna doğru sık sarımlarla sarın." },
+      { title: "Çımayı gözden geçir", description: "Yeterli sarımdan sonra çımayı gözcüğün ucunda kalan gözden geçirin." },
+      { title: "Bedeni çekip kilitle", description: "Bedeni çekerek gözü sarımların içine alın ve çımayı kıstırın." },
+    ],
+    tip: "Sarımlar sık ve düzgün olmalıdır; gevşek sarımlar atış sırasında açılır.",
+  },
+
   // ── Kasalar (loops) ──────────────────────────────────────────────────────
   {
     id: "bowline",
@@ -166,6 +202,86 @@ export const SAILOR_KNOTS: SailorKnot[] = [
       { title: "Çekip sıkın", description: "Bedeni ve oluşan büyük kasayı ters yönde çekerek düğümü sıkın; kasa istenen boyutta sabitlenir." },
     ],
     tip: "Hatırlatma: tavşan delikten çıkar, ağacın etrafından dolaşır, deliğe geri girer. Çımanın kasanın İÇ tarafında kalması doğru izbarçonun işaretidir.",
+  },
+  {
+    id: "bowline-on-a-bight",
+    name: "Bowline on a Bight",
+    nameEn: "Bowline on a Bight",
+    category: "kasa",
+    use: "Halatın uçlarına gerek kalmadan, ortasında iki sabit kasa oluşturur. Kasalar yük altında kaymaz; yükü iki noktaya dağıtmak veya acil durumda bir kişiyi kaldırmak için kullanılır.",
+    videoId: "CDZOYUZabV4",
+    videoCredit: GROG,
+    steps: [
+      { title: "Gözcükle kasa oluştur", description: "Halatı ikiye katlayıp bir gözcük alın; bu çift halatla küçük bir kasa oluşturun." },
+      { title: "Gözcüğü kasadan geçir", description: "Gözcüğün ucunu kasanın içinden aşağıdan yukarıya doğru geçirin." },
+      { title: "Gözcüğü düğümün etrafından geçir", description: "Gözcüğün ucunu açın, iki büyük kasanın etrafından aşağı indirin ve bedenlerin arkasından yukarı getirin." },
+      { title: "Çekip sıkın", description: "Bedenleri çekerek gözcüğü düğümün üzerine oturtun; iki sabit kasa oluşur." },
+    ],
+    tip: "Düğümü sıkmadan önce iki kasanın boyunu ayarlayın. Uçlara ulaşılamayan uzun bir halatta hızlıca sabit kasa gerektiğinde işe yarar.",
+  },
+  {
+    id: "running-bowline",
+    name: "Running Bowline",
+    nameEn: "Running Bowline",
+    category: "kasa",
+    use: "Halatın ucunda, beden çekildikçe daralan kayar bir kasa oluşturur. Ulaşılamayan bir cismi, örneğin denize düşmüş bir nesneyi yakalayıp almak için kullanılır.",
+    videoId: "D1m-tr6OAPo",
+    videoCredit: GROG,
+    steps: [
+      { title: "Bedenin etrafından geçir", description: "Çımayı beden halatının etrafından geçirerek büyük bir kasa oluşturun." },
+      { title: "Küçük kasa oluştur", description: "Çımaya yakın kısımda, izbarçoda olduğu gibi küçük bir kasa oluşturun." },
+      { title: "İzbarçoyu tamamla", description: "Çımayı küçük kasadan yukarı geçirin, arkadan dolayın ve aynı kasadan geri sokun." },
+      { title: "Çekip sıkın", description: "İzbarçoyu sıkın; beden çekildikçe büyük kasa daralır." },
+    ],
+    tip: "Kayar kasa yük altında daraldığı için asla bir kişinin etrafına atılmaz; can kurtarmada sabit kasa veren izbarço kullanılır.",
+  },
+  {
+    id: "spanish-bowline",
+    name: "Spanish Bowline",
+    nameEn: "Spanish Bowline",
+    category: "kasa",
+    use: "Halatın ortasında iki sabit kasa oluşturur. Bir merdiveni veya acil durumda bir kişiyi kaldırmak ve yükü iki noktaya dağıtmak için kullanılır.",
+    videoId: "eKe8h4fNVAA",
+    videoCredit: GROG,
+    steps: [
+      { title: "Gözcük al ve geri katla", description: "Halatta uzun bir gözcük alın ve gözcüğün ucunu bedenlerin üzerine geri katlayarak iki kulak oluşturun." },
+      { title: "Kulakları kasaya çevir", description: "Her kulağı yarım tur çevirerek iki küçük kasa oluşturun." },
+      { title: "Kasaları iç içe geçir", description: "Sol kasayı sağ kasanın içinden geçirin." },
+      { title: "Büyük kasaları çekip sıkın", description: "Her küçük kasanın içinden, alttaki büyük gözcüğün karşı kenarını yukarı çekin; iki büyük kasa oluşunca düğümü sıkın." },
+    ],
+    tip: "Sıkmadan önce iki kasanın boyunu eşitleyin; böylece kaldırılan yük dengeli asılır.",
+  },
+  {
+    id: "figure-eight-loop",
+    name: "Figure 8 Loop",
+    nameEn: "Figure 8 Follow Through Loop",
+    category: "kasa",
+    use: "Halatın ucunda sabit ve çok emniyetli bir kasa oluşturur. Takip ederek atıldığı için kasa bir ringin veya kemerin içinden geçirilerek yapılabilir. Yük altında sıkışır ve zor çözülür.",
+    videoId: "aLopeVBb7yU",
+    videoCredit: GROG,
+    steps: [
+      { title: "Gevşek sekizli at", description: "Çımadan yeterli boy bırakarak halata gevşek bir sekizli düğüm atın." },
+      { title: "Nesneden geçir", description: "Çımayı ringin veya bağlanacak nesnenin içinden geçirin." },
+      { title: "Sekizliyi takip et", description: "Çımayı ilk sekizlinin yolunu ters yönde birebir izleyerek geri geçirin." },
+      { title: "Çekip sıkın", description: "Dört kolu ayrı ayrı çekerek çift halat kısımlarının düzgün yan yana yattığından emin olun." },
+    ],
+    tip: "Düğümden sonra çımada halat çapının birkaç katı uzunluk bırakın.",
+  },
+  {
+    id: "eye-splice",
+    name: "Eye Splice",
+    nameEn: "Eye Splice",
+    category: "kasa",
+    use: "Üç kollu halatın ucunda kalıcı bir göz oluşturur. Halatı düğümlerden çok daha az zayıflatır; palamar ve bağlama halatlarının gözleri bu yöntemle yapılır.",
+    videoId: "3cZOn-vT0xA",
+    videoCredit: GROG,
+    steps: [
+      { title: "Kolları aç", description: "Kolları beş-altı büküm boyunca açın ve her kolun ucunu bantlayın." },
+      { title: "Gözü oluştur, ilk kolu sok", description: "Halatı istenen göz boyunda bükün; ortadaki kolu bedenin bir kolunun altından, bükümün tersine sokun." },
+      { title: "İkinci ve üçüncü kolu sok", description: "İkinci kolu bir sonraki kolun altından sokun; halatı çevirip üçüncü kolu kalan kolun altından sokun. Her kol farklı bir aralıktan çıkmalıdır." },
+      { title: "Sokmaları tamamla", description: "Her kolu birinin üzerinden, diğerinin altından geçirerek sokmaları tekrarlayın; sentetik halatta en az beş tur yapın, sonra uçları kesin." },
+    ],
+    tip: "Sentetik halat kaygan olduğundan doğal lifli halattan daha fazla sokma ister. İlk sokma turu yanlış olursa ekleme bükülür; ilk turu dikkatle kontrol edin.",
   },
 
   // ── Bağlar (hitches) ──────────────────────────────────────────────────────
@@ -267,6 +383,53 @@ export const SAILOR_KNOTS: SailorKnot[] = [
     tip: "Sarımlar yük binince sıkıştığı için bağın tutması sürekli gerginliğe bağlıdır. Uzun bir cismi yedeklerken çekilen uca ayrıca bir yarım anele atın (dülger + yarım anele).",
   },
   {
+    id: "marlinspike-hitch",
+    name: "Marlinspike Hitch",
+    nameEn: "Marlinspike Hitch",
+    category: "bag",
+    use: "Halata geçici olarak bir çubuk takar; çubuk tutamak olarak kullanılarak sargılar ve sürçeler sıkıca çekilir.",
+    videoId: "MR61BYTQMwo",
+    videoCredit: GROG,
+    steps: [
+      { title: "Kasa oluştur", description: "Halatta bir kasa oluşturun ve kasayı bedenin üzerine yatırın." },
+      { title: "Çubuğu geçir", description: "Çubuğu kasanın bir kenarının üzerinden, bedenin altından ve kasanın diğer kenarının üzerinden geçirin." },
+      { title: "Çekip kullan", description: "Halatı çekerek bağı çubuğa oturtun ve çubuğu tutamak olarak kullanın." },
+    ],
+    tip: "Çubuk çekilince bağ kendiliğinden çözülür; bu yüzden yalnızca çubuk takılıyken tutar.",
+  },
+  {
+    id: "midshipmans-hitch",
+    name: "Midshipman's Hitch",
+    nameEn: "Midshipman's Hitch",
+    category: "bag",
+    use: "Halatın ucunda gerginliği ayarlanabilen bir kasa oluşturur. Yük altında kaymadan tutar; yük kalkınca beden boyunca kaydırılarak gerginlik ayarlanır. Tente ve sabitleme halatlarında kullanılır.",
+    videoId: "5SiMoqbxxOo",
+    videoCredit: GROG,
+    steps: [
+      { title: "Nesneden geçir", description: "Çımayı direğin etrafından veya ringin içinden geçirin." },
+      { title: "Kasa içinde iki volta", description: "Çımayla, kasanın içinde kalacak şekilde bedenin etrafına iki volta atın; ikinci volta birinciyi sıkıştırsın." },
+      { title: "Dışarıda yarım anele", description: "Çımayla kasanın dışında bedenin etrafına bir yarım anele atın." },
+      { title: "Kaydırıp ayarla", description: "Bağı beden boyunca kaydırarak gerginliği ayarlayın; yük binince yerinde tutar." },
+    ],
+    tip: "Kaygan halatta kasa içine bir volta daha ekleyin.",
+  },
+  {
+    id: "truckers-hitch",
+    name: "Trucker's Hitch",
+    nameEn: "Trucker's Hitch",
+    category: "bag",
+    use: "Halatı bir bağlama noktası üzerinden palanga etkisiyle sıkıca gerdirip bağlar. Güverte yükü, bot ve branda sabitlemede kullanılır.",
+    videoId: "8N6blmw006U",
+    videoCredit: GROG,
+    steps: [
+      { title: "Bedende kasa oluştur", description: "Halatın bir ucunu bağlayın ve beden halatının ortasında küçük bir kasa oluşturun." },
+      { title: "Alt noktadan geçir", description: "Çımayı alttaki bağlama noktasının (ring, kanca) etrafından geçirin." },
+      { title: "Kasadan geçirip gerdir", description: "Çımayı kasanın içinden geçirin ve aşağı doğru çekerek halatı gerdirin." },
+      { title: "İki yarım anele ile kilitle", description: "Gerginliği korurken çımayı iki yarım anele ile bağlayın." },
+    ],
+    tip: "Kasa olarak kayar bir kasa kullanılırsa ağır yük altında devrilip çözülebilir; ağır yüklerde sabit bir kasa tercih edin.",
+  },
+  {
     id: "anchor-bend",
     name: "Demir Bağı",
     nameEn: "Anchor (Fisherman's) Bend",
@@ -333,6 +496,22 @@ export const SAILOR_KNOTS: SailorKnot[] = [
       { title: "Bedenleri çekip kenetle", description: "Her iki bedeni ters yönde çekin; iki düğüm kayarak birbirine yaslanır ve kilitlenir." },
     ],
     tip: "İki düğüm birbirine tam oturmalı, aralarında boşluk kalmamalıdır. Çok kaygan halatta her adi düğüm yerine çifte düğüm atarak 'çifte balıkçı bağı' yapın.",
+  },
+  {
+    id: "double-fishermans-knot",
+    name: "Çifte Balıkçı Bağı",
+    nameEn: "Double Fisherman's Knot",
+    category: "ekleme",
+    use: "İki halatı uç uca kalıcı olarak ekler. Balıkçı bağının çifte düğümlü hâlidir; ince ve kaygan halatta daha emniyetlidir, ancak yük bindikten sonra zor çözülür.",
+    videoId: "O6oJwedcb18",
+    videoCredit: GROG,
+    steps: [
+      { title: "Halatları yan yana koy", description: "İki halatın çımalarını birbirine bakacak şekilde yan yana serin." },
+      { title: "Birinci çifte düğüm", description: "Birinci halatın çımasını her iki halatın etrafına, kendi bedenine doğru iki tur sarın ve bu turların içinden geçirip sıkın." },
+      { title: "İkinci çifte düğüm", description: "İkinci halatın çımasıyla aynı işlemi ters yönde tekrarlayın." },
+      { title: "Bedenleri çekip kenetle", description: "Her iki bedeni ters yönde çekin; iki düğüm kayarak birbirine yaslanır ve kilitlenir." },
+    ],
+    tip: "Doğru atılmış bağda bir yüzde iki çarpı (X), diğer yüzde dört paralel sarım görünür. Çımaları kısa kesmeyin.",
   },
   {
     id: "carrick-bend",
