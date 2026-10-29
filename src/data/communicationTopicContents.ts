@@ -5,7 +5,6 @@ import dscPanelImage from "@/assets/bridge/dsc-panel.jpg";
 import navtexImage from "@/assets/bridge/navtex-receiver.jpg";
 import inmarsatImage from "@/assets/bridge/inmarsat-terminal.jpg";
 import aisDisplayImage from "@/assets/bridge/ais-display.jpg";
-import epirbImage from "@/assets/lessons/epirb-gps.jpg";
 import engineTelegraphImage from "@/assets/lessons/engine-order-telegraph.jpg";
 
 export const communicationTopicContents: Record<string, TopicDetailContent> = {
