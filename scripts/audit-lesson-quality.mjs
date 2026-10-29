@@ -33,7 +33,7 @@ try {
         const visuals = sections.filter(s => {
           if (s.figure) return true; // standards-based procedural figure
           if (resolveLessonImage(course.key, s.image, s.sourceTitle ?? s.title, topic.sourceTitle ?? topic.title, s.imageAlt)) return true;
-          return [...(s.content ?? "").matchAll(/!\\[([^\\]]*)\\]\\(([^)\\s]+)\\)/g)]
+          return [...(s.content ?? "").matchAll(/!\[([^\]]*)\]\(([^)\s]+)\)/g)]
             .some(m => resolveLessonImage(course.key, m[2], s.sourceTitle ?? s.title, topic.sourceTitle ?? topic.title, m[1]));
         }).length;
         const references = sections.filter(s => s.references?.some(r => /^https:\/\//.test(r.url))).length;
