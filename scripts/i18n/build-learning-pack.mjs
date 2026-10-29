@@ -9,6 +9,11 @@ for (const [key, entry] of Object.entries(simulatorEntries)) {
   if (typeof entry.en !== 'string' || !entry.en.trim()) throw new Error(`Missing simulator English: ${key}`);
   pack[key] = entry.en;
 }
+const assessmentEntries = JSON.parse(fs.readFileSync('scripts/i18n/verified/learning-assessment-ui.json', 'utf8'));
+for (const [key, entry] of Object.entries(assessmentEntries)) {
+  if (typeof entry.en !== 'string' || !entry.en.trim()) throw new Error(`Missing placement English: ${key}`);
+  pack[key] = entry.en;
+}
 // Authored English cases are shared offline fallbacks in every language.
 const billingEntries = JSON.parse(fs.readFileSync('scripts/i18n/verified/billing-ui.json', 'utf8'));
 for (const [key, entry] of Object.entries(billingEntries)) {

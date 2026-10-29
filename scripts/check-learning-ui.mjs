@@ -51,6 +51,7 @@ try {
   await goto("/lessons");
   assert(await page.locator('a[href="/lessons/map"]').count() > 0, "Learning map is not discoverable from lessons");
   await page.locator('a[href="/lessons/map"]').click();
+  await page.getByRole("button", { name: "Explore subjects without placement", exact: true }).click();
   await page.locator('input[placeholder="Find a course or topic…"]').waitFor();
   await noOverflow();
   await page.screenshot({ path: path.join(output, "learning-map-mobile.png"), fullPage: true });
@@ -159,6 +160,7 @@ try {
   rejectSync = true;
   await page.evaluate(() => window.dispatchEvent(new Event("mariners-book:learning-progress")));
   await goto("/lessons/map");
+  await page.getByRole("button", { name: "Explore subjects without placement", exact: true }).click();
   await page.getByText("Progress is saved on this device. Account sync is pending; it will retry when available.", { exact: true }).waitFor();
   rejectSync = false;
   await page.getByRole("button", { name: "Retry sync", exact: true }).click();
