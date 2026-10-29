@@ -195,6 +195,7 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/maritime-news$/, parent: () => '/' },
   { pattern: /^\/passage-plan$/, parent: () => '/library' },
   { pattern: /^\/glossary$/, parent: () => '/library' },
+  { pattern: /^\/image-credits$/, parent: () => '/library' },
   { pattern: /^\/exam-preparation$/, parent: () => '/' },
   { pattern: /^\/formulas$/, parent: () => '/' },
   { pattern: /^\/empty-page$/, parent: () => '/' },

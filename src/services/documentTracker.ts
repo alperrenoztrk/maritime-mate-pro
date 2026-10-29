@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/safeClient";
+import { requireConsent } from "@/lib/consent";
 
 export const DOCUMENT_BUCKET = "maritime-documents";
 export const MAX_DOCUMENT_FILES = 10;
@@ -175,6 +176,9 @@ export async function createDocumentFromPhoto(
   userId: string,
   onStage?: (stage: DocumentProcessingStage) => void,
 ): Promise<MaritimeDocumentRecord> {
+  // Storing and AI-reading a document (possibly a medical certificate) needs
+  // explicit consent first; nothing is uploaded without it.
+  await requireConsent("documents");
   onStage?.("preparing");
   const prepared = await prepareDocumentImage(file);
 

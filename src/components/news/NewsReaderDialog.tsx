@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -9,7 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { getAnonKey, getFunctionUrls, type MaritimeNewsItem } from "@/services/maritimeNews";
+import type { MaritimeNewsItem } from "@/services/maritimeNews";
 import { useLanguage } from "@/contexts/useLanguage";
 import { useArticleBackGuard } from "@/hooks/useArticleBackGuard";
 
@@ -32,11 +31,21 @@ function stripHtml(text?: string): string {
   return text.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 }
 
-function estimateReadingTime(text: string): string {
-  if (!text) return "";
-  const wordCount = text.split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(1, Math.ceil(wordCount / 200));
-  return `${minutes} min read`;
+/**
+ * The feed's own summary, kept short. Some feeds put the whole article into the
+ * description field; showing all of it would republish the publisher's text.
+ * The reader therefore shows at most SUMMARY_MAX_CHARS, cut at a sentence or
+ * word boundary, and sends the reader to the publisher for the full story.
+ */
+const SUMMARY_MAX_CHARS = 320;
+
+function shortSummary(text: string, max = SUMMARY_MAX_CHARS): string {
+  if (text.length <= max) return text;
+  const slice = text.slice(0, max);
+  const sentenceEnd = Math.max(slice.lastIndexOf(". "), slice.lastIndexOf("! "), slice.lastIndexOf("? "));
+  if (sentenceEnd >= max * 0.5) return slice.slice(0, sentenceEnd + 1);
+  const wordEnd = slice.lastIndexOf(" ");
+  return `${slice.slice(0, wordEnd > 0 ? wordEnd : max).trimEnd()}…`;
 }
 
 /**
@@ -74,119 +83,6 @@ function toProxyImageUrl(url?: string): string | undefined {
   }
 }
 
-async function fetchArticleContent(url: string): Promise<{
-  title: string;
-  content: string;
-  author?: string;
-  publishedAt?: string;
-  warning?: string;
-}> {
-  // Env vars can be missing in some preview/webview builds; getAnonKey/getFunctionUrls
-  // fall back to the bundled Supabase client config, mirroring the news list fetch.
-  const key = getAnonKey();
-  const candidateUrls = getFunctionUrls("fetch-article");
-  let lastError = "";
-
-  for (const endpoint of candidateUrls) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 30_000);
-    let res: Response;
-    try {
-      res = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          apikey: key,
-          authorization: `Bearer ${key}`,
-        },
-        body: JSON.stringify({ url }),
-        signal: controller.signal,
-      });
-    } catch (err) {
-      // Network-level failure (offline, DNS, CORS, timeout) — try the next endpoint.
-      lastError =
-        err instanceof DOMException && err.name === "AbortError"
-          ? "Timeout — the server did not respond."
-          : err instanceof Error
-            ? err.message
-            : String(err);
-      continue;
-    } finally {
-      clearTimeout(timeout);
-    }
-
-    if (!res.ok) {
-      // The server was reached but the article itself is unavailable; retrying
-      // another endpoint of the same function won't help.
-      const text = await res.text().catch(() => "");
-      let errorMsg = `Article could not be retrieved (${res.status})`;
-      try {
-        const parsed = JSON.parse(text);
-        if (parsed.error) errorMsg = parsed.error;
-      } catch { /* ignore */ }
-      throw new Error(errorMsg);
-    }
-
-    return res.json();
-  }
-
-  throw new Error(lastError || "The article could not be retrieved.");
-}
-
-function ArticleRenderer({ content, title }: { content: string; title?: string }) {
-  // Jina Reader markdown: drop images, unwrap links, strip escaped heading marks.
-  const cleaned = content
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-    .replace(/\\#/g, "#");
-  const norm = (t: string) => t.replace(/[^a-z0-9]/gi, "").toLowerCase();
-  const titleKey = title ? norm(title) : "";
-  const paragraphs = cleaned
-    .split("\n\n")
-    .map((p) => p.trim())
-    .filter((p) => p && !(titleKey && norm(p.replace(/^#{1,6}\s*/, "")) === titleKey));
-
-  return (
-    <div className="space-y-4 text-[15px] leading-[1.7] text-foreground/85">
-      {paragraphs.map((trimmed, i) => {
-        const headingMatch = trimmed.match(/^#{1,6}\s*(.*)$/);
-        if (headingMatch) {
-          return (
-            <h3 key={i} className="pt-2 text-lg font-semibold tracking-tight text-foreground">
-              {headingMatch[1]}
-            </h3>
-          );
-        }
-        if (trimmed.startsWith("> ")) {
-          return (
-            <blockquote key={i} className="border-l-2 border-primary pl-4 italic text-foreground/75">
-              {trimmed.replace(/^> /, "")}
-            </blockquote>
-          );
-        }
-        const bulletRe = /^(?:•|[-*]) +/;
-        if (bulletRe.test(trimmed)) {
-          const items = trimmed.split("\n").filter((l) => bulletRe.test(l.trim()));
-          return (
-            <ul key={i} className="list-disc space-y-1 pl-5 marker:text-primary">
-              {items.map((item, j) => (
-                <li key={j}>{item.trim().replace(bulletRe, "")}</li>
-              ))}
-            </ul>
-          );
-        }
-        const formatted = trimmed
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
-          .replace(/_([^_]+)_/g, "<em>$1</em>");
-        return <p key={i} dangerouslySetInnerHTML={{ __html: formatted }} />;
-      })}
-    </div>
-  );
-}
-
 export interface NewsReaderDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -215,21 +111,20 @@ function HeroImage({ url, alt }: { url?: string; alt: string }) {
   );
 }
 
+/**
+ * News detail. Shows what the feed itself publishes for syndication — headline,
+ * source, date, image and a short summary — and links to the publisher for the
+ * full article. The app no longer fetches and re-renders the full text of
+ * third-party articles: that copied the publisher's work into the app (a
+ * copyright risk, FSEK) and sent every opened article through a third-party
+ * reader service.
+ */
 export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogProps) {
   const { currentLanguage } = useLanguage();
   useArticleBackGuard(open);
-  const articleQuery = useQuery({
-    queryKey: ["article-content", item?.link],
-    queryFn: () => fetchArticleContent(item!.link),
-    enabled: open && !!item?.link,
-    staleTime: 30 * 60 * 1000,
-    retry: 1,
-  });
 
-  const summary = stripHtml(item?.summary);
-  const summaryBlock = summary ? (
-    <p className="text-[15px] leading-[1.7] text-foreground/85">{summary}</p>
-  ) : null;
+  const summary = shortSummary(stripHtml(item?.summary));
+  const sourceUrl = item?.link && /^https?:\/\//i.test(item.link) ? item.link : undefined;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -245,51 +140,37 @@ export function NewsReaderDialog({ open, onOpenChange, item }: NewsReaderDialogP
               <DialogTitle className="text-[clamp(1.4rem,5.8vw,2rem)] font-bold leading-[1.15] tracking-tight">
                 {item?.title ?? "News"}
               </DialogTitle>
-              <DialogDescription className="sr-only">News detail</DialogDescription>
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-                {item?.publishedAt ? (
+              <DialogDescription className="sr-only">News summary</DialogDescription>
+              {item?.publishedAt ? (
+                <div className="text-xs text-muted-foreground">
                   <span className="notranslate" translate="no">{formatDate(item.publishedAt, currentLanguage)}</span>
-                ) : null}
-                {articleQuery.data?.author ? (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>{articleQuery.data.author}</span>
-                  </>
-                ) : null}
-                {articleQuery.data?.content ? (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>{estimateReadingTime(articleQuery.data.content)}</span>
-                  </>
-                ) : null}
-              </div>
+                </div>
+              ) : null}
             </DialogHeader>
 
             <HeroImage url={item?.imageUrl} alt={item?.title ?? "News"} />
 
-            <div className="mt-6">
-              {articleQuery.isLoading ? (
-                <div className="flex flex-col items-center gap-3 py-14 text-muted-foreground">
-                  <Loader2 className="h-6 w-6 animate-spin" />
-                  <span className="text-sm">Loading article…</span>
+            <div className="mt-6 space-y-5">
+              {summary ? (
+                <p className="text-[15px] leading-[1.7] text-foreground/85">{summary}</p>
+              ) : null}
+
+              {sourceUrl ? (
+                <div className="space-y-2">
+                  <a
+                    href={sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground"
+                  >
+                    Read the full article
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                  <p className="text-center text-xs text-muted-foreground">
+                    Opens the publisher's website. The article belongs to its publisher.
+                  </p>
                 </div>
-              ) : articleQuery.isError ? (
-                <div className="space-y-4">
-                  {summaryBlock}
-                  <div className="rounded-xl bg-muted/60 p-3 text-sm text-muted-foreground">
-                    {summary ? "The full article could not be loaded; showing the summary." : "The article cannot be loaded right now. Try again later."}
-                  </div>
-                </div>
-              ) : articleQuery.data?.content ? (
-                <div className="space-y-4">
-                  {articleQuery.data.warning && (
-                    <div className="rounded-xl bg-muted/60 p-3 text-sm text-muted-foreground">{articleQuery.data.warning}</div>
-                  )}
-                  <ArticleRenderer content={articleQuery.data.content} title={item?.title} />
-                </div>
-              ) : (
-                summaryBlock
-              )}
+              ) : null}
             </div>
           </article>
         </ScrollArea>

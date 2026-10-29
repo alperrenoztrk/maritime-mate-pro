@@ -6,6 +6,7 @@ export interface AIMessage {
 
 import { supabase } from '@/integrations/supabase/safeClient';
 import type { CalcStep, CourseEntry } from '@/data/courseContent/types';
+import { requireConsent } from "@/lib/consent";
 
 const LANGUAGE_NAMES: Record<string, string> = {
   'tr': 'Turkish',
@@ -170,6 +171,8 @@ async function extractAccessError(error: unknown): Promise<AIAccessError | null>
 
 // All AI calls go through edge function for security
 async function callGemini(messages: AIMessage[]): Promise<string> {
+  // Nothing leaves the device before explicit consent (KVKK; src/lib/consent.ts).
+  await requireConsent('ai');
   const { data, error } = await supabase.functions.invoke('gemini-chat', {
     body: { messages },
   });

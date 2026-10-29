@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/useLanguage";
 import { stripMarkdown } from "@/utils/cleanText";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { requireConsent } from "@/lib/consent";
 
 // UI string translations for all 25 supported languages
 const UI_TRANSLATIONS: Record<string, {
@@ -340,6 +341,13 @@ MANDATORY FORMAT RULES:
   const askQuestion = async (q: string) => {
     if (!q.trim()) {
       toast.error(ui.pleaseWrite);
+      return;
+    }
+
+    try {
+      await requireConsent("ai");
+    } catch (err) {
+      toast.error((err as Error).message);
       return;
     }
 

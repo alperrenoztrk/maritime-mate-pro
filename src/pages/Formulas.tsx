@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { UnifiedMaritimeAssistant } from "@/components/UnifiedMaritimeAssistant";
+import { requireConsent } from "@/lib/consent";
 
 const Formulas = () => {
   const [question, setQuestion] = useState("");
@@ -62,6 +63,12 @@ const Formulas = () => {
   const askAI = async () => {
     if (!question.trim()) {
       toast.error("Please write a question");
+      return;
+    }
+    try {
+      await requireConsent("ai");
+    } catch (err) {
+      toast.error((err as Error).message);
       return;
     }
 

@@ -590,5 +590,80 @@
  },
  "Foggy": {
   "en": "Foggy"
+ },
+ "AI features": {
+  "en": "AI features"
+ },
+ "Before you upload a document": {
+  "en": "Before you upload a document"
+ },
+ "Before you use AI features": {
+  "en": "Before you use AI features"
+ },
+ "Consent given.": {
+  "en": "Consent given."
+ },
+ "Consent request": {
+  "en": "Consent request"
+ },
+ "Document uploads": {
+  "en": "Document uploads"
+ },
+ "Give consent": {
+  "en": "Give consent"
+ },
+ "I agree": {
+  "en": "I agree"
+ },
+ "Image credits and licences": {
+  "en": "Image credits and licences"
+ },
+ "News summary": {
+  "en": "News summary"
+ },
+ "No consent.": {
+  "en": "No consent."
+ },
+ "Not now": {
+  "en": "Not now"
+ },
+ "Opens the publisher's website. The article belongs to its publisher.": {
+  "en": "Opens the publisher's website. The article belongs to its publisher."
+ },
+ "Privacy choices": {
+  "en": "Privacy choices"
+ },
+ "Read the full article": {
+  "en": "Read the full article"
+ },
+ "Withdraw": {
+  "en": "Withdraw"
+ },
+ "Document photos are stored and read by Google Gemini outside Türkiye. Withdrawing consent does not delete documents already uploaded; delete them in the Document Tracker.": {
+  "en": "Document photos are stored and read by Google Gemini outside Türkiye. Withdrawing consent does not delete documents already uploaded; delete them in the Document Tracker."
+ },
+ "Questions are sent to Google Gemini and Wolfram Alpha outside Türkiye.": {
+  "en": "Questions are sent to Google Gemini and Wolfram Alpha outside Türkiye."
+ },
+ "AI answers are produced by Google Gemini through the Lovable AI Gateway. Online calculation queries are answered by Wolfram Alpha.": {
+  "en": "AI answers are produced by Google Gemini through the Lovable AI Gateway. Online calculation queries are answered by Wolfram Alpha."
+ },
+ "The question you write and the lesson or calculation context sent with it go to these providers, which are located outside Türkiye (mainly in the USA).": {
+  "en": "The question you write and the lesson or calculation context sent with it go to these providers, which are located outside Türkiye (mainly in the USA)."
+ },
+ "Your chat history stays on this device. Do not include personal or health information in your questions.": {
+  "en": "Your chat history stays on this device. Do not include personal or health information in your questions."
+ },
+ "We ask for your explicit consent for this processing and transfer abroad. You can withdraw it at any time in Settings → Privacy choices.": {
+  "en": "We ask for your explicit consent for this processing and transfer abroad. You can withdraw it at any time in Settings → Privacy choices."
+ },
+ "The photo is stored in your private archive (Supabase) and sent to Google Gemini through the Lovable AI Gateway to read the document's details and dates. These providers are located outside Türkiye.": {
+  "en": "The photo is stored in your private archive (Supabase) and sent to Google Gemini through the Lovable AI Gateway to read the document's details and dates. These providers are located outside Türkiye."
+ },
+ "A seafarer document can contain special categories of personal data — for example a medical fitness certificate contains health data. It is used only to track your document expiry dates.": {
+  "en": "A seafarer document can contain special categories of personal data — for example a medical fitness certificate contains health data. It is used only to track your document expiry dates."
+ },
+ "We ask for your explicit consent for this processing and transfer abroad. You can withdraw it in Settings → Privacy choices and delete your documents at any time.": {
+  "en": "We ask for your explicit consent for this processing and transfer abroad. You can withdraw it in Settings → Privacy choices and delete your documents at any time."
  }
 }

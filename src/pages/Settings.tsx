@@ -25,6 +25,7 @@ import {
 } from "@/services/ads";
 import { toast } from "sonner";
 import { useTheme, type Theme } from "@/hooks/useTheme";
+import { PrivacyChoices } from "@/components/privacy/PrivacyChoices";
 
 const Settings = () => {
   const { fontSize, setFontSize } = useFontSize();
@@ -261,6 +262,8 @@ const Settings = () => {
                     <span data-translatable>Terms of Use</span>
                     <ExternalLink className="w-3 h-3 opacity-70" />
                   </a>
+
+                  <PrivacyChoices />
 
                   <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3 space-y-2">
                     <p className="text-xs text-muted-foreground">

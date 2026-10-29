@@ -7,6 +7,7 @@ import { Sparkles, X, Loader2, Highlighter } from 'lucide-react';
 import { toast } from 'sonner';
 import { addNote } from '@/lib/notesStorage';
 import { ReportAiContentButton } from '@/components/ai/ReportAiContentButton';
+import { ConsentDeclinedError, requireConsent } from "@/lib/consent";
 
 async function askGeminiAboutText(text: string, language: string): Promise<string> {
   const messages: AIMessage[] = [
@@ -20,6 +21,7 @@ async function askGeminiAboutText(text: string, language: string): Promise<strin
     },
   ];
 
+  await requireConsent('ai');
   const { data, error } = await supabase.functions.invoke('gemini-chat', {
     body: { messages },
   });
@@ -58,8 +60,8 @@ export function AskAIPopup() {
     try {
       const result = await askGeminiAboutText(selectedText, currentLanguage);
       setAnswer(result);
-    } catch {
-      setError('No explanation received. Please try again.');
+    } catch (err) {
+      setError(err instanceof ConsentDeclinedError ? err.message : 'No explanation received. Please try again.');
     } finally {
       setLoading(false);
     }

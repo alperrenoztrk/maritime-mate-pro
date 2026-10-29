@@ -44,6 +44,14 @@ export default function LibraryHubPage() {
           </InsetGroupedList>
         </section>
       ))}
+
+      {/* Lesson photos and diagrams are used under Creative Commons licences
+          that require attribution; the credits page must stay reachable. */}
+      <p className="pt-2 text-center text-xs text-muted-foreground">
+        <Link to="/image-credits" className="text-primary underline underline-offset-4">
+          Image credits and licences
+        </Link>
+      </p>
     </LibraryPageShell>
   );
 }

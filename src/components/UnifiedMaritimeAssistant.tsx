@@ -11,6 +11,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import { getLanguageDisplayName } from "@/services/aiClient";
 import { stripMarkdown } from "@/utils/cleanText";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { requireConsent } from "@/lib/consent";
 
 export const UnifiedMaritimeAssistant = () => {
   const { currentLanguage } = useLanguage();
@@ -214,6 +215,12 @@ Ask a detailed question and I will provide you with calculations and explanation
   const handleSubmit = async () => {
     if (!question.trim()) {
       toast.error("Please write a question");
+      return;
+    }
+    try {
+      await requireConsent("ai");
+    } catch (err) {
+      toast.error((err as Error).message);
       return;
     }
 
