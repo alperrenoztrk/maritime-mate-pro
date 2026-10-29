@@ -576,5 +576,347 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://msi.nga.mil/Publications/APN"
       }
     ]
+  },
+  "machine-thermodynamics-termodinamik-yasalar-birinci-yasa-enerji-korunumu-1": {
+    "id": "machine-thermodynamics-termodinamik-yasalar-birinci-yasa-enerji-korunumu-1-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "The first law tracks energy crossing a defined system boundary as heat and work, plus changes in stored energy. An engine efficiency statement without a clear boundary can omit auxiliaries, exhaust and cooling losses.\n\nCommon error: Do not label a difference as thermal loss without checking energy transferred in other forms.",
+    "example": {
+      "problem": "A steady-state unit receives 100 kW as input energy and delivers 60 kW useful output.",
+      "steps": [
+        "State the control volume and steady-state assumption with no unmeasured flows.",
+        "Account for the remaining 40 kW as losses or other energy outputs, not vanished energy.",
+        "Compare with measured exhaust, cooling and electrical parasitics before drawing equipment-specific conclusions."
+      ],
+      "result": "The simplified energy balance closes at 100 kW; real plant boundaries need measured terms."
+    },
+    "references": [
+      {
+        "title": "DOE: Thermodynamics fundamentals",
+        "url": "https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1012-92_VOL1.pdf"
+      }
+    ]
+  },
+  "machine-fluid-mechanics-akiskan-statigi-hidrostatik-basinc-denklemleri-2": {
+    "id": "machine-fluid-mechanics-akiskan-statigi-hidrostatik-basinc-denklemleri-2-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Hydrostatic gauge pressure increases with liquid density and vertical depth below a free surface. In a ventilated tank, p = ρgh applies to the column, not to vessel roll, acceleration or an air-pressurised space.\n\nCommon error: Do not confuse gauge pressure with absolute pressure or treat inclined tank geometry as irrelevant during motion.",
+    "example": {
+      "problem": "An open seawater tank has liquid density 1,025 kg/m³ and a pressure tap 8.0 m below the surface.",
+      "steps": [
+        "Use SI units: ρ = 1,025 kg/m³, g = 9.81 m/s², h = 8.0 m.",
+        "Gauge pressure ≈ 1,025 × 9.81 × 8 = 80,442 Pa, or 80.4 kPa.",
+        "Check vent status, sensor elevation and ship motion before comparing the estimate with an actual reading."
+      ],
+      "result": "About 80.4 kPa gauge is the static head component, not necessarily the instrument's full observed pressure."
+    },
+    "references": [
+      {
+        "title": "DOE: Fluid flow fundamentals",
+        "url": "https://www.energy.gov/documents/doe-hdbk-1012-92vol3"
+      }
+    ]
+  },
+  "machine-machine-elements-malzeme-bilgisi-korozyon-direnci-ve-korozyon-tipleri-4": {
+    "id": "machine-machine-elements-malzeme-bilgisi-korozyon-direnci-ve-korozyon-tipleri-4-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Corrosion morphology can indicate different mechanisms: galvanic corrosion depends on coupled dissimilar metals and electrolyte, while crevice corrosion may concentrate inside poorly ventilated gaps. Surface coating alone is not diagnosis.\n\nCommon error: Do not install an unapproved metal-to-metal bridge that unintentionally creates galvanic coupling.",
+    "example": {
+      "problem": "Rapid metal loss appears near a stainless-steel fitting attached to a carbon-steel deck support.",
+      "steps": [
+        "Check material pairing, electrical continuity, coating breakdown and water retention at the connection.",
+        "Inspect the actual location and severity of attack, not only its colour or apparent rust area.",
+        "Select repair, material isolation and coating measures within approved engineering practice and corrosion-control plans."
+      ],
+      "result": "Investigate the mechanism before choosing protection; wrong remedies can worsen local damage."
+    },
+    "references": [
+      {
+        "title": "DOE: Material science fundamentals",
+        "url": "https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1017-93_VOL1.pdf"
+      }
+    ]
+  },
+  "machine-diesel-engines-dizel-motor-temelleri-iki-zamanli-motor-calisma-prensibi-2": {
+    "id": "machine-diesel-engines-dizel-motor-temelleri-iki-zamanli-motor-calisma-prensibi-2-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Low-speed two-stroke marine diesel engines rely on efficient scavenge-air supply while exhaust gas is being displaced. One power stroke per revolution does not guarantee adequate fresh air at every load.\n\nCommon error: Do not open scavenge-space doors or make fuel adjustments without the approved safety procedure.",
+    "example": {
+      "problem": "A two-stroke engine experiences rising exhaust temperatures and declining scavenge pressure while load is unchanged.",
+      "steps": [
+        "Inspect scavenge pressure, air-cooler condition and auxiliary blower operation in the maker's diagnostic order.",
+        "Compare cylinder exhaust-temperature patterns with fuel-injection evidence before blaming the fuel rack.",
+        "Follow approved response and load-reduction guidance if deteriorating conditions indicate combustion or scavenge risk."
+      ],
+      "result": "An air-system defect may raise thermal stress without any increase in commanded fuel."
+    },
+    "references": [
+      {
+        "title": "DOE: Mechanical science handbook overview",
+        "url": "https://www.energy.gov/documents/doe-hdbk-1018-93vol2"
+      }
+    ]
+  },
+  "machine-ship-systems-dumen-donanimi-yedek-dumen-sistemi-6": {
+    "id": "machine-ship-systems-dumen-donanimi-yedek-dumen-sistemi-6-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Steering redundancy is meaningful only if the backup control path, power availability, local control, communication and changeover procedures work together. The arrangement is installation-specific.\n\nCommon error: Do not assume two pump motors mean every steering failure is automatically covered.",
+    "example": {
+      "problem": "Bridge steering control indication is lost shortly before pilotage.",
+      "steps": [
+        "Identify whether rudder movement, position feedback, or only one display has failed using independent indicators.",
+        "Inform bridge and engine teams, test alternative controls only under the vessel's procedures, and establish clear communication.",
+        "Apply the company's and Master's restrictions before continuing or resuming manoeuvring."
+      ],
+      "result": "A redundant power unit does not guarantee an independent steering control or position-feedback path."
+    },
+    "references": [
+      {
+        "title": "MCA: Code of Safe Working Practices, 2026 edition",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-auxiliary-dizel-jeneratorler-paralel-baglama-synchronizing-3": {
+    "id": "machine-auxiliary-dizel-jeneratorler-paralel-baglama-synchronizing-3-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "AC generators must meet prescribed voltage, frequency, phase sequence and phase-angle conditions for parallel connection. A closing error can produce damaging transients, torque and reverse-power events.\n\nCommon error: Never defeat a synch-check or reverse-power protection to force a breaker closed.",
+    "example": {
+      "problem": "An incoming generator approaches the live bus but the synchronising indication repeatedly passes the closing point.",
+      "steps": [
+        "Check the approved automatic synchronising mode, interlocks and both units' frequency and voltage indications.",
+        "Review governor, AVR and breaker readiness without defeating protective relays.",
+        "Escalate repeated failures; do not attempt improvised manual synchronisation outside the maker's operating procedure."
+      ],
+      "result": "Safe synchronisation is a matched electrical state, not simply matching two displayed frequencies."
+    },
+    "image": "/lessons/professional-machine-auxiliary.svg",
+    "imageAlt": "Synchronisation readiness",
+    "references": [
+      {
+        "title": "DOE: Mechanical science handbook overview",
+        "url": "https://www.energy.gov/documents/doe-hdbk-1018-93vol2"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-vlsfo-very-low-sulphur-fuel-oil-2": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-vlsfo-very-low-sulphur-fuel-oil-2-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "VLSFO compliance is not only a sulphur number. Different fuel blends may exhibit compatibility and stability problems; viscosity and heating arrangements affect service conditions.\n\nCommon error: Do not infer compatibility from a similar density or low sulphur declaration alone.",
+    "example": {
+      "problem": "The ship plans to mix a newly bunkered VLSFO parcel with residual fuel in a settling tank.",
+      "steps": [
+        "Review bunker documents, fuel specifications and any compatibility test information.",
+        "Plan tank segregation, changeover temperatures and purifier settings against the engine maker's requirements.",
+        "Trend pressure drop, filter condition and temperatures during a controlled changeover."
+      ],
+      "result": "Sulphur compliance does not automatically prove blends can be mixed safely."
+    },
+    "references": [
+      {
+        "title": "IMO: MARPOL Annex VI guidance and instruments",
+        "url": "https://www.imo.org/en/ourwork/environment/pages/index-of-mepc-resolutions-and-guidelines-related-to-marpol-annex-vi.aspx"
+      }
+    ]
+  },
+  "machine-cooling-hvac-sogutma-cevrimi-temelleri-cop-performans-katsayisi-hesabi-6": {
+    "id": "machine-cooling-hvac-sogutma-cevrimi-temelleri-cop-performans-katsayisi-hesabi-6-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Refrigeration coefficient of performance relates heat removed at the evaporator to the work input over an agreed measurement boundary. It can exceed one because the system transports heat rather than converting work directly into cooling.\n\nCommon error: Do not treat COP 3.2 as 320% thermodynamic engine efficiency.",
+    "example": {
+      "problem": "A refrigeration unit removes 80 kW of heat and consumes 25 kW compressor electrical power.",
+      "steps": [
+        "Calculate COP = 80 / 25 = 3.2 at the stated operating condition.",
+        "Check whether fans, pumps and other auxiliaries are excluded from the electrical figure.",
+        "Compare only like-for-like duty, ambient and suction/condensing conditions."
+      ],
+      "result": "COP = 3.2 applies to this simplified compressor-only boundary."
+    },
+    "image": "/lessons/professional-machine-cooling-hvac.svg",
+    "imageAlt": "Refrigeration COP example",
+    "references": [
+      {
+        "title": "DOE: Mechanical science handbook overview",
+        "url": "https://www.energy.gov/documents/doe-hdbk-1018-93vol2"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-uretim-sistemi-frekans-ve-yuk-kontrolu-3": {
+    "id": "machine-electrical-elektrik-uretim-sistemi-frekans-ve-yuk-kontrolu-3-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "For a conventional synchronous alternator, system frequency tracks shaft rotational speed and pole count; the governor regulates speed/real-power sharing while the AVR predominantly controls voltage/reactive-power behaviour.\n\nCommon error: Do not change AVR settings to correct a prime-mover speed problem.",
+    "example": {
+      "problem": "A shipboard generator begins to fall in frequency as electrical load increases.",
+      "steps": [
+        "Compare measured frequency and engine rpm with the governor's reference and the load trend.",
+        "Check for overload, fuel or air-supply restrictions and load-sharing anomalies without guessing an AVR fault.",
+        "Coordinate load management or load shedding using approved PMS priorities and response procedures."
+      ],
+      "result": "The frequency symptom primarily demands speed and real-power investigation, not indiscriminate voltage adjustment."
+    },
+    "image": "/lessons/professional-machine-electrical.svg",
+    "imageAlt": "Power-frequency control",
+    "references": [
+      {
+        "title": "DOE: Electrical science fundamentals",
+        "url": "https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1011-92_VOL3.pdf"
+      }
+    ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-sinyal-donusturuculer-4-20-ma-0-10v-6": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-sinyal-donusturuculer-4-20-ma-0-10v-6-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "A 4–20 mA live-zero loop represents zero span at 4 mA and full span at 20 mA. Current below normal range may indicate a fault; transmitter scaling and loop wiring must be verified.\n\nCommon error: Do not normalise against 20 mA as if the lower endpoint were zero current.",
+    "example": {
+      "problem": "A level transmitter is calibrated 0–100% over 4–20 mA and measures 12 mA.",
+      "steps": [
+        "Compute usable span: 12 − 4 = 8 mA out of 16 mA.",
+        "The indicated level is 8 / 16 × 100 = 50% of the calibrated range.",
+        "Check source tag, transmitter range and control-system scaling before trusting the displayed level."
+      ],
+      "result": "A 12 mA reading represents 50%, not 60% or 75%."
+    },
+    "image": "/lessons/professional-machine-automation.svg",
+    "imageAlt": "4–20 mA transmitter span",
+    "references": [
+      {
+        "title": "DOE: Instrumentation and control fundamentals",
+        "url": "https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1013-92-VOL2.pdf"
+      }
+    ]
+  },
+  "machine-engine-room-ops-makine-vardiyasi-makine-vardiyasi-devir-teslim-1": {
+    "id": "machine-engine-room-ops-makine-vardiyasi-makine-vardiyasi-devir-teslim-1-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Engine-room handover is a transfer of operational risk awareness, not merely a signature. It should communicate plant status, isolations, alarms, planned work, temporary arrangements and escalation triggers.\n\nCommon error: Do not silently return the equipment to automatic mode without understanding why it was changed.",
+    "example": {
+      "problem": "An incoming watchkeeper finds an auxiliary pump running in manual mode without an entry in the handover.",
+      "steps": [
+        "Confirm the reason for the manual override and identify which automatic protections or standby changeovers might be affected.",
+        "Check the control-panel state, relevant log entries and permits with the off-going watchkeeper.",
+        "Document the agreed operating condition and make the bridge/chief engineer aware if reliability is reduced."
+      ],
+      "result": "The handover is incomplete until deviations and risks are understood and recorded."
+    },
+    "references": [
+      {
+        "title": "MCA: Code of Safe Working Practices, 2026 edition",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-planli-bakim-sistemi-pms-kritik-ekipman-tanimlamasi-4": {
+    "id": "machine-maintenance-planli-bakim-sistemi-pms-kritik-ekipman-tanimlamasi-4-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Critical-equipment identification considers consequence of failure, available redundancy, detection and restoration time, not simply purchase price or physical size.\n\nCommon error: Do not defer critical maintenance solely because the equipment is rarely started.",
+    "example": {
+      "problem": "An emergency generator has low running hours and the PMS proposes postponing functional testing.",
+      "steps": [
+        "Assess the essential service it supports and the consequences of failure on demand.",
+        "Review statutory/class intervals, maker instructions and prior defects, independent of the small accumulated running hours.",
+        "Plan authorised inspection and testing with safeguards for electrical-system continuity."
+      ],
+      "result": "Low usage does not eliminate hidden standby failures or justify skipping mandatory checks."
+    },
+    "references": [
+      {
+        "title": "MCA: Code of Safe Working Practices, 2026 edition",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-engine-room-safety-yangin-guvenligi-hizli-kapatma-vanasi-quick-closing-valve-5": {
+    "id": "machine-engine-room-safety-yangin-guvenligi-hizli-kapatma-vanasi-quick-closing-valve-5-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Remote quick-closing valves are intended to isolate fuel supply rapidly during a fire, typically without requiring entry to the affected space. Testing and resetting may have serious operational consequences.\n\nCommon error: Never pull an unidentified live fuel emergency shut-off as a demonstration.",
+    "example": {
+      "problem": "A safety drill calls for demonstrating remote shut-off of fuel to machinery.",
+      "steps": [
+        "Identify the correct vessel-specific valve group, protected area and consequences for running equipment.",
+        "Use the approved drill method, notifications and safe isolation requirements; simulate where live activation is unsafe.",
+        "Verify reset, valve status and restoration before returning the plant to normal operating condition."
+      ],
+      "result": "The drill should teach purpose, location and safe sequence without creating an avoidable blackout."
+    },
+    "references": [
+      {
+        "title": "MCA: Code of Safe Working Practices, 2026 edition",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-su-ayirici-ows-15-ppm-standardi-1": {
+    "id": "machine-environment-machine-yag-kirliligi-onleme-annex-i-yag-su-ayirici-ows-15-ppm-standardi-1-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "A 15 ppm bilge alarm and stopping device are part of an approved oily-water separation arrangement, but equipment approval never overrides MARPOL discharge conditions or local restrictions.\n\nCommon error: Never bypass a 15 ppm monitor or log a discharge that did not take place.",
+    "example": {
+      "problem": "A bilge alarm reports 8 ppm while the proposed discharge route is in a restricted port area.",
+      "steps": [
+        "Confirm vessel/area discharge permission and any local or port restrictions before looking at the number.",
+        "Verify the piping arrangement and discharge controls without manipulating the sampling or alarm system.",
+        "Retain wastes aboard or transfer to approved reception facilities if discharge is restricted."
+      ],
+      "result": "An 8 ppm indication alone is not authority to discharge."
+    },
+    "image": "/lessons/professional-machine-environment-machine.svg",
+    "imageAlt": "OWS compliance layers",
+    "references": [
+      {
+        "title": "IMO: MARPOL convention and annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO: Implementing the Ballast Water Management Convention",
+        "url": "https://www.imo.org/en/mediacentre/hottopics/pages/implementing-the-bwm-convention.aspx"
+      }
+    ]
+  },
+  "machine-erm-liderlik-ve-iletisim-kapali-dongu-iletisim-closed-loop-3": {
+    "id": "machine-erm-liderlik-ve-iletisim-kapali-dongu-iletisim-closed-loop-3-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "Closed-loop communication requires a precise instruction, correct read-back and explicit confirmation. The loop is especially important when similar machinery numbers or valve designations can be confused.\n\nCommon error: A nod or 'okay' is not a reliable read-back for critical plant operations.",
+    "example": {
+      "problem": "An engineer orders a ballast pump to stop, but the watchkeeper repeats a different pump number.",
+      "steps": [
+        "Stop the action before the valve or pump is operated and clarify the equipment identifier.",
+        "Require an exact read-back and confirm the intended plant item against the P&ID or tagging.",
+        "Verify the plant's actual state after execution and report completion."
+      ],
+      "result": "A missing or inaccurate read-back is an operational discrepancy to resolve before action."
+    },
+    "references": [
+      {
+        "title": "IMO: STCW convention and competence framework",
+        "url": "https://www.imo.org/en/ourwork/humanelement/pages/stcw-convention.aspx"
+      },
+      {
+        "title": "MCA: Code of Safe Working Practices, 2026 edition",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-energy-efficiency-enerji-verimliligi-cercevesi-cii-karbon-yogunlugu-gostergesi-4": {
+    "id": "machine-energy-efficiency-enerji-verimliligi-cercevesi-cii-karbon-yogunlugu-gostergesi-4-professional-application",
+    "title": "Engineering reasoning and worked case",
+    "content": "CII is an operational carbon-intensity indicator based on emissions and transport-work-related activity under a specified methodology. Lower total fuel consumption in isolation does not guarantee a better intensity indicator.\n\nCommon error: Do not substitute a voyage-level fuel-per-hour number for the formal attained CII.",
+    "example": {
+      "problem": "A ship reduces speed but experiences prolonged waiting time and cargo carried changes substantially.",
+      "steps": [
+        "Identify the regulation's applicable attained-CII calculation and verified activity data for the year.",
+        "Compare changes in fuel emissions, distance and the relevant capacity/transport-work denominator.",
+        "Evaluate operational measures, including weather routing and hull condition, without claiming one speed reduction guarantees a rating improvement."
+      ],
+      "result": "The compliance outcome depends on the full calculation and the applicable year's requirements."
+    },
+    "references": [
+      {
+        "title": "IMO: EEXI and CII explained",
+        "url": "https://www.imo.org/en/mediacentre/hottopics/pages/eexi-cii-faq.aspx"
+      },
+      {
+        "title": "European Commission: Maritime EU ETS questions and answers",
+        "url": "https://climate.ec.europa.eu/areas-action/transport-decarbonisation/reducing-emissions-shipping-sector/faq-maritime-transport-eu-emissions-trading-system-ets_en"
+      }
+    ]
   }
 };
