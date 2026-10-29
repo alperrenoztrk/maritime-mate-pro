@@ -1736,5 +1736,497 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
       }
     ]
+  },
+  "navigation-radar-ile-mevki-tayini": {
+    "id": "navigation-radar-ile-mevki-tayini-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Radar range measurements can establish an independent position fix when suitable land features and geometric intersection are available. Radar bearings may be less accurate than ranges depending on beamwidth and gyro-heading errors; chart and radar must use a consistent datum.\n\nCommon error: Do not accept an ARPA-moving target or the nearest unidentified echo as a charted fixed landmark.",
+    "example": {
+      "problem": "A GNSS position becomes unstable close to a coastline but two distinct charted headlands are detectable by radar.",
+      "steps": [
+        "Choose two identifiable fixed radar targets whose charted features correspond to their detectable echoes, avoiding ambiguous shorelines.",
+        "Measure two ranges at nearly the same instant, plot range arcs on the correct chart projection and cross-check their intersection with a third bearing/range when available.",
+        "Compare the independent fix to the ECDIS own ship position, tide/clearance margins and the predicted track; report any unexplained discrepancy."
+      ],
+      "result": "A crossed-range fix can support independent navigation, but two almost tangent arcs will produce an ill-conditioned position."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-radar-prensibi": {
+    "id": "navigation-radar-prensibi-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Marine radar estimates target range from the round-trip time of radio pulses. X- and S-band radars have different propagation/rain and resolution characteristics; echo strength also depends on target geometry, shadowing and sea clutter.\n\nCommon error: Aggressive clutter suppression can erase small craft and buoys.",
+    "example": {
+      "problem": "A small vessel appears on X-band radar but its echo intermittently disappears when precipitation increases.",
+      "steps": [
+        "Check the actual target visually and with the second radar band if fitted; do not infer absence from an intermittent echo.",
+        "Adjust range scale, gain and sea/rain clutter controls according to maker instructions, observing how they affect small target detection.",
+        "Verify radar performance monitoring and collision-risk assessment with all available means."
+      ],
+      "result": "Radar coverage changes with clutter settings, propagation and target cross-section; no single gain setting guarantees detection."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-paralel-indeks-radar": {
+    "id": "navigation-paralel-indeks-radar-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Parallel indexing (PI) provides a radar-based monitoring line offset from the planned track to help maintain a safe passing distance from fixed charted features. It is not an independent position fix or a substitute for lookout.\n\nCommon error: Do not create a PI on a moving vessel or rely on it without checking the correct target identity.",
+    "example": {
+      "problem": "A planned track passes 0.7 NM off an isolated headland in moderate visibility.",
+      "steps": [
+        "Select and chart-check a fixed, radar-conspicuous feature corresponding to the planned offset.",
+        "Set the PI line consistently with the course and relevant charted clearance; validate initial echo alignment with a reliable fix.",
+        "Monitor changes and take action under the passage plan; cross-check GNSS/radar position and under-keel margins."
+      ],
+      "result": "The echo should remain consistently related to the PI reference when the vessel follows the intended track, subject to target geometry and measurement uncertainty."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-gps-sinirlamalari-ve-operasyonel-riskler": {
+    "id": "navigation-gps-sinirlamalari-ve-operasyonel-riskler-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "GNSS reliability can be affected by spoofing, jamming, multipath, antenna failure and shared sensor feeds. Multiple screens agreeing is not independent corroboration if they use the same receiver or antenna.\n\nCommon error: A low HDOP or a healthy satellite count does not exclude spoofing.",
+    "example": {
+      "problem": "ECDIS, AIS own-ship and a portable plotter all show a sudden offshore position jump, while radar ranges and coastline remain unchanged.",
+      "steps": [
+        "Check the data-source chain for all three displays; determine whether they share GNSS inputs.",
+        "Use radar ranges, visual bearings, dead reckoning and approved backup positioning arrangements to establish likely position.",
+        "Notify bridge team/Master, mark suspect sensor information and preserve a timed log of discrepancies and mitigation."
+      ],
+      "result": "Correlation across displays is not proof of independent position integrity when sensors share a common source."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-elektronik-seyirde-capraz-kontrol": {
+    "id": "navigation-elektronik-seyirde-capraz-kontrol-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "ECDIS, radar and AIS are complementary but can share common heading, log and position errors. Independent cross-checks are based on distinct principles, not just different display brands.\n\nCommon error: Never treat radar overlay alignment as a guarantee that every sensor is correct.",
+    "example": {
+      "problem": "An ECDIS charted buoy is displayed on the same bearing as a radar contact, but its range differs materially.",
+      "steps": [
+        "Confirm radar target identification, chart datum, chart updates, and antenna/ship reference point offsets.",
+        "Check tide, buoy swing and radar range corrections while comparing alternative shore ranges or visual fixes.",
+        "Re-evaluate the vessel position and passage plan before navigating by an inconsistent overlay."
+      ],
+      "result": "A mismatch requires source diagnosis rather than blindly moving the displayed own-ship position."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-seyir-fenerleri-yay-ve-menzil": {
+    "id": "navigation-seyir-fenerleri-yay-ve-menzil-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "COLREG navigation lights have defined sectors, colours and minimum ranges based on vessel class and size. Geographical detection distance also depends on meteorological visibility and height of eye; a light's legal nominal range is not the distance at which every observer will see it.\n\nCommon error: Do not infer that a vessel is absent because a particular light is not yet visible at an assumed range.",
+    "example": {
+      "problem": "At night an approaching vessel's starboard sidelight becomes visible but its masthead light is briefly obscured by coastal background lights.",
+      "steps": [
+        "Use a continuous sight/hearing lookout and radar plot to assess target motion; verify identification of the observed light.",
+        "Apply the actual light sector and vessel orientation information rather than equating one light with a precise heading.",
+        "Keep collision risk assessment under Rules 5–8 and record/communicate uncertainty until the contact is reliably identified."
+      ],
+      "result": "A single sighting can constrain possible target orientation but cannot by itself establish precise course, risk or stand-on status."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-colreg-temel-prensipleri": {
+    "id": "navigation-colreg-temel-prensipleri-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "COLREG Rules 5–8 apply across the routine collision-avoidance decision chain: effective lookout, safe speed, risk assessment with all available means, and timely substantial action. Later encounter rules do not replace those fundamentals.\n\nCommon error: Do not assume an apparently acceptable predicted CPA proves there is no risk of collision.",
+    "example": {
+      "problem": "In a busy traffic area a junior watchkeeper sees a target closing but reports that AIS CPA is just above the company's preferred limit.",
+      "steps": [
+        "Verify risk through systematic visual bearing trends, radar plotting and all available independent information.",
+        "Review safe speed and available manoeuvring room; do not treat an arbitrary company CPA target as the only legal test.",
+        "Take or propose appropriate early substantial action under the applicable encounter rules and reassess until clear."
+      ],
+      "result": "Risk assessment is dynamic: CPA numbers alone cannot replace lookout, safe speed and relative-motion analysis."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-seyir-cihazi-arizalari-ve-yedek-seyir": {
+    "id": "navigation-seyir-cihazi-arizalari-ve-yedek-seyir-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Failure management must distinguish display, transducer, data bus and electrical supply faults. Backup navigation is only credible if equipment independence and competent procedures have been verified.\n\nCommon error: Do not conceal an active sensor alarm just to silence a navigation display.",
+    "example": {
+      "problem": "Both ECDIS units display an identical erroneous ship position after a GNSS source alarm.",
+      "steps": [
+        "Trace the position source on each ECDIS and check whether both use the same failed GNSS sensor.",
+        "Switch to an approved alternate sensor or backup navigation arrangement in accordance with bridge procedures.",
+        "Increase independent position-fix frequency, update the passage-risk assessment and report the fault to the Master."
+      ],
+      "result": "Two ECDIS consoles are not independent if both derive position from one failed upstream source."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "navigation-psc-bakis-acisi": {
+    "id": "navigation-psc-bakis-acisi-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Port State Control may examine whether charts/publications are adequate and updated, critical alarms are functional and crew are familiar with approved procedures. Demonstrated operation and actual records are stronger evidence than generic compliance claims.\n\nCommon error: Never fabricate an equipment-test entry or silently change a documented route after the inspector has identified a discrepancy.",
+    "example": {
+      "problem": "A surveyor asks the watch officer to demonstrate how to identify chart warnings relevant to the next port approach.",
+      "steps": [
+        "Present the current passage plan, correction/MSI process and traceable records, including any open restrictions.",
+        "Demonstrate the correct approved navigation equipment without simulating a successful alarm/test when it failed.",
+        "Escalate genuine deficiencies through SMS corrective action and ensure records distinguish due from completed work."
+      ],
+      "result": "A credible inspection response is factual, traceable and based on the ship's actual configuration."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      },
+      {
+        "title": "IMO — ECDIS guidance",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/electroniccharts.aspx"
+      }
+    ]
+  },
+  "meteorology-radar-ve-ses-isaretleri": {
+    "id": "meteorology-radar-ve-ses-isaretleri-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "In restricted visibility, COLREG Rule 19 requires safe speed and risk assessment using all available means; fog signals are separate from radar target detection and must follow the vessel's actual navigational condition.\n\nCommon error: Do not ignore a sound signal because ARPA has no matching tracked target.",
+    "example": {
+      "problem": "A cargo vessel hears a prolonged blast forward in dense fog but no confirmed corresponding radar echo is visible.",
+      "steps": [
+        "Evaluate the direction and likely range cautiously; notify the Master under standing orders and maintain attentive auditory/visual lookout.",
+        "Apply Rule 19's precautions and, when required by its conditions, reduce speed to the minimum at which course can be kept and take all way off if necessary.",
+        "Continue the correct statutory sound signal for the vessel's condition and avoid unsupported conclusions based on absent radar echo."
+      ],
+      "result": "An uncorrelated fog signal can still indicate nearby traffic requiring immediate caution."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG restricted visibility",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      }
+    ]
+  },
+  "meteorology-sis-olusum-turleri": {
+    "id": "meteorology-sis-olusum-turleri-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Advection fog forms when warm moist air moves over a colder surface, cooling below its dew point. Radiation fog typically arises through nocturnal cooling; sea visibility reductions need not coincide with precipitation.\n\nCommon error: Do not assume visibility remains safe simply because rainfall has stopped.",
+    "example": {
+      "problem": "The bridge records sea temperature 8°C, air temperature 12°C and humid winds moving across colder coastal water, followed by rapid reduction in visibility.",
+      "steps": [
+        "Compare air/sea temperatures, dew point, wind direction and recent marine forecast observations.",
+        "Treat advection fog as a plausible mechanism, but confirm the actual visibility and traffic conditions rather than classifying fog solely by two temperatures.",
+        "Implement COLREG restricted-visibility precautions and communicate changed operational limits."
+      ],
+      "result": "Warm moist air passing over colder water is consistent with advection fog; the exact onset depends on moisture and mixing."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG restricted visibility",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      }
+    ]
+  },
+  "communication-gmdss-modernizasyonu-ve-e-navigasyon": {
+    "id": "communication-gmdss-modernizasyonu-ve-e-navigasyon-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "The modernized SOLAS IV GMDSS arrangements recognise applicable mobile satellite services beyond the older Inmarsat-only framing; the ship's certificate and approved equipment determine its actual A3 coverage. GMDSS and e-navigation have related but distinct purposes.\n\nCommon error: Do not copy obsolete fixed Inmarsat A3 latitude limits onto every modern GMDSS installation.",
+    "example": {
+      "problem": "A coastal voyage plan is extended to higher latitudes; the ship carries a recognised mobile satellite terminal and MF/HF arrangements.",
+      "steps": [
+        "Read the Safety Radio Certificate and Record of Equipment, verifying service type, capabilities and sea-area certification.",
+        "Overlay planned route against the actual recognised mobile satellite service footprint and relevant terrestrial DSC coverage.",
+        "Confirm distress-watch and backup requirements and document the bridge/radio readiness review before departure."
+      ],
+      "result": "Higher latitude alone does not define the vessel's A4 area; required capabilities depend on its installed, approved service."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS IV radiocommunications",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "communication-tehlike-aciliyet-ve-emniyet-haberlesmesi": {
+    "id": "communication-tehlike-aciliyet-ve-emniyet-haberlesmesi-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Distress (MAYDAY), urgency (PAN PAN) and safety (SECURITE) communications represent different priorities and procedures. DSC alerting and follow-up radiotelephony use the relevant equipment and working channels; actual distress calls must never be used for drills.\n\nCommon error: Do not trigger a live DSC distress alert merely to obtain attention for a routine medical consultation.",
+    "example": {
+      "problem": "A man overboard is recovered, but medical evacuation may become urgent while the ship remains operational and not in imminent danger.",
+      "steps": [
+        "Assess whether the facts meet distress or urgency criteria under the Master's command and onboard emergency plan.",
+        "Prepare a concise position, patient-condition and requested-assistance message; use the applicable GMDSS urgency communication procedure.",
+        "Log actual transmissions, contact medical/radio authorities as appropriate and reassess if the situation deteriorates to distress."
+      ],
+      "result": "Urgency may be appropriate for a serious medical situation not meeting the imminent-danger threshold; classification depends on actual circumstances."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS IV radiocommunications",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "safety-is-sagligi-guvenligi-ve-kkd": {
+    "id": "safety-is-sagligi-guvenligi-ve-kkd-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "PPE is the last layer after elimination, isolation and engineered safeguards. A Job Safety Analysis must consider dynamic energy sources, work interfaces, simultaneous operations and a stop-work trigger.\n\nCommon error: Never cite a hard hat as sufficient control for a loaded line's snap-back zone.",
+    "example": {
+      "problem": "Deck crew are asked to work near a loaded mooring line while wearing hard hats and gloves.",
+      "steps": [
+        "Stop the exposure and review whether the task can be carried out with the line unloaded or the vessel repositioned.",
+        "Reassess line-of-fire and recoil paths, communications and exclusion zones under the approved mooring arrangement.",
+        "Only restart when responsible personnel agree that higher-order controls are in place; choose PPE for remaining hazards."
+      ],
+      "result": "Correct PPE cannot protect against all high-energy line failures."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS Safety of Life at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      },
+      {
+        "title": "IMO — Revised recommendations on entering enclosed spaces, MSC.581(110)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.581%28110%29.pdf"
+      }
+    ]
+  },
+  "safety-catisma-sonrasi-acil-mudahale": {
+    "id": "safety-catisma-sonrasi-acil-mudahale-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Post-collision response prioritises personnel safety, watertight integrity, pollution control and accurate contact with authorities and neighbouring vessels. Liability arguments should not displace emergency checks.\n\nCommon error: Do not resume full speed before evaluating hull integrity and required reporting actions.",
+    "example": {
+      "problem": "A ship experiences a low-speed contact with another vessel and reports no immediate flooding on its first soundings.",
+      "steps": [
+        "Account for personnel, establish communications and assess injuries, watertight compartments, trim/list and potential pollution.",
+        "Monitor tank soundings and boundaries over time, review propulsion/steering condition and prepare response resources.",
+        "Record times, positions, statements and damage evidence factually, and notify authorities and company under SMS."
+      ],
+      "result": "An initial negative sounding does not rule out progressive flooding or structural damage."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS Safety of Life at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      },
+      {
+        "title": "IMO — Revised recommendations on entering enclosed spaces, MSC.581(110)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.581%28110%29.pdf"
+      }
+    ]
+  },
+  "safety-karaya-oturma-ve-yeniden-yuzdurme-emniyeti": {
+    "id": "safety-karaya-oturma-ve-yeniden-yuzdurme-emniyeti-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Grounding creates local loads and potential hull damage; refloating plans depend on verified bathymetry, tidal state, hull condition, stability and environmental consequences. Immediate full-astern power can worsen damage.\n\nCommon error: Do not use high propulsion thrust before verifying contact and hull consequences.",
+    "example": {
+      "problem": "A vessel runs aground on a shoal at low tide, and the bridge proposes hard astern propulsion immediately.",
+      "steps": [
+        "Stop unsafe movement, sound tanks and bilges, assess people, machinery and possible release of pollutants.",
+        "Determine ground contact, tide, draught/trim, stability and available supporting survey information.",
+        "Develop a refloating decision with the Master, company, authorities and specialised assistance if required; do not apply uncontrolled propulsion."
+      ],
+      "result": "A safe refloat must account for structural loads and ongoing ingress, not simply the next high tide."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS Safety of Life at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      },
+      {
+        "title": "IMO — Revised recommendations on entering enclosed spaces, MSC.581(110)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.581%28110%29.pdf"
+      }
+    ]
+  },
+  "safety-acil-durum-komuta-raporlama-ve-delil-yonetimi": {
+    "id": "safety-acil-durum-komuta-raporlama-ve-delil-yonetimi-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Emergency logs should preserve observed facts, communications and ordered actions with timestamps. Estimates and assumptions must be identified; accurate records support coordination and later investigation without delaying life-saving work.\n\nCommon error: Never record a simulated CO2 release as an actual discharge.",
+    "example": {
+      "problem": "After a machinery-space fire drill, the bridge log lists a CO2 release even though only the release procedure was rehearsed.",
+      "steps": [
+        "Correct the draft entry through the approved log amendment process, maintaining the integrity of original records.",
+        "State explicitly what was simulated and what equipment was actually operated, including alarms and muster times.",
+        "Track the training deficiency and verify corrective actions without creating fictitious operational evidence."
+      ],
+      "result": "A drill can be evaluated without falsely recording the discharge of a fixed firefighting agent."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS Safety of Life at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      },
+      {
+        "title": "IMO — Revised recommendations on entering enclosed spaces, MSC.581(110)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.581%28110%29.pdf"
+      }
+    ]
+  },
+  "seamanship-kopruustu-vardiyasi-ve-gozculuk": {
+    "id": "seamanship-kopruustu-vardiyasi-ve-gozculuk-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "A dedicated lookout supports detection by sight and hearing under Rule 5 and must report changes clearly; helm, chart and radar duties can impede an effective lookout when workload rises.\n\nCommon error: Do not rely on a single person simultaneously performing time-consuming administration and full collision lookout.",
+    "example": {
+      "problem": "A bridge watchkeeper is updating charts while a fishing fleet enters restricted visibility ahead.",
+      "steps": [
+        "Reassess safe manning and lookout allocation under STCW/standing orders, requesting additional assistance when needed.",
+        "Establish shared observations and target reports with relative bearing, range trend and uncertainty.",
+        "Review speed, radar plotting and COLREG Rule 19 precautions while maintaining dedicated situational awareness."
+      ],
+      "result": "A clear radar picture does not replace maintaining an appropriate lookout by sight and hearing."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREG Rules 5, 7 and 8",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventing-collisions.aspx"
+      }
+    ]
+  },
+  "cargo-yuk-ellecleme-ekipmani-ve-guvenli-calisma": {
+    "id": "cargo-yuk-ellecleme-ekipmani-ve-guvenli-calisma-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Crane Safe Working Load and rigging capacities apply under stated configurations and load paths. Sling angles increase tension as the angle to horizontal decreases, while dynamic effects and actual equipment limits remain critical.\n\nCommon error: Do not assume each leg carries half the load independent of sling angle.",
+    "example": {
+      "problem": "A symmetric two-leg sling lifts a 12-tonne load with each leg at 30° above horizontal, ignoring acceleration for the teaching calculation.",
+      "steps": [
+        "Compute the vertical weight equivalent: 12 tonnes-force in this simplified static example.",
+        "For symmetric legs, tension per leg = 12 / (2 × sin 30°) = 12 tonnes-force; clarify this is not a complete design verification.",
+        "Verify sling WLL, angle limits, shackles, crane chart and dynamic loading before any real lift."
+      ],
+      "result": "At 30° to the horizontal, each sling bears approximately the entire static suspended load; a shallower angle is not benign."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS overview",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-acik-ve-kapali-dongu-kontrol-1": {
+    "id": "machine-automation-kontrol-teorisi-acik-ve-kapali-dongu-kontrol-1-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "An open-loop control output does not automatically correct for deviation, while closed-loop feedback compares a measured variable with a setpoint and adjusts the actuator. Sensor fault can defeat feedback despite normal controller operation.\n\nCommon error: Do not increase controller gain to 'fix' a level sensor wiring or scaling failure.",
+    "example": {
+      "problem": "A ballast level controller commands a pump although the independent sight glass shows the tank already full.",
+      "steps": [
+        "Check whether the automatic controller is responding to a faulty level signal or an actuator/valve fault.",
+        "Prevent overflow using the approved stop/isolation controls and notify responsible personnel.",
+        "Test sensor calibration and control logic under authorised maintenance before returning to automatic mode."
+      ],
+      "result": "A running closed-loop controller cannot compensate for a sensor that reports the wrong process value."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-erm-kaza-analizi-ve-dersler-kapali-alan-kazalari-3": {
+    "id": "machine-erm-kaza-analizi-ve-dersler-kapali-alan-kazalari-3-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Enclosed-space casualty response requires stopping a second uncontrolled entry, making a rescue plan and ensuring suitable atmosphere assessment and breathing protection. IMO revised enclosed-space recommendations stress additional permits for energy isolation and task-specific hazards.\n\nCommon error: A dust mask or ordinary cartridge respirator does not supply oxygen to an oxygen-deficient space.",
+    "example": {
+      "problem": "A maintenance worker becomes unresponsive inside a poorly ventilated ballast tank; a colleague starts climbing down without breathing apparatus.",
+      "steps": [
+        "Raise the alarm and prevent spontaneous entry, establish personnel accountability and notify the rescue team.",
+        "Use the vessel's enclosed-space rescue plan, trained entrants, suitable BA, lifting/retrieval arrangements and continuous communications.",
+        "Control ventilation, gas testing and hazards under the approved rescue operation, then arrange medical care."
+      ],
+      "result": "An improvised unprotected rescue can produce more victims than the initial event."
+    },
+    "references": [
+      {
+        "title": "IMO — Revised enclosed-space recommendations MSC.581(110)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.581%28110%29.pdf"
+      }
+    ]
+  },
+  "machine-fuel-alternative-fuel-safety": {
+    "id": "machine-fuel-alternative-fuel-safety-professional-application",
+    "title": "Operational application and error analysis",
+    "content": "Marine LNG, methanol and other alternative fuels have different flammability, toxicity, cryogenic and atmosphere-management hazards. Equipment-specific procedures, IGF/IGC requirements where applicable and crew training govern transfers.\n\nCommon error: Do not assume LNG cryogenic gloves or a diesel-fuel spill kit alone are suitable for every alternative fuel.",
+    "example": {
+      "problem": "During preparation for methanol transfer, the deck reports a minor uncontained spill near an unverified ignition source.",
+      "steps": [
+        "Stop the operation and isolate ignition sources through approved emergency controls; keep crew outside the hazard area.",
+        "Use the vessel's fuel-specific emergency plan and appropriate PPE, spill response and ventilation provisions.",
+        "Notify responsible personnel and verify leak control and atmosphere safety before restoring transfer readiness."
+      ],
+      "result": "The response must reflect the fuel's actual toxic/flammable properties, not a generic petroleum-spill checklist."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS safety requirements overview",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
   }
 };
