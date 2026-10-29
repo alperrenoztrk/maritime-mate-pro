@@ -1,6 +1,6 @@
 # Curriculum-wide teaching quality — first implementation
 
-This initiative covers the **complete 25-course, 807-topic** teaching inventory. The initial release delivers **27 individually authored deck-topic applications across nine course categories**, one custom vector diagram per category, and a live multi-dimensional audit. It does **not** claim all 807 lessons are fully revised.
+This initiative covers the **complete 25-course, 807-topic** teaching inventory. The initial release delivers **43 individually authored topic-specific applications across all 25 course categories**, 14 custom technical vector diagrams across selected topics, and a live multi-dimensional audit. It does **not** claim all 807 lessons are fully revised.
 
 ## Editorial acceptance criteria (per topic)
 
