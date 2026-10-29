@@ -1,6 +1,7 @@
 # Roadmap (closed-test feedback plan)
 
-- [ ] Fix Google Play offer loading and missing-price states; verify regression tests (device check requires Android access).
+- [x] Fix Google Play offer loading and missing-price states; six regression tests and shared locale coverage pass.
+- [ ] Verify live Google Play prices on Android — requires updated Play installation and device access; product IDs/base plans must match the store configuration.
 
 - [x] 1a. Continue card + Saved bookmarks (device-local)
 - [x] 1b. Library hub gathers all resources (deck, engine, exercises, PSC/SIRE, knots, references)
