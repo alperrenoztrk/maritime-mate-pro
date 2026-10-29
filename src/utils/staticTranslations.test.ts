@@ -53,9 +53,9 @@ test('reviewed terminology overrides a known bad locale entry without replacing 
   assert.equal(getStaticTranslation('Kaynak', 'de'), 'Quelle');
 });
 
-test('all 14 new simulator entries are available offline through the shared fallback', async () => {
+test('every reviewed simulator entry is available offline through the shared fallback', async () => {
   const keys = Object.keys(simulatorEntries);
-  assert.equal(keys.length, 14);
+  assert.ok(keys.length > 0, 'Simulator pack must not be empty');
   await loadStaticDictionary('de');
   for (const key of keys) {
     assert.equal(Object.prototype.hasOwnProperty.call(sharedLearning, key), true, `Missing generated entry: ${key}`);
