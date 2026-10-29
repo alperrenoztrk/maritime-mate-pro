@@ -1499,34 +1499,23 @@ A4 additionally: MF/HF DSC is mandatory.`,
     ],
   },
   "epirb-sart": {
-    title: "EPIRB, SART and AIS-SART",
-    introduction: "EPIRB and SART are critical GMDSS components that provide location notification and search marking in the event of distress at sea.",
-    content: `EPIRB (Emergency Position Indicating Radio Beacon):
-
-Operates on 406 MHz. It transmits a distress signal through the COSPAS-SARSAT satellite system. It is activated manually or automatically (by HRU). Position information is provided by an internal GPS (accuracy ~100 m). Battery life: a minimum of 48 hours of continuous transmission.
-
-Registration: every EPIRB must be registered with the national maritime authority. The registration details: ship's name, call sign, MMSI and emergency contact details.
-
-EPIRB with HRU: when the ship sinks to a depth of 2-4 m the HRU releases the EPIRB automatically. The EPIRB floats to the surface and activates automatically.
-
-SART (Search and Rescue Transponder):
-
-It responds to a 9 GHz (X-band) radar signal. It appears on the rescue vessel's radar as 12 evenly spaced dots (which become arcs as the vessel closes). Battery: 96 hours on standby plus 8 hours transmitting.
-
-AIS-SART:
-
-It transmits position information over the AIS system. It appears with a special symbol on ECDIS and AIS displays. It is accepted as an alternative to the traditional SART. It is advantageous on ships fitted with S-band radar.
-
-MAINTENANCE:
-
-EPIRB: annual maintenance, battery replacement (as recommended by the maker, usually every 5 years), HRU replacement (every 2 years).
-SART: monthly test (in test mode), annual maintenance.`,
-    keyPoints: [
-      "EPIRB sends signals to COSPAS-SARSAT satellites at 406 MHz",
-      "SART appears as 12 dots on radar",
-      "EPIRB HRU is automatically activated at a depth of 2-4 m",
-      "EPIRB battery life minimum 48 hours, SART 96 hours standby",
+    "title": "EPIRB, SART and AIS-SART — frequencies, testing and displays",
+    "introduction": "Distress beacon alerts, local homing and survivor locating use different radios and appear differently on the bridge. Learn the 406 MHz satellite alert chain, 121.5 MHz homing, AIS locating, activation, battery performance and safe self-tests.",
+    "image": "/lessons/epirb-alert-chain.svg",
+    "content": "EPIRB — THE DISTRESS ALERT CHAIN\nAn Emergency Position-Indicating Radio Beacon (EPIRB) broadcasts a digital distress signal in the 406–406.1 MHz band. The beacon transmits its unique 15-character HEX ID and, where available, GNSS position. Cospas-Sarsat satellites (LEOSAR, GEOSAR, MEOSAR) relay the alert to a Local User Terminal (LUT), Mission Control Centre (MCC), then the appropriate RCC/MRCC, which coordinates SAR resources. EPIRB is not a two-way VHF voice radio or an automatic marine radar target.\n\nTHREE SIGNAL TYPES\n1. 406–406.1 MHz: digital Cospas-Sarsat satellite distress.\n2. 121.5 MHz: local SAR homing for suitably equipped rescue units. Cospas-Sarsat stopped satellite processing of 121.5/243 MHz distress beacons in 2009.\n3. AIS 1 161.975 MHz and AIS 2 162.025 MHz: position and EPIRB ACTIVE signal on appropriately equipped AIS-EPIRBs. Not every older EPIRB has AIS.\n\nFLOAT-FREE ACTIVATION AND THE BATTERY\nA float-free EPIRB is mounted in an unobstructed, approved cradle. As the vessel submerges, the Hydrostatic Release Unit (HRU) mechanically opens at approximately 1–4 m depth, depending on the model. The buoyant beacon rises and the water sensor activates its electronics. Seawater does NOT charge or power the battery; a pre-installed sealed battery provides the electrical energy. The beacon can also be activated manually according to its model's instructions. Never tie the buoyant lanyard to the sinking ship. Check for incorrect bracket/magnet/reed-switch placement after service.\n\nBATTERY CAPACITY AND REGULATIONS\nIMO MSC.471(101) applies to relevant float-free EPIRBs installed on or after 1 July 2022 and requires GNSS and AIS locating capability, 121.5 MHz homing and at least 48 hours of battery operation. Existing earlier installations can follow the applicable earlier approval standard. A type standard is not a guarantee for an expired or damaged battery. Check the label and manufacturer's service schedule.\n\nONBOARD SELF-TEST PROCEDURE\n1. Identify the specific EPIRB make/model and read its approved operating manual and ship PMS instructions.\n2. Check housing, antenna, clear float-free bracket, lanyard, 15 HEX ID, battery expiry and HRU expiry.\n3. Operate only the dedicated SELF-TEST function as prescribed, then read LED/buzzer or error code.\n4. A self-test may emit a short specially encoded RF test burst which should not be processed as a real SAR distress alert. Never routinely test by switching to ON/DISTRESS; even one actual 406 MHz burst can trigger rescue coordination.\n5. GNSS testing may be a separate battery-consuming function; follow the model-specific permitted interval.\n6. Refit the beacon correctly, verify that operational transmission has not begun and record test time/results.\n7. On a failed test, notify the relevant officer/Master and follow the defect/approved service procedure.\n\nMAINTENANCE, REGISTRATION AND FALSE ALERTS\nAnnual tests are covered by IMO MSC.1/Circ.1040/Rev.2. Shore-based maintenance intervals follow the flag Administration and must not exceed five years under MSC.1/Circ.1039/Rev.1. There is no universal battery or HRU replacement date for every model: check actual expiry and manufacturer-approved instructions. Update the 15 HEX ID registration when the vessel's responsible details change. If accidentally activated without genuine distress, switch OFF immediately and inform the nearest RCC/MRCC with beacon ID, position and time.\n\nHOW DOES AN EPIRB APPEAR ON RADAR?\nA standard 406 MHz EPIRB does NOT create twelve dots on X-band or S-band radar. A radar-SART answers 9 GHz X-band radar interrogations and may appear as a string of 12 dots changing to arcs at close range. S-band radar does not activate radar-SART in this way. AIS-SART and AIS-equipped EPIRBs transmit position on AIS 1/2; a compatible AIS/ECDIS display (or radar display with AIS overlay) may show a special SAR target. This is NOT an X-band radar-SART response. AIS reception depends on line-of-sight and receiver configuration.\n\nABANDON-SHIP SCENARIO\nDuring a genuine abandon-ship emergency, follow the Master/SMS and send appropriate GMDSS distress communication (e.g. DSC and spoken MAYDAY when possible). Ensure the EPIRB is transmitting and is placed upright with a clear sky view; allow the float-free system to function and never lash the beacon to the vessel.\n\nSOURCES\nIMO MSC.471(101); IMO MSC.1/Circ.1040/Rev.2; IMO MSC.1/Circ.1039/Rev.1; AMSA Float-free EPIRBs; AMSA Beacon Testing Policy; USCG NAVCEN EPIRB guide.",
+    "keyPoints": [
+      "406 MHz is the satellite distress channel; 121.5 MHz is local homing. AIS-EPIRB models also use AIS 1/2.",
+      "EPIRB → Cospas-Sarsat → LUT → MCC → RCC/MRCC → SAR resources.",
+      "HRU releases mechanically; water sensor triggers electronics; battery is pre-installed.",
+      "At least 48 hours is the applicable IMO minimum type-performance requirement.",
+      "Test with SELF-TEST, not operational ON/DISTRESS. GNSS self-test may be separate.",
+      "Twelve X-band radar dots belong to radar-SART, not a conventional EPIRB.",
+      "AIS-EPIRB may display on AIS/ECDIS and AIS-overlaid radar; do not confuse AIS overlay with radar reply."
     ],
+    "warnings": [
+      "Never test a live distress transmission without competent SAR authority advance coordination.",
+      "On false alert: deactivate and notify RCC/MRCC immediately, including HEX ID and time."
+    ]
   },
   "dsc-vhf": {
     title: "DSC and VHF Communication",
