@@ -5,7 +5,7 @@ import { AppSymbol } from "@/components/ui/AppSymbol";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { hapticImpact } from "@/lib/haptics";
 import { useLocation } from "react-router-dom";
-import { isAppChromeHidden } from "@/lib/appChrome";
+import { useAppChromeHidden } from "@/hooks/useAppChromeVisibility";
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
 import { clearRoutePreviewHost, mountRoutePreview } from "@/lib/navigationPreview";
 import { MOTION_SECONDS } from "@/hooks/useAppMotion";
@@ -15,7 +15,8 @@ const EDGE_WIDTH = 24;
 export const EdgeSwipeBack = () => {
   const { goBack, canGoBack } = useBackNavigation();
   const { pathname } = useLocation();
-  const enabled = canGoBack && !isAppChromeHidden(pathname);
+  const chromeHidden = useAppChromeHidden();
+  const enabled = canGoBack && !chromeHidden;
   const [pull, setPull] = useState(0);
   const [active, setActive] = useState(false);
   const startX = useRef(0);
