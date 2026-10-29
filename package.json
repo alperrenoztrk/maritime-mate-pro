@@ -99,7 +99,8 @@
     "audit:technical-lessons": "node scripts/audit-technical-lesson-depth.mjs",
     "audit:lesson-quality": "node scripts/audit-lesson-quality.mjs",
     "check:professional-cases": "node --import tsx scripts/check-professional-cases.mjs",
-    "check:verified-lesson-visuals": "node scripts/check-verified-lesson-visuals.mjs"
+    "check:verified-lesson-visuals": "node scripts/check-verified-lesson-visuals.mjs",
+    "check:legacy-visuals": "node scripts/check-legacy-visual-provenance.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",
