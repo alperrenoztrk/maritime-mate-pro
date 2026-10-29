@@ -10,7 +10,7 @@ const inventory = JSON.parse(fs.readFileSync("docs/learning/content-audit.json",
 const byId = new Map(inventory.topics.map(t => [t.id, t]));
 const ids = Object.keys(professionalCaseStudies);
 assert.equal(new Set(ids).size, ids.length, "duplicate case IDs");
-assert(ids.length >= 27, "initial application batch unexpectedly shrank");
+assert(ids.length >= 43, "cross-curriculum application batch unexpectedly shrank");
 const seenCourses = new Set();
 for (const [id, section] of Object.entries(professionalCaseStudies)) {
   const meta = byId.get(id);
@@ -37,7 +37,7 @@ for (const [id, section] of Object.entries(professionalCaseStudies)) {
     assert.match(svg, /viewBox=/);
   }
 }
-assert.equal(seenCourses.size, 9, "all nine deck categories must be represented");
+assert.equal(seenCourses.size, 25, "all 25 curriculum categories must be represented");
 
 const server = await createServer({
   configFile: false, logLevel: "error", server: { middlewareMode: true },
