@@ -48,17 +48,6 @@ function shortSummary(text: string, max = SUMMARY_MAX_CHARS): string {
   return `${slice.slice(0, wordEnd > 0 ? wordEnd : max).trimEnd()}…`;
 }
 
-/**
- * Gerçek gazetede iç sayfaların numarası vardır. Bağlantıdan türetilen sabit bir
- * sayı kullanılıyor: aynı haber her açılışta aynı sayfada çıkar.
- */
-export function innerPageNo(link?: string): number {
-  if (!link) return 2;
-  let hash = 0;
-  for (let i = 0; i < link.length; i++) hash = (hash * 31 + link.charCodeAt(i)) | 0;
-  return 2 + (Math.abs(hash) % 10);
-}
-
 function normalizeImageUrl(url?: string): string | undefined {
   if (!url) return undefined;
   try {
