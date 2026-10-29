@@ -1416,5 +1416,325 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
       }
     ]
+  },
+  "navigation-cografi-koordinat-sistemi": {
+    "id": "navigation-cografi-koordinat-sistemi-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Position coordinates must identify latitude and longitude hemispheres together with the chart datum; a coordinate without N/S or E/W can produce a gross position error.\n\nCommon error: Do not silently assume N/E or WGS 84 for coordinates copied from a different source.",
+    "example": {
+      "problem": "A waypoint is passed to another watch with latitude 36°12.5′ and longitude 029°45.0′ but no hemisphere or datum.",
+      "steps": [
+        "Specify degrees, decimal minutes, hemisphere and applicable datum in the waypoint exchange.",
+        "Cross-check the plotted position against the planned chart region and nearby hazards.",
+        "Compare the plotted mark with the GNSS/ECDIS reference and independent observation before activating the route."
+      ],
+      "result": "A waypoint handover is not complete unless its coordinate format, hemispheres and datum are unambiguous."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-manyetik-kuzey": {
+    "id": "navigation-manyetik-kuzey-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Magnetic variation is the angular difference between true and magnetic north, varying by area and time; compass deviation is the error associated with the individual ship's compass heading.\n\nCommon error: Do not apply both corrections as positive just because each is given as a magnitude.",
+    "example": {
+      "problem": "A chart shows a westerly variation of 4° and the ship's deviation card gives 2° east on the selected course; true bearing is 080°.",
+      "steps": [
+        "Apply the ship's signed variation/deviation convention explicitly (for example, True = Compass + deviation + variation when east is positive).",
+        "With deviation +2° and variation −4°, the compass bearing is 080° −2° +4° = 082° under that convention.",
+        "Compare with a known transit or a reliable gyro bearing and the compass correction card."
+      ],
+      "result": "The example compass bearing is 082°; onboard sign convention and current variation must be checked."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-cayro-pusula-ve-hatalari": {
+    "id": "navigation-cayro-pusula-ve-hatalari-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Gyrocompass and magnetic compass provide distinct heading references. Gyro error changes with instrument state, speed/latitude influences, installation and sensor failures; it should not be treated as zero because it is electronic.\n\nCommon error: Do not assume the radar heading line is independent when it is fed by the same gyro.",
+    "example": {
+      "problem": "The gyro repeater shows 091° while a checked celestial or terrestrial azimuth suggests true heading 088°.",
+      "steps": [
+        "Confirm that the reference observation and timestamp are valid and compare master/repeater readings.",
+        "Determine gyro error with the vessel's gyro-error sign convention and log the finding.",
+        "Verify heading sensors feeding radar, ECDIS and autopilot, and inform the Master if the discrepancy is outside limits."
+      ],
+      "result": "A 3° heading discrepancy can propagate to bearings and track predictions; classify the source before correction."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-harita-duzeltmeleri-notice-to-mariners": {
+    "id": "navigation-harita-duzeltmeleri-notice-to-mariners-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Navigational warnings and permanent chart corrections address different timescales. An ECDIS update status or a paper chart edition does not necessarily incorporate temporary hazards communicated by MSI.\n\nCommon error: Do not dismiss an active warning because the obstruction is absent from the ENC.",
+    "example": {
+      "problem": "Before coastal passage, a navigation warning reports a new obstruction near a waypoint that is not on the base chart.",
+      "steps": [
+        "Record the warning identifier, position, depth and validity as provided.",
+        "Plot or encode the hazard with the approved procedure while preserving datum and coordinates.",
+        "Recheck route legs, cross-track limits, ECDIS safety settings and bridge-team briefing."
+      ],
+      "result": "The route must be assessed against current MSI as well as the chart/update record."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-chart-datum-lat": {
+    "id": "navigation-chart-datum-lat-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Chart Datum is the reference surface from which charted depths are normally measured. Tide heights above the applicable chart datum may be combined with chart depths for a static depth estimate, but LAT is not a synonym for every national chart datum.\n\nCommon error: Never combine depth on one datum with a tide prediction referenced to another without conversion.",
+    "example": {
+      "problem": "A berth shows 9.0 m charted depth and the official tidal prediction is 1.1 m above the chart's datum.",
+      "steps": [
+        "Identify the actual datum and tide station correction for the berth.",
+        "Compute illustrative depth: 9.0 + 1.1 = 10.1 m, before local changes and error allowances.",
+        "Compare with the vessel's draught, trim, squat, manoeuvring requirements and UKC policy."
+      ],
+      "result": "The estimate 10.1 m is a static depth under the stated datum assumptions, not an under-keel clearance."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-mesafe-olcumu": {
+    "id": "navigation-mesafe-olcumu-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "On a Mercator navigation chart, distance should be taken from the latitude scale near the route, where one minute of latitude is approximately one nautical mile; paper chart distortion varies with latitude.\n\nCommon error: Do not measure route distance from a fixed map-scale ruler without confirming projection and local scale.",
+    "example": {
+      "problem": "A student transfers the length of a 12′ north-south leg on a coastal chart using the longitude scale.",
+      "steps": [
+        "Check the leg and place dividers against the local latitude graduation.",
+        "Read 12 minutes of latitude as approximately 12 NM for the meridional distance.",
+        "On a non-meridional leg, use the actual chart geometry and appropriate navigation calculation."
+      ],
+      "result": "The longitude scale is not a universal miles ruler on a Mercator chart."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "safety-solas-ve-emniyet-yonetimi-ism": {
+    "id": "safety-solas-ve-emniyet-yonetimi-ism-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "SOLAS prescribes safety requirements and ISM implements a company and shipboard Safety Management System. Equipment presence, valid certificates and personnel competence each require separate evidence.\n\nCommon error: Do not sign a test record for a function that the responsible crew could not complete.",
+    "example": {
+      "problem": "During PSC preparation, an emergency fire pump is present, but the crew report inconsistent starting instructions.",
+      "steps": [
+        "Review the approved SMS procedure, drawings and relevant SOLAS/flag requirements.",
+        "Arrange a controlled functional demonstration by authorised crew, recording defects and corrective action.",
+        "Confirm that the actual drill instructions, PMS status and familiarisation match the equipment's installation."
+      ],
+      "result": "Paper compliance does not replace demonstrated operational readiness."
+    },
+    "references": [
+      {
+        "title": "IMO — lifeboat and safety management framework",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventionofaccidentsinvolvinglifeboats-default.aspx"
+      }
+    ]
+  },
+  "safety-yangin-onleme-ve-yapisal-koruma": {
+    "id": "safety-yangin-onleme-ve-yapisal-koruma-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Fire integrity depends on A/B class divisions, penetrations, dampers, fire doors and detection zones as actually approved for the vessel. Fire ratings are not the same as a guarantee of unlimited fire resistance.\n\nCommon error: Do not fill a rated bulkhead penetration with arbitrary foam or sealant.",
+    "example": {
+      "problem": "A cable penetration has been opened through an A-class boundary during maintenance.",
+      "steps": [
+        "Identify the division's approved classification and approved penetration sealing method.",
+        "Protect the worksite under the appropriate permit and restore using an approved material/system.",
+        "Inspect and record reinstatement; check the corresponding fire control plan and alteration approvals."
+      ],
+      "result": "An apparently closed opening is not compliant unless the penetration seal maintains the required class."
+    },
+    "references": [
+      {
+        "title": "IMO — lifeboat and safety management framework",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventionofaccidentsinvolvinglifeboats-default.aspx"
+      }
+    ]
+  },
+  "safety-denizcilikte-siber-guvenlik": {
+    "id": "safety-denizcilikte-siber-guvenlik-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Maritime cyber risk can affect GNSS, ECDIS updates, PMS and cargo systems; operational safety requires segregation, trusted change management and a fallback when electronic inputs are questionable.\n\nCommon error: Do not connect an unknown USB drive directly to a safety-critical navigation console.",
+    "example": {
+      "problem": "A removable drive is offered for an urgent ECDIS chart update from an unrecognised source.",
+      "steps": [
+        "Check the provenance and update path against the company's cyber security and ECDIS maintenance procedures.",
+        "Reject unverified software/media; isolate suspected compromised devices and notify the authorised personnel.",
+        "Preserve safe navigation using verified chart data and approved backup arrangements while assessing the incident."
+      ],
+      "result": "Urgency does not excuse bypassing approved update integrity and cybersecurity controls."
+    },
+    "references": [
+      {
+        "title": "IMO — lifeboat and safety management framework",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/preventionofaccidentsinvolvinglifeboats-default.aspx"
+      }
+    ]
+  },
+  "communication-epirb-sart-ve-arama-kurtarma-entegrasyonu": {
+    "id": "communication-epirb-sart-ve-arama-kurtarma-entegrasyonu-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "A 406 MHz EPIRB alerts Cospas-Sarsat through the satellite/ground network; 121.5 MHz aids local homing. A 9 GHz radar-SART responds to X-band radar, while AIS-SART or AIS-equipped EPIRBs may appear on suitable AIS displays.\n\nCommon error: Never use a live distress alert or a radar-SART response as an unplanned test.",
+    "example": {
+      "problem": "During an abandon-ship briefing someone says the EPIRB will make twelve dots on radar.",
+      "steps": [
+        "Separate the 406 MHz distress alert, 121.5 MHz homing and AIS transmissions where equipped.",
+        "Explain the radar-SART's characteristic response to a compatible X-band interrogating radar.",
+        "Check actual onboard device types, battery dates and safe test procedure without activating distress transmission."
+      ],
+      "result": "A standard EPIRB does not produce radar-SART twelve-dot trails."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      }
+    ]
+  },
+  "communication-mf-hf-telsiz-ve-dalga-yayilimi": {
+    "id": "communication-mf-hf-telsiz-ve-dalga-yayilimi-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "MF/HF communications depend on propagation, chosen frequencies, antenna tuning, equipment status and the DSC watch arrangement. A nominal station range is not a reliable operational coverage guarantee.\n\nCommon error: Do not disable required DSC watch facilities while experimenting with voice channels.",
+    "example": {
+      "problem": "The bridge fails to obtain a daytime HF contact on a frequency previously reliable overnight.",
+      "steps": [
+        "Check propagation, day/night frequency suitability and a second appropriate working channel.",
+        "Check radio and antenna-tuner alarms, power supply and connection status under the maker's guidance.",
+        "Use another approved GMDSS communication path and log any equipment discrepancy affecting required watchkeeping."
+      ],
+      "result": "Different ionospheric conditions may require a different operating band; verify equipment before assuming it is propagation alone."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      }
+    ]
+  },
+  "communication-ais-otomatik-tanimlama-sistemi": {
+    "id": "communication-ais-otomatik-tanimlama-sistemi-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "AIS supplies transmitted identity and movement data but is not an independent collision avoidance sensor. GNSS input failures, erroneous static data and human edits can mislead the bridge.\n\nCommon error: Never use AIS alone to establish safe passing arrangements.",
+    "example": {
+      "problem": "AIS lists a target with CPA 0.2 NM, but visual lookout reports a different ship bearing from the one on the ECDIS overlay.",
+      "steps": [
+        "Correlate the displayed AIS target with radar, visual bearings and the ship's sensor timestamps.",
+        "Check target association, own-ship GNSS and heading sources, and AIS data age.",
+        "Make the collision avoidance decision using all available means and COLREG risk assessment."
+      ],
+      "result": "AIS target association errors require investigation before relying on displayed CPA."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      }
+    ]
+  },
+  "machine-auxiliary-buhar-kazanlari-ates-borulu-ve-su-borulu-kazanlar-1": {
+    "id": "machine-auxiliary-buhar-kazanlari-ates-borulu-ve-su-borulu-kazanlar-1-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Fire-tube boilers route hot combustion products through tubes surrounded by water, while water-tube designs circulate water/steam inside tubes exposed to hot gases. Both require correctly set water-level safeguards and blowdown plans.\n\nCommon error: Never feed large quantities of cold water into a potentially overheated dry boiler without approved expert instructions.",
+    "example": {
+      "problem": "A boiler's sight glass suggests low water while an electronic level indication reads normal.",
+      "steps": [
+        "Treat the discrepancy as a serious protective-control abnormality and follow the maker's safe shutdown/verification procedure.",
+        "Cross-check independent indications and control/protection status without bypassing low-water interlocks.",
+        "Investigate water treatment, level sensing and causes only once the boiler is safe and appropriately isolated."
+      ],
+      "result": "The correct response is not to keep firing solely on the more reassuring indication."
+    },
+    "references": [
+      {
+        "title": "MCA — Safe working practices for merchant seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-auxiliary-tatli-su-uretimi-ters-ozmoz-ro-sistemi-2": {
+    "id": "machine-auxiliary-tatli-su-uretimi-ters-ozmoz-ro-sistemi-2-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "Reverse osmosis drives seawater through semipermeable membranes at pressure above osmotic pressure. Product-water quality, filter differential pressure and membrane limits must all be managed.\n\nCommon error: Do not route high-conductivity product water into drinking-water tanks to avoid a production interruption.",
+    "example": {
+      "problem": "A shipboard RO unit has normal feed pressure but conductivity of product water rises beyond the configured alarm.",
+      "steps": [
+        "Confirm which conductivity sensor and temperature compensation are used, and take the unit out of domestic-water supply if quality is uncertain.",
+        "Check pretreatment, membrane integrity, reject/brine flow and cleaning history following the approved maker procedure.",
+        "Restore only after verified test results demonstrate water quality meets the designated use."
+      ],
+      "result": "Stable pressure alone does not prove a membrane is producing acceptable water."
+    },
+    "references": [
+      {
+        "title": "MCA — Safe working practices for merchant seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-high-voltage-safety": {
+    "id": "machine-electrical-high-voltage-safety-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "High-voltage marine electrical systems require authorised switching, isolation, testing for dead and earthing where specified. The correct safe state is established by the vessel's approved procedures and equipment ratings.\n\nCommon error: Never use ordinary low-voltage tools or unapproved access to establish HV isolation.",
+    "example": {
+      "problem": "An HV feeder breaker is open but an electrician reports voltage still indicated on an outgoing cable.",
+      "steps": [
+        "Stop work and treat the cable as energised until proven otherwise by authorised personnel.",
+        "Verify the actual source configuration, backfeeds, isolation points, permits and rated test equipment under the vessel's switching plan.",
+        "Complete lockout, test-for-dead, discharge/earthing and access controls as required before any work."
+      ],
+      "result": "An open breaker handle or dashboard icon alone is not proof of zero energy."
+    },
+    "references": [
+      {
+        "title": "MCA — Safe working practices for merchant seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-uretim-sistemi-shore-connection-kiyi-baglantisi-6": {
+    "id": "machine-electrical-elektrik-uretim-sistemi-shore-connection-kiyi-baglantisi-6-professional-application",
+    "title": "Practical procedure, reasoning and limitations",
+    "content": "High-voltage shore connection must coordinate voltage, frequency, phase sequence, grounding and protections between ship and terminal under an approved transfer plan. Galvanic and fault-current hazards are separate considerations.\n\nCommon error: Never force-synchronise an incompatible shore feed or bypass interlocks to meet departure schedule.",
+    "example": {
+      "problem": "A ship is ready to connect shore power but the terminal's available frequency differs from the shipboard electrical bus.",
+      "steps": [
+        "Review compatibility, conversion arrangements and ship/shore interlocks under the approved shore-connection procedure.",
+        "Confirm earthing, communication, breaker status and load transfer readiness with qualified parties.",
+        "Do not energise until the voltage/frequency/phase and protection criteria are satisfied and authorisation is documented."
+      ],
+      "result": "The physical connector fitting does not prove electrical compatibility."
+    },
+    "references": [
+      {
+        "title": "MCA — Safe working practices for merchant seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
   }
 };
