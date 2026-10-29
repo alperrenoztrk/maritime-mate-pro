@@ -130,6 +130,16 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
       "author": "Marwan Mohamad",
       "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "longform",
+      "topicId": "gmdss-lsa/4",
+      "asset": "src/assets/lessons/epirb-gps.jpg",
+      "title": "Emergency position-indicating radio beacon",
+      "description": "A real EPIRB device. Neither the satellite signal chain nor the hydrostatic release sequence is depicted.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
+      "author": "Marwan Mohamad",
+      "license": "CC BY-SA 4.0"
     }
   ]
 }
