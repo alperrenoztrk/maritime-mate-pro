@@ -1,250 +1,89 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Ship, Calculator, Scale, FileText } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { BookOpenCheck } from "lucide-react";
+import {
+  FormulaLine,
+  ToolNotice,
+  ToolPage,
+  ToolSection,
+} from "@/components/tools/ToolKit";
+
+interface Step {
+  title: string;
+  formula: string;
+  explanation: string;
+}
+
+/** Order and formulas of the UNECE draught survey procedure (ECE/ENERGY/19, 1992). */
+const STEPS: Step[] = [
+  {
+    title: "1. Mean of port and starboard readings",
+    formula: "F obs = (F P + F S)/2 · M obs = (M P + M S)/2 · A obs = (A P + A S)/2",
+    explanation: "Reading both sides removes the effect of a small list.",
+  },
+  {
+    title: "2. Length between marks",
+    formula: "LBM = LBP − d F − d A",
+    explanation: "d F: forward marks aft of the FP; d A: aft marks forward of the AP (negative if outside the perpendiculars).",
+  },
+  {
+    title: "3. Corrections to the perpendiculars and amidships",
+    formula: "F = F obs − t obs × d F / LBM · A = A obs + t obs × d A / LBM · M = M obs − t obs × d M / LBM",
+    explanation: "t obs = A obs − F obs (+ by the stern); d M: midship marks aft of amidships.",
+  },
+  {
+    title: "4. Trim and deflection",
+    formula: "T = A − F · Hog/Sag = M − (F + A)/2",
+    explanation: "Positive deflection is sagging, negative is hogging.",
+  },
+  {
+    title: "5. Mean of means (quarter mean)",
+    formula: "MMM = (F + A + 6M) / 8",
+    explanation: "Allows for hull deflection. Subtract the keel correction if the tables are on moulded draft.",
+  },
+  {
+    title: "6. Hydrostatic particulars",
+    formula: "Δ, TPC, LCF at MMM (linear interpolation)",
+    explanation: "Enter the ship's approved hydrostatic tables, usually based on 1.025 t/m³.",
+  },
+  {
+    title: "7. First trim correction",
+    formula: "FTC = T × LCF × TPC × 100 / LBP   (t)",
+    explanation: "T in m (+ by the stern), LCF in m from amidships (+ aft). Positive when trim and LCF are on the same side.",
+  },
+  {
+    title: "8. Second trim correction (Nemoto)",
+    formula: "STC = 50 × T² × (MTC₊₅₀ − MTC₋₅₀) / LBP   (t)",
+    explanation: "MTC at MMM + 0.50 m and − 0.50 m. Always added.",
+  },
+  {
+    title: "9. Density correction",
+    formula: "Δ dock = (Δ + FTC + STC) × ρ dock / ρ table",
+    explanation: "ρ dock: average density of samples taken at the marks.",
+  },
+  {
+    title: "10. Net displacement",
+    formula: "Net Δ = Δ dock − (ballast + fresh water + fuel + diesel + lube oil + bilges + other)",
+    explanation: "Deductibles are sounded at the time of each survey.",
+  },
+  {
+    title: "11. Cargo and constant",
+    formula: "Cargo = |Net Δ final − Net Δ initial| · Constant = Net Δ light − Lightship",
+    explanation: "The constant from the initial (light) survey is used for intake planning.",
+  },
+];
 
 export default function DraftSurveyStandard() {
-  const { toast } = useToast();
-  
-  const [inputs, setInputs] = useState({
-    lengthBP: "",
-    breadth: "",
-    depth: "",
-    forwardDraft: "",
-    midshipDraft: "",
-    aftDraft: "",
-    density: "1.025",
-    ballast: "",
-    fuel: "",
-    freshWater: "",
-    stores: ""
-  });
-
-  const [result, setResult] = useState<{
-    meanDraft: number;
-    displacement: number;
-    deadweight: number;
-    cargoWeight: number;
-  } | null>(null);
-
-  const calculate = () => {
-    const { lengthBP, breadth, forwardDraft, midshipDraft, aftDraft, density, ballast, fuel, freshWater, stores } = inputs;
-    
-    if (!lengthBP || !breadth || !forwardDraft || !midshipDraft || !aftDraft) {
-      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
-      return;
-    }
-
-    const L = parseFloat(lengthBP);
-    const B = parseFloat(breadth);
-    const Tf = parseFloat(forwardDraft);
-    const Tm = parseFloat(midshipDraft);
-    const Ta = parseFloat(aftDraft);
-    const rho = parseFloat(density);
-    
-    // Ortalama draft hesaplama (6 ordinat kuralı)
-    const meanDraft = (Tf + 4*Tm + Ta) / 6;
-    
-    // Deplasman hesaplama (basitleştirilmiş)
-    const displacement = L * B * meanDraft * 0.7 * rho;
-    
-    // Çıkarımlar
-    const deductions = (parseFloat(ballast || "0") + parseFloat(fuel || "0") + 
-                      parseFloat(freshWater || "0") + parseFloat(stores || "0"));
-    
-    const deadweight = displacement - 2000; // Varsayılan lightweight
-    const cargoWeight = deadweight - deductions;
-
-    setResult({
-      meanDraft,
-      displacement,
-      deadweight,
-      cargoWeight
-    });
-
-    toast({ title: "Calculation Completed", description: "Draft survey results were calculated" });
-  };
-
   return (
-    <div className="container mx-auto p-4 space-y-6">
-      <div className="flex items-center gap-4 mb-6">
-        <div>
-          <h1 className="text-2xl font-bold">Standard Draft Survey</h1>
-        </div>
-      </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Ship className="h-5 w-5" />
-            Ship Features
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="lengthBP">Length BP (m)</Label>
-              <Input
-                id="lengthBP"
-                type="number"
-                value={inputs.lengthBP}
-                onChange={(e) => setInputs(prev => ({ ...prev, lengthBP: e.target.value }))}
-                placeholder="Length between uprights"
-              />
-            </div>
-            <div>
-              <Label htmlFor="breadth">Width (m)</Label>
-              <Input
-                id="breadth"
-                type="number"
-                value={inputs.breadth}
-                onChange={(e) => setInputs(prev => ({ ...prev, breadth: e.target.value }))}
-                placeholder="Molded width"
-              />
-            </div>
-            <div>
-              <Label htmlFor="density">Water Density (ton/m³)</Label>
-              <Input
-                id="density"
-                type="number"
-                value={inputs.density}
-                onChange={(e) => setInputs(prev => ({ ...prev, density: e.target.value }))}
-                placeholder="1.025"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Scale className="h-5 w-5" />
-            Draft Readings
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="forwardDraft">Forward Draft (m)</Label>
-              <Input
-                id="forwardDraft"
-                type="number"
-                step="0.01"
-                value={inputs.forwardDraft}
-                onChange={(e) => setInputs(prev => ({ ...prev, forwardDraft: e.target.value }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="midshipDraft">Medium Draft (m)</Label>
-              <Input
-                id="midshipDraft"
-                type="number"
-                step="0.01"
-                value={inputs.midshipDraft}
-                onChange={(e) => setInputs(prev => ({ ...prev, midshipDraft: e.target.value }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="aftDraft">Aft Draft (m)</Label>
-              <Input
-                id="aftDraft"
-                type="number"
-                step="0.01"
-                value={inputs.aftDraft}
-                onChange={(e) => setInputs(prev => ({ ...prev, aftDraft: e.target.value }))}
-                placeholder="0.00"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Implications (tone)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div>
-              <Label htmlFor="ballast">Ballast Water</Label>
-              <Input
-                id="ballast"
-                type="number"
-                value={inputs.ballast}
-                onChange={(e) => setInputs(prev => ({ ...prev, ballast: e.target.value }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="fuel">Fuel</Label>
-              <Input
-                id="fuel"
-                type="number"
-                value={inputs.fuel}
-                onChange={(e) => setInputs(prev => ({ ...prev, fuel: e.target.value }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="freshWater">Fresh Water</Label>
-              <Input
-                id="freshWater"
-                type="number"
-                value={inputs.freshWater}
-                onChange={(e) => setInputs(prev => ({ ...prev, freshWater: e.target.value }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="stores">Supplies/Reserves</Label>
-              <Input
-                id="stores"
-                type="number"
-                value={inputs.stores}
-                onChange={(e) => setInputs(prev => ({ ...prev, stores: e.target.value }))}
-                placeholder="0"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Button onClick={calculate} className="w-full" size="lg">
-        <Calculator className="h-4 w-4 mr-2" />
-        Calculate
-      </Button>
-
-      {result && (
-        <Card className="bg-green-50 dark:bg-green-950">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Calculation Results
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <p><strong>Average draft:</strong> {result.meanDraft.toFixed(3)} m</p>
-                <p><strong>Displacement</strong> {result.displacement.toFixed(2)} ton</p>
-              </div>
-              <div className="space-y-2">
-                <p><strong>Deadweight:</strong> {result.deadweight.toFixed(2)} ton</p>
-                <p className="text-lg font-bold text-green-600 dark:text-green-400">
-                  <strong>Shipping Weight:</strong> {result.cargoWeight.toFixed(2)} ton
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+    <ToolPage title="Draft Survey Procedure" icon={BookOpenCheck}>
+      <ToolNotice>
+        Source: UNECE Code of Uniform Standards and Procedures for the Performance of Draught Surveys of Coal Cargoes
+        (ECE/ENERGY/19, 1992). The same sequence is used in practice for other dry bulk cargoes.
+      </ToolNotice>
+      {STEPS.map((step) => (
+        <ToolSection key={step.title} title={step.title}>
+          <FormulaLine>{step.formula}</FormulaLine>
+          <p className="text-xs text-muted-foreground">{step.explanation}</p>
+        </ToolSection>
+      ))}
+    </ToolPage>
   );
 }

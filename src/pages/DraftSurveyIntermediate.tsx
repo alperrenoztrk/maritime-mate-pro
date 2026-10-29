@@ -1,333 +1,108 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Clock3, Gauge } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Activity, Calculator, Timer } from "lucide-react";
+import { cargoBetweenSurveys } from "@/lib/calc/draftSurvey";
+import {
+  FieldGrid,
+  FormulaLine,
+  NumberField,
+  ResultTable,
+  ToolNotice,
+  ToolPage,
+  ToolSection,
+  type ResultRow,
+} from "@/components/tools/ToolKit";
+import { fmt, parseNumber } from "@/components/tools/format";
+import { DraftSurveyDisclaimer, ShipParticularsSection, SurveyStageSection } from "@/components/draftSurvey/DraftSurveySections";
+import { computeStage, emptyShip, emptyStage, rowsToText, useStoredForm } from "@/components/draftSurvey/draftSurveyForms";
 
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+const formatDateTime = (date: Date) =>
+  date.toLocaleString("en-GB", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", hour12: false });
 
 export default function DraftSurveyIntermediate() {
-  const { toast } = useToast();
-  
-  const [inputs, setInputs] = useState({
-    initialDrafts: {
-      forward: "",
-      midship: "",
-      aft: ""
-    },
-    intermediateDrafts: {
-      forward: "",
-      midship: "",
-      aft: ""
-    },
-    vesselParticulars: {
-      tpc: "",
-      density: "1.025"
-    },
-    timeData: {
-      initialTime: "",
-      intermediateTime: "",
-      estimatedCompletion: ""
+  const [ship, setShip] = useStoredForm("ship", emptyShip);
+  const [initial] = useStoredForm("initial", emptyStage());
+  const [current, setCurrent] = useStoredForm("intermediate", emptyStage());
+  const [progress, setProgress] = useStoredForm("intermediate-progress", { plannedCargo: "", initialTime: "", currentTime: "" });
+
+  const initialResult = computeStage(ship, initial).result;
+  const currentResult = computeStage(ship, current).result;
+  const planned = parseNumber(progress.plannedCargo);
+  const start = progress.initialTime ? new Date(progress.initialTime) : null;
+  const now = progress.currentTime ? new Date(progress.currentTime) : null;
+
+  let rows: ResultRow[] | null = null;
+  let timeWarning = "";
+  if (initialResult && currentResult) {
+    const handled = cargoBetweenSurveys(initialResult.netDisplacement, currentResult.netDisplacement);
+    rows = [
+      { label: "Initial net displacement", value: `${fmt(initialResult.netDisplacement, 1)} t` },
+      { label: "Current net displacement", value: `${fmt(currentResult.netDisplacement, 1)} t` },
+      { label: "Cargo handled so far", value: `${fmt(handled, 1)} t`, emphasis: true },
+    ];
+    if (Number.isFinite(planned) && planned > 0) {
+      const remaining = planned - handled;
+      rows.push({ label: "Remaining to planned quantity", value: `${fmt(remaining, 1)} t` });
+      if (start && now && Number.isFinite(start.getTime()) && Number.isFinite(now.getTime())) {
+        const hours = (now.getTime() - start.getTime()) / 3_600_000;
+        if (hours <= 0) {
+          timeWarning = "The current survey time must be after the initial survey time.";
+        } else {
+          const rate = handled / hours;
+          rows.push({ label: "Average handling rate", value: `${fmt(rate, 0)} t/h` });
+          if (rate > 0 && remaining > 0) {
+            const finish = new Date(now.getTime() + (remaining / rate) * 3_600_000);
+            rows.push({ label: "Estimated completion at this rate", value: formatDateTime(finish), emphasis: true });
+          }
+        }
+      }
     }
-  });
-
-  const [result, setResult] = useState<{
-    draftChange: number;
-    cargoHandled: number;
-    handlingRate: number;
-    estimatedCompletion: string;
-    projectedFinalDraft: number;
-  } | null>(null);
-
-  const calculate = () => {
-    const { initialDrafts, intermediateDrafts, vesselParticulars, timeData } = inputs;
-    
-    if (!initialDrafts.forward || !initialDrafts.midship || !initialDrafts.aft ||
-        !intermediateDrafts.forward || !intermediateDrafts.midship || !intermediateDrafts.aft ||
-        !vesselParticulars.tpc) {
-      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
-      return;
-    }
-
-    // Draft değişimleri
-    const initialMean = (parseFloat(initialDrafts.forward) + 4*parseFloat(initialDrafts.midship) + parseFloat(initialDrafts.aft)) / 6;
-    const intermediateMean = (parseFloat(intermediateDrafts.forward) + 4*parseFloat(intermediateDrafts.midship) + parseFloat(intermediateDrafts.aft)) / 6;
-    const draftChange = Math.abs(intermediateMean - initialMean);
-    
-    // Kargo miktarı
-    const tpc = parseFloat(vesselParticulars.tpc);
-    const cargoHandled = draftChange * 100 * tpc;
-    
-    // Zaman hesaplamaları
-    const initialTime = new Date(`2024-01-01T${timeData.initialTime}:00`);
-    const intermediateTime = new Date(`2024-01-01T${timeData.intermediateTime}:00`);
-    const timeDiffHours = (intermediateTime.getTime() - initialTime.getTime()) / (1000 * 60 * 60);
-    
-    // İşlem hızı (ton/saat)
-    const handlingRate = timeDiffHours > 0 ? cargoHandled / timeDiffHours : 0;
-    
-    // Tahmini tamamlanma süresi
-    const estimatedTotalCargo = parseFloat(timeData.estimatedCompletion || "0");
-    const remainingCargo = estimatedTotalCargo - cargoHandled;
-    const remainingHours = handlingRate > 0 ? remainingCargo / handlingRate : 0;
-    
-    const completionTime = new Date(intermediateTime.getTime() + (remainingHours * 60 * 60 * 1000));
-    const estimatedCompletion = completionTime.toLocaleTimeString('tr-TR', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    });
-    
-    // Tahmini son draft
-    const projectedFinalDraft = initialMean + (intermediateMean > initialMean ? 
-      (estimatedTotalCargo / (100 * tpc)) / 100 : 
-      -(estimatedTotalCargo / (100 * tpc)) / 100);
-
-    setResult({
-      draftChange,
-      cargoHandled,
-      handlingRate,
-      estimatedCompletion,
-      projectedFinalDraft
-    });
-
-    toast({ title: "Calculation Completed", description: "Intermediate draft analysis was made" });
-  };
+  }
 
   return (
-    <div className="container mx-auto p-4 space-y-6">
-      <div className="flex items-center gap-4 mb-6">
-<div>
-          <h1 className="text-2xl font-bold">Intermediate Draft Measurement</h1>
-        </div>
-      </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Ship Features</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="tpc">TPC (ton/cm)</Label>
-              <Input
-                id="tpc"
-                type="number"
-                step="0.01"
-                value={inputs.vesselParticulars.tpc}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselParticulars: { ...prev.vesselParticulars, tpc: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="density">Water Density (ton/m³)</Label>
-              <Input
-                id="density"
-                type="number"
-                step="0.001"
-                value={inputs.vesselParticulars.density}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselParticulars: { ...prev.vesselParticulars, density: e.target.value }
-                }))}
-                placeholder="1.025"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-blue-600 dark:text-blue-400">Starting Drafts (m)</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="initial-forward">Chief Draft</Label>
-              <Input
-                id="initial-forward"
-                type="number"
-                step="0.01"
-                value={inputs.initialDrafts.forward}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  initialDrafts: { ...prev.initialDrafts, forward: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="initial-midship">Medium Draft</Label>
-              <Input
-                id="initial-midship"
-                type="number"
-                step="0.01"
-                value={inputs.initialDrafts.midship}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  initialDrafts: { ...prev.initialDrafts, midship: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="initial-aft">Aft Draft</Label>
-              <Input
-                id="initial-aft"
-                type="number"
-                step="0.01"
-                value={inputs.initialDrafts.aft}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  initialDrafts: { ...prev.initialDrafts, aft: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-orange-600 dark:text-orange-400">Current Drafts (m)</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="intermediate-forward">Chief Draft</Label>
-              <Input
-                id="intermediate-forward"
-                type="number"
-                step="0.01"
-                value={inputs.intermediateDrafts.forward}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  intermediateDrafts: { ...prev.intermediateDrafts, forward: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="intermediate-midship">Medium Draft</Label>
-              <Input
-                id="intermediate-midship"
-                type="number"
-                step="0.01"
-                value={inputs.intermediateDrafts.midship}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  intermediateDrafts: { ...prev.intermediateDrafts, midship: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="intermediate-aft">Aft Draft</Label>
-              <Input
-                id="intermediate-aft"
-                type="number"
-                step="0.01"
-                value={inputs.intermediateDrafts.aft}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  intermediateDrafts: { ...prev.intermediateDrafts, aft: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Timestamps</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="initial-time">Start Time</Label>
-              <Input
-                id="initial-time"
-                type="time"
-                value={inputs.timeData.initialTime}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  timeData: { ...prev.timeData, initialTime: e.target.value }
-                }))}
-              />
-            </div>
-            <div>
-              <Label htmlFor="intermediate-time">Current Time</Label>
-              <Input
-                id="intermediate-time"
-                type="time"
-                value={inputs.timeData.intermediateTime}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  timeData: { ...prev.timeData, intermediateTime: e.target.value }
-                }))}
-              />
-            </div>
-            <div>
-              <Label htmlFor="estimated-completion">Estimated Total Cargo (tons)</Label>
-              <Input
-                id="estimated-completion"
-                type="number"
-                value={inputs.timeData.estimatedCompletion}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  timeData: { ...prev.timeData, estimatedCompletion: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Button onClick={calculate} className="w-full" size="lg">
-        <Calculator className="h-4 w-4 mr-2" />
-        Perform Interim Situation Analysis
-      </Button>
-
-      {result && (
-        <Card className="bg-purple-50 dark:bg-purple-950">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="h-5 w-5" />
-              Interim Draft Analysis Results
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <p><strong>Draft change:</strong> {result.draftChange.toFixed(3)} m</p>
-                <p><strong>Cargo Processed:</strong> {result.cargoHandled.toFixed(2)} ton</p>
-                <p><strong>Processing Speed:</strong> {result.handlingRate.toFixed(1)} tons/hour</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xl font-bold text-purple-600 dark:text-purple-400">
-                  <strong>Estimated End:</strong> {result.estimatedCompletion}
-                </p>
-                <p><strong>Predicted Final Draft:</strong> {result.projectedFinalDraft.toFixed(3)} m</p>
-              </div>
-            </div>
-            
-            <div className="mt-4 p-3 bg-white dark:bg-gray-600 rounded">
-              <p className="text-sm text-muted-foreground">
-                * Estimated end time calculated based on current transaction speed
-              </p>
-              <p className="text-sm text-muted-foreground">
-                * Weather conditions and operational factors may affect the change
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+    <ToolPage title="Intermediate Survey" icon={Gauge}>
+      <DraftSurveyDisclaimer />
+      <ShipParticularsSection form={ship} setForm={setShip} />
+      {!initialResult && (
+        <ToolNotice tone="warning">
+          No completed initial survey on this device. Complete it on the{" "}
+          <Link to="/cargo/calculations/draft-survey" className="font-semibold text-primary underline">Draft Survey</Link> page first.
+        </ToolNotice>
       )}
-    </div>
+      <SurveyStageSection title="Intermediate survey" idPrefix="intermediate" shipForm={ship} form={current} setForm={setCurrent} />
+
+      <ToolSection title="Progress" icon={Clock3} description="Provisional figures to monitor the loading or discharging rate and to plan trimming.">
+        <FormulaLine>Rate = Cargo handled / Elapsed time</FormulaLine>
+        <NumberField
+          id="planned-cargo"
+          label="Planned cargo quantity"
+          unit="t"
+          value={progress.plannedCargo}
+          onChange={(value) => setProgress((prev) => ({ ...prev, plannedCargo: value }))}
+          placeholder="35000"
+        />
+        <FieldGrid>
+          <div className="space-y-1">
+            <Label htmlFor="initial-time" className="text-xs">Initial survey completed</Label>
+            <Input id="initial-time" type="datetime-local" className="h-9" value={progress.initialTime} onChange={(e) => setProgress((prev) => ({ ...prev, initialTime: e.target.value }))} />
+          </div>
+          <div className="space-y-1">
+            <Label htmlFor="current-time" className="text-xs">Intermediate survey completed</Label>
+            <Input id="current-time" type="datetime-local" className="h-9" value={progress.currentTime} onChange={(e) => setProgress((prev) => ({ ...prev, currentTime: e.target.value }))} />
+          </div>
+        </FieldGrid>
+        {timeWarning && <ToolNotice tone="warning">{timeWarning}</ToolNotice>}
+        {rows ? (
+          <ResultTable title="Intermediate result" rows={rows} copyText={rowsToText("Intermediate survey", rows)} />
+        ) : (
+          <ToolNotice>Complete the initial and the intermediate survey to see the progress.</ToolNotice>
+        )}
+        <ToolNotice>
+          The rate includes stoppages between the two surveys. Final trimming quantities should be planned on the
+          last intermediate survey with the actual drafts.
+        </ToolNotice>
+      </ToolSection>
+    </ToolPage>
   );
 }

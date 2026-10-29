@@ -1,344 +1,115 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Fuel, Plus, Scale, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Gauge, Calculator, Fuel, BarChart3 } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { oilQuantity } from "@/lib/calc/petroleum";
+import {
+  FieldGrid,
+  FormulaLine,
+  NumberField,
+  ResultTable,
+  ToolNotice,
+  ToolPage,
+  ToolSection,
+  type ResultRow,
+} from "@/components/tools/ToolKit";
+import { fmt, parseNumber, signed } from "@/components/tools/format";
+import { useStoredForm } from "@/components/draftSurvey/draftSurveyForms";
+
+interface BunkerTank {
+  name: string;
+  volume: string;
+  temperature: string;
+}
+
+const DEFAULT_TANKS: BunkerTank[] = [
+  { name: "No.1 FO tank P", volume: "", temperature: "" },
+  { name: "No.1 FO tank S", volume: "", temperature: "" },
+];
 
 export default function DraftSurveyBunker() {
-  const { toast } = useToast();
-  
-  const [inputs, setInputs] = useState({
-    beforeBunkering: {
-      forward: "",
-      midship: "",
-      aft: ""
-    },
-    afterBunkering: {
-      forward: "",
-      midship: "",
-      aft: ""
-    },
-    fuelSpecs: {
-      density: "0.950",
-      temperature: "15",
-      viscosity: ""
-    },
-    vesselData: {
-      tpc: "",
-      lbp: "",
-      breadth: ""
-    }
+  const [state, setState] = useStoredForm("bunker", { density15: "", bdn: "", tanks: DEFAULT_TANKS });
+  const [check, setCheck] = useStoredForm("bunker-check", { before: "", after: "", otherChanges: "0" });
+
+  const rho15Gml = parseNumber(state.density15);
+  const rho15 = rho15Gml * 1000; // kg/m³
+  const densityOk = Number.isFinite(rho15) && rho15 >= 839 && rho15 <= 1075;
+
+  const tankResults = state.tanks.map((tank) => {
+    const volume = parseNumber(tank.volume);
+    const temp = parseNumber(tank.temperature);
+    if (!densityOk || !Number.isFinite(volume) || !Number.isFinite(temp)) return null;
+    return oilQuantity(volume, rho15, temp);
   });
+  const totalAir = tankResults.reduce((sum, q) => sum + (q?.tonnesInAir ?? 0), 0);
+  const totalV15 = tankResults.reduce((sum, q) => sum + (q?.volume15 ?? 0), 0);
+  const counted = tankResults.filter(Boolean).length;
+  const bdn = parseNumber(state.bdn);
 
-  const [result, setResult] = useState<{
-    draftChange: number;
-    displacementChange: number;
-    bunkerWeight: number;
-    bunkerVolume: number;
-    fuelDensityCorrection: number;
-  } | null>(null);
+  const rows: ResultRow[] = [
+    ...state.tanks.flatMap((tank, index) => {
+      const q = tankResults[index];
+      return q ? [{ label: tank.name || "Tank", value: `VCF ${q.vcf.toFixed(4)} · ${fmt(q.volume15, 3)} m³ · ${fmt(q.tonnesInAir, 3)} t`, hint: "Volume at 15 °C · weight in air" }] : [];
+    }),
+    { label: "Total at 15 °C", value: `${fmt(totalV15, 3)} m³` },
+    { label: "Total weight in air", value: `${fmt(totalAir, 3)} t`, emphasis: true },
+  ];
+  if (Number.isFinite(bdn) && bdn > 0 && counted > 0) {
+    rows.push({ label: "Difference against BDN", value: `${signed(totalAir - bdn, 3)} t (${signed(((totalAir - bdn) / bdn) * 100, 2)} %)` });
+  }
 
-  const calculate = () => {
-    const { beforeBunkering, afterBunkering, fuelSpecs, vesselData } = inputs;
-    
-    if (!beforeBunkering.forward || !beforeBunkering.midship || !beforeBunkering.aft ||
-        !afterBunkering.forward || !afterBunkering.midship || !afterBunkering.aft ||
-        !vesselData.tpc || !fuelSpecs.density) {
-      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
-      return;
-    }
+  const updateTank = (index: number, patch: Partial<BunkerTank>) =>
+    setState((prev) => ({ ...prev, tanks: prev.tanks.map((tank, i) => (i === index ? { ...tank, ...patch } : tank)) }));
 
-    // Draft değişimi hesaplama
-    const beforeMean = (parseFloat(beforeBunkering.forward) + 4*parseFloat(beforeBunkering.midship) + parseFloat(beforeBunkering.aft)) / 6;
-    const afterMean = (parseFloat(afterBunkering.forward) + 4*parseFloat(afterBunkering.midship) + parseFloat(afterBunkering.aft)) / 6;
-    const draftChange = afterMean - beforeMean;
-    
-    // TPC ile deplasman değişimi
-    const tpc = parseFloat(vesselData.tpc);
-    const displacementChange = draftChange * 100 * tpc;
-    
-    // Yakıt yoğunluk düzeltmesi
-    const fuelDensity = parseFloat(fuelSpecs.density);
-    const temperature = parseFloat(fuelSpecs.temperature || "15");
-    const tempCorrection = 1 - (0.0006 * (temperature - 15)); // Sıcaklık düzeltme faktörü
-    const correctedDensity = fuelDensity * tempCorrection;
-    
-    // Bunker ağırlığı
-    const bunkerWeight = displacementChange;
-    
-    // Bunker hacmi (15°C'de)
-    const bunkerVolume = bunkerWeight / correctedDensity;
-
-    setResult({
-      draftChange,
-      displacementChange,
-      bunkerWeight,
-      bunkerVolume,
-      fuelDensityCorrection: correctedDensity
-    });
-
-    toast({ title: "Calculation Completed", description: "Bunker tonnage calculated" });
-  };
+  const before = parseNumber(check.before);
+  const after = parseNumber(check.after);
+  const other = parseNumber(check.otherChanges) || 0;
 
   return (
-    <div className="container mx-auto p-4 space-y-6">
-      <div className="flex items-center gap-4 mb-6">
-        <div>
-          <h1 className="text-2xl font-bold">Bunker Measurement</h1>
+    <ToolPage title="Bunker Quantity" icon={Fuel}>
+      <ToolNotice>
+        Quantity received = (sum of tank quantities after bunkering) − (before). Volumes come from the sounding/ullage
+        tables corrected for trim and list; the density at 15 °C is from the bunker delivery note (BDN) or the lab.
+      </ToolNotice>
+
+      <ToolSection title="Tank quantities" icon={Fuel} description="ASTM D1250 Table 54B (fuel oils) volume correction to 15 °C and weight in air.">
+        <FormulaLine>V₁₅ = V obs × VCF · W = V₁₅ × (ρ₁₅ − 0.0011)</FormulaLine>
+        <FieldGrid>
+          <NumberField id="bk-density" label="Density at 15 °C" unit="g/ml" value={state.density15} onChange={(v) => setState((p) => ({ ...p, density15: v }))} placeholder="0.9850" error={state.density15 && !densityOk ? "Fuel oil range 0.839 – 1.075 g/ml" : undefined} />
+          <NumberField id="bk-bdn" label="BDN quantity (optional)" unit="t" value={state.bdn} onChange={(v) => setState((p) => ({ ...p, bdn: v }))} placeholder="850" />
+        </FieldGrid>
+        <div className="space-y-2">
+          <div className="grid grid-cols-[minmax(0,1fr)_6rem_5rem_2.5rem] gap-2 text-micro font-semibold text-muted-foreground">
+            <span>Tank</span><span>Volume (m³)</span><span>Temp (°C)</span><span />
+          </div>
+          {state.tanks.map((tank, index) => (
+            <div key={index} className="grid grid-cols-[minmax(0,1fr)_6rem_5rem_2.5rem] items-center gap-2">
+              <Input aria-label="Tank name" className="h-9" value={tank.name} onChange={(e) => updateTank(index, { name: e.target.value })} />
+              <Input aria-label={`${tank.name || "Tank"} observed volume`} className="h-9" type="number" inputMode="decimal" step="any" value={tank.volume} onChange={(e) => updateTank(index, { volume: e.target.value })} />
+              <Input aria-label={`${tank.name || "Tank"} temperature`} className="h-9" type="number" inputMode="decimal" step="any" value={tank.temperature} onChange={(e) => updateTank(index, { temperature: e.target.value })} />
+              <Button type="button" variant="ghost" size="icon" aria-label={`Remove ${tank.name || "tank"}`} onClick={() => setState((p) => ({ ...p, tanks: p.tanks.filter((_, i) => i !== index) }))}>
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </div>
+          ))}
+          <Button type="button" variant="outline" size="sm" className="gap-1.5" onClick={() => setState((p) => ({ ...p, tanks: [...p.tanks, { name: `Tank ${p.tanks.length + 1}`, volume: "", temperature: "" }] }))}>
+            <Plus className="h-4 w-4" /> Add tank
+          </Button>
         </div>
-      </div>
+        {counted > 0 && <ResultTable title="Bunkers on board" rows={rows} copyText={rows.map((r) => `${r.label}: ${r.value}`).join("\n")} />}
+      </ToolSection>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Gauge className="h-5 w-5" />
-            Ship Features
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="tpc">TPC (ton/cm)</Label>
-              <Input
-                id="tpc"
-                type="number"
-                step="0.01"
-                value={inputs.vesselData.tpc}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselData: { ...prev.vesselData, tpc: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="lbp">LBP (m)</Label>
-              <Input
-                id="lbp"
-                type="number"
-                value={inputs.vesselData.lbp}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselData: { ...prev.vesselData, lbp: e.target.value }
-                }))}
-                placeholder="Length"
-              />
-            </div>
-            <div>
-              <Label htmlFor="breadth">Width (m)</Label>
-              <Input
-                id="breadth"
-                type="number"
-                value={inputs.vesselData.breadth}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselData: { ...prev.vesselData, breadth: e.target.value }
-                }))}
-                placeholder="Width"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Fuel className="h-5 w-5" />
-            Fuel Specifications
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="density">Fuel Density (ton/m³)</Label>
-              <Input
-                id="density"
-                type="number"
-                step="0.001"
-                value={inputs.fuelSpecs.density}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  fuelSpecs: { ...prev.fuelSpecs, density: e.target.value }
-                }))}
-                placeholder="0.950"
-              />
-            </div>
-            <div>
-              <Label htmlFor="temperature">Temperature (°C)</Label>
-              <Input
-                id="temperature"
-                type="number"
-                value={inputs.fuelSpecs.temperature}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  fuelSpecs: { ...prev.fuelSpecs, temperature: e.target.value }
-                }))}
-                placeholder="15"
-              />
-            </div>
-            <div>
-              <Label htmlFor="viscosity">Viscosity (cSt) - Optional</Label>
-              <Input
-                id="viscosity"
-                type="number"
-                value={inputs.fuelSpecs.viscosity}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  fuelSpecs: { ...prev.fuelSpecs, viscosity: e.target.value }
-                }))}
-                placeholder="Viscosity"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-red-600 dark:text-red-400">Pre-Bunker Drafts (m)</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="before-forward">Chief Draft</Label>
-              <Input
-                id="before-forward"
-                type="number"
-                step="0.01"
-                value={inputs.beforeBunkering.forward}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  beforeBunkering: { ...prev.beforeBunkering, forward: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="before-midship">Medium Draft</Label>
-              <Input
-                id="before-midship"
-                type="number"
-                step="0.01"
-                value={inputs.beforeBunkering.midship}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  beforeBunkering: { ...prev.beforeBunkering, midship: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="before-aft">Aft Draft</Label>
-              <Input
-                id="before-aft"
-                type="number"
-                step="0.01"
-                value={inputs.beforeBunkering.aft}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  beforeBunkering: { ...prev.beforeBunkering, aft: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-green-600 dark:text-green-400">Post-Bunker Drafts (m)</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="after-forward">Chief Draft</Label>
-              <Input
-                id="after-forward"
-                type="number"
-                step="0.01"
-                value={inputs.afterBunkering.forward}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  afterBunkering: { ...prev.afterBunkering, forward: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="after-midship">Medium Draft</Label>
-              <Input
-                id="after-midship"
-                type="number"
-                step="0.01"
-                value={inputs.afterBunkering.midship}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  afterBunkering: { ...prev.afterBunkering, midship: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="after-aft">Aft Draft</Label>
-              <Input
-                id="after-aft"
-                type="number"
-                step="0.01"
-                value={inputs.afterBunkering.aft}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  afterBunkering: { ...prev.afterBunkering, aft: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <Button onClick={calculate} className="w-full" size="lg">
-        <Calculator className="h-4 w-4 mr-2" />
-        Calculate Bunker Tonnage
-      </Button>
-
-      {result && (
-        <Card className="bg-orange-50 dark:bg-orange-950">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5" />
-              Bunker Calculation Results
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <p><strong>Draft change:</strong> {result.draftChange.toFixed(3)} m</p>
-                <p><strong>Displacement Change:</strong> {result.displacementChange.toFixed(2)} ton</p>
-                <p><strong>Corrected Density:</strong> {result.fuelDensityCorrection.toFixed(3)} ton/m³</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-xl font-bold text-orange-600 dark:text-orange-400">
-                  <strong>Bunker Weight:</strong> {result.bunkerWeight.toFixed(2)} ton
-                </p>
-                <p className="text-lg font-semibold">
-                  <strong>Bunker Volume:</strong> {result.bunkerVolume.toFixed(2)} m³
-                </p>
-              </div>
-            </div>
-            
-            <div className="mt-4 p-3 bg-white dark:bg-gray-600 rounded">
-              <p className="text-sm text-muted-foreground">
-                * Temperature correction applied (0.06%/°C)
-              </p>
-              <p className="text-sm text-muted-foreground">
-                * Volume calculated at 15°C
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+      <ToolSection title="Cross-check with drafts" icon={Scale} description="Displacements in dock water from draft surveys before and after bunkering.">
+        <FormulaLine>Bunkers by drafts = (Δ after − Δ before) − other changes</FormulaLine>
+        <FieldGrid columns={3}>
+          <NumberField id="bkc-before" label="Δ before" unit="t" value={check.before} onChange={(v) => setCheck((p) => ({ ...p, before: v }))} placeholder="28400" />
+          <NumberField id="bkc-after" label="Δ after" unit="t" value={check.after} onChange={(v) => setCheck((p) => ({ ...p, after: v }))} placeholder="29260" />
+          <NumberField id="bkc-other" label="Other weight changes" unit="t" value={check.otherChanges} onChange={(v) => setCheck((p) => ({ ...p, otherChanges: v }))} placeholder="0" help="Ballast, fresh water, cargo moved in between (+ added)." />
+        </FieldGrid>
+        {Number.isFinite(before) && Number.isFinite(after) && (
+          <ResultTable title="Bunkers by drafts" rows={[{ label: "Weight received by drafts", value: `${signed(after - before - other, 1)} t`, emphasis: true }]} />
+        )}
+        <ToolNotice>A draft check is much coarser than tank soundings; use it only to detect gross errors in the tank figures.</ToolNotice>
+      </ToolSection>
+    </ToolPage>
   );
 }

@@ -44,28 +44,31 @@ interface CalcTool {
 type Category = "navigation" | "stability" | "machine" | "ship-systems" | "converter";
 
 const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent: string }> = {
-  navigation: { title: "Navigation and Navigation", icon: Compass, accent: "accent-ocean" },
-  stability: { title: "Load and Stability", icon: Scale, accent: "accent-teal" },
+  navigation: { title: "Navigation", icon: Compass, accent: "accent-ocean" },
+  stability: { title: "Cargo and Stability", icon: Scale, accent: "accent-teal" },
   machine: { title: "Machinery and Consumption", icon: Wrench, accent: "accent-slate" },
   "ship-systems": { title: "Ship Systems", icon: Anchor, accent: "accent-amber" },
   converter: { title: "Formulas and Converters", icon: Zap, accent: "accent-deep" },
 };
 
 const QUICK_TOOLS: CalcTool[] = [
-  { id: "draft", title: "Draft Calculation", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "draft", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
   { id: "trim", title: "Stability / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "fuel", title: "Fuel Consumption", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
   { id: "voyage", title: "Voyage Duration", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
-  { id: "cargo", title: "Load Distribution", icon: Layers, to: "/cargo/calculations", category: "stability" },
+  { id: "cargo", title: "Cargo Calculations", icon: Layers, to: "/cargo/calculations", category: "stability" },
   { id: "converter", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
 ];
 
 const TOOLS: CalcTool[] = [
-  { id: "draft-survey", title: "Draft survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "preloading", title: "Preload", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
-  { id: "ballast", title: "Ballast Calculation", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
+  { id: "draft-survey", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "preloading", title: "Initial (Light) Survey", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
+  { id: "intermediate", title: "Intermediate Survey", icon: Gauge, to: "/cargo/calculations/intermediate", category: "stability" },
+  { id: "postdischarge", title: "Post-Discharge Survey", icon: Layers, to: "/cargo/calculations/postdischarge", category: "stability" },
+  { id: "comparative", title: "Survey Comparison", icon: BarChart3, to: "/cargo/calculations/comparative", category: "stability" },
+  { id: "ballast", title: "Ballast Quantity", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
   { id: "density", title: "Density Correction", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
-  { id: "bunker", title: "Bunker Survey", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
+  { id: "bunker", title: "Bunker Quantity", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
   { id: "stability-calc", title: "Stability Calculations", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "tank", title: "Tank Calculation", icon: Anchor, to: "/tank", category: "stability" },
   { id: "imo-criteria", title: "IMO Criteria", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
@@ -86,7 +89,7 @@ const TOOLS: CalcTool[] = [
   { id: "unit-conv", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
   { id: "nav-formulas", title: "Navigation Formulas", icon: Compass, to: "/navigation/formulas", category: "converter" },
   { id: "stab-formulas", title: "Stability Formulas", icon: Scale, to: "/stability/formulas", category: "converter" },
-  { id: "cargo-formulas", title: "Draft Survey Standards", icon: Ruler, to: "/cargo/formulas", category: "converter" },
+  { id: "cargo-formulas", title: "Draft Survey Procedure", icon: Ruler, to: "/cargo/formulas", category: "converter" },
 ];
 
 const ALL_TOOLS = [...QUICK_TOOLS, ...TOOLS].filter(

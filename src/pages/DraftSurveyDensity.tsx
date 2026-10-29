@@ -1,154 +1,82 @@
-import { useState, useEffect } from "react";
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { BarChart3 } from "lucide-react";
-import { CalculationLayout } from "@/components/layout/CalculationLayout";
-import { CalculationCard } from "@/components/ui/calculation-card";
-import { FormulaCard } from "@/components/ui/formula-card";
+import { ArrowDownUp, Droplets } from "lucide-react";
+import { densitySinkageCm, displacementInDensity } from "@/lib/calc/draftSurvey";
+import {
+  FieldGrid,
+  FormulaLine,
+  NumberField,
+  ResultTable,
+  ToolNotice,
+  ToolPage,
+  ToolSection,
+} from "@/components/tools/ToolKit";
+import { fmt, parseNumber, signed } from "@/components/tools/format";
+import { useStoredForm } from "@/components/draftSurvey/draftSurveyForms";
 
-const DraftSurveyDensity = () => {
-  const [seawaterDensity, setSeawaterDensity] = useState("");
-  const [standardDensity, setStandardDensity] = useState("1.025");
-  const [displacement, setDisplacement] = useState("");
-  const [correction, setCorrection] = useState<number | null>(null);
+const inDensityRange = (value: number) => Number.isFinite(value) && value >= 0.99 && value <= 1.04;
+const RANGE_ERROR = "Expected 0.990 – 1.040 t/m³";
 
-  // Load saved values from localStorage
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('draft-survey-density');
-      if (saved) {
-        const data = JSON.parse(saved);
-        if (data.seawaterDensity) setSeawaterDensity(data.seawaterDensity);
-        if (data.standardDensity) setStandardDensity(data.standardDensity);
-        if (data.displacement) setDisplacement(data.displacement);
-      }
-    } catch (error) {
-      console.error("Error loading saved density inputs:", error);
-    }
-  }, []);
+export default function DraftSurveyDensity() {
+  const [corr, setCorr] = useStoredForm("density-correction", { displacement: "", tableDensity: "1.025", dockDensity: "" });
+  const [sink, setSink] = useStoredForm("density-sinkage", { displacement: "", tpc: "", fromDensity: "1.025", toDensity: "1.000" });
 
-  // Save inputs to localStorage
-  useEffect(() => {
-    try {
-      const data = { seawaterDensity, standardDensity, displacement };
-      localStorage.setItem('draft-survey-density', JSON.stringify(data));
-    } catch (error) {
-      console.error("Error saving density inputs:", error);
-    }
-  }, [seawaterDensity, standardDensity, displacement]);
+  const disp = parseNumber(corr.displacement);
+  const rhoTable = parseNumber(corr.tableDensity);
+  const rhoDock = parseNumber(corr.dockDensity);
+  const corrReady = Number.isFinite(disp) && disp > 0 && inDensityRange(rhoTable) && inDensityRange(rhoDock);
+  const corrected = corrReady ? displacementInDensity(disp, rhoTable, rhoDock) : Number.NaN;
 
-  const calculateDensityCorrection = () => {
-    const density = parseFloat(seawaterDensity);
-    const standard = parseFloat(standardDensity);
-    const disp = parseFloat(displacement);
-
-    if (density && standard && disp) {
-      const correctionValue = disp * ((density - standard) / standard);
-      setCorrection(correctionValue);
-    }
-  };
+  const sDisp = parseNumber(sink.displacement);
+  const tpc = parseNumber(sink.tpc);
+  const rho1 = parseNumber(sink.fromDensity);
+  const rho2 = parseNumber(sink.toDensity);
+  const sinkReady = Number.isFinite(sDisp) && sDisp > 0 && Number.isFinite(tpc) && tpc > 0 && inDensityRange(rho1) && inDensityRange(rho2);
+  const sinkage = sinkReady ? densitySinkageCm(sDisp, tpc, rho1, rho2) : Number.NaN;
 
   return (
-    <CalculationLayout
-      title="Density Correction"
-      icon={BarChart3}
-      maxWidthClassName="max-w-6xl"
-      rightRail={
-        <FormulaCard
-          title="Formula"
-          sections={[
-            {
-              title: "Density Correction",
-              accent: "teal",
-              lines: [{ formula: "Correction = Displacement × ((ρ - ρ₀) / ρ₀)" }],
-            },
-          ]}
-          symbolsNote={
-            <>
-              ρ: actual water density, ρ₀: standard density (usually 1.025 t/m³)
-            </>
-          }
-        />
-      }
-      below={
-        <CalculationCard>
-          <CardHeader>
-            <CardTitle>About Density Correction</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              The density of seawater varies with geographic location, temperature and salinity. This calculation is used to determine how the ship will behave in waters of different densities.
-            </p>
-          </CardContent>
-        </CalculationCard>
-      }
-    >
-      <CalculationCard>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5" />
-            Density Correction Calculation
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="seawater-density">Sea Water Density (t/m³)</Label>
-              <Input
-                id="seawater-density"
-                type="number"
-                step="0.001"
-                value={seawaterDensity}
-                onChange={(e) => setSeawaterDensity(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="standard-density">Standard Density (t/m³)</Label>
-              <Input
-                id="standard-density"
-                type="number"
-                step="0.001"
-                value={standardDensity}
-                onChange={(e) => setStandardDensity(e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="displacement">Displacement (tons)</Label>
-              <Input
-                id="displacement"
-                type="number"
-                step="0.1"
-                value={displacement}
-                onChange={(e) => setDisplacement(e.target.value)}
-                placeholder=""
-              />
-            </div>
-          </div>
+    <ToolPage title="Density Correction" icon={Droplets}>
+      <ToolSection
+        title="Displacement in dock water"
+        icon={Droplets}
+        description="Hydrostatic tables give displacement for one density (usually 1.025 t/m³). Convert it to the density measured at the marks."
+      >
+        <FormulaLine>Δ dock = Δ table × ρ dock / ρ table</FormulaLine>
+        <FieldGrid columns={3}>
+          <NumberField id="dc-disp" label="Δ from table (trim corrected)" unit="t" value={corr.displacement} onChange={(v) => setCorr((p) => ({ ...p, displacement: v }))} placeholder="30058" />
+          <NumberField id="dc-table" label="Table density" unit="t/m³" value={corr.tableDensity} onChange={(v) => setCorr((p) => ({ ...p, tableDensity: v }))} placeholder="1.025" error={corr.tableDensity && !inDensityRange(rhoTable) ? RANGE_ERROR : undefined} />
+          <NumberField id="dc-dock" label="Dock water density" unit="t/m³" value={corr.dockDensity} onChange={(v) => setCorr((p) => ({ ...p, dockDensity: v }))} placeholder="1.018" error={corr.dockDensity && !inDensityRange(rhoDock) ? RANGE_ERROR : undefined} />
+        </FieldGrid>
+        {corrReady && (
+          <ResultTable
+            title="Density correction"
+            rows={[
+              { label: "Correction", value: `${signed(corrected - disp, 1)} t` },
+              { label: "Δ in dock water", value: `${fmt(corrected, 1)} t`, emphasis: true },
+            ]}
+          />
+        )}
+        <ToolNotice>Take samples at several depths near the forward, midship and aft marks and use the average.</ToolNotice>
+      </ToolSection>
 
-          <Button onClick={calculateDensityCorrection} className="w-full">
-            Calculate Density Correction
-          </Button>
-
-          {correction !== null && (
-            <div className="mt-4 rounded-lg border border-sky-200/50 dark:border-sky-500/20 bg-sky-50/70 dark:bg-sky-900/15 p-4">
-              <h3 className="text-lg font-semibold">Calculation Result</h3>
-              <div className="space-y-2 mt-2">
-                <p className="text-lg font-semibold">
-                  Density Correction: <span className="text-sky-700 dark:text-sky-300">{correction.toFixed(2)} ton</span>
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {correction > 0 ? "Positive correction (addition)" : "Negative correction (subtraction)"}
-                </p>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </CalculationCard>
-    </CalculationLayout>
+      <ToolSection
+        title="Draft change between densities"
+        icon={ArrowDownUp}
+        description="Mean sinkage (+) or rise (−) when the ship passes from one water density into another, displacement unchanged."
+      >
+        <FormulaLine>δT = Δ (ρ₁ − ρ₂) / (ρ₂ × TPC₁)</FormulaLine>
+        <FieldGrid>
+          <NumberField id="ds-disp" label="Displacement" unit="t" value={sink.displacement} onChange={(v) => setSink((p) => ({ ...p, displacement: v }))} placeholder="20000" />
+          <NumberField id="ds-tpc" label="TPC in the first water" unit="t/cm" value={sink.tpc} onChange={(v) => setSink((p) => ({ ...p, tpc: v }))} placeholder="25.0" />
+          <NumberField id="ds-from" label="From density ρ₁" unit="t/m³" value={sink.fromDensity} onChange={(v) => setSink((p) => ({ ...p, fromDensity: v }))} placeholder="1.025" error={sink.fromDensity && !inDensityRange(rho1) ? RANGE_ERROR : undefined} />
+          <NumberField id="ds-to" label="To density ρ₂" unit="t/m³" value={sink.toDensity} onChange={(v) => setSink((p) => ({ ...p, toDensity: v }))} placeholder="1.000" error={sink.toDensity && !inDensityRange(rho2) ? RANGE_ERROR : undefined} />
+        </FieldGrid>
+        {sinkReady && (
+          <ResultTable
+            title="Draft change"
+            rows={[{ label: sinkage >= 0 ? "Mean sinkage" : "Mean rise", value: `${fmt(Math.abs(sinkage), 1)} cm`, emphasis: true }]}
+          />
+        )}
+        <ToolNotice>From sea water (1.025) into fresh water (1.000) this equals the Fresh Water Allowance, FWA = Δ / (40 × TPC).</ToolNotice>
+      </ToolSection>
+    </ToolPage>
   );
-};
-
-export default DraftSurveyDensity;
+}

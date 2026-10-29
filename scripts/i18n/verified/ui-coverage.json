@@ -677,5 +677,467 @@
  },
  "knowledge questions answered correctly. This short sample suggests where to start; it does not establish professional competence.": {
   "en": "knowledge questions answered correctly. This short sample suggests where to start; it does not establish professional competence."
+ },
+ "1. Mean of port and starboard readings": {
+  "en": "1. Mean of port and starboard readings"
+ },
+ "10. Net displacement": {
+  "en": "10. Net displacement"
+ },
+ "11. Cargo and constant": {
+  "en": "11. Cargo and constant"
+ },
+ "2. Length between marks": {
+  "en": "2. Length between marks"
+ },
+ "3. Corrections to the perpendiculars and amidships": {
+  "en": "3. Corrections to the perpendiculars and amidships"
+ },
+ "4. Trim and deflection": {
+  "en": "4. Trim and deflection"
+ },
+ "5. Mean of means (quarter mean)": {
+  "en": "5. Mean of means (quarter mean)"
+ },
+ "6. Hydrostatic particulars": {
+  "en": "6. Hydrostatic particulars"
+ },
+ "7. First trim correction": {
+  "en": "7. First trim correction"
+ },
+ "8. Second trim correction (Nemoto)": {
+  "en": "8. Second trim correction (Nemoto)"
+ },
+ "9. Density correction": {
+  "en": "9. Density correction"
+ },
+ "A draft check is much coarser than tank soundings; use it only to detect gross errors in the tank figures.": {
+  "en": "A draft check is much coarser than tank soundings; use it only to detect gross errors in the tank figures."
+ },
+ "A negative constant usually points to a reading, density or deductible error: recheck before loading.": {
+  "en": "A negative constant usually points to a reading, density or deductible error: recheck before loading."
+ },
+ "Add tank": {
+  "en": "Add tank"
+ },
+ "After peak": {
+  "en": "After peak"
+ },
+ "Allows for hull deflection. Subtract the keel correction if the tables are on moulded draft.": {
+  "en": "Allows for hull deflection. Subtract the keel correction if the tables are on moulded draft."
+ },
+ "Arrival (discharge)": {
+  "en": "Arrival (discharge)"
+ },
+ "Arrival net displacement": {
+  "en": "Arrival net displacement"
+ },
+ "Arrival survey": {
+  "en": "Arrival survey"
+ },
+ "Arrival survey (loaded)": {
+  "en": "Arrival survey (loaded)"
+ },
+ "At the perpendiculars and amidships": {
+  "en": "At the perpendiculars and amidships"
+ },
+ "Average handling rate": {
+  "en": "Average handling rate"
+ },
+ "Ballast by drafts": {
+  "en": "Ballast by drafts"
+ },
+ "Ballast change = (Δ after − Δ before) − other changes": {
+  "en": "Ballast change = (Δ after − Δ before) − other changes"
+ },
+ "Ballast change by drafts": {
+  "en": "Ballast change by drafts"
+ },
+ "Ballast is a deductible in every draft survey. Sound or ullage each tank, convert with the ship's calibrated tank tables (corrected for trim and list) and enter the volumes here.": {
+  "en": "Ballast is a deductible in every draft survey. Sound or ullage each tank, convert with the ship's calibrated tank tables (corrected for trim and list) and enter the volumes here."
+ },
+ "Ballast on board": {
+  "en": "Ballast on board"
+ },
+ "Ballast Quantity": {
+  "en": "Ballast Quantity"
+ },
+ "Ballast tanks": {
+  "en": "Ballast tanks"
+ },
+ "Bunker Quantity": {
+  "en": "Bunker Quantity"
+ },
+ "Bunkers by drafts": {
+  "en": "Bunkers by drafts"
+ },
+ "Bunkers by drafts = (Δ after − Δ before) − other changes": {
+  "en": "Bunkers by drafts = (Δ after − Δ before) − other changes"
+ },
+ "Bunkers on board": {
+  "en": "Bunkers on board"
+ },
+ "Cargo = |Net Δ final − Net Δ initial|": {
+  "en": "Cargo = |Net Δ final − Net Δ initial|"
+ },
+ "Cargo = Δ permitted − Lightship − Constant − Departure deductibles": {
+  "en": "Cargo = Δ permitted − Lightship − Constant − Departure deductibles"
+ },
+ "Cargo Calculations": {
+  "en": "Cargo Calculations"
+ },
+ "Cargo discharged (outturn)": {
+  "en": "Cargo discharged (outturn)"
+ },
+ "Cargo handled so far": {
+  "en": "Cargo handled so far"
+ },
+ "Cargo intake": {
+  "en": "Cargo intake"
+ },
+ "Cargo intake plan": {
+  "en": "Cargo intake plan"
+ },
+ "Change from previous (t)": {
+  "en": "Change from previous (t)"
+ },
+ "Check the loading plan against the stability booklet or loading computer (GM, shear forces, bending moments) before accepting the intake figure.": {
+  "en": "Check the loading plan against the stability booklet or loading computer (GM, shear forces, bending moments) before accepting the intake figure."
+ },
+ "Compare the result with the change in sounded ballast; a large difference points to a sounding, density or tank table error.": {
+  "en": "Compare the result with the change in sounded ballast; a large difference points to a sounding, density or tank table error."
+ },
+ "Complete both the initial and the final survey to obtain the cargo quantity.": {
+  "en": "Complete both the initial and the final survey to obtain the cargo quantity."
+ },
+ "Complete the arrival and the final survey to see the outturn.": {
+  "en": "Complete the arrival and the final survey to see the outturn."
+ },
+ "Complete the initial and the intermediate survey to see the progress.": {
+  "en": "Complete the initial and the intermediate survey to see the progress."
+ },
+ "Complete the ship particulars first.": {
+  "en": "Complete the ship particulars first."
+ },
+ "Complete the ship's constant and enter the displacement at the permitted draft.": {
+  "en": "Complete the ship's constant and enter the displacement at the permitted draft."
+ },
+ "Constant = Net Δ (light survey) − Lightship": {
+  "en": "Constant = Net Δ (light survey) − Lightship"
+ },
+ "Copy": {
+  "en": "Copy"
+ },
+ "Corrected drafts F / M / A": {
+  "en": "Corrected drafts F / M / A"
+ },
+ "Correction": {
+  "en": "Correction"
+ },
+ "Cross-check with drafts": {
+  "en": "Cross-check with drafts"
+ },
+ "Current net displacement": {
+  "en": "Current net displacement"
+ },
+ "d F: forward marks aft of the FP; d A: aft marks forward of the AP (negative if outside the perpendiculars).": {
+  "en": "d F: forward marks aft of the FP; d A: aft marks forward of the AP (negative if outside the perpendiculars)."
+ },
+ "Deductibles (t)": {
+  "en": "Deductibles (t)"
+ },
+ "Deductibles are sounded at the time of each survey.": {
+  "en": "Deductibles are sounded at the time of each survey."
+ },
+ "Departure deductibles": {
+  "en": "Departure deductibles"
+ },
+ "Difference against BDN": {
+  "en": "Difference against BDN"
+ },
+ "Difference against bill of lading": {
+  "en": "Difference against bill of lading"
+ },
+ "Discharge result": {
+  "en": "Discharge result"
+ },
+ "Displacement at permitted draft": {
+  "en": "Displacement at permitted draft"
+ },
+ "Displacement change": {
+  "en": "Displacement change"
+ },
+ "Displacement corrected for trim": {
+  "en": "Displacement corrected for trim"
+ },
+ "Displacement from table": {
+  "en": "Displacement from table"
+ },
+ "Displacement in dock water": {
+  "en": "Displacement in dock water"
+ },
+ "Draft change between densities": {
+  "en": "Draft change between densities"
+ },
+ "Draft for hydrostatic table": {
+  "en": "Draft for hydrostatic table"
+ },
+ "Draft Survey Procedure": {
+  "en": "Draft Survey Procedure"
+ },
+ "Draft survey result": {
+  "en": "Draft survey result"
+ },
+ "Enter the lightship in the ship particulars and complete the initial survey.": {
+  "en": "Enter the lightship in the ship particulars and complete the initial survey."
+ },
+ "Enter the ship's approved hydrostatic tables, usually based on 1.025 t/m³.": {
+  "en": "Enter the ship's approved hydrostatic tables, usually based on 1.025 t/m³."
+ },
+ "Estimated completion at this rate": {
+  "en": "Estimated completion at this rate"
+ },
+ "Figure": {
+  "en": "Figure"
+ },
+ "Final": {
+  "en": "Final"
+ },
+ "Final (discharge)": {
+  "en": "Final (discharge)"
+ },
+ "Final net displacement": {
+  "en": "Final net displacement"
+ },
+ "Final survey (light)": {
+  "en": "Final survey (light)"
+ },
+ "First trim correction": {
+  "en": "First trim correction"
+ },
+ "For training and cross-checking. The official figures are those agreed in the survey report using the ship's approved hydrostatic tables, sounding tables and calibrated instruments.": {
+  "en": "For training and cross-checking. The official figures are those agreed in the survey report using the ship's approved hydrostatic tables, sounding tables and calibrated instruments."
+ },
+ "Fore peak": {
+  "en": "Fore peak"
+ },
+ "From amidships, + aft": {
+  "en": "From amidships, + aft"
+ },
+ "From amidships, + forward": {
+  "en": "From amidships, + forward"
+ },
+ "From sea water (1.025) into fresh water (1.000) this equals the Fresh Water Allowance, FWA = Δ / (40 × TPC).": {
+  "en": "From sea water (1.025) into fresh water (1.000) this equals the Fresh Water Allowance, FWA = Δ / (40 × TPC)."
+ },
+ "From the aft perpendicular": {
+  "en": "From the aft perpendicular"
+ },
+ "Hog (−) / sag (+) (cm)": {
+  "en": "Hog (−) / sag (+) (cm)"
+ },
+ "Initial": {
+  "en": "Initial"
+ },
+ "Initial (Light) Survey": {
+  "en": "Initial (Light) Survey"
+ },
+ "Initial net displacement": {
+  "en": "Initial net displacement"
+ },
+ "Initial survey": {
+  "en": "Initial survey"
+ },
+ "Initial survey completed": {
+  "en": "Initial survey completed"
+ },
+ "Intermediate result": {
+  "en": "Intermediate result"
+ },
+ "Intermediate survey": {
+  "en": "Intermediate survey"
+ },
+ "Intermediate survey completed": {
+  "en": "Intermediate survey completed"
+ },
+ "LCF in the hydrostatic table": {
+  "en": "LCF in the hydrostatic table"
+ },
+ "Length between marks (LBM)": {
+  "en": "Length between marks (LBM)"
+ },
+ "Less other weight changes": {
+  "en": "Less other weight changes"
+ },
+ "Lightship": {
+  "en": "Lightship"
+ },
+ "Maximum cargo intake": {
+  "en": "Maximum cargo intake"
+ },
+ "Mean of means (F + A + 6M)/8": {
+  "en": "Mean of means (F + A + 6M)/8"
+ },
+ "Mean of means (m)": {
+  "en": "Mean of means (m)"
+ },
+ "MTC at MMM + 0.50 m and − 0.50 m. Always added.": {
+  "en": "MTC at MMM + 0.50 m and − 0.50 m. Always added."
+ },
+ "Net displacement": {
+  "en": "Net displacement"
+ },
+ "Net displacement (light condition)": {
+  "en": "Net displacement (light condition)"
+ },
+ "Net displacement (t)": {
+  "en": "Net displacement (t)"
+ },
+ "No completed initial survey on this device. Complete it on the": {
+  "en": "No completed initial survey on this device. Complete it on the"
+ },
+ "No completed survey yet. Start on the": {
+  "en": "No completed survey yet. Start on the"
+ },
+ "No.1 DB P": {
+  "en": "No.1 DB P"
+ },
+ "No.1 DB S": {
+  "en": "No.1 DB S"
+ },
+ "No.1 FO tank P": {
+  "en": "No.1 FO tank P"
+ },
+ "No.1 FO tank S": {
+  "en": "No.1 FO tank S"
+ },
+ "No.2 DB P": {
+  "en": "No.2 DB P"
+ },
+ "No.2 DB S": {
+  "en": "No.2 DB S"
+ },
+ "Observed drafts F / M / A": {
+  "en": "Observed drafts F / M / A"
+ },
+ "Outturn": {
+  "en": "Outturn"
+ },
+ "Outturn = Net Δ arrival − Net Δ final": {
+  "en": "Outturn = Net Δ arrival − Net Δ final"
+ },
+ "Outturn against bill of lading": {
+  "en": "Outturn against bill of lading"
+ },
+ "page first.": {
+  "en": "page first."
+ },
+ "Positive deflection is sagging, negative is hogging.": {
+  "en": "Positive deflection is sagging, negative is hogging."
+ },
+ "Post-Discharge Survey": {
+  "en": "Post-Discharge Survey"
+ },
+ "Progress": {
+  "en": "Progress"
+ },
+ "Quantities and reference": {
+  "en": "Quantities and reference"
+ },
+ "Quantity received = (sum of tank quantities after bunkering) − (before). Volumes come from the sounding/ullage tables corrected for trim and list; the density at 15 °C is from the bunker delivery note (BDN) or the lab.": {
+  "en": "Quantity received = (sum of tank quantities after bunkering) − (before). Volumes come from the sounding/ullage tables corrected for trim and list; the density at 15 °C is from the bunker delivery note (BDN) or the lab."
+ },
+ "Quick estimate: weight from mean draft change": {
+  "en": "Quick estimate: weight from mean draft change"
+ },
+ "Rate = Cargo handled / Elapsed time": {
+  "en": "Rate = Cargo handled / Elapsed time"
+ },
+ "Reading both sides removes the effect of a small list.": {
+  "en": "Reading both sides removes the effect of a small list."
+ },
+ "Remaining to planned quantity": {
+  "en": "Remaining to planned quantity"
+ },
+ "Saved surveys": {
+  "en": "Saved surveys"
+ },
+ "Second trim correction (Nemoto)": {
+  "en": "Second trim correction (Nemoto)"
+ },
+ "Ship particulars": {
+  "en": "Ship particulars"
+ },
+ "Source: UNECE Code of Uniform Standards and Procedures for the Performance of Draught Surveys of Coal Cargoes (ECE/ENERGY/19, 1992). The same sequence is used in practice for other dry bulk cargoes.": {
+  "en": "Source: UNECE Code of Uniform Standards and Procedures for the Performance of Draught Surveys of Coal Cargoes (ECE/ENERGY/19, 1992). The same sequence is used in practice for other dry bulk cargoes."
+ },
+ "Survey Comparison": {
+  "en": "Survey Comparison"
+ },
+ "T in m (+ by the stern), LCF in m from amidships (+ aft). Positive when trim and LCF are on the same side.": {
+  "en": "T in m (+ by the stern), LCF in m from amidships (+ aft). Positive when trim and LCF are on the same side."
+ },
+ "t obs = A obs − F obs (+ by the stern); d M: midship marks aft of amidships.": {
+  "en": "t obs = A obs − F obs (+ by the stern); d M: midship marks aft of amidships."
+ },
+ "Take samples at several depths near the forward, midship and aft marks and use the average.": {
+  "en": "Take samples at several depths near the forward, midship and aft marks and use the average."
+ },
+ "Tank name": {
+  "en": "Tank name"
+ },
+ "Tank quantities": {
+  "en": "Tank quantities"
+ },
+ "The constant from the initial (light) survey is used for intake planning.": {
+  "en": "The constant from the initial (light) survey is used for intake planning."
+ },
+ "The rate includes stoppages between the two surveys. Final trimming quantities should be planned on the last intermediate survey with the actual drafts.": {
+  "en": "The rate includes stoppages between the two surveys. Final trimming quantities should be planned on the last intermediate survey with the actual drafts."
+ },
+ "Total at 15 °C": {
+  "en": "Total at 15 °C"
+ },
+ "Total ballast": {
+  "en": "Total ballast"
+ },
+ "Total deductibles": {
+  "en": "Total deductibles"
+ },
+ "Total weight in air": {
+  "en": "Total weight in air"
+ },
+ "Trim (+ by the stern)": {
+  "en": "Trim (+ by the stern)"
+ },
+ "Trim (m, + stern)": {
+  "en": "Trim (m, + stern)"
+ },
+ "Unaccounted (B/L − outturn − ROB)": {
+  "en": "Unaccounted (B/L − outturn − ROB)"
+ },
+ "UNECE draught survey procedure (1992)": {
+  "en": "UNECE draught survey procedure (1992)"
+ },
+ "Weight received by drafts": {
+  "en": "Weight received by drafts"
+ },
+ "Δ corrected for trim (t)": {
+  "en": "Δ corrected for trim (t)"
+ },
+ "Δ dock = Δ table × ρ dock / ρ table": {
+  "en": "Δ dock = Δ table × ρ dock / ρ table"
+ },
+ "Δ in dock water": {
+  "en": "Δ in dock water"
+ },
+ "Δ in dock water (t)": {
+  "en": "Δ in dock water (t)"
+ },
+ "ρ dock: average density of samples taken at the marks.": {
+  "en": "ρ dock: average density of samples taken at the marks."
+ },
+ "Cargo and Stability": {
+  "en": "Cargo and Stability"
  }
 }
