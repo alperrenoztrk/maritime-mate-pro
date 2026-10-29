@@ -220,6 +220,48 @@ export const safetyLessonFlows: LessonFlow[] = [
         correctAnswer: 0,
         explanation: "EPIRB 406 MHz'de Cospas-Sarsat'a konum gönderir; SART/AIS-SART yakın kurtarma birimine yer gösterir.",
       },
+      {
+        "id": 5,
+        "sectionRef": "EPIRB, SART ve İşaret Donanımı",
+        "category": "Emniyet",
+        "question": "EPIRB'nin 121.5 MHz yayını ile 406 MHz yayını arasında temel fark nedir?",
+        "options": [
+          "406 MHz uydu distress alarmıdır; 121.5 MHz SAR homing içindir",
+          "121.5 MHz radar-SART'ın 12 noktasını üretir",
+          "406 MHz yalnız kısa menzilli gemi-gemi telsizidir",
+          "İki frekans da AIS hedefidir"
+        ],
+        "correctAnswer": 0,
+        "explanation": "406 MHz Cospas-Sarsat uydu distress alarmı; 121.5 MHz uygun SAR araçlarının yerel homing frekansıdır."
+      },
+      {
+        "id": 6,
+        "sectionRef": "EPIRB, SART ve İşaret Donanımı",
+        "category": "Emniyet",
+        "question": "Float-free EPIRB'nin gemi batarken otomatik çalışmasında HRU ile su sensörünün görevleri nelerdir?",
+        "options": [
+          "HRU mekanik serbest bırakır; su sensörü elektronik aktivasyonu tetikler",
+          "HRU bataryayı deniz suyuyla doldurur",
+          "Su sensörü 9 GHz radar noktaları üretir",
+          "HRU doğrudan MRCC'ye sesli MAYDAY yollar"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Hidrostatik basınç HRU'yu açar; su sensörü cihazı aktive eder. Pil zaten kapalı cihazda hazırdır."
+      },
+      {
+        "id": 7,
+        "sectionRef": "EPIRB, SART ve İşaret Donanımı",
+        "category": "Emniyet",
+        "question": "Radar ekranında 12 nokta dizisi hangi cihazın karakteristik belirtisidir?",
+        "options": [
+          "9 GHz X-band radar-SART",
+          "Standart 406 MHz EPIRB",
+          "NAVTEX",
+          "121.5 MHz EPIRB homing vericisi"
+        ],
+        "correctAnswer": 0,
+        "explanation": "12 nokta/yay radar-SART'ın X-band yanıtıdır. AIS-EPIRB, AIS ekranına SAR konum hedefi gönderebilir ama bu radar-SART değildir."
+      },
     ],
   },
   {

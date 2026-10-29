@@ -106,10 +106,56 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
           "Can simitleri, suya düşen kişiye anında atılabilen yüzdürücü halkalardır. Köprüüstü kanatları ve güverte boyunca erişilebilir noktalara yerleştirilir. Bazıları kendinden ışıklı (self-igniting light), bazıları otomatik duman işaretli (self-activating smoke signal) ve bazıları can halatı (buoyant lifeline) ile donatılır. Köprüüstü kanatlarındaki simitlerin en az biri, MOB anında mevkiyi işaretlemek için ışık+duman ve hızlı bırakma düzeneğine sahiptir.",
       },
       {
-        title: "EPIRB, SART ve İşaret Donanımı",
-        content:
-          "Konum bildiren cihazlar arama-kurtarmayı hızlandırır. EPIRB (Emergency Position-Indicating Radio Beacon), 406 MHz'de Cospas-Sarsat uydularına tehlike sinyali ve konum gönderir; HRU ile gemi batınca otomatik yüzer ve aktive olur. SART (Search and Rescue Transponder) ya da AIS-SART, kurtarma birimlerinin radar/AIS ekranında kurtarma aracının yerini gösterir. Ayrıca el işaret fişekleri (kırmızı el flare), paraşütlü işaret fişeği ve duman işaretleri görsel imdat için kullanılır. Tüm bu cihazların batarya/son kullanma tarihleri düzenli kontrol edilir.",
-      },
+        "title": "EPIRB, SART ve İşaret Donanımı",
+        "image": "/lessons/epirb-alert-chain.svg",
+        "imageAlt": "406 MHz EPIRB distress çağrısının Cospas-Sarsat uydusu, LUT, MCC ve MRCC üzerinden SAR ekibine aktarımı",
+        "content": "EPIRB (Emergency Position-Indicating Radio Beacon), ciddi ve yakın tehlikede Cospas-Sarsat üzerinden arama-kurtarma uyarısı yapan bağımsız bataryalı radyo işaret cihazıdır. 406–406.1 MHz dijital distress mesajında 15 haneli HEX kimliği ve mevcutsa GNSS konumu taşınır. Uydu → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → SAR aracı zinciri işler. 121.5 MHz, uygun SAR aracının lokal homing/yön bulması içindir; 2009'dan beri Cospas-Sarsat uyduları 121.5 MHz distress uyarılarını işlemez.\n\nYeni standarda tabi AIS-EPIRB cihazları, 161.975 MHz (AIS 1) ve 162.025 MHz (AIS 2) üzerinden yakın AIS alıcılarına EPIRB ACTIVE konum işareti gönderebilir. Eski EPIRB'lerin hepsinde AIS yoktur. Klasik EPIRB X-band/S-band radar ekranında radar-SART'ın 12 noktasını oluşturmaz. 9 GHz X-band radar darbelerine yanıt veren radar-SART 12 noktalık dizi/yay üretir; AIS-EPIRB veya AIS-SART ise uygun AIS/ECDIS ekranında görünür.\n\nFloat-free braketin HRU (Hydrostatic Release Unit) mekanizması, gemi batarken yaklaşık 1–4 m aralığında (modele göre) basınçla cihazı serbest bırakır. Yüzeye çıkan cihazın su sensörü elektronik devreyi açar. Pil deniz suyuyla aktifleşip enerji üretmez: kapalı batarya zaten takılıdır. Braketin önü kapatılmaz, lanyard gemiye bağlanmaz; manuel ON/DISTRESS gerektiğinde model kılavuzuna göre kullanılır.\n\nIMO MSC.471(101) kapsamında yeni standarda tabi EPIRB bataryasının çalışma kapasitesi en az 48 saattir. Gerçek dayanım için batarya son kullanım tarihi, cihazın modeli ve servis koşulları kontrol edilir. Testte yalnız üreticinin SELF-TEST fonksiyonu kullanılır: görsel/etiket/HRU/SKT kontrolü → özel TEST modu → LED/hata kodunun kontrolü → doğru yerleştirme → GMDSS/PMS kayıt. Self-test kısa, özel kodlanmış RF test yayını yapabilir ancak normal distress ikazı olmamalıdır. ON/DISTRESS'i rutin test için açmak yanlış SAR alarmı yaratabilir. GNSS self-test bazı modellerde ayrıdır ve bataryayı tüketebilir; üretici sıklığına uyulmalıdır.\n\nYıllık EPIRB test rehberi IMO MSC.1/Circ.1040/Rev.2'dir; shore-based maintenance bayrakça belirlenen, beş yılı geçmeyen aralıklarla yapılır (MSC.1/Circ.1039/Rev.1). Batarya ve HRU değişimi gerçek cihaz etiketi/üretici talimatına bağlıdır. 15 HEX ID ile resmî kayıt güncel olmalıdır. Yanlış alarmda cihaz derhal OFF yapılır ve en yakın RCC/MRCC'ye kimlik, yer, zaman ve yanlış alarm bildirimi verilir.",
+        "bulletPoints": [
+          "406–406.1 MHz: uydu distress; 121.5 MHz: SAR homing; AIS 1/2: uygun AIS-EPIRB/SART modelleri.",
+          "Uydu-LUT-MCC-RCC/MRCC zinciri, alarmın kurtarma birimine nasıl ulaştığını açıklar.",
+          "HRU mekanik serbest bırakır; su sensörü aktive eder; batarya suyla çalışmaya başlamaz.",
+          "En az 48 saat kapasite standardı; test için gerçek ON/DISTRESS kullanılmaz.",
+          "12 radar noktası EPIRB değil, X-band radar-SART imzasıdır."
+        ],
+        "table": {
+          "headers": [
+            "Cihaz",
+            "Frekans / kanal",
+            "Nerede görünür?"
+          ],
+          "rows": [
+            [
+              "Klasik EPIRB",
+              "406 + 121.5 MHz",
+              "Cospas-Sarsat/RCC; radarda 12 nokta yok"
+            ],
+            [
+              "AIS-EPIRB",
+              "406 + 121.5 + AIS 1/2",
+              "Uydu alarmı + AIS konum sembolü"
+            ],
+            [
+              "Radar-SART",
+              "9 GHz X-band yanıtı",
+              "Radar ekranında 12 nokta/yay"
+            ],
+            [
+              "AIS-SART",
+              "AIS 1/2",
+              "AIS/ECDIS kurtarma hedefi"
+            ]
+          ]
+        },
+        "example": {
+          "problem": "EPIRB self-test yapmak isterken yanlışlıkla ON/DISTRESS aktif oldu. Ne yapılır?",
+          "steps": [
+            "Gerçek tehlike olmadığını doğrula ve yayını hemen kapat.",
+            "HEX ID, mevki ve zamanı belirterek en yakın RCC/MRCC'ye yanlış alarmı bildir.",
+            "Logbook/PMS kaydını tamamlayıp tekrar aktivasyon/servis gerekliliğini kontrol et."
+          ],
+          "solution": "Sadece cihazı kapatmak yeterli değildir; SAR koordinasyon otoritesine haber verilmelidir."
+        }
+      }
     ],
     keyPoints: [
       "Her kişi için can yeleği (ışık+düdük) bulunur; doğru giyme talimle pekiştirilir.",
