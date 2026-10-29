@@ -1,4 +1,7 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
+import realLiferaftContainer from "@/assets/seamanship/liferaft-canister.jpg";
+import realFreefallLifeboat from "@/assets/seamanship/lifeboat-freefall.jpg";
+import realExtinguisherStation from "@/assets/seamanship/fire-extinguishers.jpg";
 import verifiedEpirbPhoto from "@/assets/lessons/epirb-gps.jpg";
 
 /**
@@ -62,11 +65,15 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Can Salları (Liferafts)",
+        image: realLiferaftContainer,
+        imageAlt: "Real inflatable liferaft stowage canister on a vessel; HRU connection details are not identified",
         content:
           "Can salları, şişirilebilir (inflatable) veya rijit yapıda, kapasiteleri işaretli kurtarma araçlarıdır. Genellikle hidrostatik bırakma düzeneği (Hydrostatic Release Unit, HRU) ile donatılır: gemi batarsa belirli derinlikte (yaklaşık 1.5–4 m) basınç salın otomatik açılıp yüzeye çıkmasını ve şişmesini sağlar. Sal, painter (bağlama halatı) ile gemiye bağlıdır; çekildiğinde CO₂/azot tüpüyle saniyeler içinde şişer. İçinde acil rasyon, su, deniz çapası, işaret donanımı ve yağmur/güneşten koruyan tente bulunur. Servis istasyonunda yıllık bakım zorunludur.",
       },
       {
         title: "İndirme Donanımı (Davit) ve Serbest Düşme",
+        image: realFreefallLifeboat,
+        imageAlt: "Real free-fall lifeboat installed at a bulk carrier's stern",
         content:
           "Davitler, filika ve salları kontrollü biçimde suya indiren mekanizmalardır. Gravity davit, filikayı kendi ağırlığıyla dışa çıkarıp halatla (fall) yavaşça indirir; frenli vinç hız kontrolü sağlar. Serbest düşmeli düzenekte ise filika rampadan kayarak suya girer. İndirme donanımı belirli aralıklarla yük testine ve düzenli işletim testine tabidir. On-load/off-load açma kancaları (release hooks), filikanın suya değdikten sonra güvenle ayrılmasını sağlar; bu kancaların yanlış kullanımı geçmişte ölümcül kazalara yol açtığından bakım ve eğitim kritiktir.",
       },
@@ -248,6 +255,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Taşınabilir Söndürücü Tipleri",
+        image: realExtinguisherStation,
+        imageAlt: "Shipboard fire hose and one portable extinguisher; does not display all extinguisher classes",
         content:
           "Başlıca tipler: su (A sınıfı; soğutarak söndürür), köpük/foam (A ve B; yüzeyi örter), kuru kimyevi toz (çok amaçlı A/B/C ve elektrik; tepkimeyi keser), CO₂ (B ve elektrik; oksijeni keser, temiz bırakır) ve mutfak için özel ıslak kimyevi (F/K sınıfı). Kullanım tekniği PASS ile özetlenir: Pull (pimi çek), Aim (alevin tabanına yönelt), Squeeze (tetiği sık), Sweep (süpür). Söndürücüler aylık görsel kontrol, yıllık bakım ve periyodik hidrostatik teste tabidir; basınç göstergesi ve mühür kontrol edilir.",
       },
