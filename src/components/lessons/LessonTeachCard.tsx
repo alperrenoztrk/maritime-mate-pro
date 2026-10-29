@@ -191,12 +191,14 @@ export function LessonTeachCard({
           </ul>
         </aside>
       )}
-      <ImageViewerModal
-        src={zoomImage?.src ?? ""}
-        alt={zoomImage?.alt}
-        isOpen={zoomImage !== null}
-        onClose={() => setZoomImage(null)}
-      />
+      {zoomImage && (
+        <ImageViewerModal
+          src={zoomImage.src}
+          alt={zoomImage.alt}
+          isOpen
+          onClose={() => setZoomImage(null)}
+        />
+      )}
     </section>
   );
 }
