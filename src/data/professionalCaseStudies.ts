@@ -18,8 +18,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Determine the responsibility and act in ample time; exact manoeuvre is constrained by traffic, depth and sea room."
     },
-    "image": "/lessons/professional-navigation.svg",
-    "imageAlt": "Collision-risk decision chain",
     "references": [
       {
         "title": "IMO COLREGs — navigation and collision avoidance",
@@ -44,8 +42,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "A previously approved route can require a fresh safety assessment after draught changes."
     },
-    "image": "/lessons/professional-navigation.svg",
-    "imageAlt": "Collision-risk decision chain",
     "references": [
       {
         "title": "IMO COLREGs — navigation and collision avoidance",
@@ -94,8 +90,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "An anemometer's higher apparent reading does not by itself mean the ambient true wind increased."
     },
-    "image": "/lessons/professional-meteorology.svg",
-    "imageAlt": "True wind vs apparent wind",
     "references": [
       {
         "title": "NGA — American Practical Navigator",
@@ -156,8 +150,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Digital alerting and voice coordination are complementary stages of the same response."
     },
-    "image": "/lessons/professional-communication.svg",
-    "imageAlt": "VHF DSC distress chain",
     "references": [
       {
         "title": "IMO — STCW competency framework",
@@ -218,8 +210,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Corrected GM is 0.79 m in this simplified example; it does not by itself certify compliance."
     },
-    "image": "/lessons/professional-stability.svg",
-    "imageAlt": "Free-surface GM correction",
     "references": [
       {
         "title": "IMO — Cargoes and stability instruments",
@@ -280,8 +270,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "The 29.4 kN figure is a simplified force component, not a required number of lashings."
     },
-    "image": "/lessons/professional-cargo.svg",
-    "imageAlt": "Deck cargo restraint workflow",
     "references": [
       {
         "title": "IMO — Cargo Securing and Stowage (CSS Code)",
@@ -342,8 +330,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Avoid a second casualty: rescue entry requires a planned, protected team response."
     },
-    "image": "/lessons/professional-safety.svg",
-    "imageAlt": "Enclosed-space rescue barrier",
     "references": [
       {
         "title": "MCA — Code of Safe Working Practices 2026",
@@ -404,8 +390,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Discharge must satisfy all applicable conditions; retain aboard when conditions are not met."
     },
-    "image": "/lessons/professional-environment.svg",
-    "imageAlt": "Bilge-discharge decision",
     "references": [
       {
         "title": "IMO — MARPOL convention",
@@ -466,8 +450,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Personnel positioning must be based on actual line geometry and load, not a fixed painted box."
     },
-    "image": "/lessons/professional-seamanship.svg",
-    "imageAlt": "Mooring line load awareness",
     "references": [
       {
         "title": "MCA — Code of Safe Working Practices 2026",
@@ -528,8 +510,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "The illustrative TCE is $14,000/day; owner operating costs and financing still matter."
     },
-    "image": "/lessons/professional-economics.svg",
-    "imageAlt": "Voyage TCE worked example",
     "references": [
       {
         "title": "NGA — American Practical Navigator (voyage planning context)",
@@ -690,8 +670,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "Safe synchronisation is a matched electrical state, not simply matching two displayed frequencies."
     },
-    "image": "/lessons/professional-machine-auxiliary.svg",
-    "imageAlt": "Synchronisation readiness",
     "references": [
       {
         "title": "DOE: Mechanical science handbook overview",
@@ -732,8 +710,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "COP = 3.2 applies to this simplified compressor-only boundary."
     },
-    "image": "/lessons/professional-machine-cooling-hvac.svg",
-    "imageAlt": "Refrigeration COP example",
     "references": [
       {
         "title": "DOE: Mechanical science handbook overview",
@@ -754,8 +730,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "The frequency symptom primarily demands speed and real-power investigation, not indiscriminate voltage adjustment."
     },
-    "image": "/lessons/professional-machine-electrical.svg",
-    "imageAlt": "Power-frequency control",
     "references": [
       {
         "title": "DOE: Electrical science fundamentals",
@@ -776,8 +750,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "A 12 mA reading represents 50%, not 60% or 75%."
     },
-    "image": "/lessons/professional-machine-automation.svg",
-    "imageAlt": "4–20 mA transmitter span",
     "references": [
       {
         "title": "DOE: Instrumentation and control fundamentals",
@@ -858,8 +830,6 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
       ],
       "result": "An 8 ppm indication alone is not authority to discharge."
     },
-    "image": "/lessons/professional-machine-environment-machine.svg",
-    "imageAlt": "OWS compliance layers",
     "references": [
       {
         "title": "IMO: MARPOL convention and annexes",
