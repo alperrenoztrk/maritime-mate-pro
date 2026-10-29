@@ -10,7 +10,7 @@ const inventory = JSON.parse(fs.readFileSync("docs/learning/content-audit.json",
 const byId = new Map(inventory.topics.map(t => [t.id, t]));
 const ids = Object.keys(professionalCaseStudies);
 assert.equal(new Set(ids).size, ids.length, "duplicate case IDs");
-assert(ids.length >= 43, "cross-curriculum application batch unexpectedly shrank");
+assert(ids.length >= 67, "authored cases unexpectedly shrank");
 const seenCourses = new Set();
 for (const [id, section] of Object.entries(professionalCaseStudies)) {
   const meta = byId.get(id);
