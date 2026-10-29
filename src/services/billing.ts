@@ -8,11 +8,11 @@
  */
 import { Capacitor } from '@capacitor/core';
 import { supabase } from '@/integrations/supabase/safeClient';
-import { PlayBilling, type PlayProduct, type PlayPurchase } from '@/plugins/playBilling';
+import { PlayBilling, type PlayPurchase } from '@/plugins/playBilling';
+import { loadProOffers, selectSubscriptionOffer, getProductPrice, type ProOffers } from './billingOffers';
+export type { ProOffers } from './billingOffers';
 import {
   PRODUCT_IDS,
-  SUBSCRIPTION_PRODUCT_IDS,
-  LIFETIME_PRODUCT_IDS,
   type ProPlan,
 } from '@/config/products';
 
@@ -29,12 +29,6 @@ export interface VerifyResult {
   }>;
 }
 
-export interface ProOffers {
-  monthly: PlayProduct | null;
-  yearly: PlayProduct | null;
-  lifetime: PlayProduct | null;
-}
-
 export async function isBillingAvailable(): Promise<boolean> {
   if (!Capacitor.isNativePlatform()) return false;
   try {
@@ -47,17 +41,7 @@ export async function isBillingAvailable(): Promise<boolean> {
 
 /** Mağazadan güncel (kullanıcının bölgesine göre) fiyatları çeker. */
 export async function fetchProOffers(): Promise<ProOffers> {
-  const [subs, inapp] = await Promise.all([
-    PlayBilling.getProducts({ productIds: SUBSCRIPTION_PRODUCT_IDS, type: 'subs' }),
-    PlayBilling.getProducts({ productIds: LIFETIME_PRODUCT_IDS, type: 'inapp' }),
-  ]);
-  const find = (list: PlayProduct[], id: string) =>
-    list.find((p) => p.productId === id) ?? null;
-  return {
-    monthly: find(subs.products, PRODUCT_IDS.monthly),
-    yearly: find(subs.products, PRODUCT_IDS.yearly),
-    lifetime: find(inapp.products, PRODUCT_IDS.lifetime),
-  };
+  return loadProOffers((options) => PlayBilling.getProducts(options));
 }
 
 /** Satın alımları sunucuda doğrulatır ve güncel paketi döndürür. */
@@ -100,9 +84,15 @@ export async function purchasePlan(plan: ProPlan, userId: string): Promise<Verif
   const productId = PRODUCT_IDS[plan];
 
   try {
+    // Refresh ProductDetails and select the same offer used for price display.
+    const { products } = await PlayBilling.getProducts({ productIds: [productId], type });
+    const product = products.find((item) => item.productId === productId) ?? null;
+    if (!getProductPrice(product)) throw new Error('This plan is unavailable on Google Play');
+    const offerToken = type === 'subs' ? selectSubscriptionOffer(product)?.offerToken : undefined;
     const { purchases } = await PlayBilling.purchase({
       productId,
       type,
+      offerToken,
       obfuscatedAccountId: userId,
     });
     const pending = purchases.filter((p) => p.purchaseState === 2);
