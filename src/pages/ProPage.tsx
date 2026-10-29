@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Crown, Check, RefreshCw, ExternalLink, WifiOff, Infinity as InfinityIcon, LogIn, Lock } from "lucide-react";
 import { toast } from "sonner";
@@ -20,6 +20,7 @@ import {
 import { getPlaySubscriptionManagementUrl, type ProPlan } from "@/config/products";
 import { getTermsOfUseUrl } from "@/config/legal";
 import { useLanguage } from "@/contexts/useLanguage";
+import { getProductPrice } from "@/services/billingOffers";
 
 /**
  * Pro paywall sayfası (/pro).
@@ -71,31 +72,38 @@ const ProPage = () => {
   const [offers, setOffers] = useState<ProOffers | null>(null);
   const [busyPlan, setBusyPlan] = useState<ProPlan | null>(null);
   const [restoring, setRestoring] = useState(false);
+  const [pricesLoading, setPricesLoading] = useState(true);
+  const mounted = useRef(false);
+  const loadingPrices = useRef(false);
 
-  useEffect(() => {
-    let mounted = true;
-    (async () => {
+  const loadPrices = useCallback(async () => {
+    if (loadingPrices.current) return;
+    loadingPrices.current = true;
+    setPricesLoading(true);
+    try {
       const available = await isBillingAvailable();
-      if (!mounted) return;
+      if (!mounted.current) return;
       setBillingReady(available);
       if (available) {
-        try {
-          const loaded = await fetchProOffers();
-          if (mounted) setOffers(loaded);
-        } catch {
-          if (mounted) toast.error("Price information could not be loaded. Please try again.");
-        }
+        const loaded = await fetchProOffers();
+        if (mounted.current) setOffers(loaded);
       }
-    })();
-    return () => { mounted = false; };
+    } catch {
+      if (mounted.current) toast.error("Price information could not be loaded. Please try again.");
+    } finally {
+      loadingPrices.current = false;
+      if (mounted.current) setPricesLoading(false);
+    }
   }, []);
 
+  useEffect(() => {
+    mounted.current = true;
+    void loadPrices();
+    return () => { mounted.current = false; };
+  }, [loadPrices]);
+
   const priceFor = (plan: ProPlan): string | null => {
-    if (!offers) return null;
-    if (plan === "lifetime") return offers.lifetime?.formattedPrice ?? null;
-    const product = plan === "yearly" ? offers.yearly : offers.monthly;
-    const phases = product?.offers?.[0]?.pricingPhases;
-    return phases && phases.length > 0 ? phases[phases.length - 1].formattedPrice : null;
+    return getProductPrice(offers?.[plan] ?? null);
   };
 
   const handlePurchase = async (plan: ProPlan) => {
@@ -252,19 +260,19 @@ const ProPage = () => {
                         <div className="min-h-12">
                           {price ? (
                             <div className="text-2xl font-bold">
-                              {price}
+                              <span translate="no" data-no-translate>{price}</span>
                               <span className="text-sm font-normal text-muted-foreground"> <span data-translatable>{period}</span></span>
                             </div>
                           ) : (
                             <div className="text-sm text-muted-foreground">
-                              <span data-translatable>{billingReady ? "Price is loading…" : "Price on Google Play"}</span>
+                              <span data-translatable>{pricesLoading ? "Price is loading…" : billingReady ? "Unavailable on Google Play" : "Price on Google Play"}</span>
                             </div>
                           )}
                         </div>
                         <Button
                           className={`w-full gap-2 ${highlight ? "bg-amber-500 text-black hover:bg-amber-400" : ""}`}
                           variant={highlight ? "default" : "outline"}
-                          disabled={billingReady !== true || busyPlan !== null}
+                          disabled={billingReady !== true || !price || pricesLoading || busyPlan !== null}
                           onClick={() => void handlePurchase(plan)}
                         >
                           {busyPlan === plan ? (
@@ -281,6 +289,15 @@ const ProPage = () => {
                   );
                 })}
               </div>
+
+              {billingReady === true && PLAN_CARDS.some(({ plan }) => !priceFor(plan)) && (
+                <div className="text-center">
+                  <Button variant="outline" size="sm" disabled={pricesLoading} onClick={() => void loadPrices()} className="gap-2">
+                    <RefreshCw className={`w-4 h-4 ${pricesLoading ? "animate-spin" : ""}`} />
+                    <span data-translatable>Retry prices</span>
+                  </Button>
+                </div>
+              )}
 
               <div className="grid gap-4 md:grid-cols-2">
                 <Card>
