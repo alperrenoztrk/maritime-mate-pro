@@ -1,3 +1,6 @@
+import { LearningAssessment } from "@/components/curriculum/LearningAssessment";
+import { assessmentStorageKey } from "@/data/learningAssessment";
+import { getLearningProgressAccount } from "@/utils/learningProgress";
 import { LearningProgressStatus } from "@/components/curriculum/LearningProgressStatus";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getStaticTranslation } from "@/utils/staticTranslations";
@@ -29,14 +32,22 @@ const normalise = (value: string) => value.toLocaleLowerCase("tr").normalize("NF
 export default function MaritimeLearningMapPage() {
   const { currentLanguage } = useLanguage();
   const translated = (value: string) => getStaticTranslation(value, currentLanguage) ?? value;
+  const [exploring, setExploring] = useState(false);
   const [query, setQuery] = useState("");
   const [pathId, setPathId] = useState("new");
   const progress = useLearningProgress();
+  const storageKey = assessmentStorageKey(getLearningProgressAccount());
   const activePath = paths.find((entry) => entry.id === pathId)!;
   const needle = normalise(query.trim());
+  if (!exploring) return (
+    <div className="min-h-[100svh] px-[max(1rem,var(--safe-left))] pt-[calc(var(--safe-top)+1.5rem)] pb-[calc(var(--safe-bottom)+1.5rem)]">
+      <LearningAssessment key={storageKey} storageKey={storageKey} onExplore={() => setExploring(true)} />
+    </div>
+  );
   let results = 0;
   return (
     <LibraryPageShell title="Maritime learning map" icon={Compass} maxWidth="max-w-5xl">
+      <button type="button" className="self-start min-h-11 rounded-xl border px-4 py-2 text-sm font-semibold" onClick={() => setExploring(false)}>My personal learning path</button>
       <p className="max-w-3xl text-base leading-relaxed text-muted-foreground">Understand the whole ship, find a subject and follow its branches from a first principle to shipboard practice.</p>
       <LearningProgressStatus />
       <details className="rounded-2xl border bg-card p-4">

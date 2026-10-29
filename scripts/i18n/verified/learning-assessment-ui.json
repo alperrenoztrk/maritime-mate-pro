@@ -1,0 +1,296 @@
+{
+  "Where are you in your maritime journey?": {
+    "en": "Where are you in your maritime journey?"
+  },
+  "Your experience helps us choose a comfortable starting point.": {
+    "en": "Your experience helps us choose a comfortable starting point."
+  },
+  "I'm exploring maritime life": {
+    "en": "I'm exploring maritime life"
+  },
+  "I'm a maritime student or cadet": {
+    "en": "I'm a maritime student or cadet"
+  },
+  "I work at sea": {
+    "en": "I work at sea"
+  },
+  "What would you like to explore?": {
+    "en": "What would you like to explore?"
+  },
+  "Your knowledge questions will follow this choice.": {
+    "en": "Your knowledge questions will follow this choice."
+  },
+  "The whole ship": {
+    "en": "The whole ship"
+  },
+  "Deck and navigation": {
+    "en": "Deck and navigation"
+  },
+  "Engine and machinery": {
+    "en": "Engine and machinery"
+  },
+  "What brings you here?": {
+    "en": "What brings you here?"
+  },
+  "We'll use this to shape your reading sequence.": {
+    "en": "We'll use this to shape your reading sequence."
+  },
+  "Build a solid foundation": {
+    "en": "Build a solid foundation"
+  },
+  "Prepare for lessons and exams": {
+    "en": "Prepare for lessons and exams"
+  },
+  "Refresh knowledge for shipboard work": {
+    "en": "Refresh knowledge for shipboard work"
+  },
+  "How much time suits your day?": {
+    "en": "How much time suits your day?"
+  },
+  "Choose a pace you can return to regularly.": {
+    "en": "Choose a pace you can return to regularly."
+  },
+  "Facing the bow, which side is port?": {
+    "en": "Facing the bow, which side is port?"
+  },
+  "The right side": {
+    "en": "The right side"
+  },
+  "The left side": {
+    "en": "The left side"
+  },
+  "The stern": {
+    "en": "The stern"
+  },
+  "Port is the left side when facing forward towards the bow.": {
+    "en": "Port is the left side when facing forward towards the bow."
+  },
+  "A ship floats at rest. What balances its weight?": {
+    "en": "A ship floats at rest. What balances its weight?"
+  },
+  "The engine's thrust": {
+    "en": "The engine's thrust"
+  },
+  "The wind force": {
+    "en": "The wind force"
+  },
+  "The buoyant force": {
+    "en": "The buoyant force"
+  },
+  "At floating equilibrium, the upward buoyant force balances the ship's weight.": {
+    "en": "At floating equilibrium, the upward buoyant force balances the ship's weight."
+  },
+  "What does latitude describe?": {
+    "en": "What does latitude describe?"
+  },
+  "Distance east or west of Greenwich": {
+    "en": "Distance east or west of Greenwich"
+  },
+  "Angular distance north or south of the equator": {
+    "en": "Angular distance north or south of the equator"
+  },
+  "Distance travelled through water": {
+    "en": "Distance travelled through water"
+  },
+  "Latitude is angular distance north or south of the equator; longitude is measured east or west of Greenwich.": {
+    "en": "Latitude is angular distance north or south of the equator; longitude is measured east or west of Greenwich."
+  },
+  "At a constant speed of 12 knots, how far do you travel in 30 minutes?": {
+    "en": "At a constant speed of 12 knots, how far do you travel in 30 minutes?"
+  },
+  "A knot is one nautical mile per hour: 12 × 0.5 = 6 nautical miles.": {
+    "en": "A knot is one nautical mile per hour: 12 × 0.5 = 6 nautical miles."
+  },
+  "What is the usual effect of liquid moving in a slack tank on initial stability?": {
+    "en": "What is the usual effect of liquid moving in a slack tank on initial stability?"
+  },
+  "It always increases GM": {
+    "en": "It always increases GM"
+  },
+  "It has no effect": {
+    "en": "It has no effect"
+  },
+  "It reduces effective GM": {
+    "en": "It reduces effective GM"
+  },
+  "The free-surface effect reduces effective GM. Its magnitude depends on the liquid and the tank's geometry.": {
+    "en": "The free-surface effect reduces effective GM. Its magnitude depends on the liquid and the tank's geometry."
+  },
+  "How can swell differ from the local wind sea?": {
+    "en": "How can swell differ from the local wind sea?"
+  },
+  "Swell must travel in the local wind direction": {
+    "en": "Swell must travel in the local wind direction"
+  },
+  "Swell can arrive from a distant weather system": {
+    "en": "Swell can arrive from a distant weather system"
+  },
+  "Swell only exists in shallow water": {
+    "en": "Swell only exists in shallow water"
+  },
+  "Swell can travel away from its generating weather system, so its direction can differ from the local wind sea.": {
+    "en": "Swell can travel away from its generating weather system, so its direction can differ from the local wind sea."
+  },
+  "Across a heat exchanger wall, heat naturally flows…": {
+    "en": "Across a heat exchanger wall, heat naturally flows…"
+  },
+  "From the hotter fluid to the colder fluid": {
+    "en": "From the hotter fluid to the colder fluid"
+  },
+  "From the colder fluid to the hotter fluid": {
+    "en": "From the colder fluid to the hotter fluid"
+  },
+  "Only if both fluids have equal temperatures": {
+    "en": "Only if both fluids have equal temperatures"
+  },
+  "A temperature difference drives heat transfer from the hotter side to the colder side.": {
+    "en": "A temperature difference drives heat transfer from the hotter side to the colder side."
+  },
+  "In a stationary liquid of uniform density, pressure…": {
+    "en": "In a stationary liquid of uniform density, pressure…"
+  },
+  "Decreases with depth": {
+    "en": "Decreases with depth"
+  },
+  "Is always zero": {
+    "en": "Is always zero"
+  },
+  "Increases with depth": {
+    "en": "Increases with depth"
+  },
+  "Hydrostatic pressure increases with liquid depth: the pressure difference is density × gravity × depth.": {
+    "en": "Hydrostatic pressure increases with liquid depth: the pressure difference is density × gravity × depth."
+  },
+  "A DC load draws 5 A at 24 V. What power does it use?": {
+    "en": "A DC load draws 5 A at 24 V. What power does it use?"
+  },
+  "For this DC load, power = voltage × current = 24 × 5 = 120 W.": {
+    "en": "For this DC load, power = voltage × current = 24 × 5 = 120 W."
+  },
+  "In a feedback control loop, what is compared with the set point?": {
+    "en": "In a feedback control loop, what is compared with the set point?"
+  },
+  "The measured process value": {
+    "en": "The measured process value"
+  },
+  "Only the motor's nameplate": {
+    "en": "Only the motor's nameplate"
+  },
+  "Only elapsed running time": {
+    "en": "Only elapsed running time"
+  },
+  "Feedback compares the measured process value with the set point to determine the control error.": {
+    "en": "Feedback compares the measured process value with the set point to determine the control error."
+  },
+  "Build your foundations": {
+    "en": "Build your foundations"
+  },
+  "Develop your understanding": {
+    "en": "Develop your understanding"
+  },
+  "Ready for deeper study": {
+    "en": "Ready for deeper study"
+  },
+  "I don't know yet": {
+    "en": "I don't know yet"
+  },
+  "Personal learning pathway": {
+    "en": "Personal learning pathway"
+  },
+  "Your answers work for this visit, but could not be saved on this device.": {
+    "en": "Your answers work for this visit, but could not be saved on this device."
+  },
+  "Your starting point": {
+    "en": "Your starting point"
+  },
+  "Read one idea and explain it in your own words.": {
+    "en": "Read one idea and explain it in your own words."
+  },
+  "Read a lesson, then try its linked practice questions.": {
+    "en": "Read a lesson, then try its linked practice questions."
+  },
+  "Read, practise and revisit the points you found difficult.": {
+    "en": "Read, practise and revisit the points you found difficult."
+  },
+  "What your answers suggest": {
+    "en": "What your answers suggest"
+  },
+  "Worth revisiting": {
+    "en": "Worth revisiting"
+  },
+  "Promising start": {
+    "en": "Promising start"
+  },
+  "Your learning sequence": {
+    "en": "Your learning sequence"
+  },
+  "A reading order based on your goals and answers. Courses remain open, and your existing lesson progress is kept.": {
+    "en": "A reading order based on your goals and answers. Courses remain open, and your existing lesson progress is kept."
+  },
+  "Revisit concepts from your knowledge check": {
+    "en": "Revisit concepts from your knowledge check"
+  },
+  "Build towards your learning goal": {
+    "en": "Build towards your learning goal"
+  },
+  "Start my learning path": {
+    "en": "Start my learning path"
+  },
+  "Review my answers": {
+    "en": "Review my answers"
+  },
+  "Your answer:": {
+    "en": "Your answer:"
+  },
+  "Correct answer:": {
+    "en": "Correct answer:"
+  },
+  "This placement is saved on this device for the current profile. Repeating it replaces this placement, not your lesson history.": {
+    "en": "This placement is saved on this device for the current profile. Repeating it replaces this placement, not your lesson history."
+  },
+  "Retake placement": {
+    "en": "Retake placement"
+  },
+  "Explore all subjects": {
+    "en": "Explore all subjects"
+  },
+  "A quick knowledge check": {
+    "en": "A quick knowledge check"
+  },
+  "Let's get to know you": {
+    "en": "Let's get to know you"
+  },
+  "Placement progress": {
+    "en": "Placement progress"
+  },
+  "Find your starting point": {
+    "en": "Find your starting point"
+  },
+  "A path that fits you": {
+    "en": "A path that fits you"
+  },
+  "Choose what you think is right. It's fine not to know — that's how we find useful lessons.": {
+    "en": "Choose what you think is right. It's fine not to know — that's how we find useful lessons."
+  },
+  "Choose one answer": {
+    "en": "Choose one answer"
+  },
+  "Show my learning path": {
+    "en": "Show my learning path"
+  },
+  "Continue": {
+    "en": "Continue"
+  },
+  "About 3 minutes · Your answers are saved on this device as you go.": {
+    "en": "About 3 minutes · Your answers are saved on this device as you go."
+  },
+  "Explore subjects without placement": {
+    "en": "Explore subjects without placement"
+  },
+  "My personal learning path": {
+    "en": "My personal learning path"
+  },
+  "Previous": {
+    "en": "Previous"
+  }
+}

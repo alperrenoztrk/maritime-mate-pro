@@ -33,7 +33,7 @@ import { RequireAuth } from "@/components/auth/RequireAuth";
 import { ProRoute, LibraryBookRoute } from "@/components/pro/ProRoute";
 import { AdsController } from "@/components/ads/AdsController";
 import { prefersReducedMotion } from "@/hooks/useAppMotion";
-import { isAppChromeHidden } from "@/lib/appChrome";
+import { useAppChromeHidden } from "@/hooks/useAppChromeVisibility";
 import { captureRoutePreview } from "@/lib/navigationPreview";
 import { hasHierarchicalBack } from "@/lib/appNavigation";
 
@@ -239,6 +239,7 @@ const RouteErrorFallback = ({ pathname }: { pathname: string }) => (
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const chromeHidden = useAppChromeHidden();
 
   // Wire up hierarchical back-button handling. The back button never
   // exits the app — see useNavigationHierarchy for the policy.
@@ -298,7 +299,7 @@ const AnimatedRoutes = () => {
         key={location.pathname}
         pathname={location.pathname}
         direction={getNavigationDirection()}
-        navbar={hasHierarchicalBack(location.pathname) && !isAppChromeHidden(location.pathname)}
+        navbar={hasHierarchicalBack(location.pathname) && !chromeHidden}
       >
 
         <div className="interactive-page-surface min-h-[100svh] w-full">
