@@ -1,0 +1,428 @@
+{
+  "policy": "Only explicitly mapped real photographs or externally published technical illustrations with known Commons provenance are shown in Beta lesson pages. Each assignment is pinned to one course, topic and section. Everything else is hidden pending manual review.",
+  "approved": [
+    {
+      "category": "navigation",
+      "topic": "Dünya'nın şekli ve hareketleri",
+      "section": "Dünya'nın Güneş Etrafındaki Dönüşü (Revolüsyon)",
+      "asset": "src/assets/navigation/real/earth-seasons-orbit.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orbital_relations_of_the_Solstice%2C_Equinox_%26_Intervening_Seasons.svg",
+      "author": "Colivine",
+      "license": "CC0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Dünya'nın şekli ve hareketleri",
+      "section": "Eksen Eğikliği (Obliquity)",
+      "asset": "src/assets/navigation/real/earth-lighting-june-solstice.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Earth-lighting-summer-solstice_EN.png",
+      "author": "Image by Przemyslaw \"Blueshade\" Idzkiewicz",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Coğrafi koordinat sistemi",
+      "section": "Koordinat Sistemine Genel Bakış",
+      "asset": "src/assets/navigation/real/latitude-longitude-earth.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Latitude_and_Longitude_of_the_Earth.svg",
+      "author": "Djexplo",
+      "license": "CC0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Coğrafi koordinat sistemi",
+      "section": "Enlem Paralelleri",
+      "asset": "src/assets/navigation/real/latitude-lines.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Latitude_lines_color.svg",
+      "author": "source: Pearson Scott Foresman, donated to the Wikimedia …",
+      "license": "Public domain"
+    },
+    {
+      "category": "navigation",
+      "topic": "Enlem",
+      "section": "Paraleller ve Enlem Çizgileri",
+      "asset": "src/assets/navigation/real/latitude-lines.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Latitude_lines_color.svg",
+      "author": "source: Pearson Scott Foresman, donated to the Wikimedia …",
+      "license": "Public domain"
+    },
+    {
+      "category": "navigation",
+      "topic": "Yön kavramları",
+      "section": "Pusula Gülü ve Yön Sistemi",
+      "asset": "src/assets/navigation/real/compass-card-bowditch.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bowditch1916p15CompassRose.png",
+      "author": "United States Hydrographic Office (American Practical Navigator, 1916)",
+      "license": "Public domain"
+    },
+    {
+      "category": "navigation",
+      "topic": "Manyetik kuzey",
+      "section": "Tanım ve Temel Referans",
+      "asset": "src/assets/navigation/real/magnetic-declination.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Magnetic_declination.svg",
+      "author": "odder",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Büyük Daire ve Rhumb Line Seyri",
+      "section": "Kavramsal Karşılaştırma",
+      "asset": "src/assets/navigation/real/loxodrome-orthodrome.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:LoxodromeConstAngle.svg",
+      "author": "derivative work: McSush (talk) Loxodrome2.jpg: Roterraecher",
+      "license": "CC BY-SA 2.5"
+    },
+    {
+      "category": "navigation",
+      "topic": "Harita sembolleri ve kısaltmalar",
+      "section": "Lateral işaretler ve haritadaki gösterimi",
+      "asset": "src/assets/navigation/real/lateral-marks-region-a.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starboard_hand_navigation_buoy_%27No_5%27_-_geograph.org.uk_-_7232910.jpg",
+      "author": "Ian Paterson",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Harita sembolleri ve kısaltmalar",
+      "section": "Kardinal işaretler ve emniyetli su yönü",
+      "asset": "src/assets/navigation/real/cardinal-marks-diagram.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cardinal_mark_diagram.svg",
+      "author": "Denelson83",
+      "license": "CC BY-SA 2.0 de"
+    },
+    {
+      "category": "navigation",
+      "topic": "Lighthouses and light characteristics",
+      "section": "Lighted marks in IALA Region A",
+      "asset": "src/assets/navigation/real/lateral-marks-region-a.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Starboard_hand_navigation_buoy_%27No_5%27_-_geograph.org.uk_-_7232910.jpg",
+      "author": "Ian Paterson",
+      "license": "CC BY-SA 2.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Lighthouses and light characteristics",
+      "section": "Cardinal lights",
+      "asset": "src/assets/navigation/real/cardinal-marks-diagram.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cardinal_mark_diagram.svg",
+      "author": "Denelson83",
+      "license": "CC BY-SA 2.0 de"
+    },
+    {
+      "category": "navigation",
+      "topic": "ECDIS",
+      "section": "ECDIS Bileşenleri ve Veri Kaynakları",
+      "asset": "src/assets/bridge/ecdis-radar-console.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cap_San_Diego_Br%C3%BCcke_Radar_ECDIS.jpg",
+      "author": "Michael Krahe",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Dar kanallar ve trafik ayırım düzenleri (Kural 9-10)",
+      "section": "Kural 10 — Trafik Ayırım Düzenleri (TSS)",
+      "asset": "src/assets/navigation/real/tss-crossing-rule10.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:VTG.svg",
+      "author": "Arne Hückelheim",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "Cayro pusula ve hataları",
+      "section": "Çalışma Prensibi",
+      "asset": "src/assets/bridge/gyro-compass.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:US_Navy_110825-N-PM781-001_Lt._Cmdr._Timothy_Reiswig,_the_navigator_aboard_the_amphibious_assault_ship_USS_Wasp_(LHD_1),_uses_a_gyrocompass_as_the.jpg",
+      "author": "U.S. Navy photo by Mass Communication Specialist 1st Clas...",
+      "license": "Public domain"
+    },
+    {
+      "category": "navigation",
+      "topic": "Echo sounder (iskandil)",
+      "section": "Çalışma Prensibi",
+      "asset": "src/assets/bridge/echo-sounder.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simrad_echolot_hg.jpg",
+      "author": "Hannes Grobe",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Basınç merkezleri (alçak/yüksek)",
+      "section": "Alçak Basınç Merkezleri (Siklon / Depresyon)",
+      "asset": "src/assets/meteorology/pressure-centres-circulation.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:High_and_low_pressure_N_and_S.svg",
+      "author": "BoH",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "İzobar yapısı ve gradyan",
+      "section": "Basınç Gradyanı ve Rüzgâr İlişkisi",
+      "asset": "src/assets/meteorology/geostrophic-wind.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geostrophic_Wind_Diagram.svg",
+      "author": "天探",
+      "license": "CC0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Hava kütleleri ve kaynak bölgeler",
+      "section": "Hava Kütlesi Sınıflandırması",
+      "asset": "src/assets/meteorology/air-mass-source-regions.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Air_masses.svg",
+      "author": "NASA",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Cephe tipleri ve geçiş etkileri",
+      "section": "Oklüde Cephe ve Stasyoner Cephe",
+      "asset": "src/assets/meteorology/front-symbols-nws.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:NWS_weather_fronts.svg",
+      "author": "cs:User:-xfi-",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Siklon yapısı ve gelişim evreleri",
+      "section": "Yapısal Öğeler",
+      "asset": "src/assets/meteorology/cyclone-vertical-section.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:PSM_V16_D312_Vertical_sections_of_the_heart_of_a_cyclone.jpg",
+      "author": "Unknown authorUnknown author",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Siklonun gözü (eye) ve eyewall",
+      "section": "Gözün Tanımı ve Fiziksel Özellikleri",
+      "asset": "src/assets/meteorology/cyclone-eye-satellite.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yutu_2018-10-28_0515Z_(alternate).jpg",
+      "author": "ASA Earth Observatory image by Joshua Stevens, using MODI…",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Siklonun gözü (eye) ve eyewall",
+      "section": "Eyewall: Sistemin En Şiddetli Bölgesi",
+      "asset": "src/assets/meteorology/cyclone-vertical-section.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:PSM_V16_D312_Vertical_sections_of_the_heart_of_a_cyclone.jpg",
+      "author": "Unknown authorUnknown author",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Barometre ve rüzgarla konum tayini",
+      "section": "Rüzgâr Yönü ile Konum Belirleme",
+      "asset": "src/assets/meteorology/buys-ballot-law.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BuysBallot_en.svg",
+      "author": "Mormegil",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Görüş sınıflandırması",
+      "section": "Meteorolojik Görüş Sınıfları",
+      "asset": "src/assets/meteorology/advection-fog.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Golden_Gate_Bridge_fog._(51733986116).jpg",
+      "author": "Bernard Spragg. NZ from Christchurch, New Zealand",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Küresel akıntı sistemleri",
+      "section": "Rüzgâr Kaynaklı Yüzey Akıntıları",
+      "asset": "src/assets/meteorology/world-surface-currents.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Admiralty_Chart_No_5310_The_World_General_Surface_Current_Circulation%2C_Published_1949.jpg",
+      "author": "United Kingdom Hydrographic Office",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Synoptik harita sembolleri",
+      "section": "Rüzgâr Barb'ları ve İstasyon Modeli",
+      "asset": "src/assets/meteorology/station-model.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Station_model_fr.svg",
+      "author": "File:Station_model.gif: Thegreatdr derivative work: Pierr…",
+      "license": "CC0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Synoptik harita sembolleri",
+      "section": "Operasyonel Okuma ve Doğrulama",
+      "asset": "src/assets/meteorology/surface-analysis-chart.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2018-04-30_Surface_Weather_Map_NOAA.png",
+      "author": "National Centers for Environmental Prediction",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Cephe analizi ve hareket tahmini",
+      "section": "Ardışık Harita Karşılaştırması",
+      "asset": "src/assets/meteorology/surface-analysis-chart.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2018-04-30_Surface_Weather_Map_NOAA.png",
+      "author": "National Centers for Environmental Prediction",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Rüzgar/deniz tahmini çıkarımı",
+      "section": "Rüzgâr Tahmini",
+      "asset": "src/assets/meteorology/geostrophic-wind.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geostrophic_Wind_Diagram.svg",
+      "author": "天探",
+      "license": "CC0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Rüzgar/deniz tahmini çıkarımı",
+      "section": "Gözlem ile Doğrulama",
+      "asset": "src/assets/meteorology/wind-barbs.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wind_barbs.svg",
+      "author": "Scott5114",
+      "license": "Public domain"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Yüksek bulutlar (Cirrus, Cirrocumulus, Cirrostratus)",
+      "section": "Cirrostratus (Cs) — Hale Yapan Örtü",
+      "asset": "src/assets/clouds/cirrostratus-halo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-03-01_-_Cirrostratus_-_halo_%2822_deg%29_centered_on_sun_-_DSN2151-1.jpg",
+      "author": "Franz van Duns",
+      "license": "CC BY 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)",
+      "section": "Nimbostratus (Ns) — Sürekli Yağış Bulutu",
+      "asset": "src/assets/clouds/nimbostratus-pannus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nimbostratus_pannus.jpg",
+      "author": "GerritR",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Alçak bulutlar (Stratus, Stratocumulus)",
+      "section": "Stratus (St) — Düz Gri Tabaka",
+      "asset": "src/assets/clouds/stratus-layer.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019-11-30_12_58_05_Stratus_clouds_over_a_field_along_Old_Ox_Road_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg",
+      "author": "Famartin",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Alçak bulutlar (Stratus, Stratocumulus)",
+      "section": "Stratocumulus (Sc) — Yumrulu Tabaka",
+      "asset": "src/assets/clouds/stratocumulus-layer.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stratocumulus_cloud_01.jpg",
+      "author": "Indrajit Das",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Alçak bulutlar (Stratus, Stratocumulus)",
+      "section": "Stratus Fractus — Parçalanmış Kötü Hava Bulutları",
+      "asset": "src/assets/clouds/fractus-pannus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fractus_und_pannus_unter_dem_Aufwind_bzw._Inflowbereich_eines_Schwergewitters_im_Texas_Panhandle%2C_Zoom.jpg",
+      "author": "GerritR",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Dikey gelişimli bulutlar (Cumulus, Cumulonimbus)",
+      "section": "Cumulonimbus (Cb) — Oraj Bulutu",
+      "asset": "src/assets/clouds/cumulonimbus-incus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cumulonimbus_incus_over_Warsaw%2C_Poland.jpg",
+      "author": "Kamil Nowacki",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Özel bulut formasyonları ve tehlike işaretleri",
+      "section": "Mammatus — Torba Bulutlar",
+      "asset": "src/assets/clouds/mammatus-pouches.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mammatus-11.03.2021.jpg",
+      "author": "Sascha1405",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Özel bulut formasyonları ve tehlike işaretleri",
+      "section": "Virga — Yere Ulaşmayan Yağış",
+      "asset": "src/assets/clouds/virga.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Virga_in_the_early_morning.jpg",
+      "author": "Rivervictorlauramarie",
+      "license": "CC0"
+    },
+    {
+      "category": "communication",
+      "topic": "NAVTEX, SafetyNET ve MSI",
+      "section": "NAVTEX Sistemi",
+      "asset": "src/assets/bridge/navtex-receiver.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Navtex.jpg",
+      "author": "No machine-readable author provided. Clipper assumed (bas...",
+      "license": "CC BY 2.5"
+    },
+    {
+      "category": "communication",
+      "topic": "EPIRB, SART ve Arama Kurtarma Entegrasyonu",
+      "section": "EPIRB Çalışma Prensibi",
+      "asset": "src/assets/lessons/epirb-gps.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
+      "author": "Marwan Mohamad",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "communication",
+      "topic": "AIS — Otomatik Tanımlama Sistemi",
+      "section": "Çalışma Prensibi ve Kanallar",
+      "asset": "src/assets/bridge/ais-display.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ships_AIS_display_with_lists_of_nearby_vessels.jpg",
+      "author": "Ulf Larsen",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "communication",
+      "topic": "Gemi İçi Haberleşme Sistemleri",
+      "section": "Köprüüstü–Makine Haberleşmesi ve Telgraf",
+      "asset": "src/assets/lessons/engine-order-telegraph.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E8%88%AA%E6%B5%B7%E7%94%A8%E8%BB%8A%E9%90%98.jpg",
+      "author": "丘崈",
+      "license": "CC0"
+    },
+    {
+      "category": "communication",
+      "topic": "Telsiz Anten Sistemleri ve Acil Güç Kaynakları",
+      "section": "Anten Türleri ve Frekansa Göre Tasarım",
+      "asset": "src/assets/bridge/inmarsat-terminal.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boules_Inmarsat_dans_la_m%C3%A2ture_du_Suro%C3%AEt_(Ifremer_00521-63323).jpg",
+      "author": "Stephane Lesbats",
+      "license": "CC BY 4.0"
+    },
+    {
+      "category": "safety",
+      "topic": "Can Kurtarma Araçları (LSA)",
+      "section": "Filikalar (Lifeboats) ve Kapasite",
+      "asset": "src/assets/seamanship/lifeboat-davit.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lifeboat_1.JPG",
+      "author": "~riley",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "safety",
+      "topic": "Kişisel Can Kurtarma Donanımı",
+      "section": "Can Yelekleri (Lifejackets)",
+      "asset": "src/assets/seamanship/lsa-personal.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lifejackets_aboard_Norwegian_ferry_Fanafjord_(ship_built_2006)_Photo_2018-03-05_IMG_5597.jpg",
+      "author": "Wolfmann",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "safety",
+      "topic": "Kişisel Can Kurtarma Donanımı",
+      "section": "EPIRB, SART ve İşaret Donanımı",
+      "asset": "src/assets/lessons/epirb-gps.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
+      "author": "Marwan Mohamad",
+      "license": "CC BY-SA 4.0"
+    }
+  ]
+}
