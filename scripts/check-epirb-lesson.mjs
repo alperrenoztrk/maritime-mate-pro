@@ -30,14 +30,15 @@ const detailed = get(paths[0]);
 assert.ok((detailed.match(/"heading":/g) ?? []).length >= 8, "EPIRB needs eight detailed chapters");
 assert.match(get("src/data/shipSystems/longform/types.ts"), /illustration\?:/);
 assert.match(get("src/pages/ShipSystemDeepDive.tsx"), /sec\.illustration/);
-const diagrams = ["epirb-alert-chain.svg", "epirb-float-free.svg", "epirb-display-comparison.svg"];
-for (const asset of diagrams) {
- const svg = get("public/lessons/" + asset);
- assert.match(svg, /<svg[^>]+viewBox=/);
- assert.match(svg, /<title/);
- assert.match(detailed, new RegExp(asset.replaceAll(".", "\\.")));
+// No AI-authored illustrations: a licensed, real EPIRB photograph is used.
+const source = get("src/data/shipSystems/longform/gmdss-lsa/4.ts");
+assert.match(source, /verifiedEpirbPhoto/);
+assert.match(source, /Marwan Mohamad/);
+assert.ok(fs.existsSync("src/assets/lessons/epirb-gps.jpg"));
+for (const path of paths) {
+  assert.doesNotMatch(get(path), /\/lessons\/epirb-(?:alert-chain|float-free|display-comparison)\.svg/);
 }
 const questions = get("src/data/lessonFlow/safety.ts");
 assert.match(questions, /Float-free EPIRB/);
 assert.match(questions, /Radar ekranında 12 nokta/);
-console.log("EPIRB checks passed: four lesson sources, eight chapters, three SVGs, three assessment questions.");
+console.log("EPIRB checks passed: four lesson sources, eight chapters, sourced real EPIRB photograph, three assessment questions.");
