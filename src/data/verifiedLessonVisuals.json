@@ -423,6 +423,96 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
       "author": "Marwan Mohamad",
       "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Bulut oluşumu ve sınıflandırma esasları",
+      "section": "Bulut Nasıl Oluşur?",
+      "asset": "src/assets/clouds/cumulus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cumulus_Cloud.jpg",
+      "license": "Public domain",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Yüksek bulutlar (Cirrus, Cirrocumulus, Cirrostratus)",
+      "section": "Cirrus (Ci) — Saçak Bulutlar",
+      "asset": "src/assets/clouds/cirrus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cirrus_Uncinus_Nebulae_(Mare's_Tails_Clouds).jpg",
+      "license": "CC0",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Yüksek bulutlar (Cirrus, Cirrocumulus, Cirrostratus)",
+      "section": "Cirrocumulus (Cc) — Uskumru Gökyüzü",
+      "asset": "src/assets/clouds/cirrocumulus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cirrocumulus_cloud_Kyoto_20200528.jpg",
+      "license": "CC0",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)",
+      "section": "Altocumulus (Ac) — Koyun Sürüsü",
+      "asset": "src/assets/clouds/altocumulus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altocumulus_clouds_in_evening_Chhindwara.jpg",
+      "license": "CC0",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Orta seviye bulutlar (Altocumulus, Altostratus, Nimbostratus)",
+      "section": "Altostratus (As) — Buzlu Cam Örtüsü",
+      "asset": "src/assets/clouds/altostratus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altostratus_with_stratocumulus_under_2.jpg",
+      "license": "CC0",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Dikey gelişimli bulutlar (Cumulus, Cumulonimbus)",
+      "section": "Cumulus (Cu) — Güzel Hava Kümülüsü",
+      "asset": "src/assets/clouds/cumulus.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cumulus_Cloud.jpg",
+      "license": "Public domain",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Özel bulut formasyonları ve tehlike işaretleri",
+      "section": "Tuba (Huni Bulutu) — Su Hortumu Habercisi",
+      "asset": "src/assets/clouds/tuba.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Waterspout_noaa00307.jpg",
+      "license": "Public domain",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "meteorology",
+      "topic": "Özel bulut formasyonları ve tehlike işaretleri",
+      "section": "Lenticularis — Dağ Dalgası Bulutu",
+      "asset": "src/assets/clouds/lenticularis.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lenticular_clouds_in_Boulder_CO_-_NOAA_Earth_System_Research_Laboratory.jpg",
+      "license": "Public domain",
+      "author": "Wikimedia Commons file metadata"
+    },
+    {
+      "category": "seamanship",
+      "topic": "Yedekleme (Towing) Operasyonları",
+      "section": "Römorkör Yardımı ve Bağlanma",
+      "asset": "src/assets/lessons/tug-assisting.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:42_(tugboat%2C_2012)_towing_Genius_Star_through_the_Port_of_Antwerp_pic1.JPG",
+      "author": "Alf van Beem",
+      "license": "CC0"
+    },
+    {
+      "category": "seamanship",
+      "topic": "Pilot Transferi ve Pilot Merdiveni",
+      "section": "Pilot Merdiveni (Pilot Ladder) Gereklilikleri",
+      "asset": "src/assets/lessons/pilot-ladder.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jakobsleiter_IMG_3508.JPG",
+      "author": "Nightflyer 22:11, 13. Mai 2008 (CEST)",
+      "license": "Public domain"
     }
   ]
 }
