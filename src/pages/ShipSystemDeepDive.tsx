@@ -165,6 +165,14 @@ export default function ShipSystemDeepDive() {
                             {p}
                           </p>
                         ))}
+                        {sec.illustration && (
+                          <figure className="my-4 overflow-hidden rounded-xl border border-border/40 bg-muted/20">
+                            <button type="button" className="block w-full cursor-zoom-in" aria-label="Enlarge technical diagram" onClick={() => setViewerImage({ src: sec.illustration!.src, alt: sec.illustration!.alt })}>
+                              <img src={sec.illustration.src} alt={sec.illustration.alt} className="h-auto w-full object-contain" loading="lazy" />
+                            </button>
+                            <figcaption className="border-t border-border/30 px-3 py-2 text-xs leading-relaxed text-muted-foreground">{sec.illustration.caption}</figcaption>
+                          </figure>
+                        )}
                         {sec.bullets && (
                           <ul className="mb-3 space-y-1.5 pl-5">
                             {sec.bullets.map((b, bi) => (
