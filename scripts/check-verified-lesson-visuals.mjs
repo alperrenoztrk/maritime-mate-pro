@@ -21,7 +21,7 @@ for (const item of choices) {
   assert(item.author && /^(public domain|cc0|cc by)/i.test(item.license),id+": author/license missing or unsupported");
 }
 assert(choices.length >= 50,"reviewed visual allowlist shrank unexpectedly");
-const tree = fs.readdirSync("public/lessons");
+const tree = fs.existsSync("public/lessons") ? fs.readdirSync("public/lessons") : [];
 assert.equal(tree.filter(name=>/^(epirb-|professional-).*\.svg$/.test(name)).length,0,"AI-authored illustrations remain in public/lessons");
 const authFiles = ["src/data/shipSystems/longform/gmdss-lsa/4.ts","src/data/communicationTopicContents.ts","src/data/safetyTopicContents.ts","src/pages/SafetyTopicsPage.tsx","src/data/professionalCaseStudies.ts"];
 for(const file of authFiles)assert.doesNotMatch(fs.readFileSync(file,"utf8"),/\/lessons\/(epirb-(alert-chain|float-free|display-comparison)|professional-[\w-]+)\.svg/);
