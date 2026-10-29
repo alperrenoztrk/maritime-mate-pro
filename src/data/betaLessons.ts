@@ -1,6 +1,7 @@
 import learningDepthSources from "./learningDepthSources.json";
 import learningDepthReviews from "./learningDepthReviews.json";
 import learningCaseStudies from "./learningCaseStudies.json";
+import { professionalCaseStudies } from "./professionalCaseStudies";
 import rulePlacements from "@/data/curriculumRulePlacement.json";
 import type { LucideIcon } from "lucide-react";
 import { calculationCategories } from "@/data/calculationCenterConfig";
@@ -174,11 +175,12 @@ const mergeRulesIntoTopic = (categoryKey: string, topic: BetaTopic): BetaTopic =
   );
   const depthReview = learningDepthReviews.find((entry) => entry.topicId === topic.id);
   const workedCase = learningCaseStudies.find((entry) => entry.topicId === topic.id);
-  if (assignments.length === 0 && !workedCase && !depthReview) return topic;
+  const professionalCase = professionalCaseStudies[topic.id];
+  if (assignments.length === 0 && !workedCase && !depthReview && !professionalCase) return topic;
 
   return {
     ...topic,
-    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...(depthReview ? [{ ...depthReview.section, references: learningDepthSources[categoryKey as keyof typeof learningDepthSources] }] : []), ...integratedRuleSections(topic.id, assignments)],
+    sections: [...topic.sections, ...(workedCase ? [workedCase.section] : []), ...(professionalCase ? [professionalCase] : []), ...(depthReview ? [{ ...depthReview.section, references: learningDepthSources[categoryKey as keyof typeof learningDepthSources] }] : []), ...integratedRuleSections(topic.id, assignments)],
   };
 };
 

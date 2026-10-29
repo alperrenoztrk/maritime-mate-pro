@@ -1,0 +1,41 @@
+name: Curriculum teaching quality
+on:
+  pull_request:
+    paths:
+      - 'src/data/professionalCaseStudies.ts'
+      - 'src/data/betaLessons.ts'
+      - 'src/components/lessons/LessonTeachCard.tsx'
+      - 'public/lessons/professional-*.svg'
+      - 'docs/learning/content-audit.json'
+      - 'scripts/audit-lesson-quality.mjs'
+      - 'scripts/check-professional-cases.mjs'
+      - '.github/workflows/curriculum-teaching-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  curriculum:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Check professional case integrity and reader linkage
+        run: npm run check:professional-cases
+      - name: Verify complete learning inventory
+        run: npm run check:learning-content
+      - name: Audit all curriculum categories
+        run: npm run audit:lesson-quality
+      - name: TypeScript checking
+        run: npm run typecheck
+      - name: Build Vite app
+        env:
+          VITE_SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: public-test-key
+          VITE_PRO_GATING_ENABLED: 'false'
+          VITE_ADS_ENABLED: 'false'
+        run: npm run build
