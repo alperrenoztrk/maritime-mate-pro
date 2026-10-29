@@ -1,4 +1,5 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
+import verifiedEpirbPhoto from "@/assets/lessons/epirb-gps.jpg";
 
 /**
  * Deniz Emniyeti — "Dersler Beta" okunabilir konu anlatımı.
@@ -107,8 +108,8 @@ export const safetyTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         "title": "EPIRB, SART ve İşaret Donanımı",
-        "image": "/lessons/epirb-alert-chain.svg",
-        "imageAlt": "406 MHz EPIRB distress çağrısının Cospas-Sarsat uydusu, LUT, MCC ve MRCC üzerinden SAR ekibine aktarımı",
+        "image": verifiedEpirbPhoto,
+        "imageAlt": "Real 406 MHz EPIRB emergency beacon, photograph by Marwan Mohamad (CC BY-SA 4.0)",
         "content": "EPIRB (Emergency Position-Indicating Radio Beacon), ciddi ve yakın tehlikede Cospas-Sarsat üzerinden arama-kurtarma uyarısı yapan bağımsız bataryalı radyo işaret cihazıdır. 406–406.1 MHz dijital distress mesajında 15 haneli HEX kimliği ve mevcutsa GNSS konumu taşınır. Uydu → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → SAR aracı zinciri işler. 121.5 MHz, uygun SAR aracının lokal homing/yön bulması içindir; 2009'dan beri Cospas-Sarsat uyduları 121.5 MHz distress uyarılarını işlemez.\n\nYeni standarda tabi AIS-EPIRB cihazları, 161.975 MHz (AIS 1) ve 162.025 MHz (AIS 2) üzerinden yakın AIS alıcılarına EPIRB ACTIVE konum işareti gönderebilir. Eski EPIRB'lerin hepsinde AIS yoktur. Klasik EPIRB X-band/S-band radar ekranında radar-SART'ın 12 noktasını oluşturmaz. 9 GHz X-band radar darbelerine yanıt veren radar-SART 12 noktalık dizi/yay üretir; AIS-EPIRB veya AIS-SART ise uygun AIS/ECDIS ekranında görünür.\n\nFloat-free braketin HRU (Hydrostatic Release Unit) mekanizması, gemi batarken yaklaşık 1–4 m aralığında (modele göre) basınçla cihazı serbest bırakır. Yüzeye çıkan cihazın su sensörü elektronik devreyi açar. Pil deniz suyuyla aktifleşip enerji üretmez: kapalı batarya zaten takılıdır. Braketin önü kapatılmaz, lanyard gemiye bağlanmaz; manuel ON/DISTRESS gerektiğinde model kılavuzuna göre kullanılır.\n\nIMO MSC.471(101) kapsamında yeni standarda tabi EPIRB bataryasının çalışma kapasitesi en az 48 saattir. Gerçek dayanım için batarya son kullanım tarihi, cihazın modeli ve servis koşulları kontrol edilir. Testte yalnız üreticinin SELF-TEST fonksiyonu kullanılır: görsel/etiket/HRU/SKT kontrolü → özel TEST modu → LED/hata kodunun kontrolü → doğru yerleştirme → GMDSS/PMS kayıt. Self-test kısa, özel kodlanmış RF test yayını yapabilir ancak normal distress ikazı olmamalıdır. ON/DISTRESS'i rutin test için açmak yanlış SAR alarmı yaratabilir. GNSS self-test bazı modellerde ayrıdır ve bataryayı tüketebilir; üretici sıklığına uyulmalıdır.\n\nYıllık EPIRB test rehberi IMO MSC.1/Circ.1040/Rev.2'dir; shore-based maintenance bayrakça belirlenen, beş yılı geçmeyen aralıklarla yapılır (MSC.1/Circ.1039/Rev.1). Batarya ve HRU değişimi gerçek cihaz etiketi/üretici talimatına bağlıdır. 15 HEX ID ile resmî kayıt güncel olmalıdır. Yanlış alarmda cihaz derhal OFF yapılır ve en yakın RCC/MRCC'ye kimlik, yer, zaman ve yanlış alarm bildirimi verilir.",
         "bulletPoints": [
           "406–406.1 MHz: uydu distress; 121.5 MHz: SAR homing; AIS 1/2: uygun AIS-EPIRB/SART modelleri.",

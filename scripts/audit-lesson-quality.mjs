@@ -19,6 +19,7 @@ try {
   const { getBetaModules, getBetaTopic } = await server.ssrLoadModule("/src/data/betaLessons.ts");
   const { withGuidedEnhancements } = await server.ssrLoadModule("/src/utils/guidedEnhancements.ts");
   const { getLessonFlow } = await server.ssrLoadModule("/src/data/lessonFlow/index.ts");
+  const { resolveLessonImage } = await server.ssrLoadModule("/src/utils/lessonImageFallbacks.ts");
   const topics = [];
   for (const course of getCurriculumCourses()) {
     for (const module of getBetaModules(course.key)) {
@@ -29,7 +30,12 @@ try {
         const sections = topic.sections.filter(s => !s.id?.includes("-integrated-standard-"));
         const checks = getLessonFlow(course.key, metadata.sourceTitle)?.questions?.length ?? 0;
         const worked = sections.filter(s => s.example?.problem && (s.example?.steps?.length ?? 0) >= 2).length;
-        const visuals = sections.filter(s => s.figure || s.image || /!\\[[^\\]]*\\]\\([^)]*\\)/.test(s.content ?? "")).length;
+        const visuals = sections.filter(s => {
+          if (s.figure) return true; // standards-based procedural figure
+          if (resolveLessonImage(course.key, s.image, s.sourceTitle ?? s.title, topic.sourceTitle ?? topic.title, s.imageAlt)) return true;
+          return [...(s.content ?? "").matchAll(/!\[([^\]]*)\]\(([^)\s]+)\)/g)]
+            .some(m => resolveLessonImage(course.key, m[2], s.sourceTitle ?? s.title, topic.sourceTitle ?? topic.title, m[1]));
+        }).length;
         const references = sections.filter(s => s.references?.some(r => /^https:\/\//.test(r.url))).length;
         const mathOrTables = sections.filter(s => s.formula || s.table).length;
         const cautions = sections.filter(s => /common error|common mistake|limitation|warning|never |do not |risk|safety|caution|yanl[ıi]ş|dikkat|tehlike/i.test((s.content??"")+" "+(s.bulletPoints??[]).join(" "))).length;
@@ -50,7 +56,7 @@ try {
     hasAllFour: rows.filter(t => t.worked && t.visuals && t.references && t.checks).length
   });
   const result = {
-    methodology: "Live reader coverage inventory: worked two-step examples, visible figures/images, linked reading and authored recall checks. Not a verification of correctness, equipment relevance, translation, or regulatory currency. No universal requirement that every topic contain a formula.",
+    methodology: "Live reader coverage inventory: worked two-step examples, verified original visuals and standards-based figures, linked reading and authored recall checks. Not a verification of correctness, equipment relevance, translation, or regulatory currency. No universal requirement that every topic contain a formula.",
     summary: summarize(topics),
     courses: [...new Set(topics.map(t=>t.course))].map(course => ({ course, ...summarize(topics.filter(t=>t.course===course)) })),
     ...(process.argv.includes("--json") ? { topics } : {})

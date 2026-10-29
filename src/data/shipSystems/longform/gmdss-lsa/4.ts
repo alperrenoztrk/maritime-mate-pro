@@ -1,4 +1,5 @@
 import type { ShipSystemLongForm } from "../types";
+import verifiedEpirbPhoto from "@/assets/lessons/epirb-gps.jpg";
 
 /** EPIRB teknik ders: IMO MSC.471(101), MSC.1/Circ.1040/Rev.2 ve MSC.1/Circ.1039/Rev.1. */
 const content: ShipSystemLongForm = {
@@ -23,6 +24,11 @@ const content: ShipSystemLongForm = {
       "sections": [
         {
           "subheading": "1.1 Üç farklı RF fonksiyonu",
+          "illustration": {
+            "src": verifiedEpirbPhoto,
+            "alt": "A real maritime EPIRB photographed by Marwan Mohamad, showing an emergency beacon device",
+            "caption": "Gerçek EPIRB fotoğrafı — Marwan Mohamad, CC BY-SA 4.0 (Wikimedia Commons: File:EPIRB (2).jpg). Bu fotoğraf sinyal güzergâhını veya cihazın HRU iç yapısını göstermez."
+          },
           "paragraphs": [
             "406–406.1 MHz, Cospas-Sarsat tehlike ikazı için kullanılan sayısal yayın bandıdır. Mesajda cihazın benzersiz HEX kimliği ve GNSS mevki çözümü varsa koordinatlar bulunur. 121.5 MHz yayını, uygun donanımlı arama-kurtarma vasıtalarının son aşamadaki yön bulmasına (homing) yardım eder.",
             "Yeni performans standardına tabi AIS-EPIRB, AIS 1 (161.975 MHz) ve AIS 2 (162.025 MHz) kanallarında konum ve EPIRB ACTIVE gibi bilgiler yayınlayarak VHF görüş hattındaki AIS alıcılarına yardımcı olur. Eski 406 MHz EPIRB modellerinin hepsinde AIS özelliği yoktur. 121.5/243 MHz sinyallerinin uydu üzerinden alarm işlenmesi 1 Şubat 2009'da sona ermiştir."
@@ -69,12 +75,7 @@ const content: ShipSystemLongForm = {
           "paragraphs": [
             "EPIRB → Cospas-Sarsat uydu faydalı yükü (LEOSAR, GEOSAR, MEOSAR) → yer terminali LUT (Local User Terminal) → MCC (Mission Control Centre) → ilgili RCC/MRCC (Rescue Coordination Centre) → arama-kurtarma birimleri. 'Sinyal uyduya gidiyor' anlatımı bu zincirin yalnızca ilk adımıdır.",
             "406 MHz mesajı sesli MAYDAY değildir; doğrudan yakındaki bütün gemilerin radar ekranına düşmesi beklenmez. MRCC alarmı değerlendirir, kimlik/kayıt bilgilerini kontrol eder ve uygun SAR kaynaklarını koordine eder."
-          ],
-          "illustration": {
-            "src": "/lessons/epirb-alert-chain.svg",
-            "alt": "Cospas-Sarsat EPIRB satellite distress alert chain from beacon to LUT MCC and RCC or MRCC",
-            "caption": "406 MHz distress sinyalinin uydu/yer istasyonu/MCC/MRCC üzerinden SAR birimlerine aktarımı. 121.5 MHz yerel homing farklı işlevdir."
-          }
+          ]
         }
       ]
     },
@@ -106,11 +107,6 @@ const content: ShipSystemLongForm = {
             "EPIRB onaylı float-free braketinde dış güvertede muhafaza edilir. Gemi batarken hidrostatik basınç, modele bağlı olarak yaklaşık 1–4 m aralığında Hydrostatic Release Unit (HRU) mekanizmasını açar. Cihaz mekanik olarak serbest kalıp yüzeye çıkar; su sensörü/elektrotları ıslandığında elektronik devre yayını başlatır.",
             "Pil deniz suyuyla güç üreten veya suyla şarj olan bir batarya değildir. Elektrik enerjisi kapalı gövdedeki önceden takılmış primer bataryadan sağlanır; su sensörü yalnızca tetikleme görevindedir. Bazı braketlerde cihazın tekrar yerleştirilmesini algılayan magnet/reed switch kombinasyonu bulunur ve hatalı montaj yalancı aktivasyon doğurabilir."
           ],
-          "illustration": {
-            "src": "/lessons/epirb-float-free.svg",
-            "alt": "EPIRB four-stage float-free activation: armed bracket, HRU release, water sensor, buoyant transmitting beacon",
-            "caption": "Basınçla açılan HRU, su sensörü ve batarya üç ayrı unsurdur. HRU cihazı serbest bırakır; sensör elektronikleri tetikler."
-          },
           "bullets": [
             "HRU/kapak üstünde nesne, halat veya yapışma olmayacak; EPIRB yüzeye engelsiz çıkabilmelidir.",
             "EPIRB'nin buoyant lanyard'ı gemiye ya da float-free brakete bağlanmaz; gerektiğinde survival craft veya kişiye bağlanabilir.",
@@ -244,11 +240,6 @@ const content: ShipSystemLongForm = {
             "Klasik 406 MHz EPIRB, ne X-band ne S-band radarda '12 nokta' üretir. Radar-SART ise 9 GHz X-band radar darbelerine yanıt verir; tipik olarak radar ekranında art arda 12 nokta görülür ve yakınlaşıldığında görüntü yaylara dönüşebilir. S-band radar-SART'ı bu biçimde tetiklemez.",
             "AIS-EPIRB ve AIS-SART, uygun AIS alıcısı/ECDIS ekranında SAR konum sembolüyle izlenebilir. AIS overlay açık bir radar ekranında da hedef görünebilir; fakat bu 9 GHz radar yanıtı değildir. Her AIS-EPIRB'nin her radarda görünmesi garanti edilmez."
           ],
-          "illustration": {
-            "src": "/lessons/epirb-display-comparison.svg",
-            "alt": "Three displays: standard EPIRB no 12 dots, radar SART twelve dots on X band, AIS EPIRB AIS target",
-            "caption": "Radar-SART'ın X-band nokta dizisini, AIS-EPIRB'nin AIS hedef sembolünden ayırt et."
-          },
           "table": {
             "headers": [
               "Cihaz",

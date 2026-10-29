@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { useState } from "react";
 import type { BetaSection } from "@/data/betaLessons";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
-import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
+import { getVerifiedLessonImageCredit, normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
 import { LessonImage } from "@/components/ui/LessonImage";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { LessonFigure } from "@/components/lessons/figures/LessonFigure";
@@ -42,6 +42,7 @@ export function LessonTeachCard({
     section.imageAlt,
   );
   const sectionImage = hideImage ? undefined : resolvedImage;
+  const imageCredit = getVerifiedLessonImageCredit(sectionImage, categoryId, section.sourceTitle ?? section.title, topicTitle);
   const content = section.content
     ? normalizeLessonMarkdownImages(
         section.content,
@@ -69,6 +70,15 @@ export function LessonTeachCard({
             className="mx-auto h-auto max-h-[36rem] w-full bg-muted/30 object-contain"
           />
         </button>
+      )}
+
+      {sectionImage && imageCredit && (
+        <p className="mx-auto max-w-md text-xs leading-relaxed text-muted-foreground">
+          Real source image: {imageCredit.author} · {imageCredit.license} ·{" "}
+          <a href={imageCredit.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+            Original file and licence
+          </a>
+        </p>
       )}
 
       {content && (

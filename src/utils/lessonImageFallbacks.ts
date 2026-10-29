@@ -1,9 +1,40 @@
+import approvedVisualManifest from "@/data/verifiedLessonVisuals.json";
+
+/** Only reviewable, image-specific source files are allowed into lesson pages.
+ * The glob resolves Vite's hashed asset URLs; the manifest narrows them to
+ * exact course + topic + section associations. A filename or vague keyword
+ * match is never sufficient. Unapproved images fail closed.
+ */
+type VerifiedPlacement = (typeof approvedVisualManifest.approved)[number];
+const allLocalAssets = import.meta.glob<string>("/src/assets/**/*.{jpg,jpeg,png,webp,svg}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+const normalise = (s?: string) => (s ?? "").normalize("NFC").trim();
+const reviewed = new Map<string, VerifiedPlacement>();
+for (const placement of approvedVisualManifest.approved) {
+  const url = allLocalAssets["/" + placement.asset];
+  if (!url) continue;
+  const key = [url, placement.category, placement.topic, placement.section].map(normalise).join("\u0000");
+  reviewed.set(key, placement);
+}
+export function getVerifiedLessonImageCredit(
+  src: string | undefined,
+  categoryId: string | undefined,
+  sectionTitle: string | undefined,
+  topicTitle: string | undefined,
+): VerifiedPlacement | undefined {
+  if (!src || !categoryId || !sectionTitle || !topicTitle) return undefined;
+  const key = [src, categoryId, topicTitle, sectionTitle].map(normalise).join("\u0000");
+  return reviewed.get(key);
+}
+
 /**
  * Lesson image resolution.
  *
  * `LessonTopicDetailPage` and `LessonTeachCard` pass every image they find in
- * lesson content through here. Images bundled with the app (local imports or
- * paths under /) are shown as they are; external http images are dropped.
+ * lesson content through here. Images are shown only for exact course/topic/section/source combinations\n * registered with an authentic provenance and licence. All other images are hidden.
  *
  * There is deliberately no keyword-based substitute any more: an image must be
  * assigned to its section explicitly in the content files, so a section either
@@ -11,20 +42,14 @@
  */
 
 export const resolveLessonImage = (
-  _categoryId: string | undefined,
+  categoryId: string | undefined,
   src: string | undefined,
-  _sectionTitle: string | undefined,
-  _topicTitle: string | undefined,
+  sectionTitle: string | undefined,
+  topicTitle: string | undefined,
   _alt: string | undefined,
-  replaceExternal: boolean = true,
-): string | undefined => {
-  if (!src) return undefined;
-  if (!replaceExternal || !src.startsWith("http")) return src;
-  // External (hotlinked) images are never shown: they belong to other sites
-  // and do not load offline. Images are no longer guessed from keywords
-  // either — a guessed image is too often unrelated to the section.
-  return undefined;
-};
+  _replaceExternal: boolean = true,
+): string | undefined =>
+  getVerifiedLessonImageCredit(src, categoryId, sectionTitle, topicTitle) ? src : undefined;
 
 const MARKDOWN_IMAGE_RE = /!\[([^\]]*)\]\(([^)\s]+)\)/g;
 

@@ -1,4 +1,5 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
+import verifiedEpirbPhoto from "@/assets/lessons/epirb-gps.jpg";
 
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
 import dscPanelImage from "@/assets/bridge/dsc-panel.jpg";
@@ -16,14 +17,14 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Deniz Alanları (Sea Area) Sınıflandırması",
         content:
-          "GMDSS dört deniz alanı tanımlar ve her alan, kapsama sağlayan altyapı teknolojisine göre belirlenir. A1 alanı, en az bir VHF kıyı istasyonunun DSC (Digital Selective Calling) kapsaması altındaki bölgedir; tipik menzili 20–30 deniz milidir. A2 alanı, A1 dışında kalan ancak bir MF (Medium Frequency) kıyı istasyonunun DSC kapsaması altındaki bölgedir; menzili tipik olarak yaklaşık 100–150 deniz miline kadar uzanır. A3 alanı, A1 ve A2 dışında kalan ancak Inmarsat uydu kapsaması altındaki bölgedir; bu kapsama yaklaşık 70°K – 70°G enlemleri arasını içerir. A4 alanı, A1, A2 ve A3 dışında kalan bölgeleri kapsar; esas olarak kutup bölgeleridir ve burada HF (High Frequency) radyo haberleşmesi temel iletişim aracıdır.",
+          "GMDSS dört deniz alanı tanımlar ve her alan, kapsama sağlayan altyapı teknolojisine göre belirlenir. A1 alanı, en az bir VHF kıyı istasyonunun DSC (Digital Selective Calling) kapsaması altındaki bölgedir; tipik menzili 20–30 deniz milidir. A2 alanı, A1 dışında kalan ancak bir MF (Medium Frequency) kıyı istasyonunun DSC kapsaması altındaki bölgedir; menzili tipik olarak yaklaşık 100–150 deniz miline kadar uzanır. 1 Ocak 2024 sonrası GMDSS tanımında A3, A1/A2 dışındaki alanlarda gemide bulunan ve IMO tarafından tanınmış mobil uydu hizmeti (RMSS) gemi yer istasyonunun kesintisiz tehlike alarmı sağlayabildiği kapsama bölgesidir. Inmarsat ve Iridium tanınmış hizmet örnekleridir; A3 kapsaması geminin taşıdığı onaylı terminale göre değişir. A4, ilgili gemi açısından A1, A2 ve A3 dışında kalan bölgelerdir ve sadece kutup bölgeleri anlamına gelmez.",
         image: dscPanelImage,
         imageAlt: "GMDSS console carrying the required radio installations",
       },
       {
         title: "Ekipman Gereklilikleri",
         content:
-          "Geminin seyir planına dahil olan deniz alanları, taşıması gereken minimum ekipman setini belirler. Tüm alanlarda ortak olan ekipmanlar: VHF-DSC telsiz, NAVTEX alıcısı, EPIRB (406 MHz), SART veya AIS-SART, ve taşınabilir VHF setleri (en az 2 veya 3 adet). A1 dışına çıkan gemiler ek olarak MF-DSC telsiz taşımalıdır. A2 dışına çıkan gemiler Inmarsat terminal veya MF/HF-DSC telsiz taşımalıdır. A3 dışına çıkan (A4) gemiler HF-DSC telsiz zorunluluğundadır. Ekipman kombinasyonu bayrak devletinin onayına, gemi tipine ve tonajına göre detaylandırılır. 300 GT ve üzeri uluslararası sefer yapan tüm ticari gemiler GMDSS uyumlu olmak zorundadır.",
+          "Geminin seyir planına dahil olan deniz alanları, taşıması gereken minimum ekipman setini belirler. Tüm alanlarda ortak olan ekipmanlar: VHF-DSC telsiz, NAVTEX alıcısı, EPIRB (406 MHz), SART veya AIS-SART, ve taşınabilir VHF setleri (en az 2 veya 3 adet). A1 dışına çıkan gemiler ek olarak MF-DSC telsiz taşımalıdır. A2 dışına çıkan gemilerin A3 veya A4 için hangi RMSS gemi yer istasyonu, MF/HF-DSC ekipmanı ve yedek alarm yolunu taşıyacağı, güncel SOLAS IV gerekleri ve geminin onaylı radyo ekipman kaydı esas alınarak belirlenir. A4 gerekliliklerinde HF-DSC kapasitesi özellikle önemlidir; ancak seçilecek kombinasyon gemi sertifikasından doğrulanmalıdır. Ekipman kombinasyonu bayrak devletinin onayına, gemi tipine ve tonajına göre detaylandırılır. 300 GT ve üzeri uluslararası sefer yapan tüm ticari gemiler GMDSS uyumlu olmak zorundadır.",
       },
       {
         title: "Bakım ve Çalışırlık Gereklilikleri",
@@ -186,14 +187,12 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
     "sections": [
       {
         "title": "EPIRB Çalışma Prensibi",
-        "image": "/lessons/epirb-alert-chain.svg",
-        "imageAlt": "406 MHz EPIRB sinyal zinciri: uydu, LUT, MCC, RCC/MRCC ve SAR",
+        "image": verifiedEpirbPhoto,
+        "imageAlt": "Real EPIRB emergency beacon; Marwan Mohamad, Wikimedia Commons CC BY-SA 4.0",
         "content": "406–406.1 MHz sayısal imdat sinyali 15 HEX ID ile mevcutsa GNSS konumu taşır. Cospas-Sarsat LEOSAR/GEOSAR/MEOSAR → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → arama-kurtarma birimi zinciriyle alarm iletilir. GNSS fix olmaması her zaman 406 MHz alarmının durduğu anlamına gelmez; uydu konum çözüm teknikleri kullanılabilir. 121.5 MHz sinyali yakındaki arama-kurtarma aracı tarafından homing amacıyla kullanılır, 2009'dan beri uydu alarmı olarak takip edilmez. Modern AIS-EPIRB cihazları AIS 1 (161.975 MHz) ve AIS 2 (162.025 MHz) üzerinden yerel AIS hedef konumu yayınlayabilir; her eski cihaz AIS'li değildir. Cihazın 15 HEX ID'sini MMSI ile karıştırma."
       },
       {
         "title": "EPIRB Montajı, Bakımı ve Kayıt",
-        "image": "/lessons/epirb-float-free.svg",
-        "imageAlt": "HRU, su sensörü ve önceden takılı EPIRB bataryasının ayrı işlevlerini gösteren şema",
         "content": "Float-free EPIRB, serbest yüzmesine engel olmayacak şekilde onaylı brakette durur. Gemi batarken HRU yaklaşık 1–4 m derinlikte hidrostatik basınçla cihazı mekanik olarak bırakır; cihaz yüzeye çıkar ve su sensörü elektroniği etkinleştirir. Deniz suyu pili şarj etmez veya üretmez; cihazın önceden takılı bataryası enerji sağlar. Lanyard'ı gemiye veya brakete bağlama. IMO MSC.471(101) 1 Temmuz 2022'den itibaren ilgili kurulumları kapsar; en az 48 saat batarya kapasitesi, GNSS, 121.5 MHz ve AIS locating gibi şartları tanımlar. Önceki kurulumların standartları farklı olabilir. Batarya ve HRU son kullanma tarihlerini gerçek etiketinden kontrol et; tüm modellere sabit 2/5 yıl uygulama. Annual test: MSC.1/Circ.1040/Rev.2. Onaylı kara bakımı, bayrakça belirlenen ve 5 yılı aşmayan aralıkta: MSC.1/Circ.1039/Rev.1. Güncel EPIRB 15 HEX ID kaydını bayrak/otorite kayıtlarıyla karşılaştır.",
         "bulletPoints": [
           "HRU cihazı serbest bırakır; su sensörü çalıştırır; batarya zaten mevcuttur.",
@@ -204,8 +203,6 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         "title": "SART ve AIS-SART",
-        "image": "/lessons/epirb-display-comparison.svg",
-        "imageAlt": "406 MHz EPIRB, 9 GHz radar SART ve AIS EPIRB ekran görünümü karşılaştırması",
         "content": "Klasik 406 MHz EPIRB radarın X-band/S-band ekranında 12 nokta oluşturmaz. Bu karakteristik gösterim, 9 GHz X-band radar sorgulamasına yanıt veren radar-SART'a aittir; uzaktan 12 nokta, yakından yaylar görülebilir. S-band radar bu yanıtı tetiklemez. AIS-SART, uygun AIS/ECDIS üzerinde özel arama-kurtarma hedefi gösterir. AIS'li EPIRB de yerel AIS konum yayını yapabilir; radar ekranında AIS overlay ile görünmesi gerçek radar-SART yanıtı olduğu anlamına gelmez. Her cihaz için alım/anten yüksekliği, kapsama ve model şartları farklıdır. Menzil üstünlüğünü evrensel kesinlik olarak öğretme.",
         "table": {
           "headers": [
