@@ -23,6 +23,9 @@ for (const item of sourceRegistry.approved) {
   records.set(makeKey(item.surface,item.topicId,compiled),item);
 }
 
+/** Count the placements whose local asset URLs were resolved by the build. */
+export const verifiedLegacyPhotoCount = records.size;
+
 export function verifiedLegacyImage(surface: string, topicId: string, src?: string) {
   if (!src || !surface || !topicId) return undefined;
   const verified = records.get(makeKey(surface,topicId,src));
