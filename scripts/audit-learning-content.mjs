@@ -65,7 +65,27 @@ try {
     totals: { courses: getCurriculumCourses().length, topics: topics.length, authoredChecks: topics.reduce((sum,t) => sum+t.authoredChecks,0), newWorkedCases: cases.length, depthReviews: depthReviews.length, shortTeachingTopics: topics.filter(t => t.shortTeaching).length }, topics,
   };
   const output = 'docs/learning/content-audit.json'; const text = JSON.stringify(report, null, 2)+'\n';
-  if (process.argv.includes('--check')) assert.equal(fs.readFileSync(output, 'utf8'), text, 'Learning inventory is stale');
+  if (process.argv.includes('--check')) {
+    const current = JSON.parse(fs.readFileSync(output, 'utf8'));
+    if (JSON.stringify(current) !== JSON.stringify(report)) {
+      const byId = new Map(current.topics.map(topic => [topic.id, topic]));
+      const changed = report.topics
+        .filter(topic => JSON.stringify(byId.get(topic.id)) !== JSON.stringify(topic))
+        .map(topic => ({
+          id: topic.id,
+          previous: byId.get(topic.id) ? {
+            teachingWords: byId.get(topic.id).teachingWords,
+            authoredChecks: byId.get(topic.id).authoredChecks,
+            workedExamples: byId.get(topic.id).workedExamples,
+          } : null,
+          actual: { teachingWords: topic.teachingWords, authoredChecks: topic.authoredChecks, workedExamples: topic.workedExamples },
+        }));
+      console.error('Learning inventory changes:', JSON.stringify({
+        previousTotals: current.totals, actualTotals: report.totals, changed
+      }, null, 2));
+      throw new Error('Learning inventory is stale; regenerate with node scripts/audit-learning-content.mjs');
+    }
+  }
   else { fs.mkdirSync(path.dirname(output), { recursive: true }); fs.writeFileSync(output, text); }
   console.log('Learning content OK:', JSON.stringify(report.totals));
 } finally { await server.close(); }
