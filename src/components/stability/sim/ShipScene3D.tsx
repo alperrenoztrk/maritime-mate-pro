@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, type MutableRefObject, type ReactNode } from "react";
+import { memo, useEffect, useMemo, useRef, type MutableRefObject, type ReactNode } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { SceneEnvironment } from "./SceneEnvironment";
@@ -6,7 +6,8 @@ import { OceanSurface3D } from "./OceanSurface3D";
 import { ShipModel3D, type ShipType } from "./ShipModel3D";
 import { immersionFor, SHIP_SCALE_DEFAULT } from "./shipDraftGeometry";
 import { buildSea, SCENE_G, type WaveComponent } from "@/lib/seakeeping";
-import { advanceOcean, createOceanFrame, createVesselMotion, stepVesselMotion, waveTargets } from "@/lib/oceanSimulation";
+import { advanceOcean, createOceanFrame, createVesselMotion, createVesselForcing, advanceVesselMotion } from "@/lib/oceanSimulation";
+import type { OceanQuality } from "./oceanQuality";
 import { SimulationClock } from "./SimulationClock";
 
 /**
@@ -54,7 +55,7 @@ export interface ShipScene3DProps {
   draftM?: number;
   /** Damped-spring roll parameters, or null for a critically-damped lerp. */
   rollDynamics?: { omega: number; zeta: number } | null;
-  /** Throttled (10 Hz) live heel callback for HUD/GZ readouts. */
+  /** Throttled (4 Hz) live heel callback for HUD/GZ readouts. */
   onHeelUpdate?: (heelRad: number) => void;
   /** Wake foam strength; 0 removes bow/stern foam. */
   wakeIntensity?: number;
@@ -64,14 +65,14 @@ export interface ShipScene3DProps {
   onMotionUpdate?: (rollRad: number, pitchRad: number, heaveUnits: number) => void;
   paused?: boolean;
   resetToken?: number;
-  quality?: 'high' | 'balanced';
+  quality?: OceanQuality;
   /** Extra scenery that does not move with the ship (e.g. harbour). */
   scenery?: ReactNode;
   /** Rendered inside the heeling group — markers tilt with the ship. */
   children?: ReactNode;
 }
 
-export function ShipScene3D({
+export const ShipScene3D = memo(function ShipScene3D({
   shipType,
   heelRad,
   trimRad = 0,
@@ -98,13 +99,16 @@ export function ShipScene3D({
   const fallbackWaves = useMemo(() => buildSea(0.35, 8, 120), []);
   const frame = useRef(createOceanFrame(sea?.waves ?? fallbackWaves));
   const motion = useRef(createVesselMotion());
+  const forcing = useRef(createVesselForcing());
   const totalHeel = useRef(0);
+  const wasPaused = useRef(true);
 
   useEffect(() => {
     frame.current.time = 0;
     frame.current.accumulator = 0;
     frame.current.phases = createOceanFrame(frame.current.waves).phases;
     motion.current = createVesselMotion();
+    forcing.current = createVesselForcing();
     velocityRef.current = 0;
     heelRef.current = 0;
     lastReport.current = -1;
@@ -112,8 +116,10 @@ export function ShipScene3D({
 
   // Update before the GPU material copies uniforms: one clock for every layer.
   useFrame((_, delta) => {
+    const elapsed = wasPaused.current ? 0 : delta;
+    wasPaused.current = paused;
     advanceOcean(frame.current, sea?.waves ?? fallbackWaves, sea?.speedUnits ?? 0.08,
-      sea?.gravity ?? SCENE_G, delta, paused, dt => {
+      sea?.gravity ?? SCENE_G, elapsed, paused, dt => {
         if (rollDynamics) {
           const { omega, zeta } = rollDynamics;
           const accel = -omega * omega * (heelRef.current - heelRad) - 2 * zeta * omega * velocityRef.current;
@@ -125,7 +131,7 @@ export function ShipScene3D({
         }
         trimRef.current += (-trimRad - trimRef.current) * (1 - Math.exp(-6 * dt));
         immersionRef.current += (immersionFor(draftM, scale) - immersionRef.current) * (1 - Math.exp(-2 * dt));
-        if (sea) stepVesselMotion(motion.current, waveTargets(frame.current, scale / SHIP_SCALE_DEFAULT), sea.rollOmega, sea.rollZeta, dt);
+        if (sea) advanceVesselMotion(motion.current, forcing.current, frame.current, sea.rollOmega, sea.rollZeta, dt, scale / SHIP_SCALE_DEFAULT);
       });
     const m = motion.current;
     totalHeel.current = heelRef.current + (sea ? m.roll : 0);
@@ -135,7 +141,7 @@ export function ShipScene3D({
       heelGroup.current.position.y = sea ? m.heave : 0;
     }
     if (immersionGroup.current) immersionGroup.current.position.y = -immersionRef.current;
-    if (frame.current.time - lastReport.current >= 0.1) {
+    if (frame.current.time - lastReport.current >= 0.25) {
       onHeelUpdate?.(totalHeel.current);
       onMotionUpdate?.(totalHeel.current, sea ? m.pitch : 0, sea ? m.heave : 0);
       lastReport.current = frame.current.time;
@@ -159,6 +165,6 @@ export function ShipScene3D({
       </group>
     </group>
   );
-}
+});
 
 export default ShipScene3D;
