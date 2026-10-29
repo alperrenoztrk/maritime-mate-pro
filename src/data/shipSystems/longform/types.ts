@@ -21,6 +21,8 @@ export type ShipSystemCallout = {
 export type ShipSystemSection = {
   subheading: string;
   paragraphs: string[];
+  /** Optional accessible instructional diagram linked to a technical section. */
+  illustration?: { src: string; alt: string; caption: string };
   /** Madde listesi (sayılı veya sayısız) */
   bullets?: string[];
   /** Kanun, yönetmelik veya pratik notlar için renkli kutucuklar */
