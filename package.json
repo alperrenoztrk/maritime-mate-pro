@@ -96,7 +96,9 @@
     "test:learning-assessment": "node --import tsx --test src/data/learningAssessment.test.ts",
     "check:learning-assessment-ui": "node scripts/check-learning-assessment-ui.mjs",
     "check:epirb-lesson": "node scripts/check-epirb-lesson.mjs",
-    "audit:technical-lessons": "node scripts/audit-technical-lesson-depth.mjs"
+    "audit:technical-lessons": "node scripts/audit-technical-lesson-depth.mjs",
+    "audit:lesson-quality": "node scripts/audit-lesson-quality.mjs",
+    "check:professional-cases": "node --import tsx scripts/check-professional-cases.mjs"
   },
   "dependencies": {
     "@aparajita/capacitor-secure-storage": "^7.1.6",
