@@ -11,7 +11,7 @@ import {
 import { AppSymbol } from "@/components/ui/AppSymbol";
 import { cn } from "@/lib/utils";
 import { hapticSelection } from "@/lib/haptics";
-import { isAppChromeHidden } from "@/lib/appChrome";
+import { useAppChromeHidden } from "@/hooks/useAppChromeVisibility";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getCoreUiTranslation } from "@/i18n/coreUiTranslations";
 import { APP_TAB_ROOTS, appTabForPath, type AppTabId } from "@/lib/appNavigation";
@@ -41,7 +41,7 @@ const lastRouteByTab: Record<AppTabId, string> = { ...APP_TAB_ROOTS };
 export function AppTabBar() {
   const { pathname } = useLocation();
   const { currentLanguage } = useLanguage();
-  const hidden = isAppChromeHidden(pathname);
+  const hidden = useAppChromeHidden();
   const activeTab = appTabForPath(pathname);
   const localize = (source: string) => getCoreUiTranslation(source, currentLanguage) ?? source;
 

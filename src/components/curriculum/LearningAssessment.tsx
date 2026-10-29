@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useHideAppChrome } from "@/hooks/useAppChromeVisibility";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Compass, RotateCcw } from "lucide-react";
 import { getCurriculumCourse } from "@/data/curriculumHierarchy";
@@ -12,6 +13,7 @@ export function LearningAssessment({ storageKey, onExplore }: { storageKey: stri
   const [state, setState] = useState<AssessmentState>(() => {
     try { return parseAssessment(localStorage.getItem(storageKey)); } catch { return emptyAssessment(); }
   });
+  useHideAppChrome(!state.completed);
   const [saveFailed, setSaveFailed] = useState(false);
   const title = useRef<HTMLHeadingElement>(null);
   const hasNavigated = useRef(false);
@@ -39,7 +41,7 @@ export function LearningAssessment({ storageKey, onExplore }: { storageKey: stri
       <div className="space-y-4 rounded-3xl border bg-card p-6 sm:p-8">
         <Compass className="h-9 w-9 text-primary" aria-hidden />
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Your starting point</p>
-        <h2 ref={title} tabIndex={-1} className="text-3xl font-bold tracking-tight outline-none">{result.level}</h2>
+        <h1 ref={title} tabIndex={-1} className="text-3xl font-bold tracking-tight outline-none">{result.level}</h1>
         <p className="text-muted-foreground">{result.correct} / {result.total} knowledge questions answered correctly. This short sample suggests where to start; it does not establish professional competence.</p>
         <p className="text-sm">{profileQuestions[3].options[state.answers.pace]}</p>
         <p className="text-sm text-muted-foreground">{state.answers.pace === 0 ? "Read one idea and explain it in your own words." : state.answers.pace === 1 ? "Read a lesson, then try its linked practice questions." : "Read, practise and revisit the points you found difficult."}</p>
@@ -79,7 +81,7 @@ export function LearningAssessment({ storageKey, onExplore }: { storageKey: stri
       <div role="progressbar" aria-label="Placement progress" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={state.step} className="h-1.5 overflow-hidden rounded-full bg-muted"><div className="h-full rounded-full bg-primary transition-[width] motion-reduce:transition-none" style={{ width: `${state.step / steps.length * 100}%` }} /></div>
       <div className="rounded-3xl border bg-card p-5 sm:p-8">
         <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">{diagnostic ? "Find your starting point" : "A path that fits you"}</p>
-        <h2 ref={title} tabIndex={-1} id="placement-question" className="text-2xl font-bold leading-tight tracking-tight outline-none sm:text-3xl">{question.title}</h2>
+        <h1 ref={title} tabIndex={-1} id="placement-question" className="text-2xl font-bold leading-tight tracking-tight outline-none sm:text-3xl">{question.title}</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{"hint" in question ? question.hint : "Choose what you think is right. It's fine not to know — that's how we find useful lessons."}</p>
         <fieldset aria-labelledby="placement-question" className="mt-6 space-y-3">
           <legend className="sr-only">Choose one answer</legend>

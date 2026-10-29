@@ -39,10 +39,14 @@ export default function MaritimeLearningMapPage() {
   const storageKey = assessmentStorageKey(getLearningProgressAccount());
   const activePath = paths.find((entry) => entry.id === pathId)!;
   const needle = normalise(query.trim());
+  if (!exploring) return (
+    <div className="min-h-[100svh] px-[max(1rem,var(--safe-left))] pt-[calc(var(--safe-top)+1.5rem)] pb-[calc(var(--safe-bottom)+1.5rem)]">
+      <LearningAssessment key={storageKey} storageKey={storageKey} onExplore={() => setExploring(true)} />
+    </div>
+  );
   let results = 0;
   return (
     <LibraryPageShell title="Maritime learning map" icon={Compass} maxWidth="max-w-5xl">
-      {!exploring ? <LearningAssessment key={storageKey} storageKey={storageKey} onExplore={() => setExploring(true)} /> : <>
       <button type="button" className="self-start min-h-11 rounded-xl border px-4 py-2 text-sm font-semibold" onClick={() => setExploring(false)}>My personal learning path</button>
       <p className="max-w-3xl text-base leading-relaxed text-muted-foreground">Understand the whole ship, find a subject and follow its branches from a first principle to shipboard practice.</p>
       <LearningProgressStatus />
@@ -104,7 +108,6 @@ export default function MaritimeLearningMapPage() {
         })}
         {needle && results === 0 && <p role="status" className="rounded-xl border border-dashed p-6 text-sm text-muted-foreground">No matching topics found. Try another term or explore a branch.</p>}
       </section>
-      </>}
     </LibraryPageShell>
   );
 }

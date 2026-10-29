@@ -15,7 +15,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { AppSymbol } from "@/components/ui/AppSymbol";
 import { useBackNavigation } from "@/hooks/useBackNavigation";
 import { findParentPath } from "@/hooks/useNavigationHierarchy";
-import { isAppChromeHidden } from "@/lib/appChrome";
+import { useAppChromeHidden } from "@/hooks/useAppChromeVisibility";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getCoreUiTranslation } from "@/i18n/coreUiTranslations";
 
@@ -69,6 +69,7 @@ const readRouteHeading = (pathname: string): string => {
  */
 export function AppNavBar() {
   const { pathname } = useLocation();
+  const chromeHidden = useAppChromeHidden();
   const { goBack, canGoBack } = useBackNavigation();
   const { currentLanguage } = useLanguage();
   const [collapsed, setCollapsed] = useState(false);
@@ -89,7 +90,7 @@ export function AppNavBar() {
   useEffect(() => {
     setCollapsed(false);
     setTitle(localizedKnownTitle(pathname, currentLanguage));
-    if (!canGoBack || isAppChromeHidden(pathname)) return;
+    if (!canGoBack || chromeHidden) return;
 
     let frame = 0;
     let observed: HTMLElement | null = null;
@@ -135,7 +136,7 @@ export function AppNavBar() {
       observer.disconnect();
       window.cancelAnimationFrame(frame);
     };
-  }, [canGoBack, currentLanguage, pathname]);
+  }, [canGoBack, chromeHidden, currentLanguage, pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,7 +162,7 @@ export function AppNavBar() {
     return () => window.clearTimeout(timer);
   }, [pathname, studyKind, title]);
 
-  if (!canGoBack || isAppChromeHidden(pathname)) return null;
+  if (!canGoBack || chromeHidden) return null;
 
   return (
     <header

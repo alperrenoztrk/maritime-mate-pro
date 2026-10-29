@@ -49,6 +49,17 @@ const goto = async (route) => {
 const noOverflow = async () => assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Horizontal overflow: ${page.url()}`);
 try {
   await goto("/lessons/map");
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 0, "Questionnaire showed the toolbar");
+  assert.equal(await page.getByRole("button", {name: "Back", exact: true}).count(), 0, "Questionnaire showed global navigation");
+  assert.equal(await page.getByRole("heading", {name: "Maritime learning map", exact: true}).count(), 0);
+  await page.getByRole("button", {name: "Explore subjects without placement", exact: true}).click();
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 1, "Leaving questions did not restore toolbar");
+  await page.getByRole("button", {name: "My personal learning path", exact: true}).click();
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 0, "Returning to questions showed toolbar");
+  await page.setViewportSize({width: 1280, height: 900});
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 0, "Desktop questions showed sidebar");
+  await noOverflow();
+  await page.setViewportSize({width: 390, height: 844});
   const next = () => page.getByRole("button", { name: "Continue", exact: true });
   const radio = (index) => page.getByRole("radio").nth(index);
   assert(await next().isDisabled());
@@ -62,6 +73,7 @@ try {
   await page.reload();
   await page.getByRole("heading", { name: "A ship floats at rest. What balances its weight?", exact: true }).waitFor();
   assert(await next().isDisabled(), "Unanswered step must require a choice");
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 0, "Resume showed the toolbar");
   await page.getByRole("button", {name: "Previous", exact: true}).click();
   assert(await radio(1).isChecked(), "Previous selection was lost");
   await next().click();
@@ -70,6 +82,7 @@ try {
   await page.getByRole("button", {name: "Show my learning path", exact: true}).click();
   await page.getByRole("heading", { name: "Ready for deeper study", exact: true }).waitFor();
   assert((await page.locator('section[aria-labelledby="placement-path"] ol a').first().getAttribute("href")) === "/lessons/meteorology/topics");
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 1, "Result did not restore toolbar");
   await page.getByText("Review my answers", {exact: true}).click();
   await page.getByText("Your answer: I don't know yet", {exact: true}).waitFor();
   await noOverflow();
@@ -79,9 +92,11 @@ try {
   await page.locator("#splash-root").waitFor({state: "detached"});
   await page.getByRole("link", { name: "Start my learning path", exact: true }).click();
   await page.waitForURL("**/lessons/meteorology/topics");
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 1, "Lesson lost toolbar");
   await goto("/lessons/map");
   await page.getByRole("button", {name: "Retake placement", exact: true}).click();
   assert(await next().isDisabled());
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 0, "Retake showed toolbar");
   await radio(2).check(); await next().click();
   await radio(2).check(); await next().click();
   await radio(2).check(); await next().click();
@@ -99,6 +114,7 @@ try {
   await page.setViewportSize({width: 1280, height: 900}); await noOverflow();
   await page.screenshot({path: path.join(output, "placement-result-desktop.png"), fullPage: true});
   await page.getByRole("button", {name: "Explore all subjects", exact: true}).click();
+  assert.equal(await page.locator("[data-app-tabbar]").count(), 1, "Catalogue lost toolbar");
   await page.getByRole("button", {name: "Engine learning sequence", exact: true}).click();
   await page.locator('input[placeholder="Find a course or topic…"]').fill("Appraisal");
   await page.locator('a[href*="navigation-appraisal"]').waitFor({state: "visible"});
