@@ -1751,5 +1751,38 @@
  },
  "λ0 / λ40": {
   "en": "λ0 / λ40"
+ },
+ "Change of trim (+ by the stern)": {
+  "en": "Change of trim (+ by the stern)"
+ },
+ "Dry-docking Upthrust (P)": {
+  "en": "Dry-docking Upthrust (P)"
+ },
+ "Height from keel to centre of gravity, corrected for free surface": {
+  "en": "Height from keel to centre of gravity, corrected for free surface"
+ },
+ "KG (fluid)": {
+  "en": "KG (fluid)"
+ },
+ "Longitudinal centre of flotation (from amidships, + aft)": {
+  "en": "Longitudinal centre of flotation (from amidships, + aft)"
+ },
+ "MCTC": {
+  "en": "MCTC"
+ },
+ "MCTC at MMM + 0.50 m and − 0.50 m. Always added.": {
+  "en": "MCTC at MMM + 0.50 m and − 0.50 m. Always added."
+ },
+ "Moment to Change Trim 1 cm (MCTC)": {
+  "en": "Moment to Change Trim 1 cm (MCTC)"
+ },
+ "Rolling coefficient (≈0.7–0.8, equals 2C of the IS Code)": {
+  "en": "Rolling coefficient (≈0.7–0.8, equals 2C of the IS Code)"
+ },
+ "Rolling Coefficient (f)": {
+  "en": "Rolling Coefficient (f)"
+ },
+ "Upthrust (P)": {
+  "en": "Upthrust (P)"
  }
 }

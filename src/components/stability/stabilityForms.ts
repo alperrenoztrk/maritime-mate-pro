@@ -142,7 +142,7 @@ export function parseCurveRows(rows: TableRow[]): { points: CurvePoint[]; errors
     points.push({ angle, value });
   });
   const angles = points.map((p) => p.angle);
-  if (new Set(angles).size !== angles.length) errors.push("Each angle may appear only once.");
+  if (new Set(angles).size !== angles.length) errors.push("Remove the duplicate angle from the table.");
   if (points.length > 0 && !angles.includes(0)) points.push({ angle: 0, value: 0 });
   points.sort((a, b) => a.angle - b.angle);
   if (points.length < 4) errors.push("Enter at least three angles besides 0°.");
