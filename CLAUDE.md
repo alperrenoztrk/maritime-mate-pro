@@ -40,6 +40,9 @@ kontrol sonuçlarını ve commit hash'ini kısa bir Türkçe raporla ver.
   `supabase/functions/_shared/englishMaritimeTerminology.ts` (T-001…T-152).
 - Kaynak metin değişince: `npm run i18n:extract`, sonra `npm run i18n:fix`.
   Çıkarıcı JSX karakter referanslarını (`&amp;`, `&rsquo;` …) React gibi çözer.
+  Yalnız yeni İngilizce arayüz metni eklendiyse hızlı yol:
+  `npm run i18n:fill-english` (24 dile İngilizce yazar ve `ui-coverage.json`'a
+  kaydeder; Türkçe metni doldurmaz).
 - Ders paragrafları (`paragraphs` alanları): kontrol edilmiş İngilizce
   `scripts/i18n/verified/paragraphs/<modül>.json` (`{türkçe: english}`) →
   `npm run i18n:paragraphs` → `public/locales/shared/lesson-paragraphs.en.json`.
@@ -90,7 +93,10 @@ Arayüz değişikliğini vite preview + Playwright ekran görüntüsüyle doğru
 - `main`'e her push `android-release.yml`'i çalıştırır ve imzalı AAB üretir
   (artifact: `marine-expert-pro-release-aab`). Build'den önce `i18n:extract`,
   `i18n:verify` ve svg/ux/tasarım kontrolleri çalışır; biri kalırsa AAB
-  üretilmez.
+  üretilmez. Lovable/PR'ın eklediği yeni İngilizce metin CI'da o derleme için
+  otomatik doldurulur (`fill-english-coverage.mjs --ci`, run sayfasında uyarı);
+  Türkçe metin ve terim hatası derlemeyi yine durdurur. Kalan kontrolün ilk
+  hata satırları run sayfasına not (annotation) olarak düşer.
 - Production build'den önce repo değişkeni `PRO_GATING_ENABLED=true` olmalı
   (`src/config/proGating.ts`). Kapalı testte kapalı kalır.
 
