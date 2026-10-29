@@ -1,76 +1,53 @@
-import { Activity } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { LineChart } from "lucide-react";
+import { area, firstRoot, smoothCurve } from "@/lib/calc/stability";
+import { ResultTable, ToolNotice, ToolPage, ToolSection, type ResultRow } from "@/components/tools/ToolKit";
+import { GzChart } from "@/components/tools/GzChart";
+import { fmt } from "@/components/tools/format";
+import { GzInputsSection } from "@/components/stability/GzInputs";
+import { useGzInputs } from "@/components/stability/useGzInputs";
+import { StabilityDisclaimer } from "@/components/stability/StabilityDisclaimer";
 
 export default function StabilityGZCurvePage() {
-  const [gm, setGm] = useState<number>(0);
-  const [heelAngle, setHeelAngle] = useState<number>(0);
+  const inputs = useGzInputs();
+  const { gz, displacement } = inputs;
+  const ready = gz.length > 0;
+  const curve = ready ? smoothCurve(gz) : null;
+  const top = ready ? Math.max(...gz.map((p) => p.angle)) : 0;
 
-  const calculateGZ = () => {
-    if (gm && heelAngle) {
-      const angleRad = (heelAngle * Math.PI) / 180;
-      const gz = gm * Math.sin(angleRad);
-      return gz.toFixed(3);
-    }
-    return null;
-  };
-
-  const gz = calculateGZ();
+  let rows: ResultRow[] = [];
+  if (curve) {
+    let max = { angle: 0, value: curve(0) };
+    for (let a = 0; a <= top; a += 0.1) if (curve(a) > max.value) max = { angle: a, value: curve(a) };
+    const vanishing = firstRoot((a) => curve(a), Math.max(max.angle, 1), top);
+    rows = [
+      { label: "Maximum GZ", value: `${fmt(max.value, 3)} m at ${fmt(max.angle, 1)}°`, emphasis: true },
+      { label: "Maximum righting moment", value: `${fmt(max.value * displacement, 0)} t·m` },
+      { label: "Area 0° – 30°", value: `${fmt(area(curve, 0, Math.min(30, top)), 4)} m·rad` },
+      ...(top >= 40 ? [{ label: "Area 0° – 40°", value: `${fmt(area(curve, 0, 40), 4)} m·rad` }] : []),
+      {
+        label: "Angle of vanishing stability",
+        value: Number.isFinite(vanishing) ? `${fmt(vanishing, 1)}°` : `beyond ${fmt(top, 0)}° (table range)`,
+      },
+      ...gz.map((p) => ({ label: `GZ at ${p.angle}°`, value: `${fmt(p.value, 3)} m` })),
+    ];
+  }
 
   return (
-    <div className="container mx-auto p-6 space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Activity className="h-6 w-6" />
-            GZ Curve and Stability Arm
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="gm">GM (Metacentric Height) (m)</Label>
-              <Input
-                id="gm"
-                type="number"
-                step="0.1"
-                value={gm || ""}
-                onChange={(e) => setGm(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="heelAngle">Angle of heel (degrees)</Label>
-              <Input
-                id="heelAngle"
-                type="number"
-                value={heelAngle || ""}
-                onChange={(e) => setHeelAngle(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-          </div>
-
-          {gz && (
-            <div className="mt-6 p-4 bg-primary/10 rounded-lg">
-              <h4 className="font-semibold mb-3 text-primary">Calculation Result</h4>
-              <p className="text-2xl font-bold">{gz} m</p>
-              <p className="text-sm text-muted-foreground mt-1">Stability Arm (GZ)</p>
-            </div>
-          )}
-
-          <div className="mt-6 p-4 bg-muted rounded-lg">
-            <h4 className="font-semibold mb-2 text-sm">Formula:</h4>
-            <p className="text-xs font-mono">GZ = GM × sin(θ)</p>
-            <p className="text-xs text-muted-foreground mt-2">
-              θ: Angle of heel (in radians)
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <ToolPage title="GZ Curve" icon={LineChart}>
+      <StabilityDisclaimer />
+      <GzInputsSection inputs={inputs} />
+      <ToolSection title="Statical stability curve" icon={LineChart}>
+        {curve ? (
+          <>
+            <GzChart title="Righting lever GZ" to={top} lines={[{ key: "gz", label: "GZ", value: curve, kind: "righting" }]} />
+            <ResultTable title="Curve values" rows={rows} copyText={rows.map((r) => `${r.label}: ${r.value}`).join("\n")} />
+          </>
+        ) : (
+          <ToolNotice tone={inputs.state.rows.some((r) => r.value && r.angle !== "0") ? "warning" : "info"}>
+            {inputs.errors.length > 0 ? inputs.errors.map((e) => <p key={e}>{e}</p>) : "Enter the KN values to draw the curve."}
+          </ToolNotice>
+        )}
+      </ToolSection>
+    </ToolPage>
   );
 }

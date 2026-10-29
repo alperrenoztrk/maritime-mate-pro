@@ -1,31 +1,18 @@
-import { MobileLayout } from "@/components/MobileLayout";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Anchor, Waves, BarChart3 } from "lucide-react";
+import { Container, Droplets, Wheat, Wrench } from "lucide-react";
+import { ToolPage } from "@/components/tools/ToolKit";
+import { ToolLinkGroup } from "@/components/tools/ToolLinkGroup";
 
 export default function StabilityPracticalPage() {
   return (
-    <MobileLayout>
-      <div className="space-y-4">
-        {/* Only buttons visible */}
-        <div className="grid grid-cols-1 gap-3">
-          <Link to="/stability/practical/tank">
-            <Button variant="outline" className="w-full justify-start gap-3 py-6 text-lg">
-              <Anchor className="h-5 w-5" /> Pontoon/Tank Volume and Mass
-            </Button>
-          </Link>
-          <Link to="/stability/practical/fwa">
-            <Button variant="outline" className="w-full justify-start gap-3 py-6 text-lg">
-              <Waves className="h-5 w-5" /> FWA and Density
-            </Button>
-          </Link>
-          <Link to="/stability/practical/ghm">
-            <Button variant="outline" className="w-full justify-start gap-3 py-6 text-lg">
-              <BarChart3 className="h-5 w-5" /> GHM Calculation
-            </Button>
-          </Link>
-        </div>
-      </div>
-    </MobileLayout>
+    <ToolPage title="Practical Stability" icon={Wrench}>
+      <ToolLinkGroup
+        title="Everyday checks"
+        links={[
+          { title: "Tank Volume and Mass", icon: Container, to: "/stability/practical/tank" },
+          { title: "FWA and Dock Water Allowance", icon: Droplets, to: "/stability/practical/fwa" },
+          { title: "Grain Heeling Moment", icon: Wheat, to: "/stability/practical/ghm" },
+        ]}
+      />
+    </ToolPage>
   );
 }

@@ -108,9 +108,14 @@ const navigationRules: NavigationRule[] = [
     pattern: /^\/stability\/practical\/(tank|fwa|ghm)$/,
     parent: () => '/stability/practical',
   },
-  // All stability subpages → Calculations (top menu)
+  // Stability tools → the stability hub, which lists all of them
   {
-    pattern: /^\/stability\/(assistant|rules|gz-imo|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|calculations|practical|quiz|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
+    pattern: /^\/stability\/(gz-imo|grain|gm|weight-shift|free-surface|gz|analysis|stable-tales|formulas|practical|shearing-bending|grain-calculation|gz-curve|wind-weather|imo-criteria)$/,
+    parent: () => '/stability/calculations',
+  },
+  // Stability hub, assistant and quiz → Calculations (top menu)
+  {
+    pattern: /^\/stability\/(assistant|rules|calculations|quiz)$/,
     parent: () => '/calculations',
   },
   { pattern: /^\/stability$/, parent: () => '/calculations' },

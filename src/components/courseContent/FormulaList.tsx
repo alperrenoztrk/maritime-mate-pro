@@ -11,9 +11,12 @@ import type { CourseEntry } from "@/data/courseContent/types";
 export function FormulaList({
   entries,
   calcHref,
+  calcHrefFor,
 }: {
   entries: CourseEntry[];
   calcHref?: string;
+  /** Per-entry calculator link; takes precedence over `calcHref#id`. */
+  calcHrefFor?: (entry: CourseEntry) => string;
 }) {
   const groups = entries.reduce<Record<string, CourseEntry[]>>((acc, e) => {
     (acc[e.group] ??= []).push(e);
@@ -34,9 +37,9 @@ export function FormulaList({
                     <div className="flex items-center justify-between gap-2">
                       <CardTitle className="text-sm font-semibold">{f.name}</CardTitle>
                       {hasCalc &&
-                        (calcHref ? (
+                        (calcHref || calcHrefFor ? (
                           <Link
-                            to={`${calcHref}#${f.id}`}
+                            to={calcHrefFor ? calcHrefFor(f) : `${calcHref}#${f.id}`}
                             className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-micro font-medium text-primary transition-colors hover:bg-primary/20"
                           >
                             <Calculator className="h-3 w-3" /> Calculate

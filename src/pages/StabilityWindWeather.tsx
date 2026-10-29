@@ -1,134 +1,142 @@
 import { Wind } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useMemo, useState } from "react";
-import { stabilityInputConstraints } from "@/utils/validation/inputConstraints";
-import { validateNumberInput } from "@/utils/validation/validateInput";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { smoothCurve, weatherCriterion, type BilgeType, type WeatherResult } from "@/lib/calc/stability";
+import { FieldGrid, FormulaLine, NumberField, ResultTable, ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
+import { CriteriaTable } from "@/components/tools/CriteriaTable";
+import { GzChart } from "@/components/tools/GzChart";
+import { fmt, parseNumber } from "@/components/tools/format";
+import { GzInputsSection } from "@/components/stability/GzInputs";
+import { useGzInputs } from "@/components/stability/useGzInputs";
+import { StabilityDisclaimer } from "@/components/stability/StabilityDisclaimer";
+import { useStabilityForm } from "@/components/stability/stabilityForms";
+
+const initial = {
+  windArea: "",
+  windLever: "",
+  breadth: "",
+  meanDraft: "",
+  lwl: "",
+  cb: "",
+  bilge: "bilge-keels" as BilgeType,
+  bilgeKeelArea: "",
+  downflooding: "",
+  deckEdge: "",
+  rollingPeriod: "",
+};
+
+const BILGES: Array<{ value: BilgeType; label: string }> = [
+  { value: "bilge-keels", label: "Bilge keels and/or bar keel" },
+  { value: "round-no-keels", label: "Round bilge, no bilge or bar keels (k = 1.0)" },
+  { value: "sharp", label: "Sharp bilges (k = 0.7)" },
+];
 
 export default function StabilityWindWeatherPage() {
-  const [windSpeed, setWindSpeed] = useState<string>("");
-  const [projectedArea, setProjectedArea] = useState<string>("");
-  const [leverArm, setLeverArm] = useState<string>("");
-  const [displacement, setDisplacement] = useState<string>("");
+  const inputs = useGzInputs();
+  const [form, setForm] = useStabilityForm("weather", initial);
+  const set = (key: keyof typeof initial) => (value: string) => setForm((prev) => ({ ...prev, [key]: value }));
+  const n = (key: keyof typeof initial) => parseNumber(form[key] as string);
 
-  const validation = useMemo(() => ({
-    windSpeed: validateNumberInput(windSpeed, stabilityInputConstraints.windWeather.windSpeed),
-    area: validateNumberInput(projectedArea, stabilityInputConstraints.windWeather.area),
-    lever: validateNumberInput(leverArm, stabilityInputConstraints.windWeather.lever),
-    displacement: validateNumberInput(displacement, stabilityInputConstraints.windWeather.displacement)
-  }), [windSpeed, projectedArea, leverArm, displacement]);
+  const required: Array<keyof typeof initial> = ["windArea", "windLever", "breadth", "meanDraft", "lwl", "cb"];
+  if (form.bilge === "bilge-keels") required.push("bilgeKeelArea");
+  const missing = required.filter((k) => !(n(k) > 0));
+  const top = inputs.gz.length ? Math.max(...inputs.gz.map((p) => p.angle)) : 0;
 
-  const result = useMemo(() => {
-    if (validation.windSpeed.error || validation.area.error || validation.lever.error) return null;
-    if (validation.windSpeed.value === null || validation.area.value === null || validation.lever.value === null) return null;
-    const windPressure = 0.0613 * Math.pow(validation.windSpeed.value, 2);
-    const windForce = windPressure * validation.area.value;
-    const heelMoment = windForce * validation.lever.value;
-    return {
-      windPressure: windPressure.toFixed(2),
-      windForce: windForce.toFixed(2),
-      heelMoment: heelMoment.toFixed(2),
-    };
-  }, [validation]);
+  let result: WeatherResult | null = null;
+  let error = "";
+  if (inputs.gz.length > 0 && missing.length === 0) {
+    if (top < 50) error = "The KN table must extend to at least 50° for the weather criterion.";
+    else {
+      try {
+        result = weatherCriterion({
+          gz: inputs.gz,
+          displacement: inputs.displacement,
+          windArea: n("windArea"),
+          windLever: n("windLever"),
+          breadth: n("breadth"),
+          meanDraft: n("meanDraft"),
+          lwl: n("lwl"),
+          blockCoefficient: n("cb"),
+          kg: inputs.kgFluid,
+          gmFluid: inputs.gmFluid,
+          bilge: form.bilge,
+          bilgeKeelArea: n("bilgeKeelArea"),
+          downfloodingAngle: n("downflooding") > 0 ? n("downflooding") : undefined,
+          deckEdgeAngle: n("deckEdge") > 0 ? n("deckEdge") : undefined,
+          rollingPeriod: n("rollingPeriod") > 0 ? n("rollingPeriod") : undefined,
+        });
+      } catch (e) {
+        error = e instanceof Error ? e.message : "The criterion could not be evaluated.";
+      }
+    }
+  }
+
+  const curve = inputs.gz.length ? smoothCurve(inputs.gz) : null;
 
   return (
-    <div className="container mx-auto p-6 space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Wind className="h-6 w-6" />
-            Wind and Weather Stability
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="windSpeed">Wind Speed (m/s)</Label>
-              <Input
-                id="windSpeed"
-                type="number"
-                value={windSpeed}
-                onChange={(e) => setWindSpeed(e.target.value)}
-                placeholder="0"
-              />
-              {validation.windSpeed.error && (
-                <p className="text-xs text-red-600">{validation.windSpeed.error}</p>
-              )}
-            </div>
+    <ToolPage title="Weather Criterion" icon={Wind}>
+      <StabilityDisclaimer />
+      <GzInputsSection inputs={inputs} />
 
-            <div className="space-y-2">
-              <Label htmlFor="projectedArea">Projection Area (m²)</Label>
-              <Input
-                id="projectedArea"
-                type="number"
-                value={projectedArea}
-                onChange={(e) => setProjectedArea(e.target.value)}
-                placeholder="0"
-              />
-              {validation.area.error && (
-                <p className="text-xs text-red-600">{validation.area.error}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="leverArm">Arm Length (m)</Label>
-              <Input
-                id="leverArm"
-                type="number"
-                step="0.1"
-                value={leverArm}
-                onChange={(e) => setLeverArm(e.target.value)}
-                placeholder="0"
-              />
-              {validation.lever.error && (
-                <p className="text-xs text-red-600">{validation.lever.error}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="displacement">Displacement (tons)</Label>
-              <Input
-                id="displacement"
-                type="number"
-                value={displacement}
-                onChange={(e) => setDisplacement(e.target.value)}
-                placeholder="0"
-              />
-              {validation.displacement.error && (
-                <p className="text-xs text-red-600">{validation.displacement.error}</p>
-              )}
-            </div>
+      <ToolSection title="Wind and roll data" icon={Wind} description="IMO 2008 IS Code Part A 2.3, severe wind and rolling criterion.">
+        <FormulaLine>lw1 = P·A·Z / (1000·g·Δ), P = 504 Pa · lw2 = 1.5 lw1 · θ1 = 109·k·X1·X2·√(r·s)</FormulaLine>
+        <FieldGrid>
+          <NumberField id="w-area" label="Windage area A" unit="m²" value={form.windArea} onChange={set("windArea")} placeholder="3200" help="Projected lateral area above the waterline, deck cargo included." />
+          <NumberField id="w-lever" label="Wind lever Z" unit="m" value={form.windLever} onChange={set("windLever")} placeholder="16.5" help="Centre of A to centre of underwater lateral area (≈ half draft)." />
+          <NumberField id="w-b" label="Moulded breadth B" unit="m" value={form.breadth} onChange={set("breadth")} placeholder="32.26" />
+          <NumberField id="w-d" label="Mean moulded draft d" unit="m" value={form.meanDraft} onChange={set("meanDraft")} placeholder="12.0" />
+          <NumberField id="w-lwl" label="Waterline length Lwl" unit="m" value={form.lwl} onChange={set("lwl")} placeholder="222" />
+          <NumberField id="w-cb" label="Block coefficient CB" value={form.cb} onChange={set("cb")} placeholder="0.84" />
+          <div className="space-y-1">
+            <Label className="text-xs">Bilge</Label>
+            <Select value={form.bilge} onValueChange={(value) => setForm((prev) => ({ ...prev, bilge: value as BilgeType }))}>
+              <SelectTrigger className="h-9"><SelectValue /></SelectTrigger>
+              <SelectContent>{BILGES.map((b) => <SelectItem key={b.value} value={b.value}>{b.label}</SelectItem>)}</SelectContent>
+            </Select>
           </div>
-
-          {result && (
-            <div className="mt-6 p-4 bg-primary/10 rounded-lg">
-              <h4 className="font-semibold mb-3 text-primary">Calculation Results</h4>
-              <div className="space-y-2 text-sm">
-                <p>
-                  <strong>Wind Pressure:</strong> {result.windPressure} N/m²
-                </p>
-                <p>
-                  <strong>Wind Force:</strong> {result.windForce} N
-                </p>
-                <p>
-                  <strong>Listing Moment:</strong> {result.heelMoment} N·m
-                </p>
-              </div>
-            </div>
+          {form.bilge === "bilge-keels" && (
+            <NumberField id="w-ak" label="Bilge keel / bar keel area Ak" unit="m²" value={form.bilgeKeelArea} onChange={set("bilgeKeelArea")} placeholder="60" help="Total area, both sides." />
           )}
-
-          <div className="mt-6 p-4 bg-muted rounded-lg">
-            <h4 className="font-semibold mb-2 text-sm">Formulas:</h4>
-            <p className="text-xs font-mono">P = 0.0613 × V²</p>
-            <p className="text-xs font-mono mt-1">F = P × A</p>
-            <p className="text-xs font-mono mt-1">M = F × h</p>
-            <p className="text-xs text-muted-foreground mt-2">
-              P: Wind pressure, V: Wind speed, A: Area, h: Arm length
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          <NumberField id="w-thetaf" label="Downflooding angle θf" unit="°" value={form.downflooding} onChange={set("downflooding")} placeholder="45" help="θ2 is the least of θf, 50° and the second lw2 intercept." />
+          <NumberField id="w-deck" label="Deck edge immersion angle" unit="°" value={form.deckEdge} onChange={set("deckEdge")} placeholder="18" help="θ0 must not exceed 16° or 80 % of this angle." />
+          <NumberField id="w-period" label="Rolling period T (optional)" unit="s" value={form.rollingPeriod} onChange={set("rollingPeriod")} placeholder="" help="Empty: T = 2·C·B / √GM is used." />
+        </FieldGrid>
+        {missing.length > 0 && inputs.gz.length > 0 && <ToolNotice>Complete the wind and roll data.</ToolNotice>}
+        {error && <ToolNotice tone="warning">{error}</ToolNotice>}
+        {result && curve && (
+          <>
+            <GzChart
+              title="Weather criterion"
+              from={Math.floor(Math.max(-40, result.theta0 - result.theta1))}
+              to={Math.min(top, Math.ceil(result.theta2 + 5))}
+              lines={[
+                { key: "gz", label: "GZ", value: (a) => (a >= 0 ? curve(a) : -curve(-a)), kind: "righting" },
+                { key: "lw1", label: "lw1 steady wind", value: () => result!.lw1, kind: "heeling" },
+                { key: "lw2", label: "lw2 gust", value: () => result!.lw2, kind: "heeling" },
+              ]}
+              markers={[
+                { angle: Math.round((result.theta0 - result.theta1) * 10) / 10, label: "θ0−θ1" },
+                { angle: Math.round(result.theta2 * 10) / 10, label: "θ2" },
+              ]}
+            />
+            <CriteriaTable title="IS Code 2008 Part A 2.3" criteria={result.criteria} />
+            {result.rangeWarnings.map((w) => <ToolNotice key={w} tone="warning">{w}</ToolNotice>)}
+            <ResultTable
+              title="Working"
+              rows={[
+                { label: "lw1 / lw2", value: `${fmt(result.lw1, 4)} / ${fmt(result.lw2, 4)} m` },
+                { label: "θ0 (steady wind heel)", value: `${fmt(result.theta0, 2)}°` },
+                { label: "X1 · X2 · k", value: `${fmt(result.factors.x1, 3)} · ${fmt(result.factors.x2, 3)} · ${fmt(result.factors.k, 3)}` },
+                { label: "r · s · T", value: `${fmt(result.factors.r, 3)} · ${fmt(result.factors.s, 4)} · ${fmt(result.factors.period, 1)} s` },
+                { label: "θ1 (roll to windward)", value: `${fmt(result.theta1, 2)}°` },
+                { label: "θ2", value: `${fmt(result.theta2, 1)}°` },
+                { label: "Area a / area b", value: `${fmt(result.areaA, 4)} / ${fmt(result.areaB, 4)} m·rad`, emphasis: true },
+              ]}
+            />
+            <ToolNotice>r = 0.73 + 0.6·OG/d is evaluated with KG fluid. Tables 2.3.4-1…4 are interpolated linearly and held at their end rows.</ToolNotice>
+          </>
+        )}
+      </ToolSection>
+    </ToolPage>
   );
 }

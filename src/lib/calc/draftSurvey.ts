@@ -12,7 +12,7 @@
  *  4. Enter the hydrostatic table at the corrected mean draft (linear
  *     interpolation between the two bracketing rows).
  *  5. First trim correction  = T × LCF × TPC × 100 / LBP          (tonnes)
- *     Second trim correction = 50 × T² × (MTC₊ − MTC₋) / LBP      (tonnes, Nemoto)
+ *     Second trim correction = 50 × T² × (MCTC₊ − MCTC₋) / LBP      (tonnes, Nemoto)
  *  6. Density correction     = Δ × ρ_dock / ρ_table
  *  7. Net displacement       = Δ_corrected − deductibles (ballast, fresh water,
  *     fuel, diesel, lube oil, bilges, other)
@@ -84,7 +84,7 @@ export interface DraftSurveyStageInput {
   dockDensity: number;
   /** Two hydrostatic rows bracketing the corrected mean draft. */
   hydrostatics: [HydrostaticRow, HydrostaticRow];
-  /** MTC (t·m/cm) at corrected mean draft + 0.50 m and − 0.50 m. */
+  /** MCTC (t·m/cm) at corrected mean draft + 0.50 m and − 0.50 m. */
   mtcPlus50: number;
   mtcMinus50: number;
   deductibles: Deductibles;

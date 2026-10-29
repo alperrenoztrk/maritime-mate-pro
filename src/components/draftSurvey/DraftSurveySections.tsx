@@ -129,8 +129,8 @@ export function SurveyStageSection({
           {field("row2Tpc", "Row 2 TPC", "t/cm", "40.20")}
           {field("row1Lcf", "Row 1 LCF", "m", "2.00")}
           {field("row2Lcf", "Row 2 LCF", "m", "1.90")}
-          {field("mtcPlus50", "MTC at draft + 0.50 m", "t·m/cm", "420", "For the second trim correction.")}
-          {field("mtcMinus50", "MTC at draft − 0.50 m", "t·m/cm", "405")}
+          {field("mtcPlus50", "MCTC at draft + 0.50 m", "t·m/cm", "420", "For the second trim correction.")}
+          {field("mtcMinus50", "MCTC at draft − 0.50 m", "t·m/cm", "405")}
         </FieldGrid>
       </ToolSection>
 

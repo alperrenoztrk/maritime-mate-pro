@@ -68,20 +68,21 @@ export const cargo: CourseTopic = {
     },
     {
       id: "effective-lashing",
-      name: "Effective Lashing Force (MSL)",
+      name: "Horizontal Component of a Lashing",
       group: "Lashing",
-      formula: "Fetkin = MSL × cos α",
+      formula: "F_h = MSL × cos α",
       variables: [
         { symbol: "MSL", label: "Maximum securing load", unit: "kN" },
         { symbol: "α", label: "Angle between the lashing and the deck", unit: "°" },
       ],
-      source: { code: "CSS Code", detail: "Cargo lashing calculation" },
+      source: { code: "CSS Code", detail: "Annex 13 — lashing angle effect" },
+      note: "Horizontal component only. The CSS Code Annex 13 balance uses the calculated strength CS = MSL / 1.5 and friction; use it for the actual securing calculation.",
       inputs: [
         { key: "msl", label: "MSL", unit: "kN", placeholder: "100" },
         { key: "alpha", label: "Angle (α)", unit: "°", placeholder: "30" },
       ],
       calculate: (v) => [
-        { label: "Effective Force", value: `${(v.msl * Math.cos((v.alpha * Math.PI) / 180)).toFixed(2)} kN` },
+        { label: "Horizontal Component (F_h)", value: `${(v.msl * Math.cos((v.alpha * Math.PI) / 180)).toFixed(2)} kN` },
       ],
     },
     {
@@ -109,14 +110,15 @@ export const cargo: CourseTopic = {
       formula: "Δ₁ = (Trim × LCF × TPC × 100) / LBP",
       variables: [
         { symbol: "Trim", label: "Trim", unit: "m" },
-        { symbol: "LCF", label: "Centre of flotation of the waterplane", unit: "m" },
+        { symbol: "LCF", label: "Longitudinal centre of flotation (from amidships, + aft)", unit: "m" },
         { symbol: "TPC", label: "Tonnes per centimetre", unit: "t/cm" },
         { symbol: "LBP", label: "Length between perpendiculars", unit: "m" },
       ],
       source: { code: "UN ECE Draft Survey Code", detail: "First trim correction" },
+      note: "Trim + by the stern; LCF from amidships, + aft. A positive result is added to the table displacement.",
       inputs: [
-        { key: "trim", label: "Trim", unit: "m", placeholder: "0.40" },
-        { key: "lcf", label: "LCF", unit: "m", placeholder: "2.5" },
+        { key: "trim", label: "Trim", unit: "m", placeholder: "0.40", help: "Corrected trim at the perpendiculars, + by the stern." },
+        { key: "lcf", label: "LCF", unit: "m", placeholder: "2.5", help: "From amidships, + aft, − forward." },
         { key: "tpc", label: "TPC", unit: "t/cm", placeholder: "25" },
         { key: "lbp", label: "LBP", unit: "m", placeholder: "150" },
       ],
@@ -177,7 +179,8 @@ export const cargo: CourseTopic = {
         { symbol: "Δ", label: "Displacement", unit: "t" },
         { symbol: "GM", label: "Corrected GM", unit: "m" },
       ],
-      source: { code: "International Grain Code", detail: "Heeling angle ≤ 12°" },
+      source: { code: "International Grain Code", detail: "Small-angle estimate of the heel" },
+      note: "Estimate only. Compliance with Grain Code A 7 must be checked on the GZ curve — use Tools → Grain Stability.",
       inputs: [
         { key: "ghm", label: "GHM", unit: "t·m", placeholder: "800" },
         { key: "disp", label: "Displacement (Δ)", unit: "t", placeholder: "12000" },
@@ -186,10 +189,7 @@ export const cargo: CourseTopic = {
       calculate: (v) => {
         if (v.disp <= 0 || v.gm <= 0) return [{ label: "Error", value: "Δ and GM must be positive" }];
         const theta = (57.3 * v.ghm) / (v.disp * v.gm);
-        return [
-          { label: "Heeling Angle", value: `${theta.toFixed(2)} °` },
-          { label: "Durum", value: theta <= 12 ? "Compliant (≤12°)" : "Limit exceeded" },
-        ];
+        return [{ label: "Approximate Heeling Angle", value: `${theta.toFixed(2)} °` }];
       },
     },
     {
@@ -205,7 +205,7 @@ export const cargo: CourseTopic = {
         { symbol: "Constant", label: "Ship's constant", unit: "t" },
       ],
       source: { code: "Deadweight (DWT) balance — cargo capacity" },
-      note: "The maximum loadable cargo is found by deducting all the fixed weights (deadweight items) from the summer DWT.",
+      note: "Use the deadweight for the load line zone and any port or channel draft limit that applies, not always the summer DWT.",
       inputs: [
         { key: "dwt", label: "Summer DWT", unit: "t", placeholder: "25000" },
         { key: "fuel", label: "Fuel + Oil", unit: "t", placeholder: "1200" },
@@ -217,7 +217,7 @@ export const cargo: CourseTopic = {
         const cargo = v.dwt - (v.fuel + v.fw + v.stores + v.constant);
         return [
           { label: "Cargo Capacity", value: `${cargo.toFixed(0)} t` },
-          { label: "Durum", value: cargo > 0 ? "Compliant" : "Deadweight exceeded" },
+          { label: "Status", value: cargo > 0 ? "Cargo capacity available" : "Deadweight exceeded" },
         ];
       },
     },
@@ -244,7 +244,7 @@ export const cargo: CourseTopic = {
         const status = v.limit > 0 ? (p <= v.limit ? "Compliant" : "Limit exceeded") : "—";
         return [
           { label: "Load Density (p)", value: `${p.toFixed(2)} t/m²` },
-          { label: "Durum", value: status },
+          { label: "Status", value: status },
         ];
       },
     },

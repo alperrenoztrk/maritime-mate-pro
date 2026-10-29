@@ -51,8 +51,8 @@ const STEPS: Step[] = [
   },
   {
     title: "8. Second trim correction (Nemoto)",
-    formula: "STC = 50 × T² × (MTC₊₅₀ − MTC₋₅₀) / LBP   (t)",
-    explanation: "MTC at MMM + 0.50 m and − 0.50 m. Always added.",
+    formula: "STC = 50 × T² × (MCTC₊₅₀ − MCTC₋₅₀) / LBP   (t)",
+    explanation: "MCTC at MMM + 0.50 m and − 0.50 m. Always added.",
   },
   {
     title: "9. Density correction",

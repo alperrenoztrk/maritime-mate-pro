@@ -179,11 +179,11 @@ export const Ship3DVisualization = () => {
           <div className="absolute bottom-2 left-2 space-y-0.5 rounded bg-background/80 px-2 py-1 text-micro">
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-red-500" />
-              <span>G - Center of Gravity</span>
+              <span>G - Centre of Gravity</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-blue-500" />
-              <span>B - Lift Center</span>
+              <span>B - Centre of Buoyancy</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="h-2 w-2 rounded-full bg-green-500" />
@@ -207,7 +207,7 @@ export const Ship3DVisualization = () => {
             </Label>
             <Slider value={[heelAngle]} onValueChange={(v) => setHeelAngle(v[0])} min={-45} max={45} step={1} />
             <div className="flex justify-between text-micro text-muted-foreground">
-              <span>Pier -45°</span>
+              <span>Port −45°</span>
               <span>Starboard +45°</span>
             </div>
           </div>
@@ -219,8 +219,8 @@ export const Ship3DVisualization = () => {
             </Label>
             <Slider value={[trimAngle]} onValueChange={(v) => setTrimAngle(v[0])} min={-10} max={10} step={0.5} />
             <div className="flex justify-between text-micro text-muted-foreground">
-              <span>Stern Trim -10°</span>
-              <span>Head Trim +10°</span>
+              <span>By the stern −10°</span>
+              <span>By the head +10°</span>
             </div>
           </div>
         </div>
@@ -233,28 +233,16 @@ export const Ship3DVisualization = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-2 text-xs">
-          <div
-            className={`rounded p-2 ${
-              Math.abs(heelAngle) > 15
-                ? "border border-red-500/30 bg-red-500/10"
-                : Math.abs(heelAngle) > 5
-                  ? "border border-yellow-500/30 bg-yellow-500/10"
-                  : "border border-green-500/30 bg-green-500/10"
-            }`}
-          >
-            <p className="font-semibold">Heel Status</p>
+          <div className="rounded border border-border/50 p-2">
+            <p className="font-semibold">Heel</p>
             <p className="text-muted-foreground">
-              {Math.abs(heelAngle) <= 5 ? "✓ Normal" : Math.abs(heelAngle) <= 15 ? "⚠ Attention" : "⚠ Dangerous!"}
+              {heelAngle === 0 ? "Upright" : `${Math.abs(heelAngle)}° to ${heelAngle > 0 ? "starboard" : "port"}`}
             </p>
           </div>
-          <div
-            className={`rounded p-2 ${
-              Math.abs(trimAngle) > 5 ? "border border-yellow-500/30 bg-yellow-500/10" : "border border-green-500/30 bg-green-500/10"
-            }`}
-          >
-            <p className="font-semibold">Trim Status</p>
+          <div className="rounded border border-border/50 p-2">
+            <p className="font-semibold">Trim</p>
             <p className="text-muted-foreground">
-              {trimAngle > 2 ? "Head Trim" : trimAngle < -2 ? "Stern Trim" : "✓ Plain Keel"}
+              {trimAngle > 0 ? `${trimAngle}° by the head` : trimAngle < 0 ? `${Math.abs(trimAngle)}° by the stern` : "Even keel"}
             </p>
           </div>
         </div>

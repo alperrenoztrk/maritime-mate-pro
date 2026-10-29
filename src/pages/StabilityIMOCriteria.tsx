@@ -1,207 +1,71 @@
-import { Shield, CheckCircle, XCircle } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { ShieldCheck, TableProperties } from "lucide-react";
+import { isCodeGeneralCriteria, smoothCurve } from "@/lib/calc/stability";
+import { FieldGrid, FormulaLine, NumberField, ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
+import { EditableTable, type TableRow } from "@/components/tools/EditableTable";
+import { CriteriaTable } from "@/components/tools/CriteriaTable";
+import { GzChart } from "@/components/tools/GzChart";
+import { parseNumber } from "@/components/tools/format";
+import { DEFAULT_KN_ANGLES, parseCurveRows, useStabilityForm } from "@/components/stability/stabilityForms";
+import { StabilityDisclaimer } from "@/components/stability/StabilityDisclaimer";
 
+const initial = {
+  gm0: "",
+  downflooding: "",
+  rows: DEFAULT_KN_ANGLES.map((angle): TableRow => ({ angle, value: angle === "0" ? "0" : "" })),
+};
+
+/** IS Code 2008 Part A 2.2 with GZ values typed from the booklet or loading instrument printout. */
 export default function StabilityIMOCriteriaPage() {
-  const [gm, setGm] = useState<number>(0);
-  const [area030, setArea030] = useState<number>(0);
-  const [area040, setArea040] = useState<number>(0);
-  const [area3040, setArea3040] = useState<number>(0);
-  const [maxGZ, setMaxGZ] = useState<number>(0);
-  const [angleMaxGZ, setAngleMaxGZ] = useState<number>(0);
+  const [form, setForm] = useStabilityForm("imo-criteria", initial);
+  const gm0 = parseNumber(form.gm0);
+  const theta = parseNumber(form.downflooding);
+  const { points, errors } = parseCurveRows(form.rows);
+  const top = points.length ? Math.max(...points.map((p) => p.angle)) : 0;
+  const typed = form.rows.some((r) => r.value && r.angle !== "0");
 
-  const checkIMOCriteria = () => {
-    if (!gm || !area030 || !area040 || !area3040 || !maxGZ || !angleMaxGZ) return null;
-
-    return {
-      gmCheck: { pass: gm >= 0.15, value: gm, required: 0.15 },
-      area030Check: { pass: area030 >= 0.055, value: area030, required: 0.055 },
-      area040Check: { pass: area040 >= 0.09, value: area040, required: 0.09 },
-      area3040Check: { pass: area3040 >= 0.03, value: area3040, required: 0.03 },
-      maxGZCheck: { pass: maxGZ >= 0.20, value: maxGZ, required: 0.20 },
-      angleMaxGZCheck: { pass: angleMaxGZ >= 30, value: angleMaxGZ, required: 30 },
-    };
-  };
-
-  const results = checkIMOCriteria();
+  const problems = [...errors];
+  if (!Number.isFinite(gm0)) problems.push("Initial GM (fluid) is required.");
+  if (errors.length === 0 && top < 40) problems.push("GZ values must extend to at least 40°.");
+  const result = problems.length === 0 ? isCodeGeneralCriteria(points, gm0, Number.isFinite(theta) && theta > 0 ? theta : undefined) : null;
 
   return (
-    <div className="container mx-auto p-6 space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-6 w-6" />
-            IMO Stability Criteria
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="gm">GM (m)</Label>
-              <Input
-                id="gm"
-                type="number"
-                step="0.01"
-                value={gm || ""}
-                onChange={(e) => setGm(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
+    <ToolPage title="IMO Stability Criteria" icon={ShieldCheck}>
+      <StabilityDisclaimer />
+      <ToolSection title="Righting levers" icon={TableProperties} description="GZ at each heel angle, corrected for free surface, from the booklet or the loading instrument.">
+        <EditableTable
+          caption="GZ table"
+          columns={[{ key: "angle", label: "Heel", unit: "°" }, { key: "value", label: "GZ", unit: "m" }]}
+          rows={form.rows}
+          onChange={(rows) => setForm((prev) => ({ ...prev, rows }))}
+          newRow={() => ({ angle: "", value: "" })}
+          addLabel="Add angle"
+        />
+        <FieldGrid>
+          <NumberField id="imo-gm0" label="Initial GM (fluid)" unit="m" value={form.gm0} onChange={(v) => setForm((p) => ({ ...p, gm0: v }))} placeholder="1.20" />
+          <NumberField id="imo-thetaf" label="Downflooding angle θf (optional)" unit="°" value={form.downflooding} onChange={(v) => setForm((p) => ({ ...p, downflooding: v }))} placeholder="45" />
+        </FieldGrid>
+      </ToolSection>
 
-            <div className="space-y-2">
-              <Label htmlFor="area030">Area Under 0-30° (m·rad)</Label>
-              <Input
-                id="area030"
-                type="number"
-                step="0.001"
-                value={area030 || ""}
-                onChange={(e) => setArea030(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="area040">Area Under 0-40° (m·rad)</Label>
-              <Input
-                id="area040"
-                type="number"
-                step="0.001"
-                value={area040 || ""}
-                onChange={(e) => setArea040(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="area3040">Area Between 30-40° (m·rad)</Label>
-              <Input
-                id="area3040"
-                type="number"
-                step="0.001"
-                value={area3040 || ""}
-                onChange={(e) => setArea3040(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="maxGZ">Maximum GZ (m)</Label>
-              <Input
-                id="maxGZ"
-                type="number"
-                step="0.01"
-                value={maxGZ || ""}
-                onChange={(e) => setMaxGZ(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="angleMaxGZ">Max GZ Angle (degrees)</Label>
-              <Input
-                id="angleMaxGZ"
-                type="number"
-                value={angleMaxGZ || ""}
-                onChange={(e) => setAngleMaxGZ(parseFloat(e.target.value))}
-                placeholder="0"
-              />
-            </div>
-          </div>
-
-          {results && (
-            <div className="space-y-3 mt-6">
-              <h4 className="font-semibold mb-3">IMO Criteria Control</h4>
-              
-              <Alert variant={results.gmCheck.pass ? "default" : "destructive"}>
-                <div className="flex items-center gap-2">
-                  {results.gmCheck.pass ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : (
-                    <XCircle className="h-4 w-4" />
-                  )}
-                  <AlertDescription>
-                    GM ≥ {results.gmCheck.required} m: {results.gmCheck.value.toFixed(3)} m{" "}
-                    {results.gmCheck.pass ? "✓" : "✗"}
-                  </AlertDescription>
-                </div>
-              </Alert>
-
-              <Alert variant={results.area030Check.pass ? "default" : "destructive"}>
-                <div className="flex items-center gap-2">
-                  {results.area030Check.pass ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : (
-                    <XCircle className="h-4 w-4" />
-                  )}
-                  <AlertDescription>
-                    Area 0–30° ≥ {results.area030Check.required} m·rad: {results.area030Check.value.toFixed(3)} m·rad{" "}
-                    {results.area030Check.pass ? "✓" : "✗"}
-                  </AlertDescription>
-                </div>
-              </Alert>
-
-              <Alert variant={results.area040Check.pass ? "default" : "destructive"}>
-                <div className="flex items-center gap-2">
-                  {results.area040Check.pass ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : (
-                    <XCircle className="h-4 w-4" />
-                  )}
-                  <AlertDescription>
-                    Area 0–40° ≥ {results.area040Check.required} m·rad: {results.area040Check.value.toFixed(3)} m·rad{" "}
-                    {results.area040Check.pass ? "✓" : "✗"}
-                  </AlertDescription>
-                </div>
-              </Alert>
-
-              <Alert variant={results.area3040Check.pass ? "default" : "destructive"}>
-                <div className="flex items-center gap-2">
-                  {results.area3040Check.pass ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : (
-                    <XCircle className="h-4 w-4" />
-                  )}
-                  <AlertDescription>
-                    Area 30–40° ≥ {results.area3040Check.required} m·rad: {results.area3040Check.value.toFixed(3)} m·rad{" "}
-                    {results.area3040Check.pass ? "✓" : "✗"}
-                  </AlertDescription>
-                </div>
-              </Alert>
-
-              <Alert variant={results.maxGZCheck.pass ? "default" : "destructive"}>
-                <div className="flex items-center gap-2">
-                  {results.maxGZCheck.pass ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : (
-                    <XCircle className="h-4 w-4" />
-                  )}
-                  <AlertDescription>
-                    Max GZ ≥ {results.maxGZCheck.required} m: {results.maxGZCheck.value.toFixed(3)} m{" "}
-                    {results.maxGZCheck.pass ? "✓" : "✗"}
-                  </AlertDescription>
-                </div>
-              </Alert>
-
-              <Alert variant={results.angleMaxGZCheck.pass ? "default" : "destructive"}>
-                <div className="flex items-center gap-2">
-                  {results.angleMaxGZCheck.pass ? (
-                    <CheckCircle className="h-4 w-4" />
-                  ) : (
-                    <XCircle className="h-4 w-4" />
-                  )}
-                  <AlertDescription>
-                    Max GZ Angle ≥ {results.angleMaxGZCheck.required}°: {results.angleMaxGZCheck.value.toFixed(1)}°{" "}
-                    {results.angleMaxGZCheck.pass ? "✓" : "✗"}
-                  </AlertDescription>
-                </div>
-              </Alert>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+      <ToolSection title="IS Code 2008 Part A 2.2" icon={ShieldCheck} description="General criteria for cargo and passenger ships.">
+        <FormulaLine>Areas 0–30° ≥ 0.055 · 0–40°(θf) ≥ 0.090 · 30–40°(θf) ≥ 0.030 m·rad · GZ ≥ 0.20 m at ≥ 30° · GZmax at ≥ 25° · GM0 ≥ 0.15 m</FormulaLine>
+        {result ? (
+          <>
+            <GzChart
+              title="Righting lever GZ"
+              to={top}
+              lines={[{ key: "gz", label: "GZ", value: smoothCurve(points), kind: "righting" }]}
+              markers={result.upperAngle < 40 ? [{ angle: result.upperAngle, label: "θf" }] : []}
+            />
+            <CriteriaTable title="Result" criteria={result.criteria} />
+          </>
+        ) : (
+          <ToolNotice tone={typed ? "warning" : "info"}>{typed ? problems.map((p) => <p key={p}>{p}</p>) : "Enter the GZ values and the initial GM."}</ToolNotice>
+        )}
+        <ToolNotice>
+          Areas are integrated on a shape-preserving cubic through the table values. Ships may also have to meet the
+          weather criterion (2.3) and any special criteria for their type.
+        </ToolNotice>
+      </ToolSection>
+    </ToolPage>
   );
 }

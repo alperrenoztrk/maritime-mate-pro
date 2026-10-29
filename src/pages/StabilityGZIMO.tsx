@@ -1,304 +1,59 @@
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useMemo, useRef, useState } from "react";
-import { ShipGeometry } from "@/types/hydrostatic";
-import { HydrostaticCalculations } from "@/services/hydrostaticCalculations";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Line, LineChart, CartesianGrid, XAxis, YAxis, ReferenceLine, ReferenceDot } from "recharts";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { HydrostaticUtils } from "@/utils/hydrostaticUtils";
-import { exportNodeToPng, exportToCsv } from "@/utils/exportUtils";
+import { ShieldCheck } from "lucide-react";
+import { isCodeGeneralCriteria, smoothCurve } from "@/lib/calc/stability";
+import { FormulaLine, NumberField, ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
+import { CriteriaTable } from "@/components/tools/CriteriaTable";
+import { GzChart } from "@/components/tools/GzChart";
+import { parseNumber } from "@/components/tools/format";
+import { GzInputsSection } from "@/components/stability/GzInputs";
+import { useGzInputs } from "@/components/stability/useGzInputs";
+import { StabilityDisclaimer } from "@/components/stability/StabilityDisclaimer";
+import { useStabilityForm } from "@/components/stability/stabilityForms";
 
+/** IS Code 2008 Part A 2.2 check with GZ worked out from the KN cross curves. */
 export default function StabilityGZIMO() {
-  const chartRef = useRef<HTMLDivElement>(null);
-  
-  // Temel ve İleri mod seçimi
-  const [basicMode, setBasicMode] = useState<boolean>(true);
-  const [advancedMode, setAdvancedMode] = useState<boolean>(false);
-  
-  const [geometry, setGeometry] = useState<ShipGeometry>({
-    length: 180,
-    breadth: 30,
-    depth: 18,
-    draft: 10,
-    blockCoefficient: 0.75,
-    waterplaneCoefficient: 0.85,
-    midshipCoefficient: 0.98,
-    prismaticCoefficient: 0.77,
-    verticalPrismaticCoefficient: 0.75,
-  });
-  const [kg, setKg] = useState<number>(12);
-  const [showInfo, setShowInfo] = useState<boolean>(false);
+  const inputs = useGzInputs();
+  const [extra, setExtra] = useStabilityForm("gz-imo", { downflooding: "" });
+  const theta = parseNumber(extra.downflooding);
+  const top = inputs.gz.length ? Math.max(...inputs.gz.map((p) => p.angle)) : 0;
 
-  const [data, setData] = useState<ReturnType<typeof HydrostaticCalculations.calculateStabilityData> | null>(null);
-  const [imo, setImo] = useState<ReturnType<typeof HydrostaticCalculations.calculateIMOStabilityCriteria> | null>(null);
-  const [errors, setErrors] = useState<string[]>([]);
-
-  const handleChange = (key: keyof ShipGeometry) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
-    setGeometry((prev) => ({ ...prev, [key]: isNaN(value) ? 0 : value }));
-  };
-
-  const handleCalculate = () => {
-    const v = HydrostaticUtils.validateShipGeometry(geometry);
-    setErrors(v.errors);
-    if (!v.isValid) {
-      setData(null);
-      setImo(null);
-      return;
-    }
-    const stability = HydrostaticCalculations.calculateStabilityData(geometry, kg);
-    const imoCriteria = HydrostaticCalculations.calculateIMOStabilityCriteria(stability);
-    setData(stability);
-    setImo(imoCriteria);
-  };
-
-  const complianceText = useMemo(() => {
-    if (!imo) return '';
-    return imo.compliance ? 'Compliant' : 'not suitable';
-  }, [imo]);
-
-  const chartData = useMemo(() => {
-    if (!data) return [] as { angle: number; gz: number }[];
-    return data.angles.map((a, i) => ({ angle: a, gz: Number(data.gz[i].toFixed(3)) }));
-  }, [data]);
-
-  const handleExportPng = async () => {
-    if (chartRef.current) await exportNodeToPng(chartRef.current, 'gz-curve.png');
-  };
-
-  const handleExportCsv = () => {
-    if (!data) return;
-    exportToCsv(data.angles.map((a, i) => ({ angle: a, gz: data.gz[i], moment_kNm: data.rightingMoment[i] / 1000 })), 'gz-curve.csv');
-  };
+  let content: JSX.Element;
+  if (inputs.gz.length === 0) {
+    content = <ToolNotice>{inputs.errors.length ? inputs.errors.map((e) => <p key={e}>{e}</p>) : "Enter the KN values."}</ToolNotice>;
+  } else if (top < 40) {
+    content = <ToolNotice tone="warning">The KN table must extend to at least 40° for the IS Code areas.</ToolNotice>;
+  } else {
+    const result = isCodeGeneralCriteria(inputs.gz, inputs.gmFluid, Number.isFinite(theta) && theta > 0 ? theta : undefined);
+    const curve = smoothCurve(inputs.gz);
+    content = (
+      <>
+        <GzChart
+          title="Righting lever GZ"
+          to={top}
+          lines={[{ key: "gz", label: "GZ", value: curve, kind: "righting" }]}
+          markers={result.upperAngle < 40 ? [{ angle: result.upperAngle, label: "θf" }] : []}
+        />
+        <CriteriaTable title="IS Code 2008 Part A 2.2" criteria={result.criteria} />
+      </>
+    );
+  }
 
   return (
-    <div className="container mx-auto p-6 space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>GZ Curve and IMO Criteria</CardTitle>
-          {/* Mod Seçimi */}
-          <div className="flex gap-2 mt-4">
-            <Button
-              variant={basicMode ? "default" : "outline"}
-              size="sm"
-              onClick={() => {
-                setBasicMode(true);
-                setAdvancedMode(false);
-              }}
-            >
-              Basic
-            </Button>
-            <Button
-              variant={advancedMode ? "default" : "outline"}
-              size="sm"
-              onClick={() => {
-                setAdvancedMode(true);
-                setBasicMode(false);
-              }}
-            >
-              Next
-            </Button>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {!!errors.length && (
-            <Alert variant="destructive">
-              <AlertTitle>Input Error</AlertTitle>
-              <AlertDescription>
-                <ul className="list-disc ml-4">
-                  {errors.map((e, i) => (<li key={i}>{e}</li>))}
-                </ul>
-              </AlertDescription>
-            </Alert>
-          )}
-
-          {/* Temel Mod - Sadece gerekli alanlar */}
-          {basicMode && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <div>
-                <Label>Length LBP (m)</Label>
-                <Input type="number" value={geometry.length} onChange={handleChange('length')} />
-              </div>
-              <div>
-                <Label>Width B (m)</Label>
-                <Input type="number" value={geometry.breadth} onChange={handleChange('breadth')} />
-              </div>
-              <div>
-                <Label>Draft T (m)</Label>
-                <Input type="number" value={geometry.draft} onChange={handleChange('draft')} />
-              </div>
-              <div>
-                <Label>C b</Label>
-                <Input type="number" step="0.01" value={geometry.blockCoefficient} onChange={handleChange('blockCoefficient')} />
-              </div>
-              <div>
-                <Label>KG (m)</Label>
-                <Input type="number" step="0.01" value={kg} onChange={(e) => setKg(parseFloat(e.target.value))} />
-              </div>
-            </div>
-          )}
-
-          {/* İleri Mod - Tüm alanlar */}
-          {advancedMode && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <div>
-                <Label>Length LBP (m)</Label>
-                <Input type="number" value={geometry.length} onChange={handleChange('length')} />
-              </div>
-              <div>
-                <Label>Width B (m)</Label>
-                <Input type="number" value={geometry.breadth} onChange={handleChange('breadth')} />
-              </div>
-              <div>
-                <Label>Depth D (m)</Label>
-                <Input type="number" value={geometry.depth} onChange={handleChange('depth')} />
-              </div>
-              <div>
-                <Label>Draft T (m)</Label>
-                <Input type="number" value={geometry.draft} onChange={handleChange('draft')} />
-              </div>
-              <div>
-                <Label>C b</Label>
-                <Input type="number" step="0.01" value={geometry.blockCoefficient} onChange={handleChange('blockCoefficient')} />
-              </div>
-              <div>
-                <Label>Cwp</Label>
-                <Input type="number" step="0.01" value={geometry.waterplaneCoefficient} onChange={handleChange('waterplaneCoefficient')} />
-              </div>
-              <div>
-                <Label>Cm</Label>
-                <Input type="number" step="0.01" value={geometry.midshipCoefficient} onChange={handleChange('midshipCoefficient')} />
-              </div>
-              <div>
-                <Label>Cp</Label>
-                <Input type="number" step="0.01" value={geometry.prismaticCoefficient} onChange={handleChange('prismaticCoefficient')} />
-              </div>
-              <div>
-                <Label>Ans.</Label>
-                <Input type="number" step="0.01" value={geometry.verticalPrismaticCoefficient} onChange={handleChange('verticalPrismaticCoefficient')} />
-              </div>
-              <div>
-                <Label>KG (m)</Label>
-                <Input type="number" step="0.01" value={kg} onChange={(e) => setKg(parseFloat(e.target.value))} />
-              </div>
-            </div>
-          )}
-
-          <div className="flex flex-wrap gap-2">
-            <Button variant="primary" onClick={handleCalculate}>Calculate</Button>
-            <Button variant="outline" className="gap-2" onClick={handleExportPng}><Download className="h-4 w-4" /> PNG</Button>
-            <Button variant="outline" className="gap-2" onClick={handleExportCsv}><Download className="h-4 w-4" /> CSV</Button>
-            <Button variant="ghost" onClick={() => { setData(null); setImo(null); setErrors([]); }}>Temizle</Button>
-            <Button variant="outline" onClick={() => setShowInfo(!showInfo)}>
-              {showInfo ? 'Hide Information' : 'IMO Information and Criteria'}
-            </Button>
-          </div>
-
-          {showInfo && (
-            <Alert>
-              <AlertTitle>IMO Stability Criteria and Formulas</AlertTitle>
-              <AlertDescription className="space-y-2 text-sm">
-                <div><strong>Area 0-30°:</strong> ≥ 0.055 m·rad (3.15 m·derece)</div>
-                <div><strong>Area 0-40°:</strong> ≥ 0.090 m·rad (5.16 m·derece)</div>
-                <div><strong>Area 30-40°:</strong> ≥ 0.030 m·rad (1.72 m·derece)</div>
-                <div><strong>Max GZ:</strong> ≥ 0.20 m and at an angle of 30° or greater</div>
-                <div><strong>GM₀:</strong> ≥ 0.15 m (for small cargo ships)</div>
-                <div><strong>Vanishing Angle:</strong> ≥ 30° (preferably ≥ 60°)</div>
-                <div className="text-xs text-muted-foreground mt-2">
-                  These criteria are essential requirements according to IMO MSC.267(85) and SOLAS 2009
-                </div>
-              </AlertDescription>
-            </Alert>
-          )}
-
-          {data && imo && (
-            <div className="space-y-4">
-              <div ref={chartRef}>
-                <ChartContainer
-                  config={{ gz: { label: 'GZ', color: 'hsl(var(--primary))' } }}
-                  className="w-full h-60"
-                >
-                  <LineChart data={chartData} margin={{ left: 12, right: 12, top: 12, bottom: 12 }}>
-                    <CartesianGrid strokeDasharray="4 4" />
-                    <XAxis dataKey="angle" tickFormatter={(v) => `${v}°`} />
-                    <YAxis tickFormatter={(v) => `${v} m`} />
-                    <ChartTooltip content={<ChartTooltipContent labelKey="angle" nameKey="gz" />} />
-                    <Line type="monotone" dataKey="gz" stroke="var(--color-gz)" strokeWidth={2} dot={false} />
-                    <ReferenceLine x={data.maxGzAngle} stroke="#10b981" strokeDasharray="3 3" label={{ value: "Max GZ", position: "top" }} />
-                    <ReferenceLine x={data.vanishingAngle} stroke="#ef4444" strokeDasharray="3 3" label={{ value: "Vanishing", position: "top" }} />
-                    <ReferenceDot x={data.maxGzAngle} y={data.maxGz} r={5} fill="#10b981" stroke="#0f172a" />
-                    <ReferenceDot x={data.vanishingAngle} y={0} r={4} fill="#ef4444" stroke="#0f172a" />
-                  </LineChart>
-                </ChartContainer>
-              </div>
-              <div className="rounded-lg border border-slate-200/60 bg-slate-50 p-3 text-sm text-slate-700 dark:border-slate-700/60 dark:bg-slate-900/40 dark:text-slate-200">
-                Note: The maximum GZ point shows the ship's highest righting moment capacity. Beyond the vanishing angle GZ approaches zero and stability falls away rapidly. The IMO area criteria are used to verify the energy capacity of this curve.
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Max GZ</div>
-                  <div className="text-xl font-semibold">{data.maxGz.toFixed(3)} m</div>
-                </div>
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Max GZ Angle</div>
-                  <div className="text-xl font-semibold">{data.maxGzAngle}°</div>
-                </div>
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Vanishing Angle</div>
-                  <div className="text-xl font-semibold">{data.vanishingAngle}°</div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Area (0–30°)</div>
-                  <div className="text-xl font-semibold">{imo.area0to30.toFixed(3)} m·rad</div>
-                </div>
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Area (0–40°)</div>
-                  <div className="text-xl font-semibold">{imo.area0to40.toFixed(3)} m·rad</div>
-                </div>
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Area (30–40°)</div>
-                  <div className="text-xl font-semibold">{imo.area30to40.toFixed(3)} m·rad</div>
-                </div>
-                <div className="rounded-md border p-3">
-                  <div className="text-xs text-muted-foreground">Eligibility</div>
-                  <div className="text-xl font-semibold">{complianceText}</div>
-                </div>
-              </div>
-
-              {/* Basit GZ tablo önizlemesi */}
-              <div className="rounded-md border p-3 overflow-auto max-h-80">
-                <div className="text-sm font-semibold mb-2">GZ Curve (0–90°)</div>
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="text-muted-foreground">
-                      <th className="text-left p-1">Angle (°)</th>
-                      <th className="text-left p-1">GZ (m)</th>
-                      <th className="text-left p-1">Torque (kNm)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.angles.map((a, i) => (
-                      <tr key={a} className="border-t">
-                        <td className="p-1">{a}</td>
-                        <td className="p-1">{data.gz[i].toFixed(3)}</td>
-                        <td className="p-1">{(data.rightingMoment[i] / 1000).toFixed(0)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+    <ToolPage title="IS Code Check from KN" icon={ShieldCheck}>
+      <StabilityDisclaimer />
+      <GzInputsSection inputs={inputs} />
+      <ToolSection title="General intact stability criteria" icon={ShieldCheck} description="IMO 2008 IS Code (MSC.267(85)) Part A 2.2.">
+        <FormulaLine>Areas 0–30° ≥ 0.055 · 0–40° ≥ 0.090 · 30–40° ≥ 0.030 m·rad</FormulaLine>
+        <NumberField
+          id="gzimo-theta-f"
+          label="Downflooding angle θf (optional)"
+          unit="°"
+          value={extra.downflooding}
+          onChange={(value) => setExtra({ downflooding: value })}
+          placeholder="45"
+          help="From the booklet; if below 40° the 40° areas stop at θf."
+        />
+        {content}
+      </ToolSection>
+    </ToolPage>
   );
 }

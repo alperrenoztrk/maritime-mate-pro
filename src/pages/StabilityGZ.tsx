@@ -1,18 +1,22 @@
-import { Button } from "@/components/ui/button";
+import { Activity } from "lucide-react";
+import { stability } from "@/data/courseContent/stability";
+import { CalculatorCard } from "@/components/courseContent/CalculatorCard";
+import { ToolPage } from "@/components/tools/ToolKit";
+import { StabilityDisclaimer } from "@/components/stability/StabilityDisclaimer";
 
+/** Single-angle righting lever tools; the cards are the course calculators (same tested engine). */
+const ENTRY_IDS = ["gz-kn", "gz-small", "wall-sided-gz", "righting-moment", "angle-of-loll"];
 
-import { HydrostaticsStabilityCalculations } from "@/components/calculations/HydrostaticsStabilityCalculations";
-import StabilityAssistantPopup from "@/components/StabilityAssistantPopup";
-
-export default function StabilityGZPage(){
+export default function StabilityGZPage() {
+  const entries = ENTRY_IDS.map((id) => stability.entries.find((entry) => entry.id === id)).filter((e) => e !== undefined);
   return (
-    <div className="container mx-auto p-6 space-y-4">
-<HydrostaticsStabilityCalculations singleMode section="stability" calc="gz" />
-      
-      {/* Stabilite Asistanı */}
-      <div className="mt-6">
-        <StabilityAssistantPopup />
-      </div>
-    </div>
+    <ToolPage title="Righting Lever (GZ)" icon={Activity}>
+      <StabilityDisclaimer />
+      {entries.map((entry) => (
+        <div key={entry.id} id={entry.id} className="scroll-mt-24">
+          <CalculatorCard entry={entry} />
+        </div>
+      ))}
+    </ToolPage>
   );
 }

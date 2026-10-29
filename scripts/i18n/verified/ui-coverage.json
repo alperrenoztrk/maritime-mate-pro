@@ -1139,5 +1139,617 @@
  },
  "Cargo and Stability": {
   "en": "Cargo and Stability"
+ },
+ "3D ship model": {
+  "en": "3D ship model"
+ },
+ "A value exceeds the permissible limit: change the loading or ballast sequence before continuing.": {
+  "en": "A value exceeds the permissible limit: change the loading or ballast sequence before continuing."
+ },
+ "Actual / permissible": {
+  "en": "Actual / permissible"
+ },
+ "Actual GHM ≤ Maximum permissible heeling moment": {
+  "en": "Actual GHM ≤ Maximum permissible heeling moment"
+ },
+ "Add compartment": {
+  "en": "Add compartment"
+ },
+ "After loading / discharging": {
+  "en": "After loading / discharging"
+ },
+ "After the shift": {
+  "en": "After the shift"
+ },
+ "All criteria met": {
+  "en": "All criteria met"
+ },
+ "Allowances": {
+  "en": "Allowances"
+ },
+ "An official inclining experiment follows the IS Code Part B Annex 1 procedure (several shifts, plotted).": {
+  "en": "An official inclining experiment follows the IS Code Part B Annex 1 procedure (several shifts, plotted)."
+ },
+ "Angle of vanishing stability": {
+  "en": "Angle of vanishing stability"
+ },
+ "Approximate Heeling Angle": {
+  "en": "Approximate Heeling Angle"
+ },
+ "Approximate Heeling Angle (θ)": {
+  "en": "Approximate Heeling Angle (θ)"
+ },
+ "Area 0° – 30°": {
+  "en": "Area 0° – 30°"
+ },
+ "Area 0° – 40°": {
+  "en": "Area 0° – 40°"
+ },
+ "Area a / area b": {
+  "en": "Area a / area b"
+ },
+ "Areas are integrated on a shape-preserving cubic through the table values. Ships may also have to meet the weather criterion (2.3) and any special criteria for their type.": {
+  "en": "Areas are integrated on a shape-preserving cubic through the table values. Ships may also have to meet the weather criterion (2.3) and any special criteria for their type."
+ },
+ "B - Centre of Buoyancy": {
+  "en": "B - Centre of Buoyancy"
+ },
+ "Bilge keels and/or bar keel": {
+  "en": "Bilge keels and/or bar keel"
+ },
+ "Breadth b": {
+  "en": "Breadth b"
+ },
+ "By the head +10°": {
+  "en": "By the head +10°"
+ },
+ "By the stern −10°": {
+  "en": "By the stern −10°"
+ },
+ "Calculation record": {
+  "en": "Calculation record"
+ },
+ "Calculation Record": {
+  "en": "Calculation Record"
+ },
+ "Cargo and Draft Survey": {
+  "en": "Cargo and Draft Survey"
+ },
+ "Cargo still to load (TPC in dock water)": {
+  "en": "Cargo still to load (TPC in dock water)"
+ },
+ "Change of trim (+ by the head)": {
+  "en": "Change of trim (+ by the head)"
+ },
+ "Check points": {
+  "en": "Check points"
+ },
+ "Check the heel against the limit in the gear's manual and the ship's heavy-lift instructions; ballast to counter-heel before the lift if needed.": {
+  "en": "Check the heel against the limit in the gear's manual and the ship's heavy-lift instructions; ballast to counter-heel before the lift if needed."
+ },
+ "Compare the GHM with the maximum permissible heeling moment from the manual on the Permissible Grain Moment page, or check the full Grain Code criteria on the Grain Stability Criteria page.": {
+  "en": "Compare the GHM with the maximum permissible heeling moment from the manual on the Permissible Grain Moment page, or check the full Grain Code criteria on the Grain Stability Criteria page."
+ },
+ "Compartment": {
+  "en": "Compartment"
+ },
+ "Compartment capacity": {
+  "en": "Compartment capacity"
+ },
+ "Compartments": {
+  "en": "Compartments"
+ },
+ "Complete the wind and roll data.": {
+  "en": "Complete the wind and roll data."
+ },
+ "Condition": {
+  "en": "Condition"
+ },
+ "Contents": {
+  "en": "Contents"
+ },
+ "Copy Record": {
+  "en": "Copy Record"
+ },
+ "Criteria": {
+  "en": "Criteria"
+ },
+ "Cross curves (KN)": {
+  "en": "Cross curves (KN)"
+ },
+ "Curve values": {
+  "en": "Curve values"
+ },
+ "Derrick head height above keel": {
+  "en": "Derrick head height above keel"
+ },
+ "Displacement at the Same Draft in Fresh Water": {
+  "en": "Displacement at the Same Draft in Fresh Water"
+ },
+ "Displacement in sea water at this draft": {
+  "en": "Displacement in sea water at this draft"
+ },
+ "Distance from the LCF to the after point of contact on the blocks": {
+  "en": "Distance from the LCF to the after point of contact on the blocks"
+ },
+ "Dock water allowance (DWA)": {
+  "en": "Dock water allowance (DWA)"
+ },
+ "Draft forward / aft": {
+  "en": "Draft forward / aft"
+ },
+ "Drafts F / A": {
+  "en": "Drafts F / A"
+ },
+ "Dry-docking": {
+  "en": "Dry-docking"
+ },
+ "During the lift": {
+  "en": "During the lift"
+ },
+ "Effective GM at the critical instant": {
+  "en": "Effective GM at the critical instant"
+ },
+ "Enter at least one slack tank.": {
+  "en": "Enter at least one slack tank."
+ },
+ "Enter at least one value with its limit.": {
+  "en": "Enter at least one value with its limit."
+ },
+ "Enter both moments.": {
+  "en": "Enter both moments."
+ },
+ "Enter KN values to at least 40° to evaluate the criteria.": {
+  "en": "Enter KN values to at least 40° to evaluate the criteria."
+ },
+ "Enter the dimensions, depth and density.": {
+  "en": "Enter the dimensions, depth and density."
+ },
+ "Enter the displacement, KM, KG, MCTC and l.": {
+  "en": "Enter the displacement, KM, KG, MCTC and l."
+ },
+ "Enter the FWA, or Δ and TPC.": {
+  "en": "Enter the FWA, or Δ and TPC."
+ },
+ "Enter the GZ values and the initial GM.": {
+  "en": "Enter the GZ values and the initial GM."
+ },
+ "Enter the KN values to draw the curve.": {
+  "en": "Enter the KN values to draw the curve."
+ },
+ "Enter the KN values.": {
+  "en": "Enter the KN values."
+ },
+ "Enter the stowage factor and at least one compartment moment.": {
+  "en": "Enter the stowage factor and at least one compartment moment."
+ },
+ "Estimate only. Compliance with Grain Code A 7 must be checked on the GZ curve — use Tools → Grain Stability.": {
+  "en": "Estimate only. Compliance with Grain Code A 7 must be checked on the GZ curve — use Tools → Grain Stability."
+ },
+ "Everyday checks": {
+  "en": "Everyday checks"
+ },
+ "Fail": {
+  "en": "Fail"
+ },
+ "Filled, trimmed or untrimmed (× 1.00)": {
+  "en": "Filled, trimmed or untrimmed (× 1.00)"
+ },
+ "Filled, trimmed, underdeck voids used for VCG (× 1.06)": {
+  "en": "Filled, trimmed, underdeck voids used for VCG (× 1.06)"
+ },
+ "For tanks without calibration tables. Ship's tanks are measured with the approved sounding/ullage tables, corrected for trim and list. Ship upright and on even keel assumed.": {
+  "en": "For tanks without calibration tables. Ship's tanks are measured with the approved sounding/ullage tables, corrected for trim and list. Ship upright and on even keel assumed."
+ },
+ "For training and cross-checking. The ship's approved stability booklet and loading instrument have priority; take KM, KN, FSM and limits from them.": {
+  "en": "For training and cross-checking. The ship's approved stability booklet and loading instrument have priority; take KM, KN, FSM and limits from them."
+ },
+ "Free surface correction ΣFSM / Δ": {
+  "en": "Free surface correction ΣFSM / Δ"
+ },
+ "Free surface moment": {
+  "en": "Free surface moment"
+ },
+ "Fresh water allowance (FWA)": {
+  "en": "Fresh water allowance (FWA)"
+ },
+ "From the aft perpendicular (+ fwd)": {
+  "en": "From the aft perpendicular (+ fwd)"
+ },
+ "FSM (table)": {
+  "en": "FSM (table)"
+ },
+ "FWA and Dock Water Allowance": {
+  "en": "FWA and Dock Water Allowance"
+ },
+ "G - Centre of Gravity": {
+  "en": "G - Centre of Gravity"
+ },
+ "General intact stability criteria": {
+  "en": "General intact stability criteria"
+ },
+ "GM (fluid)": {
+  "en": "GM (fluid)"
+ },
+ "GM (negative)": {
+  "en": "GM (negative)"
+ },
+ "GM fluid": {
+  "en": "GM fluid"
+ },
+ "GM fluid = KM − KG − ΣFSM / Δ ;  Trim = Δ (LCB − LCG) / (100 · MCTC)": {
+  "en": "GM fluid = KM − KG − ΣFSM / Δ ;  Trim = Δ (LCB − LCG) / (100 · MCTC)"
+ },
+ "GM fluid after the shift": {
+  "en": "GM fluid after the shift"
+ },
+ "GM fluid during the lift": {
+  "en": "GM fluid during the lift"
+ },
+ "GM fluid is below the IS Code minimum initial GM of 0.15 m (Part A 2.2.4).": {
+  "en": "GM fluid is below the IS Code minimum initial GM of 0.15 m (Part A 2.2.4)."
+ },
+ "GM from the inclining": {
+  "en": "GM from the inclining"
+ },
+ "Grain Code A 7": {
+  "en": "Grain Code A 7"
+ },
+ "Grain Code A 7 by the manual's table": {
+  "en": "Grain Code A 7 by the manual's table"
+ },
+ "Grain Code A 7.1": {
+  "en": "Grain Code A 7.1"
+ },
+ "Grain heeling arm": {
+  "en": "Grain heeling arm"
+ },
+ "Grain heeling arm against GZ": {
+  "en": "Grain heeling arm against GZ"
+ },
+ "Grain heeling moment (GHM)": {
+  "en": "Grain heeling moment (GHM)"
+ },
+ "GZ = KN − KG fluid × sin θ − TCG × cos θ. The curve between table angles is drawn with a shape-preserving cubic.": {
+  "en": "GZ = KN − KG fluid × sin θ − TCG × cos θ. The curve between table angles is drawn with a shape-preserving cubic."
+ },
+ "Heavy lift with ship's gear": {
+  "en": "Heavy lift with ship's gear"
+ },
+ "Heel from the off-centre weight": {
+  "en": "Heel from the off-centre weight"
+ },
+ "Heel with the weight at full outreach": {
+  "en": "Heel with the weight at full outreach"
+ },
+ "Highest": {
+  "en": "Highest"
+ },
+ "Horizontal Component (F_h)": {
+  "en": "Horizontal Component (F_h)"
+ },
+ "Horizontal Component of a Lashing": {
+  "en": "Horizontal Component of a Lashing"
+ },
+ "Horizontal component only. The CSS Code Annex 13 balance uses the calculated strength CS = MSL / 1.5 and friction; use it for the actual securing calculation.": {
+  "en": "Horizontal component only. The CSS Code Annex 13 balance uses the calculated strength CS = MSL / 1.5 and friction; use it for the actual securing calculation."
+ },
+ "Horizontal cylinder": {
+  "en": "Horizontal cylinder"
+ },
+ "Hydrostatics at this displacement": {
+  "en": "Hydrostatics at this displacement"
+ },
+ "Initial condition": {
+  "en": "Initial condition"
+ },
+ "Initial metacentric height (negative)": {
+  "en": "Initial metacentric height (negative)"
+ },
+ "Inputs": {
+  "en": "Inputs"
+ },
+ "IS Code 2008 Part A 2.2": {
+  "en": "IS Code 2008 Part A 2.2"
+ },
+ "IS Code 2008 Part A 2.3": {
+  "en": "IS Code 2008 Part A 2.3"
+ },
+ "IS Code 2008 Part A 2.3 (weather)": {
+  "en": "IS Code 2008 Part A 2.3 (weather)"
+ },
+ "IS Code Check from KN": {
+  "en": "IS Code Check from KN"
+ },
+ "Item": {
+  "en": "Item"
+ },
+ "KG (solid)": {
+  "en": "KG (solid)"
+ },
+ "KG fluid": {
+  "en": "KG fluid"
+ },
+ "KG rise = w·(h head − kg) / Δ · tan θ = w·outreach / (Δ·GM)": {
+  "en": "KG rise = w·(h head − kg) / Δ · tan θ = w·outreach / (Δ·GM)"
+ },
+ "KG with the weight on the hook": {
+  "en": "KG with the weight on the hook"
+ },
+ "Length l": {
+  "en": "Length l"
+ },
+ "Lifting from the quay (weight not yet on board)": {
+  "en": "Lifting from the quay (weight not yet on board)"
+ },
+ "Liquid volume": {
+  "en": "Liquid volume"
+ },
+ "Liquid weight": {
+  "en": "Liquid weight"
+ },
+ "Load line allowances": {
+  "en": "Load line allowances"
+ },
+ "Load or discharge a weight": {
+  "en": "Load or discharge a weight"
+ },
+ "Loading Condition and GM": {
+  "en": "Loading Condition and GM"
+ },
+ "Longitudinal positions (LCG, LCB, LCF)": {
+  "en": "Longitudinal positions (LCG, LCB, LCF)"
+ },
+ "lw1 / lw2": {
+  "en": "lw1 / lw2"
+ },
+ "lw1 steady wind": {
+  "en": "lw1 steady wind"
+ },
+ "lw2 gust": {
+  "en": "lw2 gust"
+ },
+ "Margin": {
+  "en": "Margin"
+ },
+ "Maximum draft in this dock water": {
+  "en": "Maximum draft in this dock water"
+ },
+ "Maximum righting moment": {
+  "en": "Maximum righting moment"
+ },
+ "Mean Draft (d)": {
+  "en": "Mean Draft (d)"
+ },
+ "Mean moulded draft": {
+  "en": "Mean moulded draft"
+ },
+ "Meaningful only when the initial GM is negative; assumes a wall-sided hull in the range.": {
+  "en": "Meaningful only when the initial GM is negative; assumes a wall-sided hull in the range."
+ },
+ "Metacentric height corrected for free surface": {
+  "en": "Metacentric height corrected for free surface"
+ },
+ "Moulded breadth": {
+  "en": "Moulded breadth"
+ },
+ "Mv (m⁴)": {
+  "en": "Mv (m⁴)"
+ },
+ "New displacement": {
+  "en": "New displacement"
+ },
+ "New KG (solid)": {
+  "en": "New KG (solid)"
+ },
+ "None saved yet —": {
+  "en": "None saved yet —"
+ },
+ "Off: harbour limits (during loading and discharging).": {
+  "en": "Off: harbour limits (during loading and discharging)."
+ },
+ "Only slack tanks count; full and empty tanks have no free surface. A longitudinal division halves b and so reduces the FSM of a rectangular tank to one quarter.": {
+  "en": "Only slack tanks count; full and empty tanks have no free surface. A longitudinal division halves b and so reduces the FSM of a rectangular tank to one quarter."
+ },
+ "open Loading Condition": {
+  "en": "open Loading Condition"
+ },
+ "Open the tool": {
+  "en": "Open the tool"
+ },
+ "Pass": {
+  "en": "Pass"
+ },
+ "Pendulum": {
+  "en": "Pendulum"
+ },
+ "Pendulum and inclining test": {
+  "en": "Pendulum and inclining test"
+ },
+ "Percentage of permissible": {
+  "en": "Percentage of permissible"
+ },
+ "Permissible Grain Moment": {
+  "en": "Permissible Grain Moment"
+ },
+ "Point": {
+  "en": "Point"
+ },
+ "Port −45°": {
+  "en": "Port −45°"
+ },
+ "Practical and reference": {
+  "en": "Practical and reference"
+ },
+ "Practical Stability": {
+  "en": "Practical Stability"
+ },
+ "r = 0.73 + 0.6·OG/d is evaluated with KG fluid. Tables 2.3.4-1…4 are interpolated linearly and held at their end rows.": {
+  "en": "r = 0.73 + 0.6·OG/d is evaluated with KG fluid. Tables 2.3.4-1…4 are interpolated linearly and held at their end rows."
+ },
+ "Rectangular (box)": {
+  "en": "Rectangular (box)"
+ },
+ "Remaining to that draft": {
+  "en": "Remaining to that draft"
+ },
+ "Required": {
+  "en": "Required"
+ },
+ "Residual area": {
+  "en": "Residual area"
+ },
+ "Results": {
+  "en": "Results"
+ },
+ "Righting lever GZ": {
+  "en": "Righting lever GZ"
+ },
+ "Righting levers": {
+  "en": "Righting levers"
+ },
+ "Round bilge, no bilge or bar keels (k = 1.0)": {
+  "en": "Round bilge, no bilge or bar keels (k = 1.0)"
+ },
+ "Scope / assumption": {
+  "en": "Scope / assumption"
+ },
+ "Seagoing limits": {
+  "en": "Seagoing limits"
+ },
+ "Shape": {
+  "en": "Shape"
+ },
+ "Shear Force and Bending Moment": {
+  "en": "Shear Force and Bending Moment"
+ },
+ "Shift a weight on board": {
+  "en": "Shift a weight on board"
+ },
+ "Slack tanks": {
+  "en": "Slack tanks"
+ },
+ "Small-angle estimate only. Compliance with Grain Code A 7 (heel ≤ 12° or deck edge, residual area, GM) must be checked on the GZ curve — use Tools → Grain Stability.": {
+  "en": "Small-angle estimate only. Compliance with Grain Code A 7 (heel ≤ 12° or deck edge, residual area, GM) must be checked on the GZ curve — use Tools → Grain Stability."
+ },
+ "Stability Condition Report": {
+  "en": "Stability Condition Report"
+ },
+ "Stability Toolbox": {
+  "en": "Stability Toolbox"
+ },
+ "Statical stability curve": {
+  "en": "Statical stability curve"
+ },
+ "Stowage factor of this parcel": {
+  "en": "Stowage factor of this parcel"
+ },
+ "Take each compartment's assumed volumetric heeling moment (m⁴) from the ship's approved grain loading manual for its actual condition. If the manual's figures already include the vertical shift, use × 1.00.": {
+  "en": "Take each compartment's assumed volumetric heeling moment (m⁴) from the ship's approved grain loading manual for its actual condition. If the manual's figures already include the vertical shift, use × 1.00."
+ },
+ "Tank Volume and Mass": {
+  "en": "Tank Volume and Mass"
+ },
+ "TCG (+ starboard)": {
+  "en": "TCG (+ starboard)"
+ },
+ "TCG positive to starboard. Leave the weight empty to ignore a row.": {
+  "en": "TCG positive to starboard. Leave the weight empty to ignore a row."
+ },
+ "The grain loading manual gives the maximum permissible heeling moment for each displacement and KG (fluid). Read it for the departure and arrival conditions and compare it with the actual grain heeling moment.": {
+  "en": "The grain loading manual gives the maximum permissible heeling moment for each displacement and KG (fluid). Read it for the departure and arrival conditions and compare it with the actual grain heeling moment."
+ },
+ "The KN table must extend to at least 40° for the IS Code areas.": {
+  "en": "The KN table must extend to at least 40° for the IS Code areas."
+ },
+ "The same formulas drive the calculators in Learn → Stability and the stability tools, so a formula and its calculation can never differ.": {
+  "en": "The same formulas drive the calculators in Learn → Stability and the stability tools, so a formula and its calculation can never differ."
+ },
+ "The ship may be loaded so that the load line is submerged by the DWA in dock water, provided she floats at the load line on reaching salt water and any draft limits on the passage are respected.": {
+  "en": "The ship may be loaded so that the load line is submerged by the DWA in dock water, provided she floats at the load line on reaching salt water and any draft limits on the passage are respected."
+ },
+ "This record is for training and cross-checking. Stability booklet, loading computer, navigational publications, Class/manufacturer data and ship-specific approved documents have priority in required operations.": {
+  "en": "This record is for training and cross-checking. Stability booklet, loading computer, navigational publications, Class/manufacturer data and ship-specific approved documents have priority in required operations."
+ },
+ "Total free surface moment ΣFSM": {
+  "en": "Total free surface moment ΣFSM"
+ },
+ "Transverse metacentric radius": {
+  "en": "Transverse metacentric radius"
+ },
+ "Transverse shift of G": {
+  "en": "Transverse shift of G"
+ },
+ "Trim + by the stern; LCF from amidships, + aft. A positive result is added to the table displacement.": {
+  "en": "Trim + by the stern; LCF from amidships, + aft. A positive result is added to the table displacement."
+ },
+ "Upright": {
+  "en": "Upright"
+ },
+ "Upthrust at the critical instant (P)": {
+  "en": "Upthrust at the critical instant (P)"
+ },
+ "Use the deadweight for the load line zone and any port or channel draft limit that applies, not always the summer DWT.": {
+  "en": "Use the deadweight for the load line zone and any port or channel draft limit that applies, not always the summer DWT."
+ },
+ "Use the saved loading condition": {
+  "en": "Use the saved loading condition"
+ },
+ "Values come from the ship's approved loading instrument or loading manual for the actual condition, including intermediate stages. This page only compares them with the permissible values; it does not compute them.": {
+  "en": "Values come from the ship's approved loading instrument or loading manual for the actual condition, including intermediate stages. This page only compares them with the permissible values; it does not compute them."
+ },
+ "Vertical cylinder": {
+  "en": "Vertical cylinder"
+ },
+ "Vertical shift of G (GG₁)": {
+  "en": "Vertical shift of G (GG₁)"
+ },
+ "Waterline Length (Lwl)": {
+  "en": "Waterline Length (Lwl)"
+ },
+ "Weather criterion": {
+  "en": "Weather criterion"
+ },
+ "Weight Changes": {
+  "en": "Weight Changes"
+ },
+ "Weight that fills the compartment": {
+  "en": "Weight that fills the compartment"
+ },
+ "Weights": {
+  "en": "Weights"
+ },
+ "Wind and roll data": {
+  "en": "Wind and roll data"
+ },
+ "Wind and roll data not entered yet.": {
+  "en": "Wind and roll data not entered yet."
+ },
+ "Without the manual's table, check the criteria on the GZ curve on the": {
+  "en": "Without the manual's table, check the criteria on the GZ curve on the"
+ },
+ "Work out the moments per compartment on the": {
+  "en": "Work out the moments per compartment on the"
+ },
+ "Working": {
+  "en": "Working"
+ },
+ "θ0 (steady wind heel)": {
+  "en": "θ0 (steady wind heel)"
+ },
+ "θ0−θ1": {
+  "en": "θ0−θ1"
+ },
+ "θ1 (roll to windward)": {
+  "en": "θ1 (roll to windward)"
+ },
+ "θ2": {
+  "en": "θ2"
+ },
+ "θf": {
+  "en": "θf"
+ },
+ "λ0 / λ40": {
+  "en": "λ0 / λ40"
  }
 }

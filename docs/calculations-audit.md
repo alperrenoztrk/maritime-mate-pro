@@ -35,3 +35,44 @@ Draught Surveys of Coal Cargoes (ECE/ENERGY/19, 1992); ASTM D1250-80 Table 54B/5
 | Ballast quantity | `/cargo/calculations/ballast` | ΔT × TPC split into fixed holds | Tank volumes × sampled density; draft cross-check | Fixed | — |
 | Bunker quantity | `/cargo/calculations/bunker` | ρ × (1 − 0.0006 (t − 15)), ΔT × TPC | Table 54B VCF, V₁₅, weight in air (ρ₁₅ − 0.0011), vs BDN; draft cross-check | Fixed | `petroleum.test.ts` |
 | Quick estimate (draft change × TPC) | draft-survey | Presented as the survey | Kept as a labelled rough cross-check | Correct | — |
+
+## 2. Stability (`/stability/*`, Learn → Stability / Cargo calculators)
+
+Engine: `src/lib/calc/stability.ts`, `src/lib/calc/tank.ts`.
+Sources: IMO 2008 IS Code (MSC.267(85)) Part A 2.2, 2.3 and tables 2.3.4-1…4
+(checked against the MCA MSIS43 reproduction of the Code text; the MCA's
+extended X1/s rows are not used); International Grain Code (MSC.23(59)) A 6, A 7,
+B 1.3, B 1.5; International Convention on Load Lines 1966 (FWA/DWA).
+
+Removed engine: `src/services/hydrostaticCalculations.ts` and its copy
+`src/utils/hydrostaticUtils.ts` (box-hull approximations). Its regression test
+compared the class with values generated from the class itself;
+`npm run test:validation` (CI) now runs `test:calc` and `test:formulas`.
+
+| Calculation | Page | Before | Now | Status | Test |
+|---|---|---|---|---|---|
+| GZ at large angles | gz-curve, gz-imo, analysis | GM·sinθ − ½B·sin²θ on a box hull, negative GZ clipped to 0 | KN cross curves: GZ = KN − KG fluid·sinθ − TCG·cosθ | Fixed | `stability.test.ts` |
+| Areas under GZ | imo-criteria, gz-imo | Loop took one degree too many; downflooding fixed at 20° | Shape-preserving cubic + Simpson; θf entered | Fixed | idem |
+| IS Code 2.2 criteria | imo-criteria, gz-imo, analysis | Partly, with fixed θf | All six criteria, θf rule for 40° areas | Fixed | idem |
+| Weather criterion 2.3 | wind-weather | 0.6 × max GZ; wind heel 1000× too small | lw1/lw2, θ0 limit, θ1 with tables X1, X2, k, s, r; areas a and b | Fixed | idem |
+| Righting moment | — | Δ·g·GZ/1000 labelled kN·m (was MN·m) | Δ·GZ in t·m | Fixed | — |
+| Angle of loll | Learn, gz | arccos(KG/KM) | tan φ = √(2\|GM\|/BM) | Fixed | `courseStability.test.ts` |
+| Trim distribution | Learn | Forward and aft distances swapped | ΔTA = t·da/L, ΔTF = t·df/L | Fixed | idem |
+| Displacement in fresh water | Learn | Δ·ρsea/ρfresh (inverted) | Δ·ρfresh/ρsea at the same draft | Fixed | idem |
+| Rolling period | Learn, toolbox | C·B/√GM with C ≈ 0.7 from Cb | IS Code T = 2CB/√GM, C = 0.373 + 0.023 B/d − 0.043 Lwl/100 | Fixed | idem |
+| Loading condition | gm | Box-geometry KM/KB | Weights table → Δ, KG, ΣFSM, GM fluid, list, trim, drafts with booklet KM/LCB/LCF/MCTC | New | `stability.test.ts` |
+| Weight shift / load / heavy lift | weight-shift | Partial | GG₁, new KG, heel, trim change, lift from quay or on board | Fixed | idem |
+| Free surface | free-surface | Rectangular only | Tank-table FSM or ρlb³/12, ΣFSM/Δ | Correct | idem |
+| Grain heeling moment | practical/ghm, grain | Volume × ΔKG × density (not the Code method) | Σ(Mv × 1.00/1.06/1.12)/SF | Fixed | idem |
+| Grain criteria A 7 | grain-calculation | "Compliant ≤ 12°" from 57.3·GHM/(Δ·GM) | λ0, λ40 = 0.8λ0, heel ≤ 12° or deck edge, residual area ≥ 0.075, GM ≥ 0.30 | Fixed | idem |
+| Grain heel estimate | Learn (stability, cargo) | Shown as "Compliant" | Kept as an estimate, verdict removed | Fixed | — |
+| Grain stowage helpers | grain-calculation | TPI/MT1 helpers without unit conversion | Removed; W = V/SF capacity kept | Removed | — |
+| Dry-docking | toolbox | Invented "critical GM = 0.05 + block spacing/100", "GM ≥ 1.5 × critical" | P = MCTC·t/l, GM loss P·KM/Δ and P·KG/(Δ−P), largest trim for a minimum GM | Removed / New | idem |
+| Pendulum / inclining | toolbox | Error-margin figure | tan θ = deflection/length, GM = w·d/(Δ tan θ) | Fixed | idem |
+| Practical tank, FWA | practical/tank, practical/fwa | Showed hogging/sagging content under these titles | Tank volume/mass/FSM (box, cylinders); FWA, DWA, allowed draft | Fixed | `tank.test.ts` |
+| Shear force / bending moment | shearing-bending | Hull as a simply supported beam, lightship 30 % of Δ, kN/N mixed | Compares loading-instrument values with permissible (sea/harbour) | Removed / New | — |
+| Stability analysis popup | (all stability pages) | Box-geometry "analysis" | Removed; Stability Condition Report uses booklet data | Removed | — |
+| 3D model status | calculations | "Normal / Attention / Dangerous" at 5°/15° (invented) | Heel and trim stated without a verdict; "Pier" → Port | Removed | — |
+
+Not yet migrated in this round (shared components, later rounds): `/stability/assistant`
+and `/stability/quiz` (AssistantInterface and the quiz component are shared by all modules).

@@ -1,7 +1,17 @@
 import { useMemo, useState } from "react";
 import {
+  Activity,
   Anchor,
+  ArrowLeftRight,
   BarChart3,
+  ClipboardList,
+  Container,
+  FileCheck2,
+  LineChart,
+  ShieldCheck,
+  Waves,
+  Wheat,
+  Wind,
   ChevronRight,
   Compass,
   Droplets,
@@ -41,37 +51,54 @@ interface CalcTool {
   category: Category;
 }
 
-type Category = "navigation" | "stability" | "machine" | "ship-systems" | "converter";
+type Category = "navigation" | "cargo" | "stability" | "machine" | "ship-systems" | "converter";
 
 const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent: string }> = {
   navigation: { title: "Navigation", icon: Compass, accent: "accent-ocean" },
-  stability: { title: "Cargo and Stability", icon: Scale, accent: "accent-teal" },
+  cargo: { title: "Cargo and Draft Survey", icon: Layers, accent: "accent-teal" },
+  stability: { title: "Stability", icon: Scale, accent: "accent-ocean" },
   machine: { title: "Machinery and Consumption", icon: Wrench, accent: "accent-slate" },
   "ship-systems": { title: "Ship Systems", icon: Anchor, accent: "accent-amber" },
   converter: { title: "Formulas and Converters", icon: Zap, accent: "accent-deep" },
 };
 
 const QUICK_TOOLS: CalcTool[] = [
-  { id: "draft", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
+  { id: "draft", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "cargo" },
   { id: "trim", title: "Stability / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "fuel", title: "Fuel Consumption", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
   { id: "voyage", title: "Voyage Duration", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
-  { id: "cargo", title: "Cargo Calculations", icon: Layers, to: "/cargo/calculations", category: "stability" },
+  { id: "cargo", title: "Cargo Calculations", icon: Layers, to: "/cargo/calculations", category: "cargo" },
   { id: "converter", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
 ];
 
 const TOOLS: CalcTool[] = [
-  { id: "draft-survey", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "preloading", title: "Initial (Light) Survey", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
-  { id: "intermediate", title: "Intermediate Survey", icon: Gauge, to: "/cargo/calculations/intermediate", category: "stability" },
-  { id: "postdischarge", title: "Post-Discharge Survey", icon: Layers, to: "/cargo/calculations/postdischarge", category: "stability" },
-  { id: "comparative", title: "Survey Comparison", icon: BarChart3, to: "/cargo/calculations/comparative", category: "stability" },
-  { id: "ballast", title: "Ballast Quantity", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
-  { id: "density", title: "Density Correction", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
-  { id: "bunker", title: "Bunker Quantity", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
+  { id: "draft-survey", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "cargo" },
+  { id: "preloading", title: "Initial (Light) Survey", icon: Ship, to: "/cargo/calculations/preloading", category: "cargo" },
+  { id: "intermediate", title: "Intermediate Survey", icon: Gauge, to: "/cargo/calculations/intermediate", category: "cargo" },
+  { id: "postdischarge", title: "Post-Discharge Survey", icon: Layers, to: "/cargo/calculations/postdischarge", category: "cargo" },
+  { id: "comparative", title: "Survey Comparison", icon: BarChart3, to: "/cargo/calculations/comparative", category: "cargo" },
+  { id: "ballast", title: "Ballast Quantity", icon: Droplets, to: "/cargo/calculations/ballast", category: "cargo" },
+  { id: "density", title: "Density Correction", icon: Thermometer, to: "/cargo/calculations/density", category: "cargo" },
+  { id: "bunker", title: "Bunker Quantity", icon: Gauge, to: "/cargo/calculations/bunker", category: "cargo" },
   { id: "stability-calc", title: "Stability Calculations", icon: Scale, to: "/stability/calculations", category: "stability" },
-  { id: "tank", title: "Tank Calculation", icon: Anchor, to: "/tank", category: "stability" },
-  { id: "imo-criteria", title: "IMO Criteria", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
+  { id: "tank", title: "Tank Calculation", icon: Anchor, to: "/tank", category: "cargo" },
+  { id: "loading-condition", title: "Loading Condition and GM", icon: ClipboardList, to: "/stability/gm", category: "stability" },
+  { id: "weight-changes", title: "Weight Changes", icon: ArrowLeftRight, to: "/stability/weight-shift", category: "stability" },
+  { id: "free-surface", title: "Free Surface Effect", icon: Waves, to: "/stability/free-surface", category: "stability" },
+  { id: "righting-lever", title: "Righting Lever (GZ)", icon: Activity, to: "/stability/gz", category: "stability" },
+  { id: "gz-curve", title: "GZ Curve", icon: LineChart, to: "/stability/gz-curve", category: "stability" },
+  { id: "gz-imo", title: "IS Code Check from KN", icon: ShieldCheck, to: "/stability/gz-imo", category: "stability" },
+  { id: "imo-criteria", title: "IMO Stability Criteria", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
+  { id: "weather-criterion", title: "Weather Criterion", icon: Wind, to: "/stability/wind-weather", category: "stability" },
+  { id: "condition-report", title: "Stability Condition Report", icon: FileCheck2, to: "/stability/analysis", category: "stability" },
+  { id: "grain-moment", title: "Grain Heeling Moment", icon: Wheat, to: "/stability/practical/ghm", category: "stability" },
+  { id: "grain-permissible", title: "Permissible Grain Moment", icon: Wheat, to: "/stability/grain", category: "stability" },
+  { id: "grain-criteria", title: "Grain Stability Criteria", icon: Wheat, to: "/stability/grain-calculation", category: "stability" },
+  { id: "practical-stability", title: "Practical Stability", icon: Wrench, to: "/stability/practical", category: "stability" },
+  { id: "tank-geometry", title: "Tank Volume and Mass", icon: Container, to: "/stability/practical/tank", category: "stability" },
+  { id: "fwa", title: "FWA and Dock Water Allowance", icon: Droplets, to: "/stability/practical/fwa", category: "stability" },
+  { id: "stability-toolbox", title: "Stability Toolbox", icon: Wrench, to: "/stability/stable-tales", category: "stability" },
+  { id: "shear-bending", title: "Shear Force and Bending Moment", icon: BarChart3, to: "/stability/shearing-bending", category: "stability" },
   { id: "nav-calc", title: "Navigation Calculations", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
   { id: "passage", title: "Passage Plan", icon: Compass, to: "/passage-plan", category: "navigation" },
   { id: "tides", title: "Tidal Calculation", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },

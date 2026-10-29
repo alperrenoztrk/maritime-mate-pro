@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { readStored, useStoredState } from "@/components/tools/useStoredState";
 import {
   computeDraftSurvey,
   lcfAftOfMidships,
@@ -54,34 +54,13 @@ export const emptyStage = (): StageForm =>
 
 const STORAGE_PREFIX = "marine-expert-draft-survey:";
 
-/** useState persisted on this device (localStorage); falls back silently when storage is unavailable. */
-export function useStoredForm<T extends object>(key: string, initial: T) {
-  const [value, setValue] = useState<T>(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_PREFIX + key);
-      return raw ? { ...initial, ...(JSON.parse(raw) as Partial<T>) } : initial;
-    } catch {
-      return initial;
-    }
-  });
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
-    } catch {
-      /* storage full or blocked: keep working in memory */
-    }
-  }, [key, value]);
-  return [value, setValue] as const;
-}
+/** Draft survey forms persisted on this device, shared by all draft survey pages. */
+export const useStoredForm = <T extends object>(key: string, initial: T) => useStoredState(STORAGE_PREFIX + key, initial);
 
 /** Reads a saved stage without subscribing to it (for comparison pages). */
 export function readStoredStage(key: string): StageForm | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_PREFIX + key);
-    return raw ? { ...emptyStage(), ...(JSON.parse(raw) as Partial<StageForm>) } : null;
-  } catch {
-    return null;
-  }
+  const stored = readStored<Partial<StageForm>>(STORAGE_PREFIX + key, {});
+  return Object.keys(stored).length > 0 ? { ...emptyStage(), ...stored } : null;
 }
 
 export type Errors = Partial<Record<string, string>>;
