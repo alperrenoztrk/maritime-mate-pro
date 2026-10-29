@@ -10,6 +10,11 @@ for (const [key, entry] of Object.entries(simulatorEntries)) {
   pack[key] = entry.en;
 }
 // Authored English cases are shared offline fallbacks in every language.
+const billingEntries = JSON.parse(fs.readFileSync('scripts/i18n/verified/billing-ui.json', 'utf8'));
+for (const [key, entry] of Object.entries(billingEntries)) {
+  if (typeof entry.en !== 'string' || !entry.en.trim()) throw new Error(`Missing billing English: ${key}`);
+  pack[key] = entry.en;
+}
 // Select display fields explicitly: never translate stable IDs or metadata.
 const depthReviews = JSON.parse(fs.readFileSync('src/data/learningDepthReviews.json', 'utf8'));
 for (const { section } of depthReviews) {
