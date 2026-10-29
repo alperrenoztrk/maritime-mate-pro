@@ -182,40 +182,75 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
   },
 
   "EPIRB, SART ve Arama Kurtarma Entegrasyonu": {
-    title: "EPIRB, SART ve Arama Kurtarma Entegrasyonu",
-    introduction:
-      "EPIRB (Emergency Position Indicating Radio Beacon) ve SART (Search and Rescue Transponder), geminin terk edilmesi veya ağır acil durumlarda yer tespiti ve kurtarma birimlerinin yönlendirilmesi için kritik öneme sahip cihazlardır. Bu cihazların doğru çalışması, gerçek bir acil durumda hayat kurtarma süresini doğrudan belirler. Test, bakım ve kayıt disiplini, cihazın fiziksel varlığı kadar önemlidir.",
-    sections: [
+    "title": "EPIRB, SART ve Arama Kurtarma Entegrasyonu",
+    "introduction": "EPIRB, 406 MHz sayısal imdat alarmını Cospas-Sarsat üzerinden RCC/MRCC'ye ulaştırır. Radar-SART, AIS-SART ve AIS-EPIRB'nin çalışma frekansları ve ekran gösterimleri farklıdır. Bu bölüm onaylı cihazın gerçek gemi koşullarında nasıl çalıştırıldığını, test edildiğini ve bakımının nasıl izlendiğini öğretir.",
+    "sections": [
       {
-        title: "EPIRB Çalışma Prensibi",
-        image: epirbImage,
-        imageAlt: "A 406 MHz Cospas-Sarsat GPS EPIRB with its antenna",
-        content:
-          "406 MHz EPIRB, COSPAS-SARSAT uydu sistemi üzerinden tehlike sinyali iletir. Sinyal, geminin kimliğini (MMSI veya kayıt numarası), GPS pozisyonunu (GPS modüllü ise) ve tehlike durumunu içerir. COSPAS-SARSAT uyduları bu sinyali alarak ilgili MRCC'ye (Maritime Rescue Coordination Centre) ileten LUT (Local User Terminal) istasyonlarına aktarır. GPS entegreli EPIRB ile konum doğruluğu yaklaşık 100 m'ye iner; GPS'siz modellerde Doppler etkisiyle konum belirlenir, bu daha yavaş ve daha az doğrudur (2–5 km). EPIRB, ek olarak 121.5 MHz homing sinyali yayarak uçak ve helikopterlerin yakın mesafede yönlenmesini sağlar.",
+        "title": "EPIRB Çalışma Prensibi",
+        "image": "/lessons/epirb-alert-chain.svg",
+        "imageAlt": "406 MHz EPIRB sinyal zinciri: uydu, LUT, MCC, RCC/MRCC ve SAR",
+        "content": "406–406.1 MHz sayısal imdat sinyali 15 HEX ID ile mevcutsa GNSS konumu taşır. Cospas-Sarsat LEOSAR/GEOSAR/MEOSAR → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → arama-kurtarma birimi zinciriyle alarm iletilir. GNSS fix olmaması her zaman 406 MHz alarmının durduğu anlamına gelmez; uydu konum çözüm teknikleri kullanılabilir. 121.5 MHz sinyali yakındaki arama-kurtarma aracı tarafından homing amacıyla kullanılır, 2009'dan beri uydu alarmı olarak takip edilmez. Modern AIS-EPIRB cihazları AIS 1 (161.975 MHz) ve AIS 2 (162.025 MHz) üzerinden yerel AIS hedef konumu yayınlayabilir; her eski cihaz AIS'li değildir. Cihazın 15 HEX ID'sini MMSI ile karıştırma."
       },
       {
-        title: "EPIRB Montajı, Bakımı ve Kayıt",
-        content:
-          "EPIRB, float-free montaj aparatına (hydrostatic release unit – HRU) yerleştirilmiş olarak gemi üzerinde taşınır. HRU, gemi belirli bir derinliğe battığında (genellikle 1.5–4 m) otomatik olarak EPIRB'i serbest bırakır ve EPIRB yüzeye çıkarak otomatik olarak aktive olur. Manuel aktivasyon da mümkündür. HRU'nun son kullanma tarihi (genellikle 2 yıl), EPIRB bataryasının son kullanma tarihi (genellikle 5 yıl) ve yıllık servis tarihi düzenli olarak kontrol edilmelidir. EPIRB ulusal otoriteye kayıtlı olmalıdır; kayıt bilgilerinde gemi adı, MMSI, acil durum kişisi gibi bilgiler bulunur. Kayıt bilgileri değiştiğinde güncellenmesi zorunludur — güncel olmayan kayıt, SAR operasyonunu geciktirebilir.",
+        "title": "EPIRB Montajı, Bakımı ve Kayıt",
+        "image": "/lessons/epirb-float-free.svg",
+        "imageAlt": "HRU, su sensörü ve önceden takılı EPIRB bataryasının ayrı işlevlerini gösteren şema",
+        "content": "Float-free EPIRB, serbest yüzmesine engel olmayacak şekilde onaylı brakette durur. Gemi batarken HRU yaklaşık 1–4 m derinlikte hidrostatik basınçla cihazı mekanik olarak bırakır; cihaz yüzeye çıkar ve su sensörü elektroniği etkinleştirir. Deniz suyu pili şarj etmez veya üretmez; cihazın önceden takılı bataryası enerji sağlar. Lanyard'ı gemiye veya brakete bağlama. IMO MSC.471(101) 1 Temmuz 2022'den itibaren ilgili kurulumları kapsar; en az 48 saat batarya kapasitesi, GNSS, 121.5 MHz ve AIS locating gibi şartları tanımlar. Önceki kurulumların standartları farklı olabilir. Batarya ve HRU son kullanma tarihlerini gerçek etiketinden kontrol et; tüm modellere sabit 2/5 yıl uygulama. Annual test: MSC.1/Circ.1040/Rev.2. Onaylı kara bakımı, bayrakça belirlenen ve 5 yılı aşmayan aralıkta: MSC.1/Circ.1039/Rev.1. Güncel EPIRB 15 HEX ID kaydını bayrak/otorite kayıtlarıyla karşılaştır.",
+        "bulletPoints": [
+          "HRU cihazı serbest bırakır; su sensörü çalıştırır; batarya zaten mevcuttur.",
+          "Braketin serbest bırakma yönünü engelleme, lanyard'ı gemiye bağlama.",
+          "En az 48 saat çalışma kapasitesi yeni standardın asgari gereğidir.",
+          "Batarya, HRU, shore-based maintenance tarihlerini model/etiket/bayrağa göre yönet."
+        ]
       },
       {
-        title: "SART ve AIS-SART",
-        content:
-          "SART, 9 GHz radar frekansında çalışan bir transponderdir. Arama birimi radarının sinyalini alarak yanıt verir; arama biriminin radar ekranında seri 12 nokta halinde görünür, böylece kurtarma aracını hayatta kalanlara yönlendirir. Geleneksel radar SART'ın dezavantajı sınırlı menzildir (yaklaşık 5–8 NM, anten yüksekliğine bağlı). AIS-SART, AIS (Automatic Identification System) frekanslarında çalışan modern alternatiftir. AIS-SART sinyali, çevredeki tüm gemilerin AIS ekranında belirgin bir simgeyle görünür ve pozisyon bilgisi verir. Menzili radar SART'a göre daha iyidir. Her iki tip de SOLAS tarafından kabul edilir; yeni gemilerde AIS-SART tercih edilmektedir.",
+        "title": "SART ve AIS-SART",
+        "image": "/lessons/epirb-display-comparison.svg",
+        "imageAlt": "406 MHz EPIRB, 9 GHz radar SART ve AIS EPIRB ekran görünümü karşılaştırması",
+        "content": "Klasik 406 MHz EPIRB radarın X-band/S-band ekranında 12 nokta oluşturmaz. Bu karakteristik gösterim, 9 GHz X-band radar sorgulamasına yanıt veren radar-SART'a aittir; uzaktan 12 nokta, yakından yaylar görülebilir. S-band radar bu yanıtı tetiklemez. AIS-SART, uygun AIS/ECDIS üzerinde özel arama-kurtarma hedefi gösterir. AIS'li EPIRB de yerel AIS konum yayını yapabilir; radar ekranında AIS overlay ile görünmesi gerçek radar-SART yanıtı olduğu anlamına gelmez. Her cihaz için alım/anten yüksekliği, kapsama ve model şartları farklıdır. Menzil üstünlüğünü evrensel kesinlik olarak öğretme.",
+        "table": {
+          "headers": [
+            "Ekipman",
+            "Kanal",
+            "Gösterim"
+          ],
+          "rows": [
+            [
+              "EPIRB",
+              "406 MHz + 121.5 MHz",
+              "Uydu alarmı + lokal homing; 12 radar noktası yok"
+            ],
+            [
+              "AIS-EPIRB",
+              "406/121.5 + AIS 1/2",
+              "Uydu alarmı + yakındaki AIS hedefi"
+            ],
+            [
+              "Radar-SART",
+              "9 GHz X-band",
+              "Radarda 12 nokta/yay"
+            ],
+            [
+              "AIS-SART",
+              "AIS 1/2",
+              "AIS/ECDIS SAR hedefi"
+            ]
+          ]
+        }
       },
       {
-        title: "Test Prosedürleri ve Tatbikat Entegrasyonu",
-        content:
-          "EPIRB dahili test butonu ile aylık test yapılır; bu test uydu sinyali göndermez, sadece cihazın iç devrelerini kontrol eder. SART/AIS-SART de test modunda çalıştırılarak fonksiyon kontrolü yapılır. Tüm test sonuçları tarih, saat ve sonuçla birlikte radyo log defterine kaydedilir. Terk-i gemi tatbikatlarında EPIRB ve SART cihazlarının can kurtarma aracına aktarım prosedürü pratik edilmelidir: cihazın yerinin bilinmesi, taşınması, aktivasyonu ve can salına yerleştirilmesi adımları tekrarlanır. Gerçek bir terk-i gemi durumunda, EPIRB'in float-free mekanizmasına güvenmenin yanı sıra, zaman ve koşullar izin veriyorsa EPIRB'in manuel olarak alınması ve can kurtarma aracına aktarılması tercih edilir.",
-      },
+        "title": "Test Prosedürleri ve Tatbikat Entegrasyonu",
+        "content": "1) Marka/model kullanıcı kitabını ve gemi PMS planını kontrol et. 2) Cihazın gövdesi, anteni, bracket/HRU, batarya son kullanma tarihi ve 15 HEX ID kaydını incele. 3) Üreticinin SELF-TEST tuşu ve sırasını uygula; LED/beep veya kod sonucunu yorumla. SELF-TEST, işaretlenmiş kısa bir 406 MHz test yayını yapabilir; 'hiç RF yayını olmaz' anlatımı yanlıştır. 4) GNSS self-test ayrı olabilir, üretici sınırını takip et. 5) Cihazı doğru brakete yerleştir, aktif distress göndermediğini doğrula ve GMDSS/PMS kaydını tut. NORMAL ON/DISTRESS modunu rutin test için kullanma: tek yayın bile SAR alarmı doğurabilir. 6) Yanlış alarmda gerçek tehlike olmadığını teyit ederek OFF'a al ve derhal en yakın RCC/MRCC'ye HEX ID, mevki ve zamanı bildir. 7) Tatbikatta gerçek distress yayını yapmadan cihazın yerini, güvenli taşınmasını ve aktivasyon önlemlerini göster. Rutin test sıklığını ve tuş kombinasyonunu üreticiye göre belirle; bütün EPIRB'ler için zorunlu evrensel aylık işlem yazma."
+      }
     ],
-    keyPoints: [
-      "406 MHz EPIRB, COSPAS-SARSAT üzerinden küresel tehlike alarmı ve konum bilgisi iletir.",
-      "HRU son kullanma tarihi (2 yıl) ve EPIRB bataryası (5 yıl) düzenli kontrol edilmelidir.",
-      "EPIRB kayıt bilgileri güncel tutulmalıdır; güncel olmayan kayıt SAR'ı geciktirir.",
-      "AIS-SART, geleneksel radar SART'a göre daha iyi menzil ve tespit kolaylığı sağlar.",
-      "Aylık test ve tatbikat entegrasyonu operasyonel hazırlığın ön koşuludur.",
-    ],
+    "keyPoints": [
+      "406–406.1 MHz uydu distress, 121.5 MHz SAR homing, uygun AIS-EPIRB'lerde AIS 1/2 yerel konum iletimi.",
+      "Uydu → LUT → MCC → RCC/MRCC alarm akışı; HEX ID kayıt doğrulaması.",
+      "HRU mekanik serbest bırakma, su sensörü elektronik aktivasyon yapar.",
+      "En az 48 saat batarya kapasitesi; model etiketi ve servis belgeleri belirleyicidir.",
+      "EPIRB radarda 12 nokta üretmez; radar-SART üretir, AIS-EPIRB ise AIS ekranında görünebilir.",
+      "Rutin self-test = üretici test modu, gerçek distress ON değildir."
+    ]
   },
   "SMCP - Standart Deniz Haberleşme İfadeleri": {
     title: "SMCP — Standart Deniz Haberleşme İfadeleri",
