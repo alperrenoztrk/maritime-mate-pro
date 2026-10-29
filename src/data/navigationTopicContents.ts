@@ -8658,34 +8658,38 @@ Running fix, açık denizde pratik ve işlevseldir; ancak rota veya hız değiş
         content: `**Gözlem Verileri:**
 - UTC: 10:24:35
 - DR mevkii: 36° 42′ N, 029° 18′ E
-- Sextant ölçümü (Hs): 41° 23.4′
+- Sextant ölçümü (Hs): 64° 55.8′
 - Göz yüksekliği: 12 m
 - İndeks hatası: +1.2′
 
 **Adım 1 – AP Seçimi:**
-AP: 37° N, 029° E
+- AP: 37° N, 029° 17.5′ E
+- AP enlemi tam derece, AP boylamı ise LHA'yı tam derece yapacak şekilde seçilir.
 
 **Adım 2 – Düzeltilmiş Yükseklik (Ho):**
 - Dip (12 m göz yüksekliği için tablo değeri): 6.1′
-- Refraksiyon (tablo değeri): 1.2′
+- Refraksiyon (tablo değeri): 0.5′
 - SD = +16′ (Güneş alt kenar)
 
-Ho = 41° 23.4′ + 1.2′ − 6.1′ − 1.2′ + 16′ = **41° 33.3′**
+Ho = 64° 55.8′ + 1.2′ − 6.1′ − 0.5′ + 16′ = 65° 06.4′
 
 **Adım 3 – Almanak ve Sight Reduction:**
-- GHA Güneş (10:24 UTC): 335° 42.5′
+- GHA Güneş (10:24:35 UTC): 335° 42.5′
 - Dec Güneş: 12° 15.3′ N
-- LHA = 335° 42.5′ + 29° = 364° 42.5′ → **4° 42.5′**
+- LHA = 335° 42.5′ + 29° 17.5′ = 365° 00′ → 5° 00′
 
 HO-249 tablosu: φ = 37°, δ = 12°, LHA = 5° için:
-- **Hc = 41° 26.8′**
-- **Zn = 118°**
+- Tablo değerleri: Hc = 64° 36′, d = +59′, Z = 169°
+- Deklinasyonun 15.3′ dakikası için d düzeltmesi: 59 × 15.3 / 60 = +15.0′
+- **Hc = 64° 51.0′**
+- LHA 180°'den küçük olduğu için gök cismi meridyenin batısındadır: Zn = 360° − Z
+- **Zn = 191°**
 
 **Adım 4 – Intercept:**
-a = Ho − Hc = 41° 33.3′ − 41° 26.8′ = **+6.5′ = 6.5 NM TOWARD**
+a = Ho − Hc = 65° 06.4′ − 64° 51.0′ = +15.4′ = 15.4 NM TOWARD
 
 **Adım 5 – LOP Çizimi:**
-AP'den 118° doğrultusunda 6.5 NM ilerlenir. Ulaşılan noktadan 028°–208° doğrultusunda LOP çizilir.`
+AP'den 191° doğrultusunda 15.4 NM ilerlenir. Ulaşılan noktadan 101°–281° doğrultusunda LOP çizilir.`
       },
       {
         title: "Yaygın Hatalar ve Önlemler",

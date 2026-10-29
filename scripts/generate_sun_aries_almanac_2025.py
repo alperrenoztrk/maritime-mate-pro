@@ -10,6 +10,9 @@ Notes
 -----
 - Uses Skyfield with JPL DE421 ephemeris (covers 1900-2050).
 - Uses GAST for Aries (apparent sidereal time). If unavailable, falls back to GMST.
+- Sun RA/Dec are apparent, referred to the true equator and equinox of date
+  (radec(epoch="date")), the same frame as GAST. The J2000 frame (plain
+  radec()) would put GHA Sun off by ~21' and Dec by up to ~8.5' in 2025.
 - Values are computed for UTC at each whole hour (00..23) for every day of 2025.
 """
 
@@ -65,8 +68,8 @@ def main() -> None:
 
             gha_aries_deg = (sidereal_hours * 15.0) % 360.0
 
-            # Sun apparent RA/Dec
-            ra, dec, _dist = earth.at(t).observe(sun).apparent().radec()
+            # Sun apparent RA/Dec, true equator and equinox of date (same frame as GAST)
+            ra, dec, _dist = earth.at(t).observe(sun).apparent().radec(epoch="date")
             ra_deg = (float(ra.hours) * 15.0) % 360.0
             dec_deg = float(dec.degrees)
 

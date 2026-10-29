@@ -56,6 +56,7 @@ test('formulas carrying Turkish prose stay translatable', () => {
     '1° boylam = 4 dakika',
     'Enlem φ₁ = 35° Kuzey',
     '+2 ila +4°C',
+    'DR mevkii: 36° 42′ N, 029° 18′ E',
   ];
   for (const value of mixed) assert.equal(isTechnicalString(value), false, value);
 });

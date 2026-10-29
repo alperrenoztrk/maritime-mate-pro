@@ -39945,5 +39945,71 @@
   },
   "MES + lifeboat + life raft koordineli evacuation.": {
     "en": "Coordinated evacuation by MES, lifeboats and liferafts."
+  },
+  "AP: 37° N, 029° 17.5′ E": {
+    "en": "AP: 37° N, 029° 17.5′ E"
+  },
+  "AP enlemi tam derece, AP boylamı ise LHA'yı tam derece yapacak şekilde seçilir.": {
+    "en": "The AP latitude is a whole degree; the AP longitude is chosen so that the LHA comes out in whole degrees."
+  },
+  "Sextant ölçümü (Hs): 64° 55.8′": {
+    "en": "Sextant altitude (Hs): 64° 55.8′"
+  },
+  "Refraksiyon (tablo değeri): 0.5′": {
+    "en": "Refraction (table value): 0.5′"
+  },
+  "Tablo değerleri: Hc = 64° 36′, d = +59′, Z = 169°": {
+    "en": "Tabulated values: Hc = 64° 36′, d = +59′, Z = 169°"
+  },
+  "Deklinasyonun 15.3′ dakikası için d düzeltmesi: 59 × 15.3 / 60 = +15.0′": {
+    "en": "d correction for the 15.3′ of declination: 59 × 15.3 / 60 = +15.0′"
+  },
+  "LHA 180°'den küçük olduğu için gök cismi meridyenin batısındadır: Zn = 360° − Z": {
+    "en": "LHA is less than 180°, so the body is west of the meridian: Zn = 360° − Z"
+  },
+  "AP'den 191° doğrultusunda 15.4 NM ilerlenir. Ulaşılan noktadan 101°–281° doğrultusunda LOP çizilir.": {
+    "en": "From the AP, lay off 15.4 NM along 191°. Through the point reached, draw the LOP in the direction 101°–281°."
+  },
+  "Örnekte Ho = 65°06.4′, Hc = 64°51.0′ ise intercept nedir?": {
+    "en": "In the example, Ho = 65°06.4′ and Hc = 64°51.0′. What is the intercept?"
+  },
+  "Dip (12 m göz yüksekliği için tablo değeri): 6.1′": {
+    "en": "Dip (table value for 12 m height of eye): 6.1′"
+  },
+  "Adım 2 – Düzeltilmiş Yükseklik (Ho):": {
+    "en": "Step 2 – Observed Altitude (Ho):",
+    "de": "Schritt 2 – Beobachtete Höhe (Ho):",
+    "fr": "Étape 2 – Hauteur observée (Ho) :",
+    "es": "Paso 2 – Altura observada (Ho):",
+    "it": "Passaggio 2 – Altezza osservata (Ho):",
+    "pt": "Passo 2 – Altura observada (Ho):",
+    "nl": "Stap 2 – Waargenomen hoogte (Ho):"
+  },
+  "Göz yüksekliği: 12 m": {
+    "en": "Height of eye: 12 m",
+    "de": "Augeshöhe: 12 m",
+    "fr": "Hauteur d'œil : 12 m",
+    "es": "Elevación del observador: 12 m",
+    "it": "Elevazione dell'occhio: 12 m",
+    "pt": "Altura do olho do observador: 12 m",
+    "nl": "Ooghoogte: 12 m"
+  },
+  "GHA Güneş (10:24:35 UTC): 335° 42.5′": {
+    "en": "Sun GHA (10:24:35 UTC): 335° 42.5′"
+  },
+  "DR mevkiine yakın, tam derece enlem ve LHA'yı tam derece yapan boylam olarak": {
+    "en": "Close to the DR position, with a whole-degree latitude and a longitude that makes the LHA a whole degree"
+  },
+  "AP, DR yakınında seçilir: enlem tam derece, boylam LHA'yı tam derece yapacak şekilde (Sight Reduction tabloları tam giriş ister); fark tipik olarak 30–60 NM altında tutulur.": {
+    "en": "The AP is chosen near the DR: latitude in whole degrees, longitude such that the LHA comes out in whole degrees (the sight reduction tables need whole-degree entries); the offset is typically kept below 30–60 NM."
+  },
+  "DR mevkii: 36° 42′ N, 029° 18′ E": {
+    "en": "DR position: 36° 42′ N, 029° 18′ E"
+  },
+  "DR Mevkii: 35° 18.0' N, 010° 38.2' E": {
+    "en": "DR Position: 35° 18.0' N, 010° 38.2' E"
+  },
+  "DR mevkii 35° 42.5′ N, 028° 17.3′ E ise → AP: 36° 00′ N, 028° 00′ E seçilebilir": {
+    "en": "If the DR position is 35° 42.5′ N, 028° 17.3′ E → AP may be selected as 36° 00′ N, 028° 00′ E"
   }
 }

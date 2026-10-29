@@ -52,7 +52,7 @@ const TURKISH_WORDS = [
   // navigation / calculation labels that survive in formula lines
   // ("1° boylam = 4 dakika", "Enlem φ₁ = 35° Kuzey", "+2 ila +4°C")
   'boylam', 'enlem', 'kuzey', 'guney', 'dogu', 'bati', 'dakika', 'saniye', 'ila',
-  'yeni', 'eski', 'mevcut', 'mevki', 'kerteriz', 'hakiki', 'orta', 'ortalama',
+  'yeni', 'eski', 'mevcut', 'mevki', 'mevkii', 'mevkisi', 'kerteriz', 'hakiki', 'orta', 'ortalama',
   'kriter', 'alan', 'hacim', 'kol', 'debi', 'kuvvet', 'verim', 'yatay', 'dusey',
   'zincir', 'gerilim', 'gerilimi', 'katsayi', 'fark', 'farki', 'merkez', 'merkezi',
   'kalinlik', 'yatma', 'bayrak', 'tehlikeli', 'kapasite',

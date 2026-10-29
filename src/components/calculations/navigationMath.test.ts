@@ -68,3 +68,17 @@ test("intercept sight: afternoon Sun at 029° E bears west of south", () => {
   assert.ok(r.znDeg > 180 && r.znDeg < 270, `Zn ${r.znDeg}`);
   assert.ok(angleDiff(r.znDeg, referenceZn(36, r.decDeg, r.lhaDeg)) < 0.01);
 });
+
+test("2025 almanac: Sun GHA and Dec are referred to the equinox of date (not J2000)", () => {
+  // Reference values: JPL DE421, apparent place, true equator and equinox of date.
+  const cases = [
+    { iso: "2025-01-01T00:00:00Z", gha: 179 + 8.4 / 60, dec: -(22 + 59.9 / 60) },
+    { iso: "2025-03-20T12:00:00Z", gha: 358 + 9.6 / 60, dec: 2.9 / 60 },
+    { iso: "2025-06-21T12:00:00Z", gha: 359 + 32.1 / 60, dec: 23 + 26.3 / 60 },
+  ];
+  for (const c of cases) {
+    const a = computeSunAlmanac(new Date(c.iso));
+    assert.ok(angleDiff(a.ghaSunDeg, c.gha) * 60 < 0.5, `${c.iso} GHA ${a.ghaSunDeg}`);
+    assert.ok(Math.abs(a.decSunDeg - c.dec) * 60 < 0.5, `${c.iso} Dec ${a.decSunDeg}`);
+  }
+});
