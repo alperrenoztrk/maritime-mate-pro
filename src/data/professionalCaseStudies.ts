@@ -888,5 +888,533 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://climate.ec.europa.eu/areas-action/transport-decarbonisation/reducing-emissions-shipping-sector/faq-maritime-transport-eu-emissions-trading-system-ets_en"
       }
     ]
+  },
+  "navigation-overtaking": {
+    "id": "navigation-overtaking-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "COLREG Rule 13 obliges the overtaking vessel to keep out of the way until finally past and clear. An approaching vessel more than 22.5° abaft another's beam is overtaking; doubt must be resolved conservatively.\n\nCommon error: Do not reclassify an ongoing overtaking situation as crossing to transfer the give-way responsibility.",
+    "example": {
+      "problem": "At night the approaching bridge sees only the sternlight of a vessel ahead, with decreasing range.",
+      "steps": [
+        "Evaluate the relative approach and confirm whether the vessel is overtaking rather than crossing.",
+        "Maintain safe separation by early, substantial action while considering traffic, bank effects and available sea room.",
+        "Keep responsibility until finally past and clear; monitor radar, bearings and the other ship's movements."
+      ],
+      "result": "The overtaking vessel's duty does not end merely because the relative bearing changes during the manoeuvre."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREGs",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      },
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-head-on": {
+    "id": "navigation-head-on-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "In a head-on encounter between two power-driven vessels in sight and involving collision risk, Rule 14 requires each to alter course to starboard so that they pass port-to-port. Rules 5–8 still govern lookout, assessment and effective action.\n\nCommon error: Do not apply an automatic 10° alteration to every apparent near-head-on target.",
+    "example": {
+      "problem": "A target is nearly ahead on a reciprocal course; the other ship's masthead lights align and both sidelights are visible.",
+      "steps": [
+        "Establish risk of collision with visual bearing/range trends and available radar information.",
+        "Confirm Rule 14 applies and act early with a substantial course alteration to starboard.",
+        "Continue monitoring CPA and the other vessel; do not stop assessing once the initial alteration is made."
+      ],
+      "result": "Both power-driven vessels have a Rule 14 obligation, subject to the conditions and hierarchy of the Rules."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREGs",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      },
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-restricted-visibility": {
+    "id": "navigation-restricted-visibility-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "When vessels are not in sight of one another in or near restricted visibility, Rule 19 applies instead of the sight-based head-on and crossing allocation. Safe speed and assessment of radar contacts are central.\n\nCommon error: Do not call a radar-only fog contact a Rule 15 crossing vessel.",
+    "example": {
+      "problem": "In dense fog a radar-only contact appears forward of the beam and its calculated CPA reduces.",
+      "steps": [
+        "Use appropriate radar plotting and proper lookout to determine risk and close-quarters development.",
+        "Apply the Rule 19 precautions, including special care with course alterations to port for vessels forward of the beam.",
+        "Reduce speed as required by conditions and standing orders, and continue sound-signal and bridge-team measures."
+      ],
+      "result": "The decision is based on restricted-visibility behaviour and available information, not visual stand-on/give-way geometry."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREGs",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      },
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-hdop": {
+    "id": "navigation-hdop-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "HDOP describes how satellite geometry amplifies horizontal ranging uncertainty. It is dimensionless and is not itself a position error in metres; receiver quality, interference, corrections and multipath also matter.\n\nCommon error: Never translate HDOP 0.9 directly into an error radius of 0.9 metres.",
+    "example": {
+      "problem": "Two GNSS receivers each display a reported HDOP of 0.9 while one has obvious position jumps near a steel structure.",
+      "steps": [
+        "Check independent fixes, chart/radar ranges and the receiver's actual integrity/status indications.",
+        "Identify whether local multipath, interference or signal obstruction explains the position fluctuations.",
+        "Use an independent position source and report the discrepancy rather than relying on HDOP alone."
+      ],
+      "result": "A low HDOP supports favourable geometry but does not prove the fix is correct."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREGs",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      },
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "navigation-bridge-resource-management-brm": {
+    "id": "navigation-bridge-resource-management-brm-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Bridge Resource Management uses challenge-response, explicit task allocation and shared situational awareness; alarms are prompts to investigate, not replacements for human cross-checks.\n\nCommon error: Do not continue a planned turn merely because the waypoint advancement occurred.",
+    "example": {
+      "problem": "During a coastal turn, the helmsman acknowledges a new heading but ECDIS cross-track error continues rising.",
+      "steps": [
+        "Call out the discrepancy and compare heading, rate of turn, COG and independent position indications.",
+        "Confirm the ordered helm mode, steering response and the watch team's understanding.",
+        "If navigation safety is threatened, use approved contingency and Master-calling procedures without delay."
+      ],
+      "result": "A successful verbal acknowledgment does not guarantee the vessel is following the intended track."
+    },
+    "references": [
+      {
+        "title": "IMO — COLREGs",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      },
+      {
+        "title": "NGA — American Practical Navigator",
+        "url": "https://msi.nga.mil/Publications/APN"
+      }
+    ]
+  },
+  "meteorology-cephe-tipleri-ve-gecis-etkileri": {
+    "id": "meteorology-cephe-tipleri-ve-gecis-etkileri-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "A cold-front passage can involve rapid wind veer/backing, pressure changes and convective weather; warm fronts often bring more layered cloud and extensive precipitation. Actual weather depends on the system and locality.\n\nCommon error: Never infer squall onset time from a single pressure reading.",
+    "example": {
+      "problem": "A surface analysis shows an approaching cold front while barometer trend falls and cumulonimbus develop ahead.",
+      "steps": [
+        "Identify the front and movement from official synoptic updates, not cloud appearance alone.",
+        "Compare forecast passage time with observed pressure trend, wind shifts, visibility and squall warnings.",
+        "Secure exposed deck operations, monitor the approach and update the passage risk assessment."
+      ],
+      "result": "The front symbol represents an analysed boundary and does not by itself specify a safe deck-work window."
+    },
+    "references": [
+      {
+        "title": "WMO — Marine services",
+        "url": "https://wmo.int/activities/marine-services"
+      }
+    ]
+  },
+  "meteorology-siklonun-gozu-eye-ve-eyewall": {
+    "id": "meteorology-siklonun-gozu-eye-ve-eyewall-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "In tropical cyclones, the eye may be comparatively calmer while the eyewall contains intense winds and heavy rain. A temporary lull does not imply that the storm has passed.\n\nCommon error: Do not send deck crews to work simply because wind temporarily eases.",
+    "example": {
+      "problem": "Wind decreases sharply on a ship already facing cyclone conditions.",
+      "steps": [
+        "Compare recent forecast positions, pressure tendency and wind-direction changes.",
+        "Check whether the lull could be associated with the eye and whether another eyewall passage is possible.",
+        "Maintain heavy-weather precautions and follow the approved avoidance and bridge-management plan."
+      ],
+      "result": "Conditions may worsen again rapidly; use official cyclone advisories and ship-specific operating limits."
+    },
+    "references": [
+      {
+        "title": "WMO — Marine services",
+        "url": "https://wmo.int/activities/marine-services"
+      }
+    ]
+  },
+  "meteorology-dalga-yuksekligi-ve-periyot": {
+    "id": "meteorology-dalga-yuksekligi-ve-periyot-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Significant wave height is a statistical measure, commonly the average of the highest third of waves, not a ceiling on individual waves. Wave period and direction strongly influence ship motions.\n\nCommon error: Do not tell crew that a 4 m Hs forecast means no waves higher than 4 m.",
+    "example": {
+      "problem": "A forecast indicates significant wave height 4 m and a long dominant period, while the watch observes some higher waves.",
+      "steps": [
+        "Distinguish Hs from individual heights and evaluate forecast uncertainty and swell components.",
+        "Compare encounter period, heading and speed with the ship's roll/pitch response and cargo securing state.",
+        "Use ship-specific motion limits and forecast updates to choose a prudent operating window."
+      ],
+      "result": "Individual waves can exceed the stated significant wave height; a single number never describes the full sea state."
+    },
+    "references": [
+      {
+        "title": "WMO — Marine services",
+        "url": "https://wmo.int/activities/marine-services"
+      }
+    ]
+  },
+  "communication-gmdss-mimarisi-ve-deniz-alanlari": {
+    "id": "communication-gmdss-mimarisi-ve-deniz-alanlari-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Since the 2024 GMDSS modernization, A3 is defined relative to the coverage of a recognized mobile satellite service supported by the ship earth station fitted on board, outside A1 and A2. A4 is everything outside that ship's applicable A1/A2/A3 coverage.\n\nCommon error: Do not define A3 permanently as Inmarsat's approximate 70° latitude footprint or A4 as only polar regions.",
+    "example": {
+      "problem": "Two ships follow the same high-latitude route: one carries a compatible recognized global satellite service and the other has a different certified arrangement.",
+      "steps": [
+        "Read each vessel's Safety Radio Certificate and Record of Equipment, identifying the recognized mobile satellite service and sea-area notation.",
+        "Compare the actual service coverage and terrestrial DSC areas for the planned track.",
+        "Confirm equipment carriage and watchkeeping under the applicable SOLAS IV requirements, rather than applying a fixed latitude boundary to both ships."
+      ],
+      "result": "The same position can be within one ship's certified A3 service coverage and outside another's; flag approval matters."
+    },
+    "references": [
+      {
+        "title": "IMO — Radiocommunications / GMDSS",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMSO — GMDSS and sea areas",
+        "url": "https://imso.org/our-work/gmdss/what-is-the-gmdss/"
+      }
+    ]
+  },
+  "communication-ssas-gemi-guvenlik-alarm-sistemi": {
+    "id": "communication-ssas-gemi-guvenlik-alarm-sistemi-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "The Ship Security Alert System is a covert security alerting means under ISPS/SOLAS XI-2 arrangements, not the radio distress alert route used by EPIRB or DSC. Recipients and test procedures are governed by the ship security plan.\n\nCommon error: Never activate live SSAS or distress transmission as an informal demonstration.",
+    "example": {
+      "problem": "A crew member confuses the SSAS activation point with the bridge's DSC distress alert control.",
+      "steps": [
+        "Differentiate maritime security escalation from a life-threatening distress radio procedure.",
+        "Identify the approved ship security plan and restricted SSAS operation/test instructions without exposing protected details.",
+        "Conduct only authorised tests with advance coordination with the required recipient and company security officer."
+      ],
+      "result": "A security alert has different handling and visibility from a routine GMDSS MAYDAY broadcast."
+    },
+    "references": [
+      {
+        "title": "IMO — Radiocommunications / GMDSS",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMSO — GMDSS and sea areas",
+        "url": "https://imso.org/our-work/gmdss/what-is-the-gmdss/"
+      }
+    ]
+  },
+  "communication-cospas-sarsat-ve-meosar-uydu-tespit-sistemi": {
+    "id": "communication-cospas-sarsat-ve-meosar-uydu-tespit-sistemi-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Cospas-Sarsat 406 MHz alerts are processed through the satellite segment and ground network, then forwarded through LUT/MCC arrangements to responsible SAR coordination authorities. The beacon's GNSS position and independent satellite-derived location are not identical data sources.\n\nCommon error: Do not assert that every first satellite message already contains an accurate GNSS fix.",
+    "example": {
+      "problem": "An EPIRB distress report initially has beacon identity but no recent encoded GNSS coordinate.",
+      "steps": [
+        "Check that the HEX identification identifies the beacon and its registration; do not mistake an absent coordinate for an absent alert.",
+        "Understand how compatible satellite processing can contribute location estimation as observations accumulate.",
+        "Forward verified ship position and survival-craft information through proper distress communication channels when able."
+      ],
+      "result": "An initially missing encoded GNSS coordinate is not proof that the beacon cannot alert SAR."
+    },
+    "references": [
+      {
+        "title": "IMO — Radiocommunications / GMDSS",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMSO — GMDSS and sea areas",
+        "url": "https://imso.org/our-work/gmdss/what-is-the-gmdss/"
+      }
+    ]
+  },
+  "communication-iamsar-sar-coordination": {
+    "id": "communication-iamsar-sar-coordination-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "SAR communications separate alert receipt, on-scene coordination, search planning and rescue execution. The duty to assist and the authority of designated coordinators depend on the actual situation and governing plans.\n\nCommon error: Do not assume the first ship arriving becomes the permanent coordinator without agreement.",
+    "example": {
+      "problem": "A merchant vessel is assigned to assist a search while several craft are in the area.",
+      "steps": [
+        "Clarify the coordinating authority and any On-Scene Coordinator designation using the agreed working channel.",
+        "Exchange own position, manoeuvring constraints, search capability and observed contacts in clear standard phrases.",
+        "Record tasking, changes and any survivor recovery actions, and preserve safe navigation and crew exposure controls."
+      ],
+      "result": "Radio discipline and shared search geometry prevent duplicative or unsafe movements."
+    },
+    "references": [
+      {
+        "title": "IMO — Radiocommunications / GMDSS",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMSO — GMDSS and sea areas",
+        "url": "https://imso.org/our-work/gmdss/what-is-the-gmdss/"
+      }
+    ]
+  },
+  "safety-can-kurtarma-araclari-lsa": {
+    "id": "safety-can-kurtarma-araclari-lsa-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "A lifeboat is a survival craft, while a rescue boat is intended for recovering persons and marshalling survival craft; some installations may meet both roles. Launching procedures are equipment-specific and require trained crew.\n\nCommon error: Never improvise hook, painter or release sequences from another vessel's equipment.",
+    "example": {
+      "problem": "During a drill, the designated crew can locate the rescue boat but cannot explain its release arrangement.",
+      "steps": [
+        "Identify the craft type, capacity placards and the maker-approved launch/recovery instructions.",
+        "Trace hazards such as falls, hooks, access to embarkation stations and communication with the bridge.",
+        "Conduct an authorised dry or live drill suited to weather and vessel conditions, then document deficiencies."
+      ],
+      "result": "A boat in the correct cradle does not demonstrate that its crew can operate it safely."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "safety-yanginla-mucadele-ve-sonduruculer": {
+    "id": "safety-yanginla-mucadele-ve-sonduruculer-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Portable extinguishers must be matched to the fuel, fire class and electrical risk, and their availability does not replace alarm raising or escape-route assessment. Fire class terminology may vary by jurisdiction.\n\nCommon error: Do not direct an unapproved water jet into live electrical equipment.",
+    "example": {
+      "problem": "A small burning spill occurs near energised electrical equipment in a machinery workshop.",
+      "steps": [
+        "Raise the alarm and assess the escape path and safe isolation opportunity.",
+        "Identify the burning fuel and electrical exposure before selecting an approved extinguisher suitable for both.",
+        "If safe first attack cannot be maintained, withdraw, close access as directed and support organised response."
+      ],
+      "result": "Correct agent selection depends on the fuel and exposure; an electrical supply is not itself a fuel class."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "safety-flooding-hasar-kontrolu-ve-yara-savunma": {
+    "id": "safety-flooding-hasar-kontrolu-ve-yara-savunma-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Flooding response combines watertight integrity, source identification, stability awareness, tank soundings and boundary integrity. Pump capacity can be exceeded by rising ingress even if a bilge alarm is acknowledged.\n\nCommon error: Never open a watertight boundary or start counter-flooding without the approved damage-stability assessment.",
+    "example": {
+      "problem": "After a heavy impact, one compartment's level rises despite a bilge pump running.",
+      "steps": [
+        "Raise the emergency response and establish compartment boundaries and personnel accountability.",
+        "Check soundings, flooding rate, heel/trim, pump status and watertight-door/valve lineups.",
+        "Use the approved damage-control plan, stability assessment and command instructions rather than opening unassessed boundaries."
+      ],
+      "result": "Pump operation alone is not evidence that flooding is under control."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "safety-gemide-tibbi-ilk-yardim-ve-tmas": {
+    "id": "safety-gemide-tibbi-ilk-yardim-ve-tmas-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "TMAS provides medical advice at sea; the bridge team must send precise observations and follow qualified medical direction. Initial emergency response should follow the vessel's trained first-aid protocols.\n\nCommon error: Never delay immediate trained first aid solely to complete paperwork.",
+    "example": {
+      "problem": "A crew member collapses, is breathing but unresponsive, and has recently worked in a hot machinery space.",
+      "steps": [
+        "Establish scene safety, summon trained medical responders and immediately assess breathing and responsiveness under first-aid training.",
+        "Contact TMAS using the appropriate communication route with position, age if known, observations, medications and vitals when safely available.",
+        "Record times and medical instructions, monitor deterioration, and coordinate evacuation capability as directed."
+      ],
+      "result": "Accurate observations and early escalation assist diagnosis without an untrained crew member prescribing treatment."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "stability-3-4-tpc-ve-paralel-batma-4": {
+    "id": "stability-3-4-tpc-ve-paralel-batma-4-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "TPC is the approximate mass necessary to change mean draught by 1 cm near the stated waterline, derived from waterplane area and water density. It varies with draught and loading condition.\n\nCommon error: Do not treat TPC as constant over large draught changes.",
+    "example": {
+      "problem": "A vessel has a tabulated TPC of 22 t/cm at the present draught and takes on 110 tonnes distributed without appreciable trim.",
+      "steps": [
+        "Estimate parallel sinkage: 110 / 22 = 5 cm.",
+        "Confirm that the added weight is nearly longitudinally balanced so trim change is negligible.",
+        "Repeat using updated hydrostatics, water density and actual weight distribution for an operational result."
+      ],
+      "result": "Five centimetres is a local approximation, not guaranteed aft or forward draft change."
+    },
+    "references": [
+      {
+        "title": "IMO — Cargoes and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      }
+    ]
+  },
+  "stability-2-7-dogrultma-kolu-gz-8": {
+    "id": "stability-2-7-dogrultma-kolu-gz-8-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "GZ is the horizontal lever between weight and buoyancy lines of action at a given angle of heel. Righting moment equals displacement weight multiplied by GZ under the corresponding units and assumptions.\n\nCommon error: Do not use the small-angle GM approximation as an unrestricted large-angle GZ formula.",
+    "example": {
+      "problem": "A ship has displacement 15,000 tonnes and a GZ of 0.4 m at a specific angle.",
+      "steps": [
+        "Express the mass displacement as weight when calculating SI righting moment: 15,000,000 kg × 9.81 m/s².",
+        "Multiply by the righting lever: 15,000,000 × 9.81 × 0.4 ≈ 58.9 MN·m.",
+        "Interpret the result at that heel only, then compare with the full approved GZ curve and downflooding limits."
+      ],
+      "result": "About 58.9 MN·m is the illustrative righting moment at the stated heel, not the dynamic stability area."
+    },
+    "references": [
+      {
+        "title": "IMO — Cargoes and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      }
+    ]
+  },
+  "stability-7-7-serbest-yuzey-duzeltmesi-hesaplamalari-7": {
+    "id": "stability-7-7-serbest-yuzey-duzeltmesi-hesaplamalari-7-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "The free-surface correction can be represented as a virtual rise of G for applicable tanks. Approved stability-booklet tables, density and actual slack-tank states must replace oversimplified constant corrections.\n\nCommon error: Do not add separate tank corrections to a stability output already corrected for free surface.",
+    "example": {
+      "problem": "Two slack tanks have tabulated free-surface moments 250 and 350 t·m; ship displacement is 10,000 t and initial GM is 0.80 m.",
+      "steps": [
+        "Sum the applicable FSMs: 250 + 350 = 600 t·m.",
+        "Compute virtual correction 600 / 10,000 = 0.06 m and corrected GM = 0.74 m.",
+        "Reassess actual tank contents, free-surface assumptions and all stability criteria on the approved loading instrument."
+      ],
+      "result": "The example yields corrected GM 0.74 m only under the stated table conventions."
+    },
+    "references": [
+      {
+        "title": "IMO — Cargoes and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      }
+    ]
+  },
+  "cargo-kati-dokme-yukler-ve-imsbc-code": {
+    "id": "cargo-kati-dokme-yukler-ve-imsbc-code-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "IMSBC Group A includes cargoes liable to liquefy or dynamically separate under relevant moisture conditions. Shipper documents and sampling arrangements matter; the master should not rely on the cargo looking dry.\n\nCommon error: Never accept a wet Group A cargo simply because the hatch cover can be closed quickly.",
+    "example": {
+      "problem": "A Group A cargo declaration reports a moisture content near the stated Transportable Moisture Limit (TML), but heavy rain follows sampling.",
+      "steps": [
+        "Check the current IMSBC schedule, signed TML and moisture certificates/declarations and their sample dates.",
+        "Evaluate the impact of subsequent rainfall and cargo-stockpile condition, requiring reassessment or testing under the relevant provisions.",
+        "Do not commence or continue loading unless moisture controls and shipper evidence satisfy the applicable Code."
+      ],
+      "result": "Moisture content must be less than the applicable TML with valid controls; visual dryness is not an accepted test."
+    },
+    "references": [
+      {
+        "title": "IMO — Cargoes",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "UK Government — IMSBC Code amendments",
+        "url": "https://assets.publishing.service.gov.uk/media/68b0502ace0a11bb78a4f16f/TS_50.2025_Amendments_Solid_Bulk_Cargoes_Convention_Safety_of_Life_at_Sea_Vol_I.pdf"
+      }
+    ]
+  },
+  "cargo-tahil-yukleri-ve-tahil-stabilitesi": {
+    "id": "cargo-tahil-yukleri-ve-tahil-stabilitesi-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Grain cargo can shift in partly filled spaces and create heeling moments, so grain-stability requirements and approved loading conditions differ from ordinary solid bulk treatment.\n\nCommon error: Do not use an ordinary bulk-cargo stability calculation in place of grain-shift criteria.",
+    "example": {
+      "problem": "A plan proposes leaving one grain hold slack, relying on the ship's positive GM alone.",
+      "steps": [
+        "Locate the grain loading information, approved grain heeling moments and filling/securement assumptions.",
+        "Model the actual partly filled hold and any shifting risk using the approved grain stability calculation.",
+        "Verify compliance with all applicable grain stability criteria before accepting the loading plan."
+      ],
+      "result": "Positive GM by itself does not establish grain loading compliance."
+    },
+    "references": [
+      {
+        "title": "IMO — Cargoes",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "UK Government — IMSBC Code amendments",
+        "url": "https://assets.publishing.service.gov.uk/media/68b0502ace0a11bb78a4f16f/TS_50.2025_Amendments_Solid_Bulk_Cargoes_Convention_Safety_of_Life_at_Sea_Vol_I.pdf"
+      }
+    ]
+  },
+  "cargo-lpg-ve-lng-yuk-operasyonlari": {
+    "id": "cargo-lpg-ve-lng-yuk-operasyonlari-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Liquefied-gas cargo operations involve temperature, pressure, cargo compatibility and hazardous-area controls. Cargo transfer procedures depend on tank type and the vessel's approved cargo system and terminal interface.\n\nCommon error: Never bypass an ESD or manifold alarm to keep cargo operations on schedule.",
+    "example": {
+      "problem": "Before LNG transfer, ship and shore pressure monitoring disagree and one manifold alarm is not responding.",
+      "steps": [
+        "Pause transfer readiness and compare agreed ship/shore checklists, measurement points and alarm-system state.",
+        "Escalate to the cargo officer, terminal and responsible engineers to identify instrumentation or communication failure.",
+        "Proceed only after testing and authorising the agreed transfer limits and emergency shutdown interfaces."
+      ],
+      "result": "A signed checklist cannot compensate for a nonfunctional transfer-critical protection."
+    },
+    "references": [
+      {
+        "title": "IMO — Cargoes",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "UK Government — IMSBC Code amendments",
+        "url": "https://assets.publishing.service.gov.uk/media/68b0502ace0a11bb78a4f16f/TS_50.2025_Amendments_Solid_Bulk_Cargoes_Convention_Safety_of_Life_at_Sea_Vol_I.pdf"
+      }
+    ]
+  },
+  "seamanship-yedekleme-towing-operasyonlari": {
+    "id": "seamanship-yedekleme-towing-operasyonlari-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "Towline tension reflects dynamic loads, vessel motions and relative movement, not only bollard-pull rating. Towing arrangements also require compatible fittings, release capability and agreed communications.\n\nCommon error: Never use an unverified deck fitting simply because it is reachable.",
+    "example": {
+      "problem": "A tug approaches a disabled vessel in freshening weather while the tow connection point is uncertain.",
+      "steps": [
+        "Confirm towing plan, rated strong points and release systems for both vessels.",
+        "Establish communications, relative approach and safe exclusion zones away from potential towline recoil.",
+        "Do not transfer the tow or put crew at the connection until all parties approve the method and weather limits."
+      ],
+      "result": "The tug's rated bollard pull is not the working load limit of every connected fitting."
+    },
+    "references": [
+      {
+        "title": "MCA — Merchant seafarer safe working practices",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "environment-marpol-ek-iv-pis-su-sewage": {
+    "id": "environment-marpol-ek-iv-pis-su-sewage-professional-application",
+    "title": "Operational reasoning and verified scenario",
+    "content": "MARPOL Annex IV sewage requirements vary by plant approval, comminution/disinfection status, distance from nearest land and special provisions. Retention is the safe option when discharge conditions are uncertain.\n\nCommon error: Do not invent a universal overboard discharge distance for every sewage type and operating condition.",
+    "example": {
+      "problem": "An engineer proposes releasing untreated sewage close to shore on the basis that the holding tank is nearly full.",
+      "steps": [
+        "Identify the treatment arrangement, applicable area and distance limits under the ship's approved plan and local requirements.",
+        "Verify remaining holding capacity, any permitted discharge route and shore-reception availability.",
+        "Document the actual disposal or retention decision under the vessel's procedures."
+      ],
+      "result": "Tank capacity pressure does not create an exemption from sewage-discharge restrictions."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL overview",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      }
+    ]
   }
 };
