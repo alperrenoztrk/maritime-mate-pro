@@ -513,6 +513,78 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jakobsleiter_IMG_3508.JPG",
       "author": "Nightflyer 22:11, 13. Mai 2008 (CEST)",
       "license": "Public domain"
+    },
+    {
+      "category": "seamanship",
+      "topic": "Demir ve Demirleme",
+      "section": "Demir Donanımı ve Türleri",
+      "asset": "src/assets/seamanship/anchor-stockless.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Admiralty_standard_stockless_anchor_01.jpg",
+      "author": "Pratishkhedekar",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "seamanship",
+      "topic": "Halatlar, Knot ve Bağlama Teknikleri",
+      "section": "Temel Düğümler (Knots)",
+      "asset": "src/assets/seamanship/knots-display.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rope_Knots.jpg",
+      "author": "Noracrentiss",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "seamanship",
+      "topic": "Bağlama (Mooring) Operasyonları",
+      "section": "Bağlama Halatları ve Düzeni",
+      "asset": "src/assets/seamanship/mooring-equipment.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boat_Deck_with_Coiled_Mooring_Ropes,_Air_Vent_Pipes,_and_Utility_Fixtures..jpg",
+      "author": "Ssemmanda will",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "safety",
+      "topic": "Can Kurtarma Araçları (LSA)",
+      "section": "Can Salları (Liferafts)",
+      "asset": "src/assets/seamanship/liferaft-canister.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rescue_inflatable_raft_container_at_Moskva-705.jpg",
+      "author": "Alexander Roumega",
+      "license": "CC0"
+    },
+    {
+      "category": "safety",
+      "topic": "Can Kurtarma Araçları (LSA)",
+      "section": "İndirme Donanımı (Davit) ve Serbest Düşme",
+      "asset": "src/assets/seamanship/lifeboat-freefall.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Freefall_lifeboat_of_the_Bulk_carrier_Queen_Sapphire_at_the_Kwinana_Bulk_Terminal%2C_June_2024_01.jpg",
+      "author": "Calistemon",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "safety",
+      "topic": "Yangınla Mücadele ve Söndürücüler",
+      "section": "Taşınabilir Söndürücü Tipleri",
+      "asset": "src/assets/seamanship/fire-extinguishers.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Virginia_V_(ship,_1922)_-_fire_hose_%26_extinguisher.jpg",
+      "author": "Joe Mabel",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "category": "navigation",
+      "topic": "AIS - Otomatik Tanımlama Sistemi",
+      "section": "Yayınlanan Bilgi Türleri",
+      "asset": "src/assets/bridge/ais-display.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ships_AIS_display_with_lists_of_nearby_vessels.jpg",
+      "author": "Ulf Larsen",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "category": "communication",
+      "topic": "GMDSS Mimarisi ve Deniz Alanları",
+      "section": "Ekipman Gereklilikleri",
+      "asset": "src/assets/bridge/dsc-panel.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SAILOR_2000_GMDSS_console.jpg",
+      "author": "Slawomirs",
+      "license": "CC BY-SA 4.0"
     }
   ]
 }

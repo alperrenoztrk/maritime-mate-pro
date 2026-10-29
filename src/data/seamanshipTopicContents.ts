@@ -1,4 +1,7 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
+import realStocklessAnchor from "@/assets/seamanship/anchor-stockless.jpg";
+import realRopeKnots from "@/assets/seamanship/knots-display.jpg";
+import realCoiledMooringRopes from "@/assets/seamanship/mooring-equipment.jpg";
 
 /**
  * Gemicilik — "Dersler Beta" okunabilir konu anlatımı.
@@ -28,6 +31,8 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Temel Düğümler (Knots)",
+        image: realRopeKnots,
+        imageAlt: "Real rope knots shown together, for comparison with step-by-step knot instructions",
         content:
           "Birkaç temel düğüm her gemicinin bilmesi gerekendir. İzbarço (bowline): halatın ucunda sabit, sıkışmayan bir göz oluşturur; can kurtarma ve bağlamada yaygındır. Camadan bağı (reef knot): iki eşit halatı geçici bağlar; yüke gelince sıkışıp çözülmesi gerektiğinde kullanılır (yük taşıyan kritik bağlantılarda güvenilmez). Kropi/sekiz bağı (figure-eight): halat ucunun blok/halkalardan kaçmasını önler. Volta ve kazık bağı (round turn and two half hitches, clove hitch): halatı bir babaya/direğe geçici bağlamak için kullanılır. Doğru düğüm, yük altında tutmalı ve gerektiğinde kolayca çözülebilmelidir.",
       },
@@ -57,6 +62,8 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Demir Donanımı ve Türleri",
+        image: realStocklessAnchor,
+        imageAlt: "Photograph of a genuine stockless ship anchor; flukes visible",
         content:
           "Demir donanımı; demir (anchor), zincir (chain cable), ırgat (windlass), zincirlik (chain locker) ve loça/kovan (hawse pipe) ile stoperlerden oluşur. Yaygın demir tipi, stoksuz (stockless) demirdir; tırnakları (flukes) zemine gömülerek tutar. Zincir, baklalar hâlinde 'kilit' (shackle/shot — genellikle 27.5 m) uzunluklarına bölünür ve renk işaretleriyle salınan miktar izlenir. Demirin tutuş gücü ağırlığından çok zincirin dipte yatay yatması ve demirin zemine gömülmesiyle sağlanır.",
       },
@@ -95,6 +102,8 @@ export const seamanshipTopicContents: Record<string, TopicDetailContent> = {
     sections: [
       {
         title: "Bağlama Halatları ve Düzeni",
+        image: realCoiledMooringRopes,
+        imageAlt: "Coiled shipboard mooring ropes on a vessel's deck; not a winch or a mooring lead plan",
         content:
           "Standart bağlama düzeni farklı görevdeki halatlardan oluşur. Baş ve kıç açmazları (head/stern lines) gemiyi rıhtıma çeker; spring halatlar (baş ve kıç spring) geminin boyuna (ileri-geri) hareketini engeller; breast halatlar gemiyi rıhtıma dik tutar. İyi bir düzen, halatları mümkün olduğunca uzun ve simetrik yerleştirir; uzun halat aynı geminin hareketinde daha az gerilim değişimi yaşar. Aynı serviste farklı malzemeden halat karıştırmak (örn. naylon + HMPE) yükü eşit paylaşmadığından önerilmez.",
       },

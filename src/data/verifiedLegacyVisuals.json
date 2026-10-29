@@ -1,0 +1,145 @@
+{
+  "policy": "Fail-closed for legacy/long-form pages. Approve a specific original, licensed photo only for a specific old-route topic. Captions describe only what the source plausibly shows; they do not assert model-specific details. Images with conflicting provenance are excluded.",
+  "approved": [
+    {
+      "surface": "seamanship",
+      "topicId": "wire-ropes",
+      "asset": "src/assets/seamanship/wire-rope.jpg",
+      "title": "Steel wire rope on a drum",
+      "description": "A wire rope wound onto a drum. This photograph does not show a cut section or establish strand count.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Steel_wire_rope_on_a_drum.jpg",
+      "author": "W.carter",
+      "license": "CC0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "knots-bends",
+      "asset": "src/assets/seamanship/knots-display.jpg",
+      "title": "Knots made from rope",
+      "description": "An assortment of tied rope knots. Individual knots must be identified using the accompanying instructions, not guessed from this photograph.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rope_Knots.jpg",
+      "author": "Noracrentiss",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "anchor-types",
+      "asset": "src/assets/seamanship/anchor-stockless.jpg",
+      "title": "Stockless anchor",
+      "description": "A stockless-type maritime anchor with its flukes visible.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Admiralty_standard_stockless_anchor_01.jpg",
+      "author": "Pratishkhedekar",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "anchor-chain",
+      "asset": "src/assets/seamanship/anchor-chain.jpg",
+      "title": "Anchor chain aboard ship",
+      "description": "A ship's anchor chain and crew working at the forecastle. Shackle length and marking conventions cannot be verified from this photograph.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:US_Navy_050328-N-7538D-032_Deck_Department_personnel_secure_the_anchor_chain_in_the_ship%27s_forecastle_aboard_USS_Nimitz_(CVN_68).jpg",
+      "author": "U.S. Navy photo by Photographer’s Mate Airman Recruit Mat...",
+      "license": "Public domain"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "rudder-types",
+      "asset": "src/assets/seamanship/rudder-propeller.jpg",
+      "title": "Ship propeller and rudder",
+      "description": "Propeller and rudder of a real ship. This photograph does not, by itself, classify the balance type or give area ratios.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Propeller_and_rudder_Gerd_Knutsen.jpg",
+      "author": "Hervé Cozanet",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "steering-gear",
+      "asset": "src/assets/seamanship/steering-gear.jpg",
+      "title": "Steering machinery compartment",
+      "description": "A ship's actual steering machinery installation. Details of hydraulic arrangement depend on the installed make and model.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2016-06-13_MV-LISA_1084_Rudermaschine.jpg",
+      "author": "Eduard47",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "deck-cranes",
+      "asset": "src/assets/seamanship/deck-crane.jpg",
+      "title": "Cargo handling by ship crane",
+      "description": "A real crane ship conducting cargo handling. No safe working load or inspection interval is inferred from the photograph.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:US_Navy_090617-N-0577G-090_Sailors_assigned_to_Navy_Cargo_Handling_Battalion_One_(NCHB-1)_work_with_soldiers_from_the_Army_332nd_Headquarters_and_Headquarters_Company_to_move_cargo_from_the_Military_Sealift_Command_crane_ship_S.jpg",
+      "author": "U.S. Navy photo by Mass Communication Specialist 1st Clas...",
+      "license": "Public domain"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "lifeboat-types",
+      "asset": "src/assets/seamanship/lifeboat-davit.jpg",
+      "title": "Lifeboat in its stowage",
+      "description": "A real shipboard lifeboat. The approved launching arrangement is determined from the vessel's equipment documentation.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lifeboat_1.JPG",
+      "author": "~riley",
+      "license": "CC BY-SA 3.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "lifeboat-types",
+      "asset": "src/assets/seamanship/lifeboat-freefall.jpg",
+      "title": "Free-fall lifeboat",
+      "description": "A free-fall lifeboat fitted at a bulk carrier's stern.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Freefall_lifeboat_of_the_Bulk_carrier_Queen_Sapphire_at_the_Kwinana_Bulk_Terminal%2C_June_2024_01.jpg",
+      "author": "Calistemon",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "liferaft-types",
+      "asset": "src/assets/seamanship/liferaft-canister.jpg",
+      "title": "Liferaft container",
+      "description": "A real shipboard inflatable liferaft container. The HRU routing is not verified by this photograph.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rescue_inflatable_raft_container_at_Moskva-705.jpg",
+      "author": "Alexander Roumega",
+      "license": "CC0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "life-saving-appliances",
+      "asset": "src/assets/seamanship/lsa-personal.jpg",
+      "title": "Stowed lifejackets",
+      "description": "Lifejackets stowed aboard a passenger vessel; other survival appliances are not shown.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lifejackets_aboard_Norwegian_ferry_Fanafjord_(ship_built_2006)_Photo_2018-03-05_IMG_5597.jpg",
+      "author": "Wolfmann",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "seamanship",
+      "topicId": "portable-extinguishers",
+      "asset": "src/assets/seamanship/fire-extinguishers.jpg",
+      "title": "Extinguisher and fire hose",
+      "description": "A real shipboard fire hose and portable fire extinguisher; does not illustrate all agent classes.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Virginia_V_(ship,_1922)_-_fire_hose_%26_extinguisher.jpg",
+      "author": "Joe Mabel",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "safety",
+      "topicId": "epirb-sart",
+      "asset": "src/assets/lessons/epirb-gps.jpg",
+      "title": "Emergency position-indicating radio beacon",
+      "description": "A real EPIRB device. Neither the satellite signal chain nor the hydrostatic release sequence is depicted.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
+      "author": "Marwan Mohamad",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "surface": "longform",
+      "topicId": "gmdss-lsa/4",
+      "asset": "src/assets/lessons/epirb-gps.jpg",
+      "title": "Emergency position-indicating radio beacon",
+      "description": "A real EPIRB device. Neither the satellite signal chain nor the hydrostatic release sequence is depicted.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:EPIRB_%282%29.jpg",
+      "author": "Marwan Mohamad",
+      "license": "CC BY-SA 4.0"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import type { TopicDetailContent } from "@/data/navigationTopicContents";
+import realGMDSSRadioConsole from "@/assets/bridge/dsc-panel.jpg";
 import verifiedEpirbPhoto from "@/assets/lessons/epirb-gps.jpg";
 
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
@@ -23,6 +24,8 @@ export const communicationTopicContents: Record<string, TopicDetailContent> = {
       },
       {
         title: "Ekipman Gereklilikleri",
+        image: realGMDSSRadioConsole,
+        imageAlt: "Real GMDSS radio console showing installed communication equipment; sea-area coverage is not pictured",
         content:
           "Geminin seyir planına dahil olan deniz alanları, taşıması gereken minimum ekipman setini belirler. Tüm alanlarda ortak olan ekipmanlar: VHF-DSC telsiz, NAVTEX alıcısı, EPIRB (406 MHz), SART veya AIS-SART, ve taşınabilir VHF setleri (en az 2 veya 3 adet). A1 dışına çıkan gemiler ek olarak MF-DSC telsiz taşımalıdır. A2 dışına çıkan gemilerin A3 veya A4 için hangi RMSS gemi yer istasyonu, MF/HF-DSC ekipmanı ve yedek alarm yolunu taşıyacağı, güncel SOLAS IV gerekleri ve geminin onaylı radyo ekipman kaydı esas alınarak belirlenir. A4 gerekliliklerinde HF-DSC kapasitesi özellikle önemlidir; ancak seçilecek kombinasyon gemi sertifikasından doğrulanmalıdır. Ekipman kombinasyonu bayrak devletinin onayına, gemi tipine ve tonajına göre detaylandırılır. 300 GT ve üzeri uluslararası sefer yapan tüm ticari gemiler GMDSS uyumlu olmak zorundadır.",
       },

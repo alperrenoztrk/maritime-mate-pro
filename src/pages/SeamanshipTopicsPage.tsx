@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { verifiedLegacyImage } from "@/utils/verifiedLegacyImage";
 import type { CSSProperties } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -3204,6 +3205,23 @@ export default function SeamanshipTopicsPage() {
   };
 
   const currentContent = selectedTopic ? topicContents[selectedTopic] : null;
+  const approvedTopicImage = selectedTopic && currentContent?.image
+    ? verifiedLegacyImage("seamanship", selectedTopic, currentContent.image)
+    : undefined;
+  const approvedPhotos = selectedTopic && currentContent?.photos
+    ? currentContent.photos.flatMap((photo) => {
+        const source = verifiedLegacyImage("seamanship", selectedTopic, photo.src);
+        return source ? [{
+          src: source.src,
+          title: source.title,
+          caption: source.description,
+          alt: source.description,
+          credit: `${source.author} · ${source.license}`,
+          sourceUrl: source.sourceUrl,
+        }] : [];
+      })
+    : [];
+
 
   // Back tuşu açık bir yazıyı asla kapatmaz: konu anlatımı ekrandayken
   // geri tuşu yutulur, yazı ancak kendi kapatma düğmesiyle kapanır.
@@ -3336,20 +3354,26 @@ export default function SeamanshipTopicsPage() {
                 </div>
 
                 {/* Topic Image/Diagram */}
-                {currentContent.image && (
+                {approvedTopicImage && (
                   <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
                     <img
-                      src={currentContent.image}
-                      alt={currentContent.title}
+                      src={approvedTopicImage.src}
+                      alt={approvedTopicImage.description}
                       className="w-full h-auto object-contain"
                       loading="lazy"
                     />
+                    <p className="px-3 py-2 text-xs leading-relaxed text-muted-foreground">
+                      {approvedTopicImage.author} · {approvedTopicImage.license} ·{" "}
+                      <a href={approvedTopicImage.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                        Original photograph and licence
+                      </a>
+                    </p>
                   </div>
                 )}
 
                 {/* Real Photographs Gallery */}
-                {currentContent.photos && currentContent.photos.length > 0 && (
-                  <PhotoGallery photos={currentContent.photos} topicTitle={currentContent.title} />
+                {approvedPhotos.length > 0 && (
+                  <PhotoGallery photos={approvedPhotos} topicTitle={currentContent.title} />
                 )}
 
                 {/* Knot-tying — bütün bağlar tek bir yerde, Gemici Bağları sayfasında toplanmıştır */}

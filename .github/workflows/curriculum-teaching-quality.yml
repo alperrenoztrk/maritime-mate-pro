@@ -4,6 +4,14 @@ on:
     paths:
       - 'src/data/professionalCaseStudies.ts'
       - 'src/data/verifiedLessonVisuals.json'
+      - 'src/data/verifiedLegacyVisuals.json'
+      - 'src/utils/verifiedLegacyImage.ts'
+      - 'src/pages/ShipSystemDeepDive.tsx'
+      - 'src/pages/SafetyTopicsPage.tsx'
+      - 'src/pages/SeamanshipTopicsPage.tsx'
+      - 'src/pages/CargoTopicsPage.tsx'
+      - 'src/components/PhotoGallery.tsx'
+      - 'scripts/check-legacy-visual-provenance.mjs'
       - 'src/utils/lessonImageFallbacks.ts'
       - 'src/data/communicationTopicContents.ts'
       - 'src/data/shipSystemImages.ts'
@@ -36,6 +44,8 @@ jobs:
         run: npm run check:professional-cases
       - name: Ensure only sourced, topic-specific images render
         run: npm run check:verified-lesson-visuals
+      - name: Gate legacy lesson photographs by original source and exact topic
+        run: npm run check:legacy-visuals
       - name: EPIRB topic accuracy and original photo
         run: npm run check:epirb-lesson
       - name: Verify complete learning inventory

@@ -15,6 +15,8 @@ export interface GalleryPhoto {
   alt?: string;
   /** Optional source/credit line (e.g. "Kaynak: Wikimedia Commons / NOAA"). */
   credit?: string;
+  /** Original source page for a provenance-reviewed photograph. */
+  sourceUrl?: string;
 }
 
 interface PhotoGalleryProps {
@@ -108,7 +110,14 @@ export function PhotoGallery({ photos, topicTitle }: PhotoGalleryProps) {
                 {p.caption}
               </p>
               {p.credit && (
-                <p className="text-micro italic text-muted-foreground/70">{p.credit}</p>
+                <p className="text-micro italic text-muted-foreground/70">
+                  {p.credit}
+                  {p.sourceUrl && (
+                    <a className="ml-1 underline underline-offset-2" href={p.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      Original and licence
+                    </a>
+                  )}
+                </p>
               )}
             </figcaption>
           </figure>

@@ -1,6 +1,7 @@
 // Navigation topic detailed content
 // Import images - Dünya'nın Şekli (gerçek NASA fotoğrafları + teknik SVG diyagramlar)
 import earthBlueMarble from "@/assets/navigation/real/earth-blue-marble.jpg";
+import realAISReceiverScreen from "@/assets/bridge/ais-display.jpg";
 const earthOblate = earthBlueMarble; // NASA Apollo-tip Earth görüntüsü
 
 
@@ -11919,6 +11920,8 @@ Kesişim noktası = Running Fix (10:30)
       },
       {
         title: "Yayınlanan Bilgi Türleri",
+        image: realAISReceiverScreen,
+        imageAlt: "Real shipboard AIS screen listing other vessels and transmitted target information",
         content: "AIS üç tür bilgi taşır: Statik (MMSI, gemi adı, çağrı işareti, IMO no, tip, boyutlar) – nadiren değişir; Dinamik (konum, COG, SOG, hakiki baş/heading, dönüş oranı/ROT, seyir durumu) – sık güncellenir; Sefer (Voyage) bilgisi (su çekimi/draft, varış limanı, ETA, tehlikeli yük durumu) – manuel girilir ve güncel tutulmalıdır.",
         bulletPoints: [
           "Statik: MMSI, ad, IMO no, tip, boyutlar.",

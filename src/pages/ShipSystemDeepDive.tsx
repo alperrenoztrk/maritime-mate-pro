@@ -22,6 +22,7 @@ import { MobileLayout } from "@/components/MobileLayout";
 import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { shipSystemsData, type ShipSystemTopic } from "@/data/shipSystemsData";
 import { shipSystemImages } from "@/data/shipSystemImages";
+import { verifiedLegacyImage } from "@/utils/verifiedLegacyImage";
 import {
   getProfessionalSystemGuide,
   type ProfessionalSystemGuide,
@@ -46,7 +47,7 @@ export default function ShipSystemDeepDive() {
   const guide = sectionId && topicMeta
     ? getProfessionalSystemGuide(sectionId, idx, topicMeta.title)
     : null;
-  const topicImage = sectionId ? shipSystemImages[sectionId]?.[idx] : undefined;
+  const topicImage = sectionId ? verifiedLegacyImage("ship-system", `${sectionId}/${idx}`, shipSystemImages[sectionId]?.[idx])?.src : undefined;
 
   const [content, setContent] = useState<ShipSystemLongForm | null>(null);
   const [loading, setLoading] = useState(true);
@@ -165,12 +166,12 @@ export default function ShipSystemDeepDive() {
                             {p}
                           </p>
                         ))}
-                        {sec.illustration && (
+                        {sec.illustration && sectionId && verifiedLegacyImage("longform", `${sectionId}/${idx}`, sec.illustration.src) && (
                           <figure className="my-4 overflow-hidden rounded-xl border border-border/40 bg-muted/20">
                             <button type="button" className="block w-full cursor-zoom-in" aria-label="Enlarge technical diagram" onClick={() => setViewerImage({ src: sec.illustration!.src, alt: sec.illustration!.alt })}>
                               <img src={sec.illustration.src} alt={sec.illustration.alt} className="h-auto w-full object-contain" loading="lazy" />
                             </button>
-                            <figcaption className="border-t border-border/30 px-3 py-2 text-xs leading-relaxed text-muted-foreground">{sec.illustration.caption}</figcaption>
+                            <figcaption className="border-t border-border/30 px-3 py-2 text-xs leading-relaxed text-muted-foreground">{sec.illustration.caption}{" · "}<a href={verifiedLegacyImage("longform", `${sectionId}/${idx}`, sec.illustration.src)?.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Original photograph and licence</a></figcaption>
                           </figure>
                         )}
                         {sec.bullets && (
