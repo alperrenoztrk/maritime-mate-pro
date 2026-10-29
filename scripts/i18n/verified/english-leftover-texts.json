@@ -40011,5 +40011,587 @@
   },
   "DR mevkii 35° 42.5′ N, 028° 17.3′ E ise → AP: 36° 00′ N, 028° 00′ E seçilebilir": {
     "en": "If the DR position is 35° 42.5′ N, 028° 17.3′ E → AP may be selected as 36° 00′ N, 028° 00′ E"
+  },
+  "Bu özellik, seyir açısından kritiktir. Çünkü denizci köprüüstünde şu varsayımla çalışır:": {
+    "en": "This property is critical for navigation, because the navigator on the bridge works on the assumption:"
+  },
+  "“Harita üzerinde çizdiğim doğrultu, denizde tuttuğum doğrultuyla aynıdır.”": {
+    "en": "“The line I draw on the chart is the same as the course I steer at sea.”"
+  },
+  "Departure = 50 × 0.7071 = 35.36 deniz mili Doğu": {
+    "en": "Departure = 50 × 0.7071 = 35.36 nautical miles East"
+  },
+  "Çeyrek belirleme mantığı şu şekilde uygulanır:": {
+    "en": "The quadrant is determined as follows:"
+  },
+  "DLat pozitif ve departure pozitif ise kurs 0°–90° arasındadır.": {
+    "en": "If DLat is positive and departure is positive, the course is between 0° and 90°."
+  },
+  "DLat pozitif ve departure negatif ise kurs 270°–360° arasındadır.": {
+    "en": "If DLat is positive and departure is negative, the course is between 270° and 360°."
+  },
+  "DLat negatif ve departure pozitif ise kurs 90°–180° arasındadır.": {
+    "en": "If DLat is negative and departure is positive, the course is between 90° and 180°."
+  },
+  "DLat negatif ve departure negatif ise kurs 180°–270° arasındadır.": {
+    "en": "If DLat is negative and departure is negative, the course is between 180° and 270°."
+  },
+  "DLat kuzey, departure doğu olduğu için kurs 0°–90° aralığındadır.": {
+    "en": "Since DLat is north and departure is east, the course is in the 0°–90° range."
+  },
+  "Dakika cinsinden çalışılır. Derece farkı varsa dakikaya çevrilir. Kuzeye gidiyorsa DLat kuzey, güneye gidiyorsa DLat güney kabul edilir.": {
+    "en": "Work in minutes. If there is a difference in degrees, convert it to minutes. If the ship is heading north, DLat is taken as north; if heading south, DLat is taken as south."
+  },
+  "Dakika boylam cinsinden bulunur. Doğuya gidiyorsa DLong doğu, batıya gidiyorsa DLong batı kabul edilir.": {
+    "en": "It is found in minutes of longitude. If the ship is heading east, DLong is taken as east; if heading west, DLong is taken as west."
+  },
+  "Çeyrek, DLat ve departure yönlerine göre belirlenir.": {
+    "en": "The quadrant is determined from the directions of DLat and departure."
+  },
+  "Başlangıç mevkii: 36° 10.0′ N, 029° 20.0′ E": {
+    "en": "Initial position: 36° 10.0′ N, 029° 20.0′ E"
+  },
+  "Varış mevkii: 36° 28.0′ N, 029° 50.0′ E": {
+    "en": "Arrival position: 36° 28.0′ N, 029° 50.0′ E"
+  },
+  "DLong = 029° 50.0′ − 029° 20.0′ = 30.0′ Doğu": {
+    "en": "DLong = 029° 50.0′ − 029° 20.0′ = 30.0′ East"
+  },
+  "Boylam için önce DLong bulunur:": {
+    "en": "For the longitude, DLong is found first:"
+  },
+  "Varış enlemi = 35° 40.0′ + 20.52′": {
+    "en": "Arrival latitude = 35° 40.0′ + 20.52′"
+  },
+  "Varış enlemi = 36° 00.52′ N": {
+    "en": "Arrival latitude = 36° 00.52′ N"
+  },
+  "Varış boylamı = 026° 10.0′ + 69.6′": {
+    "en": "Arrival longitude = 026° 10.0′ + 69.6′"
+  },
+  "Varış boylamı = 027° 19.6′ E": {
+    "en": "Arrival longitude = 027° 19.6′ E"
+  },
+  "GPS yere göre hız = 14 kn": {
+    "en": "GPS speed over ground = 14 kn"
+  },
+  "Log suya göre hız = 11 kn": {
+    "en": "Log speed through the water = 11 kn"
+  },
+  "Akıntı hızı = 14 − 11": {
+    "en": "Current rate = 14 − 11"
+  },
+  "Akıntı hızı = 3 kn": {
+    "en": "Current rate = 3 kn"
+  },
+  "Düzeltilmiş gözlemsel yükseklik Ho = 41° 28.0′ olsun.": {
+    "en": "Let the corrected observed altitude be Ho = 41° 28.0′."
+  },
+  "Varsayılan mevkiye göre hesaplanan teorik yükseklik Hc = 41° 21.5′ olsun.": {
+    "en": "Let the calculated altitude for the assumed position be Hc = 41° 21.5′."
+  },
+  "ATT ikincil liman tablosundaki interpolasyon: Standart limanda spring HW yüksekliği 6.0 m için düzeltme +0.3 m; neap HW yüksekliği 3.5 m için düzeltme −0.1 m. O gün standart limanda HW = 5.0 m ise: Düzeltme = +0.3 + [(5.0 − 6.0) / (3.5 − 6.0)] × (−0.1 − 0.3) = +0.3 + [0.4] × (−0.4) = +0.3 − 0.16 = +0.14 m (yaklaşık +0.1 m). Bu ikincil liman için uygulanacak yükseklik düzeltmesidir.": {
+    "en": "Interpolation in the ATT secondary port table: the correction is +0.3 m for a spring HW height of 6.0 m at the standard port and −0.1 m for a neap HW height of 3.5 m. If HW at the standard port is 5.0 m that day: Correction = +0.3 + [(5.0 − 6.0) / (3.5 − 6.0)] × (−0.1 − 0.3) = +0.3 + [0.4] × (−0.4) = +0.3 − 0.16 = +0.14 m (about +0.1 m). This is the height correction to be applied for the secondary port."
+  },
+  "──────────── Gemi Ağırlığı = Kaldırma Kuvveti ────────────": {
+    "en": "──────────── Ship's Weight = Buoyancy ────────────"
+  },
+  "1. Çalışma prensibi ve frekanslar": {
+    "en": "1. Operating principle and frequencies"
+  },
+  "1.1 Üç farklı RF fonksiyonu": {
+    "en": "1.1 Three different RF functions"
+  },
+  "1.2 EPIRB'den MRCC'ye alarmın yolculuğu": {
+    "en": "1.2 The journey of the alert from the EPIRB to the MRCC"
+  },
+  "1) Marka/model kullanıcı kitabını ve gemi PMS planını kontrol et. 2) Cihazın gövdesi, anteni, bracket/HRU, batarya son kullanma tarihi ve 15 HEX ID kaydını incele. 3) Üreticinin SELF-TEST tuşu ve sırasını uygula; LED/beep veya kod sonucunu yorumla. SELF-TEST, işaretlenmiş kısa bir 406 MHz test yayını yapabilir; 'hiç RF yayını olmaz' anlatımı yanlıştır. 4) GNSS self-test ayrı olabilir, üretici sınırını takip et. 5) Cihazı doğru brakete yerleştir, aktif distress göndermediğini doğrula ve GMDSS/PMS kaydını tut. NORMAL ON/DISTRESS modunu rutin test için kullanma: tek yayın bile SAR alarmı doğurabilir. 6) Yanlış alarmda gerçek tehlike olmadığını teyit ederek OFF'a al ve derhal en yakın RCC/MRCC'ye HEX ID, mevki ve zamanı bildir. 7) Tatbikatta gerçek distress yayını yapmadan cihazın yerini, güvenli taşınmasını ve aktivasyon önlemlerini göster. Rutin test sıklığını ve tuş kombinasyonunu üreticiye göre belirle; bütün EPIRB'ler için zorunlu evrensel aylık işlem yazma.": {
+    "en": "1) Check the make/model user manual and the ship's PMS plan. 2) Inspect the housing, antenna, bracket/HRU, battery expiry date and the 15 HEX ID registration. 3) Apply the manufacturer's SELF-TEST button and sequence; interpret the LED/beep or code result. The SELF-TEST may make a short, specially coded 406 MHz test transmission; saying 'there is no RF transmission at all' is wrong. 4) The GNSS self-test may be separate; follow the manufacturer's limit. 5) Place the beacon correctly in its bracket, verify that it is not sending an active distress alert and keep the GMDSS/PMS record. Do not use the normal ON/DISTRESS mode for routine testing: even a single transmission can trigger a SAR alert. 6) In a false alert, confirm that there is no real distress, switch it OFF and immediately inform the nearest RCC/MRCC of the HEX ID, position and time. 7) In a drill, show the location of the beacon, safe carrying and activation precautions without making a real distress transmission. Set the routine test frequency and button sequence according to the manufacturer; do not write a universal mandatory monthly procedure for all EPIRBs."
+  },
+  "12 nokta/yay radar-SART'ın X-band yanıtıdır. AIS-EPIRB, AIS ekranına SAR konum hedefi gönderebilir ama bu radar-SART değildir.": {
+    "en": "12 dots/arcs are the X-band response of a radar-SART. An AIS-EPIRB may send a SAR position target to the AIS display, but this is not a radar-SART."
+  },
+  "12 radar noktası EPIRB değil, X-band radar-SART imzasıdır.": {
+    "en": "12 radar dots are not an EPIRB but the signature of an X-band radar-SART."
+  },
+  "121.5 MHz halen homing için kullanılır ama artık Cospas-Sarsat uydularının izlediği distress alarm kanalı değildir.": {
+    "en": "121.5 MHz is still used for homing but is no longer the distress alert channel monitored by Cospas-Sarsat satellites."
+  },
+  "121.5 MHz radar-SART'ın 12 noktasını üretir": {
+    "en": "121.5 MHz produces the 12 dots of a radar-SART"
+  },
+  "2. Kimlik, konum ve uydular": {
+    "en": "2. Identity, position and satellites"
+  },
+  "2.1 15 HEX ID, MMSI ve registration": {
+    "en": "2.1 15 HEX ID, MMSI and registration"
+  },
+  "2.2 GNSS fix ile uydu temelli konum çözümü": {
+    "en": "2.2 GNSS fix and satellite-based position solution"
+  },
+  "3. HRU, batma ve suyla otomatik aktivasyon": {
+    "en": "3. HRU, sinking and automatic activation by water"
+  },
+  "3.1 Float-free sisteminde ardışık dört olay": {
+    "en": "3.1 Four successive events in a float-free system"
+  },
+  "3.2 Manuel ON/DISTRESS ve survival craft": {
+    "en": "3.2 Manual ON/DISTRESS and survival craft"
+  },
+  "4 m'den önce": {
+    "en": "before 4 m"
+  },
+  "4. Batarya, çalışma süresi ve teknik limitler": {
+    "en": "4. Battery, operating time and technical limits"
+  },
+  "4.1 En az 48 saat ne anlama gelir?": {
+    "en": "4.1 What does at least 48 hours mean?"
+  },
+  "4.2 Kullanım sınırları": {
+    "en": "4.2 Limits of use"
+  },
+  "406 MHz Cospas-Sarsat uydu distress alarmı; 121.5 MHz uygun SAR araçlarının yerel homing frekansıdır.": {
+    "en": "406 MHz is the Cospas-Sarsat satellite distress alert; 121.5 MHz is the local homing frequency for suitable SAR craft."
+  },
+  "406 MHz distress sinyalinin uydu/yer istasyonu/MCC/MRCC üzerinden SAR birimlerine aktarımı. 121.5 MHz yerel homing farklı işlevdir.": {
+    "en": "Relay of the 406 MHz distress signal to SAR units via satellite/ground station/MCC/MRCC. Local homing on 121.5 MHz is a different function."
+  },
+  "406 MHz EPIRB distress çağrısının Cospas-Sarsat uydusu, LUT, MCC ve MRCC üzerinden SAR ekibine aktarımı": {
+    "en": "Relay of the 406 MHz EPIRB distress alert to the SAR team via the Cospas-Sarsat satellite, LUT, MCC and MRCC"
+  },
+  "406 MHz EPIRB her yayınında benzersiz beacon identity taşır. Cihaz üzerindeki 15 karakterli HEX ID, ulusal kayıt sistemindeki gemi/işletmeci/acil irtibat bilgileriyle eşleştirilir. Mesaj kodlama protokolü, MID ve seri numarası ile MMSI veya call sign alanlarını farklı biçimlerde barındırabilir; HEX ID'yi doğrudan gemi MMSI'siyle eş tutma.": {
+    "en": "A 406 MHz EPIRB carries a unique beacon identity in every transmission. The 15-character HEX ID on the beacon is matched with the ship/operator/emergency contact details in the national registration system. The message coding protocol may contain the MID and serial number as well as the MMSI or call sign fields, in different forms; do not treat the HEX ID as identical to the ship's MMSI."
+  },
+  "406 MHz EPIRB sinyal zinciri: uydu, LUT, MCC, RCC/MRCC ve SAR": {
+    "en": "406 MHz EPIRB signal chain: satellite, LUT, MCC, RCC/MRCC and SAR"
+  },
+  "406 MHz EPIRB, 9 GHz radar SART ve AIS EPIRB ekran görünümü karşılaştırması": {
+    "en": "Comparison of the 406 MHz EPIRB, 9 GHz radar SART and AIS EPIRB display appearance"
+  },
+  "406 MHz mesajı sesli MAYDAY değildir; doğrudan yakındaki bütün gemilerin radar ekranına düşmesi beklenmez. MRCC alarmı değerlendirir, kimlik/kayıt bilgilerini kontrol eder ve uygun SAR kaynaklarını koordine eder.": {
+    "en": "The 406 MHz message is not a voice MAYDAY; it is not expected to appear directly on the radar screens of all nearby ships. The MRCC assesses the alert, checks the identity/registration details and coordinates suitable SAR resources."
+  },
+  "406 MHz uydu distress alarmıdır; 121.5 MHz SAR homing içindir": {
+    "en": "406 MHz is a satellite distress alert; 121.5 MHz is for SAR homing"
+  },
+  "406 MHz yalnız kısa menzilli gemi-gemi telsizidir": {
+    "en": "406 MHz is only a short-range ship-to-ship radio"
+  },
+  "406–406.1 MHz sayısal imdat sinyali 15 HEX ID ile mevcutsa GNSS konumu taşır. Cospas-Sarsat LEOSAR/GEOSAR/MEOSAR → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → arama-kurtarma birimi zinciriyle alarm iletilir. GNSS fix olmaması her zaman 406 MHz alarmının durduğu anlamına gelmez; uydu konum çözüm teknikleri kullanılabilir. 121.5 MHz sinyali yakındaki arama-kurtarma aracı tarafından homing amacıyla kullanılır, 2009'dan beri uydu alarmı olarak takip edilmez. Modern AIS-EPIRB cihazları AIS 1 (161.975 MHz) ve AIS 2 (162.025 MHz) üzerinden yerel AIS hedef konumu yayınlayabilir; her eski cihaz AIS'li değildir. Cihazın 15 HEX ID'sini MMSI ile karıştırma.": {
+    "en": "The 406–406.1 MHz digital distress signal carries the 15 HEX ID and, if available, the GNSS position. The alert is relayed through the chain Cospas-Sarsat LEOSAR/GEOSAR/MEOSAR → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → search and rescue unit. Lack of a GNSS fix does not always mean that the 406 MHz alert has stopped; satellite position solution techniques can be used. The 121.5 MHz signal is used for homing by nearby search and rescue craft and has not been monitored as a satellite alert since 2009. Modern AIS-EPIRBs can transmit a local AIS target position on AIS 1 (161.975 MHz) and AIS 2 (162.025 MHz); not every older beacon has AIS. Do not confuse the beacon's 15 HEX ID with the MMSI."
+  },
+  "406–406.1 MHz, Cospas-Sarsat tehlike ikazı için kullanılan sayısal yayın bandıdır. Mesajda cihazın benzersiz HEX kimliği ve GNSS mevki çözümü varsa koordinatlar bulunur. 121.5 MHz yayını, uygun donanımlı arama-kurtarma vasıtalarının son aşamadaki yön bulmasına (homing) yardım eder.": {
+    "en": "406–406.1 MHz is the digital transmission band used for Cospas-Sarsat distress alerting. The message contains the beacon's unique HEX identity and, if a GNSS position solution is available, the coordinates. The 121.5 MHz transmission helps suitably equipped search and rescue craft with final-stage direction finding (homing)."
+  },
+  "406–406.1 MHz: uydu distress; 121.5 MHz: SAR homing; AIS 1/2: uygun AIS-EPIRB/SART modelleri.": {
+    "en": "406–406.1 MHz: satellite distress; 121.5 MHz: SAR homing; AIS 1/2: suitable AIS-EPIRB/SART models."
+  },
+  "5. Self-test adımları ve test güvenliği": {
+    "en": "5. Self-test steps and test safety"
+  },
+  "6. Bakım, yıllık test ve yanlış alarm": {
+    "en": "6. Maintenance, annual test and false alerts"
+  },
+  "6.1 Annual test, shore-based maintenance, HRU ve pil": {
+    "en": "6.1 Annual test, shore-based maintenance, HRU and battery"
+  },
+  "6.2 Yanlış alarmı nasıl iptal ederiz?": {
+    "en": "6.2 How do we cancel a false alert?"
+  },
+  "7. Radar, AIS ve SART farkı": {
+    "en": "7. The difference between radar, AIS and SART"
+  },
+  "7.1 Radar ekranında ne görünür?": {
+    "en": "7.1 What appears on the radar screen?"
+  },
+  "7.2 Köprüüstünde ayırıcı teşhis": {
+    "en": "7.2 Differential diagnosis on the bridge"
+  },
+  "8. Operasyon senaryosu ve bilgi kontrolü": {
+    "en": "8. Operational scenario and knowledge check"
+  },
+  "8.1 Batma/abandon ship vakası": {
+    "en": "8.1 Sinking/abandon ship case"
+  },
+  "8.2 Üç soruyla bilgiyi doğrula": {
+    "en": "8.2 Check your knowledge with three questions"
+  },
+  "9 GHz X-band radar-SART": {
+    "en": "9 GHz X-band radar-SART"
+  },
+  "9 GHz X-band yanıtı": {
+    "en": "9 GHz X-band response"
+  },
+  "Açıkta normal ON/DISTRESS modunu rutin test için kullanma. Gerçek yayınla operasyonel test gerekiyorsa yetkili RCC/otorite ile önceden koordine edilip onay alınmalıdır.": {
+    "en": "Do not use the normal ON/DISTRESS mode at sea for routine testing. If an operational test with a live transmission is required, it must be coordinated in advance with, and approved by, the competent RCC/authority."
+  },
+  "AIS donanımlı gemiler": {
+    "en": "AIS-equipped ships"
+  },
+  "AIS özellik/ekran karşılaştırması": {
+    "en": "AIS feature/display comparison"
+  },
+  "AIS-EPIRB konum ve uyarı": {
+    "en": "AIS-EPIRB position and alert"
+  },
+  "AIS-EPIRB ve AIS-SART, uygun AIS alıcısı/ECDIS ekranında SAR konum sembolüyle izlenebilir. AIS overlay açık bir radar ekranında da hedef görünebilir; fakat bu 9 GHz radar yanıtı değildir. Her AIS-EPIRB'nin her radarda görünmesi garanti edilmez.": {
+    "en": "AIS-EPIRBs and AIS-SARTs can be tracked with a SAR position symbol on a suitable AIS receiver/ECDIS display. The target may also appear on a radar display with AIS overlay switched on; however, this is not a 9 GHz radar response. It is not guaranteed that every AIS-EPIRB will appear on every radar."
+  },
+  "AIS-EPIRB, AIS-SART ve radar-SART görünümlerini ayır.": {
+    "en": "Distinguish between the AIS-EPIRB, AIS-SART and radar-SART displays."
+  },
+  "Arızalı cihazın emniyet açısından uygunluğunu SMS'e göre eskale et.": {
+    "en": "Escalate the safety suitability of the defective beacon according to the SMS."
+  },
+  "Basınçla açılan HRU, su sensörü ve batarya üç ayrı unsurdur. HRU cihazı serbest bırakır; sensör elektronikleri tetikler.": {
+    "en": "The pressure-operated HRU, the water sensor and the battery are three separate elements. The HRU releases the beacon; the sensor triggers the electronics."
+  },
+  "Batarya kapasitesi": {
+    "en": "Battery capacity"
+  },
+  "Batarya SKT/model ve son servis": {
+    "en": "Battery expiry date/model and last service"
+  },
+  "Batarya, HRU, shore-based maintenance tarihlerini model/etiket/bayrağa göre yönet.": {
+    "en": "Manage the battery, HRU and shore-based maintenance dates according to the model/label/flag."
+  },
+  "Bayrak, gemi adı, sahiplik, irtibat telefonları veya cihaz değiştiğinde EPIRB kaydı güncellenmelidir. Yanlış kayıt SAR'ın teyit süresini uzatabilir. Kayıt bilgilerini cihaz etiketinden ve güncel resmî sertifikadan karşılaştır.": {
+    "en": "The EPIRB registration must be updated when the flag, ship's name, ownership, contact telephone numbers or the beacon change. Wrong registration can lengthen SAR's verification time. Compare the registration details with the beacon label and the current official certificate."
+  },
+  "Braketin serbest bırakma yönünü engelleme, lanyard'ı gemiye bağlama.": {
+    "en": "Do not obstruct the release direction of the bracket; do not tie the lanyard to the ship."
+  },
+  "Cihaz ve survey kontrolü": {
+    "en": "Beacon and survey check"
+  },
+  "Cihazın üretici/model el kitabı ve PMS sıklığı esas alınır. 1) EPIRB'nin görünür hasarını, braketteki konumunu, anteni, lanyard'ı, HEX ID'yi, batarya ve HRU tarihlerini incele. 2) Üretici tanımlı SELF-TEST düğme/sırasını uygula. 3) LED/beep/ekran sonucu PASS veya FAIL olarak değerlendir; hata kodunu kılavuzla karşılaştır. 4) Varsa ayrı GNSS self-test'i yalnız önerilen sıklıkta ve pil tüketimi uyarılarına uyarak yap. 5) Cihazı doğru brakete yerleştir, yayın olmadığını doğrula; tarih, saat ve test sonucunu GMDSS/PMS kayıtlarına işle.": {
+    "en": "The beacon manufacturer's/model manual and the PMS interval are the basis. 1) Inspect the EPIRB for visible damage, its position in the bracket, the antenna, lanyard, HEX ID, and battery and HRU dates. 2) Apply the manufacturer-defined SELF-TEST button/sequence. 3) Assess the LED/beep/display result as PASS or FAIL; compare any error code with the manual. 4) If there is a separate GNSS self-test, carry it out only at the recommended interval and in accordance with the battery consumption warnings. 5) Place the beacon correctly in the bracket, verify that it is not transmitting; enter the date, time and test result in the GMDSS/PMS records."
+  },
+  "Cospas-Sarsat distress ve kimlik/konum": {
+    "en": "Cospas-Sarsat distress and identity/position"
+  },
+  "Cospas-Sarsat/RCC; radarda 12 nokta yok": {
+    "en": "Cospas-Sarsat/RCC; no 12 dots on radar"
+  },
+  "Dahili GNSS alıcısı (GPS/Galileo vb.) fix aldığında EPIRB koordinatları 406 MHz mesajına yerleştirir; böylece uydu mevki çözümüne ek veri sağlanır. GNSS fix yokken 406 MHz kimlik uyarısı sürebilir, SAR ağı Doppler/MEOSAR değerlendirmesiyle konum belirlemeye çalışır. GNSS kaybı = cihaz tamamen bozuldu demek değildir.": {
+    "en": "When the internal GNSS receiver (GPS/Galileo, etc.) obtains a fix, the EPIRB inserts the coordinates in the 406 MHz message, providing data in addition to the satellite position solution. Without a GNSS fix, the 406 MHz identity alert can continue, and the SAR network tries to determine the position by Doppler/MEOSAR processing. Loss of GNSS does not mean that the beacon has completely failed."
+  },
+  "En az 48 saat batarya kapasitesi; model etiketi ve servis belgeleri belirleyicidir.": {
+    "en": "Battery capacity of at least 48 hours; the model label and service documents are decisive."
+  },
+  "En az 48 saat çalışma kapasitesi yeni standardın asgari gereğidir.": {
+    "en": "An operating capacity of at least 48 hours is the minimum requirement of the new standard."
+  },
+  "En az 48 saat kapasite standardı; test için gerçek ON/DISTRESS kullanılmaz.": {
+    "en": "Capacity standard of at least 48 hours; the real ON/DISTRESS is not used for testing."
+  },
+  "En geç 5 dakikada bir": {
+    "en": "At least every 5 minutes"
+  },
+  "EPIRB — Frekanslar, Cospas-Sarsat, otomatik aktivasyon ve test": {
+    "en": "EPIRB — Frequencies, Cospas-Sarsat, automatic activation and testing"
+  },
+  "EPIRB (Emergency Position-Indicating Radio Beacon), ciddi ve yakın tehlikede Cospas-Sarsat üzerinden arama-kurtarma uyarısı yapan bağımsız bataryalı radyo işaret cihazıdır. 406–406.1 MHz dijital distress mesajında 15 haneli HEX kimliği ve mevcutsa GNSS konumu taşınır. Uydu → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → SAR aracı zinciri işler. 121.5 MHz, uygun SAR aracının lokal homing/yön bulması içindir; 2009'dan beri Cospas-Sarsat uyduları 121.5 MHz distress uyarılarını işlemez.": {
+    "en": "The EPIRB (Emergency Position-Indicating Radio Beacon) is a radio beacon with its own battery that sends a search and rescue alert via Cospas-Sarsat in grave and imminent danger. The 406–406.1 MHz digital distress message carries the 15-character HEX identity and, if available, the GNSS position. The chain satellite → LUT (Local User Terminal) → MCC (Mission Control Centre) → RCC/MRCC → SAR craft operates. 121.5 MHz is for local homing/direction finding by suitable SAR craft; since 2009 Cospas-Sarsat satellites have not processed 121.5 MHz distress alerts."
+  },
+  "EPIRB (Emergency Position-Indicating Radio Beacon), gemiyi terk etme veya batma gibi ciddi ve yakın tehlikede 406 MHz uydu distress mesajı gönderen bağımsız bataryalı konum işaret cihazıdır. Teknik olarak doğru kullanmak için 406 MHz alarm, 121.5 MHz homing, yeni nesil AIS konum yayını, HRU/su sensörü ayrımı, test prosedürü ve radar-SART görünümü birbirinden ayrılmalıdır. Bu eğitim, zabitin cihazı gemide kontrol edebilmesini hedefler.": {
+    "en": "The EPIRB (Emergency Position-Indicating Radio Beacon) is a position-indicating beacon with its own battery that sends a 406 MHz satellite distress message in grave and imminent danger such as abandoning ship or sinking. To use it technically correctly, the 406 MHz alert, 121.5 MHz homing, the new-generation AIS position transmission, the HRU/water sensor distinction, the test procedure and the radar-SART display must be kept apart. This training aims to enable the officer to check the beacon on board."
+  },
+  "EPIRB → Cospas-Sarsat uydu faydalı yükü (LEOSAR, GEOSAR, MEOSAR) → yer terminali LUT (Local User Terminal) → MCC (Mission Control Centre) → ilgili RCC/MRCC (Rescue Coordination Centre) → arama-kurtarma birimleri. 'Sinyal uyduya gidiyor' anlatımı bu zincirin yalnızca ilk adımıdır.": {
+    "en": "EPIRB → Cospas-Sarsat satellite payload (LEOSAR, GEOSAR, MEOSAR) → ground terminal LUT (Local User Terminal) → MCC (Mission Control Centre) → the relevant RCC/MRCC (Rescue Coordination Centre) → search and rescue units. 'The signal goes to the satellite' describes only the first step of this chain."
+  },
+  "EPIRB ile karşı tarafa sesli yanıt gönderemezsin; RCC'nin alarmı alması, denizdeki bütün gemilerin seni doğrudan algıladığı anlamına gelmez. AIS-EPIRB'de yerel görünürlük menzil ve AIS receiver/overlay durumuna bağlıdır.": {
+    "en": "You cannot send a voice reply with an EPIRB; the RCC receiving the alert does not mean that every ship at sea detects you directly. With an AIS-EPIRB, local visibility depends on range and the AIS receiver/overlay status."
+  },
+  "EPIRB kayıt bilgisi, onaylı bakım belgesi, son self-test, batarya ve HRU SKT, cihaz etiketindeki HEX ID ile gemideki kayıtlar uyumlu olmalıdır.": {
+    "en": "The EPIRB registration details, approved maintenance document, last self-test, battery and HRU expiry dates and the HEX ID on the beacon label must match the records on board."
+  },
+  "EPIRB onaylı float-free braketinde dış güvertede muhafaza edilir. Gemi batarken hidrostatik basınç, modele bağlı olarak yaklaşık 1–4 m aralığında Hydrostatic Release Unit (HRU) mekanizmasını açar. Cihaz mekanik olarak serbest kalıp yüzeye çıkar; su sensörü/elektrotları ıslandığında elektronik devre yayını başlatır.": {
+    "en": "The EPIRB is stowed on the open deck in its approved float-free bracket. As the ship sinks, the hydrostatic pressure opens the Hydrostatic Release Unit (HRU) mechanism at about 1–4 m depending on the model. The beacon is released mechanically and floats to the surface; when the water sensor/electrodes get wet, the electronic circuit starts the transmission."
+  },
+  "EPIRB radarda 12 nokta üretmez; radar-SART üretir, AIS-EPIRB ise AIS ekranında görünebilir.": {
+    "en": "An EPIRB does not produce 12 dots on radar; a radar-SART does, and an AIS-EPIRB may appear on the AIS display."
+  },
+  "EPIRB self-test yapmak isterken yanlışlıkla ON/DISTRESS aktif oldu. Ne yapılır?": {
+    "en": "While trying to carry out an EPIRB self-test, ON/DISTRESS was activated by mistake. What should be done?"
+  },
+  "EPIRB, 406 MHz sayısal imdat alarmını Cospas-Sarsat üzerinden RCC/MRCC'ye ulaştırır. Radar-SART, AIS-SART ve AIS-EPIRB'nin çalışma frekansları ve ekran gösterimleri farklıdır. Bu bölüm onaylı cihazın gerçek gemi koşullarında nasıl çalıştırıldığını, test edildiğini ve bakımının nasıl izlendiğini öğretir.": {
+    "en": "The EPIRB delivers a 406 MHz digital distress alert via Cospas-Sarsat to the RCC/MRCC. The operating frequencies and display presentations of the radar-SART, AIS-SART and AIS-EPIRB are different. This section teaches how the approved beacon is operated, tested and how its maintenance is tracked in real shipboard conditions."
+  },
+  "EPIRB, çalışır durumdaki DSC, sesli MAYDAY ve diğer GMDSS yöntemlerinin yerine tek haberleşme yöntemi olarak düşünülmez. Gerçek tehlike koşullarında geminin SMS ve Master komutlarına göre tamamlayıcı distress imkanları kullanılır.": {
+    "en": "The EPIRB is not considered the only means of communication replacing a working DSC, voice MAYDAY and other GMDSS methods. In real distress, complementary distress means are used according to the ship's SMS and the Master's orders."
+  },
+  "EPIRB, gemi radarına doğrudan hedef çizen bir cihaz değildir; öncelikle SAR otoritesine uydu distress uyarısı ulaştırır.": {
+    "en": "An EPIRB is not a device that draws a target directly on the ship's radar; its primary function is to deliver a satellite distress alert to the SAR authority."
+  },
+  "EPIRB'nin 121.5 MHz yayını ile 406 MHz yayını arasında temel fark nedir?": {
+    "en": "What is the basic difference between an EPIRB's 121.5 MHz transmission and its 406 MHz transmission?"
+  },
+  "EPIRB'nin buoyant lanyard'ı gemiye ya da float-free brakete bağlanmaz; gerektiğinde survival craft veya kişiye bağlanabilir.": {
+    "en": "The EPIRB's buoyant lanyard is not tied to the ship or to the float-free bracket; when necessary it can be attached to a survival craft or a person."
+  },
+  "Float-free ayrılma": {
+    "en": "Float-free release"
+  },
+  "Float-free braketin HRU (Hydrostatic Release Unit) mekanizması, gemi batarken yaklaşık 1–4 m aralığında (modele göre) basınçla cihazı serbest bırakır. Yüzeye çıkan cihazın su sensörü elektronik devreyi açar. Pil deniz suyuyla aktifleşip enerji üretmez: kapalı batarya zaten takılıdır. Braketin önü kapatılmaz, lanyard gemiye bağlanmaz; manuel ON/DISTRESS gerektiğinde model kılavuzuna göre kullanılır.": {
+    "en": "The HRU (Hydrostatic Release Unit) mechanism of the float-free bracket releases the beacon by pressure as the ship sinks, at about 1–4 m (depending on the model). The water sensor of the beacon that floats to the surface switches on the electronic circuit. The battery is not activated by seawater and does not generate energy from it: a sealed battery is already fitted. The front of the bracket must not be obstructed and the lanyard must not be tied to the ship; manual ON/DISTRESS is used according to the model manual when necessary."
+  },
+  "Float-free EPIRB, serbest yüzmesine engel olmayacak şekilde onaylı brakette durur. Gemi batarken HRU yaklaşık 1–4 m derinlikte hidrostatik basınçla cihazı mekanik olarak bırakır; cihaz yüzeye çıkar ve su sensörü elektroniği etkinleştirir. Deniz suyu pili şarj etmez veya üretmez; cihazın önceden takılı bataryası enerji sağlar. Lanyard'ı gemiye veya brakete bağlama. IMO MSC.471(101) 1 Temmuz 2022'den itibaren ilgili kurulumları kapsar; en az 48 saat batarya kapasitesi, GNSS, 121.5 MHz ve AIS locating gibi şartları tanımlar. Önceki kurulumların standartları farklı olabilir. Batarya ve HRU son kullanma tarihlerini gerçek etiketinden kontrol et; tüm modellere sabit 2/5 yıl uygulama. Annual test: MSC.1/Circ.1040/Rev.2. Onaylı kara bakımı, bayrakça belirlenen ve 5 yılı aşmayan aralıkta: MSC.1/Circ.1039/Rev.1. Güncel EPIRB 15 HEX ID kaydını bayrak/otorite kayıtlarıyla karşılaştır.": {
+    "en": "A float-free EPIRB sits in an approved bracket so that nothing obstructs it from floating free. As the ship sinks, the HRU releases the beacon mechanically by hydrostatic pressure at a depth of about 1–4 m; the beacon floats to the surface and the water sensor activates the electronics. Seawater does not charge the battery or generate power; the beacon's pre-installed battery supplies the energy. Do not tie the lanyard to the ship or the bracket. IMO MSC.471(101) covers the relevant installations from 1 July 2022; it defines requirements such as a battery capacity of at least 48 hours, GNSS, 121.5 MHz and AIS locating. The standards for earlier installations may differ. Check the battery and HRU expiry dates on the actual label; do not apply a fixed 2/5 years to all models. Annual test: MSC.1/Circ.1040/Rev.2. Approved shore-based maintenance at intervals set by the flag and not exceeding 5 years: MSC.1/Circ.1039/Rev.1. Compare the current EPIRB 15 HEX ID registration with the flag/authority records."
+  },
+  "Float-free EPIRB'nin gemi batarken otomatik çalışmasında HRU ile su sensörünün görevleri nelerdir?": {
+    "en": "In the automatic operation of a float-free EPIRB as the ship sinks, what are the roles of the HRU and the water sensor?"
+  },
+  "Frekans / kanal": {
+    "en": "Frequency / channel"
+  },
+  "Frekansları ve görevlerini ayrı ayrı say: 406, 121.5, AIS 1/2.": {
+    "en": "List the frequencies and their functions separately: 406, 121.5, AIS 1/2."
+  },
+  "Gerçek distress mevcutken alarmı sırf yanlışlıkla çalıştı diye kapatma; yayınla ilgili karar gerçek emniyet durumuna göre verilir.": {
+    "en": "If a real distress exists, do not switch off the alert just because it was activated by mistake; the decision about the transmission is made according to the real safety situation."
+  },
+  "Gerçek distress testi yapma": {
+    "en": "Do not carry out a real distress test"
+  },
+  "Gerçek tehlike olmadığı doğrulanırsa derhal cihazı OFF konumuna al, en yakın RCC/MRCC'ye uygun hızlı yoldan haber ver. Beacon HEX ID, mevki, aktivasyon zamanı ve yanlış alarm bilgilerini bildir. Sadece düğmeyi kapatmak yeterli değildir; uydu alarmı SAR sistemine düşmüş olabilir.": {
+    "en": "If it is confirmed that there is no real distress, immediately switch the beacon OFF and inform the nearest RCC/MRCC by a suitable fast means. Report the beacon HEX ID, position, time of activation and false alert details. Just switching it off is not enough; the satellite alert may already have entered the SAR system."
+  },
+  "Gerçek tehlike olmadığını doğrula ve yayını hemen kapat.": {
+    "en": "Confirm that there is no real distress and switch off the transmission immediately."
+  },
+  "Gerçek tehlikede manuel aktivasyon üreticinin iki kademeli emniyetli işlem sırasıyla yapılır. Deniz yüzeyinde anten dik ve gökyüzüne açık kalmalıdır. Can salı/filikada cihazın işaretini/ışığını kontrol et; anteni metal altında tutma, suya batan gemiye bağlama.": {
+    "en": "In real distress, manual activation is carried out with the manufacturer's two-step safe sequence. On the sea surface the antenna must stay upright with a clear view of the sky. In the liferaft/lifeboat, check the beacon's indicator/light; do not keep the antenna under metal and do not tie the beacon to the sinking ship."
+  },
+  "GNSS konum güncelleme": {
+    "en": "GNSS position update"
+  },
+  "GNSS self-test bazı cihazlarda ayrı ve pil tüketen testtir.": {
+    "en": "On some beacons the GNSS self-test is a separate test that consumes battery power."
+  },
+  "HEX ID, mevki ve zamanı belirterek en yakın RCC/MRCC'ye yanlış alarmı bildir.": {
+    "en": "Report the false alert to the nearest RCC/MRCC, stating the HEX ID, position and time."
+  },
+  "Hidrostatik basınç HRU'yu açar; su sensörü cihazı aktive eder. Pil zaten kapalı cihazda hazırdır.": {
+    "en": "Hydrostatic pressure opens the HRU; the water sensor activates the beacon. The battery is already in place in the sealed beacon."
+  },
+  "Homing yayını": {
+    "en": "Homing transmission"
+  },
+  "HRU bataryayı deniz suyuyla doldurur": {
+    "en": "The HRU fills the battery with seawater"
+  },
+  "HRU cihazı serbest bırakır; su sensörü çalıştırır; batarya zaten mevcuttur.": {
+    "en": "The HRU releases the beacon; the water sensor activates it; the battery is already fitted."
+  },
+  "HRU doğrudan MRCC'ye sesli MAYDAY yollar": {
+    "en": "The HRU sends a voice MAYDAY directly to the MRCC"
+  },
+  "HRU mekanik serbest bırakır; su sensörü aktive eder; batarya suyla çalışmaya başlamaz.": {
+    "en": "The HRU releases mechanically; the water sensor activates; the battery does not start working with water."
+  },
+  "HRU mekanik serbest bırakır; su sensörü elektronik aktivasyonu tetikler": {
+    "en": "The HRU releases mechanically; the water sensor triggers electronic activation"
+  },
+  "HRU mekanik serbest bırakma, su sensörü elektronik aktivasyon yapar.": {
+    "en": "The HRU provides mechanical release, the water sensor electronic activation."
+  },
+  "HRU SKT, serbest yüzme yönü": {
+    "en": "HRU expiry date, float-free direction"
+  },
+  "HRU, su sensörü ve bataryanın farklı işlevlerini göster.": {
+    "en": "Show the different functions of the HRU, the water sensor and the battery."
+  },
+  "HRU, su sensörü ve önceden takılı EPIRB bataryasının ayrı işlevlerini gösteren şema": {
+    "en": "Diagram showing the separate functions of the HRU, the water sensor and the pre-installed EPIRB battery"
+  },
+  "HRU/kapak üstünde nesne, halat veya yapışma olmayacak; EPIRB yüzeye engelsiz çıkabilmelidir.": {
+    "en": "There must be no object, rope or adhesion on the HRU/cover; the EPIRB must be able to float to the surface unobstructed."
+  },
+  "IMO MSC.1/Circ.1039/Rev.1 kapsamında yetkili shore-based maintenance, bayrak idaresinin belirlediği aralıkta ve 5 yılı aşmadan yapılır. HRU 'her zaman iki yıl', EPIRB bataryası 'her zaman beş yıl' diye sabitlenmemelidir: gerçek etiket, onaylı ürün ve üretici talimatı esas alınır.": {
+    "en": "Under IMO MSC.1/Circ.1039/Rev.1, authorised shore-based maintenance is carried out at intervals set by the flag Administration and not exceeding 5 years. The HRU should not be fixed as 'always two years' or the EPIRB battery as 'always five years': the actual label, the approved product and the manufacturer's instructions are the basis."
+  },
+  "IMO MSC.1/Circ.1040/Rev.2'nin yıllık test rehberi fiziksel durum, kayıt doğrulama, batarya/HRU SKT, self-test 406 MHz ve mümkünse 121.5 MHz ile AIS çıkışlarının doğrulanması, bracket ve etiket kontrollerini kapsar. Gemideki üretici talimatına uygun rutin self-test ile yıllık survey/test aynı işlem değildir.": {
+    "en": "The annual test guidance of IMO MSC.1/Circ.1040/Rev.2 covers the physical condition, verification of registration, battery/HRU expiry dates, the 406 MHz self-test and, where possible, verification of the 121.5 MHz and AIS outputs, and bracket and label checks. A routine self-test in accordance with the manufacturer's instructions on board is not the same as the annual survey/test."
+  },
+  "IMO MSC.471(101) kapsamında yeni standarda tabi EPIRB bataryasının çalışma kapasitesi en az 48 saattir. Gerçek dayanım için batarya son kullanım tarihi, cihazın modeli ve servis koşulları kontrol edilir. Testte yalnız üreticinin SELF-TEST fonksiyonu kullanılır: görsel/etiket/HRU/SKT kontrolü → özel TEST modu → LED/hata kodunun kontrolü → doğru yerleştirme → GMDSS/PMS kayıt. Self-test kısa, özel kodlanmış RF test yayını yapabilir ancak normal distress ikazı olmamalıdır. ON/DISTRESS'i rutin test için açmak yanlış SAR alarmı yaratabilir. GNSS self-test bazı modellerde ayrıdır ve bataryayı tüketebilir; üretici sıklığına uyulmalıdır.": {
+    "en": "Under IMO MSC.471(101), the battery of an EPIRB subject to the new standard has an operating capacity of at least 48 hours. For real endurance, the battery expiry date, the beacon model and the service conditions are checked. Only the manufacturer's SELF-TEST function is used for testing: visual/label/HRU/expiry check → special TEST mode → check of the LED/error code → correct placement → GMDSS/PMS record. The self-test may make a short, specially coded RF test transmission but must not be a normal distress alert. Switching on ON/DISTRESS for a routine test can create a false SAR alert. On some models the GNSS self-test is separate and can drain the battery; the manufacturer's interval must be followed."
+  },
+  "IMO MSC.471(101), ilgili EPIRB'nin bataryasının cihazı en az 48 saat çalıştırmaya yeterli kapasitede olmasını ister. Bu, onaylanmış tip için asgari performans şartıdır. SKT geçmiş, hasarlı veya uygun olmayan bataryada garanti olarak okunamaz; üretici model etiketi ve bayrak gerekleri göz önündedir.": {
+    "en": "IMO MSC.471(101) requires the battery of the relevant EPIRB to have sufficient capacity to operate the beacon for at least 48 hours. This is a minimum performance requirement for the approved type. It cannot be read as a guarantee for a battery that is expired, damaged or unsuitable; the manufacturer's model label and flag requirements are taken into account."
+  },
+  "İki frekans da AIS hedefidir": {
+    "en": "Both frequencies are AIS targets"
+  },
+  "İlgili standart −20°C ile +55°C işletim sıcaklığı aralığı, suda dik yüzme, gece görülebilir yer belirleme ışığı ve 4 m derinliğe varmadan otomatik serbest kalma performansı gibi şartları içerir.": {
+    "en": "The relevant standard includes requirements such as an operating temperature range of −20°C to +55°C, floating upright in water, a locating light visible at night and automatic float-free release before reaching a depth of 4 m."
+  },
+  "Kendi geminin EPIRB modelindeki TEST prosedürünü doğru uygula.": {
+    "en": "Apply the TEST procedure for your own ship's EPIRB model correctly."
+  },
+  "Klasik 406 MHz EPIRB radarın X-band/S-band ekranında 12 nokta oluşturmaz. Bu karakteristik gösterim, 9 GHz X-band radar sorgulamasına yanıt veren radar-SART'a aittir; uzaktan 12 nokta, yakından yaylar görülebilir. S-band radar bu yanıtı tetiklemez. AIS-SART, uygun AIS/ECDIS üzerinde özel arama-kurtarma hedefi gösterir. AIS'li EPIRB de yerel AIS konum yayını yapabilir; radar ekranında AIS overlay ile görünmesi gerçek radar-SART yanıtı olduğu anlamına gelmez. Her cihaz için alım/anten yüksekliği, kapsama ve model şartları farklıdır. Menzil üstünlüğünü evrensel kesinlik olarak öğretme.": {
+    "en": "A conventional 406 MHz EPIRB does not create 12 dots on the X-band/S-band radar display. This characteristic presentation belongs to the radar-SART, which responds to 9 GHz X-band radar interrogation; 12 dots may be seen at a distance and arcs at close range. S-band radar does not trigger this response. An AIS-SART shows a special search and rescue target on a suitable AIS/ECDIS. An EPIRB with AIS can also make a local AIS position transmission; its appearing on the radar display with AIS overlay does not mean it is a real radar-SART response. Reception/antenna height, coverage and model requirements differ for each device. Do not teach a range advantage as a universal certainty."
+  },
+  "Klasik 406 MHz EPIRB, ne X-band ne S-band radarda '12 nokta' üretir. Radar-SART ise 9 GHz X-band radar darbelerine yanıt verir; tipik olarak radar ekranında art arda 12 nokta görülür ve yakınlaşıldığında görüntü yaylara dönüşebilir. S-band radar-SART'ı bu biçimde tetiklemez.": {
+    "en": "A conventional 406 MHz EPIRB produces '12 dots' on neither X-band nor S-band radar. A radar-SART, on the other hand, responds to 9 GHz X-band radar pulses; typically 12 successive dots are seen on the radar display, and at close range the image may turn into arcs. S-band radar does not trigger a radar-SART in this way."
+  },
+  "Kritik ayrım": {
+    "en": "Critical distinction"
+  },
+  "Logbook/PMS kaydını tamamlayıp tekrar aktivasyon/servis gerekliliğini kontrol et.": {
+    "en": "Complete the logbook/PMS entry and check whether reactivation/service is required."
+  },
+  "Master gemiyi terk emri veriyor. Mümkün ve emniyetli oldukça DSC ve voice MAYDAY ile tehlike haberleşmesini yürüt. Görevli personel EPIRB'yi üretici talimatına göre çalıştırır veya otomatik float-free düzenin engelsiz çalıştığını sağlar. Cihazın anteni açık gökyüzüne dönük kalır; can salında/filikada aktif göstergeyi kontrol et. EPIRB'yi batmakta olan gemiye bağlama.": {
+    "en": "The Master gives the order to abandon ship. As far as possible and safe, carry out distress communications by DSC and voice MAYDAY. The assigned person operates the EPIRB according to the manufacturer's instructions or makes sure the automatic float-free arrangement works unobstructed. The beacon's antenna stays facing the open sky; check the active indicator in the liferaft/lifeboat. Do not tie the EPIRB to the sinking ship."
+  },
+  "MSC.471(101) kapsamında aktivasyondan sonra GNSS konumu en fazla beş dakika aralıklarla güncellenmelidir. Ancak uydu geometrisi, anten gökyüzü görüşü ve işleme koşulları nedeniyle her alarm için kesin ve anlık mevki verileceği garanti edilmez.": {
+    "en": "Under MSC.471(101), after activation the GNSS position must be updated at intervals of not more than five minutes. However, because of satellite geometry, the antenna's view of the sky and processing conditions, an exact and immediate position is not guaranteed for every alert."
+  },
+  "MSC.471(101) standardına tabi cihazın yalnızca braketten elle çıkarılması otomatik distress başlatmamalıdır. Eski model farklı çalışabilir: her zaman cihazın kılavuzunu esas al.": {
+    "en": "On a beacon subject to the MSC.471(101) standard, merely removing it from the bracket by hand must not start a distress alert automatically. An older model may work differently: always follow the beacon's manual."
+  },
+  "MSC.471(101) şartı": {
+    "en": "MSC.471(101) requirement"
+  },
+  "Nerede görünür?": {
+    "en": "Where does it appear?"
+  },
+  "Onaylı self-test modunda özel formatlı kısa RF test yayını olabilir; 'hiçbir RF sinyal göndermez' ifadesi teknik olarak yanlış olur. Test mesajı uydu sistemi tarafından gerçek distress çağrısı olarak işlenmez. Ancak NORMAL ON/DISTRESS modunu açıp kapatmak rutin kontrol değildir; tek bir canlı yayın bile SAR alarmına yol açabilir.": {
+    "en": "In the approved self-test mode there may be a short, specially formatted RF test transmission; the statement 'it sends no RF signal at all' would be technically wrong. The test message is not processed by the satellite system as a real distress alert. However, switching the normal ON/DISTRESS mode on and off is not a routine check; even a single live transmission can lead to a SAR alert."
+  },
+  "Pil deniz suyuyla güç üreten veya suyla şarj olan bir batarya değildir. Elektrik enerjisi kapalı gövdedeki önceden takılmış primer bataryadan sağlanır; su sensörü yalnızca tetikleme görevindedir. Bazı braketlerde cihazın tekrar yerleştirilmesini algılayan magnet/reed switch kombinasyonu bulunur ve hatalı montaj yalancı aktivasyon doğurabilir.": {
+    "en": "The battery is not a battery that generates power from seawater or is charged by water. The electrical energy comes from the pre-installed primary battery in the sealed housing; the water sensor only has a triggering function. Some brackets have a magnet/reed switch combination that detects the beacon being put back, and incorrect mounting can cause a false activation."
+  },
+  "Radar ekranında 12 nokta dizisi hangi cihazın karakteristik belirtisidir?": {
+    "en": "A series of 12 dots on the radar display is the characteristic sign of which device?"
+  },
+  "Radar ekranında 12 nokta/yay": {
+    "en": "12 dots/arcs on the radar display"
+  },
+  "Radar-SART'ın X-band nokta dizisini, AIS-EPIRB'nin AIS hedef sembolünden ayırt et.": {
+    "en": "Distinguish the X-band dot series of a radar-SART from the AIS target symbol of an AIS-EPIRB."
+  },
+  "Radarda 12 nokta/yay": {
+    "en": "12 dots/arcs on radar"
+  },
+  "Rutin self-test = üretici test modu, gerçek distress ON değildir.": {
+    "en": "Routine self-test = the manufacturer's test mode, not the real distress ON."
+  },
+  "Sadece cihazı kapatmak yeterli değildir; SAR koordinasyon otoritesine haber verilmelidir.": {
+    "en": "Just switching off the beacon is not enough; the SAR coordinating authority must be informed."
+  },
+  "SAR uyduları": {
+    "en": "SAR satellites"
+  },
+  "SELF-TEST ≠ gerçek ON/DISTRESS yayını.": {
+    "en": "SELF-TEST ≠ real ON/DISTRESS transmission."
+  },
+  "Soru 1: EPIRB'nin pili suyla mı aktive olur? Yanıt: Hayır; HRU serbest bırakır, su sensörü elektroniği açar, kapalı batarya zaten takılıdır.": {
+    "en": "Question 1: Is the EPIRB battery activated by water? Answer: No; the HRU releases the beacon, the water sensor switches on the electronics and the sealed battery is already fitted."
+  },
+  "Soru 2: EPIRB 12 radar noktası oluşturur mu? Yanıt: Hayır; radar-SART bunu oluşturur. AIS özellikli EPIRB AIS ekranında konum verir.": {
+    "en": "Question 2: Does an EPIRB create 12 radar dots? Answer: No; a radar-SART does. An EPIRB with AIS gives its position on the AIS display."
+  },
+  "Soru 3: Cihazın SELF-TEST yerine ON/DISTRESS'e basıp hemen kapatılması kabul edilir mi? Yanıt: Hayır; gerçek distress mesajı SAR sistemine ulaşabilir. Kılavuzdaki self-test kullanılmalıdır.": {
+    "en": "Question 3: Is it acceptable to press ON/DISTRESS instead of the beacon's SELF-TEST and switch it off immediately? Answer: No; a real distress message may reach the SAR system. The self-test in the manual must be used."
+  },
+  "Su sensörü 9 GHz radar noktaları üretir": {
+    "en": "The water sensor produces 9 GHz radar dots"
+  },
+  "Test sıkılığı üretici ve gemi PMS'ine bağlıdır; her modele evrensel günlük/aylık tuş prosedürü yazılamaz.": {
+    "en": "The test interval depends on the manufacturer and the ship's PMS; a universal daily/monthly button procedure cannot be written for every model."
+  },
+  "Uydu → LUT → MCC → RCC/MRCC alarm akışı; HEX ID kayıt doğrulaması.": {
+    "en": "Satellite → LUT → MCC → RCC/MRCC alert flow; HEX ID registration check."
+  },
+  "Uydu → LUT → MCC → RCC/MRCC zincirini çiz.": {
+    "en": "Draw the satellite → LUT → MCC → RCC/MRCC chain."
+  },
+  "Uydu alarmı + AIS hedefi": {
+    "en": "Satellite alert + AIS target"
+  },
+  "Uydu alarmı + AIS konum sembolü": {
+    "en": "Satellite alert + AIS position symbol"
+  },
+  "Uydu alarmı + lokal homing; 12 radar noktası yok": {
+    "en": "Satellite alert + local homing; no 12 radar dots"
+  },
+  "Uydu alarmı + yakındaki AIS hedefi": {
+    "en": "Satellite alert + nearby AIS target"
+  },
+  "Uydu alarmı, 12 radar noktası yok": {
+    "en": "Satellite alert, no 12 radar dots"
+  },
+  "Uydu-LUT-MCC-RCC/MRCC zinciri, alarmın kurtarma birimine nasıl ulaştığını açıklar.": {
+    "en": "The satellite-LUT-MCC-RCC/MRCC chain explains how the alert reaches the rescue unit."
+  },
+  "Uygun SAR hava/deniz vasıtaları": {
+    "en": "Suitable SAR aircraft/vessels"
+  },
+  "Üreticinin FAIL kodunu kontrol et; batarya, RF vericisi, GNSS veya su sensörü gibi alt bileşenler arasında ayrım yap. Arıza durumunu Master/ilgili zabite bildir, kayıt aç, onaylı servise yönlendir. 'LED yanmadı ama cihaz çalışır' varsayımı yapılmaz.": {
+    "en": "Check the manufacturer's FAIL code; distinguish between subcomponents such as the battery, RF transmitter, GNSS or water sensor. Report the defect to the Master/officer concerned, open a record and send it to an approved service. Do not assume 'the LED did not light but the beacon works'."
+  },
+  "Vardiya zabitinin kontrolü": {
+    "en": "Officer of the watch check"
+  },
+  "X-band radarda 12 nokta serisi görüyorsan aktif radar-SART ihtimalini değerlendir. AIS'de 'EPIRB ACTIVE' görüyorsan AIS-EPIRB olabilir. Cihazın AIS'de bulunmaması, SAR uydusuna 406 MHz alarmı göndermediği anlamına gelmez.": {
+    "en": "If you see a series of 12 dots on X-band radar, consider the possibility of an active radar-SART. If you see 'EPIRB ACTIVE' on AIS, it may be an AIS-EPIRB. The beacon not appearing on AIS does not mean that it is not sending a 406 MHz alert to the SAR satellite."
+  },
+  "Yakın menzilli SAR homing": {
+    "en": "Short-range SAR homing"
+  },
+  "Yayın türü": {
+    "en": "Type of transmission"
+  },
+  "Yeni performans standardına tabi AIS-EPIRB, AIS 1 (161.975 MHz) ve AIS 2 (162.025 MHz) kanallarında konum ve EPIRB ACTIVE gibi bilgiler yayınlayarak VHF görüş hattındaki AIS alıcılarına yardımcı olur. Eski 406 MHz EPIRB modellerinin hepsinde AIS özelliği yoktur. 121.5/243 MHz sinyallerinin uydu üzerinden alarm işlenmesi 1 Şubat 2009'da sona ermiştir.": {
+    "en": "An AIS-EPIRB subject to the new performance standard helps AIS receivers within VHF line of sight by transmitting its position and information such as EPIRB ACTIVE on the AIS 1 (161.975 MHz) and AIS 2 (162.025 MHz) channels. Not all older 406 MHz EPIRB models have the AIS feature. Satellite processing of alerts on the 121.5/243 MHz signals ended on 1 February 2009."
+  },
+  "Yeni standarda tabi AIS-EPIRB cihazları, 161.975 MHz (AIS 1) ve 162.025 MHz (AIS 2) üzerinden yakın AIS alıcılarına EPIRB ACTIVE konum işareti gönderebilir. Eski EPIRB'lerin hepsinde AIS yoktur. Klasik EPIRB X-band/S-band radar ekranında radar-SART'ın 12 noktasını oluşturmaz. 9 GHz X-band radar darbelerine yanıt veren radar-SART 12 noktalık dizi/yay üretir; AIS-EPIRB veya AIS-SART ise uygun AIS/ECDIS ekranında görünür.": {
+    "en": "AIS-EPIRBs subject to the new standard can send an EPIRB ACTIVE position signal to nearby AIS receivers on 161.975 MHz (AIS 1) and 162.025 MHz (AIS 2). Not all older EPIRBs have AIS. A conventional EPIRB does not create the 12 dots of a radar-SART on the X-band/S-band radar display. A radar-SART responding to 9 GHz X-band radar pulses produces a 12-dot series/arcs; an AIS-EPIRB or AIS-SART appears on a suitable AIS/ECDIS display."
+  },
+  "Yeni standarda tabi modellerde": {
+    "en": "On models subject to the new standard"
+  },
+  "Yıllık EPIRB test rehberi IMO MSC.1/Circ.1040/Rev.2'dir; shore-based maintenance bayrakça belirlenen, beş yılı geçmeyen aralıklarla yapılır (MSC.1/Circ.1039/Rev.1). Batarya ve HRU değişimi gerçek cihaz etiketi/üretici talimatına bağlıdır. 15 HEX ID ile resmî kayıt güncel olmalıdır. Yanlış alarmda cihaz derhal OFF yapılır ve en yakın RCC/MRCC'ye kimlik, yer, zaman ve yanlış alarm bildirimi verilir.": {
+    "en": "The annual EPIRB test guidance is IMO MSC.1/Circ.1040/Rev.2; shore-based maintenance is carried out at intervals set by the flag and not exceeding five years (MSC.1/Circ.1039/Rev.1). Battery and HRU replacement depends on the actual beacon label/manufacturer's instructions. The official registration with the 15 HEX ID must be up to date. In a false alert, the beacon is switched OFF immediately and the identity, position, time and false alert notification are given to the nearest RCC/MRCC."
+  },
+  "Zabit, bulunduğu gemi üzerindeki EPIRB'nin modeli, HEX ID'si, HRU ve batarya tarihleri, self-test kodları, bakım/registration belgesi ve yanlış alarm RCC prosedürünü ezbere sayı tekrarı yapmadan, gerçek etiketten göstererek açıklayabilmelidir.": {
+    "en": "The officer should be able to explain the model of the EPIRB on their ship, its HEX ID, the HRU and battery dates, the self-test codes, the maintenance/registration document and the false alert RCC procedure, showing them from the actual label rather than repeating memorised figures."
+  },
+  "121.5 MHz EPIRB homing vericisi": {
+    "en": "121.5 MHz EPIRB homing transmitter"
+  },
+  "406–406.1 MHz uydu distress, 121.5 MHz SAR homing, uygun AIS-EPIRB'lerde AIS 1/2 yerel konum iletimi.": {
+    "en": "406–406.1 MHz satellite distress, 121.5 MHz SAR homing, AIS 1/2 local position transmission on suitable AIS-EPIRBs."
+  },
+  "5.2 Test fail verirse": {
+    "en": "5.2 If the test fails"
+  },
+  "AIS/ECDIS kurtarma hedefi": {
+    "en": "AIS/ECDIS rescue target"
+  },
+  "AIS/ECDIS SAR hedefi": {
+    "en": "AIS/ECDIS SAR target"
+  },
+  "EPIRB (klasik)": {
+    "en": "EPIRB (conventional)"
+  },
+  "GNSS test / self-test sonucu": {
+    "en": "GNSS test / self-test result"
+  },
+  "Kanal / bant": {
+    "en": "Channel / band"
+  },
+  "Klasik EPIRB": {
+    "en": "Conventional EPIRB"
+  },
+  "Marka/model kullanıcı kitabını ve gemi PMS planını kontrol et. 2) Cihazın gövdesi, anteni, bracket/HRU, batarya son kullanma tarihi ve 15 HEX ID kaydını incele. 3) Üreticinin SELF-TEST tuşu ve sırasını uygula; LED/beep veya kod sonucunu yorumla. SELF-TEST, işaretlenmiş kısa bir 406 MHz test yayını yapabilir; 'hiç RF yayını olmaz' anlatımı yanlıştır. 4) GNSS self-test ayrı olabilir, üretici sınırını takip et. 5) Cihazı doğru brakete yerleştir, aktif distress göndermediğini doğrula ve GMDSS/PMS kaydını tut. NORMAL ON/DISTRESS modunu rutin test için kullanma: tek yayın bile SAR alarmı doğurabilir. 6) Yanlış alarmda gerçek tehlike olmadığını teyit ederek OFF'a al ve derhal en yakın RCC/MRCC'ye HEX ID, mevki ve zamanı bildir. 7) Tatbikatta gerçek distress yayını yapmadan cihazın yerini, güvenli taşınmasını ve aktivasyon önlemlerini göster. Rutin test sıklığını ve tuş kombinasyonunu üreticiye göre belirle; bütün EPIRB'ler için zorunlu evrensel aylık işlem yazma.": {
+    "en": "Check the make/model user manual and the ship's PMS plan. 2) Inspect the housing, antenna, bracket/HRU, battery expiry date and the 15 HEX ID registration. 3) Apply the manufacturer's SELF-TEST button and sequence; interpret the LED/beep or code result. The SELF-TEST may make a short, specially coded 406 MHz test transmission; saying 'there is no RF transmission at all' is wrong. 4) The GNSS self-test may be separate; follow the manufacturer's limit. 5) Place the beacon correctly in its bracket, verify that it is not sending an active distress alert and keep the GMDSS/PMS record. Do not use the normal ON/DISTRESS mode for routine testing: even a single transmission can trigger a SAR alert. 6) In a false alert, confirm that there is no real distress, switch it OFF and immediately inform the nearest RCC/MRCC of the HEX ID, position and time. 7) In a drill, show the location of the beacon, safe carrying and activation precautions without making a real distress transmission. Set the routine test frequency and button sequence according to the manufacturer; do not write a universal mandatory monthly procedure for all EPIRBs."
+  },
+  "PSC / survey izi": {
+    "en": "PSC / survey trail"
+  },
+  "Standart 406 MHz EPIRB": {
+    "en": "Standard 406 MHz EPIRB"
   }
 }
