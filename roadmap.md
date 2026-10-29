@@ -1,5 +1,7 @@
 # Roadmap (closed-test feedback plan)
 
+- [ ] Fix Google Play offer loading and missing-price states; verify regression tests (device check requires Android access).
+
 - [x] 1a. Continue card + Saved bookmarks (device-local)
 - [x] 1b. Library hub gathers all resources (deck, engine, exercises, PSC/SIRE, knots, references)
 - [ ] 2. Cranes & lifting calculators (SWL/WLL, sling angle) — needs verified source tables
