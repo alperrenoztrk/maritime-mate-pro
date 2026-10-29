@@ -1,6 +1,6 @@
 # Curriculum-wide teaching quality — first implementation
 
-This initiative covers the **complete 25-course, 807-topic** teaching inventory. The initial release delivers **43 individually authored topic-specific applications across all 25 course categories**, 14 custom technical vector diagrams across selected topics, and a live multi-dimensional audit. It does **not** claim all 807 lessons are fully revised.
+This initiative covers the **complete 25-course, 807-topic** teaching inventory. The initial release delivers **43 individually authored topic-specific applications across all 25 course categories**, 14 custom technical vector diagrams across selected topics, and a live multi-dimensional audit. It does **not** claim all 807 lessons are fully revised. The refreshed teaching inventory still shows **343 of 807 topics with no worked example**; figures and source-link gaps are separately measured by the runtime quality audit. These are editorial gaps, not proof of factual error. Follow-on revisions should eliminate missing core pedagogy topic by topic rather than insert copied generic text.
 
 ## Editorial acceptance criteria (per topic)
 
