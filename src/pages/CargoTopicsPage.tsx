@@ -3398,6 +3398,12 @@ export default function CargoTopicsPage() {
                       className="w-full h-auto object-contain"
                       loading="lazy"
                     />
+                    <p className="px-3 py-2 text-xs leading-relaxed text-muted-foreground">
+                      {approvedTopicImage.author} · {approvedTopicImage.license} ·{" "}
+                      <a href={approvedTopicImage.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                        Original photograph and licence
+                      </a>
+                    </p>
                   </div>
                 )}
 
