@@ -42,7 +42,8 @@ assert.match(longform,/verifiedLegacyImage\("longform"/);
 assert(!approvals.some(x=>x.surface==="ship-system"),"ship-system sources conflict: do not approve until credits reconciled");
 const server = await createServer({configFile:false,logLevel:"error",server:{middlewareMode:true},resolve:{alias:{"@":path.resolve("src")}}});
 try {
-  const {verifiedLegacyImage}=await server.ssrLoadModule("/src/utils/verifiedLegacyImage.ts");
+  const {verifiedLegacyImage, verifiedLegacyPhotoCount}=await server.ssrLoadModule("/src/utils/verifiedLegacyImage.ts");
+  assert.equal(verifiedLegacyPhotoCount, approvals.length, "one or more approved photo URLs failed to compile");
   for(const approved of approvals){
     // The source module controls Vite asset URLs. Verify the guard rejects
     // every unrelated path even when the same local image URL is reused.
