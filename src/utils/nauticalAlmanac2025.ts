@@ -60,7 +60,7 @@ function recordAt(dayOfYear0: number, utcHour: number): [number, number, number]
  * Returns null outside 2025.
  *
  * - lon convention is NOT applied here (this is pure GHA/Dec at Greenwich).
- * - LHA can be derived as LHA = GHA - lonE (east-positive lon).
+ * - LHA can be derived as LHA = GHA + lonE (east-positive lon, i.e. + east, − west).
  */
 export function getSunAriesAlmanac2025Utc(dateUtc: Date): SunAriesAlmanacResult | null {
   const year = dateUtc.getUTCFullYear();

@@ -28,6 +28,7 @@ import {
   convertTVMDCFromTrue,
   computeArpaCpaTcpa,
   calculateSightReduction,
+  azimuthAngleToZn,
   calculateMiddleLatitudeSailing,
   chartCmToNm,
   chartNmToCm,
@@ -3017,17 +3018,21 @@ Relative Course: ${radarResults2.relativeCourseDeg.toFixed(1)}°\nRelative Speed
         const hcDeg = toDegrees(Math.asin(sinHc));
         const cosZ = (Math.sin(toRadians(decDeg)) - Math.sin(toRadians(latDeg)) * Math.sin(toRadians(hcDeg))) /
           (Math.cos(toRadians(latDeg)) * Math.cos(toRadians(hcDeg)));
-        const azimuthDeg = normalizeAngle(toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ)))));
+        const zDeg = toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ))));
+        const znDeg = azimuthAngleToZn(zDeg, lhaDeg);
         return (
           <div className="space-y-3">
             <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{`Result:
-Calculated Altitude (Hc): ${sightResults.hcDeg.toFixed(2)}°\nAzimuth: ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
+Calculated Altitude (Hc): ${sightResults.hcDeg.toFixed(2)}°\nAzimuth (Zn): ${sightResults.azimuthDeg.toFixed(1)}°`}</pre>
             <SolutionSteps
               steps={[
                 `sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA)`,
                 `Hc = asin(sinHc) = ${hcDeg.toFixed(2)}°`,
                 `cos(Z) = (sinδ − sinφ·sinHc) / (cosφ·cosHc)`,
-                `Z = acos(cosZ) = ${azimuthDeg.toFixed(1)}°`,
+                `Z = acos(cosZ) = ${zDeg.toFixed(1)}°`,
+                normalizeAngle(lhaDeg) > 180
+                  ? `LHA > 180° (body east) → Zn = Z = ${znDeg.toFixed(1)}°`
+                  : `LHA < 180° (body west) → Zn = 360° − Z = ${znDeg.toFixed(1)}°`,
               ]}
             />
           </div>
@@ -3044,7 +3049,10 @@ Calculated Altitude (Hc): ${sightResults.hcDeg.toFixed(2)}°\nAzimuth: ${sightRe
                   `Ha = Hs + IC/60 − Dip/60 = ${astroInputs.hsDeg} + ${astroInputs.icMin || 0}/60 − ${astroResults.correction.dipMin.toFixed(2)}/60 = ${astroResults.correction.haDeg.toFixed(4)}°`,
                   `Refraction′ ≈ (0.00452×P)/((273+T)×tan(Ha)) = ${astroResults.correction.refractionMin.toFixed(2)}′`,
                   `Ho = Ha − Refraction/60 = ${astroResults.correction.hoDeg.toFixed(4)}°`,
-                  `LHA = GHA − Lon(E) = ${astroResults.intercept.ghaDeg.toFixed(2)} − ${formatSigned(dmsToDecimal(astroInputs.apLon), 2)} = ${astroResults.intercept.lhaDeg.toFixed(2)}°`,
+                  `LHA = GHA + λ (E +, W −) = ${astroResults.intercept.ghaDeg.toFixed(2)} + (${formatSigned(dmsToDecimal(astroInputs.apLon), 2)}) = ${astroResults.intercept.lhaDeg.toFixed(2)}°`,
+                  astroResults.intercept.lhaDeg > 180
+                    ? `LHA > 180° (body east) → Zn = Z = ${astroResults.intercept.znDeg.toFixed(1)}°`
+                    : `LHA < 180° (body west) → Zn = 360° − Z = ${astroResults.intercept.znDeg.toFixed(1)}°`,
                   `Intercept = (Ho − Hc) × 60 = (${astroResults.correction.hoDeg.toFixed(4)} − ${astroResults.intercept.hcDeg.toFixed(2)}) × 60 = ${astroResults.intercept.interceptNm.toFixed(2)} NM (${astroResults.intercept.towardAway})`,
                 ]}
               />

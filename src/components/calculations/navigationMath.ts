@@ -57,7 +57,7 @@ export type SightReductionInput = {
 
 export type SightReductionResult = {
   hcDeg: number;      // Calculated altitude
-  azimuthDeg: number; // Azimuth
+  azimuthDeg: number; // True azimuth Zn (000–360°)
 };
 
 export type BearingCalculationInput = {
@@ -432,9 +432,15 @@ export function calculateSightReduction(input: SightReductionInput): SightReduct
 
   const cosZ = (Math.sin(decRad) - Math.sin(latRad) * Math.sin(toRadians(hcDeg))) / 
                (Math.cos(latRad) * Math.cos(toRadians(hcDeg)));
-  const azimuthDeg = normalizeAngle(toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ)))));
+  const zDeg = toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ))));
+  const azimuthDeg = azimuthAngleToZn(zDeg, lhaDeg);
 
   return { hcDeg, azimuthDeg };
+}
+
+// Z is measured from north (0–180°): body east of the meridian (LHA > 180°) → Zn = Z, west → Zn = 360° − Z.
+export function azimuthAngleToZn(zDeg: number, lhaDeg: number): number {
+  return normalizeAngle(normalizeAngle(lhaDeg) > 180 ? zDeg : 360 - zDeg);
 }
 
 // Bearing calculations - Doubling the angle on bow
@@ -1638,7 +1644,7 @@ export type InterceptSightResult = {
 
 export function computeSunInterceptSight(input: InterceptSightInput): InterceptSightResult {
   const almanac = computeSunAlmanac(input.dateUtc);
-  const lhaDeg = normalizeAngle(almanac.ghaSunDeg - input.assumedPosition.lonDeg); // lon East positive => LHA = GHA - lonE
+  const lhaDeg = normalizeAngle(almanac.ghaSunDeg + input.assumedPosition.lonDeg); // lon East positive => LHA = GHA + λE − λW
   const sr = calculateSightReduction({
     latDeg: input.assumedPosition.latDeg,
     decDeg: almanac.decSunDeg,
