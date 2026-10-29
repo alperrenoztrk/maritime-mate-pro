@@ -20,6 +20,25 @@ kontrol sonuçlarını ve commit hash'ini kısa bir Türkçe raporla ver.
 - Commit mesajı İngilizce. Sonuna Türkçe "Terim denetimi (self-check)" listesi
   eklenir.
 
+## Proje bağlamı
+Ayrıntılar (Pro abonelik, Play yayını, beyaz ekran tuzakları):
+`.claude/skills/mariners-book/SKILL.md`.
+- Web sürümü https://nauticalleap.com. Güncel depo
+  `alperrenoztrk/maritime-mate-pro`; `maritime-calculator` eski ve terk edilmiş
+  bir kopya, ona dayanma.
+- Web uygulaması Lovable ile geliştiriliyor, Android'e Capacitor ile
+  paketleniyor. Kesin yapı ve script'ler için önce `package.json` ve
+  `capacitor.config.*` dosyalarına bak, tahmin yürütme.
+- Geliştirici Windows + PowerShell kullanıyor; kullanıcının kendi makinesinde
+  çalıştıracağı komutları PowerShell uyumlu ver.
+- Test cihazı bir Android tablet; Android telefon yok.
+- Backend, Lovable Cloud içinde yönetilen Supabase (gerçek proje
+  `vrpbhguztsqakvjcezeb`). Supabase panelindeki `dhjvxtwflntmvbzkqsjn`
+  (MARINER'S BOOK) kullanılmıyor; ona göre kod veya SQL yazma.
+- Supabase paneline doğrudan erişim yok; veritabanı Lovable → More → Cloud →
+  Database/Users üzerinden yönetiliyor. Şema değişikliği gerekirse SQL'i hazırla
+  ve kullanıcının bunu Lovable'da uygulaması gerektiğini açıkça belirt.
+
 ## Teknik harita
 - React 18 + Vite + Capacitor 7 (Android). Supabase projesi: `vrpbhguztsqakvjcezeb`.
 - Arayüz İngilizce, varsayılan dil `en`. Türkçe sunulmuyor ama kaynak metinlerin
