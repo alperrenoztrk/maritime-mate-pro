@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { WAVE_COUNT } from '@/lib/seakeeping';
 import type { OceanFrame } from '@/lib/oceanSimulation';
+import { OCEAN_SEGMENTS, type OceanQuality } from './oceanQuality';
 import { getWaterNormalTexture } from './proceduralTextures';
 
 // Plane-local coordinates: (world x, −world z, world y). Both the GPU and
@@ -44,8 +45,9 @@ float seaNoise(vec2 p) {
 }
 `;
 /** One draw call with a dense near field and coarse fogged horizon. */
-function oceanGeometry(high: boolean) {
-  const geometry = new THREE.PlaneGeometry(2, 2, high ? 192 : 128, high ? 192 : 128);
+function oceanGeometry(quality: OceanQuality) {
+  const segments = OCEAN_SEGMENTS[quality];
+  const geometry = new THREE.PlaneGeometry(2, 2, segments, segments);
   const position = geometry.attributes.position;
   const spread = (v: number) => Math.sign(v) * 65 * Math.expm1(Math.abs(v) * 3.8) / Math.expm1(3.8);
   for (let i = 0; i < position.count; i++) position.setXYZ(i, spread(position.getX(i)), spread(position.getY(i)), 0);
@@ -56,10 +58,10 @@ interface Props {
   frame: MutableRefObject<OceanFrame>;
   heelRef: MutableRefObject<number>;
   wakeIntensity: number;
-  quality?: 'high' | 'balanced';
+  quality?: OceanQuality;
 }
 export function OceanSurface3D({ frame, heelRef, wakeIntensity, quality = 'balanced' }: Props) {
-  const geometry = useMemo(() => oceanGeometry(quality === 'high'), [quality]);
+  const geometry = useMemo(() => oceanGeometry(quality), [quality]);
   const normalTexture = useMemo(() => {
     const texture = getWaterNormalTexture().clone();
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
@@ -75,28 +77,53 @@ export function OceanSurface3D({ frame, heelRef, wakeIntensity, quality = 'balan
   const material = useMemo(() => {
     // Opaque deep water correctly occludes submerged plating; foam is shaded on
     // the displaced surface rather than a transparent plane over the waves.
-    const mat = new THREE.MeshPhysicalMaterial({
+    const mat = quality === 'high' ? new THREE.MeshPhysicalMaterial({
       color: '#063844', roughness: 0.18, metalness: 0, ior: 1.333, envMapIntensity: 1.35,
+    }) : new THREE.MeshStandardMaterial({
+      color: '#063844', roughness: 0.18, metalness: 0, envMapIntensity: 1.15,
     });
+    // Lower tiers interpolate analytic vertex normals/crest compression.
+    // This removes twelve trigonometric wave evaluations from EVERY pixel;
+    // scrolling normal maps retain fine ripples without that fragment cost.
+    const oceanVaryings = 'varying vec3 vOceanOffset; varying vec3 vOceanNormal; varying float vCompression;';
     mat.onBeforeCompile = shader => {
       Object.assign(shader.uniforms, uniforms);
       shader.vertexShader = shader.vertexShader
-        .replace('#include <common>', `#include <common>\n${waveShader}\nvarying vec2 vSeaPoint;`)
+        .replace('#include <common>', `#include <common>\n${waveShader}\nvarying vec2 vSeaPoint;\n${oceanVaryings}`)
         .replace('#include <beginnormal_vertex>', `
           vec3 displacement, tx, ty; float compression;
           seaSurface(position.xy, displacement, tx, ty, compression);
           vec3 objectNormal = normalize(cross(tx, ty));
+          ${quality === 'high' ? '' : `
+          // Coarse horizon cells must not alias short waves into a sawtooth
+          // skyline. Fade distant displacement/normals into the fog; the
+          // complete Gerstner surface is retained around the vessel.
+          float horizonFade = 1.0 - smoothstep(14.0,45.0,length(position.xy));
+          displacement *= horizonFade;
+          objectNormal = normalize(mix(vec3(0.0,0.0,1.0),objectNormal,horizonFade));
+          compression *= horizonFade;
+          `}
         `)
         .replace('#include <begin_vertex>', `
           vSeaPoint = position.xy;
+          vOceanOffset = displacement;
+          vOceanNormal = objectNormal;
+          vCompression = compression;
           vec3 transformed = position + displacement;
         `);
       shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', `#include <common>\n${waveShader}\n${surfaceFragment}`)
+        .replace('#include <common>', `#include <common>\n${quality === 'high' ? waveShader : ''}\n${surfaceFragment}\n${oceanVaryings}`)
         .replace('#include <color_fragment>', `
           #include <color_fragment>
+          ${quality === 'high' ? `
           vec3 oceanOffset, oceanTx, oceanTy; float compression;
           seaSurface(vSeaPoint, oceanOffset, oceanTx, oceanTy, compression);
+          vec3 localSeaNormal = normalize(cross(oceanTx,oceanTy));
+          ` : `
+          vec3 oceanOffset = vOceanOffset;
+          float compression = vCompression;
+          vec3 localSeaNormal = normalize(vOceanNormal);
+          `}
           vec2 waterPoint = vSeaPoint + oceanOffset.xy;
           float distanceFade = 1.0 - smoothstep(14.0, 45.0, length(vSeaPoint));
           vec2 flow = waterPoint*7.0 + vec2(uTime*0.16, -uTime*0.11);
@@ -120,21 +147,20 @@ export function OceanSurface3D({ frame, heelRef, wakeIntensity, quality = 'balan
         `)
         .replace('#include <roughnessmap_fragment>', `
           #include <roughnessmap_fragment>
-          roughnessFactor = mix(0.13,0.66,foam);
+          roughnessFactor = mix(${quality === 'high' ? '0.13' : 'mix(0.3,0.16,distanceFade)'},0.66,foam);
         `)
         .replace('#include <normal_fragment_maps>', `
-          // Analytic fragment normals preserve short waves beyond mesh spacing.
+          // Two moving normal scales preserve the small surface ripples.
           vec2 ripple1 = texture2D(uRipple,waterPoint*0.75+vec2(uTime*0.013,uTime*0.007)).xy*2.0-1.0;
           vec2 ripple2 = texture2D(uRipple,waterPoint.yx*1.83+vec2(-uTime*0.009,uTime*0.017)).xy*2.0-1.0;
           vec2 ripple = (ripple1+ripple2*0.45)*min(1.0,uEnergy*5.0)*distanceFade;
-          vec3 localSeaNormal = normalize(cross(oceanTx,oceanTy));
           vec3 worldSeaNormal = normalize(vec3(localSeaNormal.x+ripple.x*0.22,localSeaNormal.z,-localSeaNormal.y+ripple.y*0.22));
           normal = normalize(mat3(viewMatrix)*worldSeaNormal);
         `);
     };
-    mat.customProgramCacheKey = () => 'directional-ocean-v1';
+    mat.customProgramCacheKey = () => `directional-ocean-v2-${quality}`;
     return mat;
-  }, [uniforms]);
+  }, [uniforms, quality]);
   useFrame(() => {
     const sea = frame.current;
     let energy = 0;
@@ -146,7 +172,8 @@ export function OceanSurface3D({ frame, heelRef, wakeIntensity, quality = 'balan
     uniforms.uHeel.value = heelRef.current; uniforms.uWake.value = wakeIntensity;
   });
   useEffect(() => () => geometry.dispose(), [geometry]);
-  useEffect(() => () => { material.dispose(); normalTexture.dispose(); }, [material, normalTexture]);
+  useEffect(() => () => material.dispose(), [material]);
+  useEffect(() => () => normalTexture.dispose(), [normalTexture]);
   return <mesh name="ocean-surface" rotation={[-Math.PI / 2, 0, 0]} geometry={geometry} material={material} receiveShadow />;
 }
 export default OceanSurface3D;

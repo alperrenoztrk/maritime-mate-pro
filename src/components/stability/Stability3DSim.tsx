@@ -1,4 +1,4 @@
-import { Component, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Component, Suspense, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,7 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AlertTriangle, CheckCircle2, Info, Wind } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
 import * as THREE from "three";
 
 import {
@@ -15,12 +15,13 @@ import {
   checkIMOCriteria,
   calculateRollingPeriod,
   calculateDeckImmersionAngle,
-  solveHeelAngle,
   type ShipState,
 } from "./sim/StabilityPhysics";
 import { type ShipType } from "./sim/ShipModel3D";
 import { shipTypeOptions } from "./sim/shipTypeOptions";
 import { StabilityMarkers } from "./sim/StabilityMarkers";
+import { SimulationRenderLoop } from "./sim/SimulationRenderLoop";
+import { type OceanQuality, defaultOceanQuality } from "./sim/oceanQuality";
 import { ShipScene3D } from "./sim/ShipScene3D";
 import { keelWorldY } from "./sim/shipDraftGeometry";
 import { disposeHullGeometries } from "./sim/hullGeometry";
@@ -49,8 +50,23 @@ const HEADINGS = [
   { deg: 0, label: "Following" },
 ];
 
-/* ─── helpers ─── */
-const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
+// Only the instruments subscribe to telemetry; the page/Canvas/controls do
+// not reconcile on every reading. Simulation transforms stay outside React.
+function createMotionStore() {
+  let value = { roll: 0, pitch: 0, heave: 0 };
+  const listeners = new Set<() => void>();
+  return {
+    get: () => value,
+    subscribe: (listener: () => void) => { listeners.add(listener); return () => { listeners.delete(listener); }; },
+    update: (roll: number, pitch: number, heave: number) => {
+      value = { roll, pitch, heave };
+      listeners.forEach(listener => listener());
+    },
+  };
+}
+type MotionStore = ReturnType<typeof createMotionStore>;
+const useMotionReading = (motion: MotionStore) => useSyncExternalStore(motion.subscribe, motion.get, motion.get);
+
 
 /* Compress the real KM (~18 m) into the vessel's visual height so K/B/G/M read
    as a proportionate stack instead of floating far above the deck. */
@@ -76,21 +92,18 @@ export const Stability3DSim = () => {
   const [kgInput, setKgInput] = useState(6.2);
   const [draftInput, setDraftInput] = useState(6.5);
   const [cbInput, setCbInput] = useState(0.72);
-  const [heelAngle, setHeelAngle] = useState(0);
+  const motion = useMemo(createMotionStore, []);
   const [shipType, setShipType] = useState<ShipType>("container");
-  const [windMoment, setWindMoment] = useState(0); // external beam-wind heeling moment (t·m)
   const [mode, setMode] = useState<SimMode>("passage");
   const [seaCode, setSeaCode] = useState(4);
   const [wavePeriod, setWavePeriod] = useState(9);
   const [heading, setHeading] = useState(90);
   const [speedKn, setSpeedKn] = useState(12);
-  const [pitchAngle, setPitchAngle] = useState(0);
-  const [heave, setHeave] = useState(0);
   const [playing, setPlaying] = useState(() => typeof window === 'undefined' || !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [visible, setVisible] = useState(true);
   const [inView, setInView] = useState(true);
   const [resetToken, setResetToken] = useState(0);
-  const [quality, setQuality] = useState<'balanced' | 'high'>('balanced');
+  const [quality, setQuality] = useState<OceanQuality>(defaultOceanQuality);
   const [showMarkers, setShowMarkers] = useState(false);
   const viewport = useRef<HTMLDivElement>(null);
   const paused = !playing || !visible || !inView;
@@ -133,30 +146,6 @@ export const Stability3DSim = () => {
     () => calculateDeckImmersionAngle(ship.breadth, ship.depth, ship.draft),
     [ship]
   );
-
-  // Total heeling moment = a small intrinsic list (from a raised KG) + the
-  // user-controlled beam-wind moment. The equilibrium heel is solved against
-  // the actual righting moment Δ·GZ(φ), so it respects the GZ curve rather
-  // than a naive small-angle approximation.
-  const heelingMoment = useMemo(() => 2200 * (1 + (kgInput - 6.2) * 0.12) + windMoment, [kgInput, windMoment]);
-  const targetHeel = useMemo(
-    () => solveHeelAngle(stability.gm, stability.bm, stability.displacement, heelingMoment, 55),
-    [stability, heelingMoment]
-  );
-
-  // Roll spring stiffness follows GM (stiff ship rolls fast), clamped sane.
-  const rollDynamics = useMemo(
-    () => ({ omega: clamp(Math.sqrt(9.81 * Math.max(stability.gm, 0.05)) * 0.8, 0.6, 4), zeta: 0.15 }),
-    [stability.gm]
-  );
-  const gz = useMemo(() => calculateGZ(stability.gm, stability.bm, heelAngle), [stability, heelAngle]);
-  const heelDeg = THREE.MathUtils.radToDeg(heelAngle);
-  const absHeel = Math.abs(heelDeg);
-  const deckImmersed = deckImmAngle > 0 && absHeel >= deckImmAngle;
-  const nearCapsize = absHeel >= 45;
-
-  const handleHeelUpdate = useCallback((h: number) => setHeelAngle(h), []);
-  const handleMotion = useCallback((_r: number, p: number, h: number) => { setPitchAngle(p); setHeave(h * METRES_PER_UNIT); }, []);
 
   // Harbour: sheltered basin, short low swell, ship stopped alongside.
   const effHs = mode === "harbour" ? 0.2 : representativeHs(seaCode);
@@ -230,14 +219,14 @@ export const Stability3DSim = () => {
             {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
             {playing ? 'Pause' : 'Play'}
           </button>
-          <button type="button" onClick={() => { setResetToken(v => v + 1); setHeelAngle(0); setPitchAngle(0); setHeave(0); }} className="flex min-h-11 items-center gap-2 rounded-lg border px-3 text-xs">
+          <button type="button" onClick={() => { setResetToken(v => v + 1); motion.update(0, 0, 0); }} className="flex min-h-11 items-center gap-2 rounded-lg border px-3 text-xs">
             <RotateCcw className="h-4 w-4" /> Restart
           </button>
           <button type="button" onClick={() => setShowMarkers(v => !v)} aria-pressed={showMarkers} className="min-h-11 rounded-lg border px-3 text-xs">Stability markers</button>
           <label className="ml-auto flex items-center gap-2 text-xs">
             Detail
-            <select aria-label="Water detail" value={quality} onChange={e => setQuality(e.target.value as 'balanced' | 'high')} className="min-h-11 rounded-lg border bg-background px-2">
-              <option value="balanced">Balanced</option><option value="high">High</option>
+            <select aria-label="Water detail" value={quality} onChange={e => setQuality(e.target.value as OceanQuality)} className="min-h-11 rounded-lg border bg-background px-2">
+              <option value="performance">Performance</option><option value="balanced">Balanced</option><option value="high">High</option>
             </select>
           </label>
         </div>
@@ -250,13 +239,12 @@ export const Stability3DSim = () => {
           <SimErrorBoundary fallback={<SimErrorFallback />}>
             <Suspense fallback={<SimLoadingFallback />}>
               <Canvas
-                shadows
-                frameloop={paused ? 'demand' : 'always'}
-                dpr={[1, quality === 'high' ? 1.75 : 1.25]}
-                performance={{ min: 0.6 }}
+                shadows={quality === 'high'}
+                frameloop="demand"
+                dpr={quality === 'performance' ? 1 : [1, quality === 'high' ? 1.5 : 1.25]}
                 gl={{
-                  antialias: true,
-                  powerPreference: "high-performance",
+                  antialias: false,
+                  powerPreference: "default",
                   toneMapping: THREE.ACESFilmicToneMapping,
                   toneMappingExposure: 1.1,
                 }}
@@ -264,6 +252,7 @@ export const Stability3DSim = () => {
                   gl.shadowMap.type = THREE.PCFSoftShadowMap;
                 }}
               >
+                <SimulationRenderLoop paused={paused} fps={quality === 'high' ? 60 : 30} />
                 <PerspectiveCamera makeDefault position={[6.5, 3.1, 7]} fov={42} />
                 {/* Let the user orbit / zoom the vessel. Pan is disabled and the
                     polar angle is clamped so the camera can't dip under the sea. */}
@@ -278,11 +267,9 @@ export const Stability3DSim = () => {
                 />
                 <ShipScene3D
                   shipType={shipType}
-                  heelRad={targetHeel}
+                  heelRad={0}
                   draftM={draftInput}
-                  rollDynamics={rollDynamics}
-                  onHeelUpdate={handleHeelUpdate}
-                  onMotionUpdate={handleMotion}
+                  onMotionUpdate={motion.update}
                   sea={sea}
                   paused={paused}
                   resetToken={resetToken}
@@ -290,13 +277,11 @@ export const Stability3DSim = () => {
                   wakeIntensity={0.85}
                   scenery={mode === "harbour" ? <HarbourScene /> : null}
                 >
-                  {showMarkers && <StabilityMarkers
+                  {showMarkers && <LiveStabilityMarkers motion={motion} gm={stability.gm} bm={stability.bm}
                     kY={keelWorldY(draftInput)}
                     kb={stability.kb}
                     kg={kgInput}
                     km={stability.km}
-                    heelAngle={heelAngle}
-                    gz={gz}
                     vScale={MARKER_VSCALE}
                   />}
                 </ShipScene3D>
@@ -309,39 +294,10 @@ export const Stability3DSim = () => {
             Drag: rotate · Pinch: zoom
           </div>
 
-          {/* GM danger warning */}
-          {stability.gm < 0.15 && (
-            <div className="absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg bg-red-500/90 px-3 py-1.5 text-micro font-semibold text-white shadow-lg flex items-center gap-1.5">
-              <AlertTriangle className="h-3.5 w-3.5" />
-              DANGER: GM &lt; 0.15 m — insufficient stability!
-            </div>
-          )}
-
-          {/* Heel / deck-immersion warning (only when GM is otherwise OK) */}
-          {stability.gm >= 0.15 && (nearCapsize || deckImmersed) && (
-            <div
-              className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-micro font-semibold text-white shadow-lg flex items-center gap-1.5 ${
-                nearCapsize ? "bg-red-500/90" : "bg-amber-500/90"
-              }`}
-            >
-              <AlertTriangle className="h-3.5 w-3.5" />
-              {nearCapsize
-                ? `DANGER: ${absHeel.toFixed(0)}° heel — capsize risk!`
-                : `Deck edge immersed (φ_deck ${deckImmAngle.toFixed(0)}°)`}
-            </div>
-          )}
+          <MotionWarnings motion={motion} gm={stability.gm} deckImmAngle={deckImmAngle} />
         </div>
 
-        <div data-testid="motion-readout" className="grid grid-cols-2 gap-x-5 gap-y-2 rounded-lg bg-muted/40 p-3 text-xs sm:grid-cols-4">
-          <Row label="Roll / heel" value={`${heelDeg.toFixed(1)}°`} />
-          <Row label="Pitch" value={`${THREE.MathUtils.radToDeg(pitchAngle).toFixed(1)}°`} />
-          <Row label="Heave" value={`${heave.toFixed(2)} m`} />
-          <Row label="GM" value={`${stability.gm.toFixed(2)} m`} />
-          <Row label="GZ" value={`${gz.toFixed(3)} m`} />
-          <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : '∞'} s`} />
-          <Row label="T (enc.)" value={`${isFinite(te) ? te.toFixed(1) : '∞'} s`} />
-          <Row label="Hs" value={`${actualHs.toFixed(2)} m`} />
-        </div>
+        <MotionReadout motion={motion} gm={stability.gm} bm={stability.bm} rollingPeriod={rollingPeriod} te={te} hs={actualHs} />
         <details className="rounded-lg border p-3 text-xs">
           <summary className="cursor-pointer font-medium">Hydrostatic particulars</summary>
           <div className="mt-3 grid grid-cols-2 gap-x-5 gap-y-2">
@@ -411,30 +367,6 @@ export const Stability3DSim = () => {
             Alongside in a sheltered basin: low swell (Hs 0.2 m, T 5 s), ship stopped. Switch to Passage to set sea state, wave direction and speed.
           </div>
         )}
-
-        {/* Wind / heeling-moment slider — the "star" control */}
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/5 p-3">
-          <Label className="mb-1.5 flex items-center justify-between text-xs">
-            <span className="flex items-center gap-1.5 font-semibold text-sky-600 dark:text-sky-300">
-              <Wind className="h-3.5 w-3.5" />
-              Wind / Roll Moment
-            </span>
-            <span className="font-mono">
-              {windMoment > 0 ? `${Math.round(windMoment / 1000)}k t·m → ${absHeel.toFixed(1)}°` : "Calm"}
-            </span>
-          </Label>
-          <Slider
-            aria-label="Wind heeling moment"
-            value={[windMoment]}
-            min={0}
-            max={280000}
-            step={5000}
-            onValueChange={(v) => setWindMoment(v[0])}
-          />
-          <p className="mt-1 text-micro text-muted-foreground">
-            The heeling moment of a beam wind. The equilibrium heel is solved by setting it equal to the righting moment Δ·GZ(φ). Higher KG → lower GM → greater heel in the same wind.
-          </p>
-        </div>
 
         {/* Sliders */}
         <div className="grid gap-3 md:grid-cols-3">
@@ -506,6 +438,41 @@ export const Stability3DSim = () => {
 
 /* ─── sub-components ─── */
 
+function LiveStabilityMarkers({ motion, gm, bm, ...props }: {
+  motion: MotionStore; gm: number; bm: number; kY: number; kb: number; kg: number; km: number; vScale: number;
+}) {
+  const { roll } = useMotionReading(motion);
+  return <StabilityMarkers {...props} heelAngle={roll} gz={calculateGZ(gm, bm, roll)} />;
+}
+
+function MotionWarnings({ motion, gm, deckImmAngle }: { motion: MotionStore; gm: number; deckImmAngle: number }) {
+  const { roll } = useMotionReading(motion);
+  const absHeel = Math.abs(THREE.MathUtils.radToDeg(roll));
+  const danger = gm < 0.15 || absHeel >= 45;
+  const immersed = deckImmAngle > 0 && absHeel >= deckImmAngle;
+  if (!danger && !immersed) return null;
+  return <div className={`absolute left-1/2 top-2.5 -translate-x-1/2 rounded-lg px-3 py-1.5 text-micro font-semibold text-white shadow-lg flex items-center gap-1.5 ${danger ? 'bg-red-500/90' : 'bg-amber-500/90'}`}>
+    <AlertTriangle className="h-3.5 w-3.5" />
+    {gm < 0.15 ? 'DANGER: GM < 0.15 m — insufficient stability!' : danger ? `DANGER: ${absHeel.toFixed(0)}° heel — capsize risk!` : `Deck edge immersed (φ_deck ${deckImmAngle.toFixed(0)}°)`}
+  </div>;
+}
+
+function MotionReadout({ motion, gm, bm, rollingPeriod, te, hs }: {
+  motion: MotionStore; gm: number; bm: number; rollingPeriod: number; te: number; hs: number;
+}) {
+  const { roll, pitch, heave } = useMotionReading(motion);
+  return <div data-testid="motion-readout" className="grid grid-cols-2 gap-x-5 gap-y-2 rounded-lg bg-muted/40 p-3 text-xs sm:grid-cols-4">
+    <Row label="Roll / heel" value={`${THREE.MathUtils.radToDeg(roll).toFixed(1)}°`} />
+    <Row label="Pitch" value={`${THREE.MathUtils.radToDeg(pitch).toFixed(1)}°`} />
+    <Row label="Heave" value={`${(heave * METRES_PER_UNIT).toFixed(2)} m`} />
+    <Row label="GM" value={`${gm.toFixed(2)} m`} />
+    <Row label="GZ" value={`${calculateGZ(gm, bm, roll).toFixed(3)} m`} />
+    <Row label="T (roll)" value={`${isFinite(rollingPeriod) ? rollingPeriod.toFixed(1) : '∞'} s`} />
+    <Row label="T (enc.)" value={`${isFinite(te) ? te.toFixed(1) : '∞'} s`} />
+    <Row label="Hs" value={`${hs.toFixed(2)} m`} />
+  </div>;
+}
+
 /** Catches WebGL / render failures so the viewport degrades gracefully. */
 class SimErrorBoundary extends Component<
   { children: ReactNode; fallback: ReactNode },
@@ -549,7 +516,7 @@ function Row({ label, value, color }: { label: string; value: string; color?: st
   return (
     <div className="flex justify-between gap-3">
       <span className="text-muted-foreground">{label}</span>
-      <span className="font-mono font-semibold" style={color ? { color } : undefined}>
+      <span translate="no" className="font-mono font-semibold" style={color ? { color } : undefined}>
         {value}
       </span>
     </div>

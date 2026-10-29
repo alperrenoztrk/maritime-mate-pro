@@ -63,7 +63,11 @@ export function sampleOcean(frame: OceanFrame, x: number, z: number): number {
       const offset = frame.chop * steepness / k * Math.cos(k * (dx * u + dy * v) + frame.phases[i]);
       offsetX += dx * offset; offsetY += dy * offset;
     }
-    u = x - offsetX; v = y - offsetY;
+    const nextU = x - offsetX, nextV = y - offsetY;
+    const error = Math.abs(nextU - u) + Math.abs(nextV - v);
+    u = nextU; v = nextV;
+    // Once converged, further trigonometric evaluations add no visible detail.
+    if (error < 1e-6) break;
   }
   let height = 0;
   for (let i = 0; i < WAVE_COUNT; i++) {
@@ -108,4 +112,25 @@ export function stepVesselMotion(m: VesselMotion, target: ReturnType<typeof wave
   const wh = 1.2;
   m.heaveVelocity += (-wh * wh * (m.heave - target.heave) - 1.6 * wh * m.heaveVelocity) * dt;
   m.heave += m.heaveVelocity * dt;
+}
+
+/** Waterplane forcing needs 30 Hz sampling, not all 120 integration steps.
+ * Keep the damped oscillators at their original fixed step so the motion and
+ * phase are independent of rendering rate, including slow mobile frames. */
+export interface VesselForcing {
+  nextSample: number;
+  target: ReturnType<typeof waveTargets>;
+}
+export const createVesselForcing = (): VesselForcing => ({
+  nextSample: 0, target: { roll: 0, pitch: 0, heave: 0 },
+});
+export function advanceVesselMotion(
+  motion: VesselMotion, forcing: VesselForcing, frame: OceanFrame,
+  rollOmega: number, damping: number, dt: number, scale = 1,
+): void {
+  if (frame.time + 1e-10 >= forcing.nextSample) {
+    forcing.target = waveTargets(frame, scale);
+    forcing.nextSample = frame.time + 1 / 30;
+  }
+  stepVesselMotion(motion, forcing.target, rollOmega, damping, dt);
 }
