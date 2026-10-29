@@ -1,8 +1,10 @@
 import ReactMarkdown from "react-markdown";
+import { useState } from "react";
 import type { BetaSection } from "@/data/betaLessons";
 import { stripMarkdown, stripDollarSigns } from "@/utils/cleanText";
 import { normalizeLessonMarkdownImages, resolveLessonImage } from "@/utils/lessonImageFallbacks";
 import { LessonImage } from "@/components/ui/LessonImage";
+import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { LessonFigure } from "@/components/lessons/figures/LessonFigure";
 
 /**
@@ -31,6 +33,7 @@ export function LessonTeachCard({
    */
   alreadyUsedImages?: readonly string[];
 }) {
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const resolvedImage = resolveLessonImage(
     categoryId,
     section.image,
@@ -54,13 +57,18 @@ export function LessonTeachCard({
       <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
       {sectionImage && (
-        <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
+        <button
+          type="button"
+          onClick={() => setZoomImage({ src: sectionImage, alt: section.imageAlt || section.title })}
+          aria-label="Enlarge technical illustration"
+          className="mx-auto block w-full max-w-md cursor-zoom-in overflow-hidden rounded-xl border border-border/40"
+        >
           <LessonImage
             src={sectionImage}
             alt={section.imageAlt || section.title}
-            className="mx-auto h-auto max-h-80 w-full bg-muted/30 object-contain"
+            className="mx-auto h-auto max-h-[36rem] w-full bg-muted/30 object-contain"
           />
-        </div>
+        </button>
       )}
 
       {content && (
@@ -71,13 +79,18 @@ export function LessonTeachCard({
             ),
             img: ({ src, alt }) =>
               src ? (
-                <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40">
+                <button
+                  type="button"
+                  onClick={() => setZoomImage({ src, alt: alt || section.title })}
+                  aria-label="Enlarge lesson illustration"
+                  className="mx-auto block w-full max-w-md cursor-zoom-in overflow-hidden rounded-xl border border-border/40"
+                >
                   <LessonImage
                     src={src}
                     alt={alt || section.title}
-                    className="mx-auto h-auto max-h-80 w-full bg-muted/30 object-contain"
+                    className="mx-auto h-auto max-h-[36rem] w-full bg-muted/30 object-contain"
                   />
-                </div>
+                </button>
               ) : null,
           }}
         >
@@ -178,6 +191,12 @@ export function LessonTeachCard({
           </ul>
         </aside>
       )}
+      <ImageViewerModal
+        src={zoomImage?.src ?? ""}
+        alt={zoomImage?.alt}
+        isOpen={zoomImage !== null}
+        onClose={() => setZoomImage(null)}
+      />
     </section>
   );
 }
