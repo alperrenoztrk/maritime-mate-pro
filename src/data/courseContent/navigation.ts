@@ -1,5 +1,6 @@
 import { Compass } from "lucide-react";
 import type { CourseTopic } from "./types";
+import { calculateVoyageEta } from "@/lib/verifiedOperationalMath";
 
 /**
  * Navigation — single source course content.
@@ -66,19 +67,17 @@ export const navigation: CourseTopic = {
         { symbol: "Speed", label: "Speed", unit: "knot" },
       ],
       source: { code: "Basic navigation — ETA/ETD" },
-      note: "ETD is entered as a decimal hour (e.g. 14:30 = 14.5). The result is given as a decimal hour and a passage time.",
+      note: "ETD is entered as a UTC decimal hour (e.g. 14:30 UTC = 14.5). D+N identifies whole UTC days after ETD; no calendar date is inferred.",
       inputs: [
-        { key: "etd", label: "Departure Time (ETD)", unit: "sa", placeholder: "8" },
-        { key: "distance", label: "Distance", unit: "nm", placeholder: "240" },
-        { key: "speed", label: "Speed", unit: "knot", placeholder: "12" },
+        { key: "etd", label: "Departure UTC (decimal hour)", unit: "h", placeholder: "8", min: 0, max: 23.999999 },
+        { key: "distance", label: "Distance", unit: "NM", placeholder: "240", min: 0 },
+        { key: "speed", label: "Expected SOG", unit: "kn", placeholder: "12", min: 0.000001 },
       ],
       calculate: (v) => {
-        if (v.speed <= 0) return [{ label: "Error", value: "The speed must be positive" }];
-        const sailing = v.distance / v.speed;
-        const eta = (v.etd + sailing) % 24;
+        const result = calculateVoyageEta(v.distance, v.speed, v.etd);
         return [
-          { label: "Passage Time", value: `${sailing.toFixed(2)} sa` },
-          { label: "ETA", value: `${eta.toFixed(2)} h (24 h format)` },
+          { label: "Passage Time", value: `${result.passageHours.toFixed(2)} h` },
+          { label: "ETA (UTC)", value: `${result.etaUtcClock} (D+${result.dayOffset})` },
         ];
       },
     },
