@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -40,83 +41,29 @@ const renewalMatrix = [
 ];
 
 const SOLASCertificatesPage = () => {
-  return (
-          <div className="min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <PageHeader title="SOLAS Certificates & Renewal Tracking" />
-
-        {/* Certificates */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {certificates.map((certificate) => (
-            <Card key={certificate.name} className="border border-emerald-100/70 shadow-lg shadow-emerald-500/10">
-              <CardHeader>
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <CardTitle>{certificate.name}</CardTitle>
-                    <CardDescription>{certificate.authority}</CardDescription>
-                  </div>
-                  <Badge variant="outline" className="text-xs font-semibold">
-                    {certificate.validity}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">
-                  {certificate.focus.map((focus, focusIndex) => (
-                    <span key={focus}>{focusIndex > 0 ? " · " : ""}{focus}</span>
-                  ))}
-                </p>
-                <Separator />
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• The last survey report and deficiency closure list should be kept.</li>
-                  <li>• Certificate PDF + physical copy must be of the same revision</li>
-                  <li>• Create expiry alerts for digital monitoring</li>
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Renewal Matrix */}
-        <Card className="border-emerald-200/70 shadow-xl shadow-emerald-500/10">
-          <CardHeader>
-            <CardTitle>Renewal / Survey Calendar</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Transaction</TableHead>
-                  <TableHead>Maximum Latency</TableHead>
-                  <TableHead>Documents to be Prepared</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {renewalMatrix.map((row) => (
-                  <TableRow key={row.item}>
-                    <TableCell className="font-medium">{row.item}</TableCell>
-                    <TableCell>{row.maxDelay}</TableCell>
-                    <TableCell className="text-sm text-muted-foreground">{row.documents}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-
-        {/* Warning */}
-        <Card className="bg-emerald-600 text-white">
-          <CardHeader className="flex flex-row items-center gap-3">
-            <AlertCircle className="w-10 h-10" />
-            <div>
-              <CardTitle>Critical Reminder</CardTitle>
-            </div>
-          </CardHeader>
-        </Card>
-      </div>
-    </div>
-  );
+  const pages:ReadingPage[] = [
+    {id:"overview",title:"SOLAS Certificates & Surveys",section:"Certificates",content:
+      <p>Illustrative learning summary. Certificate applicability, survey windows and renewal requirements vary by vessel type, flag state, endorsements and the current legal text. Always check the official requirements.</p>},
+    ...certificates.map((certificate,index)=>({
+      id:`certificate-${index}`,title:certificate.name,section:`Certificate ${index+1}/${certificates.length}`,
+      content:<div className="space-y-4">
+        <p><strong>Issuing authority:</strong> {certificate.authority}</p>
+        <p><strong>Indicative validity and surveys:</strong> {certificate.validity}</p>
+        <ul className="list-disc space-y-2 pl-5">{certificate.focus.map((item,i)=><li key={i}>{item}</li>)}</ul>
+        <p className="text-sm text-muted-foreground">Keep survey and corrective action evidence, matching document revisions and expiry alerts.</p>
+      </div>,
+    })),
+    {id:"renewal",title:"Survey and renewal reference",section:"Planning",content:
+      <div className="overflow-x-auto"><Table><TableHeader><TableRow>
+        <TableHead>Survey</TableHead><TableHead>Illustrative interval</TableHead><TableHead>Documentation</TableHead>
+      </TableRow></TableHeader><TableBody>{renewalMatrix.map((row)=><TableRow key={row.item}>
+        <TableCell>{row.item}</TableCell><TableCell>{row.maxDelay}</TableCell><TableCell>{row.documents}</TableCell>
+      </TableRow>)}</TableBody></Table></div>},
+    {id:"caution",title:"Mandatory verification",section:"Sources",
+      content:<p>These figures are not ship-approved. Check SOLAS as amended, the applicable survey and certification regime and flag administration or recognized organization instructions before acting.</p>},
+  ];
+  return <PagedReadingSurface title="SOLAS Certificates" subtitle="Regulatory reference" pages={pages}
+    storageKey="mariners-book:solas-certificates" />;
 };
 
 export default SOLASCertificatesPage;
