@@ -1,0 +1,19 @@
+[
+ { "id": "cat-asperitas", "category": "Asperitas (cloud)", "max": 20 },
+ { "id": "asperitas-search", "search": "asperitas cloud filetype:bitmap", "max": 16, "limit": 60 },
+ { "id": "cat-cirrocumulus", "category": "Cirrocumulus clouds", "max": 24 },
+ { "id": "cat-cirrocumulus-stratiformis", "category": "Cirrocumulus stratiformis", "max": 16 },
+ { "id": "cat-cirrus-uncinus", "category": "Cirrus uncinus", "max": 20 },
+ { "id": "cat-cirrus-fibratus", "category": "Cirrus fibratus", "max": 20 },
+ { "id": "cat-marine-vhf", "category": "Marine VHF radios", "max": 24 },
+ { "id": "vhf-dsc-search", "search": "marine VHF DSC radio bridge filetype:bitmap", "max": 20, "limit": 80 },
+ { "id": "cat-rudders", "category": "Ship rudders", "max": 24 },
+ { "id": "rudder-propeller-drydock", "search": "rudder propeller dry dock ship stern filetype:bitmap", "max": 20, "limit": 80 },
+ { "id": "seviri-vis006", "search": "Meteosat SEVIRI visible 0.6 channel", "max": 12, "limit": 60 },
+ { "id": "seviri-ir108", "search": "Meteosat SEVIRI infrared 10.8", "max": 12, "limit": 60 },
+ { "id": "seviri-wv062", "search": "Meteosat SEVIRI water vapour 6.2", "max": 12, "limit": 60 },
+ { "id": "seviri-ir039", "search": "Meteosat SEVIRI 3.9 infrared channel", "max": 12, "limit": 60 },
+ { "id": "seviri-natural-colour", "search": "Meteosat natural colour RGB Europe", "max": 12, "limit": 60 },
+ { "id": "seviri-airmass", "search": "Meteosat airmass RGB", "max": 12, "limit": 60 },
+ { "id": "cat-meteosat", "category": "Images from Meteosat", "max": 40 }
+]
