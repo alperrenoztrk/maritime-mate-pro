@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
-import { BookOpen, ChevronLeft, ChevronRight, List, Maximize2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export interface ReadingPage {
