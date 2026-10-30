@@ -3016,5 +3016,197 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
       }
     ]
+  },
+  "seamanship-halatlar-knot-ve-baglama-teknikleri": {
+    "id": "seamanship-halatlar-knot-ve-baglama-teknikleri-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Knot suitability depends on intended load, rope construction, bend radius, slip resistance and approved use. A correctly tied demonstration knot is not necessarily a certified cargo-lifting termination.\n\nCommon error: Do not infer SWL from the appearance of a correctly tied knot.",
+    "example": {
+      "problem": "A deck crew member proposes a bowline as a lifting sling termination for an unmarked synthetic rope.",
+      "steps": [
+        "Check the rope's identification, manufacturer's limits and approved lifting/rigging plan.",
+        "Distinguish seamanship knots for securing from certified lifting attachments and select approved rigging.",
+        "Inspect rope condition and protect against abrasion and shock loading before authorised use."
+      ],
+      "result": "Ordinary seamanship knots must not replace certified lifting terminations without approved evidence."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "seamanship-demir-ve-demirleme": {
+    "id": "seamanship-demir-ve-demirleme-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Anchoring must consider holding ground, water depth, current, weather, planned swinging room and actual cable condition. The planned paid-out chain length is not the same as the vessel's distance from the anchor.\n\nCommon error: Never treat the number of shackles paid out as the horizontal swinging radius.",
+    "example": {
+      "problem": "A vessel intends to anchor in 30 m of water close to another ship's anticipated swing circle.",
+      "steps": [
+        "Review permitted anchorage, seabed conditions, forecast and vessel-specific minimum holding provisions.",
+        "Plan anchor drop and cable scope while checking conservative swing envelopes and possible vessel interactions.",
+        "Monitor fixed references and alarm boundaries while keeping machinery and anchor watch ready for dragging."
+      ],
+      "result": "Safe anchoring is a spatial and weather decision, not a universal shackles-per-depth formula."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "seamanship-ileri-mooring-ve-halat-yonetimi": {
+    "id": "seamanship-ileri-mooring-ve-halat-yonetimi-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Mooring hazards include stored elastic energy, poor lead angles, mixed-line elasticity and damaged fittings. Snap-back paths vary with the actual line and hardware arrangement, not solely marked deck zones.\n\nCommon error: Do not assume every snap-back trajectory can be captured by a permanent painted polygon.",
+    "example": {
+      "problem": "A spring line develops a large lead angle across a fairlead while personnel stand near its presumed safe marked zone.",
+      "steps": [
+        "Identify rope MBL, condition, fitting SWL and the approved mooring plan rather than relying on painted floor markings.",
+        "Reassess potential recoil paths, high-energy bights, equipment interference and crew positions.",
+        "Stop the operation until a safe lead, communications and exclusion arrangement is established."
+      ],
+      "result": "An apparently marked safe spot may still be in the line of fire for a particular lead."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "seamanship-romorkor-kullanimi-ve-yanasma-plani": {
+    "id": "seamanship-romorkor-kullanimi-ve-yanasma-plani-professional-application",
+    "title": "Deck operation worked case",
+    "content": "A tug's useful force depends on thrust direction, towline geometry and safe connection arrangements; rated bollard pull is not automatically available as lateral force at the ship's hull.\n\nCommon error: Never use a tug's published pull rating as proof a shipboard fairlead can sustain that tow.",
+    "example": {
+      "problem": "A 60 t bollard-pull tug is proposed for a stern-quarter line that cannot act perpendicular to the ship.",
+      "steps": [
+        "Review the tug arrangement, towline lead, available thrusters, weather and interaction with the vessel's propeller/rudder.",
+        "Evaluate likely resultant force direction and connection/fitting ratings rather than multiplying the nominal bollard pull by one assumed lever.",
+        "Discuss the manoeuvre, communications, abort points and emergency release with Master, pilot and tug before approach."
+      ],
+      "result": "Nominal bollard pull does not equal the effective controlled sideways thrust in every arrangement."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-yuk-plani-ve-agirlik-dagilimi": {
+    "id": "cargo-yuk-plani-ve-agirlik-dagilimi-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Cargo plans must satisfy local structural loading, longitudinal strength, trim and intact stability as well as deck-space geometry. Two cargo plans with the same total mass can impose very different bending and shear forces.\n\nCommon error: Do not approve a revised stowage arrangement based on total tonnes alone.",
+    "example": {
+      "problem": "A 500 t load is shifted from a central hold to a far-forward position while overall cargo weight is unchanged.",
+      "steps": [
+        "Update longitudinal and vertical centres for the revised location and check deck/hold permissible loading.",
+        "Re-run shear force, bending moment, draught and stability calculations on the approved instrument.",
+        "Review lashing strength, access and any deck machinery restrictions before endorsing the final plan."
+      ],
+      "result": "Unchanged total cargo mass does not imply unchanged hull loads or trim."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-konteyner-yukleme-ve-bay-plani": {
+    "id": "cargo-konteyner-yukleme-ve-bay-plani-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Bay-row-tier slot codes locate containers in the stowage plan; load distribution, GM, stack-weight limits, lashing loads and verified gross mass are separate checks.\n\nCommon error: Do not treat a correct slot address as approval of weight and lashing limits.",
+    "example": {
+      "problem": "A heavy 40-foot container with a valid VGM is planned on a high outboard tier to save turnaround time.",
+      "steps": [
+        "Check the true bay/row/tier allocation, gross weight and container type against the verified bay plan.",
+        "Review allowable stack loads, lashing forces, local structure and stability under approved stowage calculations.",
+        "Confirm dangerous goods segregation and access requirements before the load is accepted."
+      ],
+      "result": "Valid VGM establishes declared weight but cannot prove the selected position is structurally and dynamically safe."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-cargo-care-terleme-ve-ambar-havalandirmasi": {
+    "id": "cargo-cargo-care-terleme-ve-ambar-havalandirmasi-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Cargo sweat and ship sweat arise from differing temperature and moisture conditions. The decision to ventilate depends on cargo properties, external air dew point and measured hold conditions, not simply on outside relative humidity.\n\nCommon error: Never use a blanket rule to ventilate all cargoes whenever outdoor humidity is lower.",
+    "example": {
+      "problem": "A warm loaded hold is entering cold weather; the watch proposes opening all vents because the outside humidity reads 60%.",
+      "steps": [
+        "Identify cargo susceptibility, current cargo/hold temperatures and dew points of inside and outside air.",
+        "Evaluate whether ventilation would remove moisture or promote condensation on cargo or steel surfaces.",
+        "Follow the cargo-specific ventilation plan, monitor condensation and record actual measurements."
+      ],
+      "result": "Relative humidity alone, without temperature, is insufficient to establish the condensation risk."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-lost-containers-danger-message": {
+    "id": "cargo-lost-containers-danger-message-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Lost containers can create a navigation hazard and may also pose pollution or dangerous-goods risks. Immediate response must follow the ship's emergency and reporting procedures while preserving safe navigation and evidence.\n\nCommon error: Do not delay navigational danger reporting while waiting for a complete commercial claim file.",
+    "example": {
+      "problem": "After heavy weather a ship finds two overboard containers missing from an outboard bay, one marked with dangerous goods labels.",
+      "steps": [
+        "Account for personnel, assess structural/lashing damage and stabilise the ship's motion before further deck exposure.",
+        "Record last known position, time, number, cargo details and likely drift, and notify relevant coastal/traffic authorities using prescribed danger-report procedures.",
+        "Preserve stowage, VGM, dangerous-goods and event records for the investigation while monitoring additional stack risks."
+      ],
+      "result": "A missing container remains a hazard even if no vessel is visually nearby."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
   }
 };
