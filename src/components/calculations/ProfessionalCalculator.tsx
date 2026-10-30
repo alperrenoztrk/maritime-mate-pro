@@ -176,7 +176,7 @@ export function ProfessionalCalculator({
     try {
       const output = solve(validation.values);
       if (!output.results.length || output.results.some((result) =>
-        !result.value.trim() || /\b(?:NaN|Infinity|undefined)\b/i.test(result.value))) {
+        !result.value.trim() || (/\b(?:NaN|Infinity)\b/i.test(result.value) || /^undefined$/i.test(result.value.trim())))) {
         throw new Error("Calculation returned an invalid result.");
       }
       setMessage("");
