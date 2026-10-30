@@ -10,7 +10,9 @@ const inventory = JSON.parse(fs.readFileSync("docs/learning/content-audit.json",
 const byId = new Map(inventory.topics.map(t => [t.id, t]));
 const ids = Object.keys(professionalCaseStudies);
 assert.equal(new Set(ids).size, ids.length, "duplicate case IDs");
-assert(ids.length >= 149, "authored cases unexpectedly shrank");
+assert(ids.length >= 212, "authored cases unexpectedly shrank");
+const caseProblems = Object.values(professionalCaseStudies).map(s => s.example?.problem);
+assert.equal(new Set(caseProblems).size, caseProblems.length, "duplicate worked scenarios across lessons");
 const seenCourses = new Set();
 for (const [id, section] of Object.entries(professionalCaseStudies)) {
   const meta = byId.get(id);
@@ -20,7 +22,7 @@ for (const [id, section] of Object.entries(professionalCaseStudies)) {
   assert(section.content.length >= 140, id + ": explanation is too short");
   assert(section.content.includes("Common error:"), id + ": missing misconception");
   assert(section.example?.problem?.length > 30, id + ": missing scenario");
-  assert((section.example?.steps?.length ?? 0) >= 2, id + ": needs reasoning steps");
+  assert((section.example?.steps?.length ?? 0) >= 3, id + ": needs at least three topic-specific reasoning steps");
   assert(section.example?.result?.length >= 30, id + ": needs qualified conclusion");
   assert(section.references?.length, id + ": missing references");
   for (const ref of section.references) {

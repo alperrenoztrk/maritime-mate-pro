@@ -3208,5 +3208,1461 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
       }
     ]
+  },
+  "navigation-enlem": {
+    "id": "navigation-enlem-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Latitude is angular distance north or south of the equator. In conventional nautical chart work, one minute of latitude approximately equals one nautical mile in the north–south direction, subject to Earth-ellipsoid refinements.\n\nCommon error: Do not read a latitude change as east–west displacement.",
+    "example": {
+      "problem": "The vessel's latitude changes from 36°18.0′N to 36°52.0′N while travelling due north.",
+      "steps": [
+        "Convert both readings to minutes north: 36×60 + 18 = 2178′ and 36×60 + 52 = 2212′.",
+        "Subtract to obtain DLat = 34.0′ north.",
+        "For a short meridional leg, approximate distance as 34.0 NM, then verify against appropriate chart/projection."
+      ],
+      "result": "The approximate northward distance is 34 NM; a longitude difference cannot be treated the same way at all latitudes."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-boylam": {
+    "id": "navigation-boylam-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Longitude is the angle east or west of the prime meridian; distance along a parallel shrinks as latitude increases. Crossing 180° requires the shorter signed difference, not naive arithmetic on E and W labels.\n\nCommon error: Never state that one degree of longitude always equals 60 NM.",
+    "example": {
+      "problem": "At 60°N a ship moves from 010°00′E to 012°00′E along a parallel.",
+      "steps": [
+        "Calculate DLo = 2° = 120′ east.",
+        "Estimate departure using DLo(minutes) × cos(latitude): 120 × cos60° = 60 NM.",
+        "Distinguish the 60 NM parallel distance from the 120 NM meridian arc implied by 2° of latitude."
+      ],
+      "result": "At 60°N two degrees of longitude correspond to about 60 NM along the parallel."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-enlem-ve-boylam-degisimi": {
+    "id": "navigation-enlem-ve-boylam-degisimi-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Latitude change and longitude change are signed angular differences. For local-plane navigation, departure ≈ DLo(minutes) × cos(mean latitude), and distance is the vector magnitude of DLat and departure.\n\nCommon error: Do not confuse 40 minutes of longitude with 40 NM at this latitude.",
+    "example": {
+      "problem": "A ship moves from 36°00′N 029°00′E to 36°30′N 029°40′E.",
+      "steps": [
+        "Compute DLat = +30 NM and DLo = +40 minutes of arc.",
+        "At mean latitude 36°15′, calculate departure ≈ 40 × cos36.25° = 32.3 NM east.",
+        "Approximate rhumb-line distance ≈ √(30² + 32.3²) = 44.1 NM and track arctan(32.3/30) ≈ 047.1°T."
+      ],
+      "result": "Under short-range mean-latitude assumptions, distance is roughly 44 NM on course 047°T."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-rota-olcumu": {
+    "id": "navigation-rota-olcumu-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Chart course should be measured against the meridian/compass rose using the correct true reference; magnetically steered headings require separately applied variation and deviation. Bearing orientation from a chart is not automatically a corrected compass order.\n\nCommon error: Never apply a chart's magnetic information twice when steering a true gyro heading.",
+    "example": {
+      "problem": "A charted leg measures 095°T and the applicable local variation is 5°W with compass deviation 2°E.",
+      "steps": [
+        "Use signed variation and deviation: True = Magnetic + variation; Magnetic = Compass + deviation (east positive).",
+        "Calculate compass course = 095° − (−5°) − (+2°) = 098° compass under this convention.",
+        "Confirm current local variation, ship deviation card and whether the heading instrument already applies corrections."
+      ],
+      "result": "The illustrative compass order is 098° under the stated sign convention, not automatically 095°."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-interpolasyon": {
+    "id": "navigation-interpolasyon-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Linear interpolation estimates an intermediate value from two adjacent tabulated entries only when the parameter is smooth over the interval. It is not valid across discontinuities, turnpoints or regulatory threshold changes.\n\nCommon error: Do not linearly interpolate across slack-water reversals without considering vector direction.",
+    "example": {
+      "problem": "A tidal stream table gives 1.2 kn at 1400 and 2.0 kn at 1600, and you need a rough value at 1500.",
+      "steps": [
+        "Calculate elapsed fraction: (1500−1400)/(1600−1400) = 1/2.",
+        "Interpolate speed = 1.2 + (2.0−1.2)×0.5 = 1.6 kn.",
+        "Check stream-direction change and official predictions before using the estimate for narrow-channel transit."
+      ],
+      "result": "The linear speed estimate is 1.6 kn at 1500 under a smooth-change assumption."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-departure-dogu-bati-mesafesi": {
+    "id": "navigation-departure-dogu-bati-mesafesi-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Departure is the east–west distance along a local parallel, measured in NM, and is related to DLo via the cosine of latitude. It differs from east–west change in geodetic longitude, which is angular.\n\nCommon error: Do not use 180 NM simply because longitude difference is 180′.",
+    "example": {
+      "problem": "A ship travels east along 45°N through 3° of longitude.",
+      "steps": [
+        "Express longitude change as 3×60 = 180 minutes.",
+        "Compute departure ≈ 180×cos45° = 127.3 NM.",
+        "For a high-accuracy long passage, use the appropriate geodesic or Mercator-sailing method rather than this fixed parallel."
+      ],
+      "result": "East–west departure is about 127 NM at 45°N in this example."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-rhumb-line-loxodrom": {
+    "id": "navigation-rhumb-line-loxodrom-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "A rhumb line crosses all meridians at a constant true bearing, appearing straight on a Mercator chart. It does not generally provide the shortest spherical route, especially on long ocean passages at higher latitude.\n\nCommon error: Do not assume a rhumb line is the shortest distance because it is straight on a Mercator chart.",
+    "example": {
+      "problem": "For an ocean route, the ECDIS planner displays a 3,500 NM rhumb leg and a 3,380 NM great-circle alternative.",
+      "steps": [
+        "Calculate nominal saving: 3,500−3,380 = 120 NM.",
+        "At an illustrative 15 kn uninterrupted speed, the notional saving is 120/15 = 8 hours.",
+        "Evaluate high-latitude limits, weather, traffic and routing restrictions before selecting the great circle."
+      ],
+      "result": "A theoretical eight-hour saving is not a safe passage decision until actual route constraints are assessed."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-mean-latitude-sailing": {
+    "id": "navigation-mean-latitude-sailing-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Mean latitude sailing approximates short or moderate passages using a mid-latitude cosine to convert longitude difference into departure. Its accuracy deteriorates with large changes in latitude, high-latitude geometry and long routes.\n\nCommon error: Do not use the same cosine factor over a very long passage across disparate latitudes.",
+    "example": {
+      "problem": "From 40°N to 42°N with DLo 3°E, find an approximate departure.",
+      "steps": [
+        "Mean latitude is 41°N, DLo=180′.",
+        "Compute departure ≈ 180×cos41° ≈ 135.85 NM east.",
+        "DLat=120 NM; approximate course=atan(135.85/120)≈048.6°T and distance≈181.2 NM."
+      ],
+      "result": "The short-route mean-latitude estimate is about 181 NM, but a more exact method is needed for demanding voyages."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-kosmali-mevki-tayini-running-fix": {
+    "id": "navigation-kosmali-mevki-tayini-running-fix-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "A running fix transfers an earlier position line to the time of a second observation using estimated course, speed and set/drift. Both fixes and transfer errors affect reliability.\n\nCommon error: Never label two observations taken 30 minutes apart as simultaneous cross bearings.",
+    "example": {
+      "problem": "A lighthouse bearing at 1000 gives a first position line; by 1030 the vessel has made 12 kn due east through water, with estimated 2 kn current due north.",
+      "steps": [
+        "Calculate 30-minute vessel displacement through water = 6 NM east.",
+        "Calculate current displacement over 30 minutes = 1 NM north, giving a 6E/1N transfer vector.",
+        "Advance the 1000 line by the combined vector and intersect it with the independent 1030 bearing line."
+      ],
+      "result": "The first line is transported 6 NM east and 1 NM north, not merely 6 NM along heading."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-dead-reckoning-and-estimated-position-dr-ep": {
+    "id": "navigation-dead-reckoning-and-estimated-position-dr-ep-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "DR advances a previous position by heading and speed through water; EP can additionally include estimated effects of current, wind and leeway. Their uncertainty grows with elapsed time without an independent fix.\n\nCommon error: Do not annotate the EP as a measured fix without an independent observation.",
+    "example": {
+      "problem": "A vessel steers 090°T at 10 kn through water for two hours, with estimated current setting 000°T at 1.5 kn.",
+      "steps": [
+        "Dead reckoning displacement = 20 NM east.",
+        "Estimated current displacement = 3 NM north over the same period.",
+        "EP is 20 NM east and 3 NM north of the departure fix; total ground displacement ≈20.22 NM."
+      ],
+      "result": "The EP differs from DR by approximately 3 NM north, and both positions remain estimates."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-dr-ep-ve-set-drift-ile-mevki-ilerletme": {
+    "id": "navigation-dr-ep-ve-set-drift-ile-mevki-ilerletme-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Set indicates the direction the current flows toward and drift its speed; vector additions should use ground-referenced units and identical time intervals. The heading/course-through-water vector must be kept distinct from COG.\n\nCommon error: Do not steer 021°T to hold a desired northbound ground track in the same east-setting current.",
+    "example": {
+      "problem": "For one hour a ship steers 000°T at 8 kn through water while current sets 090°T at 3 kn.",
+      "steps": [
+        "Represent the ship vector as 8 NM north and the current as 3 NM east.",
+        "Compute resultant SOG = √(8²+3²) ≈ 8.54 kn.",
+        "Compute COG = arctan(3/8) ≈ 020.6°T."
+      ],
+      "result": "Course over ground is approximately 021°T with SOG 8.54 kn despite a northerly heading."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-leeway-hesaplari": {
+    "id": "navigation-leeway-hesaplari-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Leeway is the sideways drift relative to the water caused by wind and hull form; its direction and magnitude vary with vessel, speed, exposure and loading. It is distinct from water-current set/drift.\n\nCommon error: Do not add current set and leeway angles as if they were always interchangeable scalar corrections.",
+    "example": {
+      "problem": "A vessel needs 090°T track through water; onboard empirical leeway estimate is 4° to starboard for an easterly steering heading.",
+      "steps": [
+        "Identify that the wind-induced leeway is expected toward the ship's starboard side.",
+        "To offset 4° of starboard leeway, estimate a portward heading correction from 090° to 086°T.",
+        "Monitor actual COG, independent position fixes and current to refine the correction."
+      ],
+      "result": "The approximate corrected heading is 086°T under the stated side and angle assumptions."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-12-ler-kurali": {
+    "id": "navigation-12-ler-kurali-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "The rule of twelfths is a rough semidiurnal-tide interpolation model, not a replacement for official port-specific tidal predictions, especially with mixed, diurnal or distorted tidal curves.\n\nCommon error: Never substitute the rule of twelfths for actual harbour tide tables when UKC is critical.",
+    "example": {
+      "problem": "In an idealised six-hour rising tide of 3.6 m range, estimate rise in the first two hours.",
+      "steps": [
+        "Divide the 3.6 m range by twelve: one part = 0.30 m.",
+        "Approximate first-hour rise as one part = 0.30 m, second-hour rise as two parts = 0.60 m.",
+        "Cumulative two-hour rise = 0.90 m above the reference low water, subject to local corrections."
+      ],
+      "result": "The illustrative rise after two hours is 0.90 m, not 1.2 m from a uniform rise assumption."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-gps-dogrulugu": {
+    "id": "navigation-gps-dogrulugu-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "GNSS geometric dilution of precision is only one contributor to position uncertainty; orbit, timing, atmosphere, multipath, spoofing and equipment integrity also matter. Multiple displays sharing one sensor are not independent checks.\n\nCommon error: Do not declare a suspect GNSS position correct solely because the HDOP is low.",
+    "example": {
+      "problem": "A GNSS receiver shows HDOP 0.8 while its charted position suddenly shifts by 0.6 NM offshore.",
+      "steps": [
+        "Recognise that favourable satellite geometry does not prove the measured solution is authentic.",
+        "Compare the GNSS position against independently measured radar ranges, visual bearings or other positioning methods.",
+        "Investigate upstream sensors, antennas, alerts and interference, report the discrepancy, and use approved backup procedures."
+      ],
+      "result": "A low HDOP can coexist with an inaccurate or manipulated position fix."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-pdop": {
+    "id": "navigation-pdop-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Position DOP (PDOP) reflects the three-dimensional geometry of satellites in the positioning solution, while HDOP and VDOP reflect horizontal and vertical geometric effects. These are dimensionless multipliers, not position errors expressed in metres.\n\nCommon error: Never interpret PDOP 5.0 as exactly five metres of horizontal inaccuracy.",
+    "example": {
+      "problem": "Two survey epochs show PDOP 2.0 and PDOP 5.0 with otherwise similar ranging noise.",
+      "steps": [
+        "Identify that the higher PDOP generally makes the solution more sensitive to similar measurement errors.",
+        "Under a simplified common standard range-error assumption, estimated geometry-amplified error scales by 5/2 = 2.5 between epochs.",
+        "Check actual system confidence and independent observations instead of inferring a fixed metre error from PDOP alone."
+      ],
+      "result": "PDOP 5.0 suggests approximately 2.5 times the geometric amplification of PDOP 2.0, other conditions equal."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-azimut-hesaplari": {
+    "id": "navigation-azimut-hesaplari-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Azimuth is the true bearing of a celestial or terrestrial object clockwise from true north, with corrections for observer position, time and ephemeris when celestial. It can help determine gyro or compass error when observation geometry is valid.\n\nCommon error: Do not interpret simultaneous unequal readings without checking time, observer bearing method and compass convention.",
+    "example": {
+      "problem": "A verified celestial true azimuth is 115°T while a ship's gyro bearing of the same object at the same instant is 118°G.",
+      "steps": [
+        "Calculate the difference in the chosen gyro-error convention: true minus gyro = 115°−118° = −3°.",
+        "Interpret the signed correction as −3° (gyro readings are 3° greater than true for this observation).",
+        "Cross-check against the compass/gyro error record and known observational corrections before applying to navigation."
+      ],
+      "result": "The illustrative gyro-to-true correction is −3°; document sign convention explicitly."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-ho-hc-kavrami": {
+    "id": "navigation-ho-hc-kavrami-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Ho is observed celestial altitude after appropriate index, dip and astronomical corrections; Hc is computed altitude for an assumed position and ephemeris. The difference is an intercept in arcminutes and approximately nautical miles.\n\nCommon error: Do not mix raw sextant altitude Hs with fully corrected Ho.",
+    "example": {
+      "problem": "Ho = 32°15.4′ and Hc = 32°10.0′ for the same sight at the same instant.",
+      "steps": [
+        "Subtract Hc from Ho: 32°15.4′−32°10.0′ = +5.4′.",
+        "Convert the 5.4′ angular difference to approximately 5.4 NM intercept on the celestial sphere.",
+        "Mark the intercept 5.4 NM toward the body's geographic position because Ho exceeds Hc."
+      ],
+      "result": "Intercept is 5.4 NM toward the body for the stated corrected observations."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-ogle-mevkii-enlem": {
+    "id": "navigation-ogle-mevkii-enlem-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "A meridian altitude of the Sun can support latitude estimation using corrected noon altitude and the Sun's declination, with hemisphere and zenith-side interpretation required. This is a simplified navigation-school geometry case.\n\nCommon error: Never apply a fixed declination-minus-zenith formula regardless of hemisphere and Sun bearing.",
+    "example": {
+      "problem": "At local apparent noon, the observed corrected Sun altitude Ho is 70°00′ with the Sun due south of an observer in the northern hemisphere; declination is 10°00′N.",
+      "steps": [
+        "Calculate zenith distance ZD = 90°−70° = 20°.",
+        "With the Sun south of the observer and declination 10°N, add zenith distance to declination: latitude ≈30°N.",
+        "Check solar declination at meridian passage, refraction/dip corrections and correct north/south geometry."
+      ],
+      "result": "The estimated latitude is 30°N under the stated geometry."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "machine-maintenance-bakim-stratejileri-ariza-sonrasi-bakim-corrective-1": {
+    "id": "machine-maintenance-bakim-stratejileri-ariza-sonrasi-bakim-corrective-1-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Corrective maintenance after breakdown prioritises safe isolation, effect on essential services and systematic root-cause assessment. Restoring a machine to operation without checking the cause risks repeated or more severe failure.\n\nCommon error: Do not reset a trip and return the pump to service without evaluating the leak and process conditions.",
+    "example": {
+      "problem": "An auxiliary seawater circulation pump trips repeatedly after a mechanical-seal leak is noticed.",
+      "steps": [
+        "Confirm standby cooling capacity and controlled changeover before isolating the faulty pump.",
+        "Apply lockout and isolate pressure/electrical/rotational hazards under the maker's approved procedure.",
+        "Inspect the seal, shaft condition, bearings and suction/discharge conditions; repair and test for leakage and capacity."
+      ],
+      "result": "A new mechanical seal may restore tightness but not eliminate a root cause such as shaft misalignment."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-bakim-stratejileri-planli-bakim-planned-preventive-2": {
+    "id": "machine-maintenance-bakim-stratejileri-planli-bakim-planned-preventive-2-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Preventive maintenance is scheduled from maker guidance, equipment running hours, duty and criticality; a fixed calendar interval alone may be insufficient. Records must distinguish inspection, actual overhaul and deferred work.\n\nCommon error: Do not claim an oil filter is changed because its PMS work order was merely opened.",
+    "example": {
+      "problem": "An auxiliary generator requires oil filter service every 500 running hours, and its meter rises from 7,650 h to 8,120 h.",
+      "steps": [
+        "Calculate next service threshold: 7,650 + 500 = 8,150 h if 7,650 h was the last completed service.",
+        "Remaining service interval is 8,150−8,120 = 30 running hours, not 30 calendar hours.",
+        "Schedule controlled maintenance before the threshold, ensuring adequate reserve electrical supply and recording completed work."
+      ],
+      "result": "The next due running-hour reading is 8,150 h under the hypothetical approved interval."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-bakim-stratejileri-guvenilirlik-merkezli-bakim-rcm-5": {
+    "id": "machine-maintenance-bakim-stratejileri-guvenilirlik-merkezli-bakim-rcm-5-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Reliability-centred maintenance chooses run-to-failure, scheduled replacement, condition monitoring or functional testing based on credible failure modes and consequences. The cheapest immediate maintenance task may not minimise safety risk.\n\nCommon error: Do not adopt run-to-failure policy for a hidden safety-critical function without approved risk assessment.",
+    "example": {
+      "problem": "A critical emergency-fire-pump automatic-start circuit has a latent failure mode with no normal-use indication.",
+      "steps": [
+        "Identify the protected function, failure effect and consequence category before choosing a maintenance policy.",
+        "Use authorised periodic functional proof tests that reveal hidden protective-function failures.",
+        "Record detected faults, test coverage, corrective action and trends to adjust the inspection plan."
+      ],
+      "result": "Failure-finding tests are appropriate for some hidden protective failures; ordinary vibration monitoring cannot confirm a relay starts the pump."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-planli-bakim-sistemi-pms-bakim-araliklari-ve-calisma-saatleri-2": {
+    "id": "machine-maintenance-planli-bakim-sistemi-pms-bakim-araliklari-ve-calisma-saatleri-2-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Maintenance planning must consider hours, calendar dates, maker requirements and operating duty; a late task may require additional risk controls and company authorisation. Deferral is not the same as completion.\n\nCommon error: Never backdate completion or override the PMS interval without a documented authorised decision.",
+    "example": {
+      "problem": "A hydraulic pump overhaul is due at 10,000 running hours, but the unit has reached 10,050 h during a cargo operation.",
+      "steps": [
+        "Confirm the exact overhaul scope, history and whether a standby unit can safely take over.",
+        "Raise an authorised, time-bounded deferral if permitted by SMS, supported by condition checks and operating limitations.",
+        "Carry out isolation and maintenance when safely practicable, then close the task with measured findings."
+      ],
+      "result": "The task is overdue by 50 running hours; merely resetting the counter conceals its true status."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-planli-bakim-sistemi-pms-yedek-parca-envanteri-ve-min-max-seviye-5": {
+    "id": "machine-maintenance-planli-bakim-sistemi-pms-yedek-parca-envanteri-ve-min-max-seviye-5-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Min-max inventory must cover lead time, consumption, failure criticality and redundancy. A stock ledger can overstate usable spares when parts are expired, damaged or reserved for essential equipment.\n\nCommon error: Do not treat items in quarantine or awaiting inspection as serviceable spare stock.",
+    "example": {
+      "problem": "A ship uses two seals per quarter, lead time is two quarters, and the safety stock is three seals.",
+      "steps": [
+        "Estimate consumption over lead time: 2×2=4 seals.",
+        "Set a simple reorder point = 4 + 3 = 7 usable seals, assuming steady consumption.",
+        "Check actual serviceable stock and delivery delays, and obtain urgent resupply if below the adopted reorder point."
+      ],
+      "result": "The illustrative reorder trigger is seven usable seals, not merely seven items on the purchasing list."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-drydock-survey": {
+    "id": "machine-maintenance-drydock-survey-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Drydock preparation coordinates class survey items, hull inspections, sea valves, cathodic protection, anchors and shaft arrangements. Isolation planning must be established before exposure of sea-connected equipment.\n\nCommon error: Never authorise cutting an overboard pipe based solely on the main valve handle position.",
+    "example": {
+      "problem": "A repair contractor intends to remove an overboard valve after docking, but the drawings show a second connected bypass.",
+      "steps": [
+        "Review current sea-system drawings, valve register, boundary plan and any class/flag survey requirements.",
+        "Establish, tag and verify all necessary isolations and approved permits before opening the line.",
+        "Inspect and record work scope, material certificates, pressure tests and reopening checks before undocking."
+      ],
+      "result": "The presence of a dry dock does not make every sea-connected line depressurised or safely isolated."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-motor-bakim-isleri-silindir-kapagi-sokum-ve-revizyon-1": {
+    "id": "machine-maintenance-motor-bakim-isleri-silindir-kapagi-sokum-ve-revizyon-1-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Cylinder-head maintenance requires engine cooling, pressure release, residual-fuel assessment, lifting plan and correct bolt preload sequence. A visual absence of leaks does not demonstrate safe lifting or correct reassembly.\n\nCommon error: Do not release head fasteners while trapped pressure or hot coolant remains.",
+    "example": {
+      "problem": "An engineer prepares to lift a 900 kg diesel cylinder head after engine shutdown while the jacket system remains hot.",
+      "steps": [
+        "Apply the maker's cooling, pressure-release and mechanical isolation procedure; exclude accidental turning or fuel injection.",
+        "Verify certified lifting points, crane/SWL, sling angle and a secure exclusion area.",
+        "Follow specified torque/tension sequence and post-maintenance leak/operational tests with recorded findings."
+      ],
+      "result": "The lift must wait for authorised isolation and verified lifting arrangements, independent of production pressure."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-motor-bakim-isleri-supap-taslama-ve-ayar-4": {
+    "id": "machine-maintenance-motor-bakim-isleri-supap-taslama-ve-ayar-4-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Valve grinding and lash adjustment restore sealing and correct thermal clearances only within maker tolerances. Overgrinding can damage seat geometry or reduce valve margin, changing heat transfer and reliability.\n\nCommon error: Never use universal valve-clearance dimensions across different diesel engine designs.",
+    "example": {
+      "problem": "A cylinder exhaust valve shows uneven seating and poor compression following overhaul.",
+      "steps": [
+        "Measure seat width, face damage and stem/guide clearances against maker specifications.",
+        "Assess whether permitted regrinding is possible or replacement is required; maintain correct contact geometry.",
+        "Set lash at the maker-specified temperature and crank position, then test sealing and document results."
+      ],
+      "result": "A visually smooth valve face is not proof of correct contact width or thermal clearance."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-muayene-ve-test-yontemleri-ultrasonik-kalinlik-olcumu-2": {
+    "id": "machine-maintenance-muayene-ve-test-yontemleri-ultrasonik-kalinlik-olcumu-2-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Ultrasonic thickness measurements require the correct material sound velocity, calibration and clean measurement locations. One apparent low reading can be caused by coating, coupling or surface geometry rather than true local corrosion.\n\nCommon error: Do not replace a class corrosion limit with an arbitrary universal percentage.",
+    "example": {
+      "problem": "A steel hull plate nominally 12 mm thick gives 8.4 mm in a preliminary ultrasonic spot reading.",
+      "steps": [
+        "Verify instrument calibration on a suitable reference block and correct sound velocity/coating setting.",
+        "Repeat measurements around the suspect area on prepared locations and map the readings to the approved survey grid.",
+        "Assess remaining thickness and allowable diminution with the surveyor/class criteria, recording all measured evidence."
+      ],
+      "result": "The observed apparent diminution is 12−8.4=3.6 mm, or 30%, but structural acceptance cannot be decided without applicable scantling limits."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-muayene-ve-test-yontemleri-yag-analizi-ve-durum-izleme-6": {
+    "id": "machine-maintenance-muayene-ve-test-yontemleri-yag-analizi-ve-durum-izleme-6-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Oil analysis combines viscosity, wear particles, water content and contamination trends. One out-of-range sample may indicate a developing fault or a sampling error; trend and source verification matter.\n\nCommon error: Never infer a precise failed gear tooth from iron ppm alone without corroborating inspection.",
+    "example": {
+      "problem": "Two consecutive gear-oil reports show rising iron particles and water contamination after a seal leak.",
+      "steps": [
+        "Confirm representative sampling points, sampling intervals, operating conditions and lab methods.",
+        "Compare wear metals, viscosity, water and particle trends with OEM criteria and recent maintenance.",
+        "Inspect seal and lubrication condition, manage operation risk and resample after corrective work."
+      ],
+      "result": "Increasing wear and water trends justify action before a full mechanical failure, but do not uniquely identify one fault."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-dagitim-sistemi-topraklama-sistemleri-izole-notr-4": {
+    "id": "machine-electrical-elektrik-dagitim-sistemi-topraklama-sistemleri-izole-notr-4-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "An insulated-neutral ship distribution system may remain in operation after a first earth fault while giving an insulation warning. A second fault on another phase can create dangerous fault current; the actual arrangement and protection must be identified from drawings.\n\nCommon error: Never intentionally introduce a second ground connection to locate a live fault.",
+    "example": {
+      "problem": "A 440 V insulated-neutral switchboard shows a persistent first-earth-fault warning but the motor remains operational.",
+      "steps": [
+        "Determine the real system configuration and the faulty circuit via approved monitoring and switching plans.",
+        "Prioritise safe localisation while maintaining essential consumers and avoiding unapproved simultaneous isolation.",
+        "Repair the earth-fault cause and test insulation and protection before restoring the final configuration."
+      ],
+      "result": "Continued operation after a first earth fault is not equivalent to a safe fault-free electrical system."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-koruma-sistemleri-asiri-akim-koruma-devre-kesici-1": {
+    "id": "machine-electrical-koruma-sistemleri-asiri-akim-koruma-devre-kesici-1-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Overcurrent protection must distinguish overload, short circuit and inrush, with protection selectivity coordinated across upstream/downstream breakers. Trip curves and interrupting ratings are equipment-specific.\n\nCommon error: Never raise a breaker setting blindly to suppress trips without evaluating conductor and fault protection.",
+    "example": {
+      "problem": "A small auxiliary load faults and trips the main switchboard feeder instead of its local branch breaker.",
+      "steps": [
+        "Retrieve breaker ratings, time-current curves and short-circuit levels from the approved discrimination study.",
+        "Inspect trip records and check whether branch settings, feeder protection or actual fault current caused loss of selectivity.",
+        "Use authorised engineers for remedial settings and functional verification, preserving protective margins."
+      ],
+      "result": "A larger breaker trip can indicate coordination failure; it is not necessarily evidence that the main breaker is defective."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-koruma-sistemleri-toprak-kacagi-koruma-5": {
+    "id": "machine-electrical-koruma-sistemleri-toprak-kacagi-koruma-5-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Earth-leakage protective arrangements detect residual current or insulation failure according to the installed earthing system. Correct device selection and testing depend on supply arrangement, load and protection zones.\n\nCommon error: Never bypass residual-current protection merely because the tool still seems to run.",
+    "example": {
+      "problem": "An RCD protecting a workshop outlet trips whenever a portable tool is plugged in.",
+      "steps": [
+        "Isolate the tool and inspect cable condition, environment and any visible insulation damage before use.",
+        "Use authorised diagnostic testing of leakage and RCD behaviour against maker/shipboard criteria.",
+        "Correct the fault or replace the tool, and confirm protective function before restoring supply."
+      ],
+      "result": "An RCD trip can indicate a dangerous leakage path; repeated reset is not fault repair."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-motor-yol-verme-yontemleri-dol-y-vfd-2": {
+    "id": "machine-electrical-elektrik-motorlari-motor-yol-verme-yontemleri-dol-y-vfd-2-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Direct-on-line induction motor starting draws significant inrush and starting torque, while star-delta starters and VFDs change the starting electrical and mechanical behaviour. Equipment compatibility and starting load torque matter.\n\nCommon error: Do not rewire DOL motors to star-delta unless the winding connection and voltage ratings permit it.",
+    "example": {
+      "problem": "A large cooling pump frequently causes an unacceptable bus voltage dip when started DOL.",
+      "steps": [
+        "Measure start current and duration against generator loading and the ship's approved power-management capacity.",
+        "Review maker-approved alternative soft-start, star-delta or VFD options and the pump's starting torque need.",
+        "Validate protection, harmonics and thermal performance before making any authorised modification."
+      ],
+      "result": "A VFD or soft starter may reduce inrush but must be engineered for the motor and ship network."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-dc-motor-tipleri-ve-uygulamalari-3": {
+    "id": "machine-electrical-elektrik-motorlari-dc-motor-tipleri-ve-uygulamalari-3-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "DC motor speed and torque characteristics depend on excitation and drive design. A series-excited DC motor can overspeed dangerously with loss of load; separately excited units depend on field integrity.\n\nCommon error: Do not apply a standard induction-motor uncoupled test to every DC motor.",
+    "example": {
+      "problem": "A series-wound DC winch motor is being bench-tested without its rated mechanical load.",
+      "steps": [
+        "Identify series versus shunt/separately excited wiring and review the manufacturer's no-load restrictions.",
+        "Keep the motor isolated until an approved safe test arrangement with protective limits and load is available.",
+        "Perform authorised speed, current, field and interlock checks under a controlled maintenance procedure."
+      ],
+      "result": "Unloaded series-wound DC motors can reach unsafe speeds; generic 'spin it free' checks are inappropriate."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-frekans-donusturucu-vfd-kontrolu-4": {
+    "id": "machine-electrical-elektrik-motorlari-frekans-donusturucu-vfd-kontrolu-4-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "VFDs vary motor electrical frequency and voltage/current under a drive control scheme, while mechanical limits and thermal cooling remain binding. Harmonics, electromagnetic interference and shaft-bearing effects require system assessment.\n\nCommon error: Do not disable thermal protection to extend the low-speed range.",
+    "example": {
+      "problem": "A seawater pump VFD operates at reduced speed but its motor temperature rises despite low electrical current.",
+      "steps": [
+        "Check motor cooling method, low-speed operating allowance, drive parameterisation and thermistor indications.",
+        "Confirm required pump flow, process pressure and actual motor load while observing alarms.",
+        "Adjust operation only within maker-approved range and investigate cooling or instrumentation faults before continued service."
+      ],
+      "result": "Reduced motor current does not guarantee adequate self-fan cooling at very low speeds."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-motor-koruma-ve-bakim-5": {
+    "id": "machine-electrical-elektrik-motorlari-motor-koruma-ve-bakim-5-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Motor protection must cover overload, stalled rotor, phase loss, overheating and appropriate insulation condition. A protective trip records a symptom but needs diagnostic confirmation before restart.\n\nCommon error: Never repeatedly reset a thermal trip while the shaft or compressor is seized.",
+    "example": {
+      "problem": "An auxiliary compressor motor trips on thermal overload shortly after starting.",
+      "steps": [
+        "Confirm safe process state and isolate the driven machinery if required.",
+        "Check voltage balance, winding resistance/insulation under appropriate isolated conditions, bearings and compressor starting load.",
+        "Correct fault, verify protective settings and complete controlled restart with operating-current observation."
+      ],
+      "result": "A compressor mechanical fault can cause an electrical overload without an intrinsic motor defect."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-aydinlatma-ve-aku-sistemleri-aku-tipleri-ve-sarj-sistemleri-3": {
+    "id": "machine-electrical-aydinlatma-ve-aku-sistemleri-aku-tipleri-ve-sarj-sistemleri-3-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Battery charging profiles depend on chemistry, ambient temperature, ventilation and control limits. Afloat and absorption charging must use compatible equipment; overcharge can generate heat/gas or shorten service life.\n\nCommon error: Never leave an unverified charger profile energised on an emergency battery bank.",
+    "example": {
+      "problem": "A lead-acid emergency battery bank is connected to a replacement charger set to a lithium battery voltage profile.",
+      "steps": [
+        "Check actual battery chemistry, cell count, temperature compensation and OEM charge voltages.",
+        "Isolate incompatible charge equipment under authorised electrical procedures.",
+        "Fit/restore a compatible charger and verify current, voltage, gas management and alarm functions."
+      ],
+      "result": "Different battery chemistries are not interchangeable simply because their nominal DC voltage matches."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-aydinlatma-ve-aku-sistemleri-patlama-korumali-ex-proof-ekipman-5": {
+    "id": "machine-electrical-aydinlatma-ve-aku-sistemleri-patlama-korumali-ex-proof-ekipman-5-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Explosion-protected equipment suitability depends on the hazardous-area classification, gas/dust group, temperature class and protection concept. Damaged glands, incorrect spares and unapproved maintenance can invalidate protection.\n\nCommon error: Never use an ordinary cable gland or uncertified fastener to repair certified hazardous-area equipment.",
+    "example": {
+      "problem": "An Ex-rated luminaire in a hazardous cargo area has a fractured cable gland after maintenance.",
+      "steps": [
+        "Check the area classification and equipment marking before treating the installation as suitable.",
+        "Prevent energisation where protection integrity is uncertain and report the defect.",
+        "Replace components with certified compatible parts using the equipment's approved repair procedure and inspection records."
+      ],
+      "result": "An Ex label does not make an installation safe after its flameproof/increased-safety integrity has been damaged."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-basinc-olcum-cihazlari-bourdon-piezoelektrik-2": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-basinc-olcum-cihazlari-bourdon-piezoelektrik-2-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "A Bourdon gauge measures pressure through elastic tube deformation; piezoelectric sensors are generally suited to dynamic pressure measurement and typically require conditioning. A displayed 0 bar may reflect failed instrumentation rather than zero line pressure.\n\nCommon error: Do not open a pressurised impulse line because one gauge reads zero.",
+    "example": {
+      "problem": "A pump discharge Bourdon gauge remains at zero while the control room transducer shows positive pressure.",
+      "steps": [
+        "Keep the system within its safe limits and compare against an independent rated instrument at an approved test connection.",
+        "Inspect isolation cocks, impulse lines, calibration state and sensor output before deciding which reading is valid.",
+        "Rectify defects and document controlled calibration and return-to-service testing."
+      ],
+      "result": "Two conflicting pressure indications require verification before maintenance isolation or process control."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-seviye-olcum-yontemleri-3": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-seviye-olcum-yontemleri-3-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Tank level devices use differing measurement principles (radar, differential pressure, float or capacitance). Fluid density, vapour and foaming can affect particular readings; independent high-level alarms must remain functional.\n\nCommon error: Do not apply a seawater-specific pressure-to-level conversion to a different liquid without checking density.",
+    "example": {
+      "problem": "A ballast tank DP-level sensor is calibrated for seawater but the tank temporarily contains a lower-density fluid.",
+      "steps": [
+        "Identify which transmitter depends on static pressure and its configured density conversion.",
+        "Check the actual fluid density and compare with an independent sounding before relying on displayed volume.",
+        "Correct instrument settings through approved calibration control and verify overflow protection."
+      ],
+      "result": "The same pressure head can correspond to a different actual height when liquid density changes."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-akis-olcum-cihazlari-orifis-coriolis-4": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-akis-olcum-cihazlari-orifis-coriolis-4-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Orifice differential-pressure meters infer flow from pressure loss and fluid properties; Coriolis meters directly measure mass flow through oscillating tubes. Density, gas entrainment and calibration affect their accuracy.\n\nCommon error: Do not treat an uncompensated orifice flow reading as direct mass-flow measurement.",
+    "example": {
+      "problem": "A fuel transfer record claims an unexplained 8% flow reduction from an orifice meter after a change in fuel density.",
+      "steps": [
+        "Check whether the calculation compensates for actual density and temperature and verify differential-pressure sensing.",
+        "Compare transferred tank soundings and independent metering over a controlled interval.",
+        "Investigate meter impulse lines, flow profile and calibration before adjusting a consumption report."
+      ],
+      "result": "The discrepancy may originate from density compensation, not necessarily a physical fuel leak."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-p-i-d-parametrelerinin-etkileri-3": {
+    "id": "machine-automation-kontrol-teorisi-p-i-d-parametrelerinin-etkileri-3-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Proportional action reacts to present control error, integral action accumulates error over time, and derivative action reacts to its rate of change. Aggressive integral settings may cause windup when an actuator saturates.\n\nCommon error: Do not increase integral gain to overcome a valve that has reached its physical limit.",
+    "example": {
+      "problem": "A tank level PID valve is already fully open but its integral term continues rising during a persistent level error.",
+      "steps": [
+        "Confirm actuator limit, level sensor validity and process capacity before changing controller parameters.",
+        "Recognise integral windup and use a tested anti-windup or bumpless-transfer strategy provided by the controller.",
+        "Return to approved tuning limits and monitor recovery without masking a mechanical valve fault."
+      ],
+      "result": "A slow recovery after saturation can be caused by accumulated integral demand rather than a new tank defect."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-kontrol-dongusu-ayari-tuning-4": {
+    "id": "machine-automation-kontrol-teorisi-kontrol-dongusu-ayari-tuning-4-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Control-loop tuning balances response time, stability, noise and actuator wear. A process that oscillates after maintenance may have altered sensor scaling or actuator dynamics, not merely inappropriate PID coefficients.\n\nCommon error: Never tune by uncontrolled large output steps while cooling a critical running engine.",
+    "example": {
+      "problem": "A cooling water temperature loop hunts every 30 seconds after its control valve positioner is replaced.",
+      "steps": [
+        "Verify sensor scaling, control direction and valve travel/response against the approved loop diagram.",
+        "Review recorded oscillation, actuator stroke and process time constants while keeping the system safe.",
+        "Make controlled authorised tuning changes and document step-response performance under a safe load."
+      ],
+      "result": "Retuning should follow fault validation and may require a valve-positioner fix rather than higher gains."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-kaskad-ve-ileri-besleme-kontrol-5": {
+    "id": "machine-automation-kontrol-teorisi-kaskad-ve-ileri-besleme-kontrol-5-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Cascade control uses an outer controller setting an inner-loop target; feedforward acts on a measured disturbance. The inner loop must remain reliable or the outer system may amplify an uncorrected process fault.\n\nCommon error: Do not mistake a stable displayed flow value for verified physical water flow.",
+    "example": {
+      "problem": "A jacket-water temperature cascade loop suffers sudden cold-water flow changes while its inner flow transmitter is stuck.",
+      "steps": [
+        "Identify outer temperature and inner flow loop measurements and where the transmitter value enters control.",
+        "Use approved safe-mode and control fallback to stabilise cooling, without relying on a frozen inner-loop reading.",
+        "Repair and validate sensor/loop response, then resume cascade with controlled parameter settings."
+      ],
+      "result": "Cascade control cannot compensate reliably when its faster inner loop relies on a failed transmitter."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-plc-ve-otomasyon-sistemleri-plc-donanim-yapisi-ve-i-o-1": {
+    "id": "machine-automation-plc-ve-otomasyon-sistemleri-plc-donanim-yapisi-ve-i-o-1-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "PLC input/output modules translate field signals to controller logic and outputs. A valid CPU state does not prove every I/O signal is physically healthy, especially with open-circuit, stuck or inverted contacts.\n\nCommon error: Never force an I/O bit to 'healthy' to conceal an unresolved damper problem.",
+    "example": {
+      "problem": "A PLC reports a fire damper as closed, but local inspection shows it physically open.",
+      "steps": [
+        "Identify the field limit switch, wiring, input module and controller mapping under authorised access.",
+        "Reconcile local damper position with remote status and prevent unsafe reliance on the erroneous signal.",
+        "Repair the switch or mapping, then function-test closed/open feedback and emergency interlocks."
+      ],
+      "result": "A healthy PLC CPU is not independent proof of actuator position."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-guc-elektronigi-harmonik-bozulma-ve-filtreleme-5": {
+    "id": "machine-automation-guc-elektronigi-harmonik-bozulma-ve-filtreleme-5-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Nonlinear drives draw nonsinusoidal currents that generate harmonic distortion and heating; total harmonic distortion (THD) describes their relative content, but absolute current and network impedance determine actual stress.\n\nCommon error: Do not equate 30% current THD with 30% voltage THD.",
+    "example": {
+      "problem": "A converter supply records fundamental current 100 A rms and combined harmonic current 30 A rms.",
+      "steps": [
+        "Compute illustrative current THD = 30/100 × 100% = 30%, assuming the 30 A value is the RMS sum of higher harmonics.",
+        "Check actual drive/filter ratings, transformer heating and measurement point before judging compliance.",
+        "Review the approved power-quality study and select remediation with qualified electrical engineers."
+      ],
+      "result": "The illustrative current THD is 30%; acceptable limits depend on equipment, measurement point and applicable standards."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "environment-marpol-genel-yapisi-ve-ekler": {
+    "id": "environment-marpol-genel-yapisi-ve-ekler-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "MARPOL has six technical Annexes, regulating oil, noxious liquid bulk cargo, packaged marine pollutants, sewage, garbage and air emissions. Applicable vessel certificates and discharge records differ by Annex and ship type.\n\nCommon error: Never describe Annex V food-waste disposal limits as if they were Annex I oily-water rules.",
+    "example": {
+      "problem": "A trainee says a ship's Oil Record Book proves it satisfies every MARPOL pollution-prevention requirement.",
+      "steps": [
+        "Identify the pollution category: oily mixtures (I), bulk chemicals (II), packaged pollutants (III), sewage (IV), garbage (V) or air (VI).",
+        "Match the specific ship's equipment, operational condition, relevant record books and applicable certificate to the Annex.",
+        "Review any discharge restriction through the applicable Annex and flag/port/local measures before authorising operation."
+      ],
+      "result": "MARPOL compliance requires subject-specific controls; one Annex I document cannot prove compliance with all Annexes."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-marpol-ek-ii-zararli-sivi-maddeler": {
+    "id": "environment-marpol-ek-ii-zararli-sivi-maddeler-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "MARPOL Annex II covers noxious liquid substances carried in bulk, with cargo categorisation and discharge requirements based on the IBC Code, a ship's Procedures and Arrangements Manual and approved records.\n\nCommon error: Do not use an oil tanker Annex I discharge checklist for bulk chemical Category X residues.",
+    "example": {
+      "problem": "After unloading a Category X bulk chemical, the cargo team wants to pump a tank wash directly into the sea.",
+      "steps": [
+        "Verify the actual chemical's pollution category and required prewash provisions from the ship's approved documents.",
+        "Arrange required stripping, washing and delivery of residues to an appropriate reception facility, with survey/notification where applicable.",
+        "Record the operation accurately in the applicable Cargo Record Book and follow the approved P&A Manual."
+      ],
+      "result": "Category X residue handling is subject to particularly stringent requirements, and this scenario cannot justify a direct overboard discharge."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-marpol-ek-iii-paketli-zararli-maddeler": {
+    "id": "environment-marpol-ek-iii-paketli-zararli-maddeler-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Annex III addresses harmful substances in packaged form, with marine pollutant identification and packaging, marking, documentation and stowage provisions implemented through the IMDG Code.\n\nCommon error: Do not assume a cargo is excluded from MARPOL Annex III solely because it is inside a sealed container.",
+    "example": {
+      "problem": "A container manifest identifies marine-pollutant cargo but the shipping package lacks the relevant marine pollutant identification.",
+      "steps": [
+        "Check the UN number, proper shipping name, transport documentation and current IMDG Code amendment in effect.",
+        "Verify marine-pollutant marking, container placarding, package compliance and segregation in the load plan.",
+        "Hold or correct the nonconforming shipment through authorised cargo procedures and record the discrepancy."
+      ],
+      "result": "Correct documentation and markings are both needed; a manifest entry cannot compensate for missing required package marks."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-marpol-ek-vi-hava-kirliligi-ve-enerji-verimliligi": {
+    "id": "environment-marpol-ek-vi-hava-kirliligi-ve-enerji-verimliligi-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "MARPOL Annex VI controls ship air pollutants and energy-efficiency compliance. Sulphur limits are typically 0.50% m/m outside relevant SOx ECAs and 0.10% m/m inside; the Mediterranean became a SOx ECA on 1 May 2025.\n\nCommon error: Do not assume the Mediterranean remains outside SOx ECA control after 1 May 2025.",
+    "example": {
+      "problem": "A ship carrying 0.50% sulphur-compliant fuel plans to enter the Mediterranean SOx ECA without an approved equivalent emission-control arrangement.",
+      "steps": [
+        "Identify ECA boundary and applicable transition requirements, consulting current voyage and flag guidance.",
+        "Prepare an approved timely fuel changeover to compliant sulphur content, considering tank line volume and temperature/viscosity compatibility.",
+        "Record changeover actions and retain bunker delivery documentation and samples as required."
+      ],
+      "result": "A fuel compliant with the 0.50% global limit is not necessarily compliant with the 0.10% Mediterranean ECA limit."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-biyo-kirlenme-anti-fouling-ve-gemi-geri-donusumu": {
+    "id": "environment-biyo-kirlenme-anti-fouling-ve-gemi-geri-donusumu-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Biofouling and antifouling controls affect invasive species and coatings, while ship recycling has separate hazardous-material and facility requirements. The IMO Hong Kong Convention entered into force on 26 June 2025; implementation depends on scope and administration.\n\nCommon error: Do not claim the ship is ready for recycling merely because the hull was freshly coated.",
+    "example": {
+      "problem": "During scheduled drydock, thick hull biofouling and outdated hazardous-material inventory records are found.",
+      "steps": [
+        "Plan cleaning, capture and disposal of fouling debris according to yard and port environmental rules and the approved antifouling programme.",
+        "Check coating system suitability, inspection/repair records and any biofouling management documentation.",
+        "Update hazardous-material inventory and assess recycling-related survey/certification obligations under the applicable Hong Kong Convention/flag requirements."
+      ],
+      "result": "Drydock cleaning, antifouling management and eventual compliant recycling are related but separate environmental programmes."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-mgo-ve-mdo-ayrimi-3": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-mgo-ve-mdo-ayrimi-3-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Marine gas oil (MGO) is a distillate fuel class; marine diesel oil (MDO) terminology may refer to different distillate blends and grades. Density, viscosity, sulphur, ignition and compatibility are determined by the delivered fuel analysis and OEM limits, not the commercial label alone.\n\nCommon error: Do not infer sulphur compliance or acceptable viscosity solely from the words 'marine diesel'.",
+    "example": {
+      "problem": "A vessel receives a bunker certificate marked 'MDO' but the chief engineer assumed it is interchangeable with the previous MGO batch.",
+      "steps": [
+        "Read the actual ISO fuel grade, density, viscosity, sulphur and flash point on the supplied bunker delivery and lab documents.",
+        "Compare with engine and fuel treatment system limitations and planned changeover temperatures.",
+        "Use approved changeover and segregation procedures and retain samples/documentation."
+      ],
+      "result": "The trade name does not establish whether a given diesel engine and fuel system can accept the batch unchanged."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-lng-yakit-kullanimi-5": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-lng-yakit-kullanimi-5-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "LNG propulsion introduces cryogenic, fire, vapour-management and fuel-gas system hazards that depend on certified design and the applicable IGF/IGC requirements. Gaseous leaks can create hazardous atmospheres even if visible liquid is absent.\n\nCommon error: Do not remove a bunkering coupling merely because flow has stopped.",
+    "example": {
+      "problem": "During LNG bunkering, a gas detector alarms near the connection manifold while personnel are about to disconnect the hose.",
+      "steps": [
+        "Suspend transfer through approved emergency stop and follow gas-detection and isolation procedures from the bunker plan.",
+        "Secure exclusion zones, ignition control and atmosphere assessment without unprotected access to the leak area.",
+        "Verify gas-free/pressure state and responsible authority before any disconnect or restart."
+      ],
+      "result": "An automatic shutdown isolates the process but does not instantly prove the hose or manifold safe to open."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-metanol-ve-amonyak-yakitlar-6": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-metanol-ve-amonyak-yakitlar-6-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Methanol and ammonia require different toxicity, flammability and materials/ventilation precautions; ship-specific approval, crew training and fuel-transfer instructions are critical. A generic 'alternative fuel' PPE set is insufficient.\n\nCommon error: Do not assume all low-carbon fuels can be handled with diesel-fuel spill absorbents and normal gloves.",
+    "example": {
+      "problem": "A technician requests one shared spill-response procedure for methanol and ammonia fuel modules.",
+      "steps": [
+        "Compare each fuel's toxic exposure, flammability, vapour and material-compatibility characteristics using the ship's approved fuel safety assessment.",
+        "Verify dedicated detection, ventilation, isolation, firefighting and chemical-specific PPE arrangements.",
+        "Authorise separate fuel-specific drills and procedures, then test crew understanding."
+      ],
+      "result": "A toxic-gas detection and respiratory protection strategy for ammonia cannot be copied uncritically from a methanol fire strategy."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-yakit-kalite-parametreleri-flash-point-ve-tutusma-noktasi-4": {
+    "id": "machine-fuel-technology-yakit-kalite-parametreleri-flash-point-ve-tutusma-noktasi-4-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Flash point is the lowest temperature at which a liquid produces sufficient vapour to ignite under a specified standard test; it is not the autoignition temperature and does not independently describe all storage hazards.\n\nCommon error: Never equate flash point with spontaneous ignition temperature or assume increasing heating is always safe.",
+    "example": {
+      "problem": "Two bunker analyses report flash points 61°C and 68°C while a procurement sheet lists the same heating-temperature setpoint.",
+      "steps": [
+        "Verify the laboratory test method and the applicable marine fuel flash-point requirement for the intended service.",
+        "Compare anticipated handling temperature, contamination risk and OEM/safety management guidance.",
+        "Raise any borderline or unexpected result with engineering management before accepting or heating the fuel."
+      ],
+      "result": "A 61°C flash point and a 68°C flash point are not interchangeable evidence of identical handling margins."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-yakit-kalite-parametreleri-katalizor-incelikleri-al-si-6": {
+    "id": "machine-fuel-technology-yakit-kalite-parametreleri-katalizor-incelikleri-al-si-6-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Residual fuel catalytic fines are hard aluminosilicate particles from refining, often assessed using aluminium plus silicon concentration. Separator efficiency, correct settling and cold/viscous fuel conditions determine abrasive particle exposure at engine injection.\n\nCommon error: Do not assume a single separator pass always reduces particles to safe levels.",
+    "example": {
+      "problem": "A bunker analysis shows high Al+Si levels while the main engine's liner-wear iron concentration rises.",
+      "steps": [
+        "Review actual supplied-fuel certificate, engine inlet fine limits and purifier maker requirements rather than a generic single acceptance threshold.",
+        "Check fuel heating, separation temperature/flow, filter differential pressure and sampling downstream of treatment.",
+        "Arrange independent checks, maintain machinery restrictions and document wear and treated-fuel quality trends."
+      ],
+      "result": "High catalytic fines can accelerate abrasive wear; downstream engine-inlet measurement matters more than the bunker label alone."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "meteorology-dikey-gelisimli-bulutlar-cumulus-cumulonimbus": {
+    "id": "meteorology-dikey-gelisimli-bulutlar-cumulus-cumulonimbus-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Cumulonimbus clouds have strong vertical growth and may bring squalls, intense precipitation, lightning, gust fronts and sudden visibility change. The cloud's visible shape is evidence of convective activity but does not determine precise wind speed.\n\nCommon error: Never treat the edge of a visible anvil as an exact boundary of dangerous lightning or gusts.",
+    "example": {
+      "problem": "A towering convective cloud develops a broad anvil directly across a planned offshore supply boat route.",
+      "steps": [
+        "Identify rapidly building cumulonimbus and check updated local radar/weather warnings and lightning data.",
+        "Estimate practical avoidance margin according to actual storm movement, visibility and ship handling limitations.",
+        "Review course, speed, personnel-on-deck exposure and cargo lashing with the Master before approaching."
+      ],
+      "result": "A cumulonimbus anvil warrants thunderstorm avoidance planning, not a guarantee of a specific Beaufort number."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-izobar-yapisi-ve-gradyan": {
+    "id": "meteorology-izobar-yapisi-ve-gradyan-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Closer isobar spacing in a fixed map scale often implies a stronger horizontal pressure gradient and stronger geostrophic wind, subject to latitude, surface friction and synoptic structure.\n\nCommon error: Do not equate identical pressure differences with identical wind if map distances differ.",
+    "example": {
+      "problem": "A forecast chart has two regions each showing 8 hPa pressure difference, one over 100 NM and one over 300 NM.",
+      "steps": [
+        "Compute pressure gradient magnitudes: 8/100 = 0.08 hPa/NM versus 8/300 ≈ 0.027 hPa/NM.",
+        "Recognise that the first gradient is approximately three times stronger over the specified distances.",
+        "Inspect latitude, stability and forecast wind data before translating gradients into surface wind speeds."
+      ],
+      "result": "The 100 NM interval has about threefold the isobaric pressure gradient, not necessarily exactly threefold the surface wind."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-beaufort-skalasi-uygulamalari": {
+    "id": "meteorology-beaufort-skalasi-uygulamalari-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Beaufort is an observational wind-force scale; actual measured wind speed depends on averaging interval, instrument exposure and gust characteristics. Sea state is only a supporting observation, especially with swell or restricted fetch.\n\nCommon error: Do not assign Beaufort force solely from significant wave height in mixed swell and wind seas.",
+    "example": {
+      "problem": "A deck report calls conditions Beaufort 7 from wave size, but calibrated anemometer readings are 22 knots sustained with 34-knot gusts.",
+      "steps": [
+        "Differentiate sustained wind, gusts and swell-driven significant wave height in the log.",
+        "Refer to the standard wind-speed conversion table and the observation averaging period before assigning Beaufort force.",
+        "Report the measured winds and gusts separately from the sea state and any operational limits."
+      ],
+      "result": "Gust peaks and pre-existing swell do not by themselves define the Beaufort force for sustained conditions."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-tehlikeli-seyir-yapilabilir-yarim-daire": {
+    "id": "meteorology-tehlikeli-seyir-yapilabilir-yarim-daire-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "In the Northern Hemisphere the right semicircle relative to tropical cyclone motion is often the more dangerous due to rotational wind and storm translation. Forecast-track uncertainty, sea room and vessel speed make simple manoeuvre mnemonics insufficient.\n\nCommon error: Never use a fixed heading-turn mnemonic without checking cyclone hemisphere and true motion.",
+    "example": {
+      "problem": "A ship's projected route would pass east of a northward-moving tropical cyclone in the Northern Hemisphere.",
+      "steps": [
+        "Mark the cyclone's current and forecast positions, movement direction and forecast uncertainty/danger region.",
+        "Identify the eastern side as the right-hand/dangerous side for a north-moving cyclone in the Northern Hemisphere.",
+        "Use updated authoritative marine forecasts and Masters' heavy-weather plan to create ample separation before the danger sector."
+      ],
+      "result": "The right side of a northward-tracking Northern Hemisphere storm warrants heightened avoidance; the cyclone's actual dangerous area exceeds a line on the chart."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-kacinma-manevrasi-prensipleri": {
+    "id": "meteorology-kacinma-manevrasi-prensipleri-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Tropical cyclone avoidance should use forecast motion, wind radii, track uncertainty, vessel capability and sea room. Historical 'dangerous semicircle' rules are only one decision aid, not a universal escape plan.\n\nCommon error: Do not wait for gale-force winds to reach the ship before reassessing the passage.",
+    "example": {
+      "problem": "A storm forecast updates and the projected 34-knot wind area moves 80 NM closer to a vessel's present route.",
+      "steps": [
+        "Replot official forecast centre and wind radii at each forecast interval, including the uncertainty envelope.",
+        "Assess minimum distance to the whole danger area rather than to only the forecast centre.",
+        "Plan early navigational adjustments and alternative routing while maintaining adequate fuel/sea-room margins."
+      ],
+      "result": "A route safely clear of yesterday's storm centre can be unsafe after the forecast envelope expands."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-synoptik-harita-sembolleri": {
+    "id": "meteorology-synoptik-harita-sembolleri-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Surface analysis charts locate pressure centres, fronts, troughs and weather features at a stated valid time. A front's coloured symbols indicate front type and advance direction, while forecast and analysis charts have different time references.\n\nCommon error: Do not confuse the date the chart was received with its actual meteorological valid time.",
+    "example": {
+      "problem": "A bridge watchkeeper sees a cold-front symbol crossing the vessel's intended course on a weatherfax chart.",
+      "steps": [
+        "Read the chart issue and valid times, geographic projection, scale and the legend of front symbols.",
+        "Compare planned vessel movement with the symbol's direction, then assess wind shift, showers and visibility forecasts.",
+        "Obtain latest analysis/forecast and mark practical hazards along the route with a revised watch briefing."
+      ],
+      "result": "A front drawn on an analysis chart is not a prediction of its exact current location hours later."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-set-ve-drift-degerlendirmesi": {
+    "id": "meteorology-set-ve-drift-degerlendirmesi-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Meteorological and tidal currents may change in both magnitude and direction. Set is the direction toward which current flows and drift is speed; the ship's COG/SOG differs from heading/log through water accordingly.\n\nCommon error: Never subtract scalar speeds to infer current direction when heading and COG differ.",
+    "example": {
+      "problem": "A ship steers 000°T at 12 kn through water while observed COG is 014°T and SOG 12.4 kn.",
+      "steps": [
+        "Resolve ground motion: east = 12.4 sin14° ≈3.00 kn, north = 12.4 cos14° ≈12.03 kn.",
+        "Subtract water-relative motion (east 0, north 12.00): current ≈3.00 kn east and 0.03 kn north.",
+        "Approximate set 089°T and drift 3.0 kn, assuming no separate leeway and consistent instrument references."
+      ],
+      "result": "The estimated current is nearly due east at about 3 kn, not '14 knots of drift'."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-akintinin-eta-ve-yakita-etkisi": {
+    "id": "meteorology-akintinin-eta-ve-yakita-etkisi-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "ETA is driven by distance over ground divided by SOG, and through-water speed plus current may vary along the route. Fuel use depends on machinery loading and operating hours, so less time does not always imply proportional fuel savings.\n\nCommon error: Do not infer exact bunker consumption from SOG without engine and resistance data.",
+    "example": {
+      "problem": "A 120 NM voyage is made at 12 kn through water with a 2 kn following current or a 2 kn opposing current.",
+      "steps": [
+        "Compute following-current SOG=14 kn, ETA=120/14≈8.57 h.",
+        "Compute opposing-current SOG=10 kn, ETA=120/10=12.0 h.",
+        "Compare time difference ≈3.43 h and use actual fuel curves rather than directly scaling fuel by speed over ground."
+      ],
+      "result": "The current reverses ETA materially even at the same engine setpoint."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
   }
 };
