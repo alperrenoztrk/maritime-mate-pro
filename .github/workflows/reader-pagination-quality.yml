@@ -6,6 +6,7 @@ on:
       - 'src/pages/RegulationPagedReaderPage.tsx'
       - 'src/pages/RegulationDetailPage.tsx'
       - 'src/pages/LessonTopicDetailPage.tsx'
+      - 'src/pages/MachineTopicDetailPage.tsx'
       - 'src/lib/regulationReadingPlan.ts'
       - 'src/lib/regulationReadingPlan.test.ts'
       - 'src/App.tsx'
