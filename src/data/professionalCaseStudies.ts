@@ -3208,5 +3208,437 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
       }
     ]
+  },
+  "navigation-enlem": {
+    "id": "navigation-enlem-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Latitude is angular distance north or south of the equator. In conventional nautical chart work, one minute of latitude approximately equals one nautical mile in the north–south direction, subject to Earth-ellipsoid refinements.\n\nCommon error: Do not read a latitude change as east–west displacement.",
+    "example": {
+      "problem": "The vessel's latitude changes from 36°18.0′N to 36°52.0′N while travelling due north.",
+      "steps": [
+        "Convert both readings to minutes north: 36×60 + 18 = 2178′ and 36×60 + 52 = 2212′.",
+        "Subtract to obtain DLat = 34.0′ north.",
+        "For a short meridional leg, approximate distance as 34.0 NM, then verify against appropriate chart/projection."
+      ],
+      "result": "The approximate northward distance is 34 NM; a longitude difference cannot be treated the same way at all latitudes."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-boylam": {
+    "id": "navigation-boylam-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Longitude is the angle east or west of the prime meridian; distance along a parallel shrinks as latitude increases. Crossing 180° requires the shorter signed difference, not naive arithmetic on E and W labels.\n\nCommon error: Never state that one degree of longitude always equals 60 NM.",
+    "example": {
+      "problem": "At 60°N a ship moves from 010°00′E to 012°00′E along a parallel.",
+      "steps": [
+        "Calculate DLo = 2° = 120′ east.",
+        "Estimate departure using DLo(minutes) × cos(latitude): 120 × cos60° = 60 NM.",
+        "Distinguish the 60 NM parallel distance from the 120 NM meridian arc implied by 2° of latitude."
+      ],
+      "result": "At 60°N two degrees of longitude correspond to about 60 NM along the parallel."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-enlem-ve-boylam-degisimi": {
+    "id": "navigation-enlem-ve-boylam-degisimi-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Latitude change and longitude change are signed angular differences. For local-plane navigation, departure ≈ DLo(minutes) × cos(mean latitude), and distance is the vector magnitude of DLat and departure.\n\nCommon error: Do not confuse 40 minutes of longitude with 40 NM at this latitude.",
+    "example": {
+      "problem": "A ship moves from 36°00′N 029°00′E to 36°30′N 029°40′E.",
+      "steps": [
+        "Compute DLat = +30 NM and DLo = +40 minutes of arc.",
+        "At mean latitude 36°15′, calculate departure ≈ 40 × cos36.25° = 32.3 NM east.",
+        "Approximate rhumb-line distance ≈ √(30² + 32.3²) = 44.1 NM and track arctan(32.3/30) ≈ 047.1°T."
+      ],
+      "result": "Under short-range mean-latitude assumptions, distance is roughly 44 NM on course 047°T."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-rota-olcumu": {
+    "id": "navigation-rota-olcumu-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Chart course should be measured against the meridian/compass rose using the correct true reference; magnetically steered headings require separately applied variation and deviation. Bearing orientation from a chart is not automatically a corrected compass order.\n\nCommon error: Never apply a chart's magnetic information twice when steering a true gyro heading.",
+    "example": {
+      "problem": "A charted leg measures 095°T and the applicable local variation is 5°W with compass deviation 2°E.",
+      "steps": [
+        "Use signed variation and deviation: True = Magnetic + variation; Magnetic = Compass + deviation (east positive).",
+        "Calculate compass course = 095° − (−5°) − (+2°) = 098° compass under this convention.",
+        "Confirm current local variation, ship deviation card and whether the heading instrument already applies corrections."
+      ],
+      "result": "The illustrative compass order is 098° under the stated sign convention, not automatically 095°."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-interpolasyon": {
+    "id": "navigation-interpolasyon-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Linear interpolation estimates an intermediate value from two adjacent tabulated entries only when the parameter is smooth over the interval. It is not valid across discontinuities, turnpoints or regulatory threshold changes.\n\nCommon error: Do not linearly interpolate across slack-water reversals without considering vector direction.",
+    "example": {
+      "problem": "A tidal stream table gives 1.2 kn at 1400 and 2.0 kn at 1600, and you need a rough value at 1500.",
+      "steps": [
+        "Calculate elapsed fraction: (1500−1400)/(1600−1400) = 1/2.",
+        "Interpolate speed = 1.2 + (2.0−1.2)×0.5 = 1.6 kn.",
+        "Check stream-direction change and official predictions before using the estimate for narrow-channel transit."
+      ],
+      "result": "The linear speed estimate is 1.6 kn at 1500 under a smooth-change assumption."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-departure-dogu-bati-mesafesi": {
+    "id": "navigation-departure-dogu-bati-mesafesi-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Departure is the east–west distance along a local parallel, measured in NM, and is related to DLo via the cosine of latitude. It differs from east–west change in geodetic longitude, which is angular.\n\nCommon error: Do not use 180 NM simply because longitude difference is 180′.",
+    "example": {
+      "problem": "A ship travels east along 45°N through 3° of longitude.",
+      "steps": [
+        "Express longitude change as 3×60 = 180 minutes.",
+        "Compute departure ≈ 180×cos45° = 127.3 NM.",
+        "For a high-accuracy long passage, use the appropriate geodesic or Mercator-sailing method rather than this fixed parallel."
+      ],
+      "result": "East–west departure is about 127 NM at 45°N in this example."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-rhumb-line-loxodrom": {
+    "id": "navigation-rhumb-line-loxodrom-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "A rhumb line crosses all meridians at a constant true bearing, appearing straight on a Mercator chart. It does not generally provide the shortest spherical route, especially on long ocean passages at higher latitude.\n\nCommon error: Do not assume a rhumb line is the shortest distance because it is straight on a Mercator chart.",
+    "example": {
+      "problem": "For an ocean route, the ECDIS planner displays a 3,500 NM rhumb leg and a 3,380 NM great-circle alternative.",
+      "steps": [
+        "Calculate nominal saving: 3,500−3,380 = 120 NM.",
+        "At an illustrative 15 kn uninterrupted speed, the notional saving is 120/15 = 8 hours.",
+        "Evaluate high-latitude limits, weather, traffic and routing restrictions before selecting the great circle."
+      ],
+      "result": "A theoretical eight-hour saving is not a safe passage decision until actual route constraints are assessed."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-mean-latitude-sailing": {
+    "id": "navigation-mean-latitude-sailing-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Mean latitude sailing approximates short or moderate passages using a mid-latitude cosine to convert longitude difference into departure. Its accuracy deteriorates with large changes in latitude, high-latitude geometry and long routes.\n\nCommon error: Do not use the same cosine factor over a very long passage across disparate latitudes.",
+    "example": {
+      "problem": "From 40°N to 42°N with DLo 3°E, find an approximate departure.",
+      "steps": [
+        "Mean latitude is 41°N, DLo=180′.",
+        "Compute departure ≈ 180×cos41° ≈ 135.85 NM east.",
+        "DLat=120 NM; approximate course=atan(135.85/120)≈048.6°T and distance≈181.2 NM."
+      ],
+      "result": "The short-route mean-latitude estimate is about 181 NM, but a more exact method is needed for demanding voyages."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-kosmali-mevki-tayini-running-fix": {
+    "id": "navigation-kosmali-mevki-tayini-running-fix-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "A running fix transfers an earlier position line to the time of a second observation using estimated course, speed and set/drift. Both fixes and transfer errors affect reliability.\n\nCommon error: Never label two observations taken 30 minutes apart as simultaneous cross bearings.",
+    "example": {
+      "problem": "A lighthouse bearing at 1000 gives a first position line; by 1030 the vessel has made 12 kn due east through water, with estimated 2 kn current due north.",
+      "steps": [
+        "Calculate 30-minute vessel displacement through water = 6 NM east.",
+        "Calculate current displacement over 30 minutes = 1 NM north, giving a 6E/1N transfer vector.",
+        "Advance the 1000 line by the combined vector and intersect it with the independent 1030 bearing line."
+      ],
+      "result": "The first line is transported 6 NM east and 1 NM north, not merely 6 NM along heading."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-dead-reckoning-and-estimated-position-dr-ep": {
+    "id": "navigation-dead-reckoning-and-estimated-position-dr-ep-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "DR advances a previous position by heading and speed through water; EP can additionally include estimated effects of current, wind and leeway. Their uncertainty grows with elapsed time without an independent fix.\n\nCommon error: Do not annotate the EP as a measured fix without an independent observation.",
+    "example": {
+      "problem": "A vessel steers 090°T at 10 kn through water for two hours, with estimated current setting 000°T at 1.5 kn.",
+      "steps": [
+        "Dead reckoning displacement = 20 NM east.",
+        "Estimated current displacement = 3 NM north over the same period.",
+        "EP is 20 NM east and 3 NM north of the departure fix; total ground displacement ≈20.22 NM."
+      ],
+      "result": "The EP differs from DR by approximately 3 NM north, and both positions remain estimates."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-dr-ep-ve-set-drift-ile-mevki-ilerletme": {
+    "id": "navigation-dr-ep-ve-set-drift-ile-mevki-ilerletme-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Set indicates the direction the current flows toward and drift its speed; vector additions should use ground-referenced units and identical time intervals. The heading/course-through-water vector must be kept distinct from COG.\n\nCommon error: Do not steer 021°T to hold a desired northbound ground track in the same east-setting current.",
+    "example": {
+      "problem": "For one hour a ship steers 000°T at 8 kn through water while current sets 090°T at 3 kn.",
+      "steps": [
+        "Represent the ship vector as 8 NM north and the current as 3 NM east.",
+        "Compute resultant SOG = √(8²+3²) ≈ 8.54 kn.",
+        "Compute COG = arctan(3/8) ≈ 020.6°T."
+      ],
+      "result": "Course over ground is approximately 021°T with SOG 8.54 kn despite a northerly heading."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-leeway-hesaplari": {
+    "id": "navigation-leeway-hesaplari-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Leeway is the sideways drift relative to the water caused by wind and hull form; its direction and magnitude vary with vessel, speed, exposure and loading. It is distinct from water-current set/drift.\n\nCommon error: Do not add current set and leeway angles as if they were always interchangeable scalar corrections.",
+    "example": {
+      "problem": "A vessel needs 090°T track through water; onboard empirical leeway estimate is 4° to starboard for an easterly steering heading.",
+      "steps": [
+        "Identify that the wind-induced leeway is expected toward the ship's starboard side.",
+        "To offset 4° of starboard leeway, estimate a portward heading correction from 090° to 086°T.",
+        "Monitor actual COG, independent position fixes and current to refine the correction."
+      ],
+      "result": "The approximate corrected heading is 086°T under the stated side and angle assumptions."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-12-ler-kurali": {
+    "id": "navigation-12-ler-kurali-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "The rule of twelfths is a rough semidiurnal-tide interpolation model, not a replacement for official port-specific tidal predictions, especially with mixed, diurnal or distorted tidal curves.\n\nCommon error: Never substitute the rule of twelfths for actual harbour tide tables when UKC is critical.",
+    "example": {
+      "problem": "In an idealised six-hour rising tide of 3.6 m range, estimate rise in the first two hours.",
+      "steps": [
+        "Divide the 3.6 m range by twelve: one part = 0.30 m.",
+        "Approximate first-hour rise as one part = 0.30 m, second-hour rise as two parts = 0.60 m.",
+        "Cumulative two-hour rise = 0.90 m above the reference low water, subject to local corrections."
+      ],
+      "result": "The illustrative rise after two hours is 0.90 m, not 1.2 m from a uniform rise assumption."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-gps-dogrulugu": {
+    "id": "navigation-gps-dogrulugu-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "GNSS geometric dilution of precision is only one contributor to position uncertainty; orbit, timing, atmosphere, multipath, spoofing and equipment integrity also matter. Multiple displays sharing one sensor are not independent checks.\n\nCommon error: Do not declare a suspect GNSS position correct solely because the HDOP is low.",
+    "example": {
+      "problem": "A GNSS receiver shows HDOP 0.8 while its charted position suddenly shifts by 0.6 NM offshore.",
+      "steps": [
+        "Recognise that favourable satellite geometry does not prove the measured solution is authentic.",
+        "Compare the GNSS position against independently measured radar ranges, visual bearings or other positioning methods.",
+        "Investigate upstream sensors, antennas, alerts and interference, report the discrepancy, and use approved backup procedures."
+      ],
+      "result": "A low HDOP can coexist with an inaccurate or manipulated position fix."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-pdop": {
+    "id": "navigation-pdop-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Position DOP (PDOP) reflects the three-dimensional geometry of satellites in the positioning solution, while HDOP and VDOP reflect horizontal and vertical geometric effects. These are dimensionless multipliers, not position errors expressed in metres.\n\nCommon error: Never interpret PDOP 5.0 as exactly five metres of horizontal inaccuracy.",
+    "example": {
+      "problem": "Two survey epochs show PDOP 2.0 and PDOP 5.0 with otherwise similar ranging noise.",
+      "steps": [
+        "Identify that the higher PDOP generally makes the solution more sensitive to similar measurement errors.",
+        "Under a simplified common standard range-error assumption, estimated geometry-amplified error scales by 5/2 = 2.5 between epochs.",
+        "Check actual system confidence and independent observations instead of inferring a fixed metre error from PDOP alone."
+      ],
+      "result": "PDOP 5.0 suggests approximately 2.5 times the geometric amplification of PDOP 2.0, other conditions equal."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-azimut-hesaplari": {
+    "id": "navigation-azimut-hesaplari-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Azimuth is the true bearing of a celestial or terrestrial object clockwise from true north, with corrections for observer position, time and ephemeris when celestial. It can help determine gyro or compass error when observation geometry is valid.\n\nCommon error: Do not interpret simultaneous unequal readings without checking time, observer bearing method and compass convention.",
+    "example": {
+      "problem": "A verified celestial true azimuth is 115°T while a ship's gyro bearing of the same object at the same instant is 118°G.",
+      "steps": [
+        "Calculate the difference in the chosen gyro-error convention: true minus gyro = 115°−118° = −3°.",
+        "Interpret the signed correction as −3° (gyro readings are 3° greater than true for this observation).",
+        "Cross-check against the compass/gyro error record and known observational corrections before applying to navigation."
+      ],
+      "result": "The illustrative gyro-to-true correction is −3°; document sign convention explicitly."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-ho-hc-kavrami": {
+    "id": "navigation-ho-hc-kavrami-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "Ho is observed celestial altitude after appropriate index, dip and astronomical corrections; Hc is computed altitude for an assumed position and ephemeris. The difference is an intercept in arcminutes and approximately nautical miles.\n\nCommon error: Do not mix raw sextant altitude Hs with fully corrected Ho.",
+    "example": {
+      "problem": "Ho = 32°15.4′ and Hc = 32°10.0′ for the same sight at the same instant.",
+      "steps": [
+        "Subtract Hc from Ho: 32°15.4′−32°10.0′ = +5.4′.",
+        "Convert the 5.4′ angular difference to approximately 5.4 NM intercept on the celestial sphere.",
+        "Mark the intercept 5.4 NM toward the body's geographic position because Ho exceeds Hc."
+      ],
+      "result": "Intercept is 5.4 NM toward the body for the stated corrected observations."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-ogle-mevkii-enlem": {
+    "id": "navigation-ogle-mevkii-enlem-professional-application",
+    "title": "Worked navigation calculation and operational check",
+    "content": "A meridian altitude of the Sun can support latitude estimation using corrected noon altitude and the Sun's declination, with hemisphere and zenith-side interpretation required. This is a simplified navigation-school geometry case.\n\nCommon error: Never apply a fixed declination-minus-zenith formula regardless of hemisphere and Sun bearing.",
+    "example": {
+      "problem": "At local apparent noon, the observed corrected Sun altitude Ho is 70°00′ with the Sun due south of an observer in the northern hemisphere; declination is 10°00′N.",
+      "steps": [
+        "Calculate zenith distance ZD = 90°−70° = 20°.",
+        "With the Sun south of the observer and declination 10°N, add zenith distance to declination: latitude ≈30°N.",
+        "Check solar declination at meridian passage, refraction/dip corrections and correct north/south geometry."
+      ],
+      "result": "The estimated latitude is 30°N under the stated geometry."
+    },
+    "references": [
+      {
+        "title": "NGA — American Practical Navigator (Bowditch), 2024 edition",
+        "url": "https://msi.nga.mil/Publications/APN"
+      },
+      {
+        "title": "IMO A.893(21) — Guidelines for Voyage Planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
   }
 };
