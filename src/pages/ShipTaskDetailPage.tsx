@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 
 import { useParams, Link } from "react-router-dom";
 import { BookOpen, Shield, ClipboardCheck, Lightbulb, Users, Scale } from "lucide-react";
@@ -16,135 +17,28 @@ export default function ShipTaskDetailPage() {
     );
   }
 
-  return (
-    <div className="relative min-h-screen overflow-hidden px-4 py-8">
-      {/* Background blurs */}
-
-      <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-6">
-        {/* Header */}
-        <header className="space-y-3 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-            {task.categoryIcon} {task.category}
-          </div>
-          <h1 className="text-2xl font-bold text-foreground">{task.title}</h1>
-        </header>
-
-        {/* Definition & Importance */}
-        <section className="space-y-4 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-              <BookOpen className="h-4 w-4 text-primary" />
-              Description
-            </div>
-            <p className="text-sm leading-relaxed text-muted-foreground">{task.definition}</p>
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-              <Shield className="h-4 w-4 text-primary" />
-              Importance
-            </div>
-            <p className="text-sm leading-relaxed text-muted-foreground">{task.importance}</p>
-          </div>
-        </section>
-
-        {/* Procedures */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-            <ClipboardCheck className="h-4 w-4 text-primary" />
-            Procedure Steps
-          </div>
-          <div className="space-y-3">
-            {task.procedures.map((p) => (
-              <div key={p.step} className="flex gap-3">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
-                  {p.step}
-                </div>
-                <div className="space-y-0.5">
-                  <div className="text-sm font-semibold text-foreground">{p.title}</div>
-                  <p className="text-xs leading-relaxed text-muted-foreground">{p.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Responsibility Matrix */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-            <Users className="h-4 w-4 text-primary" />
-            Responsibility Matrix
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="border-b border-border/50 text-left">
-                  <th className="py-2 pr-4 font-semibold text-foreground">Position</th>
-                  <th className="py-2 font-semibold text-primary">Duties</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/30">
-                {task.responsibilities.map((r) => (
-                  <tr key={r.role}>
-                    <td className="py-2 pr-4 font-medium text-foreground whitespace-nowrap">{r.role}</td>
-                    <td className="py-2 text-muted-foreground">{r.duties}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Regulations */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-            <Scale className="h-4 w-4 text-primary" />
-            Relevant Legislation
-          </div>
-          <ul className="space-y-1.5">
-            {task.regulations.map((reg) => (
-              <li key={reg} className="flex items-start gap-2 text-xs text-muted-foreground">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60" />
-                {reg}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Checklist */}
-        <section className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-sm">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-            <ClipboardCheck className="h-4 w-4 text-primary" />
-            Checklist
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="border-b border-border/50 text-left">
-                  <th className="py-2 pr-4 font-semibold text-foreground">Matter</th>
-                  <th className="py-2 font-semibold text-primary">Responsible</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/30">
-                {task.checklist.map((c) => (
-                  <tr key={c.item}>
-                    <td className="py-1.5 pr-4 text-foreground">{c.item}</td>
-                    <td className="py-1.5 text-primary whitespace-nowrap">{c.responsible}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Practical Tip */}
-        <section className="rounded-2xl border border-amber-500/30 bg-amber-50/50 p-5 shadow-sm dark:border-amber-500/20 dark:bg-amber-950/20">
-          <div className="flex items-center gap-2 text-sm font-bold text-foreground mb-2">
-            <Lightbulb className="h-4 w-4 text-amber-500" />
-            Quick Tip
-          </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">{task.practicalTip}</p>
-        </section>
-      </div>
-    </div>
-  );
+  const pages:ReadingPage[] = [
+  {id:"definition",title:task.title,section:task.category,content:<div className="space-y-4">
+    <p>{task.definition}</p><p className="text-sm text-muted-foreground"><strong>Importance:</strong> {task.importance}</p>
+  </div>},
+  ...task.procedures.map((step,index)=>({
+    id:`procedure-${index}`,title:step.title,section:`Procedure · ${index+1}/${task.procedures.length}`,
+    content:<p>{step.description}</p>,
+  })),
+  {id:"responsibilities",title:"Responsibility matrix",section:"Personnel",
+   content:<div className="overflow-x-auto"><table className="min-w-max w-full text-left text-sm">
+    <thead><tr><th className="p-2">Role</th><th className="p-2">Responsibilities</th></tr></thead>
+    <tbody>{task.responsibilities.map((item,index)=><tr key={index} className="border-t border-border/60"><td className="p-2">{item.role}</td><td className="p-2">{item.duties}</td></tr>)}</tbody>
+   </table></div>},
+  {id:"regulations",title:"Relevant legislation",section:"Legal framework",
+   content:<ul className="list-disc space-y-2 pl-5">{task.regulations.map((v,i)=><li key={i}>{v}</li>)}</ul>},
+  {id:"checklist",title:"Shipboard checklist",section:"Verification",
+   content:<div className="overflow-x-auto"><table className="min-w-max w-full text-left text-sm">
+    <thead><tr><th className="p-2">Item</th><th className="p-2">Responsible</th></tr></thead>
+    <tbody>{task.checklist.map((v,i)=><tr key={i} className="border-t border-border/60"><td className="p-2">{v.item}</td><td className="p-2">{v.responsible}</td></tr>)}</tbody>
+   </table></div>},
+  {id:"tip",title:"Practical guidance",section:"Review",content:<p>{task.practicalTip}</p>},
+  ];
+  return <PagedReadingSurface key={taskSlug} title={task.title} subtitle={task.category}
+    pages={pages} storageKey={`mariners-book:ship-task:${taskSlug}`} />;
 }
