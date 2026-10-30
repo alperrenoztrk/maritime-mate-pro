@@ -1,3 +1,4 @@
+import { LegacyTopicBook } from "@/components/reader/LegacyTopicBook";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -3364,122 +3365,15 @@ export default function StabilityTopicsPage() {
             </div>
 
             {/* Modal Content */}
-            <ScrollArea className="min-h-0 flex-1">
-              <div className="p-4 space-y-6 pb-[calc(5rem+var(--safe-bottom))] max-w-4xl mx-auto">
-                {/* Introduction */}
-                <div className="bg-primary/5 rounded-xl p-4 border-l-4 border-primary">
-                  <p className="text-foreground font-medium leading-relaxed">
-                    {currentContent.introduction}
-                  </p>
-                </div>
-
-                {/* Images/Diagrams */}
-                {currentContent.images && currentContent.images.length > 0 && (
-                  <div className="space-y-4">
-                    {currentContent.images.map((image, index) => (
-                      <div key={index} className="rounded-xl overflow-hidden border border-border/40 bg-muted/30">
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="w-full h-48 object-contain bg-muted/30"
-                        />
-                        {image.caption && (
-                          <p className="text-xs text-muted-foreground text-center py-2 px-4">
-                            {image.caption}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Main Content */}
-                <StructuredLessonText text={currentContent.content} />
-
-                {/* Bullet Points */}
-                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-2">
-                    <h3 className="font-semibold text-foreground mb-3">Highlights</h3>
-                    {currentContent.bulletPoints.map((point, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        <span className="text-sm text-foreground">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Formula */}
-                {currentContent.formula && (
-                  <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
-                    <h3 className="font-semibold text-foreground mb-2">
-                      {currentContent.formula.name}
-                    </h3>
-                    <div className="bg-background rounded-lg p-3 font-mono text-lg text-center text-primary mb-2">
-                      {currentContent.formula.expression}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {currentContent.formula.description}
-                    </p>
-                  </div>
-                )}
-
-                {/* Examples */}
-                {currentContent.examples && currentContent.examples.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                    <h3 className="font-semibold text-foreground mb-2">Numerical Example</h3>
-                    {currentContent.examples.map((example, index) => (
-                      <div key={index} className="text-sm text-foreground">
-                        <p className="font-medium">Question: {example.problem}</p>
-                        <p className="text-muted-foreground">Solution: {example.solution}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Key Points */}
-                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
-                  <div className="bg-primary/5 rounded-xl p-4">
-                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary" />
-                      Key Information
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.keyPoints.map((point, index) => (
-                        <div
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-foreground"
-                        >
-                          <span className="text-primary font-bold shrink-0 whitespace-nowrap tabular-nums">{`${index + 1}.`}</span>
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Warnings */}
-                {currentContent.warnings && currentContent.warnings.length > 0 && (
-                  <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
-                    <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5" />
-                      Warnings
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.warnings.map((warning, index) => (
-                        <div
-                          key={index}
-                          className="flex items-start gap-2 text-sm text-foreground"
-                        >
-                          <span className="text-destructive">⚠</span>
-                          <span>{warning}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <LegacyTopicBook key={selectedTopic} topic={currentContent}
+        storageKey={`mariners-book:reference:StabilityTopicsPage:${selectedTopic}`}
+        extras={(currentContent.images ?? []).map((image, index) => ({
+       id: `diagram-${index}`, title: image.alt || "Technical illustration",
+       content: <figure className="space-y-3"><img src={image.src} alt={image.alt} className="mx-auto max-h-[65dvh] w-full object-contain" loading="lazy" />
+         {image.caption && <figcaption className="text-xs text-muted-foreground">{image.caption}</figcaption>}</figure>,
+     }))} />
+    </div>
           </motion.div>
         )}
       </AnimatePresence>

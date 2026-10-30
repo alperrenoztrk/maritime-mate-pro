@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { useParams } from "react-router-dom";
 import { AlertTriangle, BookOpen, Cpu, Sparkles, type LucideIcon } from "lucide-react";
@@ -43,68 +44,27 @@ export default function BridgeDeviceDetailPage() {
     );
   }
 
-
-  return (
-    <div className="relative min-h-screen overflow-hidden px-4 py-10">
-
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
-        <PageHeader title={device.name} />
-
-        <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{device.summary}</p>
-
-        <div className="space-y-2 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm">
-          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-            <Cpu className="h-4 w-4 text-primary" />
-            <span>How it works</span>
-          </div>
-          <p className="text-sm leading-relaxed text-muted-foreground">{device.principle}</p>
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <SectionList title="Duties and areas of use" items={device.duties} />
-          <SectionList title="Operation steps" items={device.operations} />
-          <SectionList title="Monitoring and safety" items={device.monitoring} />
-          <SectionList title="Integration and workflow" items={device.integration} />
-          <SectionList title="Carriage and performance requirements" items={device.requirements} icon={BookOpen} />
-          <SectionList
-            title="Common mistakes on watch"
-            items={device.commonErrors}
-            icon={AlertTriangle}
-            iconClassName="text-warning"
-          />
-        </div>
-
-        {/* Only real photos of this exact device are listed; devices without one show no photo block. */}
-        {device.images.length > 0 && (
-          <div className="space-y-3 rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm">
-            <p className="text-micro font-semibold uppercase tracking-[0.2em] text-primary/80">Photo</p>
-            <div className={device.images.length > 1 ? "grid gap-3 sm:grid-cols-2" : "grid gap-3"}>
-              {device.images.map((url) => (
-                <figure
-                  key={url}
-                  className="overflow-hidden rounded-xl border border-border/60 bg-muted/40 shadow-sm"
-                >
-                  <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden">
-                    <LessonImage
-                      src={url}
-                      alt={device.name}
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-                  <figcaption className="px-3 py-2 text-xs font-medium text-foreground">
-                    {device.name}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-4 text-sm text-foreground shadow-inner sm:p-6">
-          <p className="mb-2 text-base font-semibold text-primary">Why is it important?</p>
-          <p className="text-muted-foreground">{device.whyImportant}</p>
-        </div>
-      </div>
-    </div>
-  );
+  const collections = [
+    {id:"duties",title:"Duties and areas of use",items:device.duties},
+    {id:"operations",title:"Operation steps",items:device.operations},
+    {id:"monitoring",title:"Monitoring and safety",items:device.monitoring},
+    {id:"integration",title:"Integration and workflow",items:device.integration},
+    {id:"requirements",title:"Carriage and performance requirements",items:device.requirements},
+    {id:"mistakes",title:"Common mistakes on watch",items:device.commonErrors},
+  ];
+  const pages: ReadingPage[] = [
+    { id:"intro",title:device.name,section:"Bridge equipment",content:<p>{device.summary}</p> },
+    { id:"principle",title:"How it works",section:"Operating principle",content:<p>{device.principle}</p> },
+    ...collections.filter(x=>x.items.length>0).map(x=>({
+      id:x.id,title:x.title,section:"Practical guidance",
+      content:<SectionList title={x.title} items={x.items} />,
+    })),
+    ...device.images.map((src,index)=>({
+      id:`photo-${index}`,title:`Verified equipment photo ${index+1}`,section:"Equipment identification",
+      content:<figure className="space-y-3"><LessonImage src={src} alt={device.name} className="mx-auto max-h-[65dvh] w-full object-contain"/><figcaption className="text-sm text-muted-foreground">{device.name}</figcaption></figure>,
+    })),
+    {id:"why",title:"Why this equipment matters",section:"Review",content:<p>{device.whyImportant}</p>},
+  ];
+  return <PagedReadingSurface key={deviceId} title={device.name} subtitle="Bridge equipment"
+    pages={pages} storageKey={`mariners-book:bridge-device:${deviceId}`} />;
 }

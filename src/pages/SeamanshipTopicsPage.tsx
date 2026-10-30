@@ -1,3 +1,4 @@
+import { LegacyTopicBook } from "@/components/reader/LegacyTopicBook";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { verifiedLegacyImage } from "@/utils/verifiedLegacyImage";
 import type { CSSProperties } from "react";
@@ -3344,173 +3345,22 @@ export default function SeamanshipTopicsPage() {
             </div>
 
             {/* Modal Content */}
-            <ScrollArea className="min-h-0 flex-1">
-              <div className="p-4 space-y-6 pb-[calc(5rem+var(--safe-bottom))] max-w-4xl mx-auto">
-                {/* Introduction */}
-                <div className="bg-amber-500/10 rounded-xl p-4 border-l-4 border-amber-500">
-                  <p className="text-foreground font-medium leading-relaxed">
-                    {currentContent.introduction}
-                  </p>
-                </div>
-
-                {/* Topic Image/Diagram */}
-                {approvedTopicImage && (
-                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
-                    <img
-                      src={approvedTopicImage.src}
-                      alt={approvedTopicImage.description}
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
-                    />
-                    <p className="px-3 py-2 text-xs leading-relaxed text-muted-foreground">
-                      {approvedTopicImage.author} · {approvedTopicImage.license} ·{" "}
-                      <a href={approvedTopicImage.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
-                        Original photograph and licence
-                      </a>
-                    </p>
-                  </div>
-                )}
-
-                {/* Real Photographs Gallery */}
-                {approvedPhotos.length > 0 && (
-                  <PhotoGallery photos={approvedPhotos} topicTitle={currentContent.title} />
-                )}
-
-                {/* Knot-tying — bütün bağlar tek bir yerde, Gemici Bağları sayfasında toplanmıştır */}
-                {currentContent.knotAnimations && currentContent.knotAnimations.length > 0 && (
-                  <div className="space-y-2 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
-                    <div className="flex items-center gap-2">
-                      <Anchor className="h-5 w-5 text-amber-500" />
-                      <h3 className="font-semibold text-foreground">Knot Tying Step by Step</h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      All the seaman's knots, bends and splices are gathered in one place. For real knot-tying videos, step-by-step instructions, uses and tips, open the Sailor's Knots page.
-                    </p>
-                    <Link
-                      to="/seamanship/knots"
-                      className="group inline-flex items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-500/20 dark:text-amber-400"
-                    >
-                      <Eye className="h-4 w-4" />
-                      Open Seamanship knots
-                      <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                  </div>
-                )}
-
-                {/* Main Content */}
-                <StructuredLessonText text={currentContent.content} />
-
-                {/* Data Table */}
-                {currentContent.table && (
-                  <div className="rounded-xl border border-border/40 overflow-hidden">
-                    <div className="bg-muted/60 px-4 py-3 border-b border-border/40">
-                      <h3 className="font-semibold text-foreground text-sm">{currentContent.table.title}</h3>
-                    </div>
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-sm">
-                        <thead>
-                          <tr className="border-b border-border/40 bg-muted/30">
-                            {currentContent.table.headers.map((header, i) => (
-                              <th key={i} className="px-3 py-2.5 text-left font-medium text-foreground whitespace-nowrap">
-                                {header}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {currentContent.table.rows.map((row, rowIdx) => (
-                            <tr key={rowIdx} className="border-b border-border/20 last:border-0 hover:bg-muted/20 transition-colors">
-                              {row.map((cell, cellIdx) => (
-                                <td key={cellIdx} className={`px-3 py-2 text-foreground/80 ${cellIdx === 0 ? 'font-medium text-foreground' : ''}`}>
-                                  {cell}
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-
-                {/* Bullet Points */}
-                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-2">
-                    <h3 className="font-semibold text-foreground mb-3">Highlights</h3>
-                    {currentContent.bulletPoints.map((point, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0" />
-                        <span className="text-sm text-foreground">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Formula */}
-                {currentContent.formula && (
-                  <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
-                    <h3 className="font-semibold text-foreground mb-2">
-                      {currentContent.formula.name}
-                    </h3>
-                    <div className="bg-background rounded-lg p-3 font-mono text-lg text-center text-amber-600 dark:text-amber-400 mb-2">
-                      {currentContent.formula.expression}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {currentContent.formula.description}
-                    </p>
-                  </div>
-                )}
-
-                {/* Examples */}
-                {currentContent.examples && currentContent.examples.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                    <h3 className="font-semibold text-foreground mb-2">Numerical Example</h3>
-                    {currentContent.examples.map((example, index) => (
-                      <div key={index} className="text-sm text-foreground">
-                        <p className="font-medium">Question: {example.problem}</p>
-                        <p className="text-muted-foreground mt-1">Solution: {example.solution}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Key Points */}
-                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
-                  <div className="bg-amber-500/5 rounded-xl p-4">
-                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-amber-500" />
-                      Key Information
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.keyPoints.map((point, index) => (
-                        <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-amber-600 dark:text-amber-400 font-bold shrink-0 whitespace-nowrap tabular-nums">{`${index + 1}.`}</span>
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Warnings */}
-                {currentContent.warnings && currentContent.warnings.length > 0 && (
-                  <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
-                    <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5" />
-                      Warnings
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.warnings.map((warning, index) => (
-                        <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-destructive">⚠</span>
-                          <span>{warning}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <LegacyTopicBook key={selectedTopic} topic={currentContent}
+        storageKey={`mariners-book:reference:SeamanshipTopicsPage:${selectedTopic}`}
+        extras={[
+    ...(approvedTopicImage ? [{
+      id: "reference-image", title: approvedTopicImage.description || "Verified technical image",
+      content: <figure className="space-y-3"><img src={approvedTopicImage.src} alt={approvedTopicImage.description} className="mx-auto w-full max-h-[65dvh] object-contain" loading="lazy" />
+        <figcaption className="text-xs text-muted-foreground">{approvedTopicImage.author} · {approvedTopicImage.license} · <a className="underline" href={approvedTopicImage.sourceUrl} target="_blank" rel="noopener noreferrer">Original source and licence</a></figcaption></figure>,
+    }] : []), ...(approvedPhotos.length ? [{
+      id: "photos", title: "Shipboard photographs", content: <PhotoGallery photos={approvedPhotos} topicTitle={currentContent.title} />,
+    }] : []),
+    ...(currentContent.knotAnimations?.length ? [{
+      id:"knots",title:"Knots and splices",content:<Link to="/seamanship/knots" className="font-semibold text-primary underline">Open Sailor's Knots — step-by-step references</Link>,
+    }] : [])
+  ]} />
+    </div>
           </motion.div>
         )}
       </AnimatePresence>

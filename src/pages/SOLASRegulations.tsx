@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -59,16 +60,10 @@ const chapters = [
 ];
 
 const SOLASRegulationsPage = () => {
-  return (
-          <div className="min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <PageHeader title="Section Summary and Audit Checklist" />
-
-        {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {chapters.map((chapter) => (
-            <Card key={chapter.id} className="border border-blue-100/60 shadow-lg shadow-blue-500/10">
+  const pages: ReadingPage[] = chapters.map((chapter,index)=>({
+    id: String(chapter.id), title: chapter.title,
+    section: `Reference ${index+1} / ${chapters.length}`,
+    content: (<Card key={chapter.id} className="border border-blue-100/60 shadow-lg shadow-blue-500/10">
               <CardHeader>
                 <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div>
@@ -95,39 +90,10 @@ const SOLASRegulationsPage = () => {
                   <strong>Audit Note:</strong> When records, test reports and photos showing equipment condition are prepared, inspection time is shortened by 30%.
                 </p>
               </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Quick Tips */}
-        <Card className="border-blue-200/70 shadow-xl shadow-blue-500/10">
-          <CardHeader>
-            <CardTitle>Fit Tips</CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-3 text-sm">
-            <div className="bg-white/70 dark:bg-slate-900/60 rounded-lg p-4 border border-blue-50">
-              <p className="font-semibold text-blue-700 mb-2">Documentation</p>
-              <p className="text-muted-foreground">
-                Plan, drawing and certificate revision numbers must be held in the digital archive, and printed emergency versions must be available on the bridge.
-              </p>
-            </div>
-            <div className="bg-white/70 dark:bg-slate-900/60 rounded-lg p-4 border border-blue-50">
-              <p className="font-semibold text-blue-700 mb-2">Periodic Tests</p>
-              <p className="text-muted-foreground">
-                Create a monthly calendar for fire drill, abandon ship drill and GMDSS tests, and save photo/video records.
-              </p>
-            </div>
-            <div className="bg-white/70 dark:bg-slate-900/60 rounded-lg p-4 border border-blue-50">
-              <p className="font-semibold text-blue-700 mb-2">Institutional Communication</p>
-              <p className="text-muted-foreground">
-                Prepare a task list to monitor class, flag and PSC requests on a single screen, and assign responsible persons for critical items.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
+            </Card>),
+  }));
+  return <PagedReadingSurface title="SOLAS Chapters" subtitle="SOLAS reference library"
+    pages={pages} storageKey="mariners-book:solas-book:SOLASRegulations" />;
 };
 
 export default SOLASRegulationsPage;

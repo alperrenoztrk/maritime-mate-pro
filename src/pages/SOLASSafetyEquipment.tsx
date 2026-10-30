@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -56,16 +57,10 @@ const equipmentSets = [
 ];
 
 const SOLASSafetyEquipmentPage = () => {
-  return (
-          <div className="min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <PageHeader title="SOLAS Safety Equipment" />
-
-        {/* Equipment Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {equipmentSets.map((set) => (
-            <Card key={set.title} className="border border-orange-100/60 shadow-lg shadow-orange-500/10">
+  const pages: ReadingPage[] = equipmentSets.map((set,index)=>({
+    id: String(set.title), title: set.title,
+    section: `Reference ${index+1} / ${equipmentSets.length}`,
+    content: (<Card key={set.title} className="border border-orange-100/60 shadow-lg shadow-orange-500/10">
               <CardHeader className="space-y-2">
                 <div className="flex items-center justify-between">
                   <set.icon className="w-8 h-8 text-orange-500" />
@@ -101,12 +96,10 @@ const SOLASSafetyEquipmentPage = () => {
                   </div>
                 </div>
               </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+            </Card>),
+  }));
+  return <PagedReadingSurface title="SOLAS Safety Equipment" subtitle="SOLAS reference library"
+    pages={pages} storageKey="mariners-book:solas-book:SOLASSafetyEquipment" />;
 };
 
 export default SOLASSafetyEquipmentPage;

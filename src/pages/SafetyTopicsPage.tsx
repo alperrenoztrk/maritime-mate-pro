@@ -1,3 +1,4 @@
+import { LegacyTopicBook } from "@/components/reader/LegacyTopicBook";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { verifiedLegacyImage } from "@/utils/verifiedLegacyImage";
 import type { CSSProperties } from "react";
@@ -2809,106 +2810,17 @@ export default function SafetyTopicsPage() {
               </div>
             </div>
 
-            <ScrollArea className="min-h-0 flex-1">
-              <div className="p-4 space-y-6 pb-[calc(5rem+var(--safe-bottom))] max-w-4xl mx-auto">
-                <div className="bg-red-500/10 rounded-xl p-4 border-l-4 border-red-500">
-                  <p className="text-foreground font-medium leading-relaxed">
-                    {currentContent.introduction}
-                  </p>
-                </div>
-
-                {approvedTopicImage && (
-                  <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border/40 bg-muted/20">
-                    <img
-                      src={approvedTopicImage.src}
-                      alt={approvedTopicImage.description}
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
-                    />
-                    <p className="px-3 py-2 text-xs leading-relaxed text-muted-foreground">
-                      {approvedTopicImage.author} · {approvedTopicImage.license} ·{" "}
-                      <a href={approvedTopicImage.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
-                        Original photograph and licence
-                      </a>
-                    </p>
-                  </div>
-                )}
-
-                <StructuredLessonText text={currentContent.content} />
-
-                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-2">
-                    <h3 className="font-semibold text-foreground mb-3">Highlights</h3>
-                    {currentContent.bulletPoints.map((point, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <span className="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0" />
-                        <span className="text-sm text-foreground">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {currentContent.formula && (
-                  <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
-                    <h3 className="font-semibold text-foreground mb-2">
-                      {currentContent.formula.name}
-                    </h3>
-                    <div className="bg-background rounded-lg p-3 font-mono text-lg text-center text-red-600 dark:text-red-400 mb-2">
-                      {currentContent.formula.expression}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {currentContent.formula.description}
-                    </p>
-                  </div>
-                )}
-
-                {currentContent.examples && currentContent.examples.length > 0 && (
-                  <div className="bg-muted/50 rounded-xl p-4 space-y-3">
-                    <h3 className="font-semibold text-foreground mb-2">Numerical Example</h3>
-                    {currentContent.examples.map((example, index) => (
-                      <div key={index} className="text-sm text-foreground">
-                        <p className="font-medium">Question: {example.problem}</p>
-                        <p className="text-muted-foreground mt-1">Solution: {example.solution}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
-                  <div className="bg-red-500/5 rounded-xl p-4">
-                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-red-500" />
-                      Key Information
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.keyPoints.map((point, index) => (
-                        <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-red-600 dark:text-red-400 font-bold shrink-0 whitespace-nowrap tabular-nums">{`${index + 1}.`}</span>
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {currentContent.warnings && currentContent.warnings.length > 0 && (
-                  <div className="bg-destructive/10 rounded-xl p-4 border border-destructive/20">
-                    <h3 className="font-semibold text-destructive mb-3 flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5" />
-                      Warnings
-                    </h3>
-                    <div className="space-y-2">
-                      {currentContent.warnings.map((warning, index) => (
-                        <div key={index} className="flex items-start gap-2 text-sm text-foreground">
-                          <span className="text-destructive font-bold">!</span>
-                          <span>{warning}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <LegacyTopicBook key={selectedTopic} topic={currentContent}
+        storageKey={`mariners-book:reference:SafetyTopicsPage:${selectedTopic}`}
+        extras={[
+    ...(approvedTopicImage ? [{
+      id: "reference-image", title: approvedTopicImage.description || "Verified technical image",
+      content: <figure className="space-y-3"><img src={approvedTopicImage.src} alt={approvedTopicImage.description} className="mx-auto w-full max-h-[65dvh] object-contain" loading="lazy" />
+        <figcaption className="text-xs text-muted-foreground">{approvedTopicImage.author} · {approvedTopicImage.license} · <a className="underline" href={approvedTopicImage.sourceUrl} target="_blank" rel="noopener noreferrer">Original source and licence</a></figcaption></figure>,
+    }] : [])
+  ]} />
+    </div>
           </motion.div>
         )}
       </AnimatePresence>

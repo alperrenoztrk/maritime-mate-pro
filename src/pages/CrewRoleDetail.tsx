@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Link, useParams } from "react-router-dom";
 import { crewRoleMap } from "@/data/crewHierarchy";
@@ -27,35 +28,31 @@ export default function CrewRoleDetailPage() {
     );
   }
 
-  return (
-    <div className="relative min-h-screen px-4 pb-24 py-10">
-
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-6">
-        {/* Header Card */}
-        <div className="space-y-3">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">Role Detail</p>
-              <PageHeader title={role.rank} />
-            </div>
-            <div className="flex items-center gap-2 rounded-xl bg-primary/10 px-4 py-3 text-primary">
-              <ShieldCheck className="h-5 w-5" />
-              <div className="text-sm font-semibold">
-                Reports to: <span className="text-foreground dark:text-white">{role.reportsTo}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {detail ? (
-          <DetailedContent detail={detail} />
-        ) : (
-          <BasicContent role={role} />
-        )}
-
-      </div>
-    </div>
-  );
+  const pages: ReadingPage[] = [
+    {id:"overview",title:role.rank,section:"Crew roles",content:
+      <div className="space-y-4"><p>{detail?.intro ?? role.responsibility}</p>
+        <p><strong>Reports to:</strong> {role.reportsTo}</p>
+        {detail?.coreSummary && <p className="rounded-lg border border-primary/20 bg-primary/5 p-3">{detail.coreSummary}</p>}
+      </div>},
+    ...(detail?.tasks.map((task,index)=>({
+      id:`task-${index}`,title:task.title,section:`Responsibility ${index+1}/${detail.tasks.length}`,
+      content:<p>{task.description}</p>,
+    })) ?? []),
+    ...(detail?.equipment.map((equipment,index)=>({
+      id:`equipment-${index}`,title:equipment.title,section:"Equipment and checks",
+      content:<ol className="list-decimal space-y-3 pl-5">{equipment.checkpoints.map((item,i)=><li key={i}>{item}</li>)}</ol>,
+    })) ?? []),
+    ...(detail?.criticalNotes?.length ? [{
+      id:"critical-notes",title:"Critical operational notes",section:"Safety",
+      content:<ul className="list-disc space-y-3 pl-5">{detail.criticalNotes.map((note,i)=><li key={i}>{note}</li>)}</ul>,
+    }] : []),
+    {id:"routine-duties",title:"Responsibilities in every situation",section:"Duties",
+      content:<ul className="list-disc space-y-3 pl-5">{role.alwaysDuties.map((v,i)=><li key={i}>{v}</li>)}</ul>},
+    {id:"general-duties",title:"General duties",section:"Duties",
+      content:<ul className="list-disc space-y-3 pl-5">{role.generalTasks.map((v,i)=><li key={i}>{v}</li>)}</ul>},
+  ];
+  return <PagedReadingSurface key={roleSlug} title={role.rank} subtitle="Maritime personnel"
+    pages={pages} storageKey={`mariners-book:crew-role:${roleSlug}`} />;
 }
 
 /* ─── Detailed Content (new rich format) ─── */

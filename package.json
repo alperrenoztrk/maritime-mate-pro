@@ -73,7 +73,7 @@
     "test:navigation-ui": "node --import tsx --test src/lib/appNavigation.test.ts",
     "check:ocean-ui": "node scripts/check-ocean-ui.mjs",
     "test:verified-operational": "node --import tsx --test src/lib/verifiedOperationalMath.test.ts",
-    "test:reader-pagination": "node --import tsx --test src/lib/regulationReadingPlan.test.ts",
+    "test:reader-pagination": "node --import tsx --test src/lib/regulationReadingPlan.test.ts src/lib/legacyReadingText.test.ts && node scripts/check-lesson-reader-coverage.mjs",
     "test:professional-calculators": "node --import tsx --test src/lib/professionalCalculatorCore.test.ts src/lib/professionalCpa.test.ts",
     "test:tools": "node --import tsx --test src/lib/toolCalculations.test.ts src/lib/maritimeUnits.test.ts && node scripts/check-tools-directory.mjs",
     "test:seakeeping": "node --import tsx --test src/lib/seakeeping.test.ts src/lib/oceanSimulation.test.ts",

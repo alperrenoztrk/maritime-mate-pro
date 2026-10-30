@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useParams } from "react-router-dom";
@@ -195,47 +196,16 @@ export default function StabilityFormulaDetailPage() {
   const { id } = useParams<{ id: string }>();
   const detail = (id && details[id]) || null;
 
-  return (
-    <MobileLayout>
-      <div className="space-y-4">
-        <div className="text-sm text-muted-foreground flex items-center gap-2">
-          <BookOpen className="h-4 w-4" />
-          Stability Formulas
-        </div>
-
-        {!detail ? (
-          <Card className="shadow">
-            <CardHeader>
-              <CardTitle>Page not found</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-sm">Invalid section identifier.</div>
-            </CardContent>
-          </Card>
-        ) : (
-          <Card className="shadow">
-            <CardHeader>
-              <div className="text-xs text-primary">{detail.group}</div>
-              <CardTitle className="scroll-mt-24">{detail.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm">
-              <div className="bg-muted/30 rounded p-3 overflow-x-auto">
-                <pre className="font-mono text-sm leading-6 whitespace-pre-wrap break-words">{detail.content}</pre>
-              </div>
-
-              {detail.image && (
-                <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40 bg-white">
-                  <LessonImage
-                    src={detail.image}
-                    alt={detail.imageAlt ?? detail.title}
-                    className="mx-auto h-auto w-full object-contain"
-                  />
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        )}
-      </div>
-    </MobileLayout>
-  );
+  if(!detail) return <MobileLayout><p className="p-6 text-sm text-muted-foreground">Formula not found.</p></MobileLayout>;
+  const pages: ReadingPage[] = [
+    {id:"formula",title:detail.title,section:detail.group,content:
+      <pre className="whitespace-pre-wrap break-words rounded-xl bg-muted/40 p-4 font-mono text-sm leading-relaxed">{detail.content}</pre>},
+    ...(detail.image ? [{
+      id:"diagram",title:"Technical diagram",section:detail.group,
+      content:<LessonImage src={detail.image} alt={detail.imageAlt ?? detail.title}
+        className="mx-auto h-auto w-full max-w-2xl object-contain"/>,
+    }] : []),
+  ];
+  return <MobileLayout><PagedReadingSurface key={id} title={detail.title} subtitle={detail.group}
+    pages={pages} storageKey={`mariners-book:stability-formula:${id}`} /></MobileLayout>;
 }
