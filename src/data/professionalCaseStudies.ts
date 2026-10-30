@@ -3840,5 +3840,185 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
       }
     ]
+  },
+  "machine-electrical-elektrik-dagitim-sistemi-topraklama-sistemleri-izole-notr-4": {
+    "id": "machine-electrical-elektrik-dagitim-sistemi-topraklama-sistemleri-izole-notr-4-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "An insulated-neutral ship distribution system may remain in operation after a first earth fault while giving an insulation warning. A second fault on another phase can create dangerous fault current; the actual arrangement and protection must be identified from drawings.\n\nCommon error: Never intentionally introduce a second ground connection to locate a live fault.",
+    "example": {
+      "problem": "A 440 V insulated-neutral switchboard shows a persistent first-earth-fault warning but the motor remains operational.",
+      "steps": [
+        "Determine the real system configuration and the faulty circuit via approved monitoring and switching plans.",
+        "Prioritise safe localisation while maintaining essential consumers and avoiding unapproved simultaneous isolation.",
+        "Repair the earth-fault cause and test insulation and protection before restoring the final configuration."
+      ],
+      "result": "Continued operation after a first earth fault is not equivalent to a safe fault-free electrical system."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-koruma-sistemleri-asiri-akim-koruma-devre-kesici-1": {
+    "id": "machine-electrical-koruma-sistemleri-asiri-akim-koruma-devre-kesici-1-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Overcurrent protection must distinguish overload, short circuit and inrush, with protection selectivity coordinated across upstream/downstream breakers. Trip curves and interrupting ratings are equipment-specific.\n\nCommon error: Never raise a breaker setting blindly to suppress trips without evaluating conductor and fault protection.",
+    "example": {
+      "problem": "A small auxiliary load faults and trips the main switchboard feeder instead of its local branch breaker.",
+      "steps": [
+        "Retrieve breaker ratings, time-current curves and short-circuit levels from the approved discrimination study.",
+        "Inspect trip records and check whether branch settings, feeder protection or actual fault current caused loss of selectivity.",
+        "Use authorised engineers for remedial settings and functional verification, preserving protective margins."
+      ],
+      "result": "A larger breaker trip can indicate coordination failure; it is not necessarily evidence that the main breaker is defective."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-koruma-sistemleri-toprak-kacagi-koruma-5": {
+    "id": "machine-electrical-koruma-sistemleri-toprak-kacagi-koruma-5-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Earth-leakage protective arrangements detect residual current or insulation failure according to the installed earthing system. Correct device selection and testing depend on supply arrangement, load and protection zones.\n\nCommon error: Never bypass residual-current protection merely because the tool still seems to run.",
+    "example": {
+      "problem": "An RCD protecting a workshop outlet trips whenever a portable tool is plugged in.",
+      "steps": [
+        "Isolate the tool and inspect cable condition, environment and any visible insulation damage before use.",
+        "Use authorised diagnostic testing of leakage and RCD behaviour against maker/shipboard criteria.",
+        "Correct the fault or replace the tool, and confirm protective function before restoring supply."
+      ],
+      "result": "An RCD trip can indicate a dangerous leakage path; repeated reset is not fault repair."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-motor-yol-verme-yontemleri-dol-y-vfd-2": {
+    "id": "machine-electrical-elektrik-motorlari-motor-yol-verme-yontemleri-dol-y-vfd-2-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Direct-on-line induction motor starting draws significant inrush and starting torque, while star-delta starters and VFDs change the starting electrical and mechanical behaviour. Equipment compatibility and starting load torque matter.\n\nCommon error: Do not rewire DOL motors to star-delta unless the winding connection and voltage ratings permit it.",
+    "example": {
+      "problem": "A large cooling pump frequently causes an unacceptable bus voltage dip when started DOL.",
+      "steps": [
+        "Measure start current and duration against generator loading and the ship's approved power-management capacity.",
+        "Review maker-approved alternative soft-start, star-delta or VFD options and the pump's starting torque need.",
+        "Validate protection, harmonics and thermal performance before making any authorised modification."
+      ],
+      "result": "A VFD or soft starter may reduce inrush but must be engineered for the motor and ship network."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-dc-motor-tipleri-ve-uygulamalari-3": {
+    "id": "machine-electrical-elektrik-motorlari-dc-motor-tipleri-ve-uygulamalari-3-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "DC motor speed and torque characteristics depend on excitation and drive design. A series-excited DC motor can overspeed dangerously with loss of load; separately excited units depend on field integrity.\n\nCommon error: Do not apply a standard induction-motor uncoupled test to every DC motor.",
+    "example": {
+      "problem": "A series-wound DC winch motor is being bench-tested without its rated mechanical load.",
+      "steps": [
+        "Identify series versus shunt/separately excited wiring and review the manufacturer's no-load restrictions.",
+        "Keep the motor isolated until an approved safe test arrangement with protective limits and load is available.",
+        "Perform authorised speed, current, field and interlock checks under a controlled maintenance procedure."
+      ],
+      "result": "Unloaded series-wound DC motors can reach unsafe speeds; generic 'spin it free' checks are inappropriate."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-frekans-donusturucu-vfd-kontrolu-4": {
+    "id": "machine-electrical-elektrik-motorlari-frekans-donusturucu-vfd-kontrolu-4-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "VFDs vary motor electrical frequency and voltage/current under a drive control scheme, while mechanical limits and thermal cooling remain binding. Harmonics, electromagnetic interference and shaft-bearing effects require system assessment.\n\nCommon error: Do not disable thermal protection to extend the low-speed range.",
+    "example": {
+      "problem": "A seawater pump VFD operates at reduced speed but its motor temperature rises despite low electrical current.",
+      "steps": [
+        "Check motor cooling method, low-speed operating allowance, drive parameterisation and thermistor indications.",
+        "Confirm required pump flow, process pressure and actual motor load while observing alarms.",
+        "Adjust operation only within maker-approved range and investigate cooling or instrumentation faults before continued service."
+      ],
+      "result": "Reduced motor current does not guarantee adequate self-fan cooling at very low speeds."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-motorlari-motor-koruma-ve-bakim-5": {
+    "id": "machine-electrical-elektrik-motorlari-motor-koruma-ve-bakim-5-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Motor protection must cover overload, stalled rotor, phase loss, overheating and appropriate insulation condition. A protective trip records a symptom but needs diagnostic confirmation before restart.\n\nCommon error: Never repeatedly reset a thermal trip while the shaft or compressor is seized.",
+    "example": {
+      "problem": "An auxiliary compressor motor trips on thermal overload shortly after starting.",
+      "steps": [
+        "Confirm safe process state and isolate the driven machinery if required.",
+        "Check voltage balance, winding resistance/insulation under appropriate isolated conditions, bearings and compressor starting load.",
+        "Correct fault, verify protective settings and complete controlled restart with operating-current observation."
+      ],
+      "result": "A compressor mechanical fault can cause an electrical overload without an intrinsic motor defect."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-aydinlatma-ve-aku-sistemleri-aku-tipleri-ve-sarj-sistemleri-3": {
+    "id": "machine-electrical-aydinlatma-ve-aku-sistemleri-aku-tipleri-ve-sarj-sistemleri-3-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Battery charging profiles depend on chemistry, ambient temperature, ventilation and control limits. Afloat and absorption charging must use compatible equipment; overcharge can generate heat/gas or shorten service life.\n\nCommon error: Never leave an unverified charger profile energised on an emergency battery bank.",
+    "example": {
+      "problem": "A lead-acid emergency battery bank is connected to a replacement charger set to a lithium battery voltage profile.",
+      "steps": [
+        "Check actual battery chemistry, cell count, temperature compensation and OEM charge voltages.",
+        "Isolate incompatible charge equipment under authorised electrical procedures.",
+        "Fit/restore a compatible charger and verify current, voltage, gas management and alarm functions."
+      ],
+      "result": "Different battery chemistries are not interchangeable simply because their nominal DC voltage matches."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-aydinlatma-ve-aku-sistemleri-patlama-korumali-ex-proof-ekipman-5": {
+    "id": "machine-electrical-aydinlatma-ve-aku-sistemleri-patlama-korumali-ex-proof-ekipman-5-professional-application",
+    "title": "Electrical protection and safe diagnostic case",
+    "content": "Explosion-protected equipment suitability depends on the hazardous-area classification, gas/dust group, temperature class and protection concept. Damaged glands, incorrect spares and unapproved maintenance can invalidate protection.\n\nCommon error: Never use an ordinary cable gland or uncertified fastener to repair certified hazardous-area equipment.",
+    "example": {
+      "problem": "An Ex-rated luminaire in a hazardous cargo area has a fractured cable gland after maintenance.",
+      "steps": [
+        "Check the area classification and equipment marking before treating the installation as suitable.",
+        "Prevent energisation where protection integrity is uncertain and report the defect.",
+        "Replace components with certified compatible parts using the equipment's approved repair procedure and inspection records."
+      ],
+      "result": "An Ex label does not make an installation safe after its flameproof/increased-safety integrity has been damaged."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
   }
 };
