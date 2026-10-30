@@ -2876,5 +2876,145 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
       }
     ]
+  },
+  "safety-isps-gemi-guvenligi-ve-korsanlik": {
+    "id": "safety-isps-gemi-guvenligi-ve-korsanlik-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Ship Security Assessment, approved Ship Security Plan and security levels determine authorised access and incident response. SSAS security alerts must not be confused with DSC or EPIRB distress broadcasts.\n\nCommon error: Do not publish SSAS locations, protected access credentials or ship-specific security weaknesses.",
+    "example": {
+      "problem": "A visitor tries to board outside the controlled gangway while the vessel is operating under enhanced security measures.",
+      "steps": [
+        "Prevent unsafe access without physical confrontation; alert the watch and preserve crew safety.",
+        "Escalate to the Ship Security Officer and port security contacts using restricted plan procedures.",
+        "Document the attempt factually and verify approved visitor-control measures without exposing protected information."
+      ],
+      "result": "A controlled security response protects personnel and preserves incident evidence without releasing sensitive plan details."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS safety management and ISPS Code",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "safety-violence-harassment-prevention": {
+    "id": "safety-violence-harassment-prevention-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Prevention of harassment and violence requires safe reporting, protection from retaliation and a fair, authorised investigation. Immediate safeguarding is distinct from the later determination of facts.\n\nCommon error: Never promise absolute confidentiality when necessary restricted reporting or safeguarding obligations apply.",
+    "example": {
+      "problem": "An engine-room trainee reports repeated threats by someone senior in their direct watchkeeping chain.",
+      "steps": [
+        "Assess immediate safety and ensure a safe place and appropriate watch arrangements away from immediate risk.",
+        "Provide a confidential company or designated reporting route that does not require approaching the alleged offender.",
+        "Preserve timestamps, factual messages and witnesses; escalate to the authorised investigator and monitor retaliation risks."
+      ],
+      "result": "A victim-sensitive yet procedurally fair response enables protection and evidence-based investigation."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS safety management and ISPS Code",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-uretim-sistemi-paralel-jenerator-baglama-4": {
+    "id": "machine-electrical-elektrik-uretim-sistemi-paralel-jenerator-baglama-4-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "AC synchronising requires compatible voltage, frequency, phase sequence and phase angle before a generator breaker closes on a live bus. Out-of-phase closing may cause damaging torque and currents.\n\nCommon error: Never force-close the breaker to compensate for a synchronisation fault.",
+    "example": {
+      "problem": "A standby generator has near-matching bus voltage but its frequency differs by 1.5 Hz from the running bus.",
+      "steps": [
+        "Keep the generator breaker open; check synchronising permissives and appropriate generator frequency control.",
+        "Verify voltage, phase sequence and changing phase angle using the fitted synchronising equipment and maker's limits.",
+        "Only an authorised engineer closes under approved procedure, then checks active/reactive power sharing and protection status."
+      ],
+      "result": "Matched voltage alone does not justify connecting a machine to an energised busbar."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-dagitim-sistemi-insulasyon-direnci-olcumu-ve-izleme-5": {
+    "id": "machine-electrical-elektrik-dagitim-sistemi-insulasyon-direnci-olcumu-ve-izleme-5-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Insulation monitoring detects deterioration on certain marine insulated distribution systems. An alarm may occur without immediate breaker operation, so controlled investigation and electronic equipment protection are essential.\n\nCommon error: Do not apply a megohmmeter to live electronic circuits without approved isolation.",
+    "example": {
+      "problem": "Insulation resistance trends downward on a machinery distribution panel, but all essential consumers still appear to function.",
+      "steps": [
+        "Identify the affected system, alarms and actual earthing scheme from the ship's electrical drawings.",
+        "Plan authorised sectional isolation or testing while maintaining required essential services and protecting electronics.",
+        "Repair the fault and document insulation testing performed with suitable equipment only after appropriate de-energisation."
+      ],
+      "result": "A low insulation trend demands diagnosis even when the circuit remains energised and functional."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-battery-thermal-runaway": {
+    "id": "machine-electrical-battery-thermal-runaway-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Battery thermal runaway can spread between cells while producing heat, flammable gases and toxic decomposition products. Chemistry-specific maker instructions and installed detection/suppression systems govern response.\n\nCommon error: Do not treat a battery pack as an ordinary electrical cabinet fire or assume that extinguishing flame ends the event.",
+    "example": {
+      "problem": "The ship's battery energy storage enclosure reports rapidly rising temperature and abnormal off-gas alarms.",
+      "steps": [
+        "Activate the installation-approved isolation and emergency response without entering or opening the enclosure casually.",
+        "Notify fire and engineering command and assess gas accumulation, propagation and re-ignition risk from safe positions.",
+        "Maintain exclusion, atmosphere monitoring and maker-approved post-event controls until specialists establish safe recovery."
+      ],
+      "result": "The event may remain hazardous after visible flame or alarm indications reduce."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-plc-ve-otomasyon-sistemleri-alarm-ve-izleme-sistemi-ams-3": {
+    "id": "machine-automation-plc-ve-otomasyon-sistemleri-alarm-ve-izleme-sistemi-ams-3-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Alarm Monitoring Systems observe sensor and control signals, but alarm acknowledgement is not fault rectification. A single high-level alarm may arise from real flooding, bad sensors, wiring or data transport.\n\nCommon error: Never bypass or inhibit a protective alarm solely to remove nuisance indications.",
+    "example": {
+      "problem": "A machinery bilge high-high alarm is acknowledged and clears intermittently, yet local sighting still shows rising level.",
+      "steps": [
+        "Confirm the physical level and inspect process flow from a safe location, without assuming the panel is correct.",
+        "Check pump, valves, leakage and independent alarms against the approved bilge and flooding response procedures.",
+        "Record the recurrence, investigate the measurement path and restore tested alarm protection after authorised maintenance."
+      ],
+      "result": "The abnormal water level remains a safety issue regardless of whether the screen is showing an acknowledged alarm."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-ot-cybersecurity": {
+    "id": "machine-automation-ot-cybersecurity-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Operational technology runs critical propulsion, power and cargo systems and requires controlled changes, validated firmware and secure vendor access. A legitimate-looking USB drive may introduce unsafe software.\n\nCommon error: Do not equate a vendor logo or urgent maintenance request with software trustworthiness.",
+    "example": {
+      "problem": "A technician offers an unverified USB drive to update a propulsion PLC while the plant is operating.",
+      "steps": [
+        "Do not connect the media; confirm vendor identity, update provenance and company cyber-change approval.",
+        "Review backups, maintenance windows, recovery plan and potential operational impact with authorised engineers.",
+        "Perform only a verified, approved update under controlled conditions and report suspicious access attempts."
+      ],
+      "result": "A traceable maintenance change protects critical plant continuity better than an unscheduled update."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
   }
 };
