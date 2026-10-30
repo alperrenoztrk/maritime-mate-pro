@@ -2228,5 +2228,293 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
       }
     ]
+  },
+  "stability-2-0-kaldirma-kuvveti-buoyancy-force-1": {
+    "id": "stability-2-0-kaldirma-kuvveti-buoyancy-force-1-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Buoyancy equals the weight of displaced water in equilibrium; displacement volume must be multiplied by the actual water density. Different seawater and dockwater densities give different immersed volumes for the same floating mass.\n\nCommon error: Do not use 1.000 t/m³ as a universal seawater density.",
+    "example": {
+      "problem": "A hull displaces 10,000 m³ in water of density 1.025 t/m³.",
+      "steps": [
+        "Multiply 10,000 × 1.025 to obtain 10,250 tonnes displaced mass.",
+        "Check that 10,000 m³ is the actual immersed hull volume, not gross vessel volume.",
+        "Recalculate using measured water density if a draught survey is made in brackish water."
+      ],
+      "result": "The displacement is 10,250 t under the stated conditions."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-2-1-agirlik-merkezi-g-2": {
+    "id": "stability-2-1-agirlik-merkezi-g-2-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "KG changes as a moment-weighted average when weights are added, shifted or removed. The final displacement changes with added mass, but not with movement of existing mass. Free-surface correction is considered separately.\n\nCommon error: Never divide final moments by the vessel's old displacement.",
+    "example": {
+      "problem": "Initial displacement is 8,000 t with KG 6.0 m; 200 t cargo with KG 15.0 m is loaded.",
+      "steps": [
+        "Original moment: 8,000 × 6 = 48,000 t·m.",
+        "Add 200 × 15 = 3,000 t·m, and use new displacement 8,200 t.",
+        "New KG = 51,000 / 8,200 ≈ 6.22 m; assess actual GM and GZ limits."
+      ],
+      "result": "The higher cargo raises KG by about 0.22 m in this example."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-2-5-metasentrik-nokta-ve-metasentrik-yukseklik-6": {
+    "id": "stability-2-5-metasentrik-nokta-ve-metasentrik-yukseklik-6-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Initial metacentric height GM = KM minus KG at the loading draught. Free-surface correction lowers effective GM; small-angle positive GM alone cannot certify the entire righting-arm or damage-stability behaviour.\n\nCommon error: Never deduct free-surface correction again if the loader already applied it.",
+    "example": {
+      "problem": "A condition has KM 7.60 m, KG 6.80 m and free-surface correction 0.25 m.",
+      "steps": [
+        "Uncorrected GM = 7.60 − 6.80 = 0.80 m.",
+        "Corrected GM = 0.80 − 0.25 = 0.55 m.",
+        "Check the approved GZ curve, downflooding points and any special loading limits."
+      ],
+      "result": "Corrected initial GM is 0.55 m, not an all-criteria pass."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-5-4-parametrik-yalpa-parametric-rolling-4": {
+    "id": "stability-5-4-parametrik-yalpa-parametric-rolling-4-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Parametric rolling arises from periodic stability variation as waves encounter the hull. It can grow in head or following seas, depending on ship geometry, wave encounter period, natural rolling and speed, and threatens deck cargo securing.\n\nCommon error: Do not prescribe one universal alteration that may increase another wave-motion hazard.",
+    "example": {
+      "problem": "A container vessel in nearly head seas develops rapidly increasing alternating roll amplitudes.",
+      "steps": [
+        "Evaluate actual roll trend, encounter period, sea direction and course/speed against ship-specific guidance.",
+        "Notify the Master, secure exposed operations and assess lashings and crew safety.",
+        "Apply the vessel-approved heavy weather speed/course mitigation and monitor effects continuously."
+      ],
+      "result": "Increasing roll in head seas can be a warning of parametric rolling rather than ordinary beam-sea response."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-6-1-gz-egrisi-nedir-1": {
+    "id": "stability-6-1-gz-egrisi-nedir-1-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "The GZ curve describes righting lever versus heel for a specific loading condition. Its peak, positive range, integral and downflooding limits each convey different stability information; identical GM does not imply identical reserve stability.\n\nCommon error: Do not extrapolate GZ = GM × sin(heel) across all heel angles.",
+    "example": {
+      "problem": "Two cargo conditions have equal initial GM but different downflooding angles and curve maxima.",
+      "steps": [
+        "Compare complete righting-arm curves over the relevant heel interval.",
+        "Read peak GZ, location of peak, range of positive stability and first downflooding angle.",
+        "Evaluate required GZ areas and angle criteria for the actual ship and stability booklet."
+      ],
+      "result": "Equal initial GM cannot establish equivalent large-angle or reserve stability."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-6-3-dinamik-stabilite-ve-enerji-yaklasimi-3": {
+    "id": "stability-6-3-dinamik-stabilite-ve-enerji-yaklasimi-3-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "The integral of GZ over heel angle represents the quasi-static dynamic-stability area, expressed in m·rad. Displacement weight times this integral approximates work against heel; it is not a prediction of ship motions in random seas.\n\nCommon error: Never label an integral over degrees as m·rad.",
+    "example": {
+      "problem": "An approved GZ curve has area 0.080 m·rad between zero and 30° heel; displacement is 10,000 t.",
+      "steps": [
+        "Confirm the angle integration uses radians, not degrees.",
+        "Calculate 10,000,000 kg × 9.81 m/s² × 0.080 m ≈ 7.85 MJ.",
+        "Evaluate the applicable area criteria and downflooding restrictions in the approved stability record."
+      ],
+      "result": "The 7.85 MJ result is a quasi-static illustration, not a universal capsize energy threshold."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-7-4-tank-geometrisinin-etkisi-4": {
+    "id": "stability-7-4-tank-geometrisinin-etkisi-4-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "In an ideal rectangular slack tank, transverse free-surface moment scales with length times breadth cubed; actual tank shape, fill, baffles and liquid density modify the approved tabulated moment. Volume alone is insufficient.\n\nCommon error: Do not assign identical FSM to equal-volume tanks with different breadth.",
+    "example": {
+      "problem": "Two equal-length rectangular tanks of width 4 m and 8 m contain slack liquid of the same density.",
+      "steps": [
+        "Hold density and tank length constant in the simplified comparison.",
+        "Free-surface scaling ratio = (8 / 4)³ = 8.",
+        "Replace this estimate with approved tank-specific FSM tables for operational stability."
+      ],
+      "result": "Doubling tank breadth raises idealised free-surface moment eightfold."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-8-5-yukleme-planlamasi-ve-trim-optimizasyonu-5": {
+    "id": "stability-8-5-yukleme-planlamasi-ve-trim-optimizasyonu-5-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Longitudinal weight movement creates a trimming moment and changes trim, with the response governed by hydrostatic MCT 1 cm and LCF. A simple estimate does not provide the individual forward and aft draught changes.\n\nCommon error: Never ignore LCF position, free surface or strength criteria.",
+    "example": {
+      "problem": "MCT 1 cm is 180 t·m/cm at the current draught; 90 t is moved 20 m forward.",
+      "steps": [
+        "Compute trimming moment 90 × 20 = 1,800 t·m forward.",
+        "Estimate trim change magnitude 1,800 / 180 = 10 cm toward the added forward moment.",
+        "Use LCF and approved loader hydrostatics to assess both end draughts and longitudinal strength."
+      ],
+      "result": "Approximately 10 cm overall trim change, not 10 cm at the bow alone."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-9-5-progressive-flooding-ardisik-su-basmasi-5": {
+    "id": "stability-9-5-progressive-flooding-ardisik-su-basmasi-5-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Progressive flooding develops when initial water ingress spreads through additional boundaries such as ducts, penetrations, doors and vents. Initial dry soundings do not rule out later loss of residual stability.\n\nCommon error: Do not assume subdivision integrity from one early sounding.",
+    "example": {
+      "problem": "A collision floods a void space, while a neighbouring space is dry but has a compromised access-door seal.",
+      "steps": [
+        "Account for people and preserve watertight boundaries without opening a pressurised door.",
+        "Trace all connected spaces, vents and penetrations using the damage control plan.",
+        "Monitor sequential soundings, heel and trim and run the approved damage-stability assessment."
+      ],
+      "result": "A neighbouring space may flood later even if initially dry."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-10-1-imo-intact-stability-code-2008-is-code-1": {
+    "id": "stability-10-1-imo-intact-stability-code-2008-is-code-1-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "The 2008 IS Code combines mandatory and recommended criteria, with ship-specific limitations and approved information. Positive initial GM is only one component of the intact stability assessment; the complete righting-arm curve matters.\n\nCommon error: Do not mistake a generic training calculator for a certified shipboard loading system.",
+    "example": {
+      "problem": "A training spreadsheet reports 'pass' because GM exceeds a single chosen threshold.",
+      "steps": [
+        "Confirm the ship's actual approved booklet and governing criteria.",
+        "Review GZ areas, peak and angle, downflooding points, operational and weather limits as appropriate.",
+        "Recalculate the final load case using the ship-approved stability instrument before authorising departure."
+      ],
+      "result": "One green GM cell cannot demonstrate all IMO intact-stability criteria."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-9-4-hasar-kontrol-ve-mudahale-4": {
+    "id": "stability-9-4-hasar-kontrol-ve-mudahale-4-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Damage control requires monitored ingress rates, boundary integrity and stability throughout the response. Pump operation, intentional transfers and counterflooding can affect free-surface and longitudinal stability in unexpected ways.\n\nCommon error: Never open cross-connections or counterflood without assessing the ship's residual stability.",
+    "example": {
+      "problem": "A damaged compartment continues flooding and list increases despite a bilge pump running.",
+      "steps": [
+        "Account for personnel, identify damaged boundaries and avoid unassessed access.",
+        "Take repeated soundings; compare ingress and pump performance, heel and trim trends.",
+        "Escalate to the Master and damage-control team for approved modelling and pumping decisions."
+      ],
+      "result": "A pump running is not evidence that flooding has been controlled."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "pre-departure-checklist": {
+    "id": "pre-departure-checklist-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "A final departure stability check must use actual cargo, fuel, water, ballast, free-surface states and shipboard draughts. A previously approved loadcase can become invalid after any substantial late shift of a high or longitudinally displaced weight.\n\nCommon error: Never take a stale loading-condition report as the departure calculation.",
+    "example": {
+      "problem": "The loading instrument shows approved but a 150 t deck load was moved after the condition was saved.",
+      "steps": [
+        "Correct the cargo centre of gravity and longitudinal position, ballast and tank states in the loading instrument.",
+        "Verify final GM/GZ compliance, trim/draught, shear and bending limits using the approved book and instrument.",
+        "Record the validated final condition and inform the Master before unmooring."
+      ],
+      "result": "A saved green status is not proof that the actual final condition remains approved."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
   }
 };
