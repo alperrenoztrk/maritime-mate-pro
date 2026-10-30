@@ -2335,5 +2335,29 @@
  },
  "USCG NAVCEN — EPIRB fundamentals: https://navcen.uscg.gov/emergency-position-indicating-radiobeacon": {
   "en": "USCG NAVCEN — EPIRB fundamentals: https://navcen.uscg.gov/emergency-position-indicating-radiobeacon"
+ },
+ "A 406 MHz EPIRB alerts Cospas-Sarsat through the satellite/ground network; 121.5 MHz aids local homing. A 9 GHz radar-SART responds to X-band radar, while AIS-SART or AIS-equipped EPIRBs may appear on suitable AIS displays.": {
+  "en": "A 406 MHz EPIRB alerts Cospas-Sarsat through the satellite/ground network; 121.5 MHz aids local homing. A 9 GHz radar-SART responds to X-band radar, while AIS-SART or AIS-equipped EPIRBs may appear on suitable AIS displays."
+ },
+ "Common error: Do not assume 'once on demurrage, always on demurrage' resolves every negotiated exception.": {
+  "en": "Common error: Do not assume 'once on demurrage, always on demurrage' resolves every negotiated exception."
+ },
+ "Common error: Never use a live distress alert or a radar-SART response as an unplanned test.": {
+  "en": "Common error: Never use a live distress alert or a radar-SART response as an unplanned test."
+ },
+ "A standard EPIRB does not produce radar-SART twelve-dot trails.": {
+  "en": "A standard EPIRB does not produce radar-SART twelve-dot trails."
+ },
+ "Continue monitoring CPA and the other vessel; do not stop assessing once the initial alteration is made.": {
+  "en": "Continue monitoring CPA and the other vessel; do not stop assessing once the initial alteration is made."
+ },
+ "During an abandon-ship drill, the SART is located but nobody can explain its deployment and activation.": {
+  "en": "During an abandon-ship drill, the SART is located but nobody can explain its deployment and activation."
+ },
+ "Explain the radar-SART's characteristic response to a compatible X-band interrogating radar.": {
+  "en": "Explain the radar-SART's characteristic response to a compatible X-band interrogating radar."
+ },
+ "Investigate water treatment, level sensing and causes only once the boiler is safe and appropriately isolated.": {
+  "en": "Investigate water treatment, level sensing and causes only once the boiler is safe and appropriately isolated."
  }
 }
