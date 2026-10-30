@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useHideAppChrome } from "@/hooks/useAppChromeVisibility";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Compass, RotateCcw } from "lucide-react";
 import { getCurriculumCourse } from "@/data/curriculumHierarchy";
@@ -13,7 +12,6 @@ export function LearningAssessment({ storageKey, onExplore }: { storageKey: stri
   const [state, setState] = useState<AssessmentState>(() => {
     try { return parseAssessment(localStorage.getItem(storageKey)); } catch { return emptyAssessment(); }
   });
-  useHideAppChrome(!state.completed);
   const [saveFailed, setSaveFailed] = useState(false);
   const title = useRef<HTMLHeadingElement>(null);
   const hasNavigated = useRef(false);
