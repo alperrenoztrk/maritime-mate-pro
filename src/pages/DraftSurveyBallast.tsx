@@ -1,104 +1,49 @@
-import { useState } from "react";
 import { Droplets } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { LibraryPageShell } from "@/components/library/LibraryInterface";
-import { estimateDisplacementChange, type DraftReadings } from "@/lib/toolCalculations";
+import { ProfessionalCalculator, type ProfessionalGroup } from "@/components/calculations/ProfessionalCalculator";
+import { estimateDisplacementChange } from "@/lib/toolCalculations";
 
-type DraftField = keyof DraftReadings;
-const DRAFT_FIELDS: { key: DraftField; label: string }[] = [
-  { key: "forward", label: "Forward" },
-  { key: "midship", label: "Midship" },
-  { key: "aft", label: "Aft" },
+const GROUPS: ProfessionalGroup[] = [
+  { title: "Vessel Hydrostatic Data", fields: [
+    { key: "tpc", label: "Tonnes per centimetre immersion", unit: "t/cm", min: 0.000001, placeholder: "20",
+      help: "Use an appropriate TPC for the vessel's drafts and water density." },
+  ] },
+  { title: "Before Drafts", fields: [
+    { key: "beforeForward", label: "Forward draft", unit: "m", min: 0, placeholder: "5.0" },
+    { key: "beforeMidship", label: "Midship draft", unit: "m", min: 0, placeholder: "5.0" },
+    { key: "beforeAft", label: "Aft draft", unit: "m", min: 0, placeholder: "5.0" },
+  ] },
+  { title: "After Drafts", fields: [
+    { key: "afterForward", label: "Forward draft", unit: "m", min: 0, placeholder: "5.1" },
+    { key: "afterMidship", label: "Midship draft", unit: "m", min: 0, placeholder: "5.1" },
+    { key: "afterAft", label: "Aft draft", unit: "m", min: 0, placeholder: "5.1" },
+  ] },
 ];
-type Fields = Record<DraftField, string>;
-const emptyDrafts = (): Fields => ({ forward: "", midship: "", aft: "" });
 
 export default function DraftSurveyBallast() {
-  const [before, setBefore] = useState<Fields>(emptyDrafts);
-  const [after, setAfter] = useState<Fields>(emptyDrafts);
-  const [tpc, setTpc] = useState("");
-  const [result, setResult] = useState<ReturnType<typeof estimateDisplacementChange> | null>(null);
-  const [error, setError] = useState("");
-  const invalidate = () => { setResult(null); setError(""); };
-  const calculate = () => {
-    if (![...Object.values(before), ...Object.values(after), tpc].every((value) => value.trim())) {
-      setError("Complete all six drafts and TPC.");
-      setResult(null);
-      return;
-    }
-    const parseDrafts = (fields: Fields): DraftReadings => ({
-      forward: Number(fields.forward), midship: Number(fields.midship), aft: Number(fields.aft),
-    });
-    try {
-      setResult(estimateDisplacementChange(parseDrafts(before), parseDrafts(after), Number(tpc)));
-      setError("");
-    } catch (e) {
-      setResult(null);
-      setError(e instanceof Error ? e.message : "Check the inputs.");
-    }
-  };
-  return (
-    <LibraryPageShell title="Draft Change Estimate" icon={Droplets} maxWidth="max-w-3xl">
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        Estimate a change in displacement from two sets of drafts at a constant tonnes-per-centimetre
-        (TPC) value. <strong>This does not determine ballast quantity</strong>: cargo, bunkers,
-        freshwater, stores, trim, density and other changes can affect the observed drafts.
-      </p>
-      <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
-        <CardHeader><CardTitle className="text-base">Vessel hydrostatic input</CardTitle></CardHeader>
-        <CardContent className="space-y-2">
-          <Label htmlFor="tpc">TPC from vessel hydrostatic data (t/cm)</Label>
-          <Input id="tpc" type="number" inputMode="decimal" min="0" step="any"
-            placeholder="20" value={tpc}
-            onChange={(e) => { setTpc(e.target.value); invalidate(); }} />
-        </CardContent>
-      </Card>
-      <div className="grid gap-3 sm:grid-cols-2">
-        {([
-          { id: "before", label: "Before", values: before, update: setBefore },
-          { id: "after", label: "After", values: after, update: setAfter },
-        ] as const).map((group) => (
-          <Card key={group.id} className="surface-2 rounded-2xl border-border/60 shadow-none">
-            <CardHeader><CardTitle className="text-base">{group.label} drafts (m)</CardTitle></CardHeader>
-            <CardContent className="space-y-3">
-              {DRAFT_FIELDS.map((field) => (
-                <div key={field.key} className="space-y-1.5">
-                  <Label htmlFor={`${group.id}-${field.key}`}>{field.label}</Label>
-                  <Input id={`${group.id}-${field.key}`} type="number"
-                    inputMode="decimal" step="any" min="0" placeholder="5.00"
-                    value={group.values[field.key]}
-                    onChange={(e) => {
-                      group.update((previous) => ({ ...previous, [field.key]: e.target.value }));
-                      invalidate();
-                    }} />
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <Button className="w-full" onClick={calculate}>Estimate displacement change</Button>
-      {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-      {result && (
-        <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
-          <CardHeader><CardTitle className="text-base">Approximate displacement change</CardTitle></CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <p className="text-xl font-semibold tabular-nums">
-              {result.displacementChangeTonnes > 0 ? "+" : ""}
-              {result.displacementChangeTonnes.toFixed(2)} t
-            </p>
-            <p className="text-muted-foreground">Before mean: {result.beforeMeanM.toFixed(3)} m · After mean: {result.afterMeanM.toFixed(3)} m</p>
-            <p className="text-muted-foreground">Draft difference: {result.draftChangeM.toFixed(3)} m</p>
-          </CardContent>
-        </Card>
-      )}
-      <p className="text-xs leading-relaxed text-muted-foreground">
-        Approximate mean = (forward + 4 × midship + aft) / 6; ΔDisplacement ≈ ΔDraft (cm) × TPC.
-        This simplified check does not replace vessel hydrostatic corrections or tank sounding tables.
-      </p>
-    </LibraryPageShell>
-  );
+  return <ProfessionalCalculator title="Draft Change Estimate" icon={Droplets}
+    description="Estimate an overall displacement change from draft observations. It must not be presented as the amount of ballast pumped."
+    groups={GROUPS} resultTitle="Approximate Displacement Change"
+    formula="Mean draft ≈ (Forward + 4 × Midship + Aft) / 6; ΔDisplacement ≈ ΔDraft (cm) × TPC"
+    solve={({ tpc, beforeForward, beforeMidship, beforeAft, afterForward, afterMidship, afterAft }) => {
+      const r = estimateDisplacementChange(
+        { forward: beforeForward, midship: beforeMidship, aft: beforeAft },
+        { forward: afterForward, midship: afterMidship, aft: afterAft },
+        tpc,
+      );
+      return {
+        results: [
+          { label: "Estimated displacement difference", value: `${r.displacementChangeTonnes >= 0 ? "+" : ""}${r.displacementChangeTonnes.toFixed(2)} t`, primary: true },
+          { label: "Before mean draft", value: `${r.beforeMeanM.toFixed(3)} m` },
+          { label: "After mean draft", value: `${r.afterMeanM.toFixed(3)} m` },
+          { label: "Change in mean draft", value: `${r.draftChangeM.toFixed(3)} m` },
+        ],
+        steps: [
+          `Before mean = (${beforeForward} + 4 × ${beforeMidship} + ${beforeAft}) / 6 = ${r.beforeMeanM.toFixed(3)} m.`,
+          `After mean = (${afterForward} + 4 × ${afterMidship} + ${afterAft}) / 6 = ${r.afterMeanM.toFixed(3)} m.`,
+          `Change in displacement ≈ (${r.draftChangeM.toFixed(4)} × 100) × ${tpc} = ${r.displacementChangeTonnes.toFixed(2)} t.`,
+        ],
+        notices: ["Observed displacement changes may include cargo, bunkers, stores, freshwater and ballast. This is not an independent ballast measurement."],
+      };
+    }}
+    limitations="Simplified mean draft and constant TPC. Apply approved vessel hydrostatic and trim, hog/sag, draft-mark and water-density corrections in a professional draft survey." />;
 }

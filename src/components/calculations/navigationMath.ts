@@ -20,7 +20,7 @@ export type CurrentTriangleResult = {
 };
 
 export type ARPAInput = {
-  targetBearingDeg: number; // Relative bearing of target from own ship (deg)
+  targetBearingDeg: number; // TRUE bearing from own ship (°T, clockwise from north), not bow-relative
   targetDistanceNm: number; // Range to target (nm)
   targetCourseDeg: number;  // Target course (deg)
   targetSpeedKn: number;    // Target speed (kn)

@@ -56,6 +56,7 @@ const ShipOperationDeepDive = lazyWithReload(() => import("./pages/ShipOperation
 const CalculationSectionPage = lazyWithReload(() => import("./pages/CalculationSectionPage"));
 const Navigation = lazyWithReload(() => import("./pages/Navigation"));
 const NavigationCalculationPage = lazyWithReload(() => import("./pages/NavigationCalculation"));
+const ProfessionalCpaCalculatorPage = lazyWithReload(() => import("./pages/ProfessionalCpaCalculator"));
 const TideCalculationTutorial = lazyWithReload(() => import("./pages/TideCalculationTutorial"));
 const Economics = lazyWithReload(() => import("./pages/Economics"));
 const EconomicsAssistantPage = lazyWithReload(() => import("./pages/EconomicsAssistant"));
@@ -461,6 +462,7 @@ const AnimatedRoutes = () => {
         <Route path="/machine/:topicSlug/topics/:subTopicTitle/learn" element={<PageTransition><LibraryBookRoute><GuidedLessonSession /></LibraryBookRoute></PageTransition>} />
         <Route path="/machine/:topicSlug/quiz" element={<PageTransition><ProRoute feature="The quiz section"><MachineTopicQuizPage /></ProRoute></PageTransition>} />
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
+        <Route path="/navigation/calc/cpa" element={<PageTransition><ProfessionalCpaCalculatorPage /></PageTransition>} />
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />
         <Route path="/navigation/tide-tutorial" element={<PageTransition><TideCalculationTutorial /></PageTransition>} />
         <Route path="/navigation/buoyage" element={<PageTransition><BuoyagePage /></PageTransition>} />

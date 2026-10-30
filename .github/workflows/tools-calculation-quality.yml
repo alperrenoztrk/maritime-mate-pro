@@ -11,6 +11,15 @@ on:
       - 'src/lib/maritimeUnits.ts'
       - 'src/lib/maritimeUnits.test.ts'
       - 'src/lib/toolCalculations.ts'
+      - 'src/lib/professionalCalculatorCore.ts'
+      - 'src/lib/professionalCalculatorCore.test.ts'
+      - 'src/lib/professionalCpa.ts'
+      - 'src/lib/professionalCpa.test.ts'
+      - 'src/components/calculations/ProfessionalCalculator.tsx'
+      - 'src/components/courseContent/CalculatorCard.tsx'
+      - 'src/components/courseContent/CalculationRecordPanel.tsx'
+      - 'src/pages/ProfessionalCpaCalculator.tsx'
+      - 'src/App.tsx'
       - 'src/lib/toolCalculations.test.ts'
       - 'scripts/check-tools-directory.mjs'
       - 'package.json'
@@ -31,6 +40,8 @@ jobs:
       - run: npm ci
       - name: Tools numerical and route regressions
         run: npm run test:tools
+      - name: Professional CPA and shared workspace tests
+        run: npm run test:professional-calculators
       - name: TypeScript checks
         run: npm run typecheck
       - name: Build app
