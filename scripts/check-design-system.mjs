@@ -27,7 +27,7 @@ const walk = (dir, out = []) => {
   return out;
 };
 const sourceFiles = walk(path.join(root, "src"));
-const rel = (file) => path.relative(root, file);
+const rel = (file) => path.relative(root, file).split(path.sep).join("/");
 
 // ── 1. iOS safe areas ────────────────────────────────────────────────
 // Without viewport-fit=cover, env(safe-area-inset-*) reports 0 on iOS and
