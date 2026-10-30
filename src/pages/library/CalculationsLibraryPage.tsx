@@ -15,7 +15,6 @@ import {
   Ship,
   Star,
   Thermometer,
-  Timer,
   Wrench,
   Zap,
   type LucideIcon,
@@ -51,26 +50,17 @@ const CATEGORY_META: Record<Category, { title: string; icon: LucideIcon; accent:
   converter: { title: "Formulas and Converters", icon: Zap, accent: "accent-deep" },
 };
 
-const QUICK_TOOLS: CalcTool[] = [
-  { id: "draft", title: "Draft Calculation", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
-  { id: "trim", title: "Stability / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
-  { id: "fuel", title: "Fuel Consumption", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
-  { id: "voyage", title: "Voyage Duration", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
-  { id: "cargo", title: "Load Distribution", icon: Layers, to: "/cargo/calculations", category: "stability" },
-  { id: "converter", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
-];
-
 const TOOLS: CalcTool[] = [
   { id: "draft-survey", title: "Draft survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "stability" },
   { id: "preloading", title: "Preload", icon: Ship, to: "/cargo/calculations/preloading", category: "stability" },
   { id: "ballast", title: "Ballast Calculation", icon: Droplets, to: "/cargo/calculations/ballast", category: "stability" },
   { id: "density", title: "Density Correction", icon: Thermometer, to: "/cargo/calculations/density", category: "stability" },
   { id: "bunker", title: "Bunker Survey", icon: Gauge, to: "/cargo/calculations/bunker", category: "stability" },
+  { id: "cargo", title: "Load Distribution", icon: Layers, to: "/cargo/calculations", category: "stability" },
   { id: "stability-calc", title: "Stability Calculations", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "tank", title: "Tank Calculation", icon: Anchor, to: "/tank", category: "stability" },
   { id: "imo-criteria", title: "IMO Criteria", icon: LifeBuoy, to: "/stability/imo-criteria", category: "stability" },
   { id: "nav-calc", title: "Navigation Calculations", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
-  { id: "passage", title: "Passage Plan", icon: Compass, to: "/passage-plan", category: "navigation" },
   { id: "tides", title: "Tidal Calculation", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },
   { id: "seamanship-calc", title: "Seamanship Calculations", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
   { id: "diesel-engines", title: "Diesel Engines", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
@@ -89,15 +79,32 @@ const TOOLS: CalcTool[] = [
   { id: "cargo-formulas", title: "Draft Survey Standards", icon: Ruler, to: "/cargo/formulas", category: "converter" },
 ];
 
-const ALL_TOOLS = [...QUICK_TOOLS, ...TOOLS].filter(
-  (tool, index, tools) => tools.findIndex((candidate) => candidate.id === tool.id) === index,
+// Each page gets one card: a second entry for the same route is dropped.
+const ALL_TOOLS = TOOLS.filter(
+  (tool, index, tools) => tools.findIndex((candidate) => candidate.to === tool.to) === index,
 );
+const toolById = (id: string) => ALL_TOOLS.find((tool) => tool.id === id);
+
+// The quick row picks existing tools instead of declaring second cards for the same pages.
+const QUICK_TOOLS = ["draft-survey", "stability-calc", "fuel-technology", "nav-calc", "cargo", "unit-conv"]
+  .map(toolById)
+  .filter((tool): tool is CalcTool => Boolean(tool));
+
+// Ids of the removed quick-row duplicates that may still sit in saved recents/favorites.
+const LEGACY_TOOL_IDS: Record<string, string> = {
+  draft: "draft-survey",
+  trim: "stability-calc",
+  fuel: "fuel-technology",
+  voyage: "nav-calc",
+  converter: "unit-conv",
+};
 const RECENT_STORAGE_KEY = "marine-expert-recent-calcs";
 const FAVORITES_STORAGE_KEY = "marine-expert-fav-calcs";
 
 const readStoredList = (key: string) => {
   try {
-    return JSON.parse(localStorage.getItem(key) || "[]") as string[];
+    const ids = (JSON.parse(localStorage.getItem(key) || "[]") as string[]).map((id) => LEGACY_TOOL_IDS[id] ?? id);
+    return [...new Set(ids)];
   } catch {
     return [];
   }
@@ -180,10 +187,10 @@ export default function CalculationsLibraryPage() {
   }, [activeCategory, normalizedQuery]);
 
   const favoriteTools = favorites
-    .map((id) => ALL_TOOLS.find((tool) => tool.id === id))
+    .map(toolById)
     .filter((tool): tool is CalcTool => Boolean(tool));
   const recentTools = recents
-    .map((id) => ALL_TOOLS.find((tool) => tool.id === id))
+    .map(toolById)
     .filter((tool): tool is CalcTool => Boolean(tool))
     .slice(0, 4);
 

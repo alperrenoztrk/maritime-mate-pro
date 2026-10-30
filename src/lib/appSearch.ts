@@ -16,7 +16,6 @@ const startsWithAny = (path: string, roots: string[]) =>
 const TOOL_DESTINATIONS = new Set([
   "/navigation",
   "/navigation/tide-tutorial",
-  "/passage-plan",
   "/safety",
   "/engine",
   "/emissions",

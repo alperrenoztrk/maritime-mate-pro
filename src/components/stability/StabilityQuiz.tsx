@@ -124,13 +124,13 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                       <div className="text-sm text-muted-foreground mt-1">
                         Your answer: {question.options[userAnswer]} 
                         {!isCorrect && (
-                          <span className="text-green-600 block">
+                          <span className="text-green-700 dark:text-green-400 block">
                             Correct answer: {question.options[question.correctAnswer]}
                           </span>
                         )}
                       </div>
                       {!isCorrect && (
-                        <div className="text-sm text-blue-600 mt-2 p-2 bg-blue-50 rounded">
+                        <div className="text-sm text-info-muted-foreground mt-2 p-2 bg-info-muted rounded">
                           <strong>Description:</strong> {question.explanation}
                         </div>
                       )}
@@ -176,9 +176,9 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
         <Progress value={progress} className="w-full" />
         
         {/* Info banner about manual navigation */}
-        <div className="flex items-center gap-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-          <Info className="h-4 w-4 text-blue-600" />
-          <span className="text-sm text-blue-800">
+        <div className="flex items-center gap-2 p-3 bg-info-muted border border-info/30 rounded-lg">
+          <Info className="h-4 w-4 text-info" />
+          <span className="text-sm text-info-muted-foreground">
             There is no auto-pass in the quiz. You can progress at your own pace using the previous and next buttons.
           </span>
         </div>
@@ -205,8 +205,8 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
                   "w-full text-left p-4 rounded-lg border-2 transition-[background-color,color,border-color,box-shadow,opacity,transform,width]",
                   "hover:bg-muted/50 disabled:cursor-not-allowed",
                   isSelected && !showResults && "border-primary bg-primary/10",
-                  shouldHighlightCorrect && "border-green-500 bg-green-50 text-green-800",
-                  isIncorrect && "border-red-500 bg-red-50 text-red-800",
+                  shouldHighlightCorrect && "border-green-500 bg-green-500/10 text-green-800 dark:text-green-300",
+                  isIncorrect && "border-red-500 bg-red-500/10 text-red-800 dark:text-red-300",
                   !isSelected && !showResults && "border-border"
                 )}
               >
@@ -234,9 +234,9 @@ export const StabilityQuiz: React.FC<QuizProps> = ({ questions, onComplete }) =>
         </div>
         
         {showResults && (
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <div className="font-medium text-blue-800 mb-2">Description:</div>
-            <div className="text-blue-700 text-sm leading-relaxed">
+          <div className="p-4 bg-info-muted rounded-lg border border-info/30">
+            <div className="font-medium text-info-muted-foreground mb-2">Description:</div>
+            <div className="text-info-muted-foreground text-sm leading-relaxed">
               {currentQuestion.explanation}
             </div>
           </div>

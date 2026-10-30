@@ -40602,5 +40602,359 @@
   },
   "Gerçek EPIRB fotoğrafı — Marwan Mohamad, CC BY-SA 4.0 (Wikimedia Commons: File:EPIRB (2).jpg). Bu fotoğraf sinyal güzergâhını veya cihazın HRU iç yapısını göstermez.": {
     "en": "Actual EPIRB photograph — Marwan Mohamad, CC BY-SA 4.0 (Wikimedia Commons: File:EPIRB (2).jpg). This photograph does not show the signal path or the internal structure of the device's HRU."
+  },
+  "VHF telsiz 156–174 MHz deniz bandında çalışır. Sinyal görüş hattında yayıldığı için menzil anten yüksekliğine bağlıdır ve gemiden gemiye menzil, yüksek antenli kıyı istasyonlarına göre daha kısadır. Simpleks kanallarda aynı anda yalnız bir istasyon konuşabilir; bu nedenle kısa, standart (SMCP) ifadeler ve kanal disiplini esastır.": {
+    "en": "The VHF radio works in the 156–174 MHz maritime band. The signal travels by line of sight, so the range depends on antenna height, and the ship-to-ship range is shorter than the range to coast stations with high antennas. On simplex channels only one station can talk at a time, so short standard phrases (SMCP) and channel discipline are essential."
+  },
+  "VHF, köprüüstünün dış dünyayla en hızlı bağlantısıdır: çatışma riskinde karşı gemiyle, yanaşmada pilot ve VTS ile, tehlikede kıyı istasyonu ve yakındaki gemilerle ilk temas çoğunlukla bu cihazla kurulur. Yanlış kanal ya da belirsiz bir mesaj, doğru bir kararı geciktirebilir.": {
+    "en": "VHF is the bridge's fastest link with the outside world: with the other ship when there is a risk of collision, with the pilot and VTS during berthing, and with the coast station and nearby ships in distress, first contact is usually made on this set. A wrong channel or a vague message can delay a correct decision."
+  },
+  "SOLAS IV: DSC'li VHF telsiz tesisi (CH70 DSC dinlemesi ve CH16 ses) tüm deniz alanlarında taşınır": {
+    "en": "SOLAS IV: a VHF radio installation with DSC (DSC watch on Ch 70 and voice on Ch 16) is carried in all sea areas"
+  },
+  "SOLAS III/6: 500 GT ve üstü gemilerde en az 3, 300–500 GT arası gemilerde en az 2 adet GMDSS el telsizi (two-way VHF) bulunur": {
+    "en": "SOLAS III/6: at least 3 GMDSS two-way VHF radiotelephones on ships of 500 GT and above, and at least 2 on ships of 300–500 GT"
+  },
+  "Telsiz trafiği ve testler GMDSS telsiz jurnaline kaydedilir": {
+    "en": "Radio traffic and tests are entered in the GMDSS radio log"
+  },
+  "CH16'yı uzun konuşmalar için kullanmak; ilk temastan sonra çalışma kanalına geçmemek": {
+    "en": "Using Ch 16 for long conversations and not moving to a working channel after first contact"
+  },
+  "Gemi adını, konumu ve niyeti net vermemek; 'kırmızı gemi' gibi belirsiz tariflerle COLREG manevrası kararlaştırmak": {
+    "en": "Not giving the ship's name, position and intention clearly; agreeing COLREG manoeuvres by vague descriptions such as 'the red ship'"
+  },
+  "Squelch'i çok yüksek tutup zayıf çağrıları kaçırmak": {
+    "en": "Setting the squelch too high and missing weak calls"
+  },
+  "DSC, sesli haberleşmeden önce dijital bir çağrı gönderir: VHF'te CH70, MF'te 2187,5 kHz kullanılır. Çağrı; gönderen MMSI, öncelik (distress, urgency, safety, routine), konum ve zaman bilgisi ile sonraki sesli trafiğin yapılacağı kanalı taşır. Distress alarmı, onay (acknowledgement) alınana kadar cihaz tarafından otomatik olarak tekrarlanır.": {
+    "en": "DSC sends a digital call before voice communication: Ch 70 on VHF and 2187.5 kHz on MF. The call carries the sender's MMSI, the priority (distress, urgency, safety, routine), the position and time, and the channel for the voice traffic that follows. A distress alert is repeated automatically by the set until it is acknowledged."
+  },
+  "DSC sayesinde tek bir tuşla, konum ve tehlikenin türüyle birlikte alarm menzildeki tüm kıyı istasyonlarına ve gemilere ulaşır. Operatör panikte olsa bile kritik bilgiler otomatik gider; yanlış girilmiş MMSI veya eski konum ise kurtarmayı yanlış yere yönlendirir.": {
+    "en": "With DSC, a single button sends an alert with the position and the nature of distress to every coast station and ship within range. The critical information goes out automatically even if the operator is under stress; a wrongly entered MMSI or an old position sends the rescue to the wrong place."
+  },
+  "SOLAS IV: VHF-DSC tüm deniz alanlarında zorunludur; A1 dışına çıkan gemiler ek olarak en az MF-DSC kapasitesi taşır": {
+    "en": "SOLAS IV: VHF DSC is required in all sea areas; ships going beyond Sea Area A1 also carry at least MF DSC capability"
+  },
+  "Bayrak devletinin verdiği 9 haneli MMSI cihaza doğru girilmiş olmalıdır": {
+    "en": "The 9-digit MMSI assigned by the flag State must be entered correctly in the set"
+  },
+  "DSC fonksiyonları gerçek alarm gönderilmeden, cihazın test menüsüyle veya kıyı istasyonuna test çağrısıyla denenir": {
+    "en": "DSC functions are tested without sending a real alert, using the set's test menu or a test call to a coast station"
+  },
+  "Yanlışlıkla gönderilen distress alarmını iptal etmemek: cihaz kapatılmaz, alarm durdurulur ve CH16'da 'All stations' anonsuyla iptal edildiği bildirilir": {
+    "en": "Not cancelling a distress alert sent by mistake: the set is not switched off; the alert is stopped and its cancellation is announced on Ch 16 to 'All stations'"
+  },
+  "Konum GNSS'ten gelmediğinde eski konumla alarm göndermek": {
+    "en": "Sending an alert with an old position when the position is not coming from the GNSS"
+  },
+  "Alınan distress alarmını DSC ile onaylamak; gemiler normalde onayı kıyı istasyonuna bırakır ve gerekirse CH16'da sesle yanıt verir": {
+    "en": "Acknowledging a received distress alert by DSC; ships normally leave the acknowledgement to the coast station and, if necessary, reply by voice on Ch 16"
+  },
+  "ECDIS, resmî ENC verisini (S-57) GNSS konumu, gyro heading ve log hızıyla birleştirerek geminin anlık konumunu harita üzerinde gösterir. Vektör harita olduğu için derinlik konturları ve tehlikeler nesne olarak tanımlıdır; bu sayede safety contour ve look-ahead alarmları rotadaki tehlikeler için otomatik uyarı verebilir.": {
+    "en": "ECDIS combines official ENC data (S-57) with the GNSS position, gyro heading and log speed to show the ship's current position on the chart. Because it is a vector chart, depth contours and dangers are defined as objects, so the safety contour and look-ahead alarms can warn automatically of dangers on the route."
+  },
+  "ECDIS bugün çoğu gemide birincil seyir aracıdır; passage plan, konum takibi ve sığ su alarmları aynı ekranda toplanır. Yanlış ayarlanmış bir safety contour veya kapatılmış bir alarm, gemiyi uyarı vermeden sığlığa götürebilir; birçok karaya oturma raporunda ECDIS'in yanlış kullanımı temel nedenler arasındadır.": {
+    "en": "On most ships today ECDIS is the primary means of navigation; the passage plan, position monitoring and shallow-water alarms are brought together on one screen. A wrongly set safety contour or a disabled alarm can take the ship into shallow water without a warning; misuse of ECDIS is among the main causes in many grounding reports."
+  },
+  "SOLAS V/19: ECDIS, 500 GT ve üstü yolcu gemileri ile 3000 GT ve üstü tankerler ve yeni yük gemileri için 2012–2018 arasında aşamalı olarak zorunlu hâle geldi": {
+    "en": "SOLAS V/19: ECDIS became mandatory in phases between 2012 and 2018 for passenger ships of 500 GT and above, and for tankers and new cargo ships of 3000 GT and above"
+  },
+  "Performans standardı: IMO MSC.232(82)": {
+    "en": "Performance standard: IMO MSC.232(82)"
+  },
+  "Yedek düzenleme: ikinci bağımsız ECDIS veya güncel kâğıt harita portföyü": {
+    "en": "Back-up arrangement: a second independent ECDIS or an up-to-date folio of paper charts"
+  },
+  "STCW kapsamında genel ECDIS eğitimi ve gemideki modele özgü (type-specific) eğitim": {
+    "en": "Generic ECDIS training under STCW and type-specific training for the model fitted on board"
+  },
+  "Safety contour'u gemi draftına ve UKC'ye göre ayarlamamak; seçilen değer ENC'de yoksa sistem bir sonraki daha derin konturu kullanır": {
+    "en": "Not setting the safety contour for the ship's draught and UKC; if the selected value is not in the ENC, the system uses the next deeper contour"
+  },
+  "Rota kontrolünü (route check) çalıştırmadan veya uyarıları okumadan rotayı onaylamak": {
+    "en": "Approving the route without running the route check or reading the warnings"
+  },
+  "Ekranı aşırı sadeleştirip seyir yardımcılarını ve uyarı alanlarını gözden kaçırmak; uygun ölçekte olmayan (overscale) görüntüye güvenmek": {
+    "en": "Decluttering the display too much and missing aids to navigation and caution areas; relying on an overscaled display"
+  },
+  "ENC güncellemelerini ve T&P bildirimlerini işlemeden sefere çıkmak": {
+    "en": "Sailing without applying the ENC updates and T&P notices"
+  },
+  "Radar kısa mikrodalga darbeleri gönderir; hedeften dönen yankının süresinden mesafeyi, antenin yönünden kerterizi bulur. X-band (9 GHz, 3 cm) daha iyi çözünürlük verir; S-band (3 GHz, 10 cm) yağmur ve deniz yansımasından daha az etkilenir. ARPA, ardışık ölçümlerden hedefin rotasını, süratini, CPA ve TCPA değerlerini hesaplar.": {
+    "en": "Radar transmits short microwave pulses; it finds the range from the time the echo takes to return and the bearing from the direction of the antenna. X-band (9 GHz, 3 cm) gives better resolution; S-band (3 GHz, 10 cm) is less affected by rain and sea clutter. ARPA calculates the target's course, speed, CPA and TCPA from successive measurements."
+  },
+  "Radar; gece, sis ve yağmurda diğer gemileri, kıyıyı ve şamandıraları gösteren ana sensördür ve hedeften bağımsız çalışır: karşı geminin AIS'i kapalı olsa bile yankı ekrana gelir. Doğru ayarlanmış radar ve sistematik plotlama, COLREG'e göre erken ve kararlı manevranın temelidir.": {
+    "en": "At night, in fog and in rain, radar is the main sensor that shows other ships, the coastline and buoys, and it does not depend on the target: the echo appears even if the other ship's AIS is off. A correctly adjusted radar and systematic plotting are the basis of early and substantial action under the COLREGs."
+  },
+  "SOLAS V/19: 300 GT ve üstü gemilerde 9 GHz (X-band) radar; 3000 GT ve üstü gemilerde ondan bağımsız ikinci radar (3 GHz veya ikinci 9 GHz)": {
+    "en": "SOLAS V/19: a 9 GHz (X-band) radar on ships of 300 GT and above; on ships of 3000 GT and above, a second radar functionally independent of the first (3 GHz or a second 9 GHz)"
+  },
+  "SOLAS V/19: 500 GT ve üstü gemilerde otomatik hedef takibi (ATA veya ARPA) bulunur": {
+    "en": "SOLAS V/19: ships of 500 GT and above have automatic target tracking (ATA or ARPA)"
+  },
+  "Performans standardı: IMO MSC.192(79)": {
+    "en": "Performance standard: IMO MSC.192(79)"
+  },
+  "COLREG Kural 7: radar varsa uzun mesafe taraması ve sistematik plotlama dahil uygun şekilde kullanılır": {
+    "en": "COLREG Rule 7: if fitted, radar is used properly, including long-range scanning and systematic plotting"
+  },
+  "Çatışma önleme için ground stabilization kullanmak; akıntıda hedeflerin görünüşü (aspect) yanlış çıkar, bu amaçla sea stabilization tercih edilir": {
+    "en": "Using ground stabilization for collision avoidance; in a current the targets' aspect is shown wrongly, so sea stabilization is preferred for this purpose"
+  },
+  "Clutter'ı aşırı bastırıp küçük tekne ve şamandıraları ekrandan silmek": {
+    "en": "Suppressing clutter too much and removing small craft and buoys from the display"
+  },
+  "Yetersiz radar bilgisine (scanty radar information), özellikle tek bir ölçüme dayanarak karar vermek": {
+    "en": "Making decisions on scanty radar information, especially on a single observation"
+  },
+  "AIS bilgisini radarın yerine koymak; AIS yayını olmayan hedefler yalnız radarda görünür": {
+    "en": "Treating AIS as a substitute for radar; targets that do not transmit AIS appear only on the radar"
+  },
+  "SAR, seyir engelleri, fener ve diğer seyir yardımcılarının arızaları ile fırtına uyarılarının köprüüstüne iletimi": {
+    "en": "Passing SAR information, hazards to navigation, failures of lights and other aids to navigation and gale warnings to the bridge"
+  },
+  "NAVTEX, kıyı istasyonlarının sırayla, zaman paylaşımlı yaptığı yayınları alır: uluslararası yayınlar 518 kHz'de İngilizce, ulusal dildeki yayınlar 490 kHz'de, tropik bölgelerdeki yayınlar 4209,5 kHz'dedir. Her mesaj başlığı istasyon harfi (B1), mesaj tipi (B2) ve seri numarasından (B3B4) oluşur; alıcı aynı mesajı ikinci kez göstermez.": {
+    "en": "NAVTEX receives the broadcasts that coast stations transmit in turn on a time-sharing basis: international broadcasts in English on 518 kHz, national-language broadcasts on 490 kHz and broadcasts in tropical areas on 4209.5 kHz. Each message header consists of the station letter (B1), the message type (B2) and the serial number (B3B4); the receiver does not show the same message twice."
+  },
+  "Batık, sönük fener, yeri değişmiş şamandıra, fırtına uyarısı ve kayıp gemi gibi bilgiler gemiye ilk olarak çoğunlukla NAVTEX ile ulaşır. Bu bilgiler haritada henüz yoktur; mesajı okumayan vardiya zabiti rotasındaki tehlikeden habersiz kalır.": {
+    "en": "Information such as a wreck, an unlit light, a buoy out of position, a gale warning or a missing ship usually reaches the ship first through NAVTEX. This information is not yet on the chart; an officer of the watch who does not read the message remains unaware of the danger on the route."
+  },
+  "SOLAS IV: NAVTEX hizmeti verilen bölgelerde sefer yapan gemilerde NAVTEX alıcısı bulunur": {
+    "en": "SOLAS IV: ships trading in areas where a NAVTEX service is provided carry a NAVTEX receiver"
+  },
+  "Performans standardı: IMO MSC.148(77)": {
+    "en": "Performance standard: IMO MSC.148(77)"
+  },
+  "A (seyir uyarıları), B (meteorolojik uyarılar), D (SAR ve korsanlık bilgileri) ve L (ek seyir uyarıları) mesajları alıcıda reddedilemez": {
+    "en": "A (navigational warnings), B (meteorological warnings), D (SAR and piracy information) and L (additional navigational warnings) messages cannot be rejected by the receiver"
+  },
+  "Menzil tipik olarak kıyıdan yaklaşık 250–400 deniz milidir": {
+    "en": "The range is typically about 250–400 nautical miles from the coast"
+  },
+  "Seyir bölgesindeki istasyonları (B1) seçmeyi unutmak; yeni bölgeye girildiğinde alıcı eski istasyonları dinlemeye devam eder": {
+    "en": "Forgetting to select the stations (B1) for the area of navigation; on entering a new area the receiver keeps listening to the old stations"
+  },
+  "Gelen uyarıyı okuyup rota üzerinde işaretlememek veya vardiya devrinde aktarmamak": {
+    "en": "Not plotting a received warning on the route or not passing it on at the watch handover"
+  },
+  "Kâğıt bitti veya hafıza doldu alarmını görmezden gelmek": {
+    "en": "Ignoring the paper-out or memory-full alarm"
+  },
+  "AIS, VHF deniz bandında iki kanalda (AIS 1: 161,975 MHz, AIS 2: 162,025 MHz) otomatik veri yayını yapar. Class A cihazları zaman dilimlerini SOTDMA ile paylaşır; dinamik veriler sürat ve dönüşe göre birkaç saniyede bir, demirdeyken 3 dakikada bir, statik ve sefer verileri 6 dakikada bir gönderilir. Konum ve sürat bilgisi geminin kendi GNSS'inden gelir.": {
+    "en": "AIS broadcasts data automatically on two channels in the VHF maritime band (AIS 1: 161.975 MHz, AIS 2: 162.025 MHz). Class A units share time slots by SOTDMA; dynamic data is sent every few seconds depending on speed and turning, every 3 minutes at anchor, and static and voyage data every 6 minutes. The position and speed come from the ship's own GNSS."
+  },
+  "AIS, hedefin adını, MMSI'sini ve niyetini (varış limanı, seyir durumu) ekrana getirir; köprüüstüler arası iletişimi kolaylaştırır ve radar gölgesindeki gemileri bile gösterebilir. Ancak yalnız yayın yapan gemiler görünür ve veriler karşı geminin girdisine bağlıdır; bu nedenle AIS radarın tamamlayıcısıdır, yerine geçmez.": {
+    "en": "AIS shows the target's name, MMSI and intentions (destination, navigational status); it makes bridge-to-bridge communication easier and can even show ships in the radar shadow. However, only ships that transmit are visible and the data depends on the other ship's input; AIS therefore supplements radar and does not replace it."
+  },
+  "SOLAS V/19: uluslararası sefer yapan 300 GT ve üstü gemiler, uluslararası sefer yapmayan 500 GT ve üstü yük gemileri ve tüm yolcu gemileri AIS taşır": {
+    "en": "SOLAS V/19: ships of 300 GT and above on international voyages, cargo ships of 500 GT and above not on international voyages, and all passenger ships carry AIS"
+  },
+  "Performans standardı: IMO MSC.74(69) Ek 3; gemide kullanım rehberi: IMO A.1106(29)": {
+    "en": "Performance standard: IMO MSC.74(69) Annex 3; guidelines for onboard use: IMO A.1106(29)"
+  },
+  "AIS sürekli çalışır durumda tutulur; yalnız kaptan gemi güvenliği için (ör. korsanlık riski) gerekli görürse kapatılır ve bu kayıt altına alınır": {
+    "en": "AIS is kept in operation at all times; it is switched off only if the Master considers it necessary for the safety of the ship (e.g. piracy risk), and this is recorded"
+  },
+  "Seyir durumunu (navigational status) güncellememek: gemi seyirdeyken 'at anchor' yayınlamak": {
+    "en": "Not updating the navigational status: transmitting 'at anchor' while the ship is under way"
+  },
+  "Draft, varış limanı ve ETA'yı sefer başında güncellememek": {
+    "en": "Not updating the draught, destination and ETA at the start of the voyage"
+  },
+  "AIS'in CPA/TCPA değerine tek başına güvenmek; karşı geminin konumu onun GNSS'ine, heading'i gyro bağlantısına bağlıdır ve hatalı olabilir": {
+    "en": "Relying on the AIS CPA/TCPA alone; the other ship's position depends on its GNSS and its heading on its gyro connection, and either may be wrong"
+  },
+  "Her teknenin AIS yayını yaptığını varsaymak": {
+    "en": "Assuming that every craft transmits AIS"
+  },
+  "Gyro pusula, hızla dönen bir rotorun Dünya'nın dönüşü ve yer çekimiyle etkileşerek coğrafi kuzeyi (true north) aramasıyla çalışır. Manyetik alandan etkilenmediği için deviation ve variation yoktur; ancak enlem ve sürate bağlı hata (speed/latitude error) ile küçük bir sabit gyro hatası bulunabilir. Çalıştırıldıktan sonra kuzeye oturması (settling) birkaç saat sürer.": {
+    "en": "The gyrocompass works by a fast-spinning rotor that seeks true north through its interaction with the Earth's rotation and gravity. As it is not affected by the magnetic field it has no deviation or variation, but there may be a speed and latitude error and a small constant gyro error. After starting, it takes several hours to settle on north."
+  },
+  "Radar, ECDIS, ARPA, AIS ve otopilot heading bilgisini gyrodan alır. Gyrodaki birkaç derecelik hata, radar overlay'in kaymasına, ARPA'nın yanlış CPA hesaplamasına ve otopilotun gemiyi sessizce rotadan çıkarmasına yol açar; manyetik pusula ise elektrik kesildiğinde son bağımsız yön referansıdır.": {
+    "en": "Radar, ECDIS, ARPA, AIS and the autopilot take their heading from the gyro. An error of a few degrees in the gyro shifts the radar overlay, makes ARPA calculate a wrong CPA and lets the autopilot take the ship quietly off course; the magnetic compass is the last independent heading reference when the power fails."
+  },
+  "SOLAS V/19: tüm gemilerde güç kaynağı gerektirmeyen bir manyetik pusula ve kerteriz alma imkânı bulunur": {
+    "en": "SOLAS V/19: all ships have a magnetic compass that needs no power supply and a means of taking bearings"
+  },
+  "SOLAS V/19: 500 GT ve üstü gemilerde gyro pusula ve acil dümen mevkiinden görülebilen heading göstergesi bulunur": {
+    "en": "SOLAS V/19: ships of 500 GT and above have a gyrocompass and a heading indicator visible from the emergency steering position"
+  },
+  "STCW A-VIII/2: pusula hataları en az vardiyada bir kez ve mümkünse her büyük rota değişikliğinden sonra belirlenir": {
+    "en": "STCW A-VIII/2: compass errors are determined at least once a watch and, when possible, after any major alteration of course"
+  },
+  "Gyroya enlem ve sürat girdisi elle veriliyorsa bunları güncellememek": {
+    "en": "Not updating the latitude and speed inputs to the gyro when they are entered manually"
+  },
+  "Güç kesintisinden sonra repeater'ları ana gyro ile hizalamadan kullanmak": {
+    "en": "Using the repeaters after a power failure without aligning them with the master gyro"
+  },
+  "Gyro hatasını kontrol etmeden kerterize ve paralel index'e güvenmek": {
+    "en": "Relying on bearings and parallel indexing without checking the gyro error"
+  },
+  "Otopilot (heading control system), gyrodan aldığı heading ile ayarlanan rota arasındaki farkı ölçer ve dümen makinesine düzeltici dümen açısı komutu verir. Rudder (gain), counter rudder ve yaw (weather) ayarları dümenin ne kadar sert ve ne sıklıkla kullanılacağını belirler. Track control modunda ECDIS'ten gelen rotaya göre XTD'yi de düzeltir ve waypoint'lerde dönüşü yapar.": {
+    "en": "The autopilot (heading control system) measures the difference between the heading from the gyro and the set course and orders a corrective rudder angle from the steering gear. The rudder (gain), counter rudder and yaw (weather) settings determine how firmly and how often the rudder is used. In track control mode it also corrects the XTD against the route from ECDIS and makes the turns at the waypoints."
+  },
+  "Otopilot uzun açık deniz seyrinde dümenciyi rahatlatır ve yakıt tasarrufu sağlar; fakat birçok çatışma ve karaya oturmada vardiya zabiti gemiyi otopilotta bırakıp el dümenine geçmekte geç kalmıştır. Modlar, alarmlar ve el dümenine geçiş adımları her zabit tarafından ezbere bilinmelidir.": {
+    "en": "The autopilot relieves the helmsman on long ocean passages and saves fuel; but in many collisions and groundings the officer of the watch left the ship on autopilot and changed to hand steering too late. Every officer must know the modes, the alarms and the steps for changing to hand steering by heart."
+  },
+  "SOLAS V/24: yoğun trafikte, kısıtlı görüşte ve diğer tehlikeli seyir durumlarında otomatik dümen kullanılıyorsa el dümenine hemen geçilebilmeli ve dümenci hazır bulunmalıdır": {
+    "en": "SOLAS V/24: when automatic steering is used in areas of high traffic density, in restricted visibility and in other hazardous navigational situations, it must be possible to establish manual steering immediately and a qualified helmsperson must be available"
+  },
+  "SOLAS V/24: uzun süre otomatik dümen kullanıldıktan sonra ve özel dikkat gerektiren bölgelere girmeden önce el dümeni test edilir": {
+    "en": "SOLAS V/24: manual steering is tested after prolonged use of automatic steering and before entering areas where navigation demands special caution"
+  },
+  "SOLAS V/26: kalkıştan önceki 12 saat içinde dümen donanımı test edilir; acil dümen tatbikatı en az 3 ayda bir yapılır": {
+    "en": "SOLAS V/26: the steering gear is tested within 12 hours before departure; emergency steering drills are held at least once every three months"
+  },
+  "Performans standartları: heading control için IMO MSC.64(67) Ek 3, track control için IMO MSC.74(69) Ek 2": {
+    "en": "Performance standards: IMO MSC.64(67) Annex 3 for heading control and IMO MSC.74(69) Annex 2 for track control"
+  },
+  "Pilot alırken veya bırakırken, dar geçitte ya da yoğun trafikte otopilotta kalmak": {
+    "en": "Staying on autopilot when embarking or disembarking the pilot, in a narrow channel or in heavy traffic"
+  },
+  "El dümenine geçişte override/take-over düğmesinin yerini ve seçici şalterin sırasını bilmemek": {
+    "en": "Not knowing where the override/take-over button is and the order of the selector switch when changing to hand steering"
+  },
+  "Ağır havada yaw (weather) ayarını artırmayıp dümen makinesini sürekli çalıştırmak": {
+    "en": "Not increasing the yaw (weather) setting in heavy weather, so that the steering gear works continuously"
+  },
+  "Terminalin oturum (login) durumunu ve bağlı olduğu okyanus bölgesi uydusunu günlük kontrol et": {
+    "en": "Check daily the terminal's login status and the ocean-region satellite it is logged in to"
+  },
+  "Inmarsat-C terminali, yer sabit (geostationary) uydular üzerinden kaydet-ilet (store-and-forward) mantığıyla mesaj gönderir ve alır. EGC (Enhanced Group Call) alıcısı, geminin bulunduğu NAVAREA/METAREA için yayınlanan SafetyNET deniz emniyeti bilgilerini otomatik olarak alır. Yer sabit uydular yaklaşık 70° kuzey ve güney enlemlerinin ötesini kapsamaz.": {
+    "en": "The Inmarsat-C terminal sends and receives messages through geostationary satellites on a store-and-forward basis. The EGC (Enhanced Group Call) receiver automatically receives the SafetyNET maritime safety information broadcast for the NAVAREA/METAREA where the ship is. Geostationary satellites do not cover areas beyond about 70° north and south latitude."
+  },
+  "Açık okyanusta NAVTEX menzili bittiğinde fırtına, buz, korsanlık ve SAR bilgileri gemiye SafetyNET ile gelir. A3 alanında aynı terminal, gemi ile kurtarma koordinasyon merkezi arasındaki tehlike alarmı ve mesajlaşmanın da ana yoludur.": {
+    "en": "On the open ocean, when the ship is out of NAVTEX range, storm, ice, piracy and SAR information reaches it through SafetyNET. In Sea Area A3 the same terminal is also the main route for distress alerting and messaging between the ship and the rescue coordination centre."
+  },
+  "SOLAS IV: A3 deniz alanında sefer yapan gemiler, tanınmış bir mobil uydu hizmeti gemi yer istasyonu ya da MF/HF-DSC ile tehlike alarmı verebilmelidir": {
+    "en": "SOLAS IV: ships trading in Sea Area A3 must be able to send a distress alert through a ship earth station of a recognized mobile satellite service or by MF/HF DSC"
+  },
+  "NAVTEX kapsaması dışında MSI almak için EGC (SafetyNET) alıcısı gerekir": {
+    "en": "An EGC (SafetyNET) receiver is needed to receive MSI outside NAVTEX coverage"
+  },
+  "IMO, 2018'de Iridium'u da GMDSS'te tanınmış uydu hizmeti olarak kabul etmiştir": {
+    "en": "In 2018 IMO also recognized Iridium as a satellite service in the GMDSS"
+  },
+  "SOLAS IV/18: tehlike alarmına konum otomatik girmiyorsa, seyirde konum en çok 4 saatte bir elle güncellenir": {
+    "en": "SOLAS IV/18: if the position is not entered into the distress alert automatically, it is updated manually at intervals not exceeding 4 hours while under way"
+  },
+  "Seyir bölgesi değiştiğinde NAVAREA/METAREA ve kıyı uyarısı (coastal warning) alanlarını güncellememek": {
+    "en": "Not updating the NAVAREA/METAREA and coastal warning areas when the area of navigation changes"
+  },
+  "EGC mesaj listesini veya yazıcı kâğıdını kontrol etmeden vardiya devralmak": {
+    "en": "Taking over the watch without checking the EGC message list or the printer paper"
+  },
+  "Distress düğmesine test amacıyla basmak; testler yalnız cihazın test prosedürüyle yapılır": {
+    "en": "Pressing the distress button for a test; tests are carried out only with the set's test procedure"
+  },
+  "Pilotaj, demirleme ve dar geçitlerde derinlik değerlerini belirli aralıklarla jurnale kaydetmek": {
+    "en": "Entering the depths in the deck logbook at regular intervals during pilotage, anchoring and in narrow channels"
+  },
+  "Ölçüm aralığını (range) beklenen derinliğe göre seç; derin suda ikinci yankı (second trace) yanıltıcı sığ okuma verebilir": {
+    "en": "Select the range for the expected depth; in deep water a second-trace echo can give a misleading shallow reading"
+  },
+  "Derinlik trendinin ECDIS ve conning ekranında gösterilmesi": {
+    "en": "Display of the depth trend on the ECDIS and the conning display"
+  },
+  "İskandil, transdüserden suya akustik bir darbe gönderir ve deniz dibinden dönen yankının süresini ölçer; deniz suyunda ses hızı yaklaşık 1500 m/s alınarak derinlik hesaplanır. Ölçülen değer transdüserin altındaki derinliktir; omurga altı veya su hattından derinlik göstermek için offset doğru girilmelidir.": {
+    "en": "The echo sounder sends an acoustic pulse into the water from the transducer and measures the time the echo takes to return from the seabed; the depth is calculated by taking the speed of sound in sea water as about 1500 m/s. The measured value is the depth below the transducer; to show the depth below the keel or the waterline, the offset must be entered correctly."
+  },
+  "Karaya oturmaya giden zincirin son halkasında, haritadaki derinliğin gerçekten orada olup olmadığını söyleyen tek cihaz iskandildir. Doğru offset ve iyi ayarlanmış bir sığlık alarmı, ECDIS'teki veya konumdaki bir hatayı vakit varken gösterir.": {
+    "en": "At the last link of the chain that leads to a grounding, the echo sounder is the only device that tells whether the charted depth is really there. A correct offset and a well-set shallow-water alarm show an error in the ECDIS or in the position while there is still time."
+  },
+  "SOLAS V/19: 300 GT ve üstü gemiler ile tüm yolcu gemilerinde iskandil bulunur": {
+    "en": "SOLAS V/19: ships of 300 GT and above and all passenger ships have an echo-sounding device"
+  },
+  "Performans standardı: IMO MSC.74(69) Ek 4; cihaz son 12 saatin derinlik kaydını gösterebilmelidir": {
+    "en": "Performance standard: IMO MSC.74(69) Annex 4; the device must be able to show the depth record of the last 12 hours"
+  },
+  "Yükleme veya tahliyeden sonra draft değişince offset'i güncellememek": {
+    "en": "Not updating the offset when the draught changes after loading or discharging"
+  },
+  "Ekrandaki derinliğin transdüserin, omurganın mı yoksa su hattının altından mı ölçüldüğünü bilmemek": {
+    "en": "Not knowing whether the displayed depth is measured below the transducer, the keel or the waterline"
+  },
+  "Hava kabarcığı, balık sürüsü veya termoklin kaynaklı sahte yankıları gerçek dip sanmak": {
+    "en": "Taking false echoes from air bubbles, schools of fish or a thermocline for the real seabed"
+  },
+  "Kayda girmeyen veya arızalı girdileri VDR alarm panelinden belirleyip kaydetmek": {
+    "en": "Identifying and recording inputs that are not recorded or are faulty from the VDR alarm panel"
+  },
+  "Kaza veya ciddi bir olaydan sonra kaydı hemen yedekle (save/backup); cihazın gücünü kesme ve veri silme": {
+    "en": "After an accident or serious incident, save/back up the record at once; do not switch off the unit or delete data"
+  },
+  "Köprüüstü mikrofonlarının çalıştığını ve kaydın anlaşılır olduğunu APT ve rutin kontrollerle doğrula": {
+    "en": "Verify with the APT and routine checks that the bridge microphones work and the recording is intelligible"
+  },
+  "Kaza soruşturmasında VDR verileri bayrak devletinin soruşturma kuruluşu tarafından kullanılır": {
+    "en": "In a casualty investigation the VDR data is used by the flag State's investigating body"
+  },
+  "VDR; köprüüstü mikrofonlarını, VHF konuşmalarını, radar ve ECDIS görüntülerini, konum, sürat, heading, dümen ve makine emri ile yanıtını, derinliği, rüzgârı, AIS'i ve ana alarmları ortak bir zaman damgasıyla kesintisiz kaydeder. Kayıt döngüseldir: eski veri yeni verinin üzerine yazılır. Veriler darbeye, yangına ve basınca dayanıklı sabit kapsülde (fixed capsule), yeni nesil VDR'lerde ayrıca batmada yüzerek ayrılan kapsülde (float-free) saklanır.": {
+    "en": "The VDR continuously records the bridge microphones, VHF communications, radar and ECDIS displays, position, speed, heading, rudder and engine orders and responses, depth, wind, AIS and the main alarms on a common time stamp. Recording is cyclic: old data is overwritten by new data. The data is stored in a fixed capsule that resists impact, fire and pressure and, on newer VDRs, also in a float-free capsule that floats free if the ship sinks."
+  },
+  "Kaza sonrası 'ne oldu?' sorusunun tarafsız cevabı VDR'dedir: soruşturmacılar köprüüstü konuşmalarını, ekranları ve emirleri saniye saniye yeniden oynatır. Çalışmayan veya kaydı yedeklenmeyen bir VDR hem dersin kaybolmasına hem de gemi ve zabit aleyhine sonuçlara yol açabilir.": {
+    "en": "The VDR holds the impartial answer to 'what happened?' after an accident: investigators replay the bridge conversations, the displays and the orders second by second. A VDR that does not work, or whose record is not saved, means the lessons are lost and can lead to consequences against the ship and the officer."
+  },
+  "SOLAS V/20: yolcu gemileri ile 3000 GT ve üstü diğer gemilerde VDR bulunur; mevcut yük gemilerinde S-VDR kabul edilmiştir": {
+    "en": "SOLAS V/20: passenger ships and other ships of 3000 GT and above carry a VDR; an S-VDR was accepted for existing cargo ships"
+  },
+  "SOLAS V/18.8: VDR'nin yıllık performans testi (APT) onaylı servis tarafından yapılır": {
+    "en": "SOLAS V/18.8: the VDR's annual performance test (APT) is carried out by an approved service provider"
+  },
+  "Performans standardı: 1 Temmuz 2014 ve sonrasında kurulan VDR'ler için IMO MSC.333(90)": {
+    "en": "Performance standard: IMO MSC.333(90) for VDRs installed on or after 1 July 2014"
+  },
+  "Sabit kapsüldeki sualtı yer belirleme vericisinin (ULB) pil son kullanma tarihi takip edilir": {
+    "en": "The expiry date of the battery of the underwater locating beacon (ULB) on the fixed capsule is tracked"
+  },
+  "Olaydan sonra kaydı yedeklemeyi unutmak; döngüsel kayıt kritik dakikaların üzerine yazar": {
+    "en": "Forgetting to save the record after an incident; cyclic recording overwrites the critical minutes"
+  },
+  "Sürekli tekrarlayan VDR arıza alarmını susturup sebebini araştırmamak": {
+    "en": "Silencing a recurring VDR fault alarm without investigating the cause"
+  },
+  "Köprüüstü mikrofonlarının önünü kapatmak veya yüksek sesli radyo ve müzikle kaydı anlaşılmaz hâle getirmek": {
+    "en": "Covering the bridge microphones or making the recording unintelligible with a loud radio or music"
+  },
+  "Uzak alarm noktalarının (kaptan ve zabit kamaraları) periyodik testi": {
+    "en": "Periodic test of the remote alarm points (Master's and officers' cabins)"
+  },
+  "Acil çağrı (emergency call) düğmesiyle kaptanı veya yedek zabiti hemen köprüüstüne çağırmak": {
+    "en": "Using the emergency call button to call the Master or the back-up officer to the bridge at once"
+  },
+  "Reset düğmelerinin vardiya zabitinin normal gözcülük mevkilerinden erişilebilir olduğunu kontrol etmek": {
+    "en": "Checking that the reset buttons can be reached from the officer of the watch's normal lookout positions"
+  },
+  "Otomatik modda, heading veya track control (otopilot) devreye girdiğinde BNWAS da kendiliğinden çalışır": {
+    "en": "In automatic mode, the BNWAS starts by itself when heading or track control (autopilot) is engaged"
+  },
+  "BNWAS, vardiya zabitinin belirli bir süre (dormant period, 3–12 dakika) içinde reset düğmesine basması veya hareketinin algılanmasıyla etkinliğini doğrular. Onay gelmezse alarm kademelenir: önce köprüüstünde görsel uyarı, 15 saniye sonra köprüüstünde sesli alarm, ardından kaptanın veya yedek zabitin bulunduğu yerde uzak alarm, daha sonra diğer personelin bulunduğu yerlerde alarm.": {
+    "en": "The BNWAS confirms the officer of the watch is alert when a reset button is pressed or movement is detected within a set period (dormant period, 3–12 minutes). If there is no confirmation, the alarm escalates: first a visual indication on the bridge, after 15 seconds an audible alarm on the bridge, then a remote alarm at the location of the Master or the back-up officer, and later an alarm at the locations of other crew members."
+  },
+  "Gece vardiyasında uyuyakalan veya aniden rahatsızlanan tek bir zabit, gemiyi dakikalar içinde karaya veya başka bir gemiye götürebilir. BNWAS bu durumu fark eder ve sırayla kaptanı ve mürettebatı uyarır; tek kişilik köprüüstü vardiyasının son güvenlik ağıdır.": {
+    "en": "A single officer who falls asleep or is suddenly taken ill on the night watch can take the ship aground or into another ship within minutes. The BNWAS detects this and alerts the Master and the crew in turn; it is the last safety net of a one-person bridge watch."
+  },
+  "SOLAS V/19: 150 GT ve üstü gemiler ile tüm yolcu gemilerinde BNWAS bulunur (2011–2014 aşamalı geçiş)": {
+    "en": "SOLAS V/19: ships of 150 GT and above and all passenger ships have a BNWAS (phased in from 2011 to 2014)"
+  },
+  "SOLAS V/19: BNWAS, gemi denizde seyirdeyken her zaman çalışır durumda tutulur": {
+    "en": "SOLAS V/19: the BNWAS is in operation whenever the ship is under way at sea"
+  },
+  "Performans standardı: IMO MSC.128(75)": {
+    "en": "Performance standard: IMO MSC.128(75)"
+  },
+  "Çalışma modu ve süre ayarı yalnız kaptanın erişebildiği anahtar veya şifreyle değiştirilir": {
+    "en": "The operating mode and the time setting can be changed only with a key or password that only the Master can access"
+  },
+  "Reset düğmesine ağırlık koymak veya hareket sensörünü sürekli tetikleyecek düzenek kurmak": {
+    "en": "Putting a weight on the reset button or rigging something that keeps triggering the motion sensor"
+  },
+  "Denizde BNWAS'ı kapalı modda bırakmak": {
+    "en": "Leaving the BNWAS in off mode at sea"
+  },
+  "Uzak alarmları test etmeyip yalnız köprüüstü alarmını denemek": {
+    "en": "Testing only the bridge alarm and not the remote alarms"
   }
 }

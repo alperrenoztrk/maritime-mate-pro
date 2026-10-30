@@ -44,7 +44,7 @@ export const SatelliteImageryViewer = () => {
       uses: ['Daytime cloud identification', 'Surface features', 'Dust storms', 'Snow cover'],
       wavelength: 'VIS + NIR composite',
       icon: <Eye className="h-4 w-4" />,
-      color: 'bg-blue-100 text-blue-800'
+      color: 'bg-info-muted text-info-muted-foreground'
     },
     {
       id: 'vis',
@@ -54,7 +54,7 @@ export const SatelliteImageryViewer = () => {
       uses: ['Cloud detection', 'Fog identification', 'Cloud thickness', 'Daytime only'],
       wavelength: '0.635 μm',
       icon: <Sun className="h-4 w-4" />,
-      color: 'bg-yellow-100 text-yellow-800'
+      color: 'bg-yellow-500/15 text-yellow-800 dark:text-yellow-300'
     },
     {
       id: 'ir108',
@@ -64,7 +64,7 @@ export const SatelliteImageryViewer = () => {
       uses: ['24/7 cloud detection', 'Cloud height', 'Fog detection', 'Storm intensity'],
       wavelength: '10.8 μm',
       icon: <Thermometer className="h-4 w-4" />,
-      color: 'bg-red-100 text-red-800'
+      color: 'bg-red-500/15 text-red-800 dark:text-red-300'
     },
     {
       id: 'wv',
@@ -74,7 +74,7 @@ export const SatelliteImageryViewer = () => {
       uses: ['Upper level winds', 'Jet stream location', 'Moisture tracking', 'Storm development'],
       wavelength: '6.2 μm',
       icon: <Droplets className="h-4 w-4" />,
-      color: 'bg-cyan-100 text-cyan-800'
+      color: 'bg-cyan-500/15 text-cyan-800 dark:text-cyan-300'
     },
     {
       id: 'ir039',
@@ -84,7 +84,7 @@ export const SatelliteImageryViewer = () => {
       uses: ['Night fog detection', 'Low stratus clouds', 'Fire detection', 'Nighttime imaging'],
       wavelength: '3.9 μm',
       icon: <Moon className="h-4 w-4" />,
-      color: 'bg-purple-100 text-purple-800'
+      color: 'bg-purple-500/15 text-purple-800 dark:text-purple-300'
     },
     {
       id: 'airmass',
@@ -94,7 +94,7 @@ export const SatelliteImageryViewer = () => {
       uses: ['Air mass boundaries', 'Jet stream analysis', 'Potential vorticity', 'Storm forecasting'],
       wavelength: 'WV+IR composite',
       icon: <Cloud className="h-4 w-4" />,
-      color: 'bg-green-100 text-green-800'
+      color: 'bg-green-500/15 text-green-800 dark:text-green-300'
     }
   ];
 

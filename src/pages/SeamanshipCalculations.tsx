@@ -131,7 +131,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
   return (
     <div className="space-y-6">
       {/* Mooring */}
-      <Card ref={sectionRefs.mooring} className="bg-white/90 border-white/60 shadow-lg">
+      <Card ref={sectionRefs.mooring} className="bg-card/80 border-border/50 shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
             <Anchor className="h-5 w-5" />
@@ -148,8 +148,8 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
             <Input placeholder="0.55 - 0.60" value={mooringInputs.safetyFactor} onChange={(e) => setMooringInputs({ ...mooringInputs, safetyFactor: e.target.value })} />
           </div>
           {calculateMooringLoad() && (
-            <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-sm text-slate-600">Working Load:</p>
+            <div className="bg-info-muted rounded-lg p-4">
+              <p className="text-sm text-muted-foreground">Working Load:</p>
               <p className="text-2xl font-bold text-[#2F5BFF]">{calculateMooringLoad()} kN</p>
             </div>
           )}
@@ -158,7 +158,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Wind Force */}
-        <Card ref={sectionRefs.wind} className="bg-white/90 border-white/60 shadow-lg">
+        <Card ref={sectionRefs.wind} className="bg-card/80 border-border/50 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
               <Wind className="h-5 w-5" />
@@ -179,8 +179,8 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               <Input placeholder="Wind speed" value={windInputs.velocity} onChange={(e) => setWindInputs({ ...windInputs, velocity: e.target.value })} />
             </div>
             {calculateWindForce() && (
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="text-sm text-slate-600">Wind Force:</p>
+              <div className="bg-info-muted rounded-lg p-4">
+                <p className="text-sm text-muted-foreground">Wind Force:</p>
                 <p className="text-2xl font-bold text-[#2F5BFF]">{calculateWindForce()} kN</p>
               </div>
             )}
@@ -188,7 +188,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
         </Card>
 
         {/* Catenary */}
-        <Card ref={sectionRefs.catenary} className="bg-white/90 border-white/60 shadow-lg">
+        <Card ref={sectionRefs.catenary} className="bg-card/80 border-border/50 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
               <Ship className="h-5 w-5" />
@@ -209,8 +209,8 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               <Input placeholder="Depth" value={catenaryInputs.depth} onChange={(e) => setCatenaryInputs({ ...catenaryInputs, depth: e.target.value })} />
             </div>
             {calculateCatenaryLength() && (
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="text-sm text-slate-600">Chain Length:</p>
+              <div className="bg-info-muted rounded-lg p-4">
+                <p className="text-sm text-muted-foreground">Chain Length:</p>
                 <p className="text-2xl font-bold text-[#2F5BFF]">{calculateCatenaryLength()} m</p>
               </div>
             )}
@@ -219,7 +219,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
       </div>
 
       {/* Anchor Holding Power */}
-      <Card ref={sectionRefs["anchor-holding"]} className="bg-white/90 border-white/60 shadow-lg">
+      <Card ref={sectionRefs["anchor-holding"]} className="bg-card/80 border-border/50 shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
             <Anchor className="h-5 w-5" />
@@ -246,8 +246,8 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
             const result = calculateAnchorHolding();
             if (!result) return null;
             return (
-              <div className="bg-blue-50 rounded-lg p-4 space-y-1">
-                <p className="text-sm text-slate-600">Holding Power = Weight × Coefficient ({result.coeff})</p>
+              <div className="bg-info-muted rounded-lg p-4 space-y-1">
+                <p className="text-sm text-muted-foreground">Holding Power = Weight × Coefficient ({result.coeff})</p>
                 <p className="text-2xl font-bold text-[#2F5BFF]">{result.holdingPower} ton</p>
               </div>
             );
@@ -257,7 +257,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Bollard Pull */}
-        <Card ref={sectionRefs["bollard-pull"]} className="bg-white/90 border-white/60 shadow-lg">
+        <Card ref={sectionRefs["bollard-pull"]} className="bg-card/80 border-border/50 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
               <Ship className="h-5 w-5" />
@@ -278,8 +278,8 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               <Input placeholder="25 - 35" value={bollardInputs.k} onChange={(e) => setBollardInputs({ ...bollardInputs, k: e.target.value })} />
             </div>
             {calculateBollardPull() && (
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="text-sm text-slate-600">Required Bollard Pull:</p>
+              <div className="bg-info-muted rounded-lg p-4">
+                <p className="text-sm text-muted-foreground">Required Bollard Pull:</p>
                 <p className="text-2xl font-bold text-[#2F5BFF]">{calculateBollardPull()} ton</p>
               </div>
             )}
@@ -287,7 +287,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
         </Card>
 
         {/* Scope Ratio */}
-        <Card ref={sectionRefs["scope-ratio"]} className="bg-white/90 border-white/60 shadow-lg">
+        <Card ref={sectionRefs["scope-ratio"]} className="bg-card/80 border-border/50 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-[#2F5BFF]">
               <Link2 className="h-5 w-5" />
@@ -307,10 +307,10 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
               const result = calculateScopeRatio();
               if (!result) return null;
               return (
-                <div className="bg-blue-50 rounded-lg p-4 space-y-1">
-                  <p className="text-sm text-slate-600">Scope Ratio:</p>
+                <div className="bg-info-muted rounded-lg p-4 space-y-1">
+                  <p className="text-sm text-muted-foreground">Scope Ratio:</p>
                   <p className="text-2xl font-bold text-[#2F5BFF]">{result.ratio}:1</p>
-                  <p className="text-sm text-slate-500">{result.recommendation}</p>
+                  <p className="text-sm text-muted-foreground">{result.recommendation}</p>
                 </div>
               );
             })()}

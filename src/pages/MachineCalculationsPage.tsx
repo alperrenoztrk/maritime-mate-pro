@@ -147,7 +147,7 @@ export default function MachineCalculationsPage() {
                     className="rounded-xl border border-border bg-card/80 dark:bg-card/60 px-4 py-3 shadow-[0_8px_24px_rgba(47,91,255,0.08)] space-y-3"
                   >
                     <div className="space-y-1">
-                      <p className="text-sm font-semibold text-slate-900">{machine.name}</p>
+                      <p className="text-sm font-semibold text-foreground">{machine.name}</p>
                       <p className="text-xs text-slate-600 dark:text-slate-400">{machine.detail}</p>
                       <p className="text-sm text-slate-700 leading-relaxed dark:text-slate-200">{machine.description}</p>
                     </div>

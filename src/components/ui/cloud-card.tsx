@@ -28,13 +28,13 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
   const getDangerColor = (danger: string) => {
     switch (danger) {
       case 'high':
-        return 'border-red-500 bg-red-50';
+        return 'border-red-500 bg-red-500/10';
       case 'medium':
-        return 'border-orange-400 bg-orange-50';
+        return 'border-orange-400 bg-orange-500/10';
       case 'low':
-        return 'border-blue-300 bg-blue-50';
+        return 'border-info/40 bg-info-muted';
       default:
-        return 'border-gray-300 bg-gray-50';
+        return 'border-border bg-muted/50';
     }
   };
 
@@ -186,7 +186,7 @@ export function CloudCard({ cloud, className }: CloudCardProps) {
           "border",
           cloud.danger === 'high' ? 'border-red-300 bg-red-50' :
           cloud.danger === 'medium' ? 'border-orange-300 bg-orange-50' :
-          'border-blue-300 bg-blue-50'
+          'border-info/40 bg-info-muted'
         )}>
           <Navigation className="h-4 w-4" />
           <AlertDescription className="text-sm">

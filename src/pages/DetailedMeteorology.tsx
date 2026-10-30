@@ -368,11 +368,11 @@ const DetailedMeteorology = () => {
 
   const getSafetyColor = (level: string) => {
     switch (level) {
-      case 'safe': return 'bg-green-100 text-green-800 border-green-200';
-      case 'caution': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'dangerous': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'extreme': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'safe': return 'bg-green-500/15 text-green-800 border-green-500/30 dark:text-green-300';
+      case 'caution': return 'bg-yellow-500/15 text-yellow-800 border-yellow-500/30 dark:text-yellow-300';
+      case 'dangerous': return 'bg-orange-500/15 text-orange-800 border-orange-500/30 dark:text-orange-300';
+      case 'extreme': return 'bg-red-500/15 text-red-800 border-red-500/30 dark:text-red-300';
+      default: return 'bg-muted text-muted-foreground border-border';
     }
   };
 

@@ -677,5 +677,1508 @@
  },
  "knowledge questions answered correctly. This short sample suggests where to start; it does not establish professional competence.": {
   "en": "knowledge questions answered correctly. This short sample suggests where to start; it does not establish professional competence."
+ },
+ "A 15 ppm bilge alarm and stopping device are part of an approved oily-water separation arrangement, but equipment approval never overrides MARPOL discharge conditions or local restrictions.": {
+  "en": "A 15 ppm bilge alarm and stopping device are part of an approved oily-water separation arrangement, but equipment approval never overrides MARPOL discharge conditions or local restrictions."
+ },
+ "A 4–20 mA live-zero loop represents zero span at 4 mA and full span at 20 mA. Current below normal range may indicate a fault; transmitter scaling and loop wiring must be verified.": {
+  "en": "A 4–20 mA live-zero loop represents zero span at 4 mA and full span at 20 mA. Current below normal range may indicate a fault; transmitter scaling and loop wiring must be verified."
+ },
+ "A bill of lading may evidence receipt, contract terms and title-related rights. The person signing must be authorised and must not knowingly certify an inaccurate cargo description or condition.": {
+  "en": "A bill of lading may evidence receipt, contract terms and title-related rights. The person signing must be authorised and must not knowingly certify an inaccurate cargo description or condition."
+ },
+ "A Bourdon gauge measures pressure through elastic tube deformation; piezoelectric sensors are generally suited to dynamic pressure measurement and typically require conditioning. A displayed 0 bar may reflect failed instrumentation rather than zero line pressure.": {
+  "en": "A Bourdon gauge measures pressure through elastic tube deformation; piezoelectric sensors are generally suited to dynamic pressure measurement and typically require conditioning. A displayed 0 bar may reflect failed instrumentation rather than zero line pressure."
+ },
+ "A cold-front passage can involve rapid wind veer/backing, pressure changes and convective weather; warm fronts often bring more layered cloud and extensive precipitation. Actual weather depends on the system and locality.": {
+  "en": "A cold-front passage can involve rapid wind veer/backing, pressure changes and convective weather; warm fronts often bring more layered cloud and extensive precipitation. Actual weather depends on the system and locality."
+ },
+ "A dedicated lookout supports detection by sight and hearing under Rule 5 and must report changes clearly; helm, chart and radar duties can impede an effective lookout when workload rises.": {
+  "en": "A dedicated lookout supports detection by sight and hearing under Rule 5 and must report changes clearly; helm, chart and radar duties can impede an effective lookout when workload rises."
+ },
+ "A draft survey derives displacement changes from corrected drafts and hydrostatics, then adjusts for non-cargo weights such as ballast, freshwater, fuel and stores. Water density changes the interpretation of tabulated displacement.": {
+  "en": "A draft survey derives displacement changes from corrected drafts and hydrostatics, then adjusts for non-cargo weights such as ballast, freshwater, fuel and stores. Water density changes the interpretation of tabulated displacement."
+ },
+ "A drill is meaningful when crew actions, timing, communication, access and equipment limitations are observed. Completion of a checklist is not evidence that the response would work under real failure conditions.": {
+  "en": "A drill is meaningful when crew actions, timing, communication, access and equipment limitations are observed. Completion of a checklist is not evidence that the response would work under real failure conditions."
+ },
+ "A final departure stability check must use actual cargo, fuel, water, ballast, free-surface states and shipboard draughts. A previously approved loadcase can become invalid after any substantial late shift of a high or longitudinally displaced weight.": {
+  "en": "A final departure stability check must use actual cargo, fuel, water, ballast, free-surface states and shipboard draughts. A previously approved loadcase can become invalid after any substantial late shift of a high or longitudinally displaced weight."
+ },
+ "A fixed CO₂ installation suppresses fire by displacing oxygen and can be lethal to anyone in the protected space. Release decisions require proper command, evacuation checks and strict access control.": {
+  "en": "A fixed CO₂ installation suppresses fire by displacing oxygen and can be lethal to anyone in the protected space. Release decisions require proper command, evacuation checks and strict access control."
+ },
+ "A lifeboat is a survival craft, while a rescue boat is intended for recovering persons and marshalling survival craft; some installations may meet both roles. Launching procedures are equipment-specific and require trained crew.": {
+  "en": "A lifeboat is a survival craft, while a rescue boat is intended for recovering persons and marshalling survival craft; some installations may meet both roles. Launching procedures are equipment-specific and require trained crew."
+ },
+ "A longitudinal moment moves the vessel away from its initial trim and can be estimated using MCT 1 cm when the loading instrument's assumptions are respected. Signs and draft distribution require LCF and vessel-specific data.": {
+  "en": "A longitudinal moment moves the vessel away from its initial trim and can be estimated using MCT 1 cm when the loading instrument's assumptions are respected. Signs and draft distribution require LCF and vessel-specific data."
+ },
+ "A meridian altitude of the Sun can support latitude estimation using corrected noon altitude and the Sun's declination, with hemisphere and zenith-side interpretation required. This is a simplified navigation-school geometry case.": {
+  "en": "A meridian altitude of the Sun can support latitude estimation using corrected noon altitude and the Sun's declination, with hemisphere and zenith-side interpretation required. This is a simplified navigation-school geometry case."
+ },
+ "A rhumb line crosses all meridians at a constant true bearing, appearing straight on a Mercator chart. It does not generally provide the shortest spherical route, especially on long ocean passages at higher latitude.": {
+  "en": "A rhumb line crosses all meridians at a constant true bearing, appearing straight on a Mercator chart. It does not generally provide the shortest spherical route, especially on long ocean passages at higher latitude."
+ },
+ "A running fix transfers an earlier position line to the time of a second observation using estimated course, speed and set/drift. Both fixes and transfer errors affect reliability.": {
+  "en": "A running fix transfers an earlier position line to the time of a second observation using estimated course, speed and set/drift. Both fixes and transfer errors affect reliability."
+ },
+ "A tensioned mooring line stores energy throughout its length; a failed rope, fitting or line of pull can sweep a large area. Painted snap-back zones cannot represent every real failure path.": {
+  "en": "A tensioned mooring line stores energy throughout its length; a failed rope, fitting or line of pull can sweep a large area. Painted snap-back zones cannot represent every real failure path."
+ },
+ "A tidal window is the period when actual depth and operational restrictions permit passage. It depends on chart datum, forecast tide, squat, uncertainty and required UKC, which may change with speed and sea state.": {
+  "en": "A tidal window is the period when actual depth and operational restrictions permit passage. It depends on chart datum, forecast tide, squat, uncertainty and required UKC, which may change with speed and sea state."
+ },
+ "A tug's useful force depends on thrust direction, towline geometry and safe connection arrangements; rated bollard pull is not automatically available as lateral force at the ship's hull.": {
+  "en": "A tug's useful force depends on thrust direction, towline geometry and safe connection arrangements; rated bollard pull is not automatically available as lateral force at the ship's hull."
+ },
+ "A VHF DSC distress alert on Channel 70 is a digital alert, not the subsequent spoken distress message. Radiotelephony distress traffic normally uses Channel 16 unless the situation and instructions dictate otherwise.": {
+  "en": "A VHF DSC distress alert on Channel 70 is a digital alert, not the subsequent spoken distress message. Radiotelephony distress traffic normally uses Channel 16 unless the situation and instructions dictate otherwise."
+ },
+ "AC generators must meet prescribed voltage, frequency, phase sequence and phase-angle conditions for parallel connection. A closing error can produce damaging transients, torque and reverse-power events.": {
+  "en": "AC generators must meet prescribed voltage, frequency, phase sequence and phase-angle conditions for parallel connection. A closing error can produce damaging transients, torque and reverse-power events."
+ },
+ "AC synchronising requires compatible voltage, frequency, phase sequence and phase angle before a generator breaker closes on a live bus. Out-of-phase closing may cause damaging torque and currents.": {
+  "en": "AC synchronising requires compatible voltage, frequency, phase sequence and phase angle before a generator breaker closes on a live bus. Out-of-phase closing may cause damaging torque and currents."
+ },
+ "Advection fog forms when warm moist air moves over a colder surface, cooling below its dew point. Radiation fog typically arises through nocturnal cooling; sea visibility reductions need not coincide with precipitation.": {
+  "en": "Advection fog forms when warm moist air moves over a colder surface, cooling below its dew point. Radiation fog typically arises through nocturnal cooling; sea visibility reductions need not coincide with precipitation."
+ },
+ "AIS supplies transmitted identity and movement data but is not an independent collision avoidance sensor. GNSS input failures, erroneous static data and human edits can mislead the bridge.": {
+  "en": "AIS supplies transmitted identity and movement data but is not an independent collision avoidance sensor. GNSS input failures, erroneous static data and human edits can mislead the bridge."
+ },
+ "Alarm Monitoring Systems observe sensor and control signals, but alarm acknowledgement is not fault rectification. A single high-level alarm may arise from real flooding, bad sensors, wiring or data transport.": {
+  "en": "Alarm Monitoring Systems observe sensor and control signals, but alarm acknowledgement is not fault rectification. A single high-level alarm may arise from real flooding, bad sensors, wiring or data transport."
+ },
+ "An echo sounder measures acoustic travel time to a reflecting surface; depth readout may be below the transducer or adjusted to a different reference. Draft, squat, offset, sound speed and seabed shape affect clearance.": {
+  "en": "An echo sounder measures acoustic travel time to a reflecting surface; depth readout may be below the transducer or adjusted to a different reference. Draft, squat, offset, sound speed and seabed shape affect clearance."
+ },
+ "An insulated-neutral ship distribution system may remain in operation after a first earth fault while giving an insulation warning. A second fault on another phase can create dangerous fault current; the actual arrangement and protection must be identified from drawings.": {
+  "en": "An insulated-neutral ship distribution system may remain in operation after a first earth fault while giving an insulation warning. A second fault on another phase can create dangerous fault current; the actual arrangement and protection must be identified from drawings."
+ },
+ "An open-loop control output does not automatically correct for deviation, while closed-loop feedback compares a measured variable with a setpoint and adjusts the actuator. Sensor fault can defeat feedback despite normal controller operation.": {
+  "en": "An open-loop control output does not automatically correct for deviation, while closed-loop feedback compares a measured variable with a setpoint and adjusts the actuator. Sensor fault can defeat feedback despite normal controller operation."
+ },
+ "Anchor watch combines movement monitoring with depth, tide, weather, chain direction and nearby traffic. GNSS position alarms must account for vessel swing and the location of the antenna relative to the anchor.": {
+  "en": "Anchor watch combines movement monitoring with depth, tide, weather, chain direction and nearby traffic. GNSS position alarms must account for vessel swing and the location of the antenna relative to the anchor."
+ },
+ "Anchor watch uses planned swinging circle, actual chain length, fixing uncertainty and observed trends. Radius is not simply the number of shackles paid out: chain catenary, depth, hull length and weather affect the envelope.": {
+  "en": "Anchor watch uses planned swinging circle, actual chain length, fixing uncertainty and observed trends. Radius is not simply the number of shackles paid out: chain catenary, depth, hull length and weather affect the envelope."
+ },
+ "Anchoring must consider holding ground, water depth, current, weather, planned swinging room and actual cable condition. The planned paid-out chain length is not the same as the vessel's distance from the anchor.": {
+  "en": "Anchoring must consider holding ground, water depth, current, weather, planned swinging room and actual cable condition. The planned paid-out chain length is not the same as the vessel's distance from the anchor."
+ },
+ "Annex III addresses harmful substances in packaged form, with marine pollutant identification and packaging, marking, documentation and stowage provisions implemented through the IMDG Code.": {
+  "en": "Annex III addresses harmful substances in packaged form, with marine pollutant identification and packaging, marking, documentation and stowage provisions implemented through the IMDG Code."
+ },
+ "Apparent wind is the true wind vector relative to the ship's movement through the relevant reference frame. Direction and reference source matter: ship heading, ground track and sensor corrections must not be confused.": {
+  "en": "Apparent wind is the true wind vector relative to the ship's movement through the relevant reference frame. Direction and reference source matter: ship heading, ground track and sensor corrections must not be confused."
+ },
+ "Appraisal precedes detailed route design: chart coverage and quality, weather, tidal stream, services, machinery constraints and reporting requirements determine whether a proposed passage is feasible.": {
+  "en": "Appraisal precedes detailed route design: chart coverage and quality, weather, tidal stream, services, machinery constraints and reporting requirements determine whether a proposed passage is feasible."
+ },
+ "Azimuth is the true bearing of a celestial or terrestrial object clockwise from true north, with corrections for observer position, time and ephemeris when celestial. It can help determine gyro or compass error when observation geometry is valid.": {
+  "en": "Azimuth is the true bearing of a celestial or terrestrial object clockwise from true north, with corrections for observer position, time and ephemeris when celestial. It can help determine gyro or compass error when observation geometry is valid."
+ },
+ "Ballast treatment and exchange are different compliance approaches. Operational decisions depend on the ship's approved Ballast Water Management Plan, treatment limitations, log entries and local port requirements.": {
+  "en": "Ballast treatment and exchange are different compliance approaches. Operational decisions depend on the ship's approved Ballast Water Management Plan, treatment limitations, log entries and local port requirements."
+ },
+ "Battery charging profiles depend on chemistry, ambient temperature, ventilation and control limits. Afloat and absorption charging must use compatible equipment; overcharge can generate heat/gas or shorten service life.": {
+  "en": "Battery charging profiles depend on chemistry, ambient temperature, ventilation and control limits. Afloat and absorption charging must use compatible equipment; overcharge can generate heat/gas or shorten service life."
+ },
+ "Battery thermal runaway can spread between cells while producing heat, flammable gases and toxic decomposition products. Chemistry-specific maker instructions and installed detection/suppression systems govern response.": {
+  "en": "Battery thermal runaway can spread between cells while producing heat, flammable gases and toxic decomposition products. Chemistry-specific maker instructions and installed detection/suppression systems govern response."
+ },
+ "Bay-row-tier slot codes locate containers in the stowage plan; load distribution, GM, stack-weight limits, lashing loads and verified gross mass are separate checks.": {
+  "en": "Bay-row-tier slot codes locate containers in the stowage plan; load distribution, GM, stack-weight limits, lashing loads and verified gross mass are separate checks."
+ },
+ "Beaufort is an observational wind-force scale; actual measured wind speed depends on averaging interval, instrument exposure and gust characteristics. Sea state is only a supporting observation, especially with swell or restricted fetch.": {
+  "en": "Beaufort is an observational wind-force scale; actual measured wind speed depends on averaging interval, instrument exposure and gust characteristics. Sea state is only a supporting observation, especially with swell or restricted fetch."
+ },
+ "Biofouling and antifouling controls affect invasive species and coatings, while ship recycling has separate hazardous-material and facility requirements. The IMO Hong Kong Convention entered into force on 26 June 2025; implementation depends on scope and administration.": {
+  "en": "Biofouling and antifouling controls affect invasive species and coatings, while ship recycling has separate hazardous-material and facility requirements. The IMO Hong Kong Convention entered into force on 26 June 2025; implementation depends on scope and administration."
+ },
+ "Bridge Resource Management uses challenge-response, explicit task allocation and shared situational awareness; alarms are prompts to investigate, not replacements for human cross-checks.": {
+  "en": "Bridge Resource Management uses challenge-response, explicit task allocation and shared situational awareness; alarms are prompts to investigate, not replacements for human cross-checks."
+ },
+ "Bridge-watch calculation and decision": {
+  "en": "Bridge-watch calculation and decision"
+ },
+ "Buoyancy equals the weight of displaced water in equilibrium; displacement volume must be multiplied by the actual water density. Different seawater and dockwater densities give different immersed volumes for the same floating mass.": {
+  "en": "Buoyancy equals the weight of displaced water in equilibrium; displacement volume must be multiplied by the actual water density. Different seawater and dockwater densities give different immersed volumes for the same floating mass."
+ },
+ "Cargo plans must satisfy local structural loading, longitudinal strength, trim and intact stability as well as deck-space geometry. Two cargo plans with the same total mass can impose very different bending and shear forces.": {
+  "en": "Cargo plans must satisfy local structural loading, longitudinal strength, trim and intact stability as well as deck-space geometry. Two cargo plans with the same total mass can impose very different bending and shear forces."
+ },
+ "Cargo restraint is designed for accelerations produced by ship motions. A simple mass-times-acceleration estimate illustrates load, but selecting lashings also requires angles, friction, securing-point capacity and the ship's approved Cargo Securing Manual.": {
+  "en": "Cargo restraint is designed for accelerations produced by ship motions. A simple mass-times-acceleration estimate illustrates load, but selecting lashings also requires angles, friction, securing-point capacity and the ship's approved Cargo Securing Manual."
+ },
+ "Cargo sweat and ship sweat arise from differing temperature and moisture conditions. The decision to ventilate depends on cargo properties, external air dew point and measured hold conditions, not simply on outside relative humidity.": {
+  "en": "Cargo sweat and ship sweat arise from differing temperature and moisture conditions. The decision to ventilate depends on cargo properties, external air dew point and measured hold conditions, not simply on outside relative humidity."
+ },
+ "Carriage and performance requirements": {
+  "en": "Carriage and performance requirements"
+ },
+ "Cascade control uses an outer controller setting an inner-loop target; feedforward acts on a measured disturbance. The inner loop must remain reliable or the outer system may amplify an uncorrected process fault.": {
+  "en": "Cascade control uses an outer controller setting an inner-loop target; feedforward acts on a measured disturbance. The inner loop must remain reliable or the outer system may amplify an uncorrected process fault."
+ },
+ "Chart course should be measured against the meridian/compass rose using the correct true reference; magnetically steered headings require separately applied variation and deviation. Bearing orientation from a chart is not automatically a corrected compass order.": {
+  "en": "Chart course should be measured against the meridian/compass rose using the correct true reference; magnetically steered headings require separately applied variation and deviation. Bearing orientation from a chart is not automatically a corrected compass order."
+ },
+ "Chart Datum is the reference surface from which charted depths are normally measured. Tide heights above the applicable chart datum may be combined with chart depths for a static depth estimate, but LAT is not a synonym for every national chart datum.": {
+  "en": "Chart Datum is the reference surface from which charted depths are normally measured. Tide heights above the applicable chart datum may be combined with chart depths for a static depth estimate, but LAT is not a synonym for every national chart datum."
+ },
+ "CII is an operational carbon-intensity indicator based on emissions and transport-work-related activity under a specified methodology. Lower total fuel consumption in isolation does not guarantee a better intensity indicator.": {
+  "en": "CII is an operational carbon-intensity indicator based on emissions and transport-work-related activity under a specified methodology. Lower total fuel consumption in isolation does not guarantee a better intensity indicator."
+ },
+ "Closed-loop communication requires a precise instruction, correct read-back and explicit confirmation. The loop is especially important when similar machinery numbers or valve designations can be confused.": {
+  "en": "Closed-loop communication requires a precise instruction, correct read-back and explicit confirmation. The loop is especially important when similar machinery numbers or valve designations can be confused."
+ },
+ "Closer isobar spacing in a fixed map scale often implies a stronger horizontal pressure gradient and stronger geostrophic wind, subject to latitude, surface friction and synoptic structure.": {
+  "en": "Closer isobar spacing in a fixed map scale often implies a stronger horizontal pressure gradient and stronger geostrophic wind, subject to latitude, surface friction and synoptic structure."
+ },
+ "COLREG navigation lights have defined sectors, colours and minimum ranges based on vessel class and size. Geographical detection distance also depends on meteorological visibility and height of eye; a light's legal nominal range is not the distance at which every observer will see it.": {
+  "en": "COLREG navigation lights have defined sectors, colours and minimum ranges based on vessel class and size. Geographical detection distance also depends on meteorological visibility and height of eye; a light's legal nominal range is not the distance at which every observer will see it."
+ },
+ "COLREG Rule 13 obliges the overtaking vessel to keep out of the way until finally past and clear. An approaching vessel more than 22.5° abaft another's beam is overtaking; doubt must be resolved conservatively.": {
+  "en": "COLREG Rule 13 obliges the overtaking vessel to keep out of the way until finally past and clear. An approaching vessel more than 22.5° abaft another's beam is overtaking; doubt must be resolved conservatively."
+ },
+ "COLREG Rule 15 identifies a crossing encounter between two power-driven vessels in sight. Risk assessment still depends on bearing trend, range, visual observation and all available sensors, not a single ARPA number.": {
+  "en": "COLREG Rule 15 identifies a crossing encounter between two power-driven vessels in sight. Risk assessment still depends on bearing trend, range, visual observation and all available sensors, not a single ARPA number."
+ },
+ "COLREG Rule 6 requires safe speed appropriate to conditions, including visibility, density of traffic, manoeuvrability, background light, weather and proximity of navigational hazards. There is no universally lawful fixed speed for restricted visibility.": {
+  "en": "COLREG Rule 6 requires safe speed appropriate to conditions, including visibility, density of traffic, manoeuvrability, background light, weather and proximity of navigational hazards. There is no universally lawful fixed speed for restricted visibility."
+ },
+ "COLREG Rules 5–8 apply across the routine collision-avoidance decision chain: effective lookout, safe speed, risk assessment with all available means, and timely substantial action. Later encounter rules do not replace those fundamentals.": {
+  "en": "COLREG Rules 5–8 apply across the routine collision-avoidance decision chain: effective lookout, safe speed, risk assessment with all available means, and timely substantial action. Later encounter rules do not replace those fundamentals."
+ },
+ "Common error: A dust mask or ordinary cartridge respirator does not supply oxygen to an oxygen-deficient space.": {
+  "en": "Common error: A dust mask or ordinary cartridge respirator does not supply oxygen to an oxygen-deficient space."
+ },
+ "Common error: A low HDOP or a healthy satellite count does not exclude spoofing.": {
+  "en": "Common error: A low HDOP or a healthy satellite count does not exclude spoofing."
+ },
+ "Common error: A nod or 'okay' is not a reliable read-back for critical plant operations.": {
+  "en": "Common error: A nod or 'okay' is not a reliable read-back for critical plant operations."
+ },
+ "Common error: A visually larger curve is not proof of compliance without the relevant criteria and limiting openings.": {
+  "en": "Common error: A visually larger curve is not proof of compliance without the relevant criteria and limiting openings."
+ },
+ "Common error: Aggressive clutter suppression can erase small craft and buoys.": {
+  "en": "Common error: Aggressive clutter suppression can erase small craft and buoys."
+ },
+ "Common error: Do not accept an ARPA-moving target or the nearest unidentified echo as a charted fixed landmark.": {
+  "en": "Common error: Do not accept an ARPA-moving target or the nearest unidentified echo as a charted fixed landmark."
+ },
+ "Common error: Do not activate real distress transmissions during a drill.": {
+  "en": "Common error: Do not activate real distress transmissions during a drill."
+ },
+ "Common error: Do not add current set and leeway angles as if they were always interchangeable scalar corrections.": {
+  "en": "Common error: Do not add current set and leeway angles as if they were always interchangeable scalar corrections."
+ },
+ "Common error: Do not add separate tank corrections to a stability output already corrected for free surface.": {
+  "en": "Common error: Do not add separate tank corrections to a stability output already corrected for free surface."
+ },
+ "Common error: Do not add the wind and ship speeds as scalars when the vectors are oblique.": {
+  "en": "Common error: Do not add the wind and ship speeds as scalars when the vectors are oblique."
+ },
+ "Common error: Do not adopt run-to-failure policy for a hidden safety-critical function without approved risk assessment.": {
+  "en": "Common error: Do not adopt run-to-failure policy for a hidden safety-critical function without approved risk assessment."
+ },
+ "Common error: Do not annotate the EP as a measured fix without an independent observation.": {
+  "en": "Common error: Do not annotate the EP as a measured fix without an independent observation."
+ },
+ "Common error: Do not apply a megohmmeter to live electronic circuits without approved isolation.": {
+  "en": "Common error: Do not apply a megohmmeter to live electronic circuits without approved isolation."
+ },
+ "Common error: Do not apply a seawater-specific pressure-to-level conversion to a different liquid without checking density.": {
+  "en": "Common error: Do not apply a seawater-specific pressure-to-level conversion to a different liquid without checking density."
+ },
+ "Common error: Do not apply a standard induction-motor uncoupled test to every DC motor.": {
+  "en": "Common error: Do not apply a standard induction-motor uncoupled test to every DC motor."
+ },
+ "Common error: Do not apply an automatic 10° alteration to every apparent near-head-on target.": {
+  "en": "Common error: Do not apply an automatic 10° alteration to every apparent near-head-on target."
+ },
+ "Common error: Do not apply both corrections as positive just because each is given as a magnitude.": {
+  "en": "Common error: Do not apply both corrections as positive just because each is given as a magnitude."
+ },
+ "Common error: Do not apply free-surface data from a full or empty tank indiscriminately to slack-tank conditions.": {
+  "en": "Common error: Do not apply free-surface data from a full or empty tank indiscriminately to slack-tank conditions."
+ },
+ "Common error: Do not apply Rule 15 mechanically to a radar-only contact in fog.": {
+  "en": "Common error: Do not apply Rule 15 mechanically to a radar-only contact in fog."
+ },
+ "Common error: Do not approve a revised stowage arrangement based on total tonnes alone.": {
+  "en": "Common error: Do not approve a revised stowage arrangement based on total tonnes alone."
+ },
+ "Common error: Do not assert that every first satellite message already contains an accurate GNSS fix.": {
+  "en": "Common error: Do not assert that every first satellite message already contains an accurate GNSS fix."
+ },
+ "Common error: Do not assign Beaufort force solely from significant wave height in mixed swell and wind seas.": {
+  "en": "Common error: Do not assign Beaufort force solely from significant wave height in mixed swell and wind seas."
+ },
+ "Common error: Do not assign identical FSM to equal-volume tanks with different breadth.": {
+  "en": "Common error: Do not assign identical FSM to equal-volume tanks with different breadth."
+ },
+ "Common error: Do not assume a cargo is excluded from MARPOL Annex III solely because it is inside a sealed container.": {
+  "en": "Common error: Do not assume a cargo is excluded from MARPOL Annex III solely because it is inside a sealed container."
+ },
+ "Common error: Do not assume a clear ECDIS display proves safe clearance.": {
+  "en": "Common error: Do not assume a clear ECDIS display proves safe clearance."
+ },
+ "Common error: Do not assume a large alteration is automatically safe when shoals and multiple targets are present.": {
+  "en": "Common error: Do not assume a large alteration is automatically safe when shoals and multiple targets are present."
+ },
+ "Common error: Do not assume a rhumb line is the shortest distance because it is straight on a Mercator chart.": {
+  "en": "Common error: Do not assume a rhumb line is the shortest distance because it is straight on a Mercator chart."
+ },
+ "Common error: Do not assume a single separator pass always reduces particles to safe levels.": {
+  "en": "Common error: Do not assume a single separator pass always reduces particles to safe levels."
+ },
+ "Common error: Do not assume all low-carbon fuels can be handled with diesel-fuel spill absorbents and normal gloves.": {
+  "en": "Common error: Do not assume all low-carbon fuels can be handled with diesel-fuel spill absorbents and normal gloves."
+ },
+ "Common error: Do not assume an apparently acceptable predicted CPA proves there is no risk of collision.": {
+  "en": "Common error: Do not assume an apparently acceptable predicted CPA proves there is no risk of collision."
+ },
+ "Common error: Do not assume biodegradable labelling makes plastic acceptable for overboard disposal.": {
+  "en": "Common error: Do not assume biodegradable labelling makes plastic acceptable for overboard disposal."
+ },
+ "Common error: Do not assume each leg carries half the load independent of sling angle.": {
+  "en": "Common error: Do not assume each leg carries half the load independent of sling angle."
+ },
+ "Common error: Do not assume every commercial Inmarsat or Iridium device is approved for the same GMDSS functions.": {
+  "en": "Common error: Do not assume every commercial Inmarsat or Iridium device is approved for the same GMDSS functions."
+ },
+ "Common error: Do not assume every snap-back trajectory can be captured by a permanent painted polygon.": {
+  "en": "Common error: Do not assume every snap-back trajectory can be captured by a permanent painted polygon."
+ },
+ "Common error: Do not assume LNG cryogenic gloves or a diesel-fuel spill kit alone are suitable for every alternative fuel.": {
+  "en": "Common error: Do not assume LNG cryogenic gloves or a diesel-fuel spill kit alone are suitable for every alternative fuel."
+ },
+ "Common error: Do not assume NAVTEX alone covers every ocean area or that all MSI channels are interchangeable.": {
+  "en": "Common error: Do not assume NAVTEX alone covers every ocean area or that all MSI channels are interchangeable."
+ },
+ "Common error: Do not assume subdivision integrity from one early sounding.": {
+  "en": "Common error: Do not assume subdivision integrity from one early sounding."
+ },
+ "Common error: Do not assume the first ship arriving becomes the permanent coordinator without agreement.": {
+  "en": "Common error: Do not assume the first ship arriving becomes the permanent coordinator without agreement."
+ },
+ "Common error: Do not assume the Mediterranean remains outside SOx ECA control after 1 May 2025.": {
+  "en": "Common error: Do not assume the Mediterranean remains outside SOx ECA control after 1 May 2025."
+ },
+ "Common error: Do not assume the radar heading line is independent when it is fed by the same gyro.": {
+  "en": "Common error: Do not assume the radar heading line is independent when it is fed by the same gyro."
+ },
+ "Common error: Do not assume two pump motors mean every steering failure is automatically covered.": {
+  "en": "Common error: Do not assume two pump motors mean every steering failure is automatically covered."
+ },
+ "Common error: Do not assume visibility remains safe simply because rainfall has stopped.": {
+  "en": "Common error: Do not assume visibility remains safe simply because rainfall has stopped."
+ },
+ "Common error: Do not call a radar-only fog contact a Rule 15 crossing vessel.": {
+  "en": "Common error: Do not call a radar-only fog contact a Rule 15 crossing vessel."
+ },
+ "Common error: Do not change AVR settings to correct a prime-mover speed problem.": {
+  "en": "Common error: Do not change AVR settings to correct a prime-mover speed problem."
+ },
+ "Common error: Do not change treatment settings or bypass the system without manufacturer- and authority-compliant procedures.": {
+  "en": "Common error: Do not change treatment settings or bypass the system without manufacturer- and authority-compliant procedures."
+ },
+ "Common error: Do not choose an arbitrary fixed anchor alarm radius without calculating vessel-specific swing.": {
+  "en": "Common error: Do not choose an arbitrary fixed anchor alarm radius without calculating vessel-specific swing."
+ },
+ "Common error: Do not claim an oil filter is changed because its PMS work order was merely opened.": {
+  "en": "Common error: Do not claim an oil filter is changed because its PMS work order was merely opened."
+ },
+ "Common error: Do not claim the ship is ready for recycling merely because the hull was freshly coated.": {
+  "en": "Common error: Do not claim the ship is ready for recycling merely because the hull was freshly coated."
+ },
+ "Common error: Do not compare TCEs based on inconsistent voyage-day definitions.": {
+  "en": "Common error: Do not compare TCEs based on inconsistent voyage-day definitions."
+ },
+ "Common error: Do not conceal an active sensor alarm just to silence a navigation display.": {
+  "en": "Common error: Do not conceal an active sensor alarm just to silence a navigation display."
+ },
+ "Common error: Do not confuse 40 minutes of longitude with 40 NM at this latitude.": {
+  "en": "Common error: Do not confuse 40 minutes of longitude with 40 NM at this latitude."
+ },
+ "Common error: Do not confuse gauge pressure with absolute pressure or treat inclined tank geometry as irrelevant during motion.": {
+  "en": "Common error: Do not confuse gauge pressure with absolute pressure or treat inclined tank geometry as irrelevant during motion."
+ },
+ "Common error: Do not confuse the date the chart was received with its actual meteorological valid time.": {
+  "en": "Common error: Do not confuse the date the chart was received with its actual meteorological valid time."
+ },
+ "Common error: Do not confuse total trim change with aft-draught increase.": {
+  "en": "Common error: Do not confuse total trim change with aft-draught increase."
+ },
+ "Common error: Do not connect an unknown USB drive directly to a safety-critical navigation console.": {
+  "en": "Common error: Do not connect an unknown USB drive directly to a safety-critical navigation console."
+ },
+ "Common error: Do not consider a charted depth safe simply because it is greater than ship's draught.": {
+  "en": "Common error: Do not consider a charted depth safe simply because it is greater than ship's draught."
+ },
+ "Common error: Do not continue a planned turn merely because the waypoint advancement occurred.": {
+  "en": "Common error: Do not continue a planned turn merely because the waypoint advancement occurred."
+ },
+ "Common error: Do not copy obsolete fixed Inmarsat A3 latitude limits onto every modern GMDSS installation.": {
+  "en": "Common error: Do not copy obsolete fixed Inmarsat A3 latitude limits onto every modern GMDSS installation."
+ },
+ "Common error: Do not create a PI on a moving vessel or rely on it without checking the correct target identity.": {
+  "en": "Common error: Do not create a PI on a moving vessel or rely on it without checking the correct target identity."
+ },
+ "Common error: Do not declare a suspect GNSS position correct solely because the HDOP is low.": {
+  "en": "Common error: Do not declare a suspect GNSS position correct solely because the HDOP is low."
+ },
+ "Common error: Do not defer critical maintenance solely because the equipment is rarely started.": {
+  "en": "Common error: Do not defer critical maintenance solely because the equipment is rarely started."
+ },
+ "Common error: Do not define A3 permanently as Inmarsat's approximate 70° latitude footprint or A4 as only polar regions.": {
+  "en": "Common error: Do not define A3 permanently as Inmarsat's approximate 70° latitude footprint or A4 as only polar regions."
+ },
+ "Common error: Do not delay collision-avoidance action until the Master reaches the bridge.": {
+  "en": "Common error: Do not delay collision-avoidance action until the Master reaches the bridge."
+ },
+ "Common error: Do not delay navigational danger reporting while waiting for a complete commercial claim file.": {
+  "en": "Common error: Do not delay navigational danger reporting while waiting for a complete commercial claim file."
+ },
+ "Common error: Do not direct an unapproved water jet into live electrical equipment.": {
+  "en": "Common error: Do not direct an unapproved water jet into live electrical equipment."
+ },
+ "Common error: Do not disable required DSC watch facilities while experimenting with voice channels.": {
+  "en": "Common error: Do not disable required DSC watch facilities while experimenting with voice channels."
+ },
+ "Common error: Do not disable thermal protection to extend the low-speed range.": {
+  "en": "Common error: Do not disable thermal protection to extend the low-speed range."
+ },
+ "Common error: Do not disconnect a live reserve battery or interrupt required DSC watches for an ad hoc test.": {
+  "en": "Common error: Do not disconnect a live reserve battery or interrupt required DSC watches for an ad hoc test."
+ },
+ "Common error: Do not dismiss an active warning because the obstruction is absent from the ENC.": {
+  "en": "Common error: Do not dismiss an active warning because the obstruction is absent from the ENC."
+ },
+ "Common error: Do not equate 30% current THD with 30% voltage THD.": {
+  "en": "Common error: Do not equate 30% current THD with 30% voltage THD."
+ },
+ "Common error: Do not equate a vendor logo or urgent maintenance request with software trustworthiness.": {
+  "en": "Common error: Do not equate a vendor logo or urgent maintenance request with software trustworthiness."
+ },
+ "Common error: Do not equate Beaufort force with a unique significant wave height.": {
+  "en": "Common error: Do not equate Beaufort force with a unique significant wave height."
+ },
+ "Common error: Do not equate identical pressure differences with identical wind if map distances differ.": {
+  "en": "Common error: Do not equate identical pressure differences with identical wind if map distances differ."
+ },
+ "Common error: Do not extrapolate GZ = GM × sin(heel) across all heel angles.": {
+  "en": "Common error: Do not extrapolate GZ = GM × sin(heel) across all heel angles."
+ },
+ "Common error: Do not fill a rated bulkhead penetration with arbitrary foam or sealant.": {
+  "en": "Common error: Do not fill a rated bulkhead penetration with arbitrary foam or sealant."
+ },
+ "Common error: Do not follow an ambiguous reporting instruction into an immediate navigational hazard.": {
+  "en": "Common error: Do not follow an ambiguous reporting instruction into an immediate navigational hazard."
+ },
+ "Common error: Do not ignore a sound signal because ARPA has no matching tracked target.": {
+  "en": "Common error: Do not ignore a sound signal because ARPA has no matching tracked target."
+ },
+ "Common error: Do not increase controller gain to 'fix' a level sensor wiring or scaling failure.": {
+  "en": "Common error: Do not increase controller gain to 'fix' a level sensor wiring or scaling failure."
+ },
+ "Common error: Do not increase integral gain to overcome a valve that has reached its physical limit.": {
+  "en": "Common error: Do not increase integral gain to overcome a valve that has reached its physical limit."
+ },
+ "Common error: Do not independently order other SAR units to change search patterns without agreed coordination.": {
+  "en": "Common error: Do not independently order other SAR units to change search patterns without agreed coordination."
+ },
+ "Common error: Do not infer compatibility from a similar density or low sulphur declaration alone.": {
+  "en": "Common error: Do not infer compatibility from a similar density or low sulphur declaration alone."
+ },
+ "Common error: Do not infer compatibility from matching hazard pictograms alone.": {
+  "en": "Common error: Do not infer compatibility from matching hazard pictograms alone."
+ },
+ "Common error: Do not infer exact bunker consumption from SOG without engine and resistance data.": {
+  "en": "Common error: Do not infer exact bunker consumption from SOG without engine and resistance data."
+ },
+ "Common error: Do not infer sulphur compliance or acceptable viscosity solely from the words 'marine diesel'.": {
+  "en": "Common error: Do not infer sulphur compliance or acceptable viscosity solely from the words 'marine diesel'."
+ },
+ "Common error: Do not infer SWL from the appearance of a correctly tied knot.": {
+  "en": "Common error: Do not infer SWL from the appearance of a correctly tied knot."
+ },
+ "Common error: Do not infer that a vessel is absent because a particular light is not yet visible at an assumed range.": {
+  "en": "Common error: Do not infer that a vessel is absent because a particular light is not yet visible at an assumed range."
+ },
+ "Common error: Do not install an unapproved metal-to-metal bridge that unintentionally creates galvanic coupling.": {
+  "en": "Common error: Do not install an unapproved metal-to-metal bridge that unintentionally creates galvanic coupling."
+ },
+ "Common error: Do not interpret simultaneous unequal readings without checking time, observer bearing method and compass convention.": {
+  "en": "Common error: Do not interpret simultaneous unequal readings without checking time, observer bearing method and compass convention."
+ },
+ "Common error: Do not invent a universal overboard discharge distance for every sewage type and operating condition.": {
+  "en": "Common error: Do not invent a universal overboard discharge distance for every sewage type and operating condition."
+ },
+ "Common error: Do not label a difference as thermal loss without checking energy transferred in other forms.": {
+  "en": "Common error: Do not label a difference as thermal loss without checking energy transferred in other forms."
+ },
+ "Common error: Do not linearly interpolate across slack-water reversals without considering vector direction.": {
+  "en": "Common error: Do not linearly interpolate across slack-water reversals without considering vector direction."
+ },
+ "Common error: Do not measure route distance from a fixed map-scale ruler without confirming projection and local scale.": {
+  "en": "Common error: Do not measure route distance from a fixed map-scale ruler without confirming projection and local scale."
+ },
+ "Common error: Do not mistake a generic training calculator for a certified shipboard loading system.": {
+  "en": "Common error: Do not mistake a generic training calculator for a certified shipboard loading system."
+ },
+ "Common error: Do not mistake a stable displayed flow value for verified physical water flow.": {
+  "en": "Common error: Do not mistake a stable displayed flow value for verified physical water flow."
+ },
+ "Common error: Do not mistake normal swinging due to wind shift for dragging without checking changing fixed references.": {
+  "en": "Common error: Do not mistake normal swinging due to wind shift for dragging without checking changing fixed references."
+ },
+ "Common error: Do not mix raw sextant altitude Hs with fully corrected Ho.": {
+  "en": "Common error: Do not mix raw sextant altitude Hs with fully corrected Ho."
+ },
+ "Common error: Do not normalise against 20 mA as if the lower endpoint were zero current.": {
+  "en": "Common error: Do not normalise against 20 mA as if the lower endpoint were zero current."
+ },
+ "Common error: Do not open a pressurised impulse line because one gauge reads zero.": {
+  "en": "Common error: Do not open a pressurised impulse line because one gauge reads zero."
+ },
+ "Common error: Do not open scavenge-space doors or make fuel adjustments without the approved safety procedure.": {
+  "en": "Common error: Do not open scavenge-space doors or make fuel adjustments without the approved safety procedure."
+ },
+ "Common error: Do not prescribe one universal alteration that may increase another wave-motion hazard.": {
+  "en": "Common error: Do not prescribe one universal alteration that may increase another wave-motion hazard."
+ },
+ "Common error: Do not publish SSAS locations, protected access credentials or ship-specific security weaknesses.": {
+  "en": "Common error: Do not publish SSAS locations, protected access credentials or ship-specific security weaknesses."
+ },
+ "Common error: Do not read a latitude change as east–west displacement.": {
+  "en": "Common error: Do not read a latitude change as east–west displacement."
+ },
+ "Common error: Do not reclassify an ongoing overtaking situation as crossing to transfer the give-way responsibility.": {
+  "en": "Common error: Do not reclassify an ongoing overtaking situation as crossing to transfer the give-way responsibility."
+ },
+ "Common error: Do not release head fasteners while trapped pressure or hot coolant remains.": {
+  "en": "Common error: Do not release head fasteners while trapped pressure or hot coolant remains."
+ },
+ "Common error: Do not rely on a single person simultaneously performing time-consuming administration and full collision lookout.": {
+  "en": "Common error: Do not rely on a single person simultaneously performing time-consuming administration and full collision lookout."
+ },
+ "Common error: Do not rely on repeated screenshots of the same GNSS source as an independent position check.": {
+  "en": "Common error: Do not rely on repeated screenshots of the same GNSS source as an independent position check."
+ },
+ "Common error: Do not remove a bunkering coupling merely because flow has stopped.": {
+  "en": "Common error: Do not remove a bunkering coupling merely because flow has stopped."
+ },
+ "Common error: Do not replace a class corrosion limit with an arbitrary universal percentage.": {
+  "en": "Common error: Do not replace a class corrosion limit with an arbitrary universal percentage."
+ },
+ "Common error: Do not reset a trip and return the pump to service without evaluating the leak and process conditions.": {
+  "en": "Common error: Do not reset a trip and return the pump to service without evaluating the leak and process conditions."
+ },
+ "Common error: Do not resume full speed before evaluating hull integrity and required reporting actions.": {
+  "en": "Common error: Do not resume full speed before evaluating hull integrity and required reporting actions."
+ },
+ "Common error: Do not rewire DOL motors to star-delta unless the winding connection and voltage ratings permit it.": {
+  "en": "Common error: Do not rewire DOL motors to star-delta unless the winding connection and voltage ratings permit it."
+ },
+ "Common error: Do not route high-conductivity product water into drinking-water tanks to avoid a production interruption.": {
+  "en": "Common error: Do not route high-conductivity product water into drinking-water tanks to avoid a production interruption."
+ },
+ "Common error: Do not secure a pilot ladder only to deck handrails or improvised fittings.": {
+  "en": "Common error: Do not secure a pilot ladder only to deck handrails or improvised fittings."
+ },
+ "Common error: Do not send deck crews to work simply because wind temporarily eases.": {
+  "en": "Common error: Do not send deck crews to work simply because wind temporarily eases."
+ },
+ "Common error: Do not sign a test record for a function that the responsible crew could not complete.": {
+  "en": "Common error: Do not sign a test record for a function that the responsible crew could not complete."
+ },
+ "Common error: Do not silently assume N/E or WGS 84 for coordinates copied from a different source.": {
+  "en": "Common error: Do not silently assume N/E or WGS 84 for coordinates copied from a different source."
+ },
+ "Common error: Do not silently return the equipment to automatic mode without understanding why it was changed.": {
+  "en": "Common error: Do not silently return the equipment to automatic mode without understanding why it was changed."
+ },
+ "Common error: Do not steer 021°T to hold a desired northbound ground track in the same east-setting current.": {
+  "en": "Common error: Do not steer 021°T to hold a desired northbound ground track in the same east-setting current."
+ },
+ "Common error: Do not substitute a voyage-level fuel-per-hour number for the formal attained CII.": {
+  "en": "Common error: Do not substitute a voyage-level fuel-per-hour number for the formal attained CII."
+ },
+ "Common error: Do not tell crew that a 4 m Hs forecast means no waves higher than 4 m.": {
+  "en": "Common error: Do not tell crew that a 4 m Hs forecast means no waves higher than 4 m."
+ },
+ "Common error: Do not treat a battery pack as an ordinary electrical cabinet fire or assume that extinguishing flame ends the event.": {
+  "en": "Common error: Do not treat a battery pack as an ordinary electrical cabinet fire or assume that extinguishing flame ends the event."
+ },
+ "Common error: Do not treat a correct slot address as approval of weight and lashing limits.": {
+  "en": "Common error: Do not treat a correct slot address as approval of weight and lashing limits."
+ },
+ "Common error: Do not treat AIS-reported COG alone as sufficient collision-risk evidence.": {
+  "en": "Common error: Do not treat AIS-reported COG alone as sufficient collision-risk evidence."
+ },
+ "Common error: Do not treat an arrival time as feasible without assessing its tidal and weather context.": {
+  "en": "Common error: Do not treat an arrival time as feasible without assessing its tidal and weather context."
+ },
+ "Common error: Do not treat an uncompensated orifice flow reading as direct mass-flow measurement.": {
+  "en": "Common error: Do not treat an uncompensated orifice flow reading as direct mass-flow measurement."
+ },
+ "Common error: Do not treat COP 3.2 as 320% thermodynamic engine efficiency.": {
+  "en": "Common error: Do not treat COP 3.2 as 320% thermodynamic engine efficiency."
+ },
+ "Common error: Do not treat ECDIS route validation as proof of charted depth, squat and local tide adequacy.": {
+  "en": "Common error: Do not treat ECDIS route validation as proof of charted depth, squat and local tide adequacy."
+ },
+ "Common error: Do not treat items in quarantine or awaiting inspection as serviceable spare stock.": {
+  "en": "Common error: Do not treat items in quarantine or awaiting inspection as serviceable spare stock."
+ },
+ "Common error: Do not treat TPC as constant over large draught changes.": {
+  "en": "Common error: Do not treat TPC as constant over large draught changes."
+ },
+ "Common error: Do not trigger a live DSC distress alert merely to obtain attention for a routine medical consultation.": {
+  "en": "Common error: Do not trigger a live DSC distress alert merely to obtain attention for a routine medical consultation."
+ },
+ "Common error: Do not use 1.000 t/m³ as a universal seawater density.": {
+  "en": "Common error: Do not use 1.000 t/m³ as a universal seawater density."
+ },
+ "Common error: Do not use 180 NM simply because longitude difference is 180′.": {
+  "en": "Common error: Do not use 180 NM simply because longitude difference is 180′."
+ },
+ "Common error: Do not use a fixed-system release as a first unsupervised response to a small, accessible fire.": {
+  "en": "Common error: Do not use a fixed-system release as a first unsupervised response to a small, accessible fire."
+ },
+ "Common error: Do not use an oil tanker Annex I discharge checklist for bulk chemical Category X residues.": {
+  "en": "Common error: Do not use an oil tanker Annex I discharge checklist for bulk chemical Category X residues."
+ },
+ "Common error: Do not use an ordinary bulk-cargo stability calculation in place of grain-shift criteria.": {
+  "en": "Common error: Do not use an ordinary bulk-cargo stability calculation in place of grain-shift criteria."
+ },
+ "Common error: Do not use charted waypoint positions alone to judge whether the turn is safe.": {
+  "en": "Common error: Do not use charted waypoint positions alone to judge whether the turn is safe."
+ },
+ "Common error: Do not use high propulsion thrust before verifying contact and hull consequences.": {
+  "en": "Common error: Do not use high propulsion thrust before verifying contact and hull consequences."
+ },
+ "Common error: Do not use observed density in kg/m³ as if it were t/m³.": {
+  "en": "Common error: Do not use observed density in kg/m³ as if it were t/m³."
+ },
+ "Common error: Do not use the same cosine factor over a very long passage across disparate latitudes.": {
+  "en": "Common error: Do not use the same cosine factor over a very long passage across disparate latitudes."
+ },
+ "Common error: Do not use the small-angle GM approximation as an unrestricted large-angle GZ formula.": {
+  "en": "Common error: Do not use the small-angle GM approximation as an unrestricted large-angle GZ formula."
+ },
+ "Common error: Do not wait for gale-force winds to reach the ship before reassessing the passage.": {
+  "en": "Common error: Do not wait for gale-force winds to reach the ship before reassessing the passage."
+ },
+ "Common error: Never accept a wet Group A cargo simply because the hatch cover can be closed quickly.": {
+  "en": "Common error: Never accept a wet Group A cargo simply because the hatch cover can be closed quickly."
+ },
+ "Common error: Never activate live SSAS or distress transmission as an informal demonstration.": {
+  "en": "Common error: Never activate live SSAS or distress transmission as an informal demonstration."
+ },
+ "Common error: Never add draught to a depth-below-transducer reading without verifying what is being measured.": {
+  "en": "Common error: Never add draught to a depth-below-transducer reading without verifying what is being measured."
+ },
+ "Common error: Never apply a chart's magnetic information twice when steering a true gyro heading.": {
+  "en": "Common error: Never apply a chart's magnetic information twice when steering a true gyro heading."
+ },
+ "Common error: Never apply a fixed declination-minus-zenith formula regardless of hemisphere and Sun bearing.": {
+  "en": "Common error: Never apply a fixed declination-minus-zenith formula regardless of hemisphere and Sun bearing."
+ },
+ "Common error: Never authorise cutting an overboard pipe based solely on the main valve handle position.": {
+  "en": "Common error: Never authorise cutting an overboard pipe based solely on the main valve handle position."
+ },
+ "Common error: Never backdate completion or override the PMS interval without a documented authorised decision.": {
+  "en": "Common error: Never backdate completion or override the PMS interval without a documented authorised decision."
+ },
+ "Common error: Never bypass a 15 ppm monitor or log a discharge that did not take place.": {
+  "en": "Common error: Never bypass a 15 ppm monitor or log a discharge that did not take place."
+ },
+ "Common error: Never bypass a 15-ppm alarm or treat its threshold as unrestricted permission.": {
+  "en": "Common error: Never bypass a 15-ppm alarm or treat its threshold as unrestricted permission."
+ },
+ "Common error: Never bypass an ESD or manifold alarm to keep cargo operations on schedule.": {
+  "en": "Common error: Never bypass an ESD or manifold alarm to keep cargo operations on schedule."
+ },
+ "Common error: Never bypass or inhibit a protective alarm solely to remove nuisance indications.": {
+  "en": "Common error: Never bypass or inhibit a protective alarm solely to remove nuisance indications."
+ },
+ "Common error: Never bypass residual-current protection merely because the tool still seems to run.": {
+  "en": "Common error: Never bypass residual-current protection merely because the tool still seems to run."
+ },
+ "Common error: Never cite a hard hat as sufficient control for a loaded line's snap-back zone.": {
+  "en": "Common error: Never cite a hard hat as sufficient control for a loaded line's snap-back zone."
+ },
+ "Common error: Never combine depth on one datum with a tide prediction referenced to another without conversion.": {
+  "en": "Common error: Never combine depth on one datum with a tide prediction referenced to another without conversion."
+ },
+ "Common error: Never correct XTE automatically by making a large unassessed heading change near shoals.": {
+  "en": "Common error: Never correct XTE automatically by making a large unassessed heading change near shoals."
+ },
+ "Common error: Never deduct free-surface correction again if the loader already applied it.": {
+  "en": "Common error: Never deduct free-surface correction again if the loader already applied it."
+ },
+ "Common error: Never defeat a synch-check or reverse-power protection to force a breaker closed.": {
+  "en": "Common error: Never defeat a synch-check or reverse-power protection to force a breaker closed."
+ },
+ "Common error: Never delay immediate trained first aid solely to complete paperwork.": {
+  "en": "Common error: Never delay immediate trained first aid solely to complete paperwork."
+ },
+ "Common error: Never describe Annex V food-waste disposal limits as if they were Annex I oily-water rules.": {
+  "en": "Common error: Never describe Annex V food-waste disposal limits as if they were Annex I oily-water rules."
+ },
+ "Common error: Never divide final moments by the vessel's old displacement.": {
+  "en": "Common error: Never divide final moments by the vessel's old displacement."
+ },
+ "Common error: Never divide this force by an individual lashing's marked capacity without accounting for angles, friction and safety factors.": {
+  "en": "Common error: Never divide this force by an individual lashing's marked capacity without accounting for angles, friction and safety factors."
+ },
+ "Common error: Never equate an ordinary dust mask with breathing apparatus for an oxygen-deficient atmosphere.": {
+  "en": "Common error: Never equate an ordinary dust mask with breathing apparatus for an oxygen-deficient atmosphere."
+ },
+ "Common error: Never equate flash point with spontaneous ignition temperature or assume increasing heating is always safe.": {
+  "en": "Common error: Never equate flash point with spontaneous ignition temperature or assume increasing heating is always safe."
+ },
+ "Common error: Never fabricate an equipment-test entry or silently change a documented route after the inspector has identified a discrepancy.": {
+  "en": "Common error: Never fabricate an equipment-test entry or silently change a documented route after the inspector has identified a discrepancy."
+ },
+ "Common error: Never feed large quantities of cold water into a potentially overheated dry boiler without approved expert instructions.": {
+  "en": "Common error: Never feed large quantities of cold water into a potentially overheated dry boiler without approved expert instructions."
+ },
+ "Common error: Never force an I/O bit to 'healthy' to conceal an unresolved damper problem.": {
+  "en": "Common error: Never force an I/O bit to 'healthy' to conceal an unresolved damper problem."
+ },
+ "Common error: Never force-close the breaker to compensate for a synchronisation fault.": {
+  "en": "Common error: Never force-close the breaker to compensate for a synchronisation fault."
+ },
+ "Common error: Never force-synchronise an incompatible shore feed or bypass interlocks to meet departure schedule.": {
+  "en": "Common error: Never force-synchronise an incompatible shore feed or bypass interlocks to meet departure schedule."
+ },
+ "Common error: Never ignore LCF position, free surface or strength criteria.": {
+  "en": "Common error: Never ignore LCF position, free surface or strength criteria."
+ },
+ "Common error: Never improvise hook, painter or release sequences from another vessel's equipment.": {
+  "en": "Common error: Never improvise hook, painter or release sequences from another vessel's equipment."
+ },
+ "Common error: Never infer a precise failed gear tooth from iron ppm alone without corroborating inspection.": {
+  "en": "Common error: Never infer a precise failed gear tooth from iron ppm alone without corroborating inspection."
+ },
+ "Common error: Never infer squall onset time from a single pressure reading.": {
+  "en": "Common error: Never infer squall onset time from a single pressure reading."
+ },
+ "Common error: Never insert a universal squat formula or minimum UKC percentage without checking approved ship-specific criteria.": {
+  "en": "Common error: Never insert a universal squat formula or minimum UKC percentage without checking approved ship-specific criteria."
+ },
+ "Common error: Never intentionally introduce a second ground connection to locate a live fault.": {
+  "en": "Common error: Never intentionally introduce a second ground connection to locate a live fault."
+ },
+ "Common error: Never interpret PDOP 5.0 as exactly five metres of horizontal inaccuracy.": {
+  "en": "Common error: Never interpret PDOP 5.0 as exactly five metres of horizontal inaccuracy."
+ },
+ "Common error: Never interpret pilot boarding as transfer of all navigational accountability.": {
+  "en": "Common error: Never interpret pilot boarding as transfer of all navigational accountability."
+ },
+ "Common error: Never label an integral over degrees as m·rad.": {
+  "en": "Common error: Never label an integral over degrees as m·rad."
+ },
+ "Common error: Never label two observations taken 30 minutes apart as simultaneous cross bearings.": {
+  "en": "Common error: Never label two observations taken 30 minutes apart as simultaneous cross bearings."
+ },
+ "Common error: Never leave an unverified charger profile energised on an emergency battery bank.": {
+  "en": "Common error: Never leave an unverified charger profile energised on an emergency battery bank."
+ },
+ "Common error: Never open a watertight boundary or start counter-flooding without the approved damage-stability assessment.": {
+  "en": "Common error: Never open a watertight boundary or start counter-flooding without the approved damage-stability assessment."
+ },
+ "Common error: Never open cross-connections or counterflood without assessing the ship's residual stability.": {
+  "en": "Common error: Never open cross-connections or counterflood without assessing the ship's residual stability."
+ },
+ "Common error: Never promise absolute confidentiality when necessary restricted reporting or safeguarding obligations apply.": {
+  "en": "Common error: Never promise absolute confidentiality when necessary restricted reporting or safeguarding obligations apply."
+ },
+ "Common error: Never pull an unidentified live fuel emergency shut-off as a demonstration.": {
+  "en": "Common error: Never pull an unidentified live fuel emergency shut-off as a demonstration."
+ },
+ "Common error: Never raise a breaker setting blindly to suppress trips without evaluating conductor and fault protection.": {
+  "en": "Common error: Never raise a breaker setting blindly to suppress trips without evaluating conductor and fault protection."
+ },
+ "Common error: Never record a fictional 'test satisfactory' or distress call for a check that did not happen.": {
+  "en": "Common error: Never record a fictional 'test satisfactory' or distress call for a check that did not happen."
+ },
+ "Common error: Never record a simulated CO2 release as an actual discharge.": {
+  "en": "Common error: Never record a simulated CO2 release as an actual discharge."
+ },
+ "Common error: Never repeatedly reset a thermal trip while the shaft or compressor is seized.": {
+  "en": "Common error: Never repeatedly reset a thermal trip while the shaft or compressor is seized."
+ },
+ "Common error: Never sign a clean bill of lading merely to avoid a commercial delay.": {
+  "en": "Common error: Never sign a clean bill of lading merely to avoid a commercial delay."
+ },
+ "Common error: Never stand inside a bight or straddle a tensioned mooring line.": {
+  "en": "Common error: Never stand inside a bight or straddle a tensioned mooring line."
+ },
+ "Common error: Never state that one degree of longitude always equals 60 NM.": {
+  "en": "Common error: Never state that one degree of longitude always equals 60 NM."
+ },
+ "Common error: Never substitute the rule of twelfths for actual harbour tide tables when UKC is critical.": {
+  "en": "Common error: Never substitute the rule of twelfths for actual harbour tide tables when UKC is critical."
+ },
+ "Common error: Never subtract scalar speeds to infer current direction when heading and COG differ.": {
+  "en": "Common error: Never subtract scalar speeds to infer current direction when heading and COG differ."
+ },
+ "Common error: Never take a stale loading-condition report as the departure calculation.": {
+  "en": "Common error: Never take a stale loading-condition report as the departure calculation."
+ },
+ "Common error: Never translate HDOP 0.9 directly into an error radius of 0.9 metres.": {
+  "en": "Common error: Never translate HDOP 0.9 directly into an error radius of 0.9 metres."
+ },
+ "Common error: Never treat radar overlay alignment as a guarantee that every sensor is correct.": {
+  "en": "Common error: Never treat radar overlay alignment as a guarantee that every sensor is correct."
+ },
+ "Common error: Never treat the edge of a visible anvil as an exact boundary of dangerous lightning or gusts.": {
+  "en": "Common error: Never treat the edge of a visible anvil as an exact boundary of dangerous lightning or gusts."
+ },
+ "Common error: Never treat the number of shackles paid out as the horizontal swinging radius.": {
+  "en": "Common error: Never treat the number of shackles paid out as the horizontal swinging radius."
+ },
+ "Common error: Never treat the port's maximum speed as a minimum safe-speed target.": {
+  "en": "Common error: Never treat the port's maximum speed as a minimum safe-speed target."
+ },
+ "Common error: Never treat uncertain radio instructions as permission to disregard collision regulations or ship handling limits.": {
+  "en": "Common error: Never treat uncertain radio instructions as permission to disregard collision regulations or ship handling limits."
+ },
+ "Common error: Never tune by uncontrolled large output steps while cooling a critical running engine.": {
+  "en": "Common error: Never tune by uncontrolled large output steps while cooling a critical running engine."
+ },
+ "Common error: Never use a blanket rule to ventilate all cargoes whenever outdoor humidity is lower.": {
+  "en": "Common error: Never use a blanket rule to ventilate all cargoes whenever outdoor humidity is lower."
+ },
+ "Common error: Never use a fixed heading-turn mnemonic without checking cyclone hemisphere and true motion.": {
+  "en": "Common error: Never use a fixed heading-turn mnemonic without checking cyclone hemisphere and true motion."
+ },
+ "Common error: Never use a live DSC distress alert to demonstrate a training exercise; follow the device's approved test function.": {
+  "en": "Common error: Never use a live DSC distress alert to demonstrate a training exercise; follow the device's approved test function."
+ },
+ "Common error: Never use a tug's published pull rating as proof a shipboard fairlead can sustain that tow.": {
+  "en": "Common error: Never use a tug's published pull rating as proof a shipboard fairlead can sustain that tow."
+ },
+ "Common error: Never use AIS alone to establish safe passing arrangements.": {
+  "en": "Common error: Never use AIS alone to establish safe passing arrangements."
+ },
+ "Common error: Never use an ordinary cable gland or uncertified fastener to repair certified hazardous-area equipment.": {
+  "en": "Common error: Never use an ordinary cable gland or uncertified fastener to repair certified hazardous-area equipment."
+ },
+ "Common error: Never use an unverified deck fitting simply because it is reachable.": {
+  "en": "Common error: Never use an unverified deck fitting simply because it is reachable."
+ },
+ "Common error: Never use ordinary low-voltage tools or unapproved access to establish HV isolation.": {
+  "en": "Common error: Never use ordinary low-voltage tools or unapproved access to establish HV isolation."
+ },
+ "Common error: Never use universal valve-clearance dimensions across different diesel engine designs.": {
+  "en": "Common error: Never use universal valve-clearance dimensions across different diesel engine designs."
+ },
+ "Common mistakes on watch": {
+  "en": "Common mistakes on watch"
+ },
+ "Control-loop tuning balances response time, stability, noise and actuator wear. A process that oscillates after maintenance may have altered sensor scaling or actuator dynamics, not merely inappropriate PID coefficients.": {
+  "en": "Control-loop tuning balances response time, stability, noise and actuator wear. A process that oscillates after maintenance may have altered sensor scaling or actuator dynamics, not merely inappropriate PID coefficients."
+ },
+ "Corrective maintenance after breakdown prioritises safe isolation, effect on essential services and systematic root-cause assessment. Restoring a machine to operation without checking the cause risks repeated or more severe failure.": {
+  "en": "Corrective maintenance after breakdown prioritises safe isolation, effect on essential services and systematic root-cause assessment. Restoring a machine to operation without checking the cause risks repeated or more severe failure."
+ },
+ "Corrosion morphology can indicate different mechanisms: galvanic corrosion depends on coupled dissimilar metals and electrolyte, while crevice corrosion may concentrate inside poorly ventilated gaps. Surface coating alone is not diagnosis.": {
+  "en": "Corrosion morphology can indicate different mechanisms: galvanic corrosion depends on coupled dissimilar metals and electrolyte, while crevice corrosion may concentrate inside poorly ventilated gaps. Surface coating alone is not diagnosis."
+ },
+ "Cospas-Sarsat 406 MHz alerts are processed through the satellite segment and ground network, then forwarded through LUT/MCC arrangements to responsible SAR coordination authorities. The beacon's GNSS position and independent satellite-derived location are not identical data sources.": {
+  "en": "Cospas-Sarsat 406 MHz alerts are processed through the satellite segment and ground network, then forwarded through LUT/MCC arrangements to responsible SAR coordination authorities. The beacon's GNSS position and independent satellite-derived location are not identical data sources."
+ },
+ "Crane Safe Working Load and rigging capacities apply under stated configurations and load paths. Sling angles increase tension as the angle to horizontal decreases, while dynamic effects and actual equipment limits remain critical.": {
+  "en": "Crane Safe Working Load and rigging capacities apply under stated configurations and load paths. Sling angles increase tension as the angle to horizontal decreases, while dynamic effects and actual equipment limits remain critical."
+ },
+ "Critical-equipment identification considers consequence of failure, available redundancy, detection and restoration time, not simply purchase price or physical size.": {
+  "en": "Critical-equipment identification considers consequence of failure, available redundancy, detection and restoration time, not simply purchase price or physical size."
+ },
+ "Cross-track error (XTE) is the lateral displacement from the active intended route leg, not a replacement for position uncertainty or danger-clearance limits. Turns, antenna offsets and chart accuracy also affect the interpretation.": {
+  "en": "Cross-track error (XTE) is the lateral displacement from the active intended route leg, not a replacement for position uncertainty or danger-clearance limits. Turns, antenna offsets and chart accuracy also affect the interpretation."
+ },
+ "Cumulonimbus clouds have strong vertical growth and may bring squalls, intense precipitation, lightning, gust fronts and sudden visibility change. The cloud's visible shape is evidence of convective activity but does not determine precise wind speed.": {
+  "en": "Cumulonimbus clouds have strong vertical growth and may bring squalls, intense precipitation, lightning, gust fronts and sudden visibility change. The cloud's visible shape is evidence of convective activity but does not determine precise wind speed."
+ },
+ "Cylinder-head maintenance requires engine cooling, pressure release, residual-fuel assessment, lifting plan and correct bolt preload sequence. A visual absence of leaks does not demonstrate safe lifting or correct reassembly.": {
+  "en": "Cylinder-head maintenance requires engine cooling, pressure release, residual-fuel assessment, lifting plan and correct bolt preload sequence. A visual absence of leaks does not demonstrate safe lifting or correct reassembly."
+ },
+ "Damage control requires monitored ingress rates, boundary integrity and stability throughout the response. Pump operation, intentional transfers and counterflooding can affect free-surface and longitudinal stability in unexpected ways.": {
+  "en": "Damage control requires monitored ingress rates, boundary integrity and stability throughout the response. Pump operation, intentional transfers and counterflooding can affect free-surface and longitudinal stability in unexpected ways."
+ },
+ "Dangerous goods transport combines accurate classification and declaration with package condition, documentation, stowage, segregation and emergency response. An identical UN number does not remove the need to check packing group and special provisions.": {
+  "en": "Dangerous goods transport combines accurate classification and declaration with package condition, documentation, stowage, segregation and emergency response. An identical UN number does not remove the need to check packing group and special provisions."
+ },
+ "DC motor speed and torque characteristics depend on excitation and drive design. A series-excited DC motor can overspeed dangerously with loss of load; separately excited units depend on field integrity.": {
+  "en": "DC motor speed and torque characteristics depend on excitation and drive design. A series-excited DC motor can overspeed dangerously with loss of load; separately excited units depend on field integrity."
+ },
+ "Deck operation worked case": {
+  "en": "Deck operation worked case"
+ },
+ "Departure is the east–west distance along a local parallel, measured in NM, and is related to DLo via the cosine of latitude. It differs from east–west change in geodetic longitude, which is angular.": {
+  "en": "Departure is the east–west distance along a local parallel, measured in NM, and is related to DLo via the cosine of latitude. It differs from east–west change in geodetic longitude, which is angular."
+ },
+ "Direct-on-line induction motor starting draws significant inrush and starting torque, while star-delta starters and VFDs change the starting electrical and mechanical behaviour. Equipment compatibility and starting load torque matter.": {
+  "en": "Direct-on-line induction motor starting draws significant inrush and starting torque, while star-delta starters and VFDs change the starting electrical and mechanical behaviour. Equipment compatibility and starting load torque matter."
+ },
+ "Distress (MAYDAY), urgency (PAN PAN) and safety (SECURITE) communications represent different priorities and procedures. DSC alerting and follow-up radiotelephony use the relevant equipment and working channels; actual distress calls must never be used for drills.": {
+  "en": "Distress (MAYDAY), urgency (PAN PAN) and safety (SECURITE) communications represent different priorities and procedures. DSC alerting and follow-up radiotelephony use the relevant equipment and working channels; actual distress calls must never be used for drills."
+ },
+ "DR advances a previous position by heading and speed through water; EP can additionally include estimated effects of current, wind and leeway. Their uncertainty grows with elapsed time without an independent fix.": {
+  "en": "DR advances a previous position by heading and speed through water; EP can additionally include estimated effects of current, wind and leeway. Their uncertainty grows with elapsed time without an independent fix."
+ },
+ "Drydock preparation coordinates class survey items, hull inspections, sea valves, cathodic protection, anchors and shaft arrangements. Isolation planning must be established before exposure of sea-connected equipment.": {
+  "en": "Drydock preparation coordinates class survey items, hull inspections, sea valves, cathodic protection, anchors and shaft arrangements. Isolation planning must be established before exposure of sea-connected equipment."
+ },
+ "Earth-leakage protective arrangements detect residual current or insulation failure according to the installed earthing system. Correct device selection and testing depend on supply arrangement, load and protection zones.": {
+  "en": "Earth-leakage protective arrangements detect residual current or insulation failure according to the installed earthing system. Correct device selection and testing depend on supply arrangement, load and protection zones."
+ },
+ "ECDIS safety settings depend on the actual maximum draught, available chart depth and tide, squat, survey quality and company UKC policy. Safety contour and safety depth serve different presentation and alert functions.": {
+  "en": "ECDIS safety settings depend on the actual maximum draught, available chart depth and tide, squat, survey quality and company UKC policy. Safety contour and safety depth serve different presentation and alert functions."
+ },
+ "ECDIS, radar and AIS are complementary but can share common heading, log and position errors. Independent cross-checks are based on distinct principles, not just different display brands.": {
+  "en": "ECDIS, radar and AIS are complementary but can share common heading, log and position errors. Independent cross-checks are based on distinct principles, not just different display brands."
+ },
+ "Electrical protection and safe diagnostic case": {
+  "en": "Electrical protection and safe diagnostic case"
+ },
+ "Emergency logs should preserve observed facts, communications and ordered actions with timestamps. Estimates and assumptions must be identified; accurate records support coordination and later investigation without delaying life-saving work.": {
+  "en": "Emergency logs should preserve observed facts, communications and ordered actions with timestamps. Estimates and assumptions must be identified; accurate records support coordination and later investigation without delaying life-saving work."
+ },
+ "Enclosed spaces can contain oxygen-deficient, toxic or flammable atmospheres despite looking clean. An entry permit and gas test are control measures, not guarantees that the atmosphere will stay safe.": {
+  "en": "Enclosed spaces can contain oxygen-deficient, toxic or flammable atmospheres despite looking clean. An entry permit and gas test are control measures, not guarantees that the atmosphere will stay safe."
+ },
+ "Enclosed-space casualty response requires stopping a second uncontrolled entry, making a rescue plan and ensuring suitable atmosphere assessment and breathing protection. IMO revised enclosed-space recommendations stress additional permits for energy isolation and task-specific hazards.": {
+  "en": "Enclosed-space casualty response requires stopping a second uncontrolled entry, making a rescue plan and ensuring suitable atmosphere assessment and breathing protection. IMO revised enclosed-space recommendations stress additional permits for energy isolation and task-specific hazards."
+ },
+ "Engine-room handover is a transfer of operational risk awareness, not merely a signature. It should communicate plant status, isolations, alarms, planned work, temporary arrangements and escalation triggers.": {
+  "en": "Engine-room handover is a transfer of operational risk awareness, not merely a signature. It should communicate plant status, isolations, alarms, planned work, temporary arrangements and escalation triggers."
+ },
+ "Engineering reasoning and worked case": {
+  "en": "Engineering reasoning and worked case"
+ },
+ "Enlarge lesson illustration": {
+  "en": "Enlarge lesson illustration"
+ },
+ "Enlarge technical illustration": {
+  "en": "Enlarge technical illustration"
+ },
+ "ETA is driven by distance over ground divided by SOG, and through-water speed plus current may vary along the route. Fuel use depends on machinery loading and operating hours, so less time does not always imply proportional fuel savings.": {
+  "en": "ETA is driven by distance over ground divided by SOG, and through-water speed plus current may vary along the route. Fuel use depends on machinery loading and operating hours, so less time does not always imply proportional fuel savings."
+ },
+ "Explosion-protected equipment suitability depends on the hazardous-area classification, gas/dust group, temperature class and protection concept. Damaged glands, incorrect spares and unapproved maintenance can invalidate protection.": {
+  "en": "Explosion-protected equipment suitability depends on the hazardous-area classification, gas/dust group, temperature class and protection concept. Damaged glands, incorrect spares and unapproved maintenance can invalidate protection."
+ },
+ "Failure management must distinguish display, transducer, data bus and electrical supply faults. Backup navigation is only credible if equipment independence and competent procedures have been verified.": {
+  "en": "Failure management must distinguish display, transducer, data bus and electrical supply faults. Backup navigation is only credible if equipment independence and competent procedures have been verified."
+ },
+ "Fire integrity depends on A/B class divisions, penetrations, dampers, fire doors and detection zones as actually approved for the vessel. Fire ratings are not the same as a guarantee of unlimited fire resistance.": {
+  "en": "Fire integrity depends on A/B class divisions, penetrations, dampers, fire doors and detection zones as actually approved for the vessel. Fire ratings are not the same as a guarantee of unlimited fire resistance."
+ },
+ "Fire-tube boilers route hot combustion products through tubes surrounded by water, while water-tube designs circulate water/steam inside tubes exposed to hot gases. Both require correctly set water-level safeguards and blowdown plans.": {
+  "en": "Fire-tube boilers route hot combustion products through tubes surrounded by water, while water-tube designs circulate water/steam inside tubes exposed to hot gases. Both require correctly set water-level safeguards and blowdown plans."
+ },
+ "Flash point is the lowest temperature at which a liquid produces sufficient vapour to ignite under a specified standard test; it is not the autoignition temperature and does not independently describe all storage hazards.": {
+  "en": "Flash point is the lowest temperature at which a liquid produces sufficient vapour to ignite under a specified standard test; it is not the autoignition temperature and does not independently describe all storage hazards."
+ },
+ "Flooding response combines watertight integrity, source identification, stability awareness, tank soundings and boundary integrity. Pump capacity can be exceeded by rising ingress even if a bilge alarm is acknowledged.": {
+  "en": "Flooding response combines watertight integrity, source identification, stability awareness, tank soundings and boundary integrity. Pump capacity can be exceeded by rising ingress even if a bilge alarm is acknowledged."
+ },
+ "For a conventional synchronous alternator, system frequency tracks shaft rotational speed and pole count; the governor regulates speed/real-power sharing while the AVR predominantly controls voltage/reactive-power behaviour.": {
+  "en": "For a conventional synchronous alternator, system frequency tracks shaft rotational speed and pole count; the governor regulates speed/real-power sharing while the AVR predominantly controls voltage/reactive-power behaviour."
+ },
+ "GMDSS communications and coordination case": {
+  "en": "GMDSS communications and coordination case"
+ },
+ "GMDSS-approved mobile satellite terminals carry defined distress and safety functions within their recognised coverage. A vessel's commercial satellite internet access is not automatically a certified GMDSS alerting route.": {
+  "en": "GMDSS-approved mobile satellite terminals carry defined distress and safety functions within their recognised coverage. A vessel's commercial satellite internet access is not automatically a certified GMDSS alerting route."
+ },
+ "GNSS geometric dilution of precision is only one contributor to position uncertainty; orbit, timing, atmosphere, multipath, spoofing and equipment integrity also matter. Multiple displays sharing one sensor are not independent checks.": {
+  "en": "GNSS geometric dilution of precision is only one contributor to position uncertainty; orbit, timing, atmosphere, multipath, spoofing and equipment integrity also matter. Multiple displays sharing one sensor are not independent checks."
+ },
+ "GNSS reliability can be affected by spoofing, jamming, multipath, antenna failure and shared sensor feeds. Multiple screens agreeing is not independent corroboration if they use the same receiver or antenna.": {
+  "en": "GNSS reliability can be affected by spoofing, jamming, multipath, antenna failure and shared sensor feeds. Multiple screens agreeing is not independent corroboration if they use the same receiver or antenna."
+ },
+ "Grain cargo can shift in partly filled spaces and create heeling moments, so grain-stability requirements and approved loading conditions differ from ordinary solid bulk treatment.": {
+  "en": "Grain cargo can shift in partly filled spaces and create heeling moments, so grain-stability requirements and approved loading conditions differ from ordinary solid bulk treatment."
+ },
+ "Grounding creates local loads and potential hull damage; refloating plans depend on verified bathymetry, tidal state, hull condition, stability and environmental consequences. Immediate full-astern power can worsen damage.": {
+  "en": "Grounding creates local loads and potential hull damage; refloating plans depend on verified bathymetry, tidal state, hull condition, stability and environmental consequences. Immediate full-astern power can worsen damage."
+ },
+ "Gyrocompass and magnetic compass provide distinct heading references. Gyro error changes with instrument state, speed/latitude influences, installation and sensor failures; it should not be treated as zero because it is electronic.": {
+  "en": "Gyrocompass and magnetic compass provide distinct heading references. Gyro error changes with instrument state, speed/latitude influences, installation and sensor failures; it should not be treated as zero because it is electronic."
+ },
+ "GZ is the horizontal lever between weight and buoyancy lines of action at a given angle of heel. Righting moment equals displacement weight multiplied by GZ under the corresponding units and assumptions.": {
+  "en": "GZ is the horizontal lever between weight and buoyancy lines of action at a given angle of heel. Righting moment equals displacement weight multiplied by GZ under the corresponding units and assumptions."
+ },
+ "HDOP describes how satellite geometry amplifies horizontal ranging uncertainty. It is dimensionless and is not itself a position error in metres; receiver quality, interference, corrections and multipath also matter.": {
+  "en": "HDOP describes how satellite geometry amplifies horizontal ranging uncertainty. It is dimensionless and is not itself a position error in metres; receiver quality, interference, corrections and multipath also matter."
+ },
+ "High-voltage marine electrical systems require authorised switching, isolation, testing for dead and earthing where specified. The correct safe state is established by the vessel's approved procedures and equipment ratings.": {
+  "en": "High-voltage marine electrical systems require authorised switching, isolation, testing for dead and earthing where specified. The correct safe state is established by the vessel's approved procedures and equipment ratings."
+ },
+ "High-voltage shore connection must coordinate voltage, frequency, phase sequence, grounding and protections between ship and terminal under an approved transfer plan. Galvanic and fault-current hazards are separate considerations.": {
+  "en": "High-voltage shore connection must coordinate voltage, frequency, phase sequence, grounding and protections between ship and terminal under an approved transfer plan. Galvanic and fault-current hazards are separate considerations."
+ },
+ "Ho is observed celestial altitude after appropriate index, dip and astronomical corrections; Hc is computed altitude for an assumed position and ephemeris. The difference is an intercept in arcminutes and approximately nautical miles.": {
+  "en": "Ho is observed celestial altitude after appropriate index, dip and astronomical corrections; Hc is computed altitude for an assumed position and ephemeris. The difference is an intercept in arcminutes and approximately nautical miles."
+ },
+ "How it works": {
+  "en": "How it works"
+ },
+ "Hydrostatic gauge pressure increases with liquid density and vertical depth below a free surface. In a ventilated tank, p = ρgh applies to the column, not to vessel roll, acceleration or an air-pressurised space.": {
+  "en": "Hydrostatic gauge pressure increases with liquid density and vertical depth below a free surface. In a ventilated tank, p = ρgh applies to the column, not to vessel roll, acceleration or an air-pressurised space."
+ },
+ "IMO — Cargo Securing and Stowage (CSS Code)": {
+  "en": "IMO — Cargo Securing and Stowage (CSS Code)"
+ },
+ "IMO — Cargoes": {
+  "en": "IMO — Cargoes"
+ },
+ "IMO — cargoes and cargo securing": {
+  "en": "IMO — cargoes and cargo securing"
+ },
+ "IMO — Cargoes and stability": {
+  "en": "IMO — Cargoes and stability"
+ },
+ "IMO — Cargoes and stability instruments": {
+  "en": "IMO — Cargoes and stability instruments"
+ },
+ "IMO — COLREG": {
+  "en": "IMO — COLREG"
+ },
+ "IMO — COLREG restricted visibility": {
+  "en": "IMO — COLREG restricted visibility"
+ },
+ "IMO — COLREG Rules 5, 7 and 8": {
+  "en": "IMO — COLREG Rules 5, 7 and 8"
+ },
+ "IMO — COLREGs": {
+  "en": "IMO — COLREGs"
+ },
+ "IMO — Convention on the International Regulations for Preventing Collisions at Sea": {
+  "en": "IMO — Convention on the International Regulations for Preventing Collisions at Sea"
+ },
+ "IMO — ECDIS guidance": {
+  "en": "IMO — ECDIS guidance"
+ },
+ "IMO — GMDSS and radiocommunications": {
+  "en": "IMO — GMDSS and radiocommunications"
+ },
+ "IMO — GMDSS circulars": {
+  "en": "IMO — GMDSS circulars"
+ },
+ "IMO — GMDSS radiocommunications": {
+  "en": "IMO — GMDSS radiocommunications"
+ },
+ "IMO — Hong Kong Ship Recycling Convention": {
+  "en": "IMO — Hong Kong Ship Recycling Convention"
+ },
+ "IMO — IMDG Code amendment 42-24": {
+  "en": "IMO — IMDG Code amendment 42-24"
+ },
+ "IMO — lifeboat and safety management framework": {
+  "en": "IMO — lifeboat and safety management framework"
+ },
+ "IMO — MARPOL convention": {
+  "en": "IMO — MARPOL convention"
+ },
+ "IMO — MARPOL Convention and Annexes": {
+  "en": "IMO — MARPOL Convention and Annexes"
+ },
+ "IMO — MARPOL overview": {
+  "en": "IMO — MARPOL overview"
+ },
+ "IMO — Radiocommunications / GMDSS": {
+  "en": "IMO — Radiocommunications / GMDSS"
+ },
+ "IMO — Revised enclosed-space recommendations MSC.581(110)": {
+  "en": "IMO — Revised enclosed-space recommendations MSC.581(110)"
+ },
+ "IMO — Revised recommendations on entering enclosed spaces, MSC.581(110)": {
+  "en": "IMO — Revised recommendations on entering enclosed spaces, MSC.581(110)"
+ },
+ "IMO — safe mooring": {
+  "en": "IMO — safe mooring"
+ },
+ "IMO — ship fuel sulphur and MARPOL Annex VI": {
+  "en": "IMO — ship fuel sulphur and MARPOL Annex VI"
+ },
+ "IMO — SOLAS IV radiocommunications": {
+  "en": "IMO — SOLAS IV radiocommunications"
+ },
+ "IMO — SOLAS overview": {
+  "en": "IMO — SOLAS overview"
+ },
+ "IMO — SOLAS safety framework": {
+  "en": "IMO — SOLAS safety framework"
+ },
+ "IMO — SOLAS safety management and ISPS Code": {
+  "en": "IMO — SOLAS safety management and ISPS Code"
+ },
+ "IMO — SOLAS Safety of Life at Sea": {
+  "en": "IMO — SOLAS Safety of Life at Sea"
+ },
+ "IMO — SOLAS safety requirements overview": {
+  "en": "IMO — SOLAS safety requirements overview"
+ },
+ "IMO — STCW competency framework": {
+  "en": "IMO — STCW competency framework"
+ },
+ "IMO 2008 IS Code — MSC.267(85)": {
+  "en": "IMO 2008 IS Code — MSC.267(85)"
+ },
+ "IMO A.893(21) — Guidelines for Voyage Planning": {
+  "en": "IMO A.893(21) — Guidelines for Voyage Planning"
+ },
+ "IMO A.893(21) Guidelines for voyage planning": {
+  "en": "IMO A.893(21) Guidelines for voyage planning"
+ },
+ "IMO COLREGs — navigation and collision avoidance": {
+  "en": "IMO COLREGs — navigation and collision avoidance"
+ },
+ "IMO ship design and stability": {
+  "en": "IMO ship design and stability"
+ },
+ "IMSBC Group A includes cargoes liable to liquefy or dynamically separate under relevant moisture conditions. Shipper documents and sampling arrangements matter; the master should not rely on the cargo looking dry.": {
+  "en": "IMSBC Group A includes cargoes liable to liquefy or dynamically separate under relevant moisture conditions. Shipper documents and sampling arrangements matter; the master should not rely on the cargo looking dry."
+ },
+ "IMSO — GMDSS and sea areas": {
+  "en": "IMSO — GMDSS and sea areas"
+ },
+ "In a head-on encounter between two power-driven vessels in sight and involving collision risk, Rule 14 requires each to alter course to starboard so that they pass port-to-port. Rules 5–8 still govern lookout, assessment and effective action.": {
+  "en": "In a head-on encounter between two power-driven vessels in sight and involving collision risk, Rule 14 requires each to alter course to starboard so that they pass port-to-port. Rules 5–8 still govern lookout, assessment and effective action."
+ },
+ "In an ideal rectangular slack tank, transverse free-surface moment scales with length times breadth cubed; actual tank shape, fill, baffles and liquid density modify the approved tabulated moment. Volume alone is insufficient.": {
+  "en": "In an ideal rectangular slack tank, transverse free-surface moment scales with length times breadth cubed; actual tank shape, fill, baffles and liquid density modify the approved tabulated moment. Volume alone is insufficient."
+ },
+ "In restricted visibility the officer must assess risk with a proper lookout, safe speed and radar as applicable; COLREG Rule 19 is not a simple right-of-way chart copied from vessels in sight.": {
+  "en": "In restricted visibility the officer must assess risk with a proper lookout, safe speed and radar as applicable; COLREG Rule 19 is not a simple right-of-way chart copied from vessels in sight."
+ },
+ "In restricted visibility, COLREG Rule 19 requires safe speed and risk assessment using all available means; fog signals are separate from radar target detection and must follow the vessel's actual navigational condition.": {
+  "en": "In restricted visibility, COLREG Rule 19 requires safe speed and risk assessment using all available means; fog signals are separate from radar target detection and must follow the vessel's actual navigational condition."
+ },
+ "In the Northern Hemisphere the right semicircle relative to tropical cyclone motion is often the more dangerous due to rotational wind and storm translation. Forecast-track uncertainty, sea room and vessel speed make simple manoeuvre mnemonics insufficient.": {
+  "en": "In the Northern Hemisphere the right semicircle relative to tropical cyclone motion is often the more dangerous due to rotational wind and storm translation. Forecast-track uncertainty, sea room and vessel speed make simple manoeuvre mnemonics insufficient."
+ },
+ "In tropical cyclones, the eye may be comparatively calmer while the eyewall contains intense winds and heavy rain. A temporary lull does not imply that the storm has passed.": {
+  "en": "In tropical cyclones, the eye may be comparatively calmer while the eyewall contains intense winds and heavy rain. A temporary lull does not imply that the storm has passed."
+ },
+ "Initial metacentric height GM = KM minus KG at the loading draught. Free-surface correction lowers effective GM; small-angle positive GM alone cannot certify the entire righting-arm or damage-stability behaviour.": {
+  "en": "Initial metacentric height GM = KM minus KG at the loading draught. Free-surface correction lowers effective GM; small-angle positive GM alone cannot certify the entire righting-arm or damage-stability behaviour."
+ },
+ "Insulation monitoring detects deterioration on certain marine insulated distribution systems. An alarm may occur without immediate breaker operation, so controlled investigation and electronic equipment protection are essential.": {
+  "en": "Insulation monitoring detects deterioration on certain marine insulated distribution systems. An alarm may occur without immediate breaker operation, so controlled investigation and electronic equipment protection are essential."
+ },
+ "KG changes as a moment-weighted average when weights are added, shifted or removed. The final displacement changes with added mass, but not with movement of existing mass. Free-surface correction is considered separately.": {
+  "en": "KG changes as a moment-weighted average when weights are added, shifted or removed. The final displacement changes with added mass, but not with movement of existing mass. Free-surface correction is considered separately."
+ },
+ "Knot suitability depends on intended load, rope construction, bend radius, slip resistance and approved use. A correctly tied demonstration knot is not necessarily a certified cargo-lifting termination.": {
+  "en": "Knot suitability depends on intended load, rope construction, bend radius, slip resistance and approved use. A correctly tied demonstration knot is not necessarily a certified cargo-lifting termination."
+ },
+ "Latitude change and longitude change are signed angular differences. For local-plane navigation, departure ≈ DLo(minutes) × cos(mean latitude), and distance is the vector magnitude of DLat and departure.": {
+  "en": "Latitude change and longitude change are signed angular differences. For local-plane navigation, departure ≈ DLo(minutes) × cos(mean latitude), and distance is the vector magnitude of DLat and departure."
+ },
+ "Latitude is angular distance north or south of the equator. In conventional nautical chart work, one minute of latitude approximately equals one nautical mile in the north–south direction, subject to Earth-ellipsoid refinements.": {
+  "en": "Latitude is angular distance north or south of the equator. In conventional nautical chart work, one minute of latitude approximately equals one nautical mile in the north–south direction, subject to Earth-ellipsoid refinements."
+ },
+ "Laytime calculations depend on the specific charter party: notice of readiness, commencement clauses, exceptions, reversible time and agreed treatment of weather or port delays. Demurrage/despatch is contractual, not a universal hourly rule.": {
+  "en": "Laytime calculations depend on the specific charter party: notice of readiness, commencement clauses, exceptions, reversible time and agreed treatment of weather or port delays. Demurrage/despatch is contractual, not a universal hourly rule."
+ },
+ "Leeway is the sideways drift relative to the water caused by wind and hull form; its direction and magnitude vary with vessel, speed, exposure and loading. It is distinct from water-current set/drift.": {
+  "en": "Leeway is the sideways drift relative to the water caused by wind and hull form; its direction and magnitude vary with vessel, speed, exposure and loading. It is distinct from water-current set/drift."
+ },
+ "Linear interpolation estimates an intermediate value from two adjacent tabulated entries only when the parameter is smooth over the interval. It is not valid across discontinuities, turnpoints or regulatory threshold changes.": {
+  "en": "Linear interpolation estimates an intermediate value from two adjacent tabulated entries only when the parameter is smooth over the interval. It is not valid across discontinuities, turnpoints or regulatory threshold changes."
+ },
+ "Liquefied-gas cargo operations involve temperature, pressure, cargo compatibility and hazardous-area controls. Cargo transfer procedures depend on tank type and the vessel's approved cargo system and terminal interface.": {
+  "en": "Liquefied-gas cargo operations involve temperature, pressure, cargo compatibility and hazardous-area controls. Cargo transfer procedures depend on tank type and the vessel's approved cargo system and terminal interface."
+ },
+ "Liquid free surfaces shift the effective centre of gravity during heel; their stability-booklet free-surface moment produces a virtual rise in G. The correction depends on tank geometry, filling state and the approved calculation basis.": {
+  "en": "Liquid free surfaces shift the effective centre of gravity during heel; their stability-booklet free-surface moment produces a virtual rise in G. The correction depends on tank geometry, filling state and the approved calculation basis."
+ },
+ "LNG propulsion introduces cryogenic, fire, vapour-management and fuel-gas system hazards that depend on certified design and the applicable IGF/IGC requirements. Gaseous leaks can create hazardous atmospheres even if visible liquid is absent.": {
+  "en": "LNG propulsion introduces cryogenic, fire, vapour-management and fuel-gas system hazards that depend on certified design and the applicable IGF/IGC requirements. Gaseous leaks can create hazardous atmospheres even if visible liquid is absent."
+ },
+ "Locally generated wind sea typically tracks the local wind field, whereas swell may travel long distances from a remote storm. Multiple wave trains can produce uncomfortable rolling despite moderate measured wind.": {
+  "en": "Locally generated wind sea typically tracks the local wind field, whereas swell may travel long distances from a remote storm. Multiple wave trains can produce uncomfortable rolling despite moderate measured wind."
+ },
+ "Longitude is the angle east or west of the prime meridian; distance along a parallel shrinks as latitude increases. Crossing 180° requires the shorter signed difference, not naive arithmetic on E and W labels.": {
+  "en": "Longitude is the angle east or west of the prime meridian; distance along a parallel shrinks as latitude increases. Crossing 180° requires the shorter signed difference, not naive arithmetic on E and W labels."
+ },
+ "Longitudinal weight movement creates a trimming moment and changes trim, with the response governed by hydrostatic MCT 1 cm and LCF. A simple estimate does not provide the individual forward and aft draught changes.": {
+  "en": "Longitudinal weight movement creates a trimming moment and changes trim, with the response governed by hydrostatic MCT 1 cm and LCF. A simple estimate does not provide the individual forward and aft draught changes."
+ },
+ "Lost containers can create a navigation hazard and may also pose pollution or dangerous-goods risks. Immediate response must follow the ship's emergency and reporting procedures while preserving safe navigation and evidence.": {
+  "en": "Lost containers can create a navigation hazard and may also pose pollution or dangerous-goods risks. Immediate response must follow the ship's emergency and reporting procedures while preserving safe navigation and evidence."
+ },
+ "Low-speed two-stroke marine diesel engines rely on efficient scavenge-air supply while exhaust gas is being displaced. One power stroke per revolution does not guarantee adequate fresh air at every load.": {
+  "en": "Low-speed two-stroke marine diesel engines rely on efficient scavenge-air supply while exhaust gas is being displaced. One power stroke per revolution does not guarantee adequate fresh air at every load."
+ },
+ "Machinery-space bilge water discharge requires compliance with the vessel's approved oil-filtering equipment arrangements, 15-ppm monitoring where applicable and additional operational, area and port restrictions. A ppm readout alone is not authorisation.": {
+  "en": "Machinery-space bilge water discharge requires compliance with the vessel's approved oil-filtering equipment arrangements, 15-ppm monitoring where applicable and additional operational, area and port restrictions. A ppm readout alone is not authorisation."
+ },
+ "Magnetic variation is the angular difference between true and magnetic north, varying by area and time; compass deviation is the error associated with the individual ship's compass heading.": {
+  "en": "Magnetic variation is the angular difference between true and magnetic north, varying by area and time; compass deviation is the error associated with the individual ship's compass heading."
+ },
+ "Maintenance decision and worked example": {
+  "en": "Maintenance decision and worked example"
+ },
+ "Maintenance planning must consider hours, calendar dates, maker requirements and operating duty; a late task may require additional risk controls and company authorisation. Deferral is not the same as completion.": {
+  "en": "Maintenance planning must consider hours, calendar dates, maker requirements and operating duty; a late task may require additional risk controls and company authorisation. Deferral is not the same as completion."
+ },
+ "Marine automation troubleshooting and calculation": {
+  "en": "Marine automation troubleshooting and calculation"
+ },
+ "Marine gas oil (MGO) is a distillate fuel class; marine diesel oil (MDO) terminology may refer to different distillate blends and grades. Density, viscosity, sulphur, ignition and compatibility are determined by the delivered fuel analysis and OEM limits, not the commercial label alone.": {
+  "en": "Marine gas oil (MGO) is a distillate fuel class; marine diesel oil (MDO) terminology may refer to different distillate blends and grades. Density, viscosity, sulphur, ignition and compatibility are determined by the delivered fuel analysis and OEM limits, not the commercial label alone."
+ },
+ "Marine LNG, methanol and other alternative fuels have different flammability, toxicity, cryogenic and atmosphere-management hazards. Equipment-specific procedures, IGF/IGC requirements where applicable and crew training govern transfers.": {
+  "en": "Marine LNG, methanol and other alternative fuels have different flammability, toxicity, cryogenic and atmosphere-management hazards. Equipment-specific procedures, IGF/IGC requirements where applicable and crew training govern transfers."
+ },
+ "Marine radar estimates target range from the round-trip time of radio pulses. X- and S-band radars have different propagation/rain and resolution characteristics; echo strength also depends on target geometry, shadowing and sea clutter.": {
+  "en": "Marine radar estimates target range from the round-trip time of radio pulses. X- and S-band radars have different propagation/rain and resolution characteristics; echo strength also depends on target geometry, shadowing and sea clutter."
+ },
+ "Maritime cyber risk can affect GNSS, ECDIS updates, PMS and cargo systems; operational safety requires segregation, trusted change management and a fallback when electronic inputs are questionable.": {
+  "en": "Maritime cyber risk can affect GNSS, ECDIS updates, PMS and cargo systems; operational safety requires segregation, trusted change management and a fallback when electronic inputs are questionable."
+ },
+ "Maritime Safety Information is selected by coverage area, transmission schedules and message category. NAVTEX at 518 kHz normally carries English MSI; regional or national-language services may use different frequencies.": {
+  "en": "Maritime Safety Information is selected by coverage area, transmission schedules and message category. NAVTEX at 518 kHz normally carries English MSI; regional or national-language services may use different frequencies."
+ },
+ "MARPOL Annex II covers noxious liquid substances carried in bulk, with cargo categorisation and discharge requirements based on the IBC Code, a ship's Procedures and Arrangements Manual and approved records.": {
+  "en": "MARPOL Annex II covers noxious liquid substances carried in bulk, with cargo categorisation and discharge requirements based on the IBC Code, a ship's Procedures and Arrangements Manual and approved records."
+ },
+ "MARPOL Annex IV sewage requirements vary by plant approval, comminution/disinfection status, distance from nearest land and special provisions. Retention is the safe option when discharge conditions are uncertain.": {
+  "en": "MARPOL Annex IV sewage requirements vary by plant approval, comminution/disinfection status, distance from nearest land and special provisions. Retention is the safe option when discharge conditions are uncertain."
+ },
+ "MARPOL Annex V imposes different disposal requirements by garbage category, area and distance from land. Plastics are prohibited from discharge into the sea; garbage segregation and record keeping remain operational controls.": {
+  "en": "MARPOL Annex V imposes different disposal requirements by garbage category, area and distance from land. Plastics are prohibited from discharge into the sea; garbage segregation and record keeping remain operational controls."
+ },
+ "MARPOL Annex VI controls ship air pollutants and energy-efficiency compliance. Sulphur limits are typically 0.50% m/m outside relevant SOx ECAs and 0.10% m/m inside; the Mediterranean became a SOx ECA on 1 May 2025.": {
+  "en": "MARPOL Annex VI controls ship air pollutants and energy-efficiency compliance. Sulphur limits are typically 0.50% m/m outside relevant SOx ECAs and 0.10% m/m inside; the Mediterranean became a SOx ECA on 1 May 2025."
+ },
+ "MARPOL has six technical Annexes, regulating oil, noxious liquid bulk cargo, packaged marine pollutants, sewage, garbage and air emissions. Applicable vessel certificates and discharge records differ by Annex and ship type.": {
+  "en": "MARPOL has six technical Annexes, regulating oil, noxious liquid bulk cargo, packaged marine pollutants, sewage, garbage and air emissions. Applicable vessel certificates and discharge records differ by Annex and ship type."
+ },
+ "MCA — Code of Safe Working Practices 2026": {
+  "en": "MCA — Code of Safe Working Practices 2026"
+ },
+ "MCA — Code of Safe Working Practices for Merchant Seafarers": {
+  "en": "MCA — Code of Safe Working Practices for Merchant Seafarers"
+ },
+ "MCA — Code of Safe Working Practices for Merchant Seafarers 2026": {
+  "en": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026"
+ },
+ "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026": {
+  "en": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026"
+ },
+ "MCA — Merchant seafarer safe working practices": {
+  "en": "MCA — Merchant seafarer safe working practices"
+ },
+ "MCA — Safe working practices for merchant seafarers": {
+  "en": "MCA — Safe working practices for merchant seafarers"
+ },
+ "Mean latitude sailing approximates short or moderate passages using a mid-latitude cosine to convert longitude difference into departure. Its accuracy deteriorates with large changes in latitude, high-latitude geometry and long routes.": {
+  "en": "Mean latitude sailing approximates short or moderate passages using a mid-latitude cosine to convert longitude difference into departure. Its accuracy deteriorates with large changes in latitude, high-latitude geometry and long routes."
+ },
+ "Meteorological and tidal currents may change in both magnitude and direction. Set is the direction toward which current flows and drift is speed; the ship's COG/SOG differs from heading/log through water accordingly.": {
+  "en": "Meteorological and tidal currents may change in both magnitude and direction. Set is the direction toward which current flows and drift is speed; the ship's COG/SOG differs from heading/log through water accordingly."
+ },
+ "Methanol and ammonia require different toxicity, flammability and materials/ventilation precautions; ship-specific approval, crew training and fuel-transfer instructions are critical. A generic 'alternative fuel' PPE set is insufficient.": {
+  "en": "Methanol and ammonia require different toxicity, flammability and materials/ventilation precautions; ship-specific approval, crew training and fuel-transfer instructions are critical. A generic 'alternative fuel' PPE set is insufficient."
+ },
+ "MF/HF communications depend on propagation, chosen frequencies, antenna tuning, equipment status and the DSC watch arrangement. A nominal station range is not a reliable operational coverage guarantee.": {
+  "en": "MF/HF communications depend on propagation, chosen frequencies, antenna tuning, equipment status and the DSC watch arrangement. A nominal station range is not a reliable operational coverage guarantee."
+ },
+ "Min-max inventory must cover lead time, consumption, failure criticality and redundancy. A stock ledger can overstate usable spares when parts are expired, damaged or reserved for essential equipment.": {
+  "en": "Min-max inventory must cover lead time, consumption, failure criticality and redundancy. A stock ledger can overstate usable spares when parts are expired, damaged or reserved for essential equipment."
+ },
+ "Mooring hazards include stored elastic energy, poor lead angles, mixed-line elasticity and damaged fittings. Snap-back paths vary with the actual line and hardware arrangement, not solely marked deck zones.": {
+  "en": "Mooring hazards include stored elastic energy, poor lead angles, mixed-line elasticity and damaged fittings. Snap-back paths vary with the actual line and hardware arrangement, not solely marked deck zones."
+ },
+ "Motor protection must cover overload, stalled rotor, phase loss, overheating and appropriate insulation condition. A protective trip records a symptom but needs diagnostic confirmation before restart.": {
+  "en": "Motor protection must cover overload, stalled rotor, phase loss, overheating and appropriate insulation condition. A protective trip records a symptom but needs diagnostic confirmation before restart."
+ },
+ "Navigational warnings and permanent chart corrections address different timescales. An ECDIS update status or a paper chart edition does not necessarily incorporate temporary hazards communicated by MSI.": {
+  "en": "Navigational warnings and permanent chart corrections address different timescales. An ECDIS update status or a paper chart edition does not necessarily incorporate temporary hazards communicated by MSI."
+ },
+ "NGA — American Practical Navigator": {
+  "en": "NGA — American Practical Navigator"
+ },
+ "NGA — American Practical Navigator (Bowditch), 2024 edition": {
+  "en": "NGA — American Practical Navigator (Bowditch), 2024 edition"
+ },
+ "NGA — American Practical Navigator (voyage planning context)": {
+  "en": "NGA — American Practical Navigator (voyage planning context)"
+ },
+ "NOAA NHC — Marine Safety": {
+  "en": "NOAA NHC — Marine Safety"
+ },
+ "NOAA Ocean Prediction Center — Surface Analysis Charts": {
+  "en": "NOAA Ocean Prediction Center — Surface Analysis Charts"
+ },
+ "Nonlinear drives draw nonsinusoidal currents that generate harmonic distortion and heating; total harmonic distortion (THD) describes their relative content, but absolute current and network impedance determine actual stress.": {
+  "en": "Nonlinear drives draw nonsinusoidal currents that generate harmonic distortion and heating; total harmonic distortion (THD) describes their relative content, but absolute current and network impedance determine actual stress."
+ },
+ "Oil analysis combines viscosity, wear particles, water content and contamination trends. One out-of-range sample may indicate a developing fault or a sampling error; trend and source verification matter.": {
+  "en": "Oil analysis combines viscosity, wear particles, water content and contamination trends. One out-of-range sample may indicate a developing fault or a sampling error; trend and source verification matter."
+ },
+ "On a Mercator navigation chart, distance should be taken from the latitude scale near the route, where one minute of latitude is approximately one nautical mile; paper chart distortion varies with latitude.": {
+  "en": "On a Mercator navigation chart, distance should be taken from the latitude scale near the route, where one minute of latitude is approximately one nautical mile; paper chart distortion varies with latitude."
+ },
+ "Operational application and error analysis": {
+  "en": "Operational application and error analysis"
+ },
+ "Operational reasoning and verified scenario": {
+  "en": "Operational reasoning and verified scenario"
+ },
+ "Operational reasoning and worked case": {
+  "en": "Operational reasoning and worked case"
+ },
+ "Operational technology runs critical propulsion, power and cargo systems and requires controlled changes, validated firmware and secure vendor access. A legitimate-looking USB drive may introduce unsafe software.": {
+  "en": "Operational technology runs critical propulsion, power and cargo systems and requires controlled changes, validated firmware and secure vendor access. A legitimate-looking USB drive may introduce unsafe software."
+ },
+ "Orifice differential-pressure meters infer flow from pressure loss and fluid properties; Coriolis meters directly measure mass flow through oscillating tubes. Density, gas entrainment and calibration affect their accuracy.": {
+  "en": "Orifice differential-pressure meters infer flow from pressure loss and fluid properties; Coriolis meters directly measure mass flow through oscillating tubes. Density, gas entrainment and calibration affect their accuracy."
+ },
+ "Original and licence": {
+  "en": "Original and licence"
+ },
+ "Original file and licence": {
+  "en": "Original file and licence"
+ },
+ "Original photograph and licence": {
+  "en": "Original photograph and licence"
+ },
+ "Overcurrent protection must distinguish overload, short circuit and inrush, with protection selectivity coordinated across upstream/downstream breakers. Trip curves and interrupting ratings are equipment-specific.": {
+  "en": "Overcurrent protection must distinguish overload, short circuit and inrush, with protection selectivity coordinated across upstream/downstream breakers. Trip curves and interrupting ratings are equipment-specific."
+ },
+ "Parallel indexing (PI) provides a radar-based monitoring line offset from the planned track to help maintain a safe passing distance from fixed charted features. It is not an independent position fix or a substitute for lookout.": {
+  "en": "Parallel indexing (PI) provides a radar-based monitoring line offset from the planned track to help maintain a safe passing distance from fixed charted features. It is not an independent position fix or a substitute for lookout."
+ },
+ "Parametric rolling arises from periodic stability variation as waves encounter the hull. It can grow in head or following seas, depending on ship geometry, wave encounter period, natural rolling and speed, and threatens deck cargo securing.": {
+  "en": "Parametric rolling arises from periodic stability variation as waves encounter the hull. It can grow in head or following seas, depending on ship geometry, wave encounter period, natural rolling and speed, and threatens deck cargo securing."
+ },
+ "Passage monitoring continuously verifies progress against the approved plan through independent fixes, guard zones, wheel-over confirmation and updates for actual traffic and environment.": {
+  "en": "Passage monitoring continuously verifies progress against the approved plan through independent fixes, guard zones, wheel-over confirmation and updates for actual traffic and environment."
+ },
+ "Passage planning is a berth-to-berth process of appraisal, planning, execution and monitoring. A route drawn through an ENC is only one part: safety depth/contour, squat, tidal margins, prohibited areas, MSI and contingency actions need evaluation.": {
+  "en": "Passage planning is a berth-to-berth process of appraisal, planning, execution and monitoring. A route drawn through an ENC is only one part: safety depth/contour, squat, tidal margins, prohibited areas, MSI and contingency actions need evaluation."
+ },
+ "Pilot transfer safety depends on approved pilot ladder construction, correct rigging and securing, suitable deck lighting and trained supervision. A ladder's age or appearance alone does not establish safe condition.": {
+  "en": "Pilot transfer safety depends on approved pilot ladder construction, correct rigging and securing, suitable deck lighting and trained supervision. A ladder's age or appearance alone does not establish safe condition."
+ },
+ "Pilotage does not relieve the Master or officer in charge of the navigational watch of their safety duties. The master–pilot exchange must cover vessel handling limits, communication, route, tugs and any agreed abort decisions.": {
+  "en": "Pilotage does not relieve the Master or officer in charge of the navigational watch of their safety duties. The master–pilot exchange must cover vessel handling limits, communication, route, tugs and any agreed abort decisions."
+ },
+ "PLC input/output modules translate field signals to controller logic and outputs. A valid CPU state does not prove every I/O signal is physically healthy, especially with open-circuit, stuck or inverted contacts.": {
+  "en": "PLC input/output modules translate field signals to controller logic and outputs. A valid CPU state does not prove every I/O signal is physically healthy, especially with open-circuit, stuck or inverted contacts."
+ },
+ "Pollution prevention and fuel system decision": {
+  "en": "Pollution prevention and fuel system decision"
+ },
+ "Port State Control may examine whether charts/publications are adequate and updated, critical alarms are functional and crew are familiar with approved procedures. Demonstrated operation and actual records are stronger evidence than generic compliance claims.": {
+  "en": "Port State Control may examine whether charts/publications are adequate and updated, critical alarms are functional and crew are familiar with approved procedures. Demonstrated operation and actual records are stronger evidence than generic compliance claims."
+ },
+ "Portable extinguishers must be matched to the fuel, fire class and electrical risk, and their availability does not replace alarm raising or escape-route assessment. Fire class terminology may vary by jurisdiction.": {
+  "en": "Portable extinguishers must be matched to the fuel, fire class and electrical risk, and their availability does not replace alarm raising or escape-route assessment. Fire class terminology may vary by jurisdiction."
+ },
+ "Position coordinates must identify latitude and longitude hemispheres together with the chart datum; a coordinate without N/S or E/W can produce a gross position error.": {
+  "en": "Position coordinates must identify latitude and longitude hemispheres together with the chart datum; a coordinate without N/S or E/W can produce a gross position error."
+ },
+ "Position DOP (PDOP) reflects the three-dimensional geometry of satellites in the positioning solution, while HDOP and VDOP reflect horizontal and vertical geometric effects. These are dimensionless multipliers, not position errors expressed in metres.": {
+  "en": "Position DOP (PDOP) reflects the three-dimensional geometry of satellites in the positioning solution, while HDOP and VDOP reflect horizontal and vertical geometric effects. These are dimensionless multipliers, not position errors expressed in metres."
+ },
+ "Post-collision response prioritises personnel safety, watertight integrity, pollution control and accurate contact with authorities and neighbouring vessels. Liability arguments should not displace emergency checks.": {
+  "en": "Post-collision response prioritises personnel safety, watertight integrity, pollution control and accurate contact with authorities and neighbouring vessels. Liability arguments should not displace emergency checks."
+ },
+ "PPE is the last layer after elimination, isolation and engineered safeguards. A Job Safety Analysis must consider dynamic energy sources, work interfaces, simultaneous operations and a stop-work trigger.": {
+  "en": "PPE is the last layer after elimination, isolation and engineered safeguards. A Job Safety Analysis must consider dynamic energy sources, work interfaces, simultaneous operations and a stop-work trigger."
+ },
+ "Practical machinery and shipboard risk analysis": {
+  "en": "Practical machinery and shipboard risk analysis"
+ },
+ "Practical procedure, reasoning and limitations": {
+  "en": "Practical procedure, reasoning and limitations"
+ },
+ "Prevention of harassment and violence requires safe reporting, protection from retaliation and a fair, authorised investigation. Immediate safeguarding is distinct from the later determination of facts.": {
+  "en": "Prevention of harassment and violence requires safe reporting, protection from retaliation and a fair, authorised investigation. Immediate safeguarding is distinct from the later determination of facts."
+ },
+ "Preventive maintenance is scheduled from maker guidance, equipment running hours, duty and criticality; a fixed calendar interval alone may be insufficient. Records must distinguish inspection, actual overhaul and deferred work.": {
+  "en": "Preventive maintenance is scheduled from maker guidance, equipment running hours, duty and criticality; a fixed calendar interval alone may be insufficient. Records must distinguish inspection, actual overhaul and deferred work."
+ },
+ "Progressive flooding develops when initial water ingress spreads through additional boundaries such as ducts, penetrations, doors and vents. Initial dry soundings do not rule out later loss of residual stability.": {
+  "en": "Progressive flooding develops when initial water ingress spreads through additional boundaries such as ducts, penetrations, doors and vents. Initial dry soundings do not rule out later loss of residual stability."
+ },
+ "Proportional action reacts to present control error, integral action accumulates error over time, and derivative action reacts to its rate of change. Aggressive integral settings may cause windup when an actuator saturates.": {
+  "en": "Proportional action reacts to present control error, integral action accumulates error over time, and derivative action reacts to its rate of change. Aggressive integral settings may cause windup when an actuator saturates."
+ },
+ "Radar range measurements can establish an independent position fix when suitable land features and geometric intersection are available. Radar bearings may be less accurate than ranges depending on beamwidth and gyro-heading errors; chart and radar must use a consistent datum.": {
+  "en": "Radar range measurements can establish an independent position fix when suitable land features and geometric intersection are available. Radar bearings may be less accurate than ranges depending on beamwidth and gyro-heading errors; chart and radar must use a consistent datum."
+ },
+ "Real source image:": {
+  "en": "Real source image:"
+ },
+ "Refrigeration coefficient of performance relates heat removed at the evaporator to the work input over an agreed measurement boundary. It can exceed one because the system transports heat rather than converting work directly into cooling.": {
+  "en": "Refrigeration coefficient of performance relates heat removed at the evaporator to the work input over an agreed measurement boundary. It can exceed one because the system transports heat rather than converting work directly into cooling."
+ },
+ "Reliability-centred maintenance chooses run-to-failure, scheduled replacement, condition monitoring or functional testing based on credible failure modes and consequences. The cheapest immediate maintenance task may not minimise safety risk.": {
+  "en": "Reliability-centred maintenance chooses run-to-failure, scheduled replacement, condition monitoring or functional testing based on credible failure modes and consequences. The cheapest immediate maintenance task may not minimise safety risk."
+ },
+ "Remote quick-closing valves are intended to isolate fuel supply rapidly during a fire, typically without requiring entry to the affected space. Testing and resetting may have serious operational consequences.": {
+  "en": "Remote quick-closing valves are intended to isolate fuel supply rapidly during a fire, typically without requiring entry to the affected space. Testing and resetting may have serious operational consequences."
+ },
+ "Reserve GMDSS power must sustain required radio functions through approved supply arrangements and maintained batteries. Battery open-circuit voltage does not establish usable capacity under load.": {
+  "en": "Reserve GMDSS power must sustain required radio functions through approved supply arrangements and maintained batteries. Battery open-circuit voltage does not establish usable capacity under load."
+ },
+ "Residual fuel catalytic fines are hard aluminosilicate particles from refining, often assessed using aluminium plus silicon concentration. Separator efficiency, correct settling and cold/viscous fuel conditions determine abrasive particle exposure at engine injection.": {
+  "en": "Residual fuel catalytic fines are hard aluminosilicate particles from refining, often assessed using aluminium plus silicon concentration. Separator efficiency, correct settling and cold/viscous fuel conditions determine abrasive particle exposure at engine injection."
+ },
+ "Reverse osmosis drives seawater through semipermeable membranes at pressure above osmotic pressure. Product-water quality, filter differential pressure and membrane limits must all be managed.": {
+  "en": "Reverse osmosis drives seawater through semipermeable membranes at pressure above osmotic pressure. Product-water quality, filter differential pressure and membrane limits must all be managed."
+ },
+ "Rule 8 avoidance action should be positive, made in ample time and with due regard to good seamanship. A succession of small adjustments may obscure intent and fail to achieve adequate separation.": {
+  "en": "Rule 8 avoidance action should be positive, made in ample time and with due regard to good seamanship. A succession of small adjustments may obscure intent and fail to achieve adequate separation."
+ },
+ "SAR communications separate alert receipt, on-scene coordination, search planning and rescue execution. The duty to assist and the authority of designated coordinators depend on the actual situation and governing plans.": {
+  "en": "SAR communications separate alert receipt, on-scene coordination, search planning and rescue execution. The duty to assist and the authority of designated coordinators depend on the actual situation and governing plans."
+ },
+ "Search and rescue communication distinguishes the MRCC, an appointed On-Scene Coordinator and individual assisting units. A first-arriving merchant ship must not assume unrestricted command authority.": {
+  "en": "Search and rescue communication distinguishes the MRCC, an appointed On-Scene Coordinator and individual assisting units. A first-arriving merchant ship must not assume unrestricted command authority."
+ },
+ "Set indicates the direction the current flows toward and drift its speed; vector additions should use ground-referenced units and identical time intervals. The heading/course-through-water vector must be kept distinct from COG.": {
+  "en": "Set indicates the direction the current flows toward and drift its speed; vector additions should use ground-referenced units and identical time intervals. The heading/course-through-water vector must be kept distinct from COG."
+ },
+ "Ship Security Assessment, approved Ship Security Plan and security levels determine authorised access and incident response. SSAS security alerts must not be confused with DSC or EPIRB distress broadcasts.": {
+  "en": "Ship Security Assessment, approved Ship Security Plan and security levels determine authorised access and incident response. SSAS security alerts must not be confused with DSC or EPIRB distress broadcasts."
+ },
+ "Significant wave height is a statistical measure, commonly the average of the highest third of waves, not a ceiling on individual waves. Wave period and direction strongly influence ship motions.": {
+  "en": "Significant wave height is a statistical measure, commonly the average of the highest third of waves, not a ceiling on individual waves. Wave period and direction strongly influence ship motions."
+ },
+ "Since the 2024 GMDSS modernization, A3 is defined relative to the coverage of a recognized mobile satellite service supported by the ship earth station fitted on board, outside A1 and A2. A4 is everything outside that ship's applicable A1/A2/A3 coverage.": {
+  "en": "Since the 2024 GMDSS modernization, A3 is defined relative to the coverage of a recognized mobile satellite service supported by the ship earth station fitted on board, outside A1 and A2. A4 is everything outside that ship's applicable A1/A2/A3 coverage."
+ },
+ "SOLAS prescribes safety requirements and ISM implements a company and shipboard Safety Management System. Equipment presence, valid certificates and personnel competence each require separate evidence.": {
+  "en": "SOLAS prescribes safety requirements and ISM implements a company and shipboard Safety Management System. Equipment presence, valid certificates and personnel competence each require separate evidence."
+ },
+ "Standard Marine Communication Phrases minimise misunderstandings between VTS, pilots, bridge teams and ships. Course, speed, distance and urgency must be spoken and read back without ambiguity.": {
+  "en": "Standard Marine Communication Phrases minimise misunderstandings between VTS, pilots, bridge teams and ships. Course, speed, distance and urgency must be spoken and read back without ambiguity."
+ },
+ "Standing orders and Master's night orders define bridge watch escalation triggers. Calling the Master is an additional safety measure and never transfers the watch officer's immediate duty to avoid danger.": {
+  "en": "Standing orders and Master's night orders define bridge watch escalation triggers. Calling the Master is an additional safety measure and never transfers the watch officer's immediate duty to avoid danger."
+ },
+ "Steering redundancy is meaningful only if the backup control path, power availability, local control, communication and changeover procedures work together. The arrangement is installation-specific.": {
+  "en": "Steering redundancy is meaningful only if the backup control path, power availability, local control, communication and changeover procedures work together. The arrangement is installation-specific."
+ },
+ "Surface analysis charts locate pressure centres, fronts, troughs and weather features at a stated valid time. A front's coloured symbols indicate front type and advance direction, while forecast and analysis charts have different time references.": {
+  "en": "Surface analysis charts locate pressure centres, fronts, troughs and weather features at a stated valid time. A front's coloured symbols indicate front type and advance direction, while forecast and analysis charts have different time references."
+ },
+ "Tank level devices use differing measurement principles (radar, differential pressure, float or capacitance). Fluid density, vapour and foaming can affect particular readings; independent high-level alarms must remain functional.": {
+  "en": "Tank level devices use differing measurement principles (radar, differential pressure, float or capacitance). Fluid density, vapour and foaming can affect particular readings; independent high-level alarms must remain functional."
+ },
+ "Technical calculation and shipboard interpretation": {
+  "en": "Technical calculation and shipboard interpretation"
+ },
+ "The 2008 IS Code combines mandatory and recommended criteria, with ship-specific limitations and approved information. Positive initial GM is only one component of the intact stability assessment; the complete righting-arm curve matters.": {
+  "en": "The 2008 IS Code combines mandatory and recommended criteria, with ship-specific limitations and approved information. Positive initial GM is only one component of the intact stability assessment; the complete righting-arm curve matters."
+ },
+ "The first law tracks energy crossing a defined system boundary as heat and work, plus changes in stored energy. An engine efficiency statement without a clear boundary can omit auxiliaries, exhaust and cooling losses.": {
+  "en": "The first law tracks energy crossing a defined system boundary as heat and work, plus changes in stored energy. An engine efficiency statement without a clear boundary can omit auxiliaries, exhaust and cooling losses."
+ },
+ "The free-surface correction can be represented as a virtual rise of G for applicable tanks. Approved stability-booklet tables, density and actual slack-tank states must replace oversimplified constant corrections.": {
+  "en": "The free-surface correction can be represented as a virtual rise of G for applicable tanks. Approved stability-booklet tables, density and actual slack-tank states must replace oversimplified constant corrections."
+ },
+ "The GZ curve describes righting lever over heel angle; the area under the curve represents dynamic stability only under the relevant assumptions. Peak GZ, range and downflooding angle require separate interpretation.": {
+  "en": "The GZ curve describes righting lever over heel angle; the area under the curve represents dynamic stability only under the relevant assumptions. Peak GZ, range and downflooding angle require separate interpretation."
+ },
+ "The GZ curve describes righting lever versus heel for a specific loading condition. Its peak, positive range, integral and downflooding limits each convey different stability information; identical GM does not imply identical reserve stability.": {
+  "en": "The GZ curve describes righting lever versus heel for a specific loading condition. Its peak, positive range, integral and downflooding limits each convey different stability information; identical GM does not imply identical reserve stability."
+ },
+ "The integral of GZ over heel angle represents the quasi-static dynamic-stability area, expressed in m·rad. Displacement weight times this integral approximates work against heel; it is not a prediction of ship motions in random seas.": {
+  "en": "The integral of GZ over heel angle represents the quasi-static dynamic-stability area, expressed in m·rad. Displacement weight times this integral approximates work against heel; it is not a prediction of ship motions in random seas."
+ },
+ "The live satellite image could not be loaded. Check the connection and press Refresh.": {
+  "en": "The live satellite image could not be loaded. Check the connection and press Refresh."
+ },
+ "The modernized SOLAS IV GMDSS arrangements recognise applicable mobile satellite services beyond the older Inmarsat-only framing; the ship's certificate and approved equipment determine its actual A3 coverage. GMDSS and e-navigation have related but distinct purposes.": {
+  "en": "The modernized SOLAS IV GMDSS arrangements recognise applicable mobile satellite services beyond the older Inmarsat-only framing; the ship's certificate and approved equipment determine its actual A3 coverage. GMDSS and e-navigation have related but distinct purposes."
+ },
+ "The planning phase converts appraisal evidence into waypoints and cross-track limits. The plan must account for manoeuvring radius, wheel-over positions, depth constraints, VTS reporting and contingency manoeuvres.": {
+  "en": "The planning phase converts appraisal evidence into waypoints and cross-track limits. The plan must account for manoeuvring radius, wheel-over positions, depth constraints, VTS reporting and contingency manoeuvres."
+ },
+ "The radio log should distinguish equipment checks, received warnings, tests, actual distress communications and periods when a required watch could not be maintained. Required entries depend on flag, sea area and the vessel's radio arrangements.": {
+  "en": "The radio log should distinguish equipment checks, received warnings, tests, actual distress communications and periods when a required watch could not be maintained. Required entries depend on flag, sea area and the vessel's radio arrangements."
+ },
+ "The rule of twelfths is a rough semidiurnal-tide interpolation model, not a replacement for official port-specific tidal predictions, especially with mixed, diurnal or distorted tidal curves.": {
+  "en": "The rule of twelfths is a rough semidiurnal-tide interpolation model, not a replacement for official port-specific tidal predictions, especially with mixed, diurnal or distorted tidal curves."
+ },
+ "The Ship Security Alert System is a covert security alerting means under ISPS/SOLAS XI-2 arrangements, not the radio distress alert route used by EPIRB or DSC. Recipients and test procedures are governed by the ship security plan.": {
+  "en": "The Ship Security Alert System is a covert security alerting means under ISPS/SOLAS XI-2 arrangements, not the radio distress alert route used by EPIRB or DSC. Recipients and test procedures are governed by the ship security plan."
+ },
+ "Time Charter Equivalent is a comparative voyage earnings measure: voyage revenue less voyage-variable expenses, divided by voyage days on the chosen accounting basis. It is not necessarily the owner's net profit.": {
+  "en": "Time Charter Equivalent is a comparative voyage earnings measure: voyage revenue less voyage-variable expenses, divided by voyage days on the chosen accounting basis. It is not necessarily the owner's net profit."
+ },
+ "TMAS provides medical advice at sea; the bridge team must send precise observations and follow qualified medical direction. Initial emergency response should follow the vessel's trained first-aid protocols.": {
+  "en": "TMAS provides medical advice at sea; the bridge team must send precise observations and follow qualified medical direction. Initial emergency response should follow the vessel's trained first-aid protocols."
+ },
+ "Towline tension reflects dynamic loads, vessel motions and relative movement, not only bollard-pull rating. Towing arrangements also require compatible fittings, release capability and agreed communications.": {
+  "en": "Towline tension reflects dynamic loads, vessel motions and relative movement, not only bollard-pull rating. Towing arrangements also require compatible fittings, release capability and agreed communications."
+ },
+ "TPC is the approximate mass necessary to change mean draught by 1 cm near the stated waterline, derived from waterplane area and water density. It varies with draught and loading condition.": {
+  "en": "TPC is the approximate mass necessary to change mean draught by 1 cm near the stated waterline, derived from waterplane area and water density. It varies with draught and loading condition."
+ },
+ "Tropical cyclone avoidance should use forecast motion, wind radii, track uncertainty, vessel capability and sea room. Historical 'dangerous semicircle' rules are only one decision aid, not a universal escape plan.": {
+  "en": "Tropical cyclone avoidance should use forecast motion, wind radii, track uncertainty, vessel capability and sea room. Historical 'dangerous semicircle' rules are only one decision aid, not a universal escape plan."
+ },
+ "UK Government — IMSBC Code amendments": {
+  "en": "UK Government — IMSBC Code amendments"
+ },
+ "Ultrasonic thickness measurements require the correct material sound velocity, calibration and clean measurement locations. One apparent low reading can be caused by coating, coupling or surface geometry rather than true local corrosion.": {
+  "en": "Ultrasonic thickness measurements require the correct material sound velocity, calibration and clean measurement locations. One apparent low reading can be caused by coating, coupling or surface geometry rather than true local corrosion."
+ },
+ "Under-keel clearance is a dynamic margin, not merely charted depth minus draught. Water level, vessel draught, heel, squat and uncertainty in soundings and position contribute to the passage decision.": {
+  "en": "Under-keel clearance is a dynamic margin, not merely charted depth minus draught. Water level, vessel draught, heel, squat and uncertainty in soundings and position contribute to the passage decision."
+ },
+ "Valve grinding and lash adjustment restore sealing and correct thermal clearances only within maker tolerances. Overgrinding can damage seat geometry or reduce valve margin, changing heat transfer and reliability.": {
+  "en": "Valve grinding and lash adjustment restore sealing and correct thermal clearances only within maker tolerances. Overgrinding can damage seat geometry or reduce valve margin, changing heat transfer and reliability."
+ },
+ "VFDs vary motor electrical frequency and voltage/current under a drive control scheme, while mechanical limits and thermal cooling remain binding. Harmonics, electromagnetic interference and shaft-bearing effects require system assessment.": {
+  "en": "VFDs vary motor electrical frequency and voltage/current under a drive control scheme, while mechanical limits and thermal cooling remain binding. Harmonics, electromagnetic interference and shaft-bearing effects require system assessment."
+ },
+ "VLSFO compliance is not only a sulphur number. Different fuel blends may exhibit compatibility and stability problems; viscosity and heating arrangements affect service conditions.": {
+  "en": "VLSFO compliance is not only a sulphur number. Different fuel blends may exhibit compatibility and stability problems; viscosity and heating arrangements affect service conditions."
+ },
+ "VTS provides local traffic information and may issue instructions under local rules, but participation does not remove the Master's safe-navigation responsibilities or COLREG duties.": {
+  "en": "VTS provides local traffic information and may issue instructions under local rules, but participation does not remove the Master's safe-navigation responsibilities or COLREG duties."
+ },
+ "Weather observation and voyage reasoning": {
+  "en": "Weather observation and voyage reasoning"
+ },
+ "When vessels are not in sight of one another in or near restricted visibility, Rule 19 applies instead of the sight-based head-on and crossing allocation. Safe speed and assessment of radar contacts are central.": {
+  "en": "When vessels are not in sight of one another in or near restricted visibility, Rule 19 applies instead of the sight-based head-on and crossing allocation. Safe speed and assessment of radar contacts are central."
+ },
+ "WMO — Marine services": {
+  "en": "WMO — Marine services"
+ },
+ "WMO International Cloud Atlas": {
+  "en": "WMO International Cloud Atlas"
+ },
+ "Worked navigation calculation and operational check": {
+  "en": "Worked navigation calculation and operational check"
+ },
+ "Appraisal output: “Risk map of this passage”.": {
+  "en": "Appraisal output: “Risk map of this passage”."
+ },
+ "What if the main engine fails?": {
+  "en": "What if the main engine fails?"
  }
 }

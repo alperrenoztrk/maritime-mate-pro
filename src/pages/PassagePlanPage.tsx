@@ -1,4 +1,4 @@
-import { Anchor, FileText } from "lucide-react";
+import { PageHeader } from "@/components/layout/PageHeader";
 
 const fourStages = [
   { emoji: "1️⃣", title: "APPRAISAL", description: "Evaluating what to expect before sailing." },
@@ -24,7 +24,7 @@ const appraisalResources = [
     title: "Meteorology & Oceanography",
     items: [
       "NAVTEX",
-      "Weather routing servisleri",
+      "Weather routing services",
       "GRIB files",
       "Ocean current charts",
       "Seasonal weather routing (monsoon, cyclone zones)",
@@ -42,7 +42,7 @@ const appraisalResources = [
       "Shallow waters",
       "Restricted visibility areas",
       "Piracy zones",
-      "Ice limits (mevsimsel)",
+      "Ice limits (seasonal)",
     ],
   },
 ];
@@ -72,12 +72,12 @@ const planSections = [
   },
   {
     title: "E. DETERMINING A NO-GO AREA",
-    bullets: ["Shallows", "Restricted areas", "Restricted areas", "Environmental zones", "ECDIS safety depth, contour and alarms"],
+    bullets: ["Shallows", "Restricted areas", "Environmental zones", "ECDIS safety depth, contour and alarms"],
   },
   {
     title: "F. CONTINGENCY PLAN (VERY CRITICAL)",
     bullets: [
-      "What happens if the machine stops?",
+      "What if the main engine fails?",
       "Which route if the weather is bad?",
       "Waiting area if traffic is blocked?",
     ],
@@ -96,10 +96,10 @@ const passagePlanContents = [
 ];
 
 const roleTable = [
-  { task: "Passage plan preparation", owner: "2. Kaptan", doer: "2. Kaptan" },
+  { task: "Passage plan preparation", owner: "2/O", doer: "2/O" },
   { task: "Risk assessment", owner: "2/O + Master", doer: "2/O + Master" },
   { task: "Approval", owner: "Master", doer: "Master" },
-  { task: "Application", owner: "OOW", doer: "OOW" },
+  { task: "Execution", owner: "OOW", doer: "OOW" },
   { task: "Monitoring", owner: "OOW", doer: "OOW" },
 ];
 
@@ -107,20 +107,7 @@ export default function PassagePlanPage() {
   return (
     <div className="min-h-screen text-foreground">
       <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Anchor className="h-4 w-4" />
-          Navigation &amp; Bridge Works
-        </div>
-
-        <header className="space-y-3 rounded-2xl border border-border/60 bg-card/90 p-6 shadow-lg">
-          <div className="flex items-center gap-3">
-            <FileText className="h-6 w-6 text-primary" />
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-primary">Passage Plan</p>
-              <h1 className="text-2xl font-bold leading-tight text-foreground">Passage Plan Guide</h1>
-            </div>
-          </div>
-        </header>
+        <PageHeader title="Passage Plan Guide" />
 
         <section className="rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-foreground">What is Passage Plan?</h2>
@@ -133,7 +120,7 @@ export default function PassagePlanPage() {
           <h2 className="text-lg font-semibold text-foreground">4 Main Stages of Passage Plan (IMO Standard)</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {fourStages.map((stage) => (
-              <div key={stage.title} className="rounded-xl border border-border/50 bg-slate-900/60 p-4">
+              <div key={stage.title} className="rounded-xl border border-border/50 bg-muted/50 p-4">
                 <p className="text-sm font-semibold text-primary">{stage.emoji} {stage.title}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{stage.description}</p>
               </div>
@@ -145,12 +132,12 @@ export default function PassagePlanPage() {
         <section className="space-y-6 rounded-2xl border border-border/60 bg-card/70 p-6 shadow-sm">
           <div className="space-y-2">
             <h2 className="text-lg font-semibold text-foreground">1️⃣ APPRAISAL – EVALUATION PHASE</h2>
-            <p className="text-sm text-primary">Appraisal output: “Risk map of this course”.</p>
+            <p className="text-sm text-primary">Appraisal output: “Risk map of this passage”.</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             {appraisalResources.map((group) => (
-              <div key={group.title} className="rounded-xl border border-border/50 bg-slate-900/60 p-4">
+              <div key={group.title} className="rounded-xl border border-border/50 bg-muted/50 p-4">
                 <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>
                 <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
                   {group.items.map((item) => (
@@ -169,7 +156,7 @@ export default function PassagePlanPage() {
 
           <div className="grid gap-4 md:grid-cols-2">
             {planSections.map((section) => (
-              <div key={section.title} className="rounded-xl border border-border/50 bg-slate-900/60 p-4">
+              <div key={section.title} className="rounded-xl border border-border/50 bg-muted/50 p-4">
                 <h3 className="text-sm font-semibold text-foreground">{section.title}</h3>
                 <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
                   {section.bullets.map((bullet) => (
@@ -180,7 +167,7 @@ export default function PassagePlanPage() {
             ))}
           </div>
 
-          <div className="rounded-xl border border-dashed border-primary/40 bg-slate-900/50 p-4 text-xs text-muted-foreground">
+          <div className="rounded-xl border border-dashed border-primary/40 bg-primary/5 p-4 text-xs text-muted-foreground">
             <p className="font-semibold text-primary">Contingency Plan Reminder:</p>
             <p>
               A contingency plan must be prepared for every risk: manoeuvring in the event of machinery failure, an alternative route in bad weather and a waiting area in heavy traffic. PSC inspections check this part particularly closely.
@@ -200,7 +187,7 @@ export default function PassagePlanPage() {
           <p className="text-sm text-muted-foreground">
             The plan is monitored live during the passage. The OOW watches for XTD exceedance, course deviation, speed changes, the depth trend and the traffic situation. Any deviation is corrected and recorded, and the master is called if necessary.
           </p>
-          <div className="rounded-xl border border-border/50 bg-slate-900/60 p-4 text-xs text-muted-foreground">
+          <div className="rounded-xl border border-border/50 bg-muted/50 p-4 text-xs text-muted-foreground">
             <p className="font-semibold text-primary">Tools used:</p>
             <ul className="mt-2 space-y-1">
               <li>• ECDIS, radar overlay, visual bearings</li>
@@ -251,7 +238,7 @@ export default function PassagePlanPage() {
           <h2 className="text-lg font-semibold text-foreground">Sample Passage Plan: Port Weller → Port Huron (Upbound)</h2>
           <div className="grid gap-4">
             {Array.from({ length: 44 }, (_, i) => i + 1).map((page) => (
-              <div key={page} className="rounded-xl border border-border/50 bg-slate-900/60 p-2 overflow-hidden">
+              <div key={page} className="rounded-xl border border-border/50 bg-muted/50 p-2 overflow-hidden">
                 <p className="text-xs text-primary mb-2 font-medium">Page {page} / 44</p>
                 <img 
                   src={`/passage-plan/page_${page}.jpg`} 

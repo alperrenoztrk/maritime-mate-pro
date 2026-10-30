@@ -99,12 +99,12 @@ export default function EmissionCalculationsPage() {
 
   const getCiiColor = (rating: string) => {
     switch (rating) {
-      case "A": return "text-emerald-600 bg-emerald-100";
-      case "B": return "text-green-600 bg-green-100";
-      case "C": return "text-yellow-600 bg-yellow-100";
-      case "D": return "text-orange-600 bg-orange-100";
-      case "E": return "text-red-600 bg-red-100";
-      default: return "text-muted-foreground bg-slate-100";
+      case "A": return "text-emerald-700 bg-emerald-500/15 dark:text-emerald-300";
+      case "B": return "text-green-700 bg-green-500/15 dark:text-green-300";
+      case "C": return "text-yellow-700 bg-yellow-500/15 dark:text-yellow-300";
+      case "D": return "text-orange-700 bg-orange-500/15 dark:text-orange-300";
+      case "E": return "text-red-700 bg-red-500/15 dark:text-red-300";
+      default: return "text-muted-foreground bg-muted";
     }
   };
 

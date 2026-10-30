@@ -225,13 +225,13 @@ export default function StabilityGrainCalculationPage() {
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                <Badge variant="secondary" className="bg-blue-50 text-blue-800 hover:bg-blue-50">
+                <Badge variant="secondary" className="bg-info-muted text-info-muted-foreground hover:bg-info-muted">
                   IMO Grain Code
                 </Badge>
                 <Badge variant="outline" className="border-dashed">
                   5 main calculation modules
                 </Badge>
-                <Badge className={imoIsCompliant ? "bg-green-100 text-green-800 hover:bg-green-100" : "bg-red-100 text-red-800 hover:bg-red-100"}>
+                <Badge className={imoIsCompliant ? "bg-green-500/15 text-green-800 hover:bg-green-500/15 dark:text-green-300" : "bg-red-500/15 text-red-800 hover:bg-red-500/15 dark:text-red-300"}>
                   {imoIsCompliant ? "Stability Suitable" : "Improvement Required"}
                 </Badge>
               </div>
@@ -249,7 +249,7 @@ export default function StabilityGrainCalculationPage() {
                     {stat.status !== undefined && stat.status !== null && (
                       <Badge
                         variant="secondary"
-                        className={`mt-2 w-fit ${stat.status ? "bg-green-100 text-green-800 hover:bg-green-100" : "bg-red-100 text-red-800 hover:bg-red-100"}`}
+                        className={`mt-2 w-fit ${stat.status ? "bg-green-500/15 text-green-800 hover:bg-green-500/15 dark:text-green-300" : "bg-red-500/15 text-red-800 hover:bg-red-500/15 dark:text-red-300"}`}
                       >
                         {stat.status ? "Compliant" : "Risky"}
                       </Badge>
@@ -319,11 +319,11 @@ export default function StabilityGrainCalculationPage() {
                       </div>
 
                       {sfResult && (
-                        <Alert className="bg-blue-50 border-blue-200">
+                        <Alert className="bg-blue-500/10 border-blue-500/30">
                           <AlertDescription>
                             <div className="space-y-2">
                               <p className="font-semibold">SF = V / W</p>
-                              <p className="text-lg font-bold text-blue-700">
+                              <p className="text-lg font-bold text-blue-700 dark:text-blue-300">
                                 Stowage Factor = {sfResult} m³/ton
                               </p>
                             </div>
@@ -350,10 +350,10 @@ export default function StabilityGrainCalculationPage() {
                         </div>
 
                         {reqVolume && (
-                          <Alert className="bg-green-50 border-green-200">
+                          <Alert className="bg-green-500/10 border-green-500/30">
                             <AlertDescription>
                               <p className="font-semibold">V = W × SF</p>
-                              <p className="text-lg font-bold text-green-700">
+                              <p className="text-lg font-bold text-green-700 dark:text-green-300">
                                 Gereken Hacim = {reqVolume} m³
                               </p>
                             </AlertDescription>
@@ -366,10 +366,10 @@ export default function StabilityGrainCalculationPage() {
                       <div className="space-y-4">
                         <h4 className="font-semibold">3️⃣ Maximum Amount of Grain</h4>
                         {maxWeight && (
-                          <Alert className="bg-purple-50 border-purple-200">
+                          <Alert className="bg-purple-500/10 border-purple-500/30">
                             <AlertDescription>
                               <p className="font-semibold">W = V / SF</p>
-                              <p className="text-lg font-bold text-purple-700">
+                              <p className="text-lg font-bold text-purple-700 dark:text-purple-300">
                                 Maximum Load = {maxWeight} ton
                               </p>
                             </AlertDescription>
@@ -404,10 +404,10 @@ export default function StabilityGrainCalculationPage() {
                         </div>
 
                         {usableVolume && (
-                          <Alert className="bg-amber-50 border-amber-200">
+                          <Alert className="bg-amber-500/10 border-amber-500/30">
                             <AlertDescription>
                               <p className="font-semibold">Usable Volume = Hold Volume × (1 - BS)</p>
-                              <p className="text-lg font-bold text-amber-700">
+                              <p className="text-lg font-bold text-amber-700 dark:text-amber-300">
                                 Usable Volume = {usableVolume} m³
                               </p>
                             </AlertDescription>
@@ -477,14 +477,14 @@ export default function StabilityGrainCalculationPage() {
                       </div>
 
                       {loadableResult && (
-                        <Alert className="bg-blue-50 border-blue-200">
+                        <Alert className="bg-blue-500/10 border-blue-500/30">
                           <AlertDescription>
                             <div className="space-y-2">
                               <p className="font-semibold">
                                 Loadable Cargo = Displacement - (Lightship + Constant + Fuel + FW + Stores)
                               </p>
                               <p className="text-sm">Deadweight = {loadableResult.deadweight} ton</p>
-                              <p className="text-lg font-bold text-blue-700">
+                              <p className="text-lg font-bold text-blue-700 dark:text-blue-300">
                                 Loadable Cargo = {loadableResult.loadable} ton
                               </p>
                             </div>
@@ -590,10 +590,10 @@ export default function StabilityGrainCalculationPage() {
                       </div>
 
                       {ghm && (
-                        <Alert className="bg-orange-50 border-orange-200">
+                        <Alert className="bg-orange-500/10 border-orange-500/30">
                           <AlertDescription>
                             <p className="font-semibold">GHM = Vol × ΔKG × ρ</p>
-                            <p className="text-lg font-bold text-orange-700">
+                            <p className="text-lg font-bold text-orange-700 dark:text-orange-300">
                               Grain Heeling Moment = {ghm} ton·m
                             </p>
                           </AlertDescription>
@@ -625,7 +625,7 @@ export default function StabilityGrainCalculationPage() {
                         </div>
 
                         {heelingAngle && (
-                          <Alert className={parseFloat(heelingAngle) <= 12 ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}>
+                          <Alert className={parseFloat(heelingAngle) <= 12 ? "bg-green-500/10 border-green-500/30" : "bg-red-500/10 border-red-500/30"}>
                             <AlertDescription>
                               <p className="font-semibold">tan(θ) = GHM / (Δ × GM)</p>
                               <p className="text-lg font-bold" style={{ color: parseFloat(heelingAngle) <= 12 ? '#15803d' : '#991b1b' }}>
@@ -633,9 +633,9 @@ export default function StabilityGrainCalculationPage() {
                               </p>
                               <p className="text-sm mt-2">
                                 {parseFloat(heelingAngle) <= 12 ? (
-                                  <span className="text-green-700">✓ Within the IMO limit (≤ 12°)</span>
+                                  <span className="text-green-700 dark:text-green-300">✓ Within the IMO limit (≤ 12°)</span>
                                 ) : (
-                                  <span className="text-red-700">✗ Exceeds the IMO limit (&gt; 12°)</span>
+                                  <span className="text-red-700 dark:text-red-300">✗ Exceeds the IMO limit (&gt; 12°)</span>
                                 )}
                               </p>
                             </AlertDescription>
@@ -653,7 +653,7 @@ export default function StabilityGrainCalculationPage() {
                       <CardTitle className="text-lg">8️⃣ FSM (Free Surface Moment) – For Grain</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <Alert className="bg-blue-50 border-blue-200">
+                      <Alert className="bg-blue-500/10 border-blue-500/30">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>
                           Grain does not give a completely free surface like liquid. FSM is generally read from the IMO Grain Code table.
@@ -690,10 +690,10 @@ export default function StabilityGrainCalculationPage() {
                       </div>
 
                       {fsm && (
-                        <Alert className="bg-purple-50 border-purple-200">
+                        <Alert className="bg-purple-500/10 border-purple-500/30">
                           <AlertDescription>
                             <p className="font-semibold">FSM = ρ × shift area × arm</p>
-                            <p className="text-lg font-bold text-purple-700">
+                            <p className="text-lg font-bold text-purple-700 dark:text-purple-300">
                               Free Surface Moment = {fsm} ton·m
                             </p>
                           </AlertDescription>
@@ -735,7 +735,7 @@ export default function StabilityGrainCalculationPage() {
                         </div>
 
                         {correctedGM && (
-                          <Alert className={parseFloat(correctedGM) >= 0.30 ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}>
+                          <Alert className={parseFloat(correctedGM) >= 0.30 ? "bg-green-500/10 border-green-500/30" : "bg-red-500/10 border-red-500/30"}>
                             <AlertDescription>
                               <p className="font-semibold">GMcorrected = GM - (FSM / Δ)</p>
                               <p className="text-lg font-bold" style={{ color: parseFloat(correctedGM) >= 0.30 ? '#15803d' : '#991b1b' }}>
@@ -743,9 +743,9 @@ export default function StabilityGrainCalculationPage() {
                               </p>
                               <p className="text-sm mt-2">
                                 {parseFloat(correctedGM) >= 0.30 ? (
-                                  <span className="text-green-700">✓ Above IMO minimum value (≥ 0.30 m)</span>
+                                  <span className="text-green-700 dark:text-green-300">✓ Above IMO minimum value (≥ 0.30 m)</span>
                                 ) : (
-                                  <span className="text-red-700">✗ Below the IMO minimum (&lt; 0.30 m)</span>
+                                  <span className="text-red-700 dark:text-red-300">✗ Below the IMO minimum (&lt; 0.30 m)</span>
                                 )}
                               </p>
                             </AlertDescription>
@@ -763,7 +763,7 @@ export default function StabilityGrainCalculationPage() {
                       <CardTitle className="text-lg">9️⃣ IMO Grain Stability Criterion</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                      <Alert className="bg-blue-50 border-blue-200">
+                      <Alert className="bg-blue-500/10 border-blue-500/30">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>
                           <p className="font-semibold mb-2">IMO Grain Code Criteria:</p>
@@ -779,13 +779,13 @@ export default function StabilityGrainCalculationPage() {
                         <h4 className="font-semibold text-lg">Stability Check Results</h4>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <Card className={imoCriteria.gmPass ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50"}>
+                          <Card className={imoCriteria.gmPass ? "border-green-500 bg-green-500/10" : "border-red-500 bg-red-500/10"}>
                             <CardContent className="pt-6">
                               <div className="flex items-center gap-3">
                                 {imoCriteria.gmPass ? (
-                                  <CheckCircle2 className="h-8 w-8 text-green-600" />
+                                  <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
                                 ) : (
-                                  <XCircle className="h-8 w-8 text-red-600" />
+                                  <XCircle className="h-8 w-8 text-red-600 dark:text-red-400" />
                                 )}
                                 <div>
                                   <p className="text-sm font-medium text-muted-foreground">GM Corrected</p>
@@ -800,13 +800,13 @@ export default function StabilityGrainCalculationPage() {
                             </CardContent>
                           </Card>
 
-                          <Card className={imoCriteria.anglePass ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50"}>
+                          <Card className={imoCriteria.anglePass ? "border-green-500 bg-green-500/10" : "border-red-500 bg-red-500/10"}>
                             <CardContent className="pt-6">
                               <div className="flex items-center gap-3">
                                 {imoCriteria.anglePass ? (
-                                  <CheckCircle2 className="h-8 w-8 text-green-600" />
+                                  <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
                                 ) : (
-                                  <XCircle className="h-8 w-8 text-red-600" />
+                                  <XCircle className="h-8 w-8 text-red-600 dark:text-red-400" />
                                 )}
                                 <div>
                                   <p className="text-sm font-medium text-muted-foreground">Heeling Angle</p>
@@ -822,23 +822,23 @@ export default function StabilityGrainCalculationPage() {
                           </Card>
                         </div>
 
-                        <Alert className={imoIsCompliant ? "bg-green-50 border-green-500" : "bg-red-50 border-red-500"}>
+                        <Alert className={imoIsCompliant ? "bg-green-500/10 border-green-500" : "bg-red-500/10 border-red-500"}>
                           <AlertDescription>
                             <div className="flex items-center gap-3">
                               {imoIsCompliant ? (
                                 <>
-                                  <CheckCircle2 className="h-6 w-6 text-green-600" />
+                                  <CheckCircle2 className="h-6 w-6 text-green-600 dark:text-green-400" />
                                   <div>
-                                    <p className="font-bold text-green-700 text-lg">Stability Suitable</p>
-                                    <p className="text-sm text-green-600">The ship meets IMO Grain Code criteria</p>
+                                    <p className="font-bold text-green-700 dark:text-green-300 text-lg">Stability Suitable</p>
+                                    <p className="text-sm text-green-600 dark:text-green-400">The ship meets IMO Grain Code criteria</p>
                                   </div>
                                 </>
                               ) : (
                                 <>
-                                  <XCircle className="h-6 w-6 text-red-600" />
+                                  <XCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
                                   <div>
-                                    <p className="font-bold text-red-700 text-lg">Stability Unsuitable</p>
-                                    <p className="text-sm text-red-600">
+                                    <p className="font-bold text-red-700 dark:text-red-300 text-lg">Stability Unsuitable</p>
+                                    <p className="text-sm text-red-600 dark:text-red-400">
                                       {!imoCriteria.gmPass && "GM is low."}
                                       {!imoCriteria.anglePass && "The lean angle is high."}
                                       Ballast adjustment may be required.

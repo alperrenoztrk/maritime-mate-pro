@@ -354,6 +354,25 @@ for (const file of [
   );
 }
 
+// ── 11. Page surfaces follow the theme ──────────────────────────────
+// Passage Plan put bg-slate-900 tiles inside white cards, so their headings
+// vanished in the light theme; Seamanship Calculations used bg-white/90 cards
+// that stayed white in the dark theme (the global .bg-white patch does not
+// match opacity variants). A hard-coded dark surface must be a dark: variant,
+// and a translucent white surface needs a dark: background on the same line.
+for (const file of sourceFiles.filter((file) => rel(file).startsWith("src/pages/"))) {
+  read(rel(file))
+    .split("\n")
+    .forEach((line, index) => {
+      if (/(?<![\w:-])bg-(?:slate|gray|zinc|neutral|stone)-9\d\d/.test(line)) {
+        failures.push(`${rel(file)}:${index + 1}: dark surface without a light-theme value; use bg-muted/bg-card tokens or a dark: variant`);
+      }
+      if (/(?<![\w:-])bg-white\/(?:[5-9]\d)\b/.test(line) && !/dark:bg-/.test(line)) {
+        failures.push(`${rel(file)}:${index + 1}: translucent white surface without a dark: background; use bg-card tokens`);
+      }
+    });
+}
+
 if (failures.length) {
   console.error(failures.map((failure) => `- ${failure}`).join("\n"));
   process.exit(1);
