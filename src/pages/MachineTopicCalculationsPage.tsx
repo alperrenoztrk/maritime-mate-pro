@@ -1608,6 +1608,7 @@ export default function MachineTopicCalculationsPage() {
           </div>
         </header>
 
+        <CalculationQualityBanner />
         <div className="grid gap-4">
           {calcs.map((tool, idx) => (
             <CalcToolCard key={idx} tool={tool} />
