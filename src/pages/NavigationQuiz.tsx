@@ -9,6 +9,7 @@ export default function NavigationQuizPage() {
   return (
     <QuizShell
       title="Navigation Quiz"
+      scope="Sailings, compass, tides, celestial, COLREG, buoyage"
       poolSize={navigationQuestions.length}
       pick={pick}
       defaultCount={50}

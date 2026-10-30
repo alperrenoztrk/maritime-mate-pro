@@ -1,8 +1,11 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { LifeBuoy, Search, X } from "lucide-react";
+import { LifeBuoy, Lightbulb, Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LessonImage } from "@/components/ui/LessonImage";
+import { ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
+import { useLanguage } from "@/contexts/useLanguage";
+import { getStaticTranslation } from "@/utils/staticTranslations";
 import {
   BUOY_CATEGORY_LABELS,
   BUOY_CATEGORY_ORDER,
@@ -14,7 +17,8 @@ import {
 
 const norm = (s: string) =>
   s
-    .toLocaleLowerCase("tr")
+    .toLowerCase()
+    .replace(/ı/g, "i")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 
@@ -61,27 +65,25 @@ function BuoyCard({ mark }: { mark: BuoyMark }) {
 }
 
 /**
- * IALA şamandıra sistemi referansı. Bölge A / Bölge B anahtarı, lateral
- * işaretlerin renk anlamının bölgeye göre nasıl tersine döndüğünü yan yana
- * gösterir — bu ayrım sistemin en çok karıştırılan yanıdır.
+ * IALA Maritime Buoyage System reference. The Region A / Region B switch shows
+ * how the colours of the lateral marks are reversed between the regions.
  */
 export default function BuoyagePage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const [region, setRegion] = useState<IalaRegion>("A");
+  const { currentLanguage } = useLanguage();
 
   const q = norm(query.trim());
 
   const grouped = useMemo(() => {
     const matches = BUOY_MARKS.filter((mark) => {
-      // Lateral işaretler bölgeye bağlıdır; diğerleri her iki bölgede aynıdır.
+      // Lateral marks depend on the region; the others are the same in both.
       if (mark.region && mark.region !== region) return false;
       if (!q) return true;
-      const haystack = norm(
-        [mark.title, mark.colour, mark.shape, mark.topmark ?? "", mark.light, mark.instruction, mark.note ?? ""].join(
-          " ",
-        ),
-      );
+      const texts = [mark.title, mark.colour, mark.shape, mark.topmark ?? "", mark.light, mark.instruction, mark.note ?? ""];
+      // Search the source text and the text shown in the current language.
+      const haystack = norm(texts.flatMap((t) => [t, getStaticTranslation(t, currentLanguage) ?? ""]).join(" "));
       return haystack.includes(q);
     });
 
@@ -90,55 +92,40 @@ export default function BuoyagePage() {
       label: BUOY_CATEGORY_LABELS[category],
       marks: matches.filter((mark) => mark.category === category),
     })).filter((section) => section.marks.length > 0);
-  }, [q, region]);
+  }, [q, region, currentLanguage]);
 
   const totalMatches = grouped.reduce((n, section) => n + section.marks.length, 0);
 
   return (
-    <div className="min-h-screen px-4 py-4 md:px-8 md:py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-2 flex items-center gap-2">
-          <LifeBuoy className="h-7 w-7 text-emerald-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">IALA Maritime Buoyage System</h1>
+    <ToolPage title="IALA Buoyage" icon={LifeBuoy}>
+      <ToolSection title="IALA region">
+        <div className="flex gap-2">
+          {(["A", "B"] as IalaRegion[]).map((value) => {
+            const active = region === value;
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => setRegion(value)}
+                aria-pressed={active}
+                className={`flex-1 rounded-lg border px-3 py-2 text-left transition-colors ${
+                  active ? "border-primary/50 bg-primary/10" : "border-border/50 bg-card/40 hover:bg-muted/50"
+                }`}
+              >
+                <span className="block text-sm font-semibold text-foreground">Region {value}</span>
+                <span className="block text-micro leading-tight text-muted-foreground">
+                  {value === "A" ? "Europe, Africa, most of Asia, Australia" : "North and South America, Japan, Korea, Philippines"}
+                </span>
+              </button>
+            );
+          })}
         </div>
-
-        {/* Region toggle — the single most important control on this page. */}
-        <div className="mb-4 rounded-xl border border-border/50 bg-card/60 p-3">
-          <p className="mb-2 text-xs font-medium text-muted-foreground">IALA Region</p>
-          <div className="flex gap-2">
-            {(["A", "B"] as IalaRegion[]).map((value) => {
-              const active = region === value;
-              return (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setRegion(value)}
-                  aria-pressed={active}
-                  className={`flex-1 rounded-lg border px-3 py-2 text-left transition-colors ${
-                    active
-                      ? "border-emerald-500/50 bg-emerald-500/15"
-                      : "border-border/50 bg-card/40 hover:bg-muted/50"
-                  }`}
-                >
-                  <span className="block text-sm font-semibold text-foreground">Region {value}</span>
-                  <span className="block text-micro leading-tight text-muted-foreground">
-                    {value === "A"
-                      ? "Europe, Africa, most of Asia, Australia — Türkiye is here"
-                      : "North and South America, Japan, Korea, Philippines"}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <p className="mt-2 text-micro leading-relaxed text-muted-foreground">
-            {region === "A"
-              ? "Region A: entering from seaward, keep RED marks to port and GREEN marks to starboard."
-              : "Region B: entering from seaward, keep RED marks to starboard and GREEN marks to port (“red right returning”)."}
-          </p>
-        </div>
-
-        {/* Search */}
-        <div className="relative mb-5">
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          {region === "A"
+            ? "Region A: entering from seaward (in the direction of buoyage), keep RED marks to port and GREEN marks to starboard."
+            : "Region B: entering from seaward (in the direction of buoyage), keep RED marks to starboard and GREEN marks to port (“red right returning”)."}
+        </p>
+        <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
@@ -158,80 +145,46 @@ export default function BuoyagePage() {
             </button>
           )}
         </div>
+      </ToolSection>
 
-        {totalMatches === 0 ? (
-          <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">No results found</p>
-            <p className="mt-1 text-xs text-muted-foreground">Try a different search term.</p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {grouped.map(({ category, label, marks }) => (
-              <section
-                key={category}
-                className="overflow-hidden rounded-2xl border border-border/50 bg-card/60"
-              >
-                <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span className="shrink-0 text-micro text-muted-foreground">
-                      {marks.length} {marks.length === 1 ? "mark" : "marks"}
-                    </span>
-                  </div>
-                </div>
-
-                {label.image ? (
-                  <div className="border-b border-border/40 bg-background/40 px-4 py-3">
-                    <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40 bg-white">
-                      <LessonImage
-                        src={label.image}
-                        alt={label.imageAlt ?? label.title}
-                        className="h-auto w-full object-contain"
-                      />
-                    </div>
-                  </div>
-                ) : null}
-
-                <div>
-                  {marks.map((mark) => (
-                    <BuoyCard key={mark.id} mark={mark} />
-                  ))}
-                </div>
-              </section>
-            ))}
-
-            {/* Işık karakteri sözlüğü — şamandırayı gece tanımanın anahtarı. */}
-            <section className="overflow-hidden rounded-2xl border border-border/50 bg-card/60">
-              <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
-                <h2 className="text-base font-semibold text-foreground">
-                  Light Character Abbreviations
-                </h2>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  At night you recognize a mark by its light rhythm, not by the color of its body. If the rhythm you see does not match the signature on the chart, either you are looking at the wrong light or your position assumption is wrong.
-                </p>
+      {totalMatches === 0 ? (
+        <ToolNotice>No marks match this search. Try a different term.</ToolNotice>
+      ) : (
+        grouped.map(({ category, label, marks }) => (
+          <ToolSection key={category} title={label.title} description={label.description} icon={LifeBuoy}>
+            {label.image ? (
+              <div className="mx-auto max-w-md overflow-hidden rounded-xl border border-border/40 bg-white">
+                <LessonImage src={label.image} alt={label.imageAlt ?? label.title} className="h-auto w-full object-contain" />
               </div>
-              <div>
-                {LIGHT_CHARACTERS.map((character) => (
-                  <div
-                    key={character.code}
-                    className="flex gap-3 border-b border-border/30 px-4 py-2.5 last:border-b-0"
-                  >
-                    <span className="w-12 shrink-0 font-mono text-sm font-bold text-foreground">
-                      {character.code}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium text-foreground">{character.name}</p>
-                      <p className="text-xs leading-relaxed text-muted-foreground">
-                        {character.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+            ) : null}
+            <div className="-mx-4 border-t border-border/30">
+              {marks.map((mark) => (
+                <BuoyCard key={mark.id} mark={mark} />
+              ))}
+            </div>
+          </ToolSection>
+        ))
+      )}
+
+      <ToolSection
+        title="Light character abbreviations"
+        icon={Lightbulb}
+        description="At night a mark is recognised by the rhythm of its light. If the rhythm does not match the chart, you are looking at another light or you are not where you think you are."
+      >
+        <div className="-mx-4 border-t border-border/30">
+          {LIGHT_CHARACTERS.map((character) => (
+            <div key={character.code} className="flex gap-3 border-b border-border/30 px-4 py-2.5 last:border-b-0">
+              <span translate="no" className="notranslate w-12 shrink-0 font-mono text-sm font-bold text-foreground">
+                {character.code}
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-foreground">{character.name}</p>
+                <p className="text-xs leading-relaxed text-muted-foreground">{character.description}</p>
               </div>
-            </section>
-          </div>
-        )}
-      </div>
-    </div>
+            </div>
+          ))}
+        </div>
+      </ToolSection>
+    </ToolPage>
   );
 }

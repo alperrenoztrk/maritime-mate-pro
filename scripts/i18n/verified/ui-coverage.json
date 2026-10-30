@@ -2510,5 +2510,1193 @@
  },
  "Seamanship Assistant": {
   "en": "Seamanship Assistant"
+ },
+ ", Dec": {
+  "en": ", Dec"
+ },
+ "(UTC)": {
+  "en": "(UTC)"
+ },
+ "+ east": {
+  "en": "+ east"
+ },
+ "+ north": {
+  "en": "+ north"
+ },
+ "1) Collect the data": {
+  "en": "1) Collect the data"
+ },
+ "15:00 is after HW": {
+  "en": "15:00 is after HW"
+ },
+ "2) Secondary port corrections": {
+  "en": "2) Secondary port corrections"
+ },
+ "2025 almanac table": {
+  "en": "2025 almanac table"
+ },
+ "3) Height of tide at a given time": {
+  "en": "3) Height of tide at a given time"
+ },
+ "4 min per degree; east +": {
+  "en": "4 min per degree; east +"
+ },
+ "4) Time for a given height": {
+  "en": "4) Time for a given height"
+ },
+ "5) Under-keel clearance": {
+  "en": "5) Under-keel clearance"
+ },
+ "6) Tidal streams": {
+  "en": "6) Tidal streams"
+ },
+ "A light is seen at the lesser of its geographical range and its luminous range for the visibility (List of Lights diagram). Abnormal refraction changes these ranges.": {
+  "en": "A light is seen at the lesser of its geographical range and its luminous range for the visibility (List of Lights diagram). Abnormal refraction changes these ranges."
+ },
+ "A steady bearing with a decreasing range means risk of collision (Rule 7(d)).": {
+  "en": "A steady bearing with a decreasing range means risk of collision (Rule 7(d))."
+ },
+ "Above chart datum": {
+  "en": "Above chart datum"
+ },
+ "Advance (from the start of the turn)": {
+  "en": "Advance (from the start of the turn)"
+ },
+ "After squat and the margin entered": {
+  "en": "After squat and the margin entered"
+ },
+ "Almanac": {
+  "en": "Almanac"
+ },
+ "Along-track from the leg start": {
+  "en": "Along-track from the leg start"
+ },
+ "Alteration of course": {
+  "en": "Alteration of course"
+ },
+ "Alteration of Course (Δ)": {
+  "en": "Alteration of Course (Δ)"
+ },
+ "Angle of cut": {
+  "en": "Angle of cut"
+ },
+ "Angle of cut below 30°: a small bearing error moves the fix a long way.": {
+  "en": "Angle of cut below 30°: a small bearing error moves the fix a long way."
+ },
+ "Apparent altitude Ha": {
+  "en": "Apparent altitude Ha"
+ },
+ "Apply the index correction (IC)": {
+  "en": "Apply the index correction (IC)"
+ },
+ "Azimuth Zn": {
+  "en": "Azimuth Zn"
+ },
+ "Barrass' approximation of maximum squat at the bow (full ships) or stern (fine ships). Squat varies with the square of the speed: halving the speed quarters it.": {
+  "en": "Barrass' approximation of maximum squat at the bow (full ships) or stern (fine ships). Squat varies with the square of the speed: halving the speed quarters it."
+ },
+ "Based on the courses and speeds entered. Keep plotting: assumptions on scanty radar information must not be made (Rule 7(c)).": {
+  "en": "Based on the courses and speeds entered. Keep plotting: assumptions on scanty radar information must not be made (Rule 7(c))."
+ },
+ "Bearing and range of one object": {
+  "en": "Bearing and range of one object"
+ },
+ "Beaufort force": {
+  "en": "Beaufort force"
+ },
+ "Beaufort force from wind speed": {
+  "en": "Beaufort force from wind speed"
+ },
+ "Beaufort scale": {
+  "en": "Beaufort scale"
+ },
+ "Beaufort Scale": {
+  "en": "Beaufort Scale"
+ },
+ "Beaufort wind force scale": {
+  "en": "Beaufort wind force scale"
+ },
+ "Before leeway": {
+  "en": "Before leeway"
+ },
+ "Between neaps (0) and springs (1)": {
+  "en": "Between neaps (0) and springs (1)"
+ },
+ "Body bears (1 = south, −1 = north)": {
+  "en": "Body bears (1 = south, −1 = north)"
+ },
+ "Built-in for this time: GHA": {
+  "en": "Built-in for this time: GHA"
+ },
+ "Calculated altitude Hc": {
+  "en": "Calculated altitude Hc"
+ },
+ "Celestial navigation": {
+  "en": "Celestial navigation"
+ },
+ "Centimetres in one nautical mile": {
+  "en": "Centimetres in one nautical mile"
+ },
+ "Chart scale": {
+  "en": "Chart scale"
+ },
+ "Chart Scale": {
+  "en": "Chart Scale"
+ },
+ "Charted depth + height of tide": {
+  "en": "Charted depth + height of tide"
+ },
+ "Charted depth + height of tide = draft + squat + under-keel clearance": {
+  "en": "Charted depth + height of tide = draft + squat + under-keel clearance"
+ },
+ "Choose the tidal diamond nearest to the position (or use the tidal stream atlas).": {
+  "en": "Choose the tidal diamond nearest to the position (or use the tidal stream atlas)."
+ },
+ "Circular-arc geometry. The ship runs on before she starts to turn, so the real advance is larger: put the wheel over earlier by that distance, as the manoeuvring data show. Check the turn against parallel indexes or the ECDIS.": {
+  "en": "Circular-arc geometry. The ship runs on before she starts to turn, so the real advance is larger: put the wheel over earlier by that distance, as the manoeuvring data show. Check the turn against parallel indexes or the ECDIS."
+ },
+ "Clearance = depth of water − draft − squat − other allowances (swell, heel).": {
+  "en": "Clearance = depth of water − draft − squat − other allowances (swell, heel)."
+ },
+ "Clearing Distance": {
+  "en": "Clearing Distance"
+ },
+ "Clearing distance from the object": {
+  "en": "Clearing distance from the object"
+ },
+ "Closest point of approach": {
+  "en": "Closest point of approach"
+ },
+ "Cocked hat (RMS distance from the lines)": {
+  "en": "Cocked hat (RMS distance from the lines)"
+ },
+ "Collision avoidance": {
+  "en": "Collision avoidance"
+ },
+ "COLREG situation": {
+  "en": "COLREG situation"
+ },
+ "COLREG Situation": {
+  "en": "COLREG Situation"
+ },
+ "Compass and Gyro Error": {
+  "en": "Compass and Gyro Error"
+ },
+ "Compass to true": {
+  "en": "Compass to true"
+ },
+ "Confined channel": {
+  "en": "Confined channel"
+ },
+ "Correction from the track": {
+  "en": "Correction from the track"
+ },
+ "Course and distance from d.lat and departure": {
+  "en": "Course and distance from d.lat and departure"
+ },
+ "Course and speed through the water give the DR; apply set and drift (Current Triangle) for the EP.": {
+  "en": "Course and speed through the water give the DR; apply set and drift (Current Triangle) for the EP."
+ },
+ "Course through the water": {
+  "en": "Course through the water"
+ },
+ "Course to next": {
+  "en": "Course to next"
+ },
+ "Course to steer (true)": {
+  "en": "Course to steer (true)"
+ },
+ "Course to steer for a current": {
+  "en": "Course to steer for a current"
+ },
+ "CPA and TCPA": {
+  "en": "CPA and TCPA"
+ },
+ "CPA is inside your limit of": {
+  "en": "CPA is inside your limit of"
+ },
+ "Cross bearings (three objects)": {
+  "en": "Cross bearings (three objects)"
+ },
+ "Cross bearings (two objects)": {
+  "en": "Cross bearings (two objects)"
+ },
+ "Cross-track distance": {
+  "en": "Cross-track distance"
+ },
+ "Cross-track distance and look-ahead": {
+  "en": "Cross-track distance and look-ahead"
+ },
+ "Cross-Track Distance and Look-Ahead": {
+  "en": "Cross-Track Distance and Look-Ahead"
+ },
+ "Crossing — the other vessel is on your port side": {
+  "en": "Crossing — the other vessel is on your port side"
+ },
+ "Crossing — the other vessel is on your starboard side": {
+  "en": "Crossing — the other vessel is on your starboard side"
+ },
+ "Current drift (rate)": {
+  "en": "Current drift (rate)"
+ },
+ "Current set (direction towards)": {
+  "en": "Current set (direction towards)"
+ },
+ "Current triangle": {
+  "en": "Current triangle"
+ },
+ "Current Triangle": {
+  "en": "Current Triangle"
+ },
+ "D.Lat and Departure": {
+  "en": "D.Lat and Departure"
+ },
+ "d.lat and departure from course and distance": {
+  "en": "d.lat and departure from course and distance"
+ },
+ "D.long is the difference of longitude in minutes of arc; departure is the east–west distance in nm, d.long × cosφ̄ (mid-latitude).": {
+  "en": "D.long is the difference of longitude in minutes of arc; departure is the east–west distance in nm, d.long × cosφ̄ (mid-latitude)."
+ },
+ "Danger Angle (α)": {
+  "en": "Danger Angle (α)"
+ },
+ "Dead reckoning position": {
+  "en": "Dead reckoning position"
+ },
+ "Dead Reckoning Position": {
+  "en": "Dead Reckoning Position"
+ },
+ "Declination": {
+  "en": "Declination"
+ },
+ "Declination (δ, S: −)": {
+  "en": "Declination (δ, S: −)"
+ },
+ "Declination (δ)": {
+  "en": "Declination (δ)"
+ },
+ "Denominator: cosφ · cosHc": {
+  "en": "Denominator: cosφ · cosHc"
+ },
+ "Depth of water": {
+  "en": "Depth of water"
+ },
+ "Depth of water = charted depth + height of tide (drying heights are subtracted).": {
+  "en": "Depth of water = charted depth + height of tide (drying heights are subtracted)."
+ },
+ "Deviation (Dev)": {
+  "en": "Deviation (Dev)"
+ },
+ "Deviation changes with the ship's head: record it with the heading at the time of the observation.": {
+  "en": "Deviation changes with the ship's head: record it with the heading at the time of the observation."
+ },
+ "Deviation on this heading": {
+  "en": "Deviation on this heading"
+ },
+ "Difference of latitude / longitude": {
+  "en": "Difference of latitude / longitude"
+ },
+ "Difference of meridional parts (WGS 84)": {
+  "en": "Difference of meridional parts (WGS 84)"
+ },
+ "Direction of relative motion": {
+  "en": "Direction of relative motion"
+ },
+ "distance (nm) = length (cm) × scale / 185,200": {
+  "en": "distance (nm) = length (cm) × scale / 185,200"
+ },
+ "Distance and time to go": {
+  "en": "Distance and time to go"
+ },
+ "Distance of the Horizon": {
+  "en": "Distance of the Horizon"
+ },
+ "Distance off": {
+  "en": "Distance off"
+ },
+ "Distance off at the second bearing": {
+  "en": "Distance off at the second bearing"
+ },
+ "Distance off when abeam": {
+  "en": "Distance off when abeam"
+ },
+ "Distance run": {
+  "en": "Distance run"
+ },
+ "Distance run between the bearings": {
+  "en": "Distance run between the bearings"
+ },
+ "Distance to go": {
+  "en": "Distance to go"
+ },
+ "DMP": {
+  "en": "DMP"
+ },
+ "DR latitude": {
+  "en": "DR latitude"
+ },
+ "DR longitude": {
+  "en": "DR longitude"
+ },
+ "DR position": {
+  "en": "DR position"
+ },
+ "Duration HW → LW": {
+  "en": "Duration HW → LW"
+ },
+ "Each vessel alters course to starboard so that each passes on the port side of the other.": {
+  "en": "Each vessel alters course to starboard so that each passes on the port side of the other."
+ },
+ "Elevation of the light": {
+  "en": "Elevation of the light"
+ },
+ "Elevation of the Light (H)": {
+  "en": "Elevation of the Light (H)"
+ },
+ "Error = true − observed (east +) · deviation = compass error − variation": {
+  "en": "Error = true − observed (east +) · deviation = compass error − variation"
+ },
+ "Error by transit or azimuth": {
+  "en": "Error by transit or azimuth"
+ },
+ "Errors": {
+  "en": "Errors"
+ },
+ "ETA at this SOG": {
+  "en": "ETA at this SOG"
+ },
+ "ETA zone time": {
+  "en": "ETA zone time"
+ },
+ "ETAs assume the planned speed over ground on each leg; revise them with the actual SOG during the passage.": {
+  "en": "ETAs assume the planned speed over ground on each leg; revise them with the actual SOG during the passage."
+ },
+ "Europe, Africa, most of Asia, Australia": {
+  "en": "Europe, Africa, most of Asia, Australia"
+ },
+ "Expanding square (SS)": {
+  "en": "Expanding square (SS)"
+ },
+ "Fall so far": {
+  "en": "Fall so far"
+ },
+ "Final course (on arrival)": {
+  "en": "Final course (on arrival)"
+ },
+ "Final ETA": {
+  "en": "Final ETA"
+ },
+ "Find the height of tide at the time needed from the predicted HW and LW, then add it to the charted depth to check the under-keel clearance. The calculator for this page is": {
+  "en": "Find the height of tide at the time needed from the predicted HW and LW, then add it to the charted depth to check the under-keel clearance. The calculator for this page is"
+ },
+ "Find the hour before or after HW at the reference port given on the chart.": {
+  "en": "Find the hour before or after HW at the reference port given on the chart."
+ },
+ "First and second angles on the bow": {
+  "en": "First and second angles on the bow"
+ },
+ "First Angle on the Bow (θ₁)": {
+  "en": "First Angle on the Bow (θ₁)"
+ },
+ "First term: sinφ · sinδ": {
+  "en": "First term: sinφ · sinδ"
+ },
+ "Flat-plane cross-track for a coastal leg. Set the XTL and safety contour on the ECDIS itself.": {
+  "en": "Flat-plane cross-track for a coastal leg. Set the XTL and safety contour on the ECDIS itself."
+ },
+ "Flat-plane solution for coastal distances. Bearings are true: apply the compass or gyro error first.": {
+  "en": "Flat-plane solution for coastal distances. Bearings are true: apply the compass or gyro error first."
+ },
+ "Follow the SAR Mission Co-ordinator or the On-Scene Co-ordinator. The expanding square and the sector search start at the datum; begin the sector search towards the drift where possible.": {
+  "en": "Follow the SAR Mission Co-ordinator or the On-Scene Co-ordinator. The expanding square and the sector search start at the datum; begin the sector search towards the drift where possible."
+ },
+ "For short distances (a day's run). For longer passages use Mercator or great circle sailing.": {
+  "en": "For short distances (a day's run). For longer passages use Mercator or great circle sailing."
+ },
+ "Fresh breeze": {
+  "en": "Fresh breeze"
+ },
+ "Gentle breeze": {
+  "en": "Gentle breeze"
+ },
+ "Geographical Range": {
+  "en": "Geographical Range"
+ },
+ "Geographical Range of a Light": {
+  "en": "Geographical Range of a Light"
+ },
+ "GHA + east longitude − west longitude": {
+  "en": "GHA + east longitude − west longitude"
+ },
+ "Great circle": {
+  "en": "Great circle"
+ },
+ "Great circle distance": {
+  "en": "Great circle distance"
+ },
+ "Great circle waypoints": {
+  "en": "Great circle waypoints"
+ },
+ "Gyro error": {
+  "en": "Gyro error"
+ },
+ "Gyro reads high: subtract; low: add": {
+  "en": "Gyro reads high: subtract; low: add"
+ },
+ "Head-on situation": {
+  "en": "Head-on situation"
+ },
+ "Height of eye or of the light": {
+  "en": "Height of eye or of the light"
+ },
+ "Height of the Object (H)": {
+  "en": "Height of the Object (H)"
+ },
+ "Height of the object above sea level": {
+  "en": "Height of the object above sea level"
+ },
+ "Height of tide at 15:00": {
+  "en": "Height of tide at 15:00"
+ },
+ "Heights by the rule of twelfths": {
+  "en": "Heights by the rule of twelfths"
+ },
+ "Ho − Hc; towards the body when Ho is greater": {
+  "en": "Ho − Hc; towards the body when Ho is greater"
+ },
+ "horizon 2.08√h · light 2.08(√H + √h) · radar 2.23(√h₁ + √h₂)": {
+  "en": "horizon 2.08√h · light 2.08(√H + √h) · radar 2.23(√h₁ + √h₂)"
+ },
+ "Horizon, Light and Radar Ranges": {
+  "en": "Horizon, Light and Radar Ranges"
+ },
+ "Hours elapsed since LW (0–6)": {
+  "en": "Hours elapsed since LW (0–6)"
+ },
+ "IALA Buoyage": {
+  "en": "IALA Buoyage"
+ },
+ "IALA region": {
+  "en": "IALA region"
+ },
+ "IC and the main correction are entered in minutes (′). The index correction is applied with its sign, the dip is always subtracted, and the main correction is added with its sign (negative for an upper limb).": {
+  "en": "IC and the main correction are entered in minutes (′). The index correction is applied with its sign, the dip is always subtracted, and the main correction is added with its sign (negative for an upper limb)."
+ },
+ "IC is added with its sign (on the arc: −, off the arc: +).": {
+  "en": "IC is added with its sign (on the arc: −, off the arc: +)."
+ },
+ "If course and speed are kept": {
+  "en": "If course and speed are kept"
+ },
+ "If it is below the required UKC, replan the time of the passage or the route.": {
+  "en": "If it is below the required UKC, replan the time of the passage or the route."
+ },
+ "Index Correction (IC)": {
+  "en": "Index Correction (IC)"
+ },
+ "Index correction (off the arc +, on the arc −)": {
+  "en": "Index correction (off the arc +, on the arc −)"
+ },
+ "Intercept": {
+  "en": "Intercept"
+ },
+ "Interval worked from the right HW or LW?": {
+  "en": "Interval worked from the right HW or LW?"
+ },
+ "Keep out of the way of the vessel being overtaken until you are finally past and clear.": {
+  "en": "Keep out of the way of the vessel being overtaken until you are finally past and clear."
+ },
+ "Keep the vertical sextant angle of the object below α to stay outside the clearing distance. Valid while the base of the object is within the horizon.": {
+  "en": "Keep the vertical sextant angle of the object below α to stay outside the clearing distance. Valid while the base of the object is within the horizon."
+ },
+ "Kilometres per hour": {
+  "en": "Kilometres per hour"
+ },
+ "Knots": {
+  "en": "Knots"
+ },
+ "Large value: check bearings, compass error and object identification": {
+  "en": "Large value: check bearings, compass error and object identification"
+ },
+ "Latitude by meridian altitude": {
+  "en": "Latitude by meridian altitude"
+ },
+ "Legs": {
+  "en": "Legs"
+ },
+ "Legs = radius · all turns 120° to starboard · 9 × radius per pattern": {
+  "en": "Legs = radius · all turns 120° to starboard · 9 × radius per pattern"
+ },
+ "Legs = width / S, each the length of the area, joined by S": {
+  "en": "Legs = width / S, each the length of the area, joined by S"
+ },
+ "Length on the chart": {
+  "en": "Length on the chart"
+ },
+ "Light air": {
+  "en": "Light air"
+ },
+ "Light breeze": {
+  "en": "Light breeze"
+ },
+ "Light character abbreviations": {
+  "en": "Light character abbreviations"
+ },
+ "Local mean time": {
+  "en": "Local mean time"
+ },
+ "Longitude in time": {
+  "en": "Longitude in time"
+ },
+ "look-ahead = SOG × time": {
+  "en": "look-ahead = SOG × time"
+ },
+ "Look-ahead distance": {
+  "en": "Look-ahead distance"
+ },
+ "low-precision formula, about ±0.5′": {
+  "en": "low-precision formula, about ±0.5′"
+ },
+ "Lower limb (+SD)": {
+  "en": "Lower limb (+SD)"
+ },
+ "m: reduce speed, wait for the tide or reduce draft.": {
+  "en": "m: reduce speed, wait for the tide or reduce draft."
+ },
+ "Magnetic": {
+  "en": "Magnetic"
+ },
+ "Main correction from the Almanac (refraction, semi-diameter and parallax together)": {
+  "en": "Main correction from the Almanac (refraction, semi-diameter and parallax together)"
+ },
+ "Maximum squat (Barrass)": {
+  "en": "Maximum squat (Barrass)"
+ },
+ "Maximum squat, at the bow for full ships (Cb > 0.7) and at the stern for fine ships.": {
+  "en": "Maximum squat, at the bow for full ships (Cb > 0.7) and at the stern for fine ships."
+ },
+ "Measured from the start of the turn; the wheel-over distance is before the intersection of the two course lines. The ship's manoeuvring data take precedence.": {
+  "en": "Measured from the start of the turn; the wheel-over distance is before the intersection of the two course lines. The ship's manoeuvring data take precedence."
+ },
+ "Mercator sailing": {
+  "en": "Mercator sailing"
+ },
+ "Meridian Altitude and Amplitude": {
+  "en": "Meridian Altitude and Amplitude"
+ },
+ "Meridional parts on the WGS 84 ellipsoid. On an east–west course D = d.long × cos φ. East (+), west (−).": {
+  "en": "Meridional parts on the WGS 84 ellipsoid. On an east–west course D = d.long × cos φ. East (+), west (−)."
+ },
+ "Metres per second": {
+  "en": "Metres per second"
+ },
+ "Mid-latitude sailing": {
+  "en": "Mid-latitude sailing"
+ },
+ "Mid-Latitude Sailing": {
+  "en": "Mid-Latitude Sailing"
+ },
+ "Moderate breeze": {
+  "en": "Moderate breeze"
+ },
+ "Natural scale denominator (1 : scale)": {
+  "en": "Natural scale denominator (1 : scale)"
+ },
+ "Navigation Course Calculators": {
+  "en": "Navigation Course Calculators"
+ },
+ "Near gale": {
+  "en": "Near gale"
+ },
+ "Near land, in offshore winds and in short fetches the waves are lower and steeper; the sea also lags behind a rising wind.": {
+  "en": "Near land, in offshore winds and in short fetches the waves are lower and steeper; the sea also lags behind a rising wind."
+ },
+ "Negative clearance: the ship would touch bottom.": {
+  "en": "Negative clearance: the ship would touch bottom."
+ },
+ "nm: risk of collision must be assessed (Rule 7).": {
+  "en": "nm: risk of collision must be assessed (Rule 7)."
+ },
+ "No marks match this search. Try a different term.": {
+  "en": "No marks match this search. Try a different term."
+ },
+ "No signals match this search. Try a different term.": {
+  "en": "No signals match this search. Try a different term."
+ },
+ "No tactical diameter entered: 3.5 × L is only a rough figure. Use the ship's trial data.": {
+  "en": "No tactical diameter entered: 3.5 × L is only a rough figure. Use the ship's trial data."
+ },
+ "Numerator: sinδ − sinφ · sinHc": {
+  "en": "Numerator: sinδ − sinφ · sinHc"
+ },
+ "Observed altitude Ho": {
+  "en": "Observed altitude Ho"
+ },
+ "On a Mercator chart the scale changes with latitude: measure distances on the latitude scale beside the area.": {
+  "en": "On a Mercator chart the scale changes with latitude: measure distances on the latitude scale beside the area."
+ },
+ "On a Mercator chart the scale changes with latitude: measure distances on the latitude scale.": {
+  "en": "On a Mercator chart the scale changes with latitude: measure distances on the latitude scale."
+ },
+ "One tidal hour": {
+  "en": "One tidal hour"
+ },
+ "Open the list of navigation calculators": {
+  "en": "Open the list of navigation calculators"
+ },
+ "Open water (shallow, unrestricted width)": {
+  "en": "Open water (shallow, unrestricted width)"
+ },
+ "Parallax": {
+  "en": "Parallax"
+ },
+ "Parallel sweep (PS)": {
+  "en": "Parallel sweep (PS)"
+ },
+ "Passage legs": {
+  "en": "Passage legs"
+ },
+ "Passage plan ETAs": {
+  "en": "Passage plan ETAs"
+ },
+ "Passage Plan ETAs": {
+  "en": "Passage Plan ETAs"
+ },
+ "Passage planning": {
+  "en": "Passage planning"
+ },
+ "Passage time": {
+  "en": "Passage time"
+ },
+ "Pilot – WP1": {
+  "en": "Pilot – WP1"
+ },
+ "Plane sailing": {
+  "en": "Plane sailing"
+ },
+ "Planned SOG": {
+  "en": "Planned SOG"
+ },
+ "Plot the position line at right angles to Zn through the intercept point from the assumed position.": {
+  "en": "Plot the position line at right angles to Zn through the intercept point from the assumed position."
+ },
+ "Position fixing": {
+  "en": "Position fixing"
+ },
+ "Position Fixing": {
+  "en": "Position Fixing"
+ },
+ "Position fixing and compass": {
+  "en": "Position fixing and compass"
+ },
+ "Probable max.": {
+  "en": "Probable max."
+ },
+ "Probable maximum wave height": {
+  "en": "Probable maximum wave height"
+ },
+ "Probable wave": {
+  "en": "Probable wave"
+ },
+ "Probable wave height": {
+  "en": "Probable wave height"
+ },
+ "Radar Horizon Range": {
+  "en": "Radar Horizon Range"
+ },
+ "Radar Plot": {
+  "en": "Radar Plot"
+ },
+ "Radar plot from two observations": {
+  "en": "Radar plot from two observations"
+ },
+ "Range and signs consistent; drying heights subtracted?": {
+  "en": "Range and signs consistent; drying heights subtracted?"
+ },
+ "Ranges": {
+  "en": "Ranges"
+ },
+ "Ranges of two objects": {
+  "en": "Ranges of two objects"
+ },
+ "Rate": {
+  "en": "Rate"
+ },
+ "rate = neap + (spring − neap) × (range − neap range) / (spring range − neap range)": {
+  "en": "rate = neap + (spring − neap) × (range − neap range) / (spring range − neap range)"
+ },
+ "Rate of turn": {
+  "en": "Rate of turn"
+ },
+ "Read the direction and the spring and neap rates for that hour; interpolate the rate by the day's range.": {
+  "en": "Read the direction and the spring and neap rates for that hour; interpolate the rate by the day's range."
+ },
+ "Refraction": {
+  "en": "Refraction"
+ },
+ "Region A: entering from seaward (in the direction of buoyage), keep RED marks to port and GREEN marks to starboard.": {
+  "en": "Region A: entering from seaward (in the direction of buoyage), keep RED marks to port and GREEN marks to starboard."
+ },
+ "Region B: entering from seaward (in the direction of buoyage), keep RED marks to starboard and GREEN marks to port (“red right returning”).": {
+  "en": "Region B: entering from seaward (in the direction of buoyage), keep RED marks to starboard and GREEN marks to port (“red right returning”)."
+ },
+ "Relative bearing (from the bow, clockwise)": {
+  "en": "Relative bearing (from the bow, clockwise)"
+ },
+ "Rhumb Line (Mercator Sailing)": {
+  "en": "Rhumb Line (Mercator Sailing)"
+ },
+ "Rhumb line course": {
+  "en": "Rhumb line course"
+ },
+ "Rhumb line distance": {
+  "en": "Rhumb line distance"
+ },
+ "Rising": {
+  "en": "Rising"
+ },
+ "Route": {
+  "en": "Route"
+ },
+ "Route monitoring": {
+  "en": "Route monitoring"
+ },
+ "Rule of twelfths: 1 · 2 · 3 · 3 · 2 · 1 twelfths of the range per tidal hour": {
+  "en": "Rule of twelfths: 1 · 2 · 3 · 3 · 2 · 1 twelfths of the range per tidal hour"
+ },
+ "Run": {
+  "en": "Run"
+ },
+ "Run between bearings": {
+  "en": "Run between bearings"
+ },
+ "Sailings": {
+  "en": "Sailings"
+ },
+ "Saving on the great circle": {
+  "en": "Saving on the great circle"
+ },
+ "Scale (1 : …)": {
+  "en": "Scale (1 : …)"
+ },
+ "Search patterns (IAMSAR Vol. III)": {
+  "en": "Search patterns (IAMSAR Vol. III)"
+ },
+ "Search Patterns (IAMSAR)": {
+  "en": "Search Patterns (IAMSAR)"
+ },
+ "Second Angle on the Bow (θ₂)": {
+  "en": "Second Angle on the Bow (θ₂)"
+ },
+ "Second term: cosφ · cosδ · cos(LHA)": {
+  "en": "Second term: cosφ · cosδ · cos(LHA)"
+ },
+ "Secondary port differences applied?": {
+  "en": "Secondary port differences applied?"
+ },
+ "Sector search (VS)": {
+  "en": "Sector search (VS)"
+ },
+ "Semi-diameter": {
+  "en": "Semi-diameter"
+ },
+ "Set (direction towards)": {
+  "en": "Set (direction towards)"
+ },
+ "Setting": {
+  "en": "Setting"
+ },
+ "Ship handling, weather and SAR": {
+  "en": "Ship handling, weather and SAR"
+ },
+ "Side of the planned track the ship is on": {
+  "en": "Side of the planned track the ship is on"
+ },
+ "Sight reduction": {
+  "en": "Sight reduction"
+ },
+ "sin(CTS − track) = drift × sin(track − set) / V · then allow for leeway": {
+  "en": "sin(CTS − track) = drift × sin(track − set) / V · then allow for leeway"
+ },
+ "Situation": {
+  "en": "Situation"
+ },
+ "Special cases: doubling the angle on the bow (e.g. 30°→60°, 45°→90°) gives distance off at the second bearing = run; 22.5°→45° gives distance abeam ≈ 0.7 × run. The run is over the ground: allow for current.": {
+  "en": "Special cases: doubling the angle on the bow (e.g. 30°→60°, 45°→90°) gives distance off at the second bearing = run; 22.5°→45° gives distance abeam ≈ 0.7 × run. The run is over the ground: allow for current."
+ },
+ "Speed made good": {
+  "en": "Speed made good"
+ },
+ "Speed through the water": {
+  "en": "Speed through the water"
+ },
+ "Speed units": {
+  "en": "Speed units"
+ },
+ "Speed, distance and time": {
+  "en": "Speed, distance and time"
+ },
+ "Speed, Distance, Time and ETA": {
+  "en": "Speed, Distance, Time and ETA"
+ },
+ "Spherical Earth (R = 3,440.065 nm). Check the route against the chart for land, ice limits and load line zones.": {
+  "en": "Spherical Earth (R = 3,440.065 nm). Check the route against the chart for land, ice limits and load line zones."
+ },
+ "Squat (Barrass)": {
+  "en": "Squat (Barrass)"
+ },
+ "squat = Cb × V² / 100 (open water) · × 2 in a confined channel · UKC = depth + tide − draft − squat − margin": {
+  "en": "squat = Cb × V² / 100 (open water) · × 2 in a confined channel · UKC = depth + tide − draft − squat − margin"
+ },
+ "Squat and allowances included in the clearance?": {
+  "en": "Squat and allowances included in the clearance?"
+ },
+ "Squat and UKC": {
+  "en": "Squat and UKC"
+ },
+ "Squat and under-keel clearance": {
+  "en": "Squat and under-keel clearance"
+ },
+ "Squat, confined channel": {
+  "en": "Squat, confined channel"
+ },
+ "Squat, open water": {
+  "en": "Squat, open water"
+ },
+ "Standard refraction. The geographical range of a light is 2.08(√H + √h): add the horizon distances of the light and of the eye.": {
+  "en": "Standard refraction. The geographical range of a light is 2.08(√H + √h): add the horizon distances of the light and of the eye."
+ },
+ "Stop after": {
+  "en": "Stop after"
+ },
+ "Strong gale": {
+  "en": "Strong gale"
+ },
+ "Sun sight": {
+  "en": "Sun sight"
+ },
+ "Sun Sight": {
+  "en": "Sun Sight"
+ },
+ "Sun sight: altitude corrections and intercept": {
+  "en": "Sun sight: altitude corrections and intercept"
+ },
+ "T = C + deviation + variation (east +, west −)": {
+  "en": "T = C + deviation + variation (east +, west −)"
+ },
+ "Take the bearing when the Sun's centre is on the celestial horizon: with normal refraction its lower limb is then about two-thirds of a diameter above the visible horizon.": {
+  "en": "Take the bearing when the Sun's centre is on the celestial horizon: with normal refraction its lower limb is then about two-thirds of a diameter above the visible horizon."
+ },
+ "Target motion": {
+  "en": "Target motion"
+ },
+ "Target speed": {
+  "en": "Target speed"
+ },
+ "Target true bearing": {
+  "en": "Target true bearing"
+ },
+ "Target true course": {
+  "en": "Target true course"
+ },
+ "TCPA (from the second plot)": {
+  "en": "TCPA (from the second plot)"
+ },
+ "The Almanac's main correction already combines refraction, semi-diameter and parallax: do not apply them again.": {
+  "en": "The Almanac's main correction already combines refraction, semi-diameter and parallax: do not apply them again."
+ },
+ "The current is too strong for this speed: the track cannot be made good.": {
+  "en": "The current is too strong for this speed: the track cannot be made good."
+ },
+ "The day's range is outside the neap–spring ranges: the rate is extrapolated.": {
+  "en": "The day's range is outside the neap–spring ranges: the rate is extrapolated."
+ },
+ "The light is seen at the lesser of its geographical range and its luminous range for the visibility; this is also its dipping distance.": {
+  "en": "The light is seen at the lesser of its geographical range and its luminous range for the visibility; this is also its dipping distance."
+ },
+ "The range is opening: the closest approach has already passed.": {
+  "en": "The range is opening: the closest approach has already passed."
+ },
+ "The route crosses the equator: work each side separately or use Mercator sailing.": {
+  "en": "The route crosses the equator: work each side separately or use Mercator sailing."
+ },
+ "The rule of twelfths assumes a regular semidiurnal tide rising for about six hours. Where the tidal curve is not symmetrical, use the tidal curves of the Admiralty Tide Tables. For under-keel clearance use": {
+  "en": "The rule of twelfths assumes a regular semidiurnal tide rising for about six hours. Where the tidal curve is not symmetrical, use the tidal curves of the Admiralty Tide Tables. For under-keel clearance use"
+ },
+ "The rule of twelfths assumes a regular, symmetrical tide. Where the Admiralty Tide Tables give a tidal curve for the port, use the curve: it can differ by several decimetres.": {
+  "en": "The rule of twelfths assumes a regular, symmetrical tide. Where the Admiralty Tide Tables give a tidal curve for the port, use the curve: it can differ by several decimetres."
+ },
+ "The same formulas drive the calculators in Learn → Navigation. For the full tools (great circle waypoints, fixes, tides, sights) open Navigation Calculations.": {
+  "en": "The same formulas drive the calculators in Learn → Navigation. For the full tools (great circle waypoints, fixes, tides, sights) open Navigation Calculations."
+ },
+ "The sextant reading Hs is converted to the observed altitude with the index correction, dip and main correction.": {
+  "en": "The sextant reading Hs is converted to the observed altitude with the index correction, dip and main correction."
+ },
+ "The ship heads up into the current: with the current from the starboard side the CTS lies to starboard of the track.": {
+  "en": "The ship heads up into the current: with the current from the starboard side the CTS lies to starboard of the track."
+ },
+ "The zenith distance is named opposite to the body's bearing (body bears south → ZD north). Same names add, contrary names subtract; entering south values as (−) handles this automatically.": {
+  "en": "The zenith distance is named opposite to the body's bearing (body bears south → ZD north). Same names add, contrary names subtract; entering south values as (−) handles this automatically."
+ },
+ "This calculator does not exist.": {
+  "en": "This calculator does not exist."
+ },
+ "Tidal Calculation Step by Step": {
+  "en": "Tidal Calculation Step by Step"
+ },
+ "Tidal hours": {
+  "en": "Tidal hours"
+ },
+ "Tidal stream": {
+  "en": "Tidal stream"
+ },
+ "Tidal stream from a tidal diamond": {
+  "en": "Tidal stream from a tidal diamond"
+ },
+ "Tides and shallow water": {
+  "en": "Tides and shallow water"
+ },
+ "Tides and Tidal Streams": {
+  "en": "Tides and Tidal Streams"
+ },
+ "Time to complete": {
+  "en": "Time to complete"
+ },
+ "Time to go": {
+  "en": "Time to go"
+ },
+ "Times in the same zone as the tables (UTC or zone time, summer time)?": {
+  "en": "Times in the same zone as the tables (UTC or zone time, summer time)?"
+ },
+ "To go": {
+  "en": "To go"
+ },
+ "Total distance": {
+  "en": "Total distance"
+ },
+ "Total track": {
+  "en": "Total track"
+ },
+ "Track (TR)": {
+  "en": "Track (TR)"
+ },
+ "Track to make good": {
+  "en": "Track to make good"
+ },
+ "Training and cross-checking aid: the ship's charts, publications and approved equipment take precedence.": {
+  "en": "Training and cross-checking aid: the ship's charts, publications and approved equipment take precedence."
+ },
+ "True bearing": {
+  "en": "True bearing"
+ },
+ "True bearing rising": {
+  "en": "True bearing rising"
+ },
+ "True bearing setting": {
+  "en": "True bearing setting"
+ },
+ "True bearing Zn": {
+  "en": "True bearing Zn"
+ },
+ "True to compass": {
+  "en": "True to compass"
+ },
+ "True, magnetic and compass": {
+  "en": "True, magnetic and compass"
+ },
+ "Turn": {
+  "en": "Turn"
+ },
+ "Turn on a constant radius": {
+  "en": "Turn on a constant radius"
+ },
+ "Turn on a Constant Radius": {
+  "en": "Turn on a Constant Radius"
+ },
+ "Turning and Wheel-Over": {
+  "en": "Turning and Wheel-Over"
+ },
+ "Turning radius (half the tactical diameter)": {
+  "en": "Turning radius (half the tactical diameter)"
+ },
+ "Twelfths": {
+  "en": "Twelfths"
+ },
+ "Twelfths: 1, 3, 6, 9, 11, 12 / 12 (cumulative at the end of each tidal hour), interpolated between whole hours. For a regular semidiurnal tide with about six hours' rise.": {
+  "en": "Twelfths: 1, 3, 6, 9, 11, 12 / 12 (cumulative at the end of each tidal hour), interpolated between whole hours. For a regular semidiurnal tide with about six hours' rise."
+ },
+ "Two bearings of one object": {
+  "en": "Two bearings of one object"
+ },
+ "Two Bearings of One Object": {
+  "en": "Two Bearings of One Object"
+ },
+ "Two Bearings on the Bow (Doubling the Angle)": {
+  "en": "Two Bearings on the Bow (Doubling the Angle)"
+ },
+ "Two intersections": {
+  "en": "Two intersections"
+ },
+ "UKC is below the required": {
+  "en": "UKC is below the required"
+ },
+ "Under-keel clearance": {
+  "en": "Under-keel clearance"
+ },
+ "Upper limb (−SD)": {
+  "en": "Upper limb (−SD)"
+ },
+ "Variation + deviation": {
+  "en": "Variation + deviation"
+ },
+ "Vertex": {
+  "en": "Vertex"
+ },
+ "Vertical Danger Angle": {
+  "en": "Vertical Danger Angle"
+ },
+ "Vertical sextant angle not to be exceeded": {
+  "en": "Vertical sextant angle not to be exceeded"
+ },
+ "Violent storm": {
+  "en": "Violent storm"
+ },
+ "Voyage Time and ETA": {
+  "en": "Voyage Time and ETA"
+ },
+ "Vrel = (P₂ − P₁) / Δt · Vtarget = Vrel + Vown": {
+  "en": "Vrel = (P₂ − P₁) / Δt · Vtarget = Vrel + Vown"
+ },
+ "Waypoints": {
+  "en": "Waypoints"
+ },
+ "Wheel-over before the course intersection": {
+  "en": "Wheel-over before the course intersection"
+ },
+ "Wheel-over before the intersection": {
+  "en": "Wheel-over before the intersection"
+ },
+ "When θ₂ = 2θ₁ (doubling the angle on the bow) the distance off at the second bearing equals the run.": {
+  "en": "When θ₂ = 2θ₁ (doubling the angle on the bow) the distance off at the second bearing equals the run."
+ },
+ "Whistle, bell and gong": {
+  "en": "Whistle, bell and gong"
+ },
+ "Wind speed limits": {
+  "en": "Wind speed limits"
+ },
+ "Worked example — rule of twelfths": {
+  "en": "Worked example — rule of twelfths"
+ },
+ "You are being overtaken": {
+  "en": "You are being overtaken"
+ },
+ "You are overtaking": {
+  "en": "You are overtaking"
+ },
+ "You are the stand-on vessel: keep your course and speed, and act as Rule 17 allows if the overtaking vessel does not keep out of the way.": {
+  "en": "You are the stand-on vessel: keep your course and speed, and act as Rule 17 allows if the overtaking vessel does not keep out of the way."
+ },
+ "Your role": {
+  "en": "Your role"
+ },
+ "ZD = 90° − Ho (named opposite to the bearing) · φ = ZD ± δ": {
+  "en": "ZD = 90° − Ho (named opposite to the bearing) · φ = ZD ± δ"
+ },
+ "Zone time": {
+  "en": "Zone time"
+ },
+ "Zone time and local mean time": {
+  "en": "Zone time and local mean time"
+ },
+ "From the other vessel's bow, clockwise": {
+  "en": "From the other vessel's bow, clockwise"
+ },
+ "Not for restricted visibility (Rule 19: no stand-on vessel) or when Rule 18 changes the responsibilities (NUC, RAM, CBD, fishing or sailing vessels). Overtaking means coming up from more than 22.5° abaft the other vessel's beam.": {
+  "en": "Not for restricted visibility (Rule 19: no stand-on vessel) or when Rule 18 changes the responsibilities (NUC, RAM, CBD, fishing or sailing vessels). Overtaking means coming up from more than 22.5° abaft the other vessel's beam."
+ },
+ "Relative bearing of own ship from the other vessel": {
+  "en": "Relative bearing of own ship from the other vessel"
+ },
+ "You are the give-way vessel: keep out of the way, take early and substantial action and, if the circumstances admit, avoid crossing ahead of the other vessel.": {
+  "en": "You are the give-way vessel: keep out of the way, take early and substantial action and, if the circumstances admit, avoid crossing ahead of the other vessel."
+ },
+ "You are the stand-on vessel: keep your course and speed. You may act as soon as it becomes apparent that the give-way vessel is not taking appropriate action, but do not alter course to port for a vessel on your own port side; when collision cannot be avoided by the action of the give-way vessel alone, take such action as will best aid to avoid collision.": {
+  "en": "You are the stand-on vessel: keep your course and speed. You may act as soon as it becomes apparent that the give-way vessel is not taking appropriate action, but do not alter course to port for a vessel on your own port side; when collision cannot be avoided by the action of the give-way vessel alone, take such action as will best aid to avoid collision."
+ },
+ "Apply the main correction (MC)": {
+  "en": "Apply the main correction (MC)"
+ },
+ "At meridian passage the body is on the observer's meridian (for the Sun: local apparent noon).": {
+  "en": "At meridian passage the body is on the observer's meridian (for the Sun: local apparent noon)."
+ },
+ "Charted Depth": {
+  "en": "Charted Depth"
+ },
+ "Charted depth (below chart datum)": {
+  "en": "Charted depth (below chart datum)"
+ },
+ "Convert Z to the true azimuth before plotting: Zn = Z if LHA > 180°, Zn = 360° − Z if LHA < 180°.": {
+  "en": "Convert Z to the true azimuth before plotting: Zn = Z if LHA > 180°, Zn = 360° − Z if LHA < 180°."
+ },
+ "Course and speed through the water give the DR; apply leeway and the set and drift of the current for the EP.": {
+  "en": "Course and speed through the water give the DR; apply leeway and the set and drift of the current for the EP."
+ },
+ "Course through the water: CTS + leeway": {
+  "en": "Course through the water: CTS + leeway"
+ },
+ "d.lat and Departure": {
+  "en": "d.lat and Departure"
+ },
+ "Dip corrects the sextant altitude for the observer's height of eye; it is always subtracted.": {
+  "en": "Dip corrects the sextant altitude for the observer's height of eye; it is always subtracted."
+ },
+ "Distance of the sea horizon": {
+  "en": "Distance of the sea horizon"
+ },
+ "If the compass bearing of an approaching vessel does not appreciably change, risk of collision shall be deemed to exist; it may exist even with an appreciable bearing change, particularly with a very large vessel, a tow or at close range (Rule 7(d)).": {
+  "en": "If the compass bearing of an approaching vessel does not appreciably change, risk of collision shall be deemed to exist; it may exist even with an appreciable bearing change, particularly with a very large vessel, a tow or at close range (Rule 7(d))."
+ },
+ "Lay off a from the AP along Zn (towards) or its reciprocal (away) and draw the LOP at right angles to Zn; two LOPs give the fix.": {
+  "en": "Lay off a from the AP along Zn (towards) or its reciprocal (away) and draw the LOP at right angles to Zn; two LOPs give the fix."
+ },
+ "Lay off a from the AP along Zn (towards) or its reciprocal (away) and draw the LOP through that point at right angles to the azimuth.": {
+  "en": "Lay off a from the AP along Zn (towards) or its reciprocal (away) and draw the LOP through that point at right angles to the azimuth."
+ },
+ "Main Correction (MC)": {
+  "en": "Main Correction (MC)"
+ },
+ "Not for restricted visibility (Rule 19: no stand-on vessel) or when Rule 18 changes the responsibilities (NUC, RAM, CBD, fishing or sailing vessels); Rule 18 does not override Rule 13: an overtaking vessel always keeps out of the way. Overtaking means coming up from more than 22.5° abaft the other vessel's beam.": {
+  "en": "Not for restricted visibility (Rule 19: no stand-on vessel) or when Rule 18 changes the responsibilities (NUC, RAM, CBD, fishing or sailing vessels); Rule 18 does not override Rule 13: an overtaking vessel always keeps out of the way. Overtaking means coming up from more than 22.5° abaft the other vessel's beam."
+ },
+ "Positive (towards) → towards the body, negative (away) → away from the body. 1′ = 1 nm.": {
+  "en": "Positive (towards) → towards the body, negative (away) → away from the body. 1′ = 1 nm."
+ },
+ "Read the direction and the spring and neap rates for that hour; interpolate the rate by the day's range at that standard port.": {
+  "en": "Read the direction and the spring and neap rates for that hour; interpolate the rate by the day's range at that standard port."
+ },
+ "Sight Reduction — Intercept Method (AP to LOP)": {
+  "en": "Sight Reduction — Intercept Method (AP to LOP)"
+ },
+ "Steady turning radius (slightly less than half the tactical diameter)": {
+  "en": "Steady turning radius (slightly less than half the tactical diameter)"
+ },
+ "The amplitude is the angle between the body at rising or setting and true east or west; converted to a true bearing it checks the compass error.": {
+  "en": "The amplitude is the angle between the body at rising or setting and true east or west; converted to a true bearing it checks the compass error."
+ },
+ "The geographical range is the light's dipping distance. The light is seen at the lesser of its geographical range and its luminous range for the visibility.": {
+  "en": "The geographical range is the light's dipping distance. The light is seen at the lesser of its geographical range and its luminous range for the visibility."
+ },
+ "The vector components are entered as (x: east, y: north). A negative TCPA means the CPA has already passed (range opening).": {
+  "en": "The vector components are entered as (x: east, y: north). A negative TCPA means the CPA has already passed (range opening)."
+ },
+ "Water track": {
+  "en": "Water track"
+ },
+ "ZD and δ are added when of the same name and subtracted when of contrary name (the signs are handled automatically).": {
+  "en": "ZD and δ are added when of the same name and subtracted when of contrary name (the signs are handled automatically)."
+ },
+ "Zenith Distance (ZD)": {
+  "en": "Zenith Distance (ZD)"
  }
 }

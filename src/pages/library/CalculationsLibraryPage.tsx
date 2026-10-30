@@ -29,6 +29,9 @@ import {
   Wrench,
   Zap,
   type LucideIcon,
+  Globe2,
+  Megaphone,
+  Radar,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AppSymbol } from "@/components/ui/AppSymbol";
@@ -66,7 +69,7 @@ const QUICK_TOOLS: CalcTool[] = [
   { id: "draft", title: "Draft Survey", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "cargo" },
   { id: "trim", title: "Stability / Trim", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "fuel", title: "Fuel Consumption", icon: Flame, to: "/machine/fuel-technology/calculations", category: "machine" },
-  { id: "voyage", title: "Voyage Duration", icon: Timer, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "voyage", title: "Voyage Time and ETA", icon: Timer, to: "/navigation/calc/eta", category: "navigation" },
   { id: "cargo", title: "Cargo Calculations", icon: Layers, to: "/cargo/calculations", category: "cargo" },
   { id: "converter", title: "Unit Converter", icon: Zap, to: "/converter", category: "converter" },
 ];
@@ -100,9 +103,15 @@ const TOOLS: CalcTool[] = [
   { id: "fwa", title: "FWA and Dock Water Allowance", icon: Droplets, to: "/stability/practical/fwa", category: "stability" },
   { id: "stability-toolbox", title: "Stability Toolbox", icon: Wrench, to: "/stability/stable-tales", category: "stability" },
   { id: "shear-bending", title: "Shear Force and Bending Moment", icon: BarChart3, to: "/stability/shearing-bending", category: "stability" },
-  { id: "nav-calc", title: "Navigation Calculations", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "nav-calc", title: "Navigation Calculations", icon: Navigation, to: "/navigation", category: "navigation" },
+  { id: "great-circle", title: "Great Circle", icon: Globe2, to: "/navigation/calc/gc", category: "navigation" },
+  { id: "cpa", title: "CPA / TCPA", icon: Radar, to: "/navigation/calc/cpa", category: "navigation" },
+  { id: "tides", title: "Tides and Tidal Streams", icon: BarChart3, to: "/navigation/calc/tides", category: "navigation" },
+  { id: "squat-ukc", title: "Squat and UKC", icon: Anchor, to: "/navigation/calc/safety", category: "navigation" },
+  { id: "buoyage", title: "IALA Buoyage", icon: LifeBuoy, to: "/navigation/buoyage", category: "navigation" },
+  { id: "sound-signals", title: "Sound Signals", icon: Megaphone, to: "/navigation/sound-signals", category: "navigation" },
   { id: "passage", title: "Passage Plan", icon: Compass, to: "/passage-plan", category: "navigation" },
-  { id: "tides", title: "Tidal Calculation", icon: BarChart3, to: "/navigation/tide-tutorial", category: "navigation" },
+  { id: "nav-course-calc", title: "Navigation Course Calculators", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
   { id: "seamanship-calc", title: "Seamanship Calculations", icon: Droplets, to: "/seamanship/calculations", category: "navigation" },
   { id: "diesel-engines", title: "Diesel Engines", icon: Wrench, to: "/machine/diesel-engines/calculations", category: "machine" },
   { id: "thermodynamics", title: "Thermodynamics", icon: Thermometer, to: "/machine/thermodynamics/calculations", category: "machine" },

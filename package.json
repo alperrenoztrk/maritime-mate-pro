@@ -22,7 +22,7 @@
     "check:svg-text": "node scripts/check-svg-text-fit.mjs",
     "test:validation": "npm run test:calc && npm run test:formulas",
     "test:formulas": "node --import tsx src/utils/validation/formulaRunner.ts",
-    "test:calc": "node --import tsx --test \"src/lib/calc/*.test.ts\" src/lib/toolsMenuCoverage.test.ts",
+    "test:calc": "node --import tsx --test \"src/lib/calc/*.test.ts\" src/components/calculations/navigationMath.test.ts src/lib/toolsMenuCoverage.test.ts",
     "preview": "vite preview --host 0.0.0.0 --port 8080",
     "health:dev": "bash scripts/healthcheck.sh 8080 /",
     "health:preview": "bash scripts/healthcheck.sh 8080 /",

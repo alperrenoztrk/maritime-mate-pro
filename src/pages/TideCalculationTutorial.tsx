@@ -1,154 +1,106 @@
-import { MobileLayout } from "@/components/MobileLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Waves } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Anchor, ArrowDownUp, ClipboardCheck, ListOrdered, Waves } from "lucide-react";
+import { FormulaLine, ResultTable, ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
 
-const TideCalculationTutorial = () => {
+const STEPS = [
+  {
+    title: "1) Collect the data",
+    items: [
+      "Times and heights of high water (HW) and low water (LW) for the standard port, from the tide tables.",
+      "The time zone of the tables (UTC or zone time) and the date.",
+      "Charted depth and the chart datum of the chart in use.",
+      "Secondary port time and height differences, if the place is not a standard port.",
+    ],
+  },
+  {
+    title: "2) Secondary port corrections",
+    items: [
+      "Standard port: use the predicted HW and LW directly.",
+      "Secondary port: apply the time and height differences to the standard port HW and LW (interpolate between the tabulated values), then work as for a standard port.",
+      "Write down the corrected HW and LW and the range (HW height − LW height).",
+    ],
+  },
+  {
+    title: "3) Height of tide at a given time",
+    items: [
+      "Find the interval from the nearest HW (Admiralty tidal curves) or from the preceding HW or LW (rule of twelfths).",
+      "Tidal curve: enter the curve with the interval, read the factor and multiply it by the range; add the result to the LW height.",
+      "Rule of twelfths: divide the duration into six equal tidal hours; the tide rises (or falls) 1, 2, 3, 3, 2 and 1 twelfths of the range in them.",
+      "Choose the spring or neap curve, or interpolate between them, according to the day's range.",
+    ],
+  },
+  {
+    title: "4) Time for a given height",
+    items: [
+      "Subtract the LW height from the height required: the result as a fraction of the range is the factor.",
+      "Enter the tidal curve with this factor and read the interval from HW, or find the tidal hour by the rule of twelfths.",
+    ],
+  },
+];
+
+/** Worked example: HW 11:38 5.5 m, LW 18:25 1.0 m, height at 15:00 by the rule of twelfths. */
+const EXAMPLE = [
+  { label: "Duration HW → LW", value: "6 h 47 min (407 min)" },
+  { label: "One tidal hour", value: "407 / 6 = 67.8 min" },
+  { label: "15:00 is after HW", value: "3 h 22 min = 2.98 tidal hours" },
+  { label: "Fall so far", value: "3/12 + 0.98 × 3/12 = 0.494 of the range" },
+  { label: "Range", value: "5.5 − 1.0 = 4.5 m" },
+  { label: "Height of tide at 15:00", value: "5.5 − 0.494 × 4.5 = 3.27 m", emphasis: true },
+];
+
+export default function TideCalculationTutorial() {
   return (
-    <MobileLayout>
-      <div className="space-y-4">
-        <div className="text-sm text-muted-foreground flex items-center gap-2">
-          <Waves className="h-4 w-4" /> Tide Calculation — Making the Calculation
-        </div>
+    <ToolPage title="Tidal Calculation Step by Step" icon={Waves}>
+      <ToolNotice>
+        Find the height of tide at the time needed from the predicted HW and LW, then add it to the charted depth to
+        check the under-keel clearance. The calculator for this page is{" "}
+        <Link to="/navigation/calc/tides" className="font-medium text-primary underline-offset-2 hover:underline">Tides and Tidal Streams</Link>.
+      </ToolNotice>
 
-        <Card className="shadow">
-          <CardHeader>
-            <CardTitle>Step-by-step guide to calculating tides</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 text-sm leading-6">
-            <div className="space-y-2">
-              <p>
-                This page explains the tide calculation step by step, using the methods applied in the field and in training scenarios. The aim is to find the tidal height at the required time from the HW/LW time-height data, then add it to the charted depth to assess the safe depth.
-              </p>
-            </div>
+      {STEPS.map((step) => (
+        <ToolSection key={step.title} title={step.title} icon={ListOrdered}>
+          <ul className="list-disc space-y-1 pl-5 text-sm leading-6">
+            {step.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </ToolSection>
+      ))}
 
-            <Separator />
+      <ToolSection title="5) Under-keel clearance" icon={Anchor}>
+        <FormulaLine>Charted depth + height of tide = draft + squat + under-keel clearance</FormulaLine>
+        <ul className="list-disc space-y-1 pl-5 text-sm leading-6">
+          <li>Depth of water = charted depth + height of tide (drying heights are subtracted).</li>
+          <li>Clearance = depth of water − draft − squat − other allowances (swell, heel).</li>
+          <li>If it is below the required UKC, replan the time of the passage or the route.</li>
+        </ul>
+      </ToolSection>
 
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">1) Collect necessary data</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>HW (High Water) and LW (Low Water) times and altitudes for the selected port.</li>
-                <li>Reference date and time zone (UTC/GMT or local) in the tide table.</li>
-                <li>Chart depth (Charted Depth) and reference datum (CD) information.</li>
-                <li>Secondary port corrections (time/height corrections), if necessary.</li>
-              </ul>
-            </div>
+      <ToolSection title="6) Tidal streams" icon={ArrowDownUp}>
+        <ul className="list-disc space-y-1 pl-5 text-sm leading-6">
+          <li>Choose the tidal diamond nearest to the position (or use the tidal stream atlas).</li>
+          <li>Find the hour before or after HW at the reference port given on the chart.</li>
+          <li>Read the direction and the spring and neap rates for that hour; interpolate the rate by the day's range at that standard port.</li>
+        </ul>
+      </ToolSection>
 
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">2) Determine port type and apply corrections</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Standard port:</strong> HW/LW values are used directly.</li>
-                <li><strong>Secondary port:</strong> time/altitude corrections given in tables or notes are added.</li>
-                <li>After the correction, rewrite the HW/LW values and calculate the range.</li>
-              </ul>
-            </div>
+      <ToolSection title="Worked example — rule of twelfths" icon={Waves} description="HW 11:38, 5.5 m · LW 18:25, 1.0 m · height of tide at 15:00">
+        <ResultTable title="Height of tide" rows={EXAMPLE} />
+        <ToolNotice>
+          The rule of twelfths assumes a regular, symmetrical tide. Where the Admiralty Tide Tables give a tidal curve for
+          the port, use the curve: it can differ by several decimetres.
+        </ToolNotice>
+      </ToolSection>
 
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">3) Tide height for the desired time in the standard port</h3>
-              <p>
-                The standard approach is to divide the HW-LW interval into 6 equal hours and use the hourly rise/fall percentage from the “Rule of Twelfths”. Alternatively, on a tidal curve you can join the LW and HW points, draw the tidal height line and read the height at the required time off the graph.
-              </p>
-              <div className="rounded border bg-muted/30 p-3">
-                <div className="font-semibold">Rule of Twelfths — hourly contributions</div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs mt-2">
-                  <div>1st hour: 1/12</div>
-                  <div>2nd hour: 2/12</div>
-                  <div>3rd hour: 3/12</div>
-                  <div>4th hour: 3/12</div>
-                  <div>5th hour: 2/12</div>
-                  <div>6th hour: 1/12</div>
-                </div>
-              </div>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Find out what time it is from LW.</li>
-                <li>Calculate tide height by Range × (total rate).</li>
-                <li>Add to LW height to get desired clock height.</li>
-                <li>If the range is close to spring/near values, select the chart curve accordingly.</li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">4) Time for desired tide height in standard port</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Calculate the difference between the desired height and LW.</li>
-                <li>Find the percentage of this difference in Range.</li>
-                <li>Determine the approximate time zone according to Rule of Twelfths levels.</li>
-                <li>If necessary, take a more precise reading using the graphical method (tide curve).</li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">5) Time and altitude correction in secondary port</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>First, extract the HW/LW values of the connected standard port.</li>
-                <li>Apply time and elevation corrections to secondary port tables.</li>
-                <li>Follow standard port steps exactly with corrected HW/LW.</li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">6) Transition time and UKC evaluation</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Total depth</strong> = Charted depth + Height of tide.</li>
-                <li><strong>Safe depth</strong> = Total depth − Draft − Squat − Safety margin.</li>
-                <li>If there is a negative result, the time or route for the passage/operation is replanned.</li>
-              </ul>
-              <div className="rounded border bg-muted/30 p-3 text-xs">
-                Charted depth + Height of tide = Ship's draft + Under-keel clearance
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">7) Tidal current calculation (tidal stream)</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Select the closest letter box from the tidal current chart of that area.</li>
-                <li>Read the speed and direction value according to the clock offset before/after HW in the table.</li>
-                <li>Find the current set and speed using the appropriate table row for the desired time.</li>
-              </ul>
-            </div>
-
-            <Separator />
-
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">Application example — standard port</h3>
-              <p>
-                Tidal height calculation for desired time with sample data set:
-              </p>
-              <div className="rounded border bg-muted/30 p-3 space-y-2">
-                <div><strong>Date:</strong> 20 April</div>
-                <div><strong>HW:</strong> 11:38 — 5.5m</div>
-                <div><strong>LW:</strong> 18:25 — 1.0 m</div>
-                <div><strong>Requested time:</strong> 15:00</div>
-              </div>
-              <ol className="list-decimal pl-5 space-y-1">
-                <li>Mark points HW and LW on the chart, creating the tidal height line.</li>
-                <li>Fill in the hourly intervals on the hour axis, starting from the HW hour.</li>
-                <li>Go up vertically from 15:00; from the intersection with the tidal curve, draw a line parallel to the range line.</li>
-                <li>Go up from the intersection and read the height on the “HW Hts m” scale.</li>
-                <li>Use the solid curve when the range is close to springs, the dashed curve when it is close to neaps.</li>
-              </ol>
-              <p className="text-xs text-muted-foreground">
-                With this method, the approximate tide height for 15:00 is found and added to the chart depth.
-              </p>
-            </div>
-
-            <Separator />
-
-            <div className="space-y-3">
-              <h3 className="text-base font-semibold">Checklist (quick verification)</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Is there time zone confusion? (UTC/GMT etc. local)</li>
-                <li>Is it based on LW or HW, correct?</li>
-                <li>Secondary port fix forgotten?</li>
-                <li>Are range and sign (+/−) consistent?</li>
-                <li>Is there a safety margin added for UKC?</li>
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </MobileLayout>
+      <ToolSection title="Checklist" icon={ClipboardCheck}>
+        <ul className="list-disc space-y-1 pl-5 text-sm leading-6">
+          <li>Times in the same zone as the tables (UTC or zone time, summer time)?</li>
+          <li>Interval worked from the right HW or LW?</li>
+          <li>Secondary port differences applied?</li>
+          <li>Range and signs consistent; drying heights subtracted?</li>
+          <li>Squat and allowances included in the clearance?</li>
+        </ul>
+      </ToolSection>
+    </ToolPage>
   );
-};
-
-export default TideCalculationTutorial;
+}

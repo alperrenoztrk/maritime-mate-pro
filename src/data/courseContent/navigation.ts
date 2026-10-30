@@ -1,12 +1,19 @@
 import { Compass } from "lucide-react";
 import type { CourseTopic } from "./types";
+import {
+  calculateAmplitude,
+  calculateRhumbLine,
+  calculateTide,
+  estimateSquatBarrass,
+  latitudeByMeridianAltitude,
+  solveCurrentTriangle,
+} from "@/components/calculations/navigationMath";
 
 /**
  * Navigation — single source course content.
- * The formulas are taken verbatim from the REAL relations shown on the existing
- * Navigation Formulas page (NavigationFormulas.tsx). Entries carrying `calculate`
- * appear on both the Formulas and the Calculations page and always apply the same
- * mathematics as the formula text.
+ * Entries carrying `calculate` appear on the Formulas and the Calculations pages
+ * (and /navigation/formulas) and apply the same mathematics as the formula text;
+ * where the navigation tools have an engine function it is called directly.
  */
 export const navigation: CourseTopic = {
   key: "navigation",
@@ -20,7 +27,7 @@ export const navigation: CourseTopic = {
     "the tool that calculates it with the same relation.",
   advancedTool: { label: "Advanced Navigation Tools", href: "/navigation" },
   entries: [
-    // ---- Temel Seyir ----
+    // ---- Basic navigation ----
     {
       id: "speed-time-distance",
       name: "Speed – Distance – Time",
@@ -28,13 +35,13 @@ export const navigation: CourseTopic = {
       formula: "Speed = Distance / Time",
       variables: [
         { symbol: "Distance", label: "Distance travelled", unit: "nm" },
-        { symbol: "Zaman", label: "Elapsed time", unit: "sa" },
+        { symbol: "Time", label: "Elapsed time", unit: "h" },
         { symbol: "Speed", label: "Speed", unit: "knot" },
       ],
       source: { code: "Basic navigation — speed–distance–time relation" },
       inputs: [
         { key: "distance", label: "Distance", unit: "nm", placeholder: "120" },
-        { key: "time", label: "Zaman", unit: "sa", placeholder: "8" },
+        { key: "time", label: "Time", unit: "h", placeholder: "8" },
       ],
       calculate: (v) => {
         if (v.time <= 0) return [{ label: "Error", value: "The time must be positive" }];
@@ -46,12 +53,12 @@ export const navigation: CourseTopic = {
       id: "speed-conversion",
       name: "Speed Conversions",
       group: "Basic Navigation",
-      formula: "1 knot = 1 nm/sa = 1.852 km/sa = 0.5144 m/s",
+      formula: "1 knot = 1 nm/h = 1.852 km/h = 0.5144 m/s",
       variables: [{ symbol: "V", label: "Speed", unit: "knot" }],
       source: { code: "Standard unit conversions" },
       inputs: [{ key: "knots", label: "Speed", unit: "knot", placeholder: "15" }],
       calculate: (v) => [
-        { label: "km/sa", value: `${(v.knots * 1.852).toFixed(2)} km/sa` },
+        { label: "km/h", value: `${(v.knots * 1.852).toFixed(2)} km/h` },
         { label: "m/s", value: `${(v.knots * 0.5144).toFixed(3)} m/s` },
       ],
     },
@@ -61,14 +68,14 @@ export const navigation: CourseTopic = {
       group: "Basic Navigation",
       formula: "ETA = ETD + (Distance / Speed)",
       variables: [
-        { symbol: "ETD", label: "Departure time (in hours)", unit: "sa" },
+        { symbol: "ETD", label: "Departure time (in hours)", unit: "h" },
         { symbol: "Distance", label: "Distance", unit: "nm" },
         { symbol: "Speed", label: "Speed", unit: "knot" },
       ],
       source: { code: "Basic navigation — ETA/ETD" },
       note: "ETD is entered as a decimal hour (e.g. 14:30 = 14.5). The result is given as a decimal hour and a passage time.",
       inputs: [
-        { key: "etd", label: "Departure Time (ETD)", unit: "sa", placeholder: "8" },
+        { key: "etd", label: "Departure Time (ETD)", unit: "h", placeholder: "8" },
         { key: "distance", label: "Distance", unit: "nm", placeholder: "240" },
         { key: "speed", label: "Speed", unit: "knot", placeholder: "12" },
       ],
@@ -77,24 +84,24 @@ export const navigation: CourseTopic = {
         const sailing = v.distance / v.speed;
         const eta = (v.etd + sailing) % 24;
         return [
-          { label: "Passage Time", value: `${sailing.toFixed(2)} sa` },
+          { label: "Passage Time", value: `${sailing.toFixed(2)} h` },
           { label: "ETA", value: `${eta.toFixed(2)} h (24 h format)` },
         ];
       },
     },
-    // ---- Enlem-Boylam ve Mesafe ----
+    // ---- Latitude, longitude and distance ----
     {
       id: "dlat-dlong",
-      name: "D.Lat and D.Long (minutes)",
+      name: "d.lat and Departure",
       group: "Latitude, Longitude and Distance",
-      formula: "D.Lat = 60·Δφ ;  D.Long = 60·Δλ·cosφ̄",
+      formula: "d.lat = 60·Δφ ;  Dep = 60·Δλ·cosφ̄",
       variables: [
         { symbol: "Δφ", label: "Difference of latitude", unit: "°" },
         { symbol: "Δλ", label: "Difference of longitude", unit: "°" },
         { symbol: "φ̄", label: "Mean latitude", unit: "°" },
       ],
-      source: { code: "Plane sailing — D.Lat/Departure", detail: "1° = 60 NM" },
-      note: "For departure (D.Long) the 1° = 60 NM relation is corrected by cosφ̄.",
+      source: { code: "Plane sailing — d.lat/departure", detail: "1° of latitude = 60 nm" },
+      note: "D.long is the difference of longitude in minutes of arc; departure is the east–west distance in nm, d.long × cosφ̄ (mid-latitude).",
       inputs: [
         { key: "dphi", label: "Difference of Latitude (Δφ)", unit: "°", placeholder: "2.5" },
         { key: "dlambda", label: "Difference of Longitude (Δλ)", unit: "°", placeholder: "3.0" },
@@ -104,8 +111,8 @@ export const navigation: CourseTopic = {
         const dlat = 60 * v.dphi;
         const dep = 60 * v.dlambda * Math.cos((v.meanlat * Math.PI) / 180);
         return [
-          { label: "D.Lat", value: `${dlat.toFixed(1)} nm` },
-          { label: "Departure (D.Long)", value: `${dep.toFixed(1)} nm` },
+          { label: "d.lat", value: `${dlat.toFixed(1)} nm` },
+          { label: "Departure", value: `${dep.toFixed(1)} nm` },
         ];
       },
     },
@@ -115,13 +122,13 @@ export const navigation: CourseTopic = {
       group: "Latitude, Longitude and Distance",
       formula: "Course = atan2(Dep, dLat) ;  Distance = √(dLat² + Dep²)",
       variables: [
-        { symbol: "dLat", label: "Distance of the latitude difference (60·Δφ)", unit: "nm" },
+        { symbol: "d.lat", label: "Difference of latitude (60·Δφ)", unit: "nm" },
         { symbol: "Dep", label: "Departure (60·Δλ·cosφ̄)", unit: "nm" },
       ],
       source: { code: "Plane sailing" },
       note: "The course is normalised to the 0–360° range.",
       inputs: [
-        { key: "dlat", label: "D.Lat", unit: "nm", placeholder: "150" },
+        { key: "dlat", label: "d.lat", unit: "nm", placeholder: "150" },
         { key: "dep", label: "Departure", unit: "nm", placeholder: "138" },
       ],
       calculate: (v) => {
@@ -129,7 +136,7 @@ export const navigation: CourseTopic = {
         let course = (Math.atan2(v.dep, v.dlat) * 180) / Math.PI;
         if (course < 0) course += 360;
         return [
-          { label: "Kurs", value: `${course.toFixed(1)} °` },
+          { label: "Course", value: `${course.toFixed(1)} °` },
           { label: "Distance", value: `${dist.toFixed(1)} nm` },
         ];
       },
@@ -197,18 +204,16 @@ export const navigation: CourseTopic = {
     },
     {
       id: "rhumb-line",
-      name: "Rhumb Line (Mercator) Distance",
+      name: "Rhumb Line (Mercator Sailing)",
       group: "Latitude, Longitude and Distance",
-      formula: "d = 60·√((Δφ)² + (q·Δλ)²)",
+      formula: "tan C = d.long / DMP ;  D = d.lat / cos C",
       variables: [
-        { symbol: "Δφ, Δλ", label: "Latitude/longitude difference", unit: "°" },
-        {
-          symbol: "q",
-          label: "Meridional parts ratio = Δφ / ln(tan(π/4+φ₂/2)/tan(π/4+φ₁/2))",
-        },
+        { symbol: "d.lat, d.long", label: "Difference of latitude / longitude", unit: "′" },
+        { symbol: "DMP", label: "Difference of meridional parts (WGS 84)", unit: "′" },
+        { symbol: "C", label: "Rhumb line course", unit: "°" },
       ],
-      source: { code: "Mercator sailing (rhumb line)" },
-      note: "When Δφ → 0 the approximation q = cosφ̄ is used. East (+), west (−).",
+      source: { code: "Mercator sailing (Bowditch)" },
+      note: "Meridional parts on the WGS 84 ellipsoid. On an east–west course D = d.long × cos φ. East (+), west (−).",
       inputs: [
         { key: "lat1", label: "Departure Latitude (φ₁)", unit: "°", placeholder: "36" },
         { key: "lon1", label: "Departure Longitude (λ₁)", unit: "°", placeholder: "-5" },
@@ -216,48 +221,38 @@ export const navigation: CourseTopic = {
         { key: "lon2", label: "Arrival Longitude (λ₂)", unit: "°", placeholder: "14" },
       ],
       calculate: (v) => {
-        const rad = (x: number) => (x * Math.PI) / 180;
-        const dphiDeg = v.lat2 - v.lat1;
-        const dlamDeg = v.lon2 - v.lon1;
-        const phi1 = rad(v.lat1);
-        const phi2 = rad(v.lat2);
-        const dphi = rad(dphiDeg);
-        const dpsi = Math.log(
-          Math.tan(Math.PI / 4 + phi2 / 2) / Math.tan(Math.PI / 4 + phi1 / 2)
-        );
-        const q = Math.abs(dphi) > 1e-9 ? dphi / dpsi : Math.cos((phi1 + phi2) / 2);
-        const d = 60 * Math.sqrt(dphiDeg * dphiDeg + (q * dlamDeg) ** 2);
-        let brg = (Math.atan2(rad(dlamDeg), dpsi || 1e-9) * 180) / Math.PI;
-        if (brg < 0) brg += 360;
+        const r = calculateRhumbLine(v.lat1, v.lon1, v.lat2, v.lon2);
         return [
-          { label: "Rhumb Line Distance", value: `${d.toFixed(1)} nm` },
-          { label: "Kurs (Brg)", value: `${brg.toFixed(1)} °` },
+          { label: "Rhumb Line Distance", value: `${r.distance.toFixed(1)} nm` },
+          { label: "Course", value: `${r.course.toFixed(1)} °` },
+          { label: "DMP", value: `${r.dmp.toFixed(1)}′` },
         ];
       },
     },
     {
       id: "horizon-range",
-      name: "Geographical Range (Horizon)",
+      name: "Distance of the Horizon",
       group: "Latitude, Longitude and Distance",
       formula: "d = 2.08·√h  (h metre, d nm)",
-      variables: [{ symbol: "h", label: "Height of eye/light", unit: "m" }],
-      source: { code: "Geographical range — height relation" },
+      variables: [{ symbol: "h", label: "Height of eye or of the light", unit: "m" }],
+      source: { code: "Admiralty List of Lights — geographical range" },
+      note: "Standard refraction. The geographical range of a light is 2.08(√H + √h): add the horizon distances of the light and of the eye.",
       inputs: [{ key: "h", label: "Height (h)", unit: "m", placeholder: "20" }],
       calculate: (v) => {
         if (v.h < 0) return [{ label: "Error", value: "The height cannot be negative" }];
-        return [{ label: "Visible Range", value: `${(2.08 * Math.sqrt(v.h)).toFixed(2)} nm` }];
+        return [{ label: "Distance of the sea horizon", value: `${(2.08 * Math.sqrt(v.h)).toFixed(2)} nm` }];
       },
     },
     {
       id: "vhf-radar-horizon",
-      name: "Radar / VHF Horizon Range",
+      name: "Radar Horizon Range",
       group: "Latitude, Longitude and Distance",
       formula: "d = 2.23·(√h₁ + √h₂)  (h metre, d nm)",
       variables: [
         { symbol: "h₁", label: "Antenna/radar height", unit: "m" },
         { symbol: "h₂", label: "Target height", unit: "m" },
       ],
-      source: { code: "Radar/VHF horizon (including refraction)" },
+      source: { code: "Radar horizon (effective Earth radius 4/3)" },
       inputs: [
         { key: "h1", label: "Antenna Height (h₁)", unit: "m", placeholder: "30" },
         { key: "h2", label: "Target Height (h₂)", unit: "m", placeholder: "15" },
@@ -268,40 +263,33 @@ export const navigation: CourseTopic = {
         return [{ label: "Horizon Range", value: `${d.toFixed(2)} nm` }];
       },
     },
-    // ---- Current, Wind and Compass ----
+    // ---- Current and compass ----
     {
       id: "current-triangle",
       name: "Current Triangle (CTS / SOG)",
       group: "Current, Wind and Compass",
-      formula:
-        "sin(CTS−TR) = (c/V)·sin(set−TR) ;  SOG = V·cos(CTS−TR) + c·cos(set−TR)",
+      formula: "sin(CTS−TR) = (c/V)·sin(TR−set) ;  SOG = V·cos(CTS−TR) + c·cos(set−TR)",
       variables: [
-        { symbol: "TR", label: "Desired track", unit: "°" },
+        { symbol: "TR", label: "Track to make good", unit: "°" },
         { symbol: "V", label: "Vessel speed (through the water)", unit: "knot" },
-        { symbol: "set", label: "Current set", unit: "°" },
-        { symbol: "c", label: "Current drift", unit: "knot" },
+        { symbol: "set", label: "Current set (direction towards)", unit: "°" },
+        { symbol: "c", label: "Current drift (rate)", unit: "knot" },
       ],
       source: { code: "Current triangle — CTS/SOG" },
-      note: "Angles are 0–360°. CTS = course to steer, SOG = speed over ground.",
+      note: "The ship heads up into the current: with the current from the starboard side the CTS lies to starboard of the track.",
       inputs: [
-        { key: "tr", label: "Desired Track (TR)", unit: "°", placeholder: "90" },
+        { key: "tr", label: "Track (TR)", unit: "°", placeholder: "90" },
         { key: "v", label: "Vessel Speed (V)", unit: "knot", placeholder: "12" },
         { key: "set", label: "Current Set", unit: "°", placeholder: "180" },
         { key: "c", label: "Current Drift (c)", unit: "knot", placeholder: "2" },
       ],
       calculate: (v) => {
-        const rad = (x: number) => (x * Math.PI) / 180;
         if (v.v <= 0) return [{ label: "Error", value: "The vessel speed must be positive" }];
-        const ratio = (v.c / v.v) * Math.sin(rad(v.set - v.tr));
-        if (Math.abs(ratio) > 1) return [{ label: "Error", value: "The current is too strong, the track cannot be held" }];
-        const corr = (Math.asin(ratio) * 180) / Math.PI;
-        let cts = v.tr + corr;
-        cts = ((cts % 360) + 360) % 360;
-        const sog =
-          v.v * Math.cos(rad(cts - v.tr)) + v.c * Math.cos(rad(v.set - v.tr));
+        const r = solveCurrentTriangle({ courseDeg: v.tr, speedKn: v.v, setDeg: v.set, driftKn: v.c });
+        if (!r.feasible) return [{ label: "Error", value: "The current is too strong, the track cannot be held" }];
         return [
-          { label: "CTS (Course To Steer)", value: `${cts.toFixed(1)} °` },
-          { label: "SOG", value: `${sog.toFixed(2)} knot` },
+          { label: "CTS (Course To Steer)", value: `${r.courseToSteerDeg.toFixed(1)} °` },
+          { label: "SOG", value: `${r.groundSpeedKn.toFixed(2)} knot` },
         ];
       },
     },
@@ -312,15 +300,15 @@ export const navigation: CourseTopic = {
       formula: "Ct = Cc + Dev + Var  (East +, West −)",
       variables: [
         { symbol: "Cc", label: "Compass course", unit: "°" },
-        { symbol: "Dev", label: "Deviasyon", unit: "°" },
-        { symbol: "Var", label: "Magnetic variation", unit: "°" },
+        { symbol: "Dev", label: "Deviation", unit: "°" },
+        { symbol: "Var.", label: "Magnetic variation", unit: "°" },
         { symbol: "Ct", label: "True course", unit: "°" },
       ],
       source: { code: "TVMDC chain (magnetic/compass correction)" },
       note: "East (E) values are entered as (+), west (W) values as (−). The result is normalised to 0–360°.",
       inputs: [
         { key: "cc", label: "Compass Course (Cc)", unit: "°", placeholder: "270" },
-        { key: "dev", label: "Deviasyon (Dev)", unit: "°", placeholder: "-2" },
+        { key: "dev", label: "Deviation (Dev)", unit: "°", placeholder: "-2" },
         { key: "var", label: "Variation (Var)", unit: "°", placeholder: "5" },
       ],
       calculate: (v) => {
@@ -332,18 +320,18 @@ export const navigation: CourseTopic = {
         ];
       },
     },
-    // ---- Radar ve Manevra ----
+    // ---- Radar and manoeuvring ----
     {
       id: "cpa-tcpa",
       name: "TCPA / CPA",
-      group: "Radar ve Manevra",
-      formula: "tCPA = −(R·Vrel)/|Vrel|² ;  dCPA = |R + Vrel·tCPA|",
+      group: "Radar and Manoeuvring",
+      formula: "TCPA = −(R·Vrel)/|Vrel|² ;  CPA = |R + Vrel·TCPA|",
       variables: [
         { symbol: "R", label: "Relative position vector (Rx, Ry)", unit: "nm" },
         { symbol: "Vrel", label: "Relative velocity vector (Vx, Vy)", unit: "knot" },
       ],
       source: { code: "Radar plotting — CPA/TCPA" },
-      note: "The vector components are entered as (x: east, y: north). A negative tCPA means the target is opening.",
+      note: "The vector components are entered as (x: east, y: north). A negative TCPA means the CPA has already passed (range opening).",
       inputs: [
         { key: "rx", label: "Rx", unit: "nm", placeholder: "4" },
         { key: "ry", label: "Ry", unit: "nm", placeholder: "6" },
@@ -358,7 +346,7 @@ export const navigation: CourseTopic = {
         const cy = v.ry + v.vy * tcpa;
         const dcpa = Math.sqrt(cx * cx + cy * cy);
         return [
-          { label: "TCPA", value: `${tcpa.toFixed(2)} sa (${(tcpa * 60).toFixed(1)} dk)` },
+          { label: "TCPA", value: `${tcpa.toFixed(2)} h (${(tcpa * 60).toFixed(1)} min)` },
           { label: "CPA", value: `${dcpa.toFixed(2)} nm` },
         ];
       },
@@ -366,94 +354,97 @@ export const navigation: CourseTopic = {
     {
       id: "rate-of-turn",
       name: "Rate of Turn (ROT)",
-      group: "Radar ve Manevra",
-      formula: "ROT (°/dk) = (30·V) / R",
+      group: "Radar and Manoeuvring",
+      formula: "ROT (°/min) = V / R × (180/π) × 60 ≈ 1768 × V(kn) / R(m)",
       variables: [
         { symbol: "V", label: "Speed", unit: "knot" },
         { symbol: "R", label: "Turning radius", unit: "m" },
       ],
-      source: { code: "Manevra — rate of turn" },
-      note: "30 = (1852 m/h) / (60 min × π/180·… ) simplified coefficient; the relation given on the page.",
+      source: { code: "Ship handling — rate of turn on a constant radius" },
+      note: "1 kn = 0.514444 m/s; V/R in rad/s × 3437.75 gives °/min (3437.75 × 0.514444 ≈ 1768.5).",
       inputs: [
         { key: "v", label: "Speed (V)", unit: "knot", placeholder: "12" },
         { key: "r", label: "Turning Radius (R)", unit: "m", placeholder: "600" },
       ],
       calculate: (v) => {
         if (v.r <= 0) return [{ label: "Error", value: "The radius must be positive" }];
-        const rot = (30 * v.v) / v.r;
-        return [{ label: "Rate of Turn (ROT)", value: `${rot.toFixed(2)} °/dk` }];
+        const rot = ((180 / Math.PI) * 60 * v.v * 0.514444) / v.r;
+        return [{ label: "Rate of Turn (ROT)", value: `${rot.toFixed(1)} °/min` }];
       },
     },
-    // ---- Seyir Emniyeti ----
+    // ---- Navigational safety ----
     {
       id: "ukc",
       name: "Under Keel Clearance (UKC)",
       group: "Navigational Safety",
-      formula: "UKC = CD + HoT − Draft − Squat",
+      formula: "UKC = Charted depth + HoT − Draft − Squat",
       variables: [
-        { symbol: "CD", label: "Charted depth (chart datum)", unit: "m" },
+        { symbol: "Charted depth", label: "Charted depth (below chart datum)", unit: "m" },
         { symbol: "HoT", label: "Height of tide", unit: "m" },
         { symbol: "Draft", label: "Vessel draft", unit: "m" },
-        { symbol: "Squat", label: "Squat (basma)", unit: "m" },
+        { symbol: "Squat", label: "Squat", unit: "m" },
       ],
       source: { code: "Navigational safety — UKC relation" },
       inputs: [
-        { key: "cd", label: "Charted Depth (CD)", unit: "m", placeholder: "12" },
+        { key: "cd", label: "Charted Depth", unit: "m", placeholder: "12" },
         { key: "hot", label: "Height of Tide (HoT)", unit: "m", placeholder: "1.5" },
         { key: "draft", label: "Draft", unit: "m", placeholder: "10.5" },
         { key: "squat", label: "Squat", unit: "m", placeholder: "0.4" },
       ],
       calculate: (v) => {
         const ukc = v.cd + v.hot - v.draft - v.squat;
-        const durum = ukc > 0 ? "Positive clearance" : "DANGER — insufficient water";
+        const status = ukc > 0 ? "Positive clearance" : "DANGER — insufficient water";
         return [
           { label: "UKC", value: `${ukc.toFixed(2)} m` },
-          { label: "Durum", value: durum },
+          { label: "Status", value: status },
         ];
       },
     },
     {
       id: "squat",
-      name: "Squat (Open Water Approximation)",
+      name: "Squat (Barrass)",
       group: "Navigational Safety",
-      formula: "Squat ≈ V² / (100·B)",
+      formula: "Squat max ≈ Cb × V² / 100 (open water) ;  × 2 in a confined channel",
       variables: [
-        { symbol: "V", label: "Speed", unit: "knot" },
-        { symbol: "B", label: "Vessel beam", unit: "m" },
+        { symbol: "Cb", label: "Block coefficient" },
+        { symbol: "V", label: "Speed through the water", unit: "knot" },
       ],
-      source: { code: "Navigational safety — open water squat approximation" },
+      source: { code: "Barrass, Ship Squat — maximum squat approximation" },
+      note: "Maximum squat, at the bow for full ships (Cb > 0.7) and at the stern for fine ships.",
       inputs: [
-        { key: "v", label: "Speed (V)", unit: "knot", placeholder: "14" },
-        { key: "b", label: "Beam (B)", unit: "m", placeholder: "22" },
+        { key: "cb", label: "Block Coefficient (Cb)", placeholder: "0.80" },
+        { key: "v", label: "Speed (V)", unit: "knot", placeholder: "10" },
       ],
       calculate: (v) => {
-        if (v.b <= 0) return [{ label: "Error", value: "The beam must be positive" }];
-        const squat = (v.v * v.v) / (100 * v.b);
-        return [{ label: "Squat", value: `${squat.toFixed(2)} m` }];
+        if (v.cb <= 0 || v.cb > 1) return [{ label: "Error", value: "Cb must be between 0 and 1" }];
+        if (v.v < 0) return [{ label: "Error", value: "The speed cannot be negative" }];
+        return [
+          { label: "Squat, open water", value: `${estimateSquatBarrass({ speedKn: v.v, blockCoefficient: v.cb, environment: "open" }).toFixed(2)} m` },
+          { label: "Squat, confined channel", value: `${estimateSquatBarrass({ speedKn: v.v, blockCoefficient: v.cb, environment: "confined" }).toFixed(2)} m` },
+        ];
       },
     },
-    // ---- Gelgit ----
+    // ---- Tides ----
     {
       id: "height-of-tide",
       name: "Height of Tide (Rule of Twelfths)",
-      group: "Gelgit",
-      formula: "H = Low + (Σ twelfths ratio × Tidal Range)",
+      group: "Tides",
+      formula: "H = LW height + (cumulative twelfths / 12) × range",
       variables: [
         { symbol: "Low", label: "Low water height", unit: "m" },
         { symbol: "Range", label: "Tidal range (HW − LW)", unit: "m" },
-        { symbol: "t", label: "Hours elapsed since LW (1–6)", unit: "sa" },
+        { symbol: "t", label: "Hours elapsed since LW (0–6)", unit: "h" },
       ],
       source: { code: "Rule of Twelfths" },
-      note: "Twelfths: 1,3,6,9,11,12 / 12 (cumulative at the end of each hour). Enter t = 0..6 hours.",
+      note: "Twelfths: 1, 3, 6, 9, 11, 12 / 12 (cumulative at the end of each tidal hour), interpolated between whole hours. For a regular semidiurnal tide with about six hours' rise.",
       inputs: [
         { key: "low", label: "Low Water (LW)", unit: "m", placeholder: "1.2" },
         { key: "range", label: "Tidal Range", unit: "m", placeholder: "4.0" },
-        { key: "t", label: "Elapsed Time (since LW)", unit: "sa", placeholder: "3" },
+        { key: "t", label: "Elapsed Time (since LW)", unit: "h", placeholder: "3" },
       ],
       calculate: (v) => {
-        const cum = [0, 1, 3, 6, 9, 11, 12];
-        const hr = Math.max(0, Math.min(6, Math.round(v.t)));
-        const fraction = cum[hr] / 12;
+        if (v.t < 0 || v.t > 6) return [{ label: "Error", value: "Enter 0 to 6 hours after low water" }];
+        const { fractionOfRange: fraction } = calculateTide({ hour: v.t, tidalRangeM: v.range });
         const h = v.low + fraction * v.range;
         return [
           { label: "Amount Risen", value: `${(fraction * v.range).toFixed(2)} m` },
@@ -469,14 +460,14 @@ export const navigation: CourseTopic = {
       formula: "sin(Hc) = sinφ·sinδ + cosφ·cosδ·cos(LHA)",
       variables: [
         { symbol: "φ", label: "Observer latitude", unit: "°" },
-        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+        { symbol: "δ", label: "Declination", unit: "°" },
         { symbol: "LHA", label: "Local hour angle", unit: "°" },
       ],
       source: { code: "Sight reduction — calculated altitude" },
       note: "South latitude/declination is entered as (−). Used with Nautical Almanac data.",
       inputs: [
         { key: "lat", label: "Latitude (φ)", unit: "°", placeholder: "40" },
-        { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
+        { key: "dec", label: "Declination (δ)", unit: "°", placeholder: "20" },
         { key: "lha", label: "LHA", unit: "°", placeholder: "45" },
       ],
       calculate: (v) => {
@@ -500,12 +491,12 @@ export const navigation: CourseTopic = {
             hint: "South latitude and declination are entered with a (−) sign; LHA is always in the 0–360° range.",
           },
           {
-            title: "1. terim: sinφ · sinδ",
+            title: "First term: sinφ · sinδ",
             expression: `sin(${v.lat}°) · sin(${v.dec}°) = ${Math.sin(rad(v.lat)).toFixed(4)} · ${Math.sin(rad(v.dec)).toFixed(4)}`,
             result: `${term1.toFixed(4)}`,
           },
           {
-            title: "2. terim: cosφ · cosδ · cos(LHA)",
+            title: "Second term: cosφ · cosδ · cos(LHA)",
             expression: `cos(${v.lat}°) · cos(${v.dec}°) · cos(${v.lha}°)`,
             result: `${term2.toFixed(4)}`,
           },
@@ -525,18 +516,18 @@ export const navigation: CourseTopic = {
     },
     {
       id: "celestial-azimuth",
-      name: "Azimut (Z)",
+      name: "Azimuth Angle (Z)",
       group: "Celestial Navigation",
       formula: "cos(Z) = (sinδ − sinφ·sinHc) / (cosφ·cosHc)",
       variables: [
-        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+        { symbol: "δ", label: "Declination", unit: "°" },
         { symbol: "φ", label: "Observer latitude", unit: "°" },
         { symbol: "Hc", label: "Calculated altitude", unit: "°" },
       ],
-      source: { code: "Sight reduction — azimut" },
+      source: { code: "Sight reduction — azimuth" },
       note: "Declination, latitude and calculated altitude are entered in degrees; the azimuth angle Z (0–180°) is computed.",
       inputs: [
-        { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
+        { key: "dec", label: "Declination (δ)", unit: "°", placeholder: "20" },
         { key: "lat", label: "Observer Latitude (φ)", unit: "°", placeholder: "41" },
         { key: "hc", label: "Calculated Altitude (Hc)", unit: "°", placeholder: "35" },
       ],
@@ -564,12 +555,12 @@ export const navigation: CourseTopic = {
             expression: `δ = ${v.dec}°, φ = ${v.lat}°, Hc = ${v.hc}°`,
           },
           {
-            title: "Pay: sinδ − sinφ · sinHc",
+            title: "Numerator: sinδ − sinφ · sinHc",
             expression: `sin(${v.dec}°) − sin(${v.lat}°)·sin(${v.hc}°)`,
             result: `${numer.toFixed(4)}`,
           },
           {
-            title: "Payda: cosφ · cosHc",
+            title: "Denominator: cosφ · cosHc",
             expression: `cos(${v.lat}°) · cos(${v.hc}°)`,
             result: `${denom.toFixed(4)}`,
           },
@@ -593,13 +584,13 @@ export const navigation: CourseTopic = {
       group: "Celestial Navigation",
       formula: "A = arcsin(sinδ / cosφ)",
       variables: [
-        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+        { symbol: "δ", label: "Declination", unit: "°" },
         { symbol: "φ", label: "Observer latitude", unit: "°" },
       ],
       source: { code: "Celestial navigation — amplitude (compass error check)" },
       note: "Measured from E when rising and from W when setting. South latitude/declination is entered as (−).",
       inputs: [
-        { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "15" },
+        { key: "dec", label: "Declination (δ)", unit: "°", placeholder: "15" },
         { key: "lat", label: "Latitude (φ)", unit: "°", placeholder: "40" },
       ],
       calculate: (v) => {
@@ -607,7 +598,13 @@ export const navigation: CourseTopic = {
         const ratio = Math.sin(rad(v.dec)) / Math.cos(rad(v.lat));
         if (Math.abs(ratio) > 1) return [{ label: "Error", value: "At this latitude the body does not rise/set" }];
         const a = (Math.asin(ratio) * 180) / Math.PI;
-        return [{ label: "Amplitude (A)", value: `${a.toFixed(2)} ° (from E/W)` }];
+        const rising = calculateAmplitude({ latDeg: v.lat, decDeg: v.dec, riseOrSet: "rising" });
+        const setting = calculateAmplitude({ latDeg: v.lat, decDeg: v.dec, riseOrSet: "setting" });
+        return [
+          { label: "Amplitude (A)", value: `${Math.abs(a).toFixed(2)} ° (from E/W, ${a >= 0 ? "N" : "S"})` },
+          { label: "True bearing rising", value: `${rising.azimuthDeg.toFixed(1)} °` },
+          { label: "True bearing setting", value: `${setting.azimuthDeg.toFixed(1)} °` },
+        ];
       },
       steps: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -619,7 +616,7 @@ export const navigation: CourseTopic = {
           {
             title: "Substitute the data",
             expression: `δ = ${v.dec}°, φ = ${v.lat}°`,
-            hint: "The amplitude is the true azimuth of the body at rising/setting; it is used to check the compass error.",
+            hint: "The amplitude is the angle between the body at rising or setting and true east or west; converted to a true bearing it checks the compass error.",
           },
           {
             title: "Ratio: sinδ / cosφ",
@@ -640,12 +637,12 @@ export const navigation: CourseTopic = {
       id: "arc-time",
       name: "Longitude ↔ Time Conversion",
       group: "Latitude, Longitude and Distance",
-      formula: "λ(°) = ZD × 15 ;  Longitude(°) × 4 = ZD(min)",
+      formula: "Time (min) = longitude (°) × 4 ;  longitude (°) = time (h) × 15",
       variables: [
         { symbol: "λ", label: "Longitude (arc)", unit: "°" },
-        { symbol: "ZF", label: "Time difference", unit: "sa" },
+        { symbol: "t", label: "Longitude in time", unit: "h" },
       ],
-      source: { code: "Celestial navigation — arc/time conversion", detail: "360° = 24 sa, 1° = 4 dk" },
+      source: { code: "Celestial navigation — arc/time conversion", detail: "360° = 24 h, 1° = 4 min" },
       note: "Enter the longitude in degrees → the equivalent time difference (relative to Greenwich) is calculated.",
       inputs: [{ key: "lon", label: "Longitude (λ)", unit: "°", placeholder: "45" }],
       calculate: (v) => {
@@ -653,8 +650,8 @@ export const navigation: CourseTopic = {
         const h = Math.floor(totalMin / 60);
         const m = totalMin - h * 60;
         return [
-          { label: "Time Difference (decimal)", value: `${(totalMin / 60).toFixed(3)} sa` },
-          { label: "Time Difference (h:min)", value: `${h} sa ${m.toFixed(1)} dk` },
+          { label: "Time Difference (decimal)", value: `${(totalMin / 60).toFixed(3)} h` },
+          { label: "Time Difference (h:min)", value: `${h} h ${m.toFixed(1)} min` },
         ];
       },
     },
@@ -665,12 +662,12 @@ export const navigation: CourseTopic = {
       formula: "Dip = 1.76 × √h  (h in metres, dip in minutes)",
       variables: [{ symbol: "h", label: "Height of eye", unit: "m" }],
       source: { code: "Nautical Almanac — dip of the horizon" },
-      note: "The dip caused by the observer's height of eye in the sextant altitude correction.",
+      note: "Dip corrects the sextant altitude for the observer's height of eye; it is always subtracted.",
       inputs: [{ key: "h", label: "Height of Eye (h)", unit: "m", placeholder: "12" }],
       calculate: (v) => {
         if (v.h < 0) return [{ label: "Error", value: "The height cannot be negative" }];
         const dip = 1.76 * Math.sqrt(v.h);
-        return [{ label: "Dip", value: `${dip.toFixed(1)} ′ (minutes)` }];
+        return [{ label: "Dip of the horizon", value: `${dip.toFixed(1)} ′ (minutes)` }];
       },
       steps: (v) => {
         if (v.h < 0) return [{ title: "Error", result: "The height cannot be negative" }];
@@ -698,20 +695,20 @@ export const navigation: CourseTopic = {
       id: "sextant-correction",
       name: "Sextant Altitude Correction (Ho)",
       group: "Celestial Navigation",
-      formula: "Ho = Hs ± IE − Dip ± R ± SD ± P",
+      formula: "Ho = Hs + IC − Dip + main correction",
       variables: [
         { symbol: "Hs", label: "Sextant altitude", unit: "°" },
-        { symbol: "IE", label: "Index error (E: −, W: +)", unit: "′" },
-        { symbol: "Dip", label: "Dip of the horizon", unit: "′" },
-        { symbol: "R", label: "Total correction (refraction + SD + P)", unit: "′" },
+        { symbol: "IC", label: "Index correction (off the arc +, on the arc −)", unit: "′" },
+        { symbol: "dip", label: "Dip of the horizon", unit: "′" },
+        { symbol: "MC", label: "Main correction from the Almanac (refraction, semi-diameter and parallax together)", unit: "′" },
       ],
-      source: { code: "Nautical Almanac — sight reduction (apparent → observed altitude)" },
-      note: "IE and the total correction are entered in minutes (′). The index error is applied with its sign, the dip is always subtracted, and the main correction R is added with its sign.",
+      source: { code: "Nautical Almanac — altitude correction tables (apparent → observed altitude)" },
+      note: "IC and the main correction are entered in minutes (′). The index correction is applied with its sign, the dip is always subtracted, and the main correction is added with its sign (negative for an upper limb).",
       inputs: [
         { key: "hs", label: "Sextant Altitude (Hs)", unit: "°", placeholder: "45.5" },
-        { key: "ie", label: "Index Error (IE)", unit: "′", placeholder: "-1.5" },
-        { key: "dip", label: "Dip", unit: "′", placeholder: "6.1" },
-        { key: "r", label: "Main Correction (R)", unit: "′", placeholder: "14.5" },
+        { key: "ie", label: "Index Correction (IC)", unit: "′", placeholder: "-1.5" },
+        { key: "dip", label: "Dip of the horizon", unit: "′", placeholder: "6.1" },
+        { key: "r", label: "Main Correction (MC)", unit: "′", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const hoMin = v.hs * 60 + v.ie - v.dip + v.r;
@@ -731,10 +728,10 @@ export const navigation: CourseTopic = {
             hint: "All corrections are made in minutes (′); 1° = 60′.",
           },
           {
-            title: "Apply the index error (IE)",
+            title: "Apply the index correction (IC)",
             expression: `${hsMin.toFixed(1)} ′ + (${v.ie}) ′`,
             result: `${afterIe.toFixed(1)} ′`,
-            hint: "IE is added with its sign (on the arc: −, off the arc: +).",
+            hint: "IC is added with its sign (on the arc: −, off the arc: +).",
           },
           {
             title: "Subtract the dip",
@@ -742,10 +739,10 @@ export const navigation: CourseTopic = {
             result: `${afterDip.toFixed(1)} ′  (apparent altitude, Ha)`,
           },
           {
-            title: "Apply the main correction (R)",
+            title: "Apply the main correction (MC)",
             expression: `${afterDip.toFixed(1)} ′ + (${v.r}) ′`,
             result: `${hoMin.toFixed(1)} ′`,
-            hint: "R = refraction + semi-diameter (SD) + parallax (P), taken from the Almanac.",
+            hint: "The Almanac's main correction already combines refraction, semi-diameter and parallax: do not apply them again.",
           },
           {
             title: "Convert back to degrees",
@@ -766,23 +763,23 @@ export const navigation: CourseTopic = {
         { symbol: "Hc", label: "Calculated altitude", unit: "°" },
       ],
       source: { code: "Marcq St-Hilaire — intercept method" },
-      note: "Positive (Toward) → toward the body, negative (Away) → away from the body. 1′ = 1 NM.",
+      note: "Positive (towards) → towards the body, negative (away) → away from the body. 1′ = 1 nm.",
       inputs: [
         { key: "ho", label: "Observed Altitude (Ho)", unit: "°", placeholder: "45.30" },
         { key: "hc", label: "Calculated Altitude (Hc)", unit: "°", placeholder: "45.10" },
       ],
       calculate: (v) => {
         const aMin = (v.ho - v.hc) * 60;
-        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
+        const yon = aMin >= 0 ? "Towards (the body)" : "Away (from the body)";
         return [
-          { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM` },
+          { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} nm` },
           { label: "Direction", value: yon },
         ];
       },
       steps: (v) => {
         const diff = v.ho - v.hc;
         const aMin = diff * 60;
-        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
+        const yon = aMin >= 0 ? "Towards (the body)" : "Away (from the body)";
         return [
           {
             title: "Substitute the data",
@@ -797,14 +794,14 @@ export const navigation: CourseTopic = {
           {
             title: "Convert to nautical miles (× 60)",
             expression: `${diff.toFixed(3)}° × 60 ′/° = ${aMin.toFixed(1)} ′`,
-            result: `a = ${Math.abs(aMin).toFixed(1)} NM`,
+            result: `a = ${Math.abs(aMin).toFixed(1)} nm`,
             hint: "1 minute of arc = 1 nautical mile.",
           },
           {
             title: "Determine the direction",
             expression: aMin >= 0 ? "Ho > Hc → toward the body" : "Ho < Hc → away from the body",
             result: yon,
-            hint: "The line of position (LOP) is drawn by shifting a from the AP along the azimuth in this direction.",
+            hint: "Lay off a from the AP along Zn (towards) or its reciprocal (away) and draw the LOP through that point at right angles to the azimuth.",
           },
         ];
       },
@@ -813,26 +810,25 @@ export const navigation: CourseTopic = {
       id: "meridian-passage-lat",
       name: "Latitude by Meridian Passage",
       group: "Celestial Navigation",
-      formula: "Z = 90° − Ho ;  φ = Z ± δ",
+      formula: "ZD = 90° − Ho ;  φ = ZD ± δ",
       variables: [
         { symbol: "Ho", label: "Observed altitude at meridian passage", unit: "°" },
-        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+        { symbol: "δ", label: "Declination", unit: "°" },
       ],
       source: { code: "Celestial navigation — latitude by meridian passage" },
-      note: "The zenith distance (Z) and the declination are added when of the same name and subtracted when of contrary name. Entering south values as (−) handles this automatically.",
+      note: "The zenith distance is named opposite to the body's bearing (body bears south → ZD north). Same names add, contrary names subtract; entering south values as (−) handles this automatically.",
       inputs: [
         { key: "ho", label: "Observed Altitude (Ho)", unit: "°", placeholder: "68.5" },
-        { key: "dec", label: "Deklinasyon (δ, S: −)", unit: "°", placeholder: "20" },
-        { key: "bearing", label: "Body Direction (1 = zenith to the south, −1 = north)", unit: "", placeholder: "1" },
+        { key: "dec", label: "Declination (δ, S: −)", unit: "°", placeholder: "20" },
+        { key: "bearing", label: "Body bears (1 = south, −1 = north)", unit: "", placeholder: "1" },
       ],
       calculate: (v) => {
+        if (v.ho <= 0 || v.ho > 90) return [{ label: "Error", value: "Ho must be between 0° and 90°" }];
         const z = 90 - v.ho;
-        // If the zenith is to the south, latitude = δ + Z; if to the north, δ − Z
-        const sign = v.bearing >= 0 ? 1 : -1;
-        const lat = v.dec + sign * z;
+        const lat = latitudeByMeridianAltitude(v.ho, v.dec, v.bearing >= 0 ? "S" : "N");
         const hemis = lat >= 0 ? "N" : "S";
         return [
-          { label: "Zenith Distance (Z)", value: `${z.toFixed(2)} °` },
+          { label: "Zenith Distance (ZD)", value: `${z.toFixed(2)} °` },
           { label: "Latitude (φ)", value: `${Math.abs(lat).toFixed(2)} ° ${hemis}` },
         ];
       },
@@ -844,35 +840,35 @@ export const navigation: CourseTopic = {
         return [
           {
             title: "Substitute the data",
-            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, direction = ${v.bearing >= 0 ? "zenith to the south" : "zenith to the north"}`,
-            hint: "At meridian passage (local apparent noon) the body is on the observer's meridian.",
+            expression: `Ho = ${v.ho}°, δ = ${v.dec}°, body bears ${v.bearing >= 0 ? "south" : "north"}`,
+            hint: "At meridian passage the body is on the observer's meridian (for the Sun: local apparent noon).",
           },
           {
-            title: "Zenith distance: Z = 90° − Ho",
+            title: "Zenith distance: ZD = 90° − Ho",
             expression: `90° − ${v.ho}°`,
-            result: `Z = ${z.toFixed(2)}°`,
+            result: `ZD = ${z.toFixed(2)}°`,
           },
           {
-            title: "Latitude: φ = δ ± Z",
+            title: "Latitude: φ = δ ± ZD",
             expression: `${v.dec}° ${sign >= 0 ? "+" : "−"} ${z.toFixed(2)}°`,
             result: `φ = ${Math.abs(lat).toFixed(2)}° ${hemis}`,
-            hint: "Z and δ are added when of the same name and subtracted when of contrary name (the signs are handled automatically).",
+            hint: "ZD and δ are added when of the same name and subtracted when of contrary name (the signs are handled automatically).",
           },
         ];
       },
     },
     {
       id: "sight-reduction",
-      name: "Line of Position Chain (Sight Reduction)",
+      name: "Sight Reduction — Intercept Method (AP to LOP)",
       group: "Celestial Navigation",
       formula: "GHA → LHA = GHA±λ → Hc, Z → Ho = Hs±corrections → a = Ho−Hc",
       variables: [
         { symbol: "GHA", label: "Greenwich hour angle", unit: "°" },
         { symbol: "λ", label: "Longitude (E: +, W: −)", unit: "°" },
         { symbol: "φ", label: "AP latitude", unit: "°" },
-        { symbol: "δ", label: "Deklinasyon", unit: "°" },
+        { symbol: "δ", label: "Declination", unit: "°" },
         { symbol: "Hs", label: "Sextant altitude", unit: "°" },
-        { symbol: "a", label: "Intercept (altitude difference)", unit: "NM" },
+        { symbol: "a", label: "Intercept (altitude difference)", unit: "nm" },
       ],
       source: { code: "Marcq St-Hilaire — full sight reduction chain (AP → LOP)" },
       note: "GHA and δ are taken from the Almanac. South latitude/declination is entered as (−) and west longitude as (−). All corrections are in minutes (′).",
@@ -880,11 +876,11 @@ export const navigation: CourseTopic = {
         { key: "gha", label: "GHA", unit: "°", placeholder: "130.5" },
         { key: "lon", label: "Longitude (λ, E: +, W: −)", unit: "°", placeholder: "28" },
         { key: "lat", label: "AP Latitude (φ)", unit: "°", placeholder: "40" },
-        { key: "dec", label: "Deklinasyon (δ)", unit: "°", placeholder: "20" },
+        { key: "dec", label: "Declination (δ)", unit: "°", placeholder: "20" },
         { key: "hs", label: "Sextant Altitude (Hs)", unit: "°", placeholder: "45.5" },
-        { key: "ie", label: "Index Error (IE)", unit: "′", placeholder: "-1.5" },
-        { key: "dip", label: "Dip", unit: "′", placeholder: "6.1" },
-        { key: "r", label: "Main Correction (R)", unit: "′", placeholder: "14.5" },
+        { key: "ie", label: "Index Correction (IC)", unit: "′", placeholder: "-1.5" },
+        { key: "dip", label: "Dip of the horizon", unit: "′", placeholder: "6.1" },
+        { key: "r", label: "Main Correction (MC)", unit: "′", placeholder: "14.5" },
       ],
       calculate: (v) => {
         const rad = (x: number) => (x * Math.PI) / 180;
@@ -903,13 +899,13 @@ export const navigation: CourseTopic = {
         }
         const ho = (v.hs * 60 + v.ie - v.dip + v.r) / 60;
         const aMin = (ho - hc) * 60;
-        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
+        const yon = aMin >= 0 ? "Towards (the body)" : "Away (from the body)";
         return [
           { label: "LHA", value: `${lha.toFixed(2)} °` },
           { label: "Calculated Altitude (Hc)", value: `${hc.toFixed(2)} °` },
           { label: "Azimuth Angle (Z)", value: `${z.toFixed(1)} °` },
           { label: "Observed Altitude (Ho)", value: `${ho.toFixed(3)} °` },
-          { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} NM ${yon}` },
+          { label: "Intercept (a)", value: `${Math.abs(aMin).toFixed(1)} nm ${yon}` },
         ];
       },
       steps: (v) => {
@@ -929,11 +925,11 @@ export const navigation: CourseTopic = {
         }
         const ho = (v.hs * 60 + v.ie - v.dip + v.r) / 60;
         const aMin = (ho - hc) * 60;
-        const yon = aMin >= 0 ? "Toward (towards the body)" : "Away (from the body)";
+        const yon = aMin >= 0 ? "Towards (the body)" : "Away (from the body)";
         return [
           {
             title: "1) Local Hour Angle (LHA) = GHA ± λ",
-            expression: `${v.gha}° + (${v.lon}°) = ${(v.gha + v.lon).toFixed(2)}° → 0–360° normalize`,
+            expression: `${v.gha}° + (${v.lon}°) = ${(v.gha + v.lon).toFixed(2)}° → reduced to 0–360°`,
             result: `LHA = ${lha.toFixed(2)}°`,
             hint: "East longitude (+) is added and west longitude (−) is subtracted. The result is reduced to the 0–360° range.",
           },
@@ -947,19 +943,19 @@ export const navigation: CourseTopic = {
             title: "3) Azimuth Angle (Z)",
             expression: `cos(Z) = (sinδ − sinφ·sinHc)/(cosφ·cosHc) = ${cosZ.toFixed(4)}`,
             result: `Z = ${z.toFixed(1)}°`,
-            hint: "Z is the azimuth direction used when plotting the line of position (LOP).",
+            hint: "Convert Z to the true azimuth before plotting: Zn = Z if LHA > 180°, Zn = 360° − Z if LHA < 180°.",
           },
           {
             title: "4) Observed Altitude (Ho) = Hs ± corrections",
-            expression: `${v.hs}° + (${v.ie}′ IE) − ${v.dip}′ Dip + ${v.r}′ R`,
+            expression: `${v.hs}° + (${v.ie}′ IC) − ${v.dip}′ dip + ${v.r}′ MC`,
             result: `Ho = ${ho.toFixed(3)}°`,
-            hint: "The sextant reading Hs is converted to the true altitude with the index error, dip and main correction.",
+            hint: "The sextant reading Hs is converted to the observed altitude with the index correction, dip and main correction.",
           },
           {
             title: "5) Intercept (a) = Ho − Hc",
             expression: `(${ho.toFixed(3)}° − ${hc.toFixed(2)}°) × 60 = ${aMin.toFixed(1)} ′`,
-            result: `a = ${Math.abs(aMin).toFixed(1)} NM — ${yon}`,
-            hint: "The line of position (LOP) is drawn by running a from the AP along the azimuth (Zn) in this direction; the intersection of two LOPs is the fix.",
+            result: `a = ${Math.abs(aMin).toFixed(1)} nm — ${yon}`,
+            hint: "Lay off a from the AP along Zn (towards) or its reciprocal (away) and draw the LOP at right angles to Zn; two LOPs give the fix.",
           },
         ];
       },
@@ -989,8 +985,8 @@ export const navigation: CourseTopic = {
     {
       id: "distance-vertical-angle",
       name: "Distance Off by Vertical Angle",
-      group: "Radar ve Manevra",
-      formula: "Distance (NM) ≈ 1.856 × Height(m) / Vertical Angle(′)",
+      group: "Radar and Manoeuvring",
+      formula: "Distance (nm) ≈ 1.856 × Height(m) / Vertical Angle(′)",
       variables: [
         { symbol: "H", label: "Height of the object (lighthouse etc.)", unit: "m" },
         { symbol: "α", label: "Vertical angle measured with the sextant", unit: "′" },
@@ -1004,7 +1000,120 @@ export const navigation: CourseTopic = {
       calculate: (v) => {
         if (v.angle <= 0) return [{ label: "Error", value: "The vertical angle must be positive" }];
         const dist = (1.856 * v.h) / v.angle;
-        return [{ label: "Distance", value: `${dist.toFixed(2)} NM` }];
+        return [{ label: "Distance", value: `${dist.toFixed(2)} nm` }];
+      },
+    },
+    {
+      id: "chart-scale",
+      name: "Chart Scale",
+      group: "Latitude, Longitude and Distance",
+      formula: "Distance (nm) = length on chart (cm) × scale / 185,200",
+      variables: [
+        { symbol: "scale", label: "Natural scale denominator (1 : scale)" },
+        { symbol: "185,200", label: "Centimetres in one nautical mile", unit: "cm" },
+      ],
+      source: { code: "1 nautical mile = 1,852 m" },
+      note: "On a Mercator chart the scale changes with latitude: measure distances on the latitude scale.",
+      inputs: [
+        { key: "scale", label: "Scale (1 : …)", placeholder: "50000" },
+        { key: "cm", label: "Length on the chart", unit: "cm", placeholder: "7.4" },
+      ],
+      calculate: (v) => {
+        if (v.scale <= 0) return [{ label: "Error", value: "The scale must be positive" }];
+        return [{ label: "Distance", value: `${((v.cm * v.scale) / 185200).toFixed(2)} nm` }];
+      },
+    },
+    {
+      id: "light-range",
+      name: "Geographical Range of a Light",
+      group: "Latitude, Longitude and Distance",
+      formula: "D = 2.08 × (√H + √h)  (H, h metres; D nm)",
+      variables: [
+        { symbol: "H", label: "Elevation of the light", unit: "m" },
+        { symbol: "h", label: "Height of eye", unit: "m" },
+      ],
+      source: { code: "Admiralty List of Lights — geographical range" },
+      note: "The geographical range is the light's dipping distance. The light is seen at the lesser of its geographical range and its luminous range for the visibility.",
+      inputs: [
+        { key: "H", label: "Elevation of the Light (H)", unit: "m", placeholder: "45" },
+        { key: "h", label: "Height of Eye (h)", unit: "m", placeholder: "16" },
+      ],
+      calculate: (v) => {
+        if (v.H < 0 || v.h < 0) return [{ label: "Error", value: "The heights cannot be negative" }];
+        return [{ label: "Geographical Range", value: `${(2.08 * (Math.sqrt(v.H) + Math.sqrt(v.h))).toFixed(1)} nm` }];
+      },
+    },
+    {
+      id: "doubling-angle",
+      name: "Two Bearings on the Bow (Doubling the Angle)",
+      group: "Radar and Manoeuvring",
+      formula: "d₂ = run × sin θ₁ / sin(θ₂ − θ₁) ;  abeam = d₂ × sin θ₂",
+      variables: [
+        { symbol: "θ₁, θ₂", label: "First and second angles on the bow", unit: "°" },
+        { symbol: "run", label: "Distance run between the bearings", unit: "nm" },
+      ],
+      source: { code: "Sine rule — bearings of one object on the bow" },
+      note: "When θ₂ = 2θ₁ (doubling the angle on the bow) the distance off at the second bearing equals the run.",
+      inputs: [
+        { key: "a1", label: "First Angle on the Bow (θ₁)", unit: "°", placeholder: "30" },
+        { key: "a2", label: "Second Angle on the Bow (θ₂)", unit: "°", placeholder: "60" },
+        { key: "run", label: "Run", unit: "nm", placeholder: "5" },
+      ],
+      calculate: (v) => {
+        if (!(v.a1 > 0 && v.a2 > v.a1 && v.a2 < 180)) return [{ label: "Error", value: "0° < θ₁ < θ₂ < 180°" }];
+        const rad = (x: number) => (x * Math.PI) / 180;
+        const d2 = (v.run * Math.sin(rad(v.a1))) / Math.sin(rad(v.a2 - v.a1));
+        return [
+          { label: "Distance off at the second bearing", value: `${d2.toFixed(2)} nm` },
+          { label: "Distance off when abeam", value: `${(d2 * Math.sin(rad(v.a2))).toFixed(2)} nm` },
+        ];
+      },
+    },
+    {
+      id: "danger-angle",
+      name: "Vertical Danger Angle",
+      group: "Navigational Safety",
+      formula: "tan α = H / d",
+      variables: [
+        { symbol: "H", label: "Height of the object above sea level", unit: "m" },
+        { symbol: "d", label: "Clearing distance from the object", unit: "nm" },
+        { symbol: "α", label: "Vertical sextant angle not to be exceeded", unit: "°" },
+      ],
+      source: { code: "Coastal navigation — vertical danger angle" },
+      note: "Keep the vertical sextant angle of the object below α to stay outside the clearing distance. Valid while the base of the object is within the horizon.",
+      inputs: [
+        { key: "h", label: "Height of the Object (H)", unit: "m", placeholder: "60" },
+        { key: "d", label: "Clearing Distance", unit: "nm", placeholder: "1" },
+      ],
+      calculate: (v) => {
+        if (v.d <= 0) return [{ label: "Error", value: "The distance must be positive" }];
+        const a = (Math.atan(v.h / (v.d * 1852)) * 180) / Math.PI;
+        return [{ label: "Danger Angle (α)", value: `${a.toFixed(2)} ° (${(a * 60).toFixed(1)}′)` }];
+      },
+    },
+    {
+      id: "turning-geometry",
+      name: "Turn on a Constant Radius",
+      group: "Radar and Manoeuvring",
+      formula: "advance = R sin Δ ;  transfer = R (1 − cos Δ) ;  wheel-over = R tan(Δ/2)",
+      variables: [
+        { symbol: "R", label: "Steady turning radius (slightly less than half the tactical diameter)", unit: "m" },
+        { symbol: "Δ", label: "Alteration of course", unit: "°" },
+      ],
+      source: { code: "Circular-arc geometry of a turn" },
+      note: "Measured from the start of the turn; the wheel-over distance is before the intersection of the two course lines. The ship's manoeuvring data take precedence.",
+      inputs: [
+        { key: "r", label: "Turning Radius (R)", unit: "m", placeholder: "300" },
+        { key: "d", label: "Alteration of Course (Δ)", unit: "°", placeholder: "60" },
+      ],
+      calculate: (v) => {
+        if (v.r <= 0 || v.d <= 0 || v.d >= 180) return [{ label: "Error", value: "R > 0 and 0° < Δ < 180°" }];
+        const rad = (v.d * Math.PI) / 180;
+        return [
+          { label: "Advance", value: `${(v.r * Math.sin(rad)).toFixed(0)} m` },
+          { label: "Transfer", value: `${(v.r * (1 - Math.cos(rad))).toFixed(0)} m` },
+          { label: "Wheel-over before the intersection", value: `${(v.r * Math.tan(rad / 2)).toFixed(0)} m` },
+        ];
       },
     },
     {

@@ -1,57 +1,37 @@
-import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationList, CalculationPage, type CalculationListItem } from "@/components/ui/calculation-list";
-import { Button } from "@/components/ui/button";
-import { Compass, Globe2, Map, Navigation as NavigationIcon, Radar, Route, Sigma, Waves, Wind, MapPinned, Shield, Sun, Monitor } from "lucide-react";
-import { Link } from "react-router-dom";
+import { BookOpenCheck, Bot, Compass, ListChecks, Signal, Sigma, TriangleAlert, Waves } from "lucide-react";
+import { ToolPage } from "@/components/tools/ToolKit";
+import { ToolLinkGroup } from "@/components/tools/ToolLinkGroup";
+import { NAVIGATION_TOOL_GROUPS } from "@/components/navigationCalc/navigationTools";
 
-const navigationItems: CalculationListItem[] = [
-  { id: "gc", title: "Great Circle", icon: Globe2, to: "/navigation/calc/gc" },
-  { id: "rhumb", title: "Rhumb Line (Mercator)", icon: Map, to: "/navigation/calc/rhumb" },
-  { id: "plane", title: "Plane Sailing", icon: Route, to: "/navigation/calc/plane" },
-  { id: "eta", title: "Basic Navigation (Time–Distance–Speed)", icon: Compass, to: "/navigation/calc/eta" },
-  { id: "current", title: "Current Triangle (CTS)", icon: Waves, to: "/navigation/calc/current" },
-  { id: "compass", title: "Compass Conversions", icon: NavigationIcon, to: "/navigation/calc/compass" },
-  { id: "cpa", title: "CPA / TCPA", icon: Radar, to: "/navigation/calc/cpa" },
-  { id: "radar", title: "Radar Plot (Target Course/Speed)", icon: Radar, to: "/navigation/calc/radar" },
-  { id: "colreg", title: "COLREG Situation & Maneuver", icon: Shield, to: "/navigation/calc/colreg" },
-  { id: "sight", title: "Sight Reduction", icon: Globe2, to: "/navigation/calc/sight" },
-  { id: "astro", title: "Astronomical Navigation (Almanac + LOP)", icon: Sun, to: "/navigation/calc/astro" },
-  { id: "bearings", title: "Bearing Calculations", icon: NavigationIcon, to: "/navigation/calc/bearings" },
-  { id: "fix", title: "Fixing Position (2/3 Bearing, Running, Distance)", icon: MapPinned, to: "/navigation/calc/fix" },
-  { id: "position", title: "DR / Latitude-Longitude", icon: MapPinned, to: "/navigation/calc/position" },
-  { id: "midlat", title: "Middle Latitude Sailing", icon: Route, to: "/navigation/calc/midlat" },
-  { id: "chart", title: "Chart Scale (cm ↔ NM)", icon: Map, to: "/navigation/calc/chart" },
-  { id: "distance", title: "Distance Calculations", icon: Route, to: "/navigation/calc/distance" },
-  { id: "tides", title: "Tide + UKC", icon: Waves, to: "/navigation/calc/tides" },
-  { id: "safety", title: "Navigation Safety (Squat/UKC)", icon: Shield, to: "/navigation/calc/safety" },
-  { id: "passage", title: "Passage Plan (Leg ETA)", icon: Route, to: "/navigation/calc/passage" },
-  { id: "ecdis", title: "ECDIS (XTD / Look-ahead)", icon: Monitor, to: "/navigation/calc/ecdis" },
-  { id: "turning", title: "Turning Calculations", icon: Route, to: "/navigation/calc/turning" },
-  { id: "weather", title: "Weather", icon: Wind, to: "/navigation/calc/weather" },
-  { id: "celestial", title: "Celestial Navigation", icon: Globe2, to: "/navigation/calc/celestial" },
-  { id: "emergency", title: "Emergency", icon: Compass, to: "/navigation/calc/emergency" },
+const REFERENCE = [
+  { title: "Navigation Formulas", icon: Sigma, to: "/navigation/formulas" },
+  { title: "Tidal Calculation Step by Step", icon: Waves, to: "/navigation/tide-tutorial" },
+  { title: "IALA Buoyage", icon: TriangleAlert, to: "/navigation/buoyage" },
+  { title: "Sound Signals", icon: Signal, to: "/navigation/sound-signals" },
 ];
 
-const Navigation = () => {
-  return (
-    <MobileLayout>
-      <CalculationPage
-        title="Navigation Calculations"
-        actions={
-          <Button asChild variant="secondary" size="sm" className="gap-2">
-              <Link to="/navigation/formulas">
-                <Sigma className="h-4 w-4" />
-                Formulas
-              </Link>
-          </Button>
-        }
-      >
-        <div className="space-y-6">
-          <CalculationList items={navigationItems} />
-        </div>
-      </CalculationPage>
-    </MobileLayout>
-  );
-};
+const PRACTICE = [
+  { title: "Navigation Assistant", icon: Bot, to: "/navigation/assistant" },
+  { title: "Navigation Quiz", icon: ListChecks, to: "/navigation/quiz" },
+];
 
-export default Navigation;
+export default function Navigation() {
+  return (
+    <ToolPage title="Navigation Calculations" icon={Compass}>
+      {NAVIGATION_TOOL_GROUPS.map((group) => (
+        <ToolLinkGroup
+          key={group.title}
+          title={group.title}
+          links={group.tools.map((t) => ({ title: t.title, icon: t.icon, to: `/navigation/calc/${t.id}` }))}
+          accent="accent-ocean"
+        />
+      ))}
+      <ToolLinkGroup title="Reference" links={REFERENCE} accent="accent-teal" />
+      <ToolLinkGroup title="Assistant and practice" links={PRACTICE} accent="accent-slate" />
+      <p className="flex items-center gap-2 text-xs text-muted-foreground">
+        <BookOpenCheck className="h-3.5 w-3.5" aria-hidden />
+        Training and cross-checking aid: the ship's charts, publications and approved equipment take precedence.
+      </p>
+    </ToolPage>
+  );
+}

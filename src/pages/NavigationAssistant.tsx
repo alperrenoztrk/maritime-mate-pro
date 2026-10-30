@@ -19,13 +19,10 @@ export default function NavigationAssistantPage() {
   return (
     <AssistantInterface
       title="Navigation Assistant"
-      badge="Navigation Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
       placeholder="Write your question regarding voyage calculations, COLREG or route plan..."
       icon={Compass}
-      accentGradient="from-blue-600 to-indigo-600"
-      iconColor="text-blue-600 dark:text-blue-400"
     />
   );
 }

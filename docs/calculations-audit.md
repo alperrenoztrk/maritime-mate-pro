@@ -94,6 +94,45 @@ convention page).
 | AI assistants | all `/…/assistant` pages | Gradient hero, prompts cut at 50 characters | Tool shell, full prompts, caution that AI answers can be wrong | UI | — |
 | Quizzes | 8 topic quiz pages | Bare container | Shared `QuizShell`; question banks not audited in this round | UI | — |
 
+## 4. Navigation (`/navigation`, `/navigation/calc/:id`, `/navigation/*`, Learn → Navigation)
+
+Engine: `src/components/calculations/navigationMath.ts` (tests: `navigationMath.test.ts`, now in
+`test:calc`; course cards: `src/lib/calc/courseNavigation.test.ts`).
+Sources: Bowditch (NGA Pub. 9) sailings, meridional parts (WGS 84), amplitudes, sight reduction;
+Nautical Almanac altitude corrections (dip 1.76√h, Bennett refraction); Admiralty List of Lights
+(geographical range 2.08(√H + √h)); COLREG 1972 Rules 7, 13–19, 32–37; IALA MBS; IAMSAR Vol. III
+search patterns; Met Office / WMO Beaufort scale; Barrass squat; Admiralty tidal stream method.
+
+| Calculation | Page | Before | Now | Status | Test |
+|---|---|---|---|---|---|
+| Turning advance / transfer | turning | R·sin(Δ/2), R(1 − cos(Δ/2)) (half angle); "wheel-over" always = R | R·sinΔ, R(1 − cosΔ); wheel-over R·tan(Δ/2); tactical diameter from the ship's data (3.5 L only as a flagged estimate) | Fixed | `navigationMath.test.ts` |
+| Great circle final course | gc | Back bearing (e.g. 270° for an eastbound arrival) | Course on arrival | Fixed | idem |
+| Great circle vertex | gc | asin(cosφ₁·sinC); eastbound only | cos φv = cos φ₁·\|sinC\|, vertex latitude and longitude ahead of the ship, on/off route | Fixed | idem |
+| Rhumb line | rhumb, Learn | Spherical Δψ | Mercator sailing with WGS 84 meridional parts; ±180° wrap | Fixed | idem, course test |
+| Light range | distance | 1.17(√H + √h) with metres (feet constant) | 2.08(√H + √h); horizon 2.08√h; radar 2.23√h | Fixed | idem |
+| Refraction | astro | Bennett result in degrees treated as minutes (60× too small); no SD/parallax | Bennett R′ with P/T; SD by limb; parallax HP·cos Ha; IE on/off the arc | Fixed | idem |
+| Amplitude | celestial, Learn | Zn wrong for south amplitudes; "sunrise" gave the hour angle as a bearing | Zn 090° ∓ A / 270° ± A, named E…N/S; compass error | Fixed | idem, course test |
+| Meridian altitude | celestial | 90 − \|φ − δ\| shown as latitude | φ = ZD ± δ, ZD named opposite to the bearing | Fixed | idem, course test |
+| Two bearings on the bow | bearings | Doubling formula reduced to "= run"; generic function used a wrong angle | Sine rule: distance at the 2nd bearing and abeam | Fixed | idem, course test |
+| CPA / TCPA | cpa, radar | Bearing documented as relative but used as true; TCPA < 0 clipped to 0 | True or relative bearing; opening target shown with negative TCPA | Fixed | idem |
+| Current triangle | current, Learn | Learn card: wrong sign (CTS on the wrong side of the track); leeway applied after the triangle | CTS = track + asin(c·sin(TR − set)/V), heading = water track − leeway; infeasible current flagged | Fixed | idem, course test |
+| COLREG situation | colreg | Relative bearing only: a ship ahead on the same course was "head-on" | Uses both vessels' courses (aspect): overtaking, head-on (user tolerance), crossing; Rules 13–17 actions | Fixed | idem |
+| Rule of twelfths | tides, Learn | Hour rounded; tide table "HW" row at 11/12; time before LW treated as falling | Fractional hours, 7-point table, time must lie between the tides | Fixed | idem, course test |
+| Tidal stream | tides | sin(πh/6) curve (no source) | Tidal diamond rates, interpolated by the standard port range (user decision 30 Oct 2026) | Fixed | idem |
+| Squat | Learn | V²/(100·B) | Barrass Cb·V²/100, ×2 confined | Fixed | course test |
+| Rate of turn | Learn | 30·V/R | V/R → 1768·V(kn)/R(m) °/min | Fixed | course test |
+| Sextant correction card | Learn | SD and parallax added on top of the main correction; IE sign | Hs + IC − dip + MC | Fixed | — |
+| Weather | weather | V = 2·B^1.5, wave 0.025·V², leeway and wind force heuristics | Met Office / WMO Beaufort table only (user decision) | Removed / New | idem |
+| Emergency | emergency | Square leg 2S, sector radius √2, rescue time ignoring drift direction | IAMSAR SS (S, S, 2S, 2S…), VS (9 × radius, 120° turns), PS; times | Fixed (user decision) | idem |
+| Tide station forecast | tides | Moon-phase model with invented port offsets and amplitudes | Removed from the page (files kept) — **asked** | Hidden – asked | — |
+| Formulas page | /navigation/formulas | 23 hand-written cards (wrong CTS sign, ROT 30·V/R, Lon = GHA + LHA, Lat = 90 − ZD ± δ, danger angle arcsin, squat V²/100B…) | Course entries (one source) + detail pages; added chart scale, light range, doubling the angle, danger angle, turn geometry | Fixed | course test |
+
+Page shells: all navigation pages use the Tools shell; Buoyage and Sound Signals data checked against
+IALA MBS and COLREG (no errors found), search also matches the displayed language.
+Dictionary: the English keys "Dip of the horizon", "Subtract the dip", "Variation (Var)", "Cb" were
+translated as if Turkish ("Bottom of the horizon", "Variation (Yes)"…) in all 24 languages; fixed with
+`terminology-completion.json`. "Dip" and "Var" alone are Turkish words too and are no longer used as labels.
+
 ## Lesson text: stability book (`src/pages/StabilityTopicsPage.tsx`)
 
 Reviewed with the terminology-reviewer agent (98 findings plus the first list).

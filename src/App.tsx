@@ -88,6 +88,7 @@ const SavedPage = lazyWithReload(() => import("./pages/SavedPage"));
 
 const StabilityFormulaDetailPage = lazyWithReload(() => import("./pages/StabilityFormulaDetail"));
 const NavigationFormulasPage = lazyWithReload(() => import("./pages/NavigationFormulas"));
+const NavigationFormulaDetailPage = lazyWithReload(() => import("./pages/NavigationFormulaDetail"));
 
 const DetailedMeteorology = lazyWithReload(() => import("./pages/DetailedMeteorology"));
 
@@ -457,6 +458,7 @@ const AnimatedRoutes = () => {
         <Route path="/navigation/buoyage" element={<PageTransition><BuoyagePage /></PageTransition>} />
         <Route path="/navigation/sound-signals" element={<PageTransition><SoundSignalsPage /></PageTransition>} />
         <Route path="/navigation/formulas" element={<PageTransition><NavigationFormulasPage /></PageTransition>} />
+        <Route path="/navigation/formulas/:id" element={<PageTransition><NavigationFormulaDetailPage /></PageTransition>} />
         <Route path="/navigation/rules" element={<Navigate to="/lessons/navigation/topics" replace />} />
 
         <Route path="/navigation/meteorology" element={<PageTransition><DetailedMeteorology /></PageTransition>} />

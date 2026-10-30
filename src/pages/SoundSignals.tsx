@@ -1,7 +1,10 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Search, Volume2, X } from "lucide-react";
+import { Megaphone, Search, Volume2, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
+import { useLanguage } from "@/contexts/useLanguage";
+import { getStaticTranslation } from "@/utils/staticTranslations";
 import SignalTonePlayer from "@/components/audio/SignalTonePlayer";
 import { blastPattern } from "@/components/audio/signalTones";
 import {
@@ -13,11 +16,12 @@ import {
 
 const norm = (s: string) =>
   s
-    .toLocaleLowerCase("tr")
+    .toLowerCase()
+    .replace(/ı/g, "i")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 
-/** Kalıbı ● (kısa) ve ▬ (uzun) sembolleriyle gösterir. */
+/** Shows the pattern as short (●) and prolonged (▬) blasts. */
 function PatternGlyphs({ pattern }: { pattern: string }) {
   if (!pattern) return null;
   return (
@@ -75,22 +79,22 @@ function SoundRow({ signal }: { signal: SoundSignal }) {
 }
 
 /**
- * COLREG ses işaretleri referansı. Her kalıp Web Audio ile sentezlenmiş gemi
- * düdüğü tonuyla, Kural 32'deki gerçek süreleriyle (kısa ≈1 sn, uzun 4-6 sn)
- * çalınabilir — böylece "1 long + 2 short" ezber değil, tanınan bir ritim olur.
+ * COLREG sound signals. Each pattern can be played as a synthesised whistle
+ * with the Rule 32 durations (short about 1 s, prolonged 4–6 s).
  */
 export default function SoundSignalsPage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
+  const { currentLanguage } = useLanguage();
 
   const q = norm(query.trim());
 
   const grouped = useMemo(() => {
     const matches = SOUND_SIGNALS.filter((signal) => {
       if (!q) return true;
-      const haystack = norm(
-        [signal.title, signal.readable, signal.meaning, signal.rule, signal.note ?? ""].join(" "),
-      );
+      const texts = [signal.title, signal.readable, signal.meaning, signal.rule, signal.note ?? ""];
+      // Search the source text and the text shown in the current language.
+      const haystack = norm(texts.flatMap((t) => [t, getStaticTranslation(t, currentLanguage) ?? ""]).join(" "));
       return haystack.includes(q);
     });
 
@@ -99,33 +103,24 @@ export default function SoundSignalsPage() {
       label: SOUND_GROUP_LABELS[group],
       signals: matches.filter((signal) => signal.group === group),
     })).filter((section) => section.signals.length > 0);
-  }, [q]);
+  }, [q, currentLanguage]);
 
   const totalMatches = grouped.reduce((n, section) => n + section.signals.length, 0);
 
   return (
-    <div className="min-h-screen px-4 py-4 md:px-8 md:py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-2 flex items-center gap-2">
-          <Volume2 className="h-7 w-7 text-amber-500" />
-          <h1 className="text-3xl font-bold md:text-4xl">Sound Signals</h1>
-        </div>
-
-        <div className="mb-5 rounded-xl border border-border/50 bg-muted/20 p-3">
-          <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Rule 32:</span>{" "}
-            <span>A short blast lasts about 1 second; a prolonged blast lasts 4 to 6 seconds.</span>
-          </p>
-          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-foreground">Rule 33:</span>{" "}
-            <span>
-              Vessels of 12 m or more carry a whistle, vessels of 20 m or more also a bell, and vessels of 100 m or more in addition a gong. Vessels under 12 m need not carry these appliances but must have some other means of making an efficient sound signal; in restricted visibility they give it at intervals of not more than 2 minutes (Rule 35(j)).
-            </span>
-          </p>
-        </div>
-
-        {/* Search */}
-        <div className="relative mb-5">
+    <ToolPage title="Sound Signals" icon={Megaphone}>
+      <ToolSection title="Whistle, bell and gong" icon={Volume2}>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          <span className="font-semibold text-foreground">Rule 32:</span>{" "}
+          <span>A short blast lasts about 1 second; a prolonged blast lasts 4 to 6 seconds.</span>
+        </p>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          <span className="font-semibold text-foreground">Rule 33:</span>{" "}
+          <span>
+            Vessels of 12 m or more carry a whistle, vessels of 20 m or more also a bell, and vessels of 100 m or more in addition a gong. Vessels under 12 m need not carry these appliances but must have some other means of making an efficient sound signal; in restricted visibility they give it at intervals of not more than 2 minutes (Rule 35(j)).
+          </span>
+        </p>
+        <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
@@ -145,38 +140,21 @@ export default function SoundSignalsPage() {
             </button>
           )}
         </div>
+      </ToolSection>
 
-        {totalMatches === 0 ? (
-          <div className="rounded-2xl border border-border/50 bg-card/60 px-4 py-10 text-center">
-            <p className="text-sm font-medium text-foreground">No results found</p>
-            <p className="mt-1 text-xs text-muted-foreground">Try a different search term.</p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {grouped.map(({ group, label, signals }) => (
-              <section
-                key={group}
-                className="overflow-hidden rounded-2xl border border-border/50 bg-card/60"
-              >
-                <div className="border-b border-border/40 bg-muted/30 px-4 py-3">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <h2 className="text-base font-semibold text-foreground">{label.title}</h2>
-                    <span translate="no" className="notranslate shrink-0 text-micro text-muted-foreground">
-                      {signals.length}
-                    </span>
-                  </div>
-                </div>
-
-                <div>
-                  {signals.map((signal) => (
-                    <SoundRow key={signal.id} signal={signal} />
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
+      {totalMatches === 0 ? (
+        <ToolNotice>No signals match this search. Try a different term.</ToolNotice>
+      ) : (
+        grouped.map(({ group, label, signals }) => (
+          <ToolSection key={group} title={label.title} description={label.description} icon={Megaphone}>
+            <div className="-mx-4 border-t border-border/30">
+              {signals.map((signal) => (
+                <SoundRow key={signal.id} signal={signal} />
+              ))}
+            </div>
+          </ToolSection>
+        ))
+      )}
+    </ToolPage>
   );
 }

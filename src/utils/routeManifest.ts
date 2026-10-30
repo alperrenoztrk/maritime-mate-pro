@@ -35,7 +35,7 @@ const BRIDGE_DEVICE_IDS = ['radar', 'gps', 'ecdis', 'gyro-compass'];
 const SHIP_SYSTEM_SECTIONS = ['engine-room', 'deck', 'navigation-bridge'];
 const REGULATION_SLUGS = ['solas', 'marpol', 'stcw', 'colreg'];
 const STABILITY_FORMULA_IDS = ['gm', 'gz', 'bm'];
-const NAVIGATION_CALC_IDS = ['great-circle', 'rhumb-line', 'mercator'];
+const NAVIGATION_CALC_IDS = ['gc', 'rhumb', 'tides'];
 const SEAMANSHIP_CALC_TOOLS = ['rope-load', 'anchor-holding', 'turning-circle'];
 const CALCULATION_SECTION_SAMPLES: Array<[string, string]> = [
   ['stability', 'gm'],

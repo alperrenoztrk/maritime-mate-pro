@@ -4,35 +4,37 @@
 import { getSunAriesAlmanac2025Utc } from "@/utils/nauticalAlmanac2025";
 
 export type CurrentTriangleInput = {
-  courseDeg: number; // Intended track/course over ground to maintain (degrees)
+  courseDeg: number; // Intended track (course over ground) to make good (degrees true)
   speedKn: number;   // Ship speed through water (knots)
-  setDeg: number;    // Current direction towards which it flows (degrees)
+  setDeg: number;    // Direction towards which the current flows (degrees true)
   driftKn: number;   // Current rate (knots)
-  leewayDeg?: number; // Optional leeway correction (degrees)
+  leewayDeg?: number; // Leeway angle, + when the wind pushes the ship to starboard (wind on the port side)
 };
 
 export type CurrentTriangleResult = {
-  courseToSteerDeg: number; // Heading to steer to make good the intended track
-  madeGoodCourseDeg: number; // Resulting course made good (should equal intended if solvable)
-  groundSpeedKn: number; // Speed made good over ground
-  driftAngleDeg: number; // Difference between CMG and original intended course
-  feasible: boolean;     // Whether track is attainable given ship speed vs current
+  courseToSteerDeg: number; // Heading to steer (water track corrected for leeway)
+  waterTrackDeg: number;    // Course through the water needed to make good the track
+  madeGoodCourseDeg: number; // Course made good over ground
+  groundSpeedKn: number;    // Speed made good along the intended track
+  correctionDeg: number;    // Heading − track, −180…+180 (+ = heading to starboard of the track)
+  feasible: boolean;        // False when the current is too strong to hold the track
 };
 
 export type ARPAInput = {
-  targetBearingDeg: number; // Relative bearing of target from own ship (deg)
+  targetBearingDeg: number; // True bearing of the target from own ship (deg)
   targetDistanceNm: number; // Range to target (nm)
-  targetCourseDeg: number;  // Target course (deg)
+  targetCourseDeg: number;  // Target true course (deg)
   targetSpeedKn: number;    // Target speed (kn)
-  ownCourseDeg?: number;    // Own ship course (deg) (optional)
-  ownSpeedKn?: number;      // Own ship speed (kn) (optional)
+  ownCourseDeg?: number;    // Own ship true course (deg)
+  ownSpeedKn?: number;      // Own ship speed (kn)
 };
 
 export type ARPAResult = {
-  cpaNm: number;      // Closest Point of Approach distance (nm)
-  tcpaMin: number;    // Time to CPA (minutes)
-  relativeSpeedKn: number; // Relative speed magnitude (kn)
-  relativeBearingDeg: number; // Bearing of relative motion vector (deg)
+  cpaNm: number;      // Closest point of approach (nm); when opening, the CPA that has already passed
+  tcpaMin: number;    // Time to CPA (minutes); negative when the CPA has passed
+  opening: boolean;   // True when the range is already increasing
+  relativeSpeedKn: number; // Relative speed (kn)
+  relativeBearingDeg: number; // Direction of relative motion (deg true)
 };
 
 export type PlaneSailingInput = {
@@ -43,10 +45,10 @@ export type PlaneSailingInput = {
 };
 
 export type PlaneSailingResult = {
-  dLatMin: number;    // Difference of latitude in minutes
-  depMin: number;     // Departure in minutes
-  courseDeg: number;  // Course angle
-  distanceNm: number; // Distance in nautical miles
+  dLatMin: number;    // Difference of latitude (minutes, + north)
+  depMin: number;     // Departure (nm, + east)
+  courseDeg: number;  // True course
+  distanceNm: number; // Distance (nm)
 };
 
 export type SightReductionInput = {
@@ -60,31 +62,26 @@ export type SightReductionResult = {
   azimuthDeg: number; // True azimuth Zn (000–360°)
 };
 
-export type BearingCalculationInput = {
-  initialBearingDeg: number;
-  runNm: number;      // Distance run
-  bearingFactor: number; // 2 for doubling angle, etc.
-};
-
 export type BearingCalculationResult = {
-  distanceOffNm: number;
+  distanceAtSecondBearingNm: number; // Distance off at the time of the second bearing
+  distanceAbeamNm: number;           // Predicted distance off when abeam (course and speed unchanged)
 };
 
 export type TideInput = {
-  hour: number;        // Hour from LW/HW boundary (1..6)
-  tidalRangeM: number; // Tidal range in meters
-  phase?: 'rising' | 'falling'; // Optional: default rising
+  hour: number;        // Hours after low water (rising) or high water (falling), 0…6
+  tidalRangeM: number; // Range of the tide (m)
+  phase?: 'rising' | 'falling';
 };
 
 export type TideResult = {
-  heightM: number;        // Tidal height change from the boundary (m)
-  fractionOfRange: number; // Fraction of total range completed (0..1)
+  heightM: number;        // Height above the starting low (rising) or below the starting high (falling) water, as a change from LW (m)
+  fractionOfRange: number; // Fraction of the range above low water (0…1)
 };
 
 export type DistanceCalculationInput = {
-  heightM: number;    // Height of eye or object in meters
-  type: 'dip' | 'radar' | 'light';
-  lightHeightM?: number; // For light visibility
+  heightM: number;    // Height of eye or radar aerial (m)
+  type: 'horizon' | 'radar' | 'light';
+  lightHeightM?: number; // Elevation of the light (m) for the geographical range
 };
 
 export type DistanceCalculationResult = {
@@ -95,56 +92,17 @@ export type TurningCalculationInput = {
   shipLengthM: number;
   courseChangeDeg: number;
   speedKn: number;
+  tacticalDiameterM?: number; // From the ship's manoeuvring data; if absent 3.5 × L is used as a rough estimate
 };
 
 export type TurningCalculationResult = {
   tacticalDiameterM: number;
-  advanceM: number;
-  transferM: number;
+  tacticalDiameterEstimated: boolean;
+  radiusM: number;
+  advanceM: number;   // Along the original course, from the start of the turn (circular arc)
+  transferM: number;  // Perpendicular to the original course (circular arc)
   rotDegPerMin: number;
-  wheelOverPointM: number;
-};
-
-export type WeatherCalculationInput = {
-  beaufortNumber?: number;
-  windSpeedKn?: number;
-  windAreaM2?: number;
-  shipSpeedKn?: number;
-};
-
-export type WeatherCalculationResult = {
-  windSpeedKn?: number;
-  waveHeightM?: number;
-  leewayAngleDeg?: number;
-  windForceN?: number;
-};
-
-export type CelestialInput = {
-  latDeg: number;
-  decDeg: number;
-  type: 'meridian' | 'amplitude' | 'sunrise';
-};
-
-export type CelestialResult = {
-  latitudeDeg?: number;
-  amplitudeDeg?: number;
-  bearingDeg?: number;
-};
-
-export type EmergencyInput = {
-  searchType: 'square' | 'sector';
-  trackSpacingNm?: number;
-  initialRadiusNm?: number;
-  driftSpeedKn?: number;
-  rescueSpeedKn?: number;
-  distanceNm?: number;
-};
-
-export type EmergencyResult = {
-  legDistanceNm?: number;
-  newRadiusNm?: number;
-  timeToRescueHours?: number;
-  vhfRangeNm?: number;
+  wheelOverDistanceM: number; // From the intersection of the two course lines: R·tan(Δ/2)
 };
 
 const toRadians = (deg: number) => (deg * Math.PI) / 180;
@@ -152,6 +110,16 @@ const toDegrees = (rad: number) => (rad * 180) / Math.PI;
 const normalizeAngle = (deg: number) => {
   const x = deg % 360;
   return x < 0 ? x + 360 : x;
+};
+/** Angle in −180…+180. */
+export const signedAngle = (deg: number) => {
+  const x = normalizeAngle(deg);
+  return x > 180 ? x - 360 : x;
+};
+/** Longitude in −180…+180 (east positive). */
+export const normalizeLongitude = (deg: number) => {
+  const x = signedAngle(deg);
+  return x === -180 ? 180 : x;
 };
 
 export function calculateEtaHours(distanceNm: number, speedKn: number): number {
@@ -161,23 +129,20 @@ export function calculateEtaHours(distanceNm: number, speedKn: number): number {
   return distanceNm / speedKn;
 }
 
-export function calculateCompassTotalError(
-  variationDeg: number = 0,
-  deviationDeg: number = 0,
-  gyroErrorDeg: number = 0
-): { totalErrorDeg: number } {
-  // Compass error calculation: Ct = Cc + Var + Dev
-  // East is positive (+), West is negative (-)
-  // The function assumes input values already have correct signs
-  const totalErrorDeg = (variationDeg || 0) + (deviationDeg || 0) + (gyroErrorDeg || 0);
-  return { totalErrorDeg };
+/** Gyro to true: True = gyro reading + gyro error (error east +, west −). */
+export function gyroToTrue(gyroDeg: number, gyroErrorDeg: number): number {
+  return normalizeAngle(gyroDeg + gyroErrorDeg);
 }
 
+/**
+ * Course to steer to make good a track against a current (and leeway).
+ * Water track h solves sin(h − D) = c·sin(D − set)/V; heading = h − leeway.
+ */
 export function solveCurrentTriangle(input: CurrentTriangleInput): CurrentTriangleResult {
   const { courseDeg, speedKn, setDeg, driftKn } = input;
   const leewayDeg = input.leewayDeg ?? 0;
 
-  if (!(isFinite(courseDeg) && isFinite(speedKn) && isFinite(setDeg) && isFinite(driftKn))) {
+  if (!(isFinite(courseDeg) && isFinite(speedKn) && isFinite(setDeg) && isFinite(driftKn) && isFinite(leewayDeg))) {
     throw new Error("Invalid inputs for current triangle");
   }
   if (speedKn <= 0) {
@@ -186,41 +151,30 @@ export function solveCurrentTriangle(input: CurrentTriangleInput): CurrentTriang
 
   const desiredDeg = normalizeAngle(courseDeg);
   const desiredRad = toRadians(desiredDeg);
-
   const Cx = driftKn * Math.sin(toRadians(setDeg));
   const Cy = driftKn * Math.cos(toRadians(setDeg));
 
-  // Solve sin(h - D) = (Cy*sinD - Cx*cosD) / V
-  const sinD = Math.sin(desiredRad);
-  const cosD = Math.cos(desiredRad);
-  const rhs = (Cy * sinD - Cx * cosD) / speedKn; // = drift*sin(D - set)/V
-
-  const feasible = Math.abs(rhs) <= 1;
+  const rhs = (driftKn * Math.sin(toRadians(desiredDeg - setDeg))) / speedKn;
   const clamped = Math.max(-1, Math.min(1, rhs));
-  const headingRad = desiredRad + Math.asin(clamped);
-  const headingDeg = normalizeAngle(toDegrees(headingRad) + leewayDeg);
+  const waterTrackDeg = normalizeAngle(desiredDeg + toDegrees(Math.asin(clamped)));
+  const headingDeg = normalizeAngle(waterTrackDeg - leewayDeg);
 
-  // Ground speed along desired track
-  const dirX = Math.sin(desiredRad);
-  const dirY = Math.cos(desiredRad);
-  const vShipX = speedKn * Math.sin(toRadians(headingDeg));
-  const vShipY = speedKn * Math.cos(toRadians(headingDeg));
-  const groundX = vShipX + Cx;
-  const groundY = vShipY + Cy;
-  const groundSpeed = groundX * dirX + groundY * dirY; // projection on desired
-
+  const groundX = speedKn * Math.sin(toRadians(waterTrackDeg)) + Cx;
+  const groundY = speedKn * Math.cos(toRadians(waterTrackDeg)) + Cy;
+  const groundSpeed = groundX * Math.sin(desiredRad) + groundY * Math.cos(desiredRad);
   const madeGoodCourseDeg = normalizeAngle(toDegrees(Math.atan2(groundX, groundY)));
-  const driftAngleDeg = normalizeAngle(madeGoodCourseDeg - courseDeg);
 
   return {
     courseToSteerDeg: headingDeg,
+    waterTrackDeg,
     madeGoodCourseDeg,
     groundSpeedKn: groundSpeed,
-    driftAngleDeg,
-    feasible,
+    correctionDeg: signedAngle(headingDeg - desiredDeg),
+    feasible: Math.abs(rhs) <= 1 && groundSpeed > 0,
   };
 }
 
+/** CPA/TCPA from the relative motion: TCPA = −(R₀·Vr)/|Vr|². Bearings and courses are true. */
 export function computeArpaCpaTcpa(input: ARPAInput): ARPAResult {
   const {
     targetBearingDeg,
@@ -242,37 +196,53 @@ export function computeArpaCpaTcpa(input: ARPAInput): ARPAResult {
   const R0x = targetDistanceNm * Math.sin(toRadians(targetBearingDeg));
   const R0y = targetDistanceNm * Math.cos(toRadians(targetBearingDeg));
 
-  // Velocities in kn (nm/h)
-  const Vtx = targetSpeedKn * Math.sin(toRadians(targetCourseDeg));
-  const Vty = targetSpeedKn * Math.cos(toRadians(targetCourseDeg));
-  const Vox = ownSpeedKn * Math.sin(toRadians(ownCourseDeg));
-  const Voy = ownSpeedKn * Math.cos(toRadians(ownCourseDeg));
-
-  const Vrx = Vtx - Vox;
-  const Vry = Vty - Voy;
+  const Vrx = targetSpeedKn * Math.sin(toRadians(targetCourseDeg)) - ownSpeedKn * Math.sin(toRadians(ownCourseDeg));
+  const Vry = targetSpeedKn * Math.cos(toRadians(targetCourseDeg)) - ownSpeedKn * Math.cos(toRadians(ownCourseDeg));
   const Vr2 = Vrx * Vrx + Vry * Vry;
   const relativeSpeedKn = Math.sqrt(Vr2);
   const relativeBearingDeg = normalizeAngle(toDegrees(Math.atan2(Vrx, Vry)));
 
-  let tcpaHours = 0;
-  if (Vr2 > 1e-9) {
-    tcpaHours = -((R0x * Vrx + R0y * Vry) / Vr2);
-  } else {
-    tcpaHours = 0; // Near zero relative speed
-  }
-  if (tcpaHours < 0) tcpaHours = 0; // CPA in the past -> use now
-
+  // No relative motion: the range stays as it is.
+  const tcpaHours = Vr2 > 1e-9 ? -((R0x * Vrx + R0y * Vry) / Vr2) : 0;
   const cpaX = R0x + Vrx * tcpaHours;
   const cpaY = R0y + Vry * tcpaHours;
-  const cpaNm = Math.sqrt(cpaX * cpaX + cpaY * cpaY);
-  const tcpaMin = tcpaHours * 60;
 
-  return { cpaNm, tcpaMin, relativeSpeedKn, relativeBearingDeg };
+  return {
+    cpaNm: Math.hypot(cpaX, cpaY),
+    tcpaMin: tcpaHours * 60,
+    opening: tcpaHours < 0,
+    relativeSpeedKn,
+    relativeBearingDeg,
+  };
 }
 
-// Great Circle calculations (comprehensive version with arrival bearing and vertex)
+export type GreatCircleVertex = {
+  latDeg: number;
+  lonDeg: number;
+  /** True when the vertex lies between the departure and the destination. */
+  onRoute: boolean;
+};
+
+const toVector = (latDeg: number, lonDeg: number) => {
+  const lat = toRadians(latDeg);
+  const lon = toRadians(lonDeg);
+  return { x: Math.cos(lat) * Math.cos(lon), y: Math.cos(lat) * Math.sin(lon), z: Math.sin(lat) };
+};
+
+const initialCourseDeg = (lat1Deg: number, lon1Deg: number, lat2Deg: number, lon2Deg: number) => {
+  const lat1 = toRadians(lat1Deg);
+  const lat2 = toRadians(lat2Deg);
+  const dLon = toRadians(lon2Deg - lon1Deg);
+  const y = Math.sin(dLon) * Math.cos(lat2);
+  const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+  return normalizeAngle(toDegrees(Math.atan2(y, x)));
+};
+
+/**
+ * Great circle on the sphere (R = 3440.065 nm): haversine distance, initial and final course,
+ * and the vertex towards which the ship is heading (cos φv = cos φ₁ · |sin C|).
+ */
 export function calculateGreatCircle(lat1Deg: number, lon1Deg: number, lat2Deg: number, lon2Deg: number) {
-  // Input validation
   if (!isFinite(lat1Deg) || !isFinite(lon1Deg) || !isFinite(lat2Deg) || !isFinite(lon2Deg)) {
     throw new Error("Invalid coordinates");
   }
@@ -283,50 +253,55 @@ export function calculateGreatCircle(lat1Deg: number, lon1Deg: number, lat2Deg: 
     throw new Error("Longitude must be between -180° and +180°");
   }
 
-  const R = 3440.065; // nautical miles (Earth radius)
+  const R = 3440.065; // nautical miles (mean Earth radius)
   const lat1Rad = toRadians(lat1Deg);
   const lat2Rad = toRadians(lat2Deg);
   const deltaLatRad = toRadians(lat2Deg - lat1Deg);
   const deltaLonRad = toRadians(lon2Deg - lon1Deg);
 
-  // Haversine formula for distance
-  const a = Math.sin(deltaLatRad/2) * Math.sin(deltaLatRad/2) + 
-            Math.cos(lat1Rad) * Math.cos(lat2Rad) * 
-            Math.sin(deltaLonRad/2) * Math.sin(deltaLonRad/2);
-  const c = 2 * Math.asin(Math.sqrt(a));
+  const a = Math.sin(deltaLatRad / 2) ** 2 + Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(deltaLonRad / 2) ** 2;
+  const c = 2 * Math.asin(Math.min(1, Math.sqrt(a)));
   const distance = R * c;
 
-  // Initial bearing (forward azimuth)
-  const y = Math.sin(deltaLonRad) * Math.cos(lat2Rad);
-  const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - 
-            Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(deltaLonRad);
-  const initialCourse = normalizeAngle(toDegrees(Math.atan2(y, x)));
+  const initialCourse = initialCourseDeg(lat1Deg, lon1Deg, lat2Deg, lon2Deg);
+  // Final course = course on arrival = reverse of the initial course from the destination back to the start.
+  const finalCourse = normalizeAngle(initialCourseDeg(lat2Deg, lon2Deg, lat1Deg, lon1Deg) + 180);
 
-  // Final bearing (arrival/back azimuth)
-  const y2 = Math.sin(-deltaLonRad) * Math.cos(lat1Rad);
-  const x2 = Math.cos(lat2Rad) * Math.sin(lat1Rad) - 
-             Math.sin(lat2Rad) * Math.cos(lat1Rad) * Math.cos(-deltaLonRad);
-  const finalCourse = normalizeAngle(toDegrees(Math.atan2(y2, x2)));
-
-  // Vertex (maximum latitude point on great circle)
-  let vertexLat = 0;
-  let hasVertex = false;
-  
-  // Vertex only exists if initial course is not due N/S (between 0-180°)
-  if (initialCourse > 0 && initialCourse < 180) {
-    const sinVertexLat = Math.cos(lat1Rad) * Math.sin(toRadians(initialCourse));
-    if (Math.abs(sinVertexLat) <= 1) {
-      vertexLat = toDegrees(Math.asin(sinVertexLat));
-      hasVertex = true;
-    }
+  // Vertex: on the circle with unit normal n the highest latitude has cos φv = |n_z|.
+  let vertex: GreatCircleVertex | null = null;
+  const v1 = toVector(lat1Deg, lon1Deg);
+  const v2 = toVector(lat2Deg, lon2Deg);
+  const nx = v1.y * v2.z - v1.z * v2.y;
+  const ny = v1.z * v2.x - v1.x * v2.z;
+  const nz = v1.x * v2.y - v1.y * v2.x;
+  const nLen = Math.hypot(nx, ny, nz);
+  if (nLen > 1e-12 && Math.abs(nz / nLen) < 1 - 1e-12) {
+    const n = { x: nx / nLen, y: ny / nLen, z: nz / nLen };
+    // Northern vertex: z-axis projected onto the plane of the circle.
+    const px = -n.z * n.x;
+    const py = -n.z * n.y;
+    const pz = 1 - n.z * n.z;
+    const pLen = Math.hypot(px, py, pz);
+    // Heading north (initial course in the northern half) → northern vertex ahead; else southern.
+    const north = Math.cos(toRadians(initialCourse)) >= 0;
+    const s = north ? 1 : -1;
+    const vx = (s * px) / pLen;
+    const vy = (s * py) / pLen;
+    const vz = (s * pz) / pLen;
+    const angle = (u: { x: number; y: number; z: number }, w: { x: number; y: number; z: number }) =>
+      Math.acos(Math.max(-1, Math.min(1, u.x * w.x + u.y * w.y + u.z * w.z)));
+    const vv = { x: vx, y: vy, z: vz };
+    const onRoute = Math.abs(angle(v1, vv) + angle(vv, v2) - c) < 1e-9;
+    vertex = { latDeg: toDegrees(Math.asin(vz)), lonDeg: toDegrees(Math.atan2(vy, vx)), onRoute };
   }
 
-  return { 
-    distance, 
-    initialCourse, 
+  return {
+    distance,
+    initialCourse,
     finalCourse,
-    vertexLat: hasVertex ? vertexLat : null,
-    distanceDeg: toDegrees(c) // Distance in degrees for reference
+    vertex,
+    vertexLat: vertex ? vertex.latDeg : null,
+    distanceDeg: toDegrees(c),
   };
 }
 
@@ -346,22 +321,8 @@ export function generateGreatCircleWaypoints(input: GreatCircleWaypointInput): L
   const dist = calculateGreatCircle(start.latDeg, start.lonDeg, end.latDeg, end.lonDeg).distance;
   const seg = input.segments && input.segments > 0 ? Math.floor(input.segments) : input.stepNm && input.stepNm > 0 ? Math.max(1, Math.round(dist / input.stepNm)) : 10;
 
-  const lat1 = toRadians(start.latDeg);
-  const lon1 = toRadians(start.lonDeg);
-  const lat2 = toRadians(end.latDeg);
-  const lon2 = toRadians(end.lonDeg);
-
-  // Convert to unit vectors.
-  const v1 = {
-    x: Math.cos(lat1) * Math.cos(lon1),
-    y: Math.cos(lat1) * Math.sin(lon1),
-    z: Math.sin(lat1),
-  };
-  const v2 = {
-    x: Math.cos(lat2) * Math.cos(lon2),
-    y: Math.cos(lat2) * Math.sin(lon2),
-    z: Math.sin(lat2),
-  };
+  const v1 = toVector(start.latDeg, start.lonDeg);
+  const v2 = toVector(end.latDeg, end.lonDeg);
   const dot = Math.max(-1, Math.min(1, v1.x * v2.x + v1.y * v2.y + v1.z * v2.z));
   const omega = Math.acos(dot);
   if (!isFinite(omega) || omega < 1e-12) return [start, end];
@@ -375,62 +336,70 @@ export function generateGreatCircleWaypoints(input: GreatCircleWaypointInput): L
     const x = k1 * v1.x + k2 * v2.x;
     const y = k1 * v1.y + k2 * v2.y;
     const z = k1 * v1.z + k2 * v2.z;
-    const lat = Math.atan2(z, Math.hypot(x, y));
-    const lon = Math.atan2(y, x);
-    waypoints.push({ latDeg: toDegrees(lat), lonDeg: toDegrees(lon) });
+    waypoints.push({ latDeg: toDegrees(Math.atan2(z, Math.hypot(x, y))), lonDeg: toDegrees(Math.atan2(y, x)) });
   }
   return waypoints;
 }
 
-// Rhumb Line calculations (matching formula exactly)
-export function calculateRhumbLine(lat1Deg: number, lon1Deg: number, lat2Deg: number, lon2Deg: number) {
-  const lat1Rad = toRadians(lat1Deg);
-  const lat2Rad = toRadians(lat2Deg);
-  const deltaLatRad = lat2Rad - lat1Rad;
-  let deltaLonRad = toRadians(lon2Deg - lon1Deg);
+/** WGS 84 first eccentricity. */
+const WGS84_E = 0.0818191908426;
 
-  if (Math.abs(deltaLonRad) > Math.PI) {
-    deltaLonRad = deltaLonRad > 0 ? -(2*Math.PI-deltaLonRad) : (2*Math.PI+deltaLonRad);
-  }
-
-  // Δψ = izometrik (genişletilmiş) enlem farkı; q = Δφ/Δψ doğu-batı ölçek oranı.
-  // Δφ → 0 iken q → cos φ̄ olduğundan dejenere durumda orta enlemin kosinüsü kullanılır.
-  const deltaPsi = Math.log(Math.tan(Math.PI/4 + lat2Rad/2) / Math.tan(Math.PI/4 + lat1Rad/2));
-  const q = Math.abs(deltaLatRad) > 1e-12 ? deltaLatRad / deltaPsi : Math.cos((lat1Rad + lat2Rad) / 2);
-
-  const distance = 60 * Math.sqrt(Math.pow(toDegrees(deltaLatRad), 2) + Math.pow(q * toDegrees(deltaLonRad), 2));
-  const course = normalizeAngle(toDegrees(Math.atan2(deltaLonRad, deltaPsi)));
-
-  return { distance, course };
+/** Meridional parts (minutes of arc) on the WGS 84 ellipsoid. */
+export function meridionalParts(latDeg: number): number {
+  if (!isFinite(latDeg) || Math.abs(latDeg) >= 90) throw new Error("Latitude must be between -90° and +90°");
+  const phi = toRadians(latDeg);
+  const es = WGS84_E * Math.sin(phi);
+  const psi = Math.log(Math.tan(Math.PI / 4 + phi / 2) * Math.pow((1 - es) / (1 + es), WGS84_E / 2));
+  return (10800 / Math.PI) * psi;
 }
 
-// Plane Sailing calculations
-export function calculatePlaneSailing(input: PlaneSailingInput): PlaneSailingResult {
-  const { lat1Deg, lon1Deg, lat2Deg, lon2Deg } = input;
-  
+/**
+ * Mercator sailing (rhumb line): tan C = d.long / DMP, distance = d.lat / cos C
+ * (d.long · cos φ when sailing east–west). Meridional parts on the WGS 84 ellipsoid.
+ */
+export function calculateRhumbLine(lat1Deg: number, lon1Deg: number, lat2Deg: number, lon2Deg: number) {
   const dLatMin = 60 * (lat2Deg - lat1Deg);
-  const meanLatRad = toRadians((lat1Deg + lat2Deg) / 2);
-  const depMin = 60 * (lon2Deg - lon1Deg) * Math.cos(meanLatRad);
-  
-  const courseDeg = normalizeAngle(toDegrees(Math.atan2(depMin, dLatMin)));
-  const distanceNm = Math.sqrt(dLatMin * dLatMin + depMin * depMin);
+  const dLongMin = 60 * signedAngle(lon2Deg - lon1Deg);
+  const dmp = meridionalParts(lat2Deg) - meridionalParts(lat1Deg);
+  const course = normalizeAngle(toDegrees(Math.atan2(dLongMin, dmp)));
+  const distance =
+    Math.abs(dLatMin) > 1e-9
+      ? Math.abs(dLatMin / Math.cos(toRadians(course)))
+      : Math.abs(dLongMin * Math.cos(toRadians(lat1Deg)));
+  return { distance, course, dLatMin, dLongMin, dmp };
+}
 
-  return { dLatMin, depMin, courseDeg, distanceNm };
+/** Plane sailing: d.lat = D·cos C, departure = D·sin C. */
+export function planeSailingFromCourse(courseDeg: number, distanceNm: number) {
+  if (!isFinite(courseDeg) || !isFinite(distanceNm) || distanceNm < 0) throw new Error("Invalid course or distance");
+  return {
+    dLatMin: distanceNm * Math.cos(toRadians(courseDeg)),
+    depMin: distanceNm * Math.sin(toRadians(courseDeg)),
+  };
+}
+
+/** Plane sailing: tan C = departure / d.lat, D = √(d.lat² + dep²). */
+export function planeSailingFromDLatDep(dLatMin: number, depMin: number) {
+  if (!isFinite(dLatMin) || !isFinite(depMin)) throw new Error("Invalid d.lat or departure");
+  return {
+    courseDeg: normalizeAngle(toDegrees(Math.atan2(depMin, dLatMin))),
+    distanceNm: Math.hypot(dLatMin, depMin),
+  };
 }
 
 // Sight Reduction calculations
 export function calculateSightReduction(input: SightReductionInput): SightReductionResult {
   const { latDeg, decDeg, lhaDeg } = input;
-  
+
   const latRad = toRadians(latDeg);
   const decRad = toRadians(decDeg);
   const lhaRad = toRadians(lhaDeg);
 
-  const sinHc = Math.sin(latRad) * Math.sin(decRad) + 
+  const sinHc = Math.sin(latRad) * Math.sin(decRad) +
                 Math.cos(latRad) * Math.cos(decRad) * Math.cos(lhaRad);
   const hcDeg = toDegrees(Math.asin(sinHc));
 
-  const cosZ = (Math.sin(decRad) - Math.sin(latRad) * Math.sin(toRadians(hcDeg))) / 
+  const cosZ = (Math.sin(decRad) - Math.sin(latRad) * Math.sin(toRadians(hcDeg))) /
                (Math.cos(latRad) * Math.cos(toRadians(hcDeg)));
   const zDeg = toDegrees(Math.acos(Math.max(-1, Math.min(1, cosZ))));
   const azimuthDeg = azimuthAngleToZn(zDeg, lhaDeg);
@@ -443,159 +412,160 @@ export function azimuthAngleToZn(zDeg: number, lhaDeg: number): number {
   return normalizeAngle(normalizeAngle(lhaDeg) > 180 ? zDeg : 360 - zDeg);
 }
 
-// Bearing calculations - Doubling the angle on bow
-export function calculateDoublingAngle(initialAngleDeg: number, runNm: number): BearingCalculationResult {
-  const finalAngleDeg = 2 * initialAngleDeg;
-  const distanceOffNm = runNm * Math.sin(toRadians(2 * initialAngleDeg)) / Math.sin(toRadians(finalAngleDeg));
-  return { distanceOffNm };
+/**
+ * Two bearings of the same object on the bow (relative angles θ₁ < θ₂, same side) and the run between them.
+ * Sine rule: distance at the second bearing = run · sin θ₁ / sin(θ₂ − θ₁);
+ * distance abeam = that distance · sin θ₂. Doubling the angle on the bow gives distance = run.
+ */
+export function calculateTwoBearingsOnBow(firstAngleDeg: number, secondAngleDeg: number, runNm: number): BearingCalculationResult {
+  if (![firstAngleDeg, secondAngleDeg, runNm].every(isFinite) || runNm <= 0) throw new Error("Invalid bearings or run");
+  if (firstAngleDeg <= 0 || secondAngleDeg >= 180 || secondAngleDeg <= firstAngleDeg) {
+    throw new Error("The second angle on the bow must be larger than the first (both between 0° and 180°)");
+  }
+  const distanceAtSecondBearingNm = (runNm * Math.sin(toRadians(firstAngleDeg))) / Math.sin(toRadians(secondAngleDeg - firstAngleDeg));
+  return {
+    distanceAtSecondBearingNm,
+    distanceAbeamNm: distanceAtSecondBearingNm * Math.sin(toRadians(secondAngleDeg)),
+  };
 }
 
-// Four point bearing (45° to 90° / Bow and Beam bearing)
-export function calculateFourPointBearing(runNm: number): BearingCalculationResult {
-  // From 45° (4 points) to 90° (8 points/abeam): distance off abeam = run
-  const distanceOffNm = runNm;
-  return { distanceOffNm };
-}
-
-// Special angle bearing (22.5° to 45°)
-export function calculateSevenPointBearing(runNm: number): BearingCalculationResult {
-  // From 22.5° (2 points) to 45° (4 points): distance = run * cos(22.5°) or approximately 0.707 * run
-  // Trigonometric: Using sine rule, distance off ≈ 0.707 * run
-  const distanceOffNm = runNm * 0.707;
-  return { distanceOffNm };
-}
-
-// Distance calculations
+/**
+ * Ranges with standard terrestrial refraction, heights in metres:
+ * horizon 2.08√h, radar horizon 2.23√h (effective Earth radius 4/3),
+ * geographical range of a light 2.08(√H + √h).
+ */
 export function calculateDistance(input: DistanceCalculationInput): DistanceCalculationResult {
   const { heightM, type, lightHeightM } = input;
-  
-  let distanceNm = 0;
-  
+  if (!isFinite(heightM) || heightM < 0) throw new Error("Height must be ≥ 0");
+
   switch (type) {
-    case 'dip':
-      distanceNm = 2.075 * Math.sqrt(heightM);
-      break;
+    case 'horizon':
+      return { distanceNm: 2.08 * Math.sqrt(heightM) };
     case 'radar':
-      distanceNm = 2.35 * Math.sqrt(heightM);
-      break;
+      return { distanceNm: 2.23 * Math.sqrt(heightM) };
     case 'light':
-      if (lightHeightM !== undefined) {
-        distanceNm = 1.17 * (Math.sqrt(heightM) + Math.sqrt(lightHeightM));
-      }
-      break;
+      if (lightHeightM === undefined || !isFinite(lightHeightM) || lightHeightM < 0) throw new Error("Light elevation must be ≥ 0");
+      return { distanceNm: 2.08 * (Math.sqrt(heightM) + Math.sqrt(lightHeightM)) };
   }
-  
-  return { distanceNm };
 }
 
-// Tide calculations - Rule of Twelfths
+/** Rule of twelfths: hours 0…6 after LW (rising) or HW (falling), interpolated between whole hours. */
 export function calculateTide(input: TideInput): TideResult {
   const { hour, tidalRangeM, phase = 'rising' } = input;
-  if (!isFinite(hour) || !isFinite(tidalRangeM) || hour < 0) {
-    return { heightM: 0, fractionOfRange: 0 };
+  if (!isFinite(hour) || !isFinite(tidalRangeM) || hour < 0 || hour > 6) {
+    throw new Error("Hour must be between 0 and 6");
   }
-  const h = Math.min(Math.max(Math.round(hour), 0), 6);
-  const twelfths = [0, 1, 3, 6, 9, 11, 12];
-  const tw = twelfths[h] / 12;
+  const tw = twelfthsFraction(hour / 6);
   const fractionOfRange = phase === 'rising' ? tw : 1 - tw;
-  const heightM = fractionOfRange * tidalRangeM;
-  return { heightM, fractionOfRange };
+  return { heightM: fractionOfRange * tidalRangeM, fractionOfRange };
 }
 
-// Turning calculations
+/**
+ * Turning on a circular arc of radius R = TD/2 (geometric model; the ship's own
+ * manoeuvring data take precedence): advance = R·sin Δ, transfer = R(1 − cos Δ),
+ * rate of turn = V/R (3437.75·V[m/s]/R[m] °/min), wheel-over before the
+ * intersection of the course lines = R·tan(Δ/2).
+ */
 export function calculateTurning(input: TurningCalculationInput): TurningCalculationResult {
   const { shipLengthM, courseChangeDeg, speedKn } = input;
-  
-  const tacticalDiameterM = 3.5 * shipLengthM; // Average 3-4 × L
+  if (!isFinite(courseChangeDeg) || courseChangeDeg <= 0 || courseChangeDeg >= 180) {
+    throw new Error("Alteration of course must be between 0° and 180°");
+  }
+  if (!isFinite(speedKn) || speedKn <= 0) throw new Error("Speed must be > 0");
+  const tacticalDiameterEstimated = !(input.tacticalDiameterM && input.tacticalDiameterM > 0);
+  if (tacticalDiameterEstimated && (!isFinite(shipLengthM) || shipLengthM <= 0)) throw new Error("Ship length must be > 0");
+  const tacticalDiameterM = tacticalDiameterEstimated ? 3.5 * shipLengthM : (input.tacticalDiameterM as number);
   const radiusM = tacticalDiameterM / 2;
-  
-  const courseChangeRad = toRadians(courseChangeDeg);
-  const advanceM = radiusM * Math.sin(courseChangeRad / 2);
-  const transferM = radiusM * (1 - Math.cos(courseChangeRad / 2));
-  
-  const rotDegPerMin = 3438 * (speedKn * 0.514444) / radiusM; // V in m/s, formula gives deg/min
-  const wheelOverPointM = advanceM / Math.sin(courseChangeRad / 2);
-  
-  return { tacticalDiameterM, advanceM, transferM, rotDegPerMin, wheelOverPointM };
+
+  const d = toRadians(courseChangeDeg);
+  return {
+    tacticalDiameterM,
+    tacticalDiameterEstimated,
+    radiusM,
+    advanceM: radiusM * Math.sin(d),
+    transferM: radiusM * (1 - Math.cos(d)),
+    rotDegPerMin: (toDegrees(1) * 60 * knotsToMs(speedKn)) / radiusM,
+    wheelOverDistanceM: radiusM * Math.tan(d / 2),
+  };
 }
 
-// Weather calculations
-export function calculateWeather(input: WeatherCalculationInput): WeatherCalculationResult {
-  const { beaufortNumber, windSpeedKn, windAreaM2, shipSpeedKn } = input;
-  
-  const result: WeatherCalculationResult = {};
-  
-  if (beaufortNumber !== undefined) {
-    result.windSpeedKn = 2 * Math.sqrt(Math.pow(beaufortNumber, 3));
-    result.waveHeightM = 0.025 * Math.pow(result.windSpeedKn, 2);
-  }
-  
-  if (windSpeedKn !== undefined && shipSpeedKn !== undefined) {
-    const k = 0.15; // leeway factor
-    result.leewayAngleDeg = k * Math.pow(windSpeedKn, 2) / Math.pow(shipSpeedKn, 2);
-  }
-  
-  if (windSpeedKn !== undefined && windAreaM2 !== undefined) {
-    result.windForceN = 0.00338 * Math.pow(windSpeedKn, 2) * windAreaM2;
-  }
-  
-  return result;
+export type BeaufortRow = {
+  force: number;
+  description: string;
+  meanKn: number | null;
+  minKn: number;
+  maxKn: number | null;
+  probableWaveM: number | null;
+  probableMaxWaveM: number | null;
+};
+
+/** Beaufort scale with probable wave heights for the open sea (Met Office / WMO). */
+export const BEAUFORT_TABLE: readonly BeaufortRow[] = [
+  { force: 0, description: "Calm", meanKn: 0, minKn: 0, maxKn: 1, probableWaveM: null, probableMaxWaveM: null },
+  { force: 1, description: "Light air", meanKn: 2, minKn: 1, maxKn: 3, probableWaveM: 0.1, probableMaxWaveM: 0.1 },
+  { force: 2, description: "Light breeze", meanKn: 5, minKn: 4, maxKn: 6, probableWaveM: 0.2, probableMaxWaveM: 0.3 },
+  { force: 3, description: "Gentle breeze", meanKn: 9, minKn: 7, maxKn: 10, probableWaveM: 0.6, probableMaxWaveM: 1.0 },
+  { force: 4, description: "Moderate breeze", meanKn: 13, minKn: 11, maxKn: 16, probableWaveM: 1.0, probableMaxWaveM: 1.5 },
+  { force: 5, description: "Fresh breeze", meanKn: 19, minKn: 17, maxKn: 21, probableWaveM: 2.0, probableMaxWaveM: 2.5 },
+  { force: 6, description: "Strong breeze", meanKn: 24, minKn: 22, maxKn: 27, probableWaveM: 3.0, probableMaxWaveM: 4.0 },
+  { force: 7, description: "Near gale", meanKn: 30, minKn: 28, maxKn: 33, probableWaveM: 4.0, probableMaxWaveM: 5.5 },
+  { force: 8, description: "Gale", meanKn: 37, minKn: 34, maxKn: 40, probableWaveM: 5.5, probableMaxWaveM: 7.5 },
+  { force: 9, description: "Strong gale", meanKn: 44, minKn: 41, maxKn: 47, probableWaveM: 7.0, probableMaxWaveM: 10.0 },
+  { force: 10, description: "Storm", meanKn: 52, minKn: 48, maxKn: 55, probableWaveM: 9.0, probableMaxWaveM: 12.5 },
+  { force: 11, description: "Violent storm", meanKn: 60, minKn: 56, maxKn: 63, probableWaveM: 11.5, probableMaxWaveM: 16.0 },
+  { force: 12, description: "Hurricane", meanKn: null, minKn: 64, maxKn: null, probableWaveM: 14, probableMaxWaveM: null },
+];
+
+/** Beaufort force for a mean wind speed in knots (limits as in the table; values between limits round to the nearest knot). */
+export function beaufortForKnots(speedKn: number): BeaufortRow {
+  if (!isFinite(speedKn) || speedKn < 0) throw new Error("Wind speed must be ≥ 0");
+  const kn = Math.round(speedKn);
+  if (kn < 1) return BEAUFORT_TABLE[0];
+  return BEAUFORT_TABLE.find((row) => row.force > 0 && kn >= row.minKn && (row.maxKn === null || kn <= row.maxKn)) ?? BEAUFORT_TABLE[12];
 }
 
-// Celestial calculations
-export function calculateCelestial(input: CelestialInput): CelestialResult {
-  const { latDeg, decDeg, type } = input;
-  
-  const result: CelestialResult = {};
-  
-  switch (type) {
-    case 'meridian':
-      // Latitude = 90° - zenith distance ± declination
-      result.latitudeDeg = 90 - Math.abs(latDeg - decDeg);
-      break;
-    case 'amplitude': {
-      // A = arcsin(sin δ / cos φ)
-      const latRad = toRadians(latDeg);
-      const decRad = toRadians(decDeg);
-      result.amplitudeDeg = toDegrees(Math.asin(Math.sin(decRad) / Math.cos(latRad)));
-      break;
-    }
-    case 'sunrise': {
-      // Bearing at sunrise/sunset
-      const latRad2 = toRadians(latDeg);
-      const decRad2 = toRadians(decDeg);
-      result.bearingDeg = normalizeAngle(toDegrees(Math.acos(-Math.tan(latRad2) * Math.tan(decRad2))));
-      break;
-    }
-  }
-  
-  return result;
+/** Latitude by meridian altitude: φ = ZD ± δ, ZD = 90° − Ho named opposite to the body's bearing. */
+export function latitudeByMeridianAltitude(hoDeg: number, decDeg: number, bodyBears: "N" | "S"): number {
+  if (!isFinite(hoDeg) || hoDeg <= 0 || hoDeg > 90) throw new Error("Observed altitude must be between 0° and 90°");
+  if (!isFinite(decDeg) || Math.abs(decDeg) > 90) throw new Error("Invalid declination");
+  const zd = 90 - hoDeg;
+  return (bodyBears === "S" ? zd : -zd) + decDeg;
 }
 
-// Emergency calculations
-export function calculateEmergency(input: EmergencyInput): EmergencyResult {
-  const { searchType, trackSpacingNm, initialRadiusNm, driftSpeedKn, rescueSpeedKn, distanceNm } = input;
-  
-  const result: EmergencyResult = {};
-  
-  switch (searchType) {
-    case 'square':
-      if (trackSpacingNm !== undefined) {
-        result.legDistanceNm = 2 * trackSpacingNm;
-      }
-      break;
-    case 'sector':
-      if (initialRadiusNm !== undefined) {
-        result.newRadiusNm = initialRadiusNm * Math.sqrt(2);
-      }
-      break;
+// IAMSAR Manual Vol. III search patterns (all distances in nm, speeds in kn).
+export type SearchPatternResult = {
+  legsNm: number[];
+  totalTrackNm: number;
+  timeHours: number;
+};
+
+/** Expanding square (SS): legs S, S, 2S, 2S, 3S, 3S…; all turns 90°. */
+export function expandingSquareSearch(trackSpacingNm: number, legs: number, speedKn: number): SearchPatternResult {
+  if (!(trackSpacingNm > 0) || !(speedKn > 0) || !Number.isInteger(legs) || legs < 1) throw new Error("Invalid search inputs");
+  const legsNm = Array.from({ length: legs }, (_, i) => Math.ceil((i + 1) / 2) * trackSpacingNm);
+  const totalTrackNm = legsNm.reduce((a, b) => a + b, 0);
+  return { legsNm, totalTrackNm, timeHours: totalTrackNm / speedKn };
+}
+
+/** Sector search (VS): legs equal to the radius, turns 120°; one pattern of three triangles = 9 × radius. */
+export function sectorSearch(radiusNm: number, speedKn: number): SearchPatternResult {
+  if (!(radiusNm > 0) || !(speedKn > 0)) throw new Error("Invalid search inputs");
+  const legsNm = [radiusNm, radiusNm, 2 * radiusNm, radiusNm, 2 * radiusNm, radiusNm, radiusNm];
+  const totalTrackNm = 9 * radiusNm;
+  return { legsNm, totalTrackNm, timeHours: totalTrackNm / speedKn };
+}
+
+/** Parallel sweep (PS): legs of the area length, spaced S apart across the width. */
+export function parallelSweepSearch(lengthNm: number, widthNm: number, trackSpacingNm: number, speedKn: number): SearchPatternResult & { legCount: number } {
+  if (!(lengthNm > 0) || !(widthNm > 0) || !(trackSpacingNm > 0) || !(speedKn > 0)) throw new Error("Invalid search inputs");
+  const legCount = Math.max(1, Math.round(widthNm / trackSpacingNm));
+  const legsNm: number[] = [];
+  for (let i = 0; i < legCount; i++) {
+    legsNm.push(lengthNm);
+    if (i < legCount - 1) legsNm.push(trackSpacingNm);
   }
-  
-  if (distanceNm !== undefined && rescueSpeedKn !== undefined && driftSpeedKn !== undefined) {
-    result.timeToRescueHours = distanceNm / (rescueSpeedKn + driftSpeedKn);
-  }
-  
-  return result;
+  const totalTrackNm = legsNm.reduce((a, b) => a + b, 0);
+  return { legsNm, totalTrackNm, timeHours: totalTrackNm / speedKn, legCount };
 }
 
 // -----------------------------
@@ -743,7 +713,7 @@ export type DLatDLongResult = {
 
 export function computeDLatDLong(lat1Deg: number, lon1Deg: number, lat2Deg: number, lon2Deg: number): DLatDLongResult {
   const dLatDeg = lat2Deg - lat1Deg;
-  const dLonDeg = lon2Deg - lon1Deg;
+  const dLonDeg = signedAngle(lon2Deg - lon1Deg);
   const meanLatDeg = (lat1Deg + lat2Deg) / 2;
   const dLatMin = Math.abs(dLatDeg * 60);
   const dLongMinAtMeanLat = Math.abs(dLonDeg * 60 * Math.cos(toRadians(meanLatDeg)));
@@ -765,11 +735,12 @@ export type MiddleLatitudeSailingResult = {
   distanceNm: number;
 };
 
+/** Mid-latitude sailing: departure = d.long · cos φm; suitable for short distances, not across the equator. */
 export function calculateMiddleLatitudeSailing(input: PlaneSailingInput): MiddleLatitudeSailingResult {
   const { lat1Deg, lon1Deg, lat2Deg, lon2Deg } = input;
   const dLatMinSigned = 60 * (lat2Deg - lat1Deg);
   const meanLatDeg = (lat1Deg + lat2Deg) / 2;
-  const dLongMinSigned = 60 * (lon2Deg - lon1Deg);
+  const dLongMinSigned = 60 * signedAngle(lon2Deg - lon1Deg);
   const departureMinSigned = dLongMinSigned * Math.cos(toRadians(meanLatDeg));
   const courseDeg = normalizeAngle(toDegrees(Math.atan2(departureMinSigned, dLatMinSigned)));
   const distanceNm = Math.sqrt(dLatMinSigned * dLatMinSigned + departureMinSigned * departureMinSigned);
@@ -798,7 +769,7 @@ export function calculateDeadReckoning(input: DeadReckoningInput): LatLon {
   const dLatDeg = (distanceNm * Math.cos(toRadians(courseTrueDeg))) / 60;
   const meanLatDeg = start.latDeg + dLatDeg / 2;
   const dLonDeg = (distanceNm * Math.sin(toRadians(courseTrueDeg))) / (60 * Math.cos(toRadians(meanLatDeg)));
-  return { latDeg: start.latDeg + dLatDeg, lonDeg: start.lonDeg + dLonDeg };
+  return { latDeg: start.latDeg + dLatDeg, lonDeg: normalizeLongitude(start.lonDeg + dLonDeg) };
 }
 
 export function relativeToTrueBearing(headingTrueDeg: number, relativeBearingDeg: number): number {
@@ -1232,38 +1203,42 @@ export function computeTargetMotionFromTwoRadarPlots(input: RadarTargetMotionInp
   };
 }
 
-// ---- COLREG quick classification (heuristic, based on relative bearing)
-export type ColregSituation =
-  | "head-on"
-  | "crossing-starboard"
-  | "crossing-port"
-  | "overtaking"
-  | "unknown";
+// ---- COLREG power-driven vessels in sight of one another (Rules 13–17)
+export type ColregSituation = "head-on" | "crossing-starboard" | "crossing-port" | "overtaking" | "being-overtaken";
+
+export type ColregInput = {
+  ownCourseDeg: number;
+  targetRelativeBearingDeg: number; // 0 = ahead, 90 = starboard beam
+  targetCourseDeg: number;
+  /** "Ahead or nearly ahead" for Rule 14; COLREG gives no figure, so the user sets it. */
+  aheadToleranceDeg?: number;
+};
 
 export type ColregAssessment = {
   situation: ColregSituation;
-  isGiveWay: boolean | null;
-  note: string;
+  role: "give-way" | "stand-on" | "both-alter";
+  rule: string;
+  ownAspectDeg: number; // Own ship's bearing relative to the target's heading
 };
 
-export function assessColregSituation(relativeBearingDeg: number): ColregAssessment {
-  const rb = normalizeAngle(relativeBearingDeg);
-  // Convention: 0° = dead ahead, 90° = starboard beam, 180° = dead astern, 270° = port beam
-  const within = (a: number, b: number, tol: number) => Math.min(normalizeAngle(a - b), normalizeAngle(b - a)) <= tol;
+/** Assumes risk of collision exists (Rule 7) and both are power-driven vessels in sight of one another. */
+export function assessColregSituation(input: ColregInput): ColregAssessment {
+  const { ownCourseDeg, targetRelativeBearingDeg, targetCourseDeg } = input;
+  if (![ownCourseDeg, targetRelativeBearingDeg, targetCourseDeg].every(isFinite)) throw new Error("Invalid courses or bearing");
+  const tol = input.aheadToleranceDeg ?? 6;
+  const rel = normalizeAngle(targetRelativeBearingDeg);
+  const targetTrueBearing = normalizeAngle(ownCourseDeg + rel);
+  const ownAspectDeg = normalizeAngle(targetTrueBearing + 180 - targetCourseDeg);
+  const abaft = (x: number) => x > 112.5 && x < 247.5; // more than 22.5° abaft the beam
 
-  if (within(rb, 0, 5) || within(rb, 360, 5)) {
-    return { situation: "head-on", isGiveWay: true, note: "Head-on possibility: both ships should turn to starboard and pass (General approach)." };
+  if (abaft(ownAspectDeg)) return { situation: "overtaking", role: "give-way", rule: "Rule 13", ownAspectDeg };
+  if (abaft(rel)) return { situation: "being-overtaken", role: "stand-on", rule: "Rules 13 and 17", ownAspectDeg };
+  if (Math.abs(signedAngle(rel)) <= tol && Math.abs(signedAngle(ownAspectDeg)) <= tol) {
+    return { situation: "head-on", role: "both-alter", rule: "Rule 14", ownAspectDeg };
   }
-  if (rb > 112.5 && rb < 247.5) {
-    return { situation: "overtaking", isGiveWay: null, note: "Overtaking sector: there may be situations where overtaking is a give-way; Confirm with light/sign and actual movement." };
-  }
-  if (rb > 0 && rb <= 112.5) {
-    return { situation: "crossing-starboard", isGiveWay: true, note: "The target is on the starboard side: in case of crossing you are usually the give-way (confirmation depending on the situation)." };
-  }
-  if (rb >= 247.5 && rb < 360) {
-    return { situation: "crossing-port", isGiveWay: false, note: "On the target port side: in case of crossing you usually stand-on (confirmation according to the situation)." };
-  }
-  return { situation: "unknown", isGiveWay: null, note: "There is not enough data for classification." };
+  return rel < 180
+    ? { situation: "crossing-starboard", role: "give-way", rule: "Rules 15 and 16", ownAspectDeg }
+    : { situation: "crossing-port", role: "stand-on", rule: "Rules 15 and 17", ownAspectDeg };
 }
 
 // ---- Tides / UKC / Squat
@@ -1282,59 +1257,33 @@ export type HeightOfTideResult = {
 };
 
 export type TidalStreamInput = {
-  // Stage relative to slack
-  stage: "flood" | "ebb";
-  hourFromSlack: number; // 0..6 (rule-of-twelfths style)
-  // Spring/neap max rates and ranges (for scaling)
-  springMaxRateKn: number;
-  neapMaxRateKn: number;
+  // Rates for the hour from the tidal diamond (or tidal stream atlas)
+  springRateKn: number;
+  neapRateKn: number;
+  // Mean spring and neap ranges at the standard port, and the range for the day
   springRangeM: number;
   neapRangeM: number;
-  actualRangeM: number;
-  // Directions for flood/ebb (deg true). If omitted, use flood+180 for ebb.
-  floodSetDeg?: number;
-  ebbSetDeg?: number;
+  rangeM: number;
 };
 
 export type TidalStreamResult = {
-  setDeg: number;
   rateKn: number;
-  maxRateKn: number;
-  springNeapFactor: number; // 0..1
+  factor: number; // 0 = neaps, 1 = springs
+  extrapolated: boolean; // Range for the day outside the neap–spring ranges
 };
 
+/** Admiralty method: rate = neap + (spring − neap)·(range − neap range)/(spring range − neap range). */
 export function calculateTidalStream(input: TidalStreamInput): TidalStreamResult {
-  const {
-    stage,
-    hourFromSlack,
-    springMaxRateKn,
-    neapMaxRateKn,
-    springRangeM,
-    neapRangeM,
-    actualRangeM,
-    floodSetDeg,
-    ebbSetDeg,
-  } = input;
-
-  if (!isFinite(hourFromSlack) || hourFromSlack < 0) throw new Error("Invalid hour from slack");
-  if (!isFinite(springMaxRateKn) || !isFinite(neapMaxRateKn) || springMaxRateKn < 0 || neapMaxRateKn < 0) throw new Error("Invalid rates");
-  if (!isFinite(springRangeM) || !isFinite(neapRangeM) || !isFinite(actualRangeM)) throw new Error("Invalid ranges");
-
-  const denom = springRangeM - neapRangeM;
-  const rawFactor = Math.abs(denom) < 1e-9 ? 0.5 : (actualRangeM - neapRangeM) / denom;
-  const springNeapFactor = Math.max(0, Math.min(1, rawFactor));
-  const maxRateKn = neapMaxRateKn + springNeapFactor * (springMaxRateKn - neapMaxRateKn);
-
-  // Simple sinusoidal approximation: 0 at slack (0,6), max at mid (3)
-  const h = Math.max(0, Math.min(6, hourFromSlack));
-  const shape = Math.sin((Math.PI * h) / 6);
-  const rateKn = Math.max(0, maxRateKn * shape);
-
-  const flood = normalizeAngle(floodSetDeg ?? 0);
-  const ebb = normalizeAngle(ebbSetDeg ?? (flood + 180));
-  const setDeg = stage === "flood" ? flood : ebb;
-
-  return { setDeg, rateKn, maxRateKn, springNeapFactor };
+  const { springRateKn, neapRateKn, springRangeM, neapRangeM, rangeM } = input;
+  if (![springRateKn, neapRateKn, springRangeM, neapRangeM, rangeM].every(isFinite)) throw new Error("Invalid tidal stream inputs");
+  if (springRateKn < 0 || neapRateKn < 0) throw new Error("Rates must be ≥ 0");
+  if (springRangeM <= neapRangeM) throw new Error("Spring range must be larger than neap range");
+  const factor = (rangeM - neapRangeM) / (springRangeM - neapRangeM);
+  return {
+    rateKn: Math.max(0, neapRateKn + factor * (springRateKn - neapRateKn)),
+    factor,
+    extrapolated: factor < 0 || factor > 1,
+  };
 }
 
 function twelfthsFraction(u: number): number {
@@ -1362,6 +1311,7 @@ function twelfthsFraction(u: number): number {
   return 1;
 }
 
+/** Height of tide by the rule of twelfths between consecutive LW and HW (either order). */
 export function calculateHeightOfTideAtTime(input: HeightOfTideInput): HeightOfTideResult {
   const { lowWaterTimeUtc, lowWaterHeightM, highWaterTimeUtc, highWaterHeightM, queryTimeUtc } = input;
   const tLW = lowWaterTimeUtc.getTime();
@@ -1370,58 +1320,33 @@ export function calculateHeightOfTideAtTime(input: HeightOfTideInput): HeightOfT
   if (!(isFinite(lowWaterHeightM) && isFinite(highWaterHeightM))) throw new Error("Invalid tide heights");
   if (!(isFinite(tLW) && isFinite(tHW) && isFinite(tq))) throw new Error("Invalid times");
   if (tLW === tHW) throw new Error("LW and HW times must differ");
+  const start = Math.min(tLW, tHW);
+  const end = Math.max(tLW, tHW);
+  if (tq < start || tq > end) throw new Error("The time must lie between the low water and the high water");
 
-  const range = highWaterHeightM - lowWaterHeightM;
-  const isRisingSegment = tLW < tHW;
-
-  // Determine whether query is in the LW->HW segment or HW->LW segment by projecting onto a 12h cycle.
-  // If query is outside LW->HW interval, assume it belongs to HW->LW following immediately after HW.
-  let stage: "rising" | "falling";
-  let startTime: number;
-  let endTime: number;
-  let startHeight: number;
-  let endHeight: number;
-
-  if (isRisingSegment) {
-    if (tq >= tLW && tq <= tHW) {
-      stage = "rising";
-      startTime = tLW;
-      endTime = tHW;
-      startHeight = lowWaterHeightM;
-      endHeight = highWaterHeightM;
-    } else {
-      stage = "falling";
-      startTime = tHW;
-      endTime = tHW + (tHW - tLW); // assume symmetric 6h
-      startHeight = highWaterHeightM;
-      endHeight = lowWaterHeightM;
-    }
-  } else {
-    // If provided order is reversed, treat it accordingly
-    if (tq >= tHW && tq <= tLW) {
-      stage = "falling";
-      startTime = tHW;
-      endTime = tLW;
-      startHeight = highWaterHeightM;
-      endHeight = lowWaterHeightM;
-    } else {
-      stage = "rising";
-      startTime = tLW;
-      endTime = tLW + (tLW - tHW);
-      startHeight = lowWaterHeightM;
-      endHeight = highWaterHeightM;
-    }
-  }
-
-  const u = (tq - startTime) / (endTime - startTime);
-  const frac = twelfthsFraction(u);
-  const heightM = startHeight + frac * (endHeight - startHeight);
-
+  const stage: "rising" | "falling" = tLW < tHW ? "rising" : "falling";
+  const frac = twelfthsFraction((tq - start) / (end - start));
+  const fractionOfRange = stage === "rising" ? frac : 1 - frac;
   return {
-    heightM,
+    heightM: lowWaterHeightM + fractionOfRange * (highWaterHeightM - lowWaterHeightM),
     stage,
-    fractionOfRange: frac,
+    fractionOfRange,
   };
+}
+
+export type TwelfthsRow = { timeUtc: Date; heightM: number; twelfths: number };
+
+/** Seven points (each "tidal hour" = duration/6) from the first event to the second. */
+export function ruleOfTwelfthsTable(firstTimeUtc: Date, firstHeightM: number, secondTimeUtc: Date, secondHeightM: number): TwelfthsRow[] {
+  const t0 = firstTimeUtc.getTime();
+  const t1 = secondTimeUtc.getTime();
+  if (!isFinite(t0) || !isFinite(t1) || t1 <= t0) throw new Error("The second time must be after the first");
+  if (!isFinite(firstHeightM) || !isFinite(secondHeightM)) throw new Error("Invalid tide heights");
+  return [0, 1, 3, 6, 9, 11, 12].map((tw, i) => ({
+    timeUtc: new Date(t0 + ((t1 - t0) * i) / 6),
+    heightM: firstHeightM + ((secondHeightM - firstHeightM) * tw) / 12,
+    twelfths: tw,
+  }));
 }
 
 export type SecondaryPortCorrection = {
@@ -1586,43 +1511,54 @@ export function computeSunAlmanac(dateUtc: Date): SunAlmanacResult {
 
 export type SextantCorrectionInput = {
   hsDeg: number; // Sextant altitude (degrees)
-  indexCorrectionMin?: number; // minutes (IC), add algebraically
+  indexErrorMin?: number; // Index error in minutes: + on the arc, − off the arc (subtracted)
   heightOfEyeM?: number;
   pressureHPa?: number; // default 1010
   temperatureC?: number; // default 10
+  /** Semi-diameter (minutes): added for a lower limb, subtracted for an upper limb. */
+  limb?: "lower" | "upper" | "none";
+  semiDiameterMin?: number;
+  /** Horizontal parallax (minutes); parallax in altitude = HP · cos Ha. */
+  horizontalParallaxMin?: number;
 };
 
 export type SextantCorrectionResult = {
-  haDeg: number; // apparent altitude after IC + dip
-  hoDeg: number; // observed altitude after refraction (simplified)
+  haDeg: number; // Apparent altitude: Hs − IE − dip
+  hoDeg: number; // Observed (true) altitude
   dipMin: number;
   refractionMin: number;
+  semiDiameterMin: number; // Signed as applied
+  parallaxMin: number;
 };
 
+/**
+ * Altitude corrections (Nautical Almanac): dip = 1.76′√h (m); refraction by Bennett's formula
+ * R′ = cot(Ha + 7.31/(Ha + 4.4)) scaled by (P/1010)·(283/(273 + T)); semi-diameter; parallax HP·cos Ha.
+ */
 export function correctSextantAltitude(input: SextantCorrectionInput): SextantCorrectionResult {
   const hs = input.hsDeg;
   if (!isFinite(hs) || hs < 0 || hs > 90) throw new Error("Invalid sextant altitude");
 
-  const IC = input.indexCorrectionMin ?? 0;
+  const IE = input.indexErrorMin ?? 0;
   const HE = input.heightOfEyeM ?? 0;
   const P = input.pressureHPa ?? 1010;
   const T = input.temperatureC ?? 10;
+  if (HE < 0) throw new Error("Height of eye must be ≥ 0");
 
-  // Dip (minutes). Common approximation: dip' = 1.76 * sqrt(HE in meters)
-  const dipMin = HE > 0 ? 1.76 * Math.sqrt(HE) : 0;
+  const dipMin = 1.76 * Math.sqrt(HE);
+  const haDeg = hs - IE / 60 - dipMin / 60;
+  if (haDeg < 0) throw new Error("Apparent altitude below the horizon");
 
-  // Apparent altitude Ha = Hs + IC - Dip
-  const haDeg = hs + IC / 60 - dipMin / 60;
+  const refractionMin =
+    (1 / Math.tan(toRadians(haDeg + 7.31 / (haDeg + 4.4)))) * (P / 1010) * (283 / (273 + T));
 
-  // Refraction (minutes). Simple Bennett-style approximation, valid for Ha > ~5°.
-  // R' ≈ (0.00452 * P) / ((273 + T) * tan(Ha))
-  let refractionMin = 0;
-  const haRad = toRadians(Math.max(0.5, haDeg));
-  refractionMin = (0.00452 * P) / ((273 + T) * Math.tan(haRad));
-  refractionMin = Math.max(0, Math.min(60, refractionMin)); // clamp
+  const limb = input.limb ?? "none";
+  const sd = input.semiDiameterMin ?? 0;
+  const semiDiameterMin = limb === "lower" ? sd : limb === "upper" ? -sd : 0;
+  const parallaxMin = (input.horizontalParallaxMin ?? 0) * Math.cos(toRadians(haDeg));
 
-  const hoDeg = haDeg - refractionMin / 60;
-  return { haDeg, hoDeg, dipMin, refractionMin };
+  const hoDeg = haDeg + (-refractionMin + semiDiameterMin + parallaxMin) / 60;
+  return { haDeg, hoDeg, dipMin, refractionMin, semiDiameterMin, parallaxMin };
 }
 
 export type InterceptSightInput = {
@@ -1698,428 +1634,38 @@ export function generateDailySunAlmanac(dateUtc: Date): DailySunAlmanacRow[] {
   return rows;
 }
 
-// ========================================
-// NEW CALCULATIONS FROM NGA/BOWDITCH TOOLS
-// ========================================
-
-// --- Air Temperature Refraction Correction ---
-export type AirTempCorrectionInput = {
-  apparentAltDeg: number;
-  apparentAltMin: number;
-  temperatureF: number;
-};
-
-export type AirTempCorrectionResult = {
-  correctionMin: number;
-  meanRefractionMin: number;
-  tempFactorF: number;
-};
-
-export function calculateAirTempCorrection(input: AirTempCorrectionInput): AirTempCorrectionResult {
-  const { apparentAltDeg, apparentAltMin, temperatureF } = input;
-  
-  // Altitude lookup table (in arc-minutes)
-  const alt = [-10,0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84,87,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200,205,210,215,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,614,626,639,653,667,681,697,712,729,746,764,783,803,823,845,863,892,917,943,971,1001,1032,1065,1100,1138,1177,1220,1265,1313,1366,1422,1482,1548,1619,1696,1780,1872,1972,2082,2204,2338,2486,2650,2831,3032,3254,3499,3768,4059,4372,4703,5048,5311,5400,5500];
-  
-  // Mean refraction table (in arc-minutes)
-  const mref = [-37.0,-34.5,-33.8,-33.2,-32.6,-32.0,-31.4,-30.8,-30.3,-29.8,-29.2,-28.7,-28.2,-27.8,-27.3,-26.8,-26.4,-25.9,-25.5,-25.1,-24.7,-24.3,-24.0,-23.6,-23.2,-22.9,-22.5,-22.2,-21.9,-21.6,-21.2,-20.9,-20.5,-20.0,-19.5,-19.1,-18.7,-18.3,-17.9,-17.5,-17.2,-16.8,-16.5,-16.1,-15.8,-15.5,-15.2,-14.9,-14.7,-14.4,-14.1,-13.9,-13.7,-13.4,-13.2,-13.0,-12.7,-12.5,-12.3,-12.1,-11.9,-11.8,-11.6,-11.4,-11.2,-11.1,-10.9,-10.7,-10.6,-10.4,-10.3,-10.1,-10.0,-9.9,-9.7,-9.6,-9.5,-9.4,-9.2,-9.1,-9.0,-8.9,-8.8,-8.7,-8.6,-8.5,-8.3,-8.1,-7.9,-7.7,-7.6,-7.4,-7.2,-7.1,-7.0,-6.8,-6.7,-6.6,-6.4,-6.3,-6.2,-6.1,-6.0,-5.9,-5.8,-5.7,-5.6,-5.5,-5.4,-5.3,-5.2,-5.1,-5.0,-4.9,-4.8,-4.7,-4.6,-4.5,-4.4,-4.3,-4.2,-4.1,-4.0,-3.9,-3.8,-3.7,-3.6,-3.5,-3.4,-3.3,-3.2,-3.1,-3.0,-2.9,-2.8,-2.7,-2.6,-2.5,-2.4,-2.3,-2.2,-2.1,-2.0,-1.9,-1.8,-1.7,-1.6,-1.5,-1.4,-1.3,-1.2,-1.1,-1.0,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.0,0.0];
-  
-  const deg = apparentAltDeg;
-  let min = apparentAltMin;
-  if (deg < 0) min *= -1;
-  
-  const angle = (deg + min/60) * 60; // Convert to arc-minutes
-  
-  if (angle < -10 || angle > 5400) {
-    throw new Error("Apparent Altitude must be between -10 minutes and 90 degrees");
-  }
-  
-  // Find interpolation indices
-  let i = 0;
-  let alt_low = alt[0], alt_hi = alt[1];
-  let mref_low = mref[0], mref_hi = mref[1];
-  
-  while (i < alt.length - 1 && angle >= alt[i]) {
-    alt_low = alt[i];
-    alt_hi = alt[i + 1];
-    mref_low = mref[i];
-    mref_hi = mref[i + 1];
-    i++;
-  }
-  
-  // Linear interpolation for mean refraction
-  const meanRefractionMin = mref_low + ((angle - alt_low) / (alt_hi - alt_low)) * (mref_hi - mref_low);
-  
-  // Temperature factor: (T - 50) / 430 where T is in Fahrenheit
-  const tempFactorF = (temperatureF - 50) / 430;
-  
-  // Correction = mean refraction * temperature factor
-  const correctionMin = meanRefractionMin * tempFactorF;
-  
-  return { correctionMin, meanRefractionMin, tempFactorF };
-}
-
-// --- Amplitude Calculation ---
+// --- Amplitude (body's centre on the celestial horizon) ---
 export type AmplitudeInput = {
-  latDeg: number;
-  latSign: 'North' | 'South';
-  decDeg: number;
-  decSign: 'North' | 'South';
-  riseOrSet: 'Rising' | 'Setting';
-  compassBearing?: number;
+  latDeg: number; // North +
+  decDeg: number; // North +
+  riseOrSet: "rising" | "setting";
+  compassBearingDeg?: number; // Observed bearing by the compass to be checked
 };
 
 export type AmplitudeResult = {
   amplitudeDeg: number;
-  amplitudeSign: 'North' | 'South';
-  amplitudeDir: 'East' | 'West';
-  azimuthDeg: number;
-  compassError?: number;
-  errorSign?: 'East' | 'West';
+  amplitudeName: string; // e.g. "E 20.6° N"
+  azimuthDeg: number;    // True bearing Zn
+  compassErrorDeg?: number; // + east, − west
 };
 
+/**
+ * sin A = sin δ / cos φ; A is named E (rising) or W (setting) and N or S like the declination.
+ * Zn: rising 090° ∓ A (N/S), setting 270° ± A (N/S). Compass error = true − compass (east +).
+ * Centre on the celestial horizon: the lower limb is then about two-thirds of a diameter above the visible horizon (Bowditch).
+ */
 export function calculateAmplitude(input: AmplitudeInput): AmplitudeResult {
-  let lat = toRadians(input.latDeg);
-  if (input.latSign === 'South') lat = -lat;
-  
-  let dec = toRadians(input.decDeg);
-  if (input.decSign === 'South') dec = -dec;
-  
-  // Amplitude = arcsin(sin(dec) / cos(lat))
-  const sinAmp = Math.sin(dec) / Math.cos(lat);
-  let amplitudeDeg = toDegrees(Math.asin(Math.max(-1, Math.min(1, sinAmp))));
-  
-  let amplitudeSign: 'North' | 'South' = 'North';
-  if (amplitudeDeg < 0) {
-    amplitudeDeg = Math.abs(amplitudeDeg);
-    amplitudeSign = 'South';
+  const { latDeg, decDeg, riseOrSet } = input;
+  if (!isFinite(latDeg) || Math.abs(latDeg) >= 90 || !isFinite(decDeg) || Math.abs(decDeg) > 90) throw new Error("Invalid latitude or declination");
+  const sinA = Math.sin(toRadians(decDeg)) / Math.cos(toRadians(latDeg));
+  if (Math.abs(sinA) > 1) throw new Error("The body does not rise or set at this latitude");
+  const signedA = toDegrees(Math.asin(sinA)); // + north
+  const amplitudeDeg = Math.abs(signedA);
+  const azimuthDeg = normalizeAngle(riseOrSet === "rising" ? 90 - signedA : 270 + signedA);
+  const amplitudeName = `${riseOrSet === "rising" ? "E" : "W"} ${amplitudeDeg.toFixed(1)}° ${signedA >= 0 ? "N" : "S"}`;
+  const result: AmplitudeResult = { amplitudeDeg, amplitudeName, azimuthDeg };
+  if (input.compassBearingDeg !== undefined && isFinite(input.compassBearingDeg)) {
+    result.compassErrorDeg = signedAngle(azimuthDeg - input.compassBearingDeg);
   }
-  
-  const amplitudeDir = input.riseOrSet === 'Rising' ? 'East' : 'West';
-  
-  // Calculate azimuth
-  let azimuthDeg: number;
-  if (amplitudeDir === 'East') {
-    azimuthDeg = 90 - amplitudeDeg;
-  } else {
-    azimuthDeg = 270 + amplitudeDeg;
-  }
-  
-  const result: AmplitudeResult = {
-    amplitudeDeg: Math.round(amplitudeDeg * 100) / 100,
-    amplitudeSign,
-    amplitudeDir,
-    azimuthDeg: Math.round(azimuthDeg * 100) / 100
-  };
-  
-  if (input.compassBearing !== undefined) {
-    const compassError = input.compassBearing - azimuthDeg;
-    const errorSign: 'East' | 'West' = compassError > 0 ? 'West' : 'East';
-    result.compassError = Math.abs(Math.round(compassError * 10) / 10);
-    result.errorSign = errorSign;
-  }
-  
   return result;
-}
-
-// --- Corrected Amplitude (with -42' altitude) ---
-export function calculateCorrectedAmplitude(input: AmplitudeInput): AmplitudeResult {
-  const altitude = toRadians(-42/60); // -42 arc-minutes
-  
-  let lat = toRadians(input.latDeg);
-  if (input.latSign === 'South') lat = -lat;
-  
-  let dec = toRadians(input.decDeg);
-  if (input.decSign === 'South') dec = -dec;
-  
-  // cos(Az) = (sin(dec) - sin(alt)*sin(lat)) / (cos(alt)*cos(lat))
-  const cosAz = (Math.sin(dec) - Math.sin(altitude) * Math.sin(lat)) / 
-                (Math.cos(altitude) * Math.cos(lat));
-  let azimuthDeg = toDegrees(Math.acos(Math.max(-1, Math.min(1, cosAz))));
-  
-  if (input.riseOrSet === 'Setting') {
-    azimuthDeg = 360 - azimuthDeg;
-  }
-  
-  // Amplitude from corrected azimuth
-  const sinAmp = (Math.sin(dec) - Math.sin(altitude) * Math.sin(lat)) / 
-                 (Math.cos(altitude) * Math.cos(lat));
-  let amplitudeDeg = toDegrees(Math.asin(Math.max(-1, Math.min(1, sinAmp))));
-  
-  let amplitudeSign: 'North' | 'South' = 'North';
-  if (amplitudeDeg < 0) {
-    amplitudeDeg = Math.abs(amplitudeDeg);
-    amplitudeSign = 'South';
-  }
-  
-  const amplitudeDir = input.riseOrSet === 'Rising' ? 'East' : 'West';
-  
-  const result: AmplitudeResult = {
-    amplitudeDeg: Math.round(amplitudeDeg * 100) / 100,
-    amplitudeSign,
-    amplitudeDir,
-    azimuthDeg: Math.round(azimuthDeg * 100) / 100
-  };
-  
-  if (input.compassBearing !== undefined) {
-    const compassError = input.compassBearing - azimuthDeg;
-    const errorSign: 'East' | 'West' = compassError > 0 ? 'West' : 'East';
-    result.compassError = Math.abs(Math.round(compassError * 10) / 10);
-    result.errorSign = errorSign;
-  }
-  
-  return result;
-}
-
-// --- Barometer Gravity Correction ---
-export type BaroGravityInput = {
-  observedReading: number; // inches of mercury
-  latDeg: number;
-};
-
-export type BaroGravityResult = {
-  correctionInHg: number;
-  correctedReading: number;
-};
-
-export function calculateBaroGravityCorrection(input: BaroGravityInput): BaroGravityResult {
-  const { observedReading, latDeg } = input;
-  const lat = toRadians(latDeg);
-  
-  // Correction = obs * (-0.002637 * cos(2*lat) + 0.000006 * cos²(2*lat) - 0.000050)
-  const correctionInHg = observedReading * (
-    -0.002637 * Math.cos(2 * lat) +
-    0.000006 * Math.pow(Math.cos(2 * lat), 2) - 
-    0.000050
-  );
-  
-  return {
-    correctionInHg,
-    correctedReading: observedReading + correctionInHg
-  };
-}
-
-// --- Barometer Height Correction ---
-export type BaroHeightInput = {
-  heightFt: number;
-  temperatureF: number;
-};
-
-export type BaroHeightResult = {
-  correctionInHg: number;
-};
-
-export function calculateBaroHeightCorrection(input: BaroHeightInput): BaroHeightResult {
-  const { heightFt, temperatureF } = input;
-  
-  // Correction = height * (1 / (15748.31 * (1 + (temp - 32) / 900)))
-  const correctionInHg = heightFt * (1 / (15748.31 * (1 + (temperatureF - 32) / 900)));
-  
-  return { correctionInHg };
-}
-
-// --- Barometer Temperature Correction ---
-export type BaroTempInput = {
-  observedReading: number; // inches of mercury
-  temperatureF: number;
-};
-
-export type BaroTempResult = {
-  correctionInHg: number;
-  correctedReading: number;
-};
-
-export function calculateBaroTempCorrection(input: BaroTempInput): BaroTempResult {
-  const { observedReading, temperatureF } = input;
-  
-  // Correction = -obs * ((temp - 28.630) / (1.1123 * temp + 10978))
-  const correctionInHg = -observedReading * ((temperatureF - 28.630) / (1.1123 * temperatureF + 10978));
-  
-  return {
-    correctionInHg,
-    correctedReading: observedReading + correctionInHg
-  };
-}
-
-// --- Two Bearings Distance Calculation ---
-export type TwoBearingsInput = {
-  bearing1Deg: number;
-  bearing1Min: number;
-  bearing2Deg: number;
-  bearing2Min: number;
-  distanceBetweenBearingsNm: number;
-};
-
-export type TwoBearingsResult = {
-  distanceAtBearing2Nm: number;
-  distanceAbeamNm: number;
-};
-
-export function calculateTwoBearingsDistance(input: TwoBearingsInput): TwoBearingsResult {
-  const { bearing1Deg, bearing1Min, bearing2Deg, bearing2Min, distanceBetweenBearingsNm } = input;
-  
-  const theta1 = toRadians(bearing1Deg + bearing1Min/60);
-  const theta2 = toRadians(bearing2Deg + bearing2Min/60);
-  
-  const deg_90 = Math.PI/2;
-  const deg_180 = Math.PI;
-  
-  // Triangle calculations
-  const T1A1 = deg_90 - theta1;
-  const T3A1 = deg_90 - theta2;
-  const T2A3 = deg_180 - T3A1;
-  const T1A3 = T2A3 - T1A1;
-  
-  // Law of sines: D/sin(T1A3) = dist_b2/sin(T1A1)
-  const distanceAtBearing2Nm = distanceBetweenBearingsNm * Math.sin(T1A1) / Math.sin(T1A3);
-  
-  // Distance abeam = dist_b2 * sin(theta2)
-  const distanceAbeamNm = distanceAtBearing2Nm * Math.sin(theta2);
-  
-  return {
-    distanceAtBearing2Nm: Math.abs(distanceAtBearing2Nm),
-    distanceAbeamNm: Math.abs(distanceAbeamNm)
-  };
-}
-
-// --- Length of Degree of Latitude/Longitude ---
-export type DegreeLengthInput = {
-  latDeg: number;
-};
-
-export type DegreeLengthResult = {
-  latLengthM: number;
-  latLengthFt: number;
-  latLengthNm: number;
-  latLengthSm: number;
-  lonLengthM: number;
-  lonLengthFt: number;
-  lonLengthNm: number;
-  lonLengthSm: number;
-};
-
-export function calculateDegreeLength(input: DegreeLengthInput): DegreeLengthResult {
-  const lat = toRadians(input.latDeg);
-  
-  // Constants for latitude calculation
-  const m1 = 111132.92;
-  const m2 = -559.82;
-  const m3 = 1.175;
-  const m4 = -0.0023;
-  
-  // Constants for longitude calculation
-  const p1 = 111412.84;
-  const p2 = -93.5;
-  const p3 = 0.118;
-  
-  // Length of 1° latitude in meters
-  const latLengthM = m1 + (m2 * Math.cos(2 * lat)) + (m3 * Math.cos(4 * lat)) + (m4 * Math.cos(6 * lat));
-  
-  // Length of 1° longitude in meters
-  const lonLengthM = (p1 * Math.cos(lat)) + (p2 * Math.cos(3 * lat)) + (p3 * Math.cos(5 * lat));
-  
-  const latLengthFt = latLengthM / 12 * 39.370079;
-  const latLengthSm = latLengthFt / 5280;
-  const latLengthNm = latLengthSm / 1.15077945;
-  
-  const lonLengthFt = lonLengthM / 12 * 39.370079;
-  const lonLengthSm = lonLengthFt / 5280;
-  const lonLengthNm = lonLengthSm / 1.15077945;
-  
-  return {
-    latLengthM: Math.round(latLengthM),
-    latLengthFt: Math.round(latLengthFt),
-    latLengthNm,
-    latLengthSm,
-    lonLengthM: Math.round(lonLengthM),
-    lonLengthFt: Math.round(lonLengthFt),
-    lonLengthNm,
-    lonLengthSm
-  };
-}
-
-// --- Dip of Sea Short of Horizon ---
-export type DipShortInput = {
-  eyeHeightFt: number;
-  distanceToObstructionNm: number;
-  unitFeet: boolean;
-};
-
-export type DipShortResult = {
-  dipMin: number;
-};
-
-export function calculateDipShort(input: DipShortInput): DipShortResult {
-  let eyeHeight = input.eyeHeightFt;
-  if (!input.unitFeet) {
-    eyeHeight = eyeHeight * 3.2808399; // Convert meters to feet
-  }
-  
-  let obstruct = input.distanceToObstructionNm;
-  
-  // Account for normal dip limits based on eye height
-  if (eyeHeight <= 5) obstruct = Math.min(2.6, obstruct);
-  else if (eyeHeight <= 10) obstruct = Math.min(3.6, obstruct);
-  else if (eyeHeight <= 15) obstruct = Math.min(4.4, obstruct);
-  else if (eyeHeight <= 20) obstruct = Math.min(5.0, obstruct);
-  else if (eyeHeight <= 25) obstruct = Math.min(5.5, obstruct);
-  else if (eyeHeight <= 30) obstruct = Math.min(6.0, obstruct);
-  else if (eyeHeight <= 35) obstruct = Math.min(6.5, obstruct);
-  else if (eyeHeight <= 40) obstruct = Math.min(7.0, obstruct);
-  else if (eyeHeight <= 45) obstruct = Math.min(7.5, obstruct);
-  else if (eyeHeight <= 50) obstruct = Math.min(8.0, obstruct);
-  else if (eyeHeight <= 60) obstruct = Math.min(8.5, obstruct);
-  else if (eyeHeight <= 65) obstruct = Math.min(9.0, obstruct);
-  else if (eyeHeight <= 75) obstruct = Math.min(9.5, obstruct);
-  
-  // Dip formula in arc-minutes
-  const dipMin = 60 * Math.atan(
-    (eyeHeight / (6076.1 * obstruct)) + (0.8321 * obstruct) / (2 * 3440.1)
-  ) * (360 / (2 * Math.PI));
-  
-  return { dipMin };
-}
-
-// --- Altitude Factor and Meridian Transit Change ---
-export type AltitudeFactorInput = {
-  latDeg: number;
-  latSign: 'North' | 'South';
-  decDeg: number;
-  decSign: 'North' | 'South';
-  lowerTransit: boolean;
-};
-
-export type AltitudeFactorResult = {
-  factor: number; // seconds of arc per minute of time
-};
-
-export function calculateAltitudeFactor(input: AltitudeFactorInput): AltitudeFactorResult {
-  const secConst = 1.9635; // seconds of arc constant
-  
-  let lat = toRadians(input.latDeg);
-  if (input.latSign === 'South') lat = -lat;
-  
-  let dec = toRadians(input.decDeg);
-  if (input.decSign === 'South') dec = -dec;
-  if (input.lowerTransit) dec = -dec;
-  
-  // Factor = 1.9635 * |cos(lat) * cos(dec) / sin(lat - dec)|
-  const factor = Math.abs(secConst * Math.cos(lat) * Math.cos(dec) * (1 / Math.sin(lat - dec)));
-  
-  return { factor };
-}
-
-export type MeridianTransitChangeInput = {
-  factor: number;
-  minutesFromMeridian: number;
-};
-
-export type MeridianTransitChangeResult = {
-  altitudeChangeSec: number;
-};
-
-export function calculateMeridianTransitChange(input: MeridianTransitChangeInput): MeridianTransitChangeResult {
-  // Change in altitude = factor * (minutes from meridian)² / 60
-  const altitudeChangeSec = input.factor * Math.pow(input.minutesFromMeridian, 2) / 60;
-  return { altitudeChangeSec };
 }
