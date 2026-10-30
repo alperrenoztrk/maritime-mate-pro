@@ -4020,5 +4020,165 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
       }
     ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-basinc-olcum-cihazlari-bourdon-piezoelektrik-2": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-basinc-olcum-cihazlari-bourdon-piezoelektrik-2-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "A Bourdon gauge measures pressure through elastic tube deformation; piezoelectric sensors are generally suited to dynamic pressure measurement and typically require conditioning. A displayed 0 bar may reflect failed instrumentation rather than zero line pressure.\n\nCommon error: Do not open a pressurised impulse line because one gauge reads zero.",
+    "example": {
+      "problem": "A pump discharge Bourdon gauge remains at zero while the control room transducer shows positive pressure.",
+      "steps": [
+        "Keep the system within its safe limits and compare against an independent rated instrument at an approved test connection.",
+        "Inspect isolation cocks, impulse lines, calibration state and sensor output before deciding which reading is valid.",
+        "Rectify defects and document controlled calibration and return-to-service testing."
+      ],
+      "result": "Two conflicting pressure indications require verification before maintenance isolation or process control."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-seviye-olcum-yontemleri-3": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-seviye-olcum-yontemleri-3-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Tank level devices use differing measurement principles (radar, differential pressure, float or capacitance). Fluid density, vapour and foaming can affect particular readings; independent high-level alarms must remain functional.\n\nCommon error: Do not apply a seawater-specific pressure-to-level conversion to a different liquid without checking density.",
+    "example": {
+      "problem": "A ballast tank DP-level sensor is calibrated for seawater but the tank temporarily contains a lower-density fluid.",
+      "steps": [
+        "Identify which transmitter depends on static pressure and its configured density conversion.",
+        "Check the actual fluid density and compare with an independent sounding before relying on displayed volume.",
+        "Correct instrument settings through approved calibration control and verify overflow protection."
+      ],
+      "result": "The same pressure head can correspond to a different actual height when liquid density changes."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-olcme-ve-enstrumantasyon-akis-olcum-cihazlari-orifis-coriolis-4": {
+    "id": "machine-automation-olcme-ve-enstrumantasyon-akis-olcum-cihazlari-orifis-coriolis-4-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Orifice differential-pressure meters infer flow from pressure loss and fluid properties; Coriolis meters directly measure mass flow through oscillating tubes. Density, gas entrainment and calibration affect their accuracy.\n\nCommon error: Do not treat an uncompensated orifice flow reading as direct mass-flow measurement.",
+    "example": {
+      "problem": "A fuel transfer record claims an unexplained 8% flow reduction from an orifice meter after a change in fuel density.",
+      "steps": [
+        "Check whether the calculation compensates for actual density and temperature and verify differential-pressure sensing.",
+        "Compare transferred tank soundings and independent metering over a controlled interval.",
+        "Investigate meter impulse lines, flow profile and calibration before adjusting a consumption report."
+      ],
+      "result": "The discrepancy may originate from density compensation, not necessarily a physical fuel leak."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-p-i-d-parametrelerinin-etkileri-3": {
+    "id": "machine-automation-kontrol-teorisi-p-i-d-parametrelerinin-etkileri-3-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Proportional action reacts to present control error, integral action accumulates error over time, and derivative action reacts to its rate of change. Aggressive integral settings may cause windup when an actuator saturates.\n\nCommon error: Do not increase integral gain to overcome a valve that has reached its physical limit.",
+    "example": {
+      "problem": "A tank level PID valve is already fully open but its integral term continues rising during a persistent level error.",
+      "steps": [
+        "Confirm actuator limit, level sensor validity and process capacity before changing controller parameters.",
+        "Recognise integral windup and use a tested anti-windup or bumpless-transfer strategy provided by the controller.",
+        "Return to approved tuning limits and monitor recovery without masking a mechanical valve fault."
+      ],
+      "result": "A slow recovery after saturation can be caused by accumulated integral demand rather than a new tank defect."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-kontrol-dongusu-ayari-tuning-4": {
+    "id": "machine-automation-kontrol-teorisi-kontrol-dongusu-ayari-tuning-4-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Control-loop tuning balances response time, stability, noise and actuator wear. A process that oscillates after maintenance may have altered sensor scaling or actuator dynamics, not merely inappropriate PID coefficients.\n\nCommon error: Never tune by uncontrolled large output steps while cooling a critical running engine.",
+    "example": {
+      "problem": "A cooling water temperature loop hunts every 30 seconds after its control valve positioner is replaced.",
+      "steps": [
+        "Verify sensor scaling, control direction and valve travel/response against the approved loop diagram.",
+        "Review recorded oscillation, actuator stroke and process time constants while keeping the system safe.",
+        "Make controlled authorised tuning changes and document step-response performance under a safe load."
+      ],
+      "result": "Retuning should follow fault validation and may require a valve-positioner fix rather than higher gains."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-kontrol-teorisi-kaskad-ve-ileri-besleme-kontrol-5": {
+    "id": "machine-automation-kontrol-teorisi-kaskad-ve-ileri-besleme-kontrol-5-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Cascade control uses an outer controller setting an inner-loop target; feedforward acts on a measured disturbance. The inner loop must remain reliable or the outer system may amplify an uncorrected process fault.\n\nCommon error: Do not mistake a stable displayed flow value for verified physical water flow.",
+    "example": {
+      "problem": "A jacket-water temperature cascade loop suffers sudden cold-water flow changes while its inner flow transmitter is stuck.",
+      "steps": [
+        "Identify outer temperature and inner flow loop measurements and where the transmitter value enters control.",
+        "Use approved safe-mode and control fallback to stabilise cooling, without relying on a frozen inner-loop reading.",
+        "Repair and validate sensor/loop response, then resume cascade with controlled parameter settings."
+      ],
+      "result": "Cascade control cannot compensate reliably when its faster inner loop relies on a failed transmitter."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-plc-ve-otomasyon-sistemleri-plc-donanim-yapisi-ve-i-o-1": {
+    "id": "machine-automation-plc-ve-otomasyon-sistemleri-plc-donanim-yapisi-ve-i-o-1-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "PLC input/output modules translate field signals to controller logic and outputs. A valid CPU state does not prove every I/O signal is physically healthy, especially with open-circuit, stuck or inverted contacts.\n\nCommon error: Never force an I/O bit to 'healthy' to conceal an unresolved damper problem.",
+    "example": {
+      "problem": "A PLC reports a fire damper as closed, but local inspection shows it physically open.",
+      "steps": [
+        "Identify the field limit switch, wiring, input module and controller mapping under authorised access.",
+        "Reconcile local damper position with remote status and prevent unsafe reliance on the erroneous signal.",
+        "Repair the switch or mapping, then function-test closed/open feedback and emergency interlocks."
+      ],
+      "result": "A healthy PLC CPU is not independent proof of actuator position."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-guc-elektronigi-harmonik-bozulma-ve-filtreleme-5": {
+    "id": "machine-automation-guc-elektronigi-harmonik-bozulma-ve-filtreleme-5-professional-application",
+    "title": "Marine automation troubleshooting and calculation",
+    "content": "Nonlinear drives draw nonsinusoidal currents that generate harmonic distortion and heating; total harmonic distortion (THD) describes their relative content, but absolute current and network impedance determine actual stress.\n\nCommon error: Do not equate 30% current THD with 30% voltage THD.",
+    "example": {
+      "problem": "A converter supply records fundamental current 100 A rms and combined harmonic current 30 A rms.",
+      "steps": [
+        "Compute illustrative current THD = 30/100 × 100% = 30%, assuming the 30 A value is the RMS sum of higher harmonics.",
+        "Check actual drive/filter ratings, transformer heating and measurement point before judging compliance.",
+        "Review the approved power-quality study and select remediation with qualified electrical engineers."
+      ],
+      "result": "The illustrative current THD is 30%; acceptable limits depend on equipment, measurement point and applicable standards."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
   }
 };
