@@ -4,6 +4,7 @@ import {
   calculateVoyageEta, calculateRectangularFreeSurface, calculateTpcFromWaterplaneArea,
   calculateEngineFuelConsumption, calculateFuelEndurance,
   calculateStaticUkc, calculateTransverseWeightShift, calculateCounterflowLmtd,
+  calculateFouledHeatExchangerArea, calculateSpecificEmissionRate,
 } from "./verifiedOperationalMath";
 
 const near = (actual: number, expected: number, tolerance = 1e-8) =>
@@ -86,4 +87,19 @@ test("Counterflow LMTD: handles equal temperature differences and rejects cross-
   near(calculateCounterflowLmtd(90, 60, 20, 50).lmtdK, 40);
   near(calculateCounterflowLmtd(100, 60, 20, 50).lmtdK, 10 / Math.log(50 / 40));
   assert.throws(() => calculateCounterflowLmtd(90, 60, 50, 95));
+});
+
+test("Added fouling resistance increases heat exchanger area (not decreases it)", () => {
+  const clean = calculateFouledHeatExchangerArea(500, 2500, 0, 40);
+  const fouled = calculateFouledHeatExchangerArea(500, 2500, 0.0002, 40);
+  near(clean.requiredAreaM2, 5);
+  near(fouled.effectiveUWattsM2K, 1 / (1 / 2500 + 0.0002));
+  near(fouled.requiredAreaM2, 7.5);
+  assert.ok(fouled.requiredAreaM2 > clean.requiredAreaM2);
+  assert.throws(() => calculateFouledHeatExchangerArea(500, 0, 0, 40));
+});
+test("Specific emissions convert kg/h and kW to g/kWh", () => {
+  near(calculateSpecificEmissionRate(300, 1000).gramsKwh, 300);
+  assert.throws(() => calculateSpecificEmissionRate(300, 0));
+  assert.throws(() => calculateSpecificEmissionRate(-1, 100));
 });
