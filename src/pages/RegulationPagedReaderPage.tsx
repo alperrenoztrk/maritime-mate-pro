@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
-import { BookOpen, ExternalLink, FileText } from "lucide-react";
+import { ExternalLink, FileText } from "lucide-react";
 import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { createRegulationReadingPlan, type RegulationReadingStep } from "@/lib/regulationReadingPlan";
 import { regulationItemMap } from "@/data/regulationItems";
@@ -171,6 +171,7 @@ export default function RegulationPagedReaderPage() {
   }));
   return (
     <PagedReadingSurface
+      key={item.slug}
       title={item.label}
       subtitle={item.category}
       pages={pages}
