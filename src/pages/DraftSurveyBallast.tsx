@@ -1,361 +1,104 @@
+import { useState } from "react";
+import { Droplets } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Droplets, Calculator, BarChart3 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { LibraryPageShell } from "@/components/library/LibraryInterface";
+import { estimateDisplacementChange, type DraftReadings } from "@/lib/toolCalculations";
 
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-
-interface BallastTankDistribution {
-  forepeak: number;
-  afterpeak: number;
-  no1Hold: number;
-  no2Hold: number;
-  no3Hold: number;
-  no4Hold: number;
-}
+type DraftField = keyof DraftReadings;
+const DRAFT_FIELDS: { key: DraftField; label: string }[] = [
+  { key: "forward", label: "Forward" },
+  { key: "midship", label: "Midship" },
+  { key: "aft", label: "Aft" },
+];
+type Fields = Record<DraftField, string>;
+const emptyDrafts = (): Fields => ({ forward: "", midship: "", aft: "" });
 
 export default function DraftSurveyBallast() {
-  const { toast } = useToast();
-  
-  const [inputs, setInputs] = useState({
-    beforeBallast: {
-      forward: "",
-      midship: "",
-      aft: ""
-    },
-    afterBallast: {
-      forward: "",
-      midship: "",
-      aft: ""
-    },
-    vesselParticulars: {
-      tpc: "",
-      density: "1.025"
-    },
-    ballastTanks: {
-      forepeak: "",
-      afterpeak: "",
-      no1Hold: "",
-      no2Hold: "",
-      no3Hold: "",
-      no4Hold: ""
-    }
-  });
-
-  const [result, setResult] = useState<{
-    draftChange: number;
-    ballastWeight: number;
-    ballastVolume: number;
-    tankDistribution: BallastTankDistribution;
-  } | null>(null);
-
+  const [before, setBefore] = useState<Fields>(emptyDrafts);
+  const [after, setAfter] = useState<Fields>(emptyDrafts);
+  const [tpc, setTpc] = useState("");
+  const [result, setResult] = useState<ReturnType<typeof estimateDisplacementChange> | null>(null);
+  const [error, setError] = useState("");
+  const invalidate = () => { setResult(null); setError(""); };
   const calculate = () => {
-    const { beforeBallast, afterBallast, vesselParticulars, ballastTanks } = inputs;
-    
-    if (!beforeBallast.forward || !beforeBallast.midship || !beforeBallast.aft ||
-        !afterBallast.forward || !afterBallast.midship || !afterBallast.aft ||
-        !vesselParticulars.tpc) {
-      toast({ title: "Error", description: "Please fill in all required fields", variant: "destructive" });
+    if (![...Object.values(before), ...Object.values(after), tpc].every((value) => value.trim())) {
+      setError("Complete all six drafts and TPC.");
+      setResult(null);
       return;
     }
-
-    // Draft değişimi hesaplama
-    const beforeMean = (parseFloat(beforeBallast.forward) + 4*parseFloat(beforeBallast.midship) + parseFloat(beforeBallast.aft)) / 6;
-    const afterMean = (parseFloat(afterBallast.forward) + 4*parseFloat(afterBallast.midship) + parseFloat(afterBallast.aft)) / 6;
-    const draftChange = afterMean - beforeMean;
-    
-    // TPC ile balast ağırlığı
-    const tpc = parseFloat(vesselParticulars.tpc);
-    const ballastWeight = draftChange * 100 * tpc;
-    
-    // Balast hacmi
-    const density = parseFloat(vesselParticulars.density);
-    const ballastVolume = ballastWeight / density;
-
-    // Tank dağılımı
-    const tankDistribution = {
-      forepeak: parseFloat(ballastTanks.forepeak || "0"),
-      afterpeak: parseFloat(ballastTanks.afterpeak || "0"),
-      no1Hold: parseFloat(ballastTanks.no1Hold || "0"),
-      no2Hold: parseFloat(ballastTanks.no2Hold || "0"),
-      no3Hold: parseFloat(ballastTanks.no3Hold || "0"),
-      no4Hold: parseFloat(ballastTanks.no4Hold || "0")
-    };
-
-    setResult({
-      draftChange,
-      ballastWeight,
-      ballastVolume,
-      tankDistribution
+    const parseDrafts = (fields: Fields): DraftReadings => ({
+      forward: Number(fields.forward), midship: Number(fields.midship), aft: Number(fields.aft),
     });
-
-    toast({ title: "Calculation Completed", description: "Ballast measurement calculated" });
+    try {
+      setResult(estimateDisplacementChange(parseDrafts(before), parseDrafts(after), Number(tpc)));
+      setError("");
+    } catch (e) {
+      setResult(null);
+      setError(e instanceof Error ? e.message : "Check the inputs.");
+    }
   };
-
   return (
-    <div className="container mx-auto p-4 space-y-6">
-      <div className="flex items-center gap-4 mb-6">
-<div>
-          <h1 className="text-2xl font-bold">Ballast Measurement</h1>
-        </div>
-      </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Ship Features</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="tpc">TPC (ton/cm)</Label>
-              <Input
-                id="tpc"
-                type="number"
-                step="0.01"
-                value={inputs.vesselParticulars.tpc}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselParticulars: { ...prev.vesselParticulars, tpc: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="density">Water Density (ton/m³)</Label>
-              <Input
-                id="density"
-                type="number"
-                step="0.001"
-                value={inputs.vesselParticulars.density}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  vesselParticulars: { ...prev.vesselParticulars, density: e.target.value }
-                }))}
-                placeholder="1.025"
-              />
-            </div>
-          </div>
+    <LibraryPageShell title="Draft Change Estimate" icon={Droplets} maxWidth="max-w-3xl">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Estimate a change in displacement from two sets of drafts at a constant tonnes-per-centimetre
+        (TPC) value. <strong>This does not determine ballast quantity</strong>: cargo, bunkers,
+        freshwater, stores, trim, density and other changes can affect the observed drafts.
+      </p>
+      <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
+        <CardHeader><CardTitle className="text-base">Vessel hydrostatic input</CardTitle></CardHeader>
+        <CardContent className="space-y-2">
+          <Label htmlFor="tpc">TPC from vessel hydrostatic data (t/cm)</Label>
+          <Input id="tpc" type="number" inputMode="decimal" min="0" step="any"
+            placeholder="20" value={tpc}
+            onChange={(e) => { setTpc(e.target.value); invalidate(); }} />
         </CardContent>
       </Card>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-red-600 dark:text-red-400">Pre-Ballast Water Withdrawals (m)</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="before-forward">Forward Draft</Label>
-              <Input
-                id="before-forward"
-                type="number"
-                step="0.01"
-                value={inputs.beforeBallast.forward}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  beforeBallast: { ...prev.beforeBallast, forward: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="before-midship">Medium Draft</Label>
-              <Input
-                id="before-midship"
-                type="number"
-                step="0.01"
-                value={inputs.beforeBallast.midship}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  beforeBallast: { ...prev.beforeBallast, midship: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="before-aft">Aft Draft</Label>
-              <Input
-                id="before-aft"
-                type="number"
-                step="0.01"
-                value={inputs.beforeBallast.aft}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  beforeBallast: { ...prev.beforeBallast, aft: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-blue-600 dark:text-blue-400">Post-Ballast Draft (m)</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label htmlFor="after-forward">Forward Draft</Label>
-              <Input
-                id="after-forward"
-                type="number"
-                step="0.01"
-                value={inputs.afterBallast.forward}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  afterBallast: { ...prev.afterBallast, forward: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="after-midship">Medium Draft</Label>
-              <Input
-                id="after-midship"
-                type="number"
-                step="0.01"
-                value={inputs.afterBallast.midship}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  afterBallast: { ...prev.afterBallast, midship: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-            <div>
-              <Label htmlFor="after-aft">Aft Draft</Label>
-              <Input
-                id="after-aft"
-                type="number"
-                step="0.01"
-                value={inputs.afterBallast.aft}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  afterBallast: { ...prev.afterBallast, aft: e.target.value }
-                }))}
-                placeholder="0.00"
-              />
-            </div>
-          </CardContent>
-        </Card>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {([
+          { id: "before", label: "Before", values: before, update: setBefore },
+          { id: "after", label: "After", values: after, update: setAfter },
+        ] as const).map((group) => (
+          <Card key={group.id} className="surface-2 rounded-2xl border-border/60 shadow-none">
+            <CardHeader><CardTitle className="text-base">{group.label} drafts (m)</CardTitle></CardHeader>
+            <CardContent className="space-y-3">
+              {DRAFT_FIELDS.map((field) => (
+                <div key={field.key} className="space-y-1.5">
+                  <Label htmlFor={`${group.id}-${field.key}`}>{field.label}</Label>
+                  <Input id={`${group.id}-${field.key}`} type="number"
+                    inputMode="decimal" step="any" min="0" placeholder="5.00"
+                    value={group.values[field.key]}
+                    onChange={(e) => {
+                      group.update((previous) => ({ ...previous, [field.key]: e.target.value }));
+                      invalidate();
+                    }} />
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        ))}
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Ballast Tank Distribution (m³)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <Label htmlFor="forepeak">Forepeak Tank</Label>
-              <Input
-                id="forepeak"
-                type="number"
-                value={inputs.ballastTanks.forepeak}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  ballastTanks: { ...prev.ballastTanks, forepeak: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="afterpeak">Afterpeak Tank</Label>
-              <Input
-                id="afterpeak"
-                type="number"
-                value={inputs.ballastTanks.afterpeak}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  ballastTanks: { ...prev.ballastTanks, afterpeak: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="no1Hold">No.1 Cargo hold</Label>
-              <Input
-                id="no1Hold"
-                type="number"
-                value={inputs.ballastTanks.no1Hold}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  ballastTanks: { ...prev.ballastTanks, no1Hold: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="no2Hold">No.2 Cargo hold</Label>
-              <Input
-                id="no2Hold"
-                type="number"
-                value={inputs.ballastTanks.no2Hold}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  ballastTanks: { ...prev.ballastTanks, no2Hold: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="no3Hold">No.3 Cargo hold</Label>
-              <Input
-                id="no3Hold"
-                type="number"
-                value={inputs.ballastTanks.no3Hold}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  ballastTanks: { ...prev.ballastTanks, no3Hold: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <Label htmlFor="no4Hold">No.4 Cargo hold</Label>
-              <Input
-                id="no4Hold"
-                type="number"
-                value={inputs.ballastTanks.no4Hold}
-                onChange={(e) => setInputs(prev => ({ 
-                  ...prev, 
-                  ballastTanks: { ...prev.ballastTanks, no4Hold: e.target.value }
-                }))}
-                placeholder="0"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Button onClick={calculate} className="w-full" size="lg">
-        <Calculator className="h-4 w-4 mr-2" />
-        Calculate Ballast
-      </Button>
-
+      <Button className="w-full" onClick={calculate}>Estimate displacement change</Button>
+      {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
       {result && (
-        <Card className="bg-blue-50 dark:bg-blue-950">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Droplets className="h-5 w-5" />
-              Ballast Calculation Results
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <p><strong>Draft Change:</strong> {result.draftChange.toFixed(3)} m</p>
-                <p><strong>Ballast Weight:</strong> {result.ballastWeight.toFixed(2)} ton</p>
-              </div>
-              <div className="space-y-2">
-                <p><strong>Ballast Volume:</strong> {result.ballastVolume.toFixed(2)} m³</p>
-              </div>
-            </div>
+        <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
+          <CardHeader><CardTitle className="text-base">Approximate displacement change</CardTitle></CardHeader>
+          <CardContent className="space-y-2 text-sm">
+            <p className="text-xl font-semibold tabular-nums">
+              {result.displacementChangeTonnes > 0 ? "+" : ""}
+              {result.displacementChangeTonnes.toFixed(2)} t
+            </p>
+            <p className="text-muted-foreground">Before mean: {result.beforeMeanM.toFixed(3)} m · After mean: {result.afterMeanM.toFixed(3)} m</p>
+            <p className="text-muted-foreground">Draft difference: {result.draftChangeM.toFixed(3)} m</p>
           </CardContent>
         </Card>
       )}
-    </div>
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        Approximate mean = (forward + 4 × midship + aft) / 6; ΔDisplacement ≈ ΔDraft (cm) × TPC.
+        This simplified check does not replace vessel hydrostatic corrections or tank sounding tables.
+      </p>
+    </LibraryPageShell>
   );
 }
