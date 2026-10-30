@@ -1506,7 +1506,7 @@ function CalcToolCard({ tool }: { tool: CalcTool }) {
       const values = tool.calculate(checked.values);
       if (!Array.isArray(values) || values.length === 0) throw new Error("No calculation result was returned.");
       const errorResult = values.find((item) =>
-        /^(?:error|hata)$/i.test(item.label) || /\\b(?:NaN|Infinity|undefined)\\b/i.test(item.value));
+        /^(?:error|hata)$/i.test(item.label) || /\b(?:NaN|Infinity|undefined)\b/i.test(item.value));
       if (errorResult) throw new Error(errorResult.value);
       setLastInputs(checked.values);
       setComputedAtUtc(new Date().toISOString());
