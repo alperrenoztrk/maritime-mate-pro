@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -59,6 +60,7 @@ interface StormType {
 
 const DetailedMeteorology = () => {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
+  const [readerMode, setReaderMode] = useState(true);
 
   const toggleSection = (sectionId: string) => {
     setExpandedSections(prev => ({
@@ -386,6 +388,470 @@ const DetailedMeteorology = () => {
     }
   };
 
+  const readingPages:ReadingPage[] = [
+    {id:"intro",title:"Marine meteorology",section:"Introduction",content:
+      <p>Weather systems, atmospheric pressure, storms, clouds and forecasting tools. Use official marine forecasts and the vessel's approved passage plan for operational decisions.</p>},
+    ...weatherSystems.map((v)=>({
+      id:`weather-${v.id}`,title:v.name,section:"Weather systems",
+      content:<div className="space-y-4"><p>{v.description}</p>
+        <ul className="list-disc space-y-2 pl-5">{v.characteristics.map((x,i)=><li key={i}>{x}</li>)}</ul>
+        <p><strong>Marine impact:</strong> {v.maritimeImpact}</p>
+        <p><strong>Wind:</strong> {v.windSpeed} · <strong>Visibility:</strong> {v.visibility} · <strong>Sea state:</strong> {v.seaState}</p>
+        <h3 className="font-semibold">Precautions</h3>
+        <ul className="list-disc space-y-2 pl-5">{v.recommendations.map((x,i)=><li key={i}>{x}</li>)}</ul>
+      </div>,
+    })),
+    ...pressureSystems.map((v)=>({
+      id:`pressure-${v.id}`,title:v.name,section:"Atmospheric pressure",
+      content:<div className="space-y-4">
+        <p><strong>Pressure range:</strong> {v.pressure}</p><p>{v.weatherPattern}</p>
+        <ul className="list-disc space-y-2 pl-5">{v.characteristics.map((x,i)=><li key={i}>{x}</li>)}</ul>
+        <p><strong>Wind:</strong> {v.windPattern} · <strong>Visibility:</strong> {v.visibility}</p>
+        <ul className="list-disc space-y-2 pl-5">{v.maritimeEffects.map((x,i)=><li key={i}>{x}</li>)}</ul>
+        <h3 className="font-semibold">Precautions</h3>
+        <ul className="list-disc space-y-2 pl-5">{v.recommendations.map((x,i)=><li key={i}>{x}</li>)}</ul>
+      </div>,
+    })),
+    ...stormTypes.map((v)=>({
+      id:`storm-${v.id}`,title:v.name,section:"Storm classifications",
+      content:<div className="space-y-4"><p><strong>Category:</strong> {v.category} · <strong>Wind:</strong> {v.windSpeed}</p>
+        <p>{v.formation}</p><p><strong>Tracking:</strong> {v.tracking}</p>
+        <p><strong>Marine hazard:</strong> {v.maritimeDanger}</p>
+        <ul className="list-disc space-y-2 pl-5">{v.characteristics.map((x,i)=><li key={i}>{x}</li>)}</ul>
+        <h3 className="font-semibold">Safety actions</h3>
+        <ul className="list-disc space-y-2 pl-5">{v.safetyMeasures.map((x,i)=><li key={i}>{x}</li>)}</ul>
+        <p>{v.evacuation}</p>
+      </div>,
+    })),
+    {id:"clouds",title:"Cloud types",section:"Meteorology theory",content:(<>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Cloud className="h-6 w-6 text-sky-600" />
+                  Cloud Atlas (Actual Images + CH/CM/CL)
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Legend + Mariner Hints */}
+                <Alert className="border-blue-200 bg-blue-50 dark:border-blue-700 dark:bg-blue-900/20">
+                  <Info className="h-4 w-4 text-blue-700 dark:text-blue-300" />
+                  <AlertDescription className="text-sm">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <Badge variant="secondary" className="text-xs">CH: High clouds</Badge>
+                      <Badge variant="secondary" className="text-xs">CM: Mid-level clouds</Badge>
+                      <Badge variant="secondary" className="text-xs">CL: Low clouds</Badge>
+                      <Badge variant="outline" className="text-xs border-red-400 text-red-700 dark:text-red-300">Cb: Vertical development (storm)</Badge>
+                    </div>
+                    <div className="text-xs space-y-1">
+                      <p><strong>Sailor's Note:</strong> CL clouds cut visibility quickly (fog/precipitation); CM clouds can announce an approaching front; CH clouds point to a change of weather in the medium to long term; Cb means a risk of severe squalls, sudden wind and hail.</p>
+                    </div>
+                  </AlertDescription>
+                </Alert>
+
+                {/* Low (CL) */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Badge variant="outline" className="border-blue-400 text-blue-800 dark:text-blue-200">CL</Badge>
+                    Low Clouds (0-2 km)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {cloudTypesByLevel.low.map((c) => (
+                      <CloudCard key={c.id} cloud={c} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Middle (CM) */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Badge variant="outline" className="border-green-400 text-green-800 dark:text-green-200">CM</Badge>
+                    Middle Clouds (2-7 km)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {cloudTypesByLevel.middle.map((c) => (
+                      <CloudCard key={c.id} cloud={c} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* High (CH) */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Badge variant="outline" className="border-purple-400 text-purple-800 dark:text-purple-200">CH</Badge>
+                    High Clouds (5-13 km)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {cloudTypesByLevel.high.map((c) => (
+                      <CloudCard key={c.id} cloud={c} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Vertical Development */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Badge variant="destructive" className="text-white">C b</Badge>
+                    Vertical Development Clouds (Storm)
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {cloudTypesByLevel.vertical.map((c) => (
+                      <CloudCard key={c.id} cloud={c} />
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </>)},
+    {id:"satellite",title:"Satellite imagery",section:"Interactive reference",content:(<>
+            <SatelliteImageryViewer />
+          </>)},
+    {id:"navtex",title:"NAVTEX warnings",section:"Interactive reference",content:(<>
+            <NAVTEXWarnings />
+          </>)},
+    {id:"drawing",title:"Weather chart practice",section:"Interactive reference",content:(<>
+            <WeatherMapDrawing />
+          </>)},
+    {id:"forecasting",title:"Forecasting methods",section:"Meteorology theory",content:(<>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Satellite className="h-6 w-6 text-purple-600" />
+                  Meteorology Forecast Methods
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                
+                {/* Satellite Imagery */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Satellite className="h-5 w-5 text-purple-600" />
+                    Satellite Imaging
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Card className="border-purple-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Visible Spectrum (VIS)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Daytime cloud structures</li>
+                          <li>• Cloud thickness analysis</li>
+                          <li>• Storm development tracking</li>
+                          <li>• Sea surface observation</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-purple-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Infrared (IR)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Continuous observation day/night</li>
+                          <li>• Cloud height detection</li>
+                          <li>• Temperature analysis</li>
+                          <li>• Storm top detection</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-purple-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Water Vapor (WV)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Atmospheric humidity analysis</li>
+                          <li>• Jet stream tracking</li>
+                          <li>• Facade systems</li>
+                          <li>• Upper level winds</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-purple-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Microwave</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Rainfall detection</li>
+                          <li>• Inner cloud water content</li>
+                          <li>• Tropical cyclone analysis</li>
+                          <li>• Sea surface temperature</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Weather Models */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <BarChart3 className="h-5 w-5 text-purple-600" />
+                    Weather Models
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Card className="border-blue-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">GFS (Global)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Global coverage</li>
+                          <li>• 15 km resolution</li>
+                          <li>• 16 days forecast</li>
+                          <li>• 6 hourly updates</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-blue-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">ECMWF (Europe)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• High accuracy</li>
+                          <li>• 9 km resolution</li>
+                          <li>• 10 days forecast</li>
+                          <li>• 12-hour updates</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-blue-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">WRF (Local)</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• High resolution</li>
+                          <li>• 1-3 km resolution</li>
+                          <li>• 48 hour forecast</li>
+                          <li>• Detailed local analysis</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Marine Weather Services */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Navigation className="h-5 w-5 text-purple-600" />
+                    Maritime Meteorological Services
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Card className="border-green-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">USCG Weather</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• VHF weather broadcasts</li>
+                          <li>• Daily marine forecasts</li>
+                          <li>• Storm warnings</li>
+                          <li>• Navigation security</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-green-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">NOAA Marine</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Detailed marine forecasts</li>
+                          <li>• Wave height models</li>
+                          <li>• Current forecasts</li>
+                          <li>• Tropical cyclone tracking</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </>)},
+    {id:"safety",title:"Severe weather and safety",section:"Meteorology theory",content:(<>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Shield className="h-6 w-6 text-green-600" />
+                  Maritime Safety Guide
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                
+                {/* Pre-Voyage Planning */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 text-green-600" />
+                    Pre-navigation Planning
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Card className="border-green-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Weather Analysis</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• 72 hour forecast review</li>
+                          <li>• Pressure charts analysis</li>
+                          <li>• Wind and wave forecasts</li>
+                          <li>• Alternative route planning</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-green-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Security Check</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Emergency equipment</li>
+                          <li>• Communication systems</li>
+                          <li>• Navigation devices</li>
+                          <li>• Safety equipment</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Weather Monitoring */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Clock className="h-5 w-5 text-green-600" />
+                    Monitoring While Cruising
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Card className="border-blue-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Continuous Monitoring</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Barometric pressure monitoring</li>
+                          <li>• Wind direction and speed</li>
+                          <li>• View distance</li>
+                          <li>• Sea state</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-blue-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Warning Signals</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Sudden pressure drop</li>
+                          <li>• Wind direction change</li>
+                          <li>• Decreased vision</li>
+                          <li>• Wave height increase</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-blue-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Emergency</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• Seeking a safe haven</li>
+                          <li>• Speed reduction</li>
+                          <li>• Personnel safety</li>
+                          <li>• Communicate</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Emergency Procedures */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-red-600" />
+                    Emergency procedures
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Alert className="border-red-200 bg-red-50">
+                      <AlertTriangle className="h-4 w-4 text-red-600" />
+                      <AlertDescription>
+                        <strong>Storm Approach:</strong> Seek a safe harbor immediately, reduce speed, secure all equipment and move personnel to safe areas.
+                      </AlertDescription>
+                    </Alert>
+                    
+                    <Alert className="border-orange-200 bg-orange-50">
+                      <AlertTriangle className="h-4 w-4 text-orange-600" />
+                      <AlertDescription>
+                        <strong>Loss of Vision:</strong> Use radar, reduce speed, sound the fog signal and report your position on VHF.
+                      </AlertDescription>
+                    </Alert>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Communication */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Target className="h-5 w-5 text-green-600" />
+                    Contact and Help
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Card className="border-purple-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Emergency Contact</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• VHF Channel 16 (156.8 MHz)</li>
+                          <li>• EPIRB activation</li>
+                          <li>• Satellite phone</li>
+                          <li>• AIS emergency signal</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="border-purple-200">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Information Resources</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="text-sm space-y-1">
+                          <li>• NOAA Weather Radio</li>
+                          <li>• USCG Broadcasts</li>
+                          <li>• Marine Weather Apps</li>
+                          <li>• Satellite Weather</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </>)}
+  ];
+  if (readerMode) return <MobileLayout>
+    <PagedReadingSurface title="Meteorology Subject Explanation" subtitle="Maritime meteorology"
+      pages={readingPages} storageKey="mariners-book:meteorology"
+      headerAction={<Button size="sm" variant="ghost" className="min-h-10" onClick={()=>setReaderMode(false)}>Expanded view</Button>} />
+  </MobileLayout>;
   return (
     <MobileLayout>
       <div className="min-h-screen p-4">
@@ -395,6 +861,7 @@ const DetailedMeteorology = () => {
           {/* Header */}
           <div className="space-y-3">
             <PageHeader title="Meteorology Subject Explanation" />
+            <Button variant="outline" size="sm" onClick={()=>setReaderMode(true)}>Book reader</Button>
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Comprehensive meteorology guide compiled from USCG and SeaVision sources
             </p>
