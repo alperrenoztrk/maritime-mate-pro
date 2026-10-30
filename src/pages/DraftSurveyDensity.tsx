@@ -1,154 +1,81 @@
-import { useState, useEffect } from "react";
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Thermometer } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { BarChart3 } from "lucide-react";
-import { CalculationLayout } from "@/components/layout/CalculationLayout";
-import { CalculationCard } from "@/components/ui/calculation-card";
-import { FormulaCard } from "@/components/ui/formula-card";
+import { Button } from "@/components/ui/button";
+import { LibraryPageShell } from "@/components/library/LibraryInterface";
+import { correctReferenceDisplacement } from "@/lib/toolCalculations";
 
-const DraftSurveyDensity = () => {
-  const [seawaterDensity, setSeawaterDensity] = useState("");
-  const [standardDensity, setStandardDensity] = useState("1.025");
-  const [displacement, setDisplacement] = useState("");
-  const [correction, setCorrection] = useState<number | null>(null);
-
-  // Load saved values from localStorage
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('draft-survey-density');
-      if (saved) {
-        const data = JSON.parse(saved);
-        if (data.seawaterDensity) setSeawaterDensity(data.seawaterDensity);
-        if (data.standardDensity) setStandardDensity(data.standardDensity);
-        if (data.displacement) setDisplacement(data.displacement);
-      }
-    } catch (error) {
-      console.error("Error loading saved density inputs:", error);
+export default function DraftSurveyDensity() {
+  const [data, setData] = useState({ actual: "", reference: "1.025", displacement: "" });
+  const [result, setResult] = useState<ReturnType<typeof correctReferenceDisplacement> | null>(null);
+  const [error, setError] = useState("");
+  const update = (key: keyof typeof data, value: string) => {
+    setData((prev) => ({ ...prev, [key]: value }));
+    setResult(null);
+    setError("");
+  };
+  const calculate = () => {
+    if (Object.values(data).some((v) => !v.trim())) {
+      setError("Enter both densities and reference displacement.");
+      setResult(null);
+      return;
     }
-  }, []);
-
-  // Save inputs to localStorage
-  useEffect(() => {
     try {
-      const data = { seawaterDensity, standardDensity, displacement };
-      localStorage.setItem('draft-survey-density', JSON.stringify(data));
-    } catch (error) {
-      console.error("Error saving density inputs:", error);
-    }
-  }, [seawaterDensity, standardDensity, displacement]);
-
-  const calculateDensityCorrection = () => {
-    const density = parseFloat(seawaterDensity);
-    const standard = parseFloat(standardDensity);
-    const disp = parseFloat(displacement);
-
-    if (density && standard && disp) {
-      const correctionValue = disp * ((density - standard) / standard);
-      setCorrection(correctionValue);
+      setResult(correctReferenceDisplacement(
+        Number(data.displacement), Number(data.actual), Number(data.reference),
+      ));
+      setError("");
+    } catch (e) {
+      setResult(null);
+      setError(e instanceof Error ? e.message : "Check the inputs.");
     }
   };
-
   return (
-    <CalculationLayout
-      title="Density Correction"
-      icon={BarChart3}
-      maxWidthClassName="max-w-6xl"
-      rightRail={
-        <FormulaCard
-          title="Formula"
-          sections={[
-            {
-              title: "Density Correction",
-              accent: "teal",
-              lines: [{ formula: "Correction = Displacement × ((ρ - ρ₀) / ρ₀)" }],
-            },
-          ]}
-          symbolsNote={
-            <>
-              ρ: actual water density, ρ₀: standard density (usually 1.025 t/m³)
-            </>
-          }
-        />
-      }
-      below={
-        <CalculationCard>
-          <CardHeader>
-            <CardTitle>About Density Correction</CardTitle>
-          </CardHeader>
-          <CardContent>
+    <LibraryPageShell title="Displacement Density Correction" icon={Thermometer} maxWidth="max-w-3xl">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Correct a displacement read from hydrostatic tables at a reference water density to
+        the same submerged volume at the observed water density. This is a mass correction,
+        not freshwater allowance or change of draft.
+      </p>
+      <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
+        <CardHeader><CardTitle className="text-base">Measured values</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {([
+              ["actual", "Observed water density (t/m³)", "1.010"],
+              ["reference", "Hydrostatic-table reference density (t/m³)", "1.025"],
+              ["displacement", "Displacement from reference-density tables (t)", "10000"],
+            ] as const).map(([key, label, placeholder]) => (
+              <div key={key} className="space-y-2">
+                <Label htmlFor={key}>{label}</Label>
+                <Input id={key} type="number" inputMode="decimal" step="any" min="0"
+                  value={data[key]} placeholder={placeholder}
+                  onChange={(e) => update(key, e.target.value)} />
+              </div>
+            ))}
+          </div>
+          <Button onClick={calculate} className="w-full">Calculate correction</Button>
+          {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+        </CardContent>
+      </Card>
+      {result && (
+        <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
+          <CardHeader><CardTitle className="text-base">Density-corrected displacement</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            <p className="text-xl font-semibold tabular-nums">{result.correctedDisplacementTonnes.toFixed(3)} t</p>
             <p className="text-sm text-muted-foreground">
-              The density of seawater varies with geographic location, temperature and salinity. This calculation is used to determine how the ship will behave in waters of different densities.
+              Correction relative to table displacement: {result.correctionTonnes >= 0 ? "+" : ""}
+              {result.correctionTonnes.toFixed(3)} t
             </p>
           </CardContent>
-        </CalculationCard>
-      }
-    >
-      <CalculationCard>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5" />
-            Density Correction Calculation
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="seawater-density">Sea Water Density (t/m³)</Label>
-              <Input
-                id="seawater-density"
-                type="number"
-                step="0.001"
-                value={seawaterDensity}
-                onChange={(e) => setSeawaterDensity(e.target.value)}
-                placeholder=""
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="standard-density">Standard Density (t/m³)</Label>
-              <Input
-                id="standard-density"
-                type="number"
-                step="0.001"
-                value={standardDensity}
-                onChange={(e) => setStandardDensity(e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="displacement">Displacement (tons)</Label>
-              <Input
-                id="displacement"
-                type="number"
-                step="0.1"
-                value={displacement}
-                onChange={(e) => setDisplacement(e.target.value)}
-                placeholder=""
-              />
-            </div>
-          </div>
-
-          <Button onClick={calculateDensityCorrection} className="w-full">
-            Calculate Density Correction
-          </Button>
-
-          {correction !== null && (
-            <div className="mt-4 rounded-lg border border-sky-200/50 dark:border-sky-500/20 bg-sky-50/70 dark:bg-sky-900/15 p-4">
-              <h3 className="text-lg font-semibold">Calculation Result</h3>
-              <div className="space-y-2 mt-2">
-                <p className="text-lg font-semibold">
-                  Density Correction: <span className="text-sky-700 dark:text-sky-300">{correction.toFixed(2)} ton</span>
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {correction > 0 ? "Positive correction (addition)" : "Negative correction (subtraction)"}
-                </p>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </CalculationCard>
-    </CalculationLayout>
+        </Card>
+      )}
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        Δ(actual) = Δ(table) × ρ(actual) / ρ(table). Use a calibrated hydrometer and
+        ship-approved hydrostatic tables; trim and draft-mark corrections are separate.
+      </p>
+    </LibraryPageShell>
   );
-};
-
-export default DraftSurveyDensity;
+}
