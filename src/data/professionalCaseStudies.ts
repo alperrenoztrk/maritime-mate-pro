@@ -4180,5 +4180,265 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
       }
     ]
+  },
+  "environment-marpol-genel-yapisi-ve-ekler": {
+    "id": "environment-marpol-genel-yapisi-ve-ekler-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "MARPOL has six technical Annexes, regulating oil, noxious liquid bulk cargo, packaged marine pollutants, sewage, garbage and air emissions. Applicable vessel certificates and discharge records differ by Annex and ship type.\n\nCommon error: Never describe Annex V food-waste disposal limits as if they were Annex I oily-water rules.",
+    "example": {
+      "problem": "A trainee says a ship's Oil Record Book proves it satisfies every MARPOL pollution-prevention requirement.",
+      "steps": [
+        "Identify the pollution category: oily mixtures (I), bulk chemicals (II), packaged pollutants (III), sewage (IV), garbage (V) or air (VI).",
+        "Match the specific ship's equipment, operational condition, relevant record books and applicable certificate to the Annex.",
+        "Review any discharge restriction through the applicable Annex and flag/port/local measures before authorising operation."
+      ],
+      "result": "MARPOL compliance requires subject-specific controls; one Annex I document cannot prove compliance with all Annexes."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-marpol-ek-ii-zararli-sivi-maddeler": {
+    "id": "environment-marpol-ek-ii-zararli-sivi-maddeler-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "MARPOL Annex II covers noxious liquid substances carried in bulk, with cargo categorisation and discharge requirements based on the IBC Code, a ship's Procedures and Arrangements Manual and approved records.\n\nCommon error: Do not use an oil tanker Annex I discharge checklist for bulk chemical Category X residues.",
+    "example": {
+      "problem": "After unloading a Category X bulk chemical, the cargo team wants to pump a tank wash directly into the sea.",
+      "steps": [
+        "Verify the actual chemical's pollution category and required prewash provisions from the ship's approved documents.",
+        "Arrange required stripping, washing and delivery of residues to an appropriate reception facility, with survey/notification where applicable.",
+        "Record the operation accurately in the applicable Cargo Record Book and follow the approved P&A Manual."
+      ],
+      "result": "Category X residue handling is subject to particularly stringent requirements, and this scenario cannot justify a direct overboard discharge."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-marpol-ek-iii-paketli-zararli-maddeler": {
+    "id": "environment-marpol-ek-iii-paketli-zararli-maddeler-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Annex III addresses harmful substances in packaged form, with marine pollutant identification and packaging, marking, documentation and stowage provisions implemented through the IMDG Code.\n\nCommon error: Do not assume a cargo is excluded from MARPOL Annex III solely because it is inside a sealed container.",
+    "example": {
+      "problem": "A container manifest identifies marine-pollutant cargo but the shipping package lacks the relevant marine pollutant identification.",
+      "steps": [
+        "Check the UN number, proper shipping name, transport documentation and current IMDG Code amendment in effect.",
+        "Verify marine-pollutant marking, container placarding, package compliance and segregation in the load plan.",
+        "Hold or correct the nonconforming shipment through authorised cargo procedures and record the discrepancy."
+      ],
+      "result": "Correct documentation and markings are both needed; a manifest entry cannot compensate for missing required package marks."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-marpol-ek-vi-hava-kirliligi-ve-enerji-verimliligi": {
+    "id": "environment-marpol-ek-vi-hava-kirliligi-ve-enerji-verimliligi-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "MARPOL Annex VI controls ship air pollutants and energy-efficiency compliance. Sulphur limits are typically 0.50% m/m outside relevant SOx ECAs and 0.10% m/m inside; the Mediterranean became a SOx ECA on 1 May 2025.\n\nCommon error: Do not assume the Mediterranean remains outside SOx ECA control after 1 May 2025.",
+    "example": {
+      "problem": "A ship carrying 0.50% sulphur-compliant fuel plans to enter the Mediterranean SOx ECA without an approved equivalent emission-control arrangement.",
+      "steps": [
+        "Identify ECA boundary and applicable transition requirements, consulting current voyage and flag guidance.",
+        "Prepare an approved timely fuel changeover to compliant sulphur content, considering tank line volume and temperature/viscosity compatibility.",
+        "Record changeover actions and retain bunker delivery documentation and samples as required."
+      ],
+      "result": "A fuel compliant with the 0.50% global limit is not necessarily compliant with the 0.10% Mediterranean ECA limit."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "environment-biyo-kirlenme-anti-fouling-ve-gemi-geri-donusumu": {
+    "id": "environment-biyo-kirlenme-anti-fouling-ve-gemi-geri-donusumu-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Biofouling and antifouling controls affect invasive species and coatings, while ship recycling has separate hazardous-material and facility requirements. The IMO Hong Kong Convention entered into force on 26 June 2025; implementation depends on scope and administration.\n\nCommon error: Do not claim the ship is ready for recycling merely because the hull was freshly coated.",
+    "example": {
+      "problem": "During scheduled drydock, thick hull biofouling and outdated hazardous-material inventory records are found.",
+      "steps": [
+        "Plan cleaning, capture and disposal of fouling debris according to yard and port environmental rules and the approved antifouling programme.",
+        "Check coating system suitability, inspection/repair records and any biofouling management documentation.",
+        "Update hazardous-material inventory and assess recycling-related survey/certification obligations under the applicable Hong Kong Convention/flag requirements."
+      ],
+      "result": "Drydock cleaning, antifouling management and eventual compliant recycling are related but separate environmental programmes."
+    },
+    "references": [
+      {
+        "title": "IMO — MARPOL Convention and Annexes",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-prevention-of-pollution-from-ships-%28marpol%29.aspx"
+      },
+      {
+        "title": "IMO — IMDG Code amendment 42-24",
+        "url": "https://www.imo.org/en/publications/pages/imdg%20code.aspx"
+      },
+      {
+        "title": "IMO — Hong Kong Ship Recycling Convention",
+        "url": "https://www.imo.org/en/about/conventions/pages/the-hong-kong-international-convention-for-the-safe-and-environmentally-sound-recycling-of-ships.aspx"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-mgo-ve-mdo-ayrimi-3": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-mgo-ve-mdo-ayrimi-3-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Marine gas oil (MGO) is a distillate fuel class; marine diesel oil (MDO) terminology may refer to different distillate blends and grades. Density, viscosity, sulphur, ignition and compatibility are determined by the delivered fuel analysis and OEM limits, not the commercial label alone.\n\nCommon error: Do not infer sulphur compliance or acceptable viscosity solely from the words 'marine diesel'.",
+    "example": {
+      "problem": "A vessel receives a bunker certificate marked 'MDO' but the chief engineer assumed it is interchangeable with the previous MGO batch.",
+      "steps": [
+        "Read the actual ISO fuel grade, density, viscosity, sulphur and flash point on the supplied bunker delivery and lab documents.",
+        "Compare with engine and fuel treatment system limitations and planned changeover temperatures.",
+        "Use approved changeover and segregation procedures and retain samples/documentation."
+      ],
+      "result": "The trade name does not establish whether a given diesel engine and fuel system can accept the batch unchanged."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-lng-yakit-kullanimi-5": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-lng-yakit-kullanimi-5-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "LNG propulsion introduces cryogenic, fire, vapour-management and fuel-gas system hazards that depend on certified design and the applicable IGF/IGC requirements. Gaseous leaks can create hazardous atmospheres even if visible liquid is absent.\n\nCommon error: Do not remove a bunkering coupling merely because flow has stopped.",
+    "example": {
+      "problem": "During LNG bunkering, a gas detector alarms near the connection manifold while personnel are about to disconnect the hose.",
+      "steps": [
+        "Suspend transfer through approved emergency stop and follow gas-detection and isolation procedures from the bunker plan.",
+        "Secure exclusion zones, ignition control and atmosphere assessment without unprotected access to the leak area.",
+        "Verify gas-free/pressure state and responsible authority before any disconnect or restart."
+      ],
+      "result": "An automatic shutdown isolates the process but does not instantly prove the hose or manifold safe to open."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-deniz-yakit-turleri-metanol-ve-amonyak-yakitlar-6": {
+    "id": "machine-fuel-technology-deniz-yakit-turleri-metanol-ve-amonyak-yakitlar-6-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Methanol and ammonia require different toxicity, flammability and materials/ventilation precautions; ship-specific approval, crew training and fuel-transfer instructions are critical. A generic 'alternative fuel' PPE set is insufficient.\n\nCommon error: Do not assume all low-carbon fuels can be handled with diesel-fuel spill absorbents and normal gloves.",
+    "example": {
+      "problem": "A technician requests one shared spill-response procedure for methanol and ammonia fuel modules.",
+      "steps": [
+        "Compare each fuel's toxic exposure, flammability, vapour and material-compatibility characteristics using the ship's approved fuel safety assessment.",
+        "Verify dedicated detection, ventilation, isolation, firefighting and chemical-specific PPE arrangements.",
+        "Authorise separate fuel-specific drills and procedures, then test crew understanding."
+      ],
+      "result": "A toxic-gas detection and respiratory protection strategy for ammonia cannot be copied uncritically from a methanol fire strategy."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-yakit-kalite-parametreleri-flash-point-ve-tutusma-noktasi-4": {
+    "id": "machine-fuel-technology-yakit-kalite-parametreleri-flash-point-ve-tutusma-noktasi-4-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Flash point is the lowest temperature at which a liquid produces sufficient vapour to ignite under a specified standard test; it is not the autoignition temperature and does not independently describe all storage hazards.\n\nCommon error: Never equate flash point with spontaneous ignition temperature or assume increasing heating is always safe.",
+    "example": {
+      "problem": "Two bunker analyses report flash points 61°C and 68°C while a procurement sheet lists the same heating-temperature setpoint.",
+      "steps": [
+        "Verify the laboratory test method and the applicable marine fuel flash-point requirement for the intended service.",
+        "Compare anticipated handling temperature, contamination risk and OEM/safety management guidance.",
+        "Raise any borderline or unexpected result with engineering management before accepting or heating the fuel."
+      ],
+      "result": "A 61°C flash point and a 68°C flash point are not interchangeable evidence of identical handling margins."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-fuel-technology-yakit-kalite-parametreleri-katalizor-incelikleri-al-si-6": {
+    "id": "machine-fuel-technology-yakit-kalite-parametreleri-katalizor-incelikleri-al-si-6-professional-application",
+    "title": "Pollution prevention and fuel system decision",
+    "content": "Residual fuel catalytic fines are hard aluminosilicate particles from refining, often assessed using aluminium plus silicon concentration. Separator efficiency, correct settling and cold/viscous fuel conditions determine abrasive particle exposure at engine injection.\n\nCommon error: Do not assume a single separator pass always reduces particles to safe levels.",
+    "example": {
+      "problem": "A bunker analysis shows high Al+Si levels while the main engine's liner-wear iron concentration rises.",
+      "steps": [
+        "Review actual supplied-fuel certificate, engine inlet fine limits and purifier maker requirements rather than a generic single acceptance threshold.",
+        "Check fuel heating, separation temperature/flow, filter differential pressure and sampling downstream of treatment.",
+        "Arrange independent checks, maintain machinery restrictions and document wear and treated-fuel quality trends."
+      ],
+      "result": "High catalytic fines can accelerate abrasive wear; downstream engine-inlet measurement matters more than the bunker label alone."
+    },
+    "references": [
+      {
+        "title": "IMO — ship fuel sulphur and MARPOL Annex VI",
+        "url": "https://www.imo.org/en/mediacentre/pages/whatsnew-2254.aspx"
+      },
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
   }
 };
