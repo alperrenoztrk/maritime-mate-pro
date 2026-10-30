@@ -11,6 +11,13 @@ on:
       - 'src/lib/maritimeUnits.ts'
       - 'src/lib/maritimeUnits.test.ts'
       - 'src/lib/toolCalculations.ts'
+      - 'src/lib/verifiedOperationalMath.ts'
+      - 'src/lib/verifiedOperationalMath.test.ts'
+      - 'src/pages/VerifiedMaritimeTools.tsx'
+      - 'src/pages/MachineTopicCalculationsPage.tsx'
+      - 'src/components/stability/InteractiveStabilityTools.tsx'
+      - 'src/components/calculations/EngineCalculations.tsx'
+      - 'src/components/calculations/HydrostaticsStabilityCalculations.tsx'
       - 'src/lib/professionalCalculatorCore.ts'
       - 'src/lib/professionalCalculatorCore.test.ts'
       - 'src/lib/professionalCpa.ts'
@@ -42,6 +49,8 @@ jobs:
         run: npm run test:tools
       - name: Professional CPA and shared workspace tests
         run: npm run test:professional-calculators
+      - name: Verified operational calculations
+        run: npm run test:verified-operational
       - name: TypeScript checks
         run: npm run typecheck
       - name: Build app
