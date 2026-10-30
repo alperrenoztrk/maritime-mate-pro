@@ -3640,5 +3640,205 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
       }
     ]
+  },
+  "machine-maintenance-bakim-stratejileri-ariza-sonrasi-bakim-corrective-1": {
+    "id": "machine-maintenance-bakim-stratejileri-ariza-sonrasi-bakim-corrective-1-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Corrective maintenance after breakdown prioritises safe isolation, effect on essential services and systematic root-cause assessment. Restoring a machine to operation without checking the cause risks repeated or more severe failure.\n\nCommon error: Do not reset a trip and return the pump to service without evaluating the leak and process conditions.",
+    "example": {
+      "problem": "An auxiliary seawater circulation pump trips repeatedly after a mechanical-seal leak is noticed.",
+      "steps": [
+        "Confirm standby cooling capacity and controlled changeover before isolating the faulty pump.",
+        "Apply lockout and isolate pressure/electrical/rotational hazards under the maker's approved procedure.",
+        "Inspect the seal, shaft condition, bearings and suction/discharge conditions; repair and test for leakage and capacity."
+      ],
+      "result": "A new mechanical seal may restore tightness but not eliminate a root cause such as shaft misalignment."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-bakim-stratejileri-planli-bakim-planned-preventive-2": {
+    "id": "machine-maintenance-bakim-stratejileri-planli-bakim-planned-preventive-2-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Preventive maintenance is scheduled from maker guidance, equipment running hours, duty and criticality; a fixed calendar interval alone may be insufficient. Records must distinguish inspection, actual overhaul and deferred work.\n\nCommon error: Do not claim an oil filter is changed because its PMS work order was merely opened.",
+    "example": {
+      "problem": "An auxiliary generator requires oil filter service every 500 running hours, and its meter rises from 7,650 h to 8,120 h.",
+      "steps": [
+        "Calculate next service threshold: 7,650 + 500 = 8,150 h if 7,650 h was the last completed service.",
+        "Remaining service interval is 8,150−8,120 = 30 running hours, not 30 calendar hours.",
+        "Schedule controlled maintenance before the threshold, ensuring adequate reserve electrical supply and recording completed work."
+      ],
+      "result": "The next due running-hour reading is 8,150 h under the hypothetical approved interval."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-bakim-stratejileri-guvenilirlik-merkezli-bakim-rcm-5": {
+    "id": "machine-maintenance-bakim-stratejileri-guvenilirlik-merkezli-bakim-rcm-5-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Reliability-centred maintenance chooses run-to-failure, scheduled replacement, condition monitoring or functional testing based on credible failure modes and consequences. The cheapest immediate maintenance task may not minimise safety risk.\n\nCommon error: Do not adopt run-to-failure policy for a hidden safety-critical function without approved risk assessment.",
+    "example": {
+      "problem": "A critical emergency-fire-pump automatic-start circuit has a latent failure mode with no normal-use indication.",
+      "steps": [
+        "Identify the protected function, failure effect and consequence category before choosing a maintenance policy.",
+        "Use authorised periodic functional proof tests that reveal hidden protective-function failures.",
+        "Record detected faults, test coverage, corrective action and trends to adjust the inspection plan."
+      ],
+      "result": "Failure-finding tests are appropriate for some hidden protective failures; ordinary vibration monitoring cannot confirm a relay starts the pump."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-planli-bakim-sistemi-pms-bakim-araliklari-ve-calisma-saatleri-2": {
+    "id": "machine-maintenance-planli-bakim-sistemi-pms-bakim-araliklari-ve-calisma-saatleri-2-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Maintenance planning must consider hours, calendar dates, maker requirements and operating duty; a late task may require additional risk controls and company authorisation. Deferral is not the same as completion.\n\nCommon error: Never backdate completion or override the PMS interval without a documented authorised decision.",
+    "example": {
+      "problem": "A hydraulic pump overhaul is due at 10,000 running hours, but the unit has reached 10,050 h during a cargo operation.",
+      "steps": [
+        "Confirm the exact overhaul scope, history and whether a standby unit can safely take over.",
+        "Raise an authorised, time-bounded deferral if permitted by SMS, supported by condition checks and operating limitations.",
+        "Carry out isolation and maintenance when safely practicable, then close the task with measured findings."
+      ],
+      "result": "The task is overdue by 50 running hours; merely resetting the counter conceals its true status."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-planli-bakim-sistemi-pms-yedek-parca-envanteri-ve-min-max-seviye-5": {
+    "id": "machine-maintenance-planli-bakim-sistemi-pms-yedek-parca-envanteri-ve-min-max-seviye-5-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Min-max inventory must cover lead time, consumption, failure criticality and redundancy. A stock ledger can overstate usable spares when parts are expired, damaged or reserved for essential equipment.\n\nCommon error: Do not treat items in quarantine or awaiting inspection as serviceable spare stock.",
+    "example": {
+      "problem": "A ship uses two seals per quarter, lead time is two quarters, and the safety stock is three seals.",
+      "steps": [
+        "Estimate consumption over lead time: 2×2=4 seals.",
+        "Set a simple reorder point = 4 + 3 = 7 usable seals, assuming steady consumption.",
+        "Check actual serviceable stock and delivery delays, and obtain urgent resupply if below the adopted reorder point."
+      ],
+      "result": "The illustrative reorder trigger is seven usable seals, not merely seven items on the purchasing list."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-drydock-survey": {
+    "id": "machine-maintenance-drydock-survey-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Drydock preparation coordinates class survey items, hull inspections, sea valves, cathodic protection, anchors and shaft arrangements. Isolation planning must be established before exposure of sea-connected equipment.\n\nCommon error: Never authorise cutting an overboard pipe based solely on the main valve handle position.",
+    "example": {
+      "problem": "A repair contractor intends to remove an overboard valve after docking, but the drawings show a second connected bypass.",
+      "steps": [
+        "Review current sea-system drawings, valve register, boundary plan and any class/flag survey requirements.",
+        "Establish, tag and verify all necessary isolations and approved permits before opening the line.",
+        "Inspect and record work scope, material certificates, pressure tests and reopening checks before undocking."
+      ],
+      "result": "The presence of a dry dock does not make every sea-connected line depressurised or safely isolated."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-motor-bakim-isleri-silindir-kapagi-sokum-ve-revizyon-1": {
+    "id": "machine-maintenance-motor-bakim-isleri-silindir-kapagi-sokum-ve-revizyon-1-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Cylinder-head maintenance requires engine cooling, pressure release, residual-fuel assessment, lifting plan and correct bolt preload sequence. A visual absence of leaks does not demonstrate safe lifting or correct reassembly.\n\nCommon error: Do not release head fasteners while trapped pressure or hot coolant remains.",
+    "example": {
+      "problem": "An engineer prepares to lift a 900 kg diesel cylinder head after engine shutdown while the jacket system remains hot.",
+      "steps": [
+        "Apply the maker's cooling, pressure-release and mechanical isolation procedure; exclude accidental turning or fuel injection.",
+        "Verify certified lifting points, crane/SWL, sling angle and a secure exclusion area.",
+        "Follow specified torque/tension sequence and post-maintenance leak/operational tests with recorded findings."
+      ],
+      "result": "The lift must wait for authorised isolation and verified lifting arrangements, independent of production pressure."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-motor-bakim-isleri-supap-taslama-ve-ayar-4": {
+    "id": "machine-maintenance-motor-bakim-isleri-supap-taslama-ve-ayar-4-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Valve grinding and lash adjustment restore sealing and correct thermal clearances only within maker tolerances. Overgrinding can damage seat geometry or reduce valve margin, changing heat transfer and reliability.\n\nCommon error: Never use universal valve-clearance dimensions across different diesel engine designs.",
+    "example": {
+      "problem": "A cylinder exhaust valve shows uneven seating and poor compression following overhaul.",
+      "steps": [
+        "Measure seat width, face damage and stem/guide clearances against maker specifications.",
+        "Assess whether permitted regrinding is possible or replacement is required; maintain correct contact geometry.",
+        "Set lash at the maker-specified temperature and crank position, then test sealing and document results."
+      ],
+      "result": "A visually smooth valve face is not proof of correct contact width or thermal clearance."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-muayene-ve-test-yontemleri-ultrasonik-kalinlik-olcumu-2": {
+    "id": "machine-maintenance-muayene-ve-test-yontemleri-ultrasonik-kalinlik-olcumu-2-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Ultrasonic thickness measurements require the correct material sound velocity, calibration and clean measurement locations. One apparent low reading can be caused by coating, coupling or surface geometry rather than true local corrosion.\n\nCommon error: Do not replace a class corrosion limit with an arbitrary universal percentage.",
+    "example": {
+      "problem": "A steel hull plate nominally 12 mm thick gives 8.4 mm in a preliminary ultrasonic spot reading.",
+      "steps": [
+        "Verify instrument calibration on a suitable reference block and correct sound velocity/coating setting.",
+        "Repeat measurements around the suspect area on prepared locations and map the readings to the approved survey grid.",
+        "Assess remaining thickness and allowable diminution with the surveyor/class criteria, recording all measured evidence."
+      ],
+      "result": "The observed apparent diminution is 12−8.4=3.6 mm, or 30%, but structural acceptance cannot be decided without applicable scantling limits."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-maintenance-muayene-ve-test-yontemleri-yag-analizi-ve-durum-izleme-6": {
+    "id": "machine-maintenance-muayene-ve-test-yontemleri-yag-analizi-ve-durum-izleme-6-professional-application",
+    "title": "Maintenance decision and worked example",
+    "content": "Oil analysis combines viscosity, wear particles, water content and contamination trends. One out-of-range sample may indicate a developing fault or a sampling error; trend and source verification matter.\n\nCommon error: Never infer a precise failed gear tooth from iron ppm alone without corroborating inspection.",
+    "example": {
+      "problem": "Two consecutive gear-oil reports show rising iron particles and water contamination after a seal leak.",
+      "steps": [
+        "Confirm representative sampling points, sampling intervals, operating conditions and lab methods.",
+        "Compare wear metals, viscosity, water and particle trends with OEM criteria and recent maintenance.",
+        "Inspect seal and lubrication condition, manage operation risk and resample after corrective work."
+      ],
+      "result": "Increasing wear and water trends justify action before a full mechanical failure, but do not uniquely identify one fault."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers, 2026",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
   }
 };
