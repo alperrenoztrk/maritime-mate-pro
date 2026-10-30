@@ -1,5 +1,6 @@
 import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { Lightbulb } from "lucide-react";
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { useParams } from "react-router-dom";
 import { stripMarkdown } from "@/utils/cleanText";
 import { getBetaCategories, getBetaTopic, type BetaTopic } from "@/data/betaLessons";
@@ -18,7 +19,6 @@ import { LessonAITutor } from "@/components/lessons/LessonAITutor";
 import { TopicGuidedLearningLink } from "@/components/lessons/TopicGuidedLearningLink";
 import { buildLessonText } from "@/utils/lessonText";
 import { MobileLayout } from "@/components/MobileLayout";
-import { PageHeader } from "@/components/layout/PageHeader";
 
 
 export default function LessonTopicDetailPage() {
@@ -98,68 +98,88 @@ export default function LessonTopicDetailPage() {
     };
   });
 
+  const readingPages: ReadingPage[] = [
+    {
+      id: "overview",
+      title: content.title,
+      section: "Introduction",
+      content: (
+        <div className="space-y-5">
+          <TopicLearningContext categoryKey={categoryId} topic={content} />
+          {content.introduction && (
+            <p className="text-base leading-relaxed">{stripMarkdown(content.introduction)}</p>
+          )}
+          <TopicGuidedLearningLink categoryKey={categoryId} topic={content} />
+        </div>
+      ),
+    },
+    ...sections.map(({ section, hideImage, alreadyUsedImages }, index) => ({
+      id: section.id ?? `section-${index}`,
+      title: section.title,
+      section: `Lesson · ${index + 1} / ${sections.length}`,
+      content: (
+        <LessonTeachCard
+          section={section}
+          categoryId={categoryId}
+          topicTitle={sourceTopicTitle}
+          hideImage={hideImage}
+          alreadyUsedImages={alreadyUsedImages}
+        />
+      ),
+    })),
+  ];
+
+  if (enhancement) {
+    readingPages.push({
+      id: "enhancements",
+      title: "Practical learning & applications",
+      section: "Learning",
+      content: <LessonEnhancementBlock data={enhancement} />,
+    });
+  }
+  if (content.keyPoints?.length) {
+    readingPages.push({
+      id: "highlights",
+      title: "Key points",
+      section: "Review",
+      content: (
+        <section className="space-y-3">
+          <div className="flex items-center gap-2 text-primary">
+            <Lightbulb className="h-5 w-5" /><span className="text-sm font-semibold">Highlights</span>
+          </div>
+          <ol className="list-inside list-decimal space-y-3">
+            {content.keyPoints.map((point, index) => (
+              <li key={index}>{stripMarkdown(point)}</li>
+            ))}
+          </ol>
+        </section>
+      ),
+    });
+  }
+  if (content.sections.length > 0) {
+    readingPages.push({
+      id: "ai-tutor",
+      title: "Ask about this lesson",
+      section: "Practice",
+      content: <LessonAITutor topicTitle={content.title} lessonText={buildLessonText(content)} />,
+    });
+  }
+  readingPages.push({
+    id: "next-step",
+    title: "Continue learning",
+    section: "Review",
+    content: <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />,
+  });
+
   return (
     <MobileLayout>
-      <div className="mx-auto flex max-w-4xl flex-col gap-5 pb-24">
-        <PageHeader title={content.title} icon={CategoryIcon} />
-
-        <TopicLearningContext categoryKey={categoryId} topic={content} />
-
-        {content.introduction && (
-          <div className="surface-1 rounded-xl border border-primary/20 p-5">
-            <p className="text-base leading-relaxed text-foreground/90">
-              {stripMarkdown(content.introduction)}
-            </p>
-          </div>
-        )}
-
-        <TopicGuidedLearningLink categoryKey={categoryId} topic={content} />
-
-        {sections.map(({ section, hideImage, alreadyUsedImages }, index) => (
-          <div
-            id={section.id}
-            key={section.id ?? `${section.sourceTitle ?? section.title}-${index}`}
-            className="surface-2 rounded-2xl border p-5 shadow-elev-1"
-          >
-            <LessonTeachCard
-              section={section}
-              categoryId={categoryId}
-              topicTitle={sourceTopicTitle}
-              hideImage={hideImage}
-              alreadyUsedImages={alreadyUsedImages}
-            />
-          </div>
-        ))}
-
-        {enhancement && <LessonEnhancementBlock data={enhancement} />}
-
-        {content.keyPoints && content.keyPoints.length > 0 && (
-          <section className="surface-2 rounded-2xl border p-5 shadow-elev-1">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Highlights</h2>
-            </div>
-            <ul className="space-y-2">
-              {content.keyPoints.map((point, index) => (
-                <li
-                  key={`key-point-${index}`}
-                  className="flex items-start gap-3 text-base text-foreground/80"
-                >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <span>{stripMarkdown(point)}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {content.sections.length > 0 && (
-          <LessonAITutor topicTitle={content.title} lessonText={buildLessonText(content)} />
-        )}
-        <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />
-      </div>
+      <PagedReadingSurface
+        key={`${categoryId}:${sourceTopicTitle}`}
+        title={content.title}
+        subtitle={category?.title ?? categoryId}
+        pages={readingPages}
+        storageKey={`mariners-book:lesson-page:${categoryId}:${sourceTopicTitle}`}
+      />
     </MobileLayout>
   );
 }
