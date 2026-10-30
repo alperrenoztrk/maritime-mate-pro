@@ -8,6 +8,9 @@ import { ImageViewerModal } from "@/components/ui/ImageViewerModal";
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
+import { LessonAITutor } from "@/components/lessons/LessonAITutor";
+import { TopicGuidedLearningLink } from "@/components/lessons/TopicGuidedLearningLink";
+import { buildLessonText } from "@/utils/lessonText";
 import { MobileLayout } from "@/components/MobileLayout";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { LessonImage } from "@/components/ui/LessonImage";
@@ -70,6 +73,8 @@ export default function MachineTopicDetailPage() {
             <p className="text-sm leading-relaxed text-foreground/90">{content.introduction}</p>
           </div>
         )}
+
+        {categoryKey && <TopicGuidedLearningLink categoryKey={categoryKey} topic={content} />}
 
         {content.sections.map((section, index) => (
           <section id={section.id} key={section.id ?? `${section.title}-${index}`} className="surface-2 space-y-4 rounded-2xl border p-5 shadow-elev-1">
@@ -187,6 +192,10 @@ export default function MachineTopicDetailPage() {
               ))}
             </ul>
           </section>
+        )}
+
+        {content.sections.length > 0 && (
+          <LessonAITutor topicTitle={content.title} lessonText={buildLessonText(content)} />
         )}
         <TopicLearningContext categoryKey={categoryKey} topic={content} placement="after" />
       </div>

@@ -7,7 +7,7 @@ import { ConsentDialogHost } from "@/components/privacy/ConsentDialogHost";
 import { DocumentExpiryNotifier } from "@/components/documents/DocumentExpiryNotifier";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, Navigate, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useParams, Navigate, Link } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -28,6 +28,7 @@ import { EdgeSwipeBack } from "@/components/EdgeSwipeBack";
 import { RouteSkeleton } from "@/components/state/AppState";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { lazyWithReload } from "@/lib/lazyWithReload";
+import { topicLearnHref } from "@/data/learningGuide";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { ProRoute, LibraryBookRoute } from "@/components/pro/ProRoute";
@@ -237,6 +238,12 @@ const RouteErrorFallback = ({ pathname }: { pathname: string }) => (
   </div>
 );
 
+// Rehberli öğrenme konu (Topics) tarafına taşındı; eski Exercises linkleri oraya gider.
+const LegacyExerciseLearnRedirect = () => {
+  const { categoryId = "", topicTitle = "" } = useParams();
+  return <Navigate to={topicLearnHref(categoryId, decodeURIComponent(topicTitle))} replace />;
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   const chromeHidden = useAppChromeHidden();
@@ -335,11 +342,12 @@ const AnimatedRoutes = () => {
         <Route path="/lessons/:topicKey/quiz" element={<PageTransition><ProRoute feature="The quiz section"><CourseQuizPage /></ProRoute></PageTransition>} />
         <Route path="/lessons/:categoryId/topics" element={<PageTransition><LibraryBookRoute><LessonTopicsPage /></LibraryBookRoute></PageTransition>} />
         <Route path="/lessons/:categoryId/topics/:topicTitle" element={<PageTransition><LibraryBookRoute><LessonTopicDetailPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/lessons/:categoryId/topics/:topicTitle/learn" element={<PageTransition><LibraryBookRoute><GuidedLessonSession /></LibraryBookRoute></PageTransition>} />
         {/* Alıştırmalar — orijinal /lessons route'larına dokunulmadan eklendi */}
         <Route path="/exercises" element={<PageTransition><ExercisesPage /></PageTransition>} />
         <Route path="/exercises/:categoryId/topics" element={<PageTransition><ExerciseTopicsPage /></PageTransition>} />
         <Route path="/exercises/:categoryId/topics/:topicTitle" element={<PageTransition><ExerciseTopicDetailPage /></PageTransition>} />
-        <Route path="/exercises/:categoryId/topics/:topicTitle/learn" element={<PageTransition><GuidedLessonSession /></PageTransition>} />
+        <Route path="/exercises/:categoryId/topics/:topicTitle/learn" element={<LegacyExerciseLearnRedirect />} />
         <Route path="/crew" element={<PageTransition><CrewHierarchyPage /></PageTransition>} />
         <Route path="/crew/muster-list" element={<PageTransition><MusterListPage /></PageTransition>} />
         <Route path="/bridge" element={<PageTransition><BridgeDevicesPage /></PageTransition>} />
@@ -450,6 +458,7 @@ const AnimatedRoutes = () => {
         <Route path="/machine/:topicSlug/rules" element={<Navigate to="../topics" relative="path" replace />} />
         <Route path="/machine/:topicSlug/assistant" element={<PageTransition><MachineTopicAssistantPage /></PageTransition>} />
         <Route path="/machine/:topicSlug/topics/:subTopicTitle" element={<PageTransition><LibraryBookRoute><MachineTopicDetailPage /></LibraryBookRoute></PageTransition>} />
+        <Route path="/machine/:topicSlug/topics/:subTopicTitle/learn" element={<PageTransition><LibraryBookRoute><GuidedLessonSession /></LibraryBookRoute></PageTransition>} />
         <Route path="/machine/:topicSlug/quiz" element={<PageTransition><ProRoute feature="The quiz section"><MachineTopicQuizPage /></ProRoute></PageTransition>} />
         <Route path="/navigation" element={<PageTransition><Navigation /></PageTransition>} />
         <Route path="/navigation/calc/:id" element={<PageTransition><NavigationCalculationPage /></PageTransition>} />

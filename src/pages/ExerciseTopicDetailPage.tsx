@@ -1,22 +1,18 @@
-import { TopicLearningContext } from "@/components/curriculum/TopicLearningContext";
 import { Link, useParams } from "react-router-dom";
-import { Lightbulb, Play } from "lucide-react";
-import { stripMarkdown } from "@/utils/cleanText";
+import { BookOpen, ListChecks } from "lucide-react";
 import { getBetaTopic } from "@/data/betaLessons";
 import { getExerciseQuestionsForTopic } from "@/data/exerciseQuestionDistribution";
-import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
-import { getLessonFlow } from "@/data/lessonFlow";
-import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
-import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
-import { LessonAITutor } from "@/components/lessons/LessonAITutor";
+import { topicHref } from "@/data/learningGuide";
 import { TopicExerciseQuestionSet } from "@/components/lessons/TopicExerciseQuestionSet";
 import { MobileLayout } from "@/components/MobileLayout";
 import { PageHeader } from "@/components/layout/PageHeader";
 
 /**
- * Alıştırmalar konu detayı.
- * URL sabit topic id veya eski başlık içerebilir; rehberli akış, enhancement ve
- * eski quiz sorusu eşleşmeleri her zaman kanonik konu kimliği üzerinden çözülür.
+ * Alıştırmalar konu detayı: yalnız o konunun soruları.
+ * Konu anlatımı, rehberli öğrenme ve AI eğitmen Konular (Topics) sayfasındadır;
+ * burada sadece derse dönüş linki bulunur.
+ * URL sabit topic id veya eski başlık içerebilir; sorular her zaman kanonik konu
+ * kimliği üzerinden çözülür.
  */
 export default function ExerciseTopicDetailPage() {
   const { categoryId, topicTitle } = useParams<{
@@ -25,11 +21,6 @@ export default function ExerciseTopicDetailPage() {
   }>();
   const decodedTitleOrId = topicTitle ? decodeURIComponent(topicTitle) : "";
   const content = getBetaTopic(categoryId, decodedTitleOrId);
-  const sourceTopicTitle = content?.sourceTitle ?? content?.title ?? decodedTitleOrId;
-  const enhancement = content
-    ? getLessonTopicEnhancement(categoryId, sourceTopicTitle)
-    : undefined;
-  const flow = content ? getLessonFlow(categoryId, sourceTopicTitle) : undefined;
 
   if (!categoryId || !decodedTitleOrId || !content) {
     return (
@@ -45,87 +36,44 @@ export default function ExerciseTopicDetailPage() {
     categoryId,
     content.id ?? decodedTitleOrId,
   );
-
-  const lessonText = [
-    content.introduction ?? "",
-    ...content.sections.map((section) =>
-      [
-        section.title,
-        section.content,
-        ...(section.bulletPoints ?? []),
-        section.formula?.text,
-        section.example?.problem,
-        section.example?.result,
-      ]
-        .filter(Boolean)
-        .join(" "),
-    ),
-  ].join("\n");
+  const lessonHref = topicHref(categoryId, content.id ?? decodedTitleOrId);
+  const courseKey = categoryId.replace(/^machine-/, "");
+  const questionBankHref = categoryId.startsWith("machine-")
+    ? `/machine/${courseKey}/quiz`
+    : `/lessons/${courseKey}/quiz`;
 
   return (
     <MobileLayout>
       <div className="mx-auto flex max-w-4xl flex-col gap-6 pb-24">
-        <PageHeader title={content.title} icon={Play} />
-        <TopicLearningContext categoryKey={categoryId} topic={content} />
-
-        {content.introduction && (
-          <div className="surface-1 rounded-xl border border-primary/20 p-5">
-            <p className="text-base leading-relaxed text-foreground/90">
-              {stripMarkdown(content.introduction)}
-            </p>
-          </div>
-        )}
+        <PageHeader title={content.title} icon={ListChecks} />
 
         <Link
-          to={`/exercises/${categoryId}/topics/${encodeURIComponent(sourceTopicTitle)}/learn`}
-          className="flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3 text-base font-semibold text-primary-foreground shadow-elev-1 transition-[background-color,transform] duration-control ease-out-ios hover:bg-primary/90 active:scale-[0.98]"
+          to={lessonHref}
+          className="inline-flex min-h-11 items-center gap-2 self-start rounded-xl border bg-card px-4 py-2 text-sm font-semibold text-primary"
         >
-          <Play className="h-4 w-4" />
-          {flow ? "Start Learning" : "Start Guided Reading"}
+          <BookOpen className="h-4 w-4" />
+          Read the lesson
         </Link>
 
-        {content.sections.map((section, index) => {
-          const sourceSectionTitle = section.sourceTitle ?? section.title;
-          return (
-            <div id={section.id} key={section.id ?? `${sourceSectionTitle}-${index}`} className="surface-2 space-y-6 rounded-2xl border p-5 shadow-elev-1">
-              <LessonTeachCard
-                section={section}
-                categoryId={categoryId}
-                topicTitle={content.title}
-              />
-
-            </div>
-          );
-        })}
-
-        {enhancement && <LessonEnhancementBlock data={enhancement} />}
-
-        {content.keyPoints && content.keyPoints.length > 0 && (
-          <section className="rounded-xl border border-border/40 bg-card/60 p-5">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Highlights</h2>
-            </div>
-            <ul className="space-y-2">
-              {content.keyPoints.map((point, index) => (
-                <li
-                  key={`key-point-${index}`}
-                  className="flex items-start gap-3 text-base text-foreground/80"
-                >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <span>{stripMarkdown(point)}</span>
-                </li>
-              ))}
-            </ul>
+        {topicQuestions.length > 0 ? (
+          <TopicExerciseQuestionSet
+            key={content.id}
+            topicId={content.id}
+            topic={content}
+            categoryId={categoryId}
+            questions={topicQuestions}
+          />
+        ) : (
+          <section className="space-y-3 rounded-2xl border bg-card p-5 text-center">
+            <p className="text-base text-foreground">No exercise questions for this topic yet.</p>
+            <Link
+              to={questionBankHref}
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline"
+            >
+              Open the complete course question bank
+            </Link>
           </section>
         )}
-
-        <TopicExerciseQuestionSet key={content.id} topicId={content.id} topic={content} categoryId={categoryId} questions={topicQuestions} />
-
-        <LessonAITutor topicTitle={content.title} lessonText={lessonText} />
-        <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />
       </div>
     </MobileLayout>
   );

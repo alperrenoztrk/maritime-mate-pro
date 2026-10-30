@@ -2,12 +2,13 @@ import { CourseLearningOverview } from "@/components/curriculum/CourseLearningOv
 import { Link, useParams } from "react-router-dom";
 import { CourseSectionTabs } from "@/components/curriculum/CourseSectionTabs";
 import { CurriculumModuleAccordion } from "@/components/curriculum/CurriculumModuleAccordion";
-import { getBetaCategories, getBetaModules } from "@/data/betaLessons";
+import { getBetaCategories } from "@/data/betaLessons";
+import { getExerciseModules } from "@/data/exerciseQuestionDistribution";
 
 export default function ExerciseTopicsPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
   const category = getBetaCategories().find((item) => item.key === categoryId);
-  const modules = getBetaModules(categoryId);
+  const modules = getExerciseModules(categoryId);
 
   if (!category) {
     return (
@@ -42,10 +43,16 @@ export default function ExerciseTopicsPage() {
         <CourseLearningOverview courseKey={category.key} />
         <Link to={category.group === "machine" ? `/machine/${courseKey}/quiz` : `/lessons/${courseKey}/quiz`} className="inline-flex min-h-11 items-center rounded-xl border bg-card px-4 py-3 text-sm font-semibold text-primary">Open the complete course question bank</Link>
         <p className="text-sm text-muted-foreground">Topic questions follow the lesson they were written for. Use the course question bank for broader revision.</p>
-        <CurriculumModuleAccordion
-          modules={modules}
-          topicHref={(topic) => detailLink(topic.id)}
-        />
+        {modules.length > 0 ? (
+          <CurriculumModuleAccordion
+            modules={modules}
+            topicHref={(topic) => detailLink(topic.id)}
+          />
+        ) : (
+          <p className="rounded-2xl border bg-card p-5 text-center text-sm text-muted-foreground">
+            No topic exercises have been written for this course yet. Use the course question bank above.
+          </p>
+        )}
       </div>
     </div>
   );

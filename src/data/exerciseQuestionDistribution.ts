@@ -1,4 +1,4 @@
-import { getBetaModules } from "@/data/betaLessons";
+import { getBetaModules, type BetaModule } from "@/data/betaLessons";
 import { getLessonFlow } from "@/data/lessonFlow";
 import { getTopicQuiz } from "@/data/courseContent/quiz";
 import type { QuizQuestion } from "@/types/quiz";
@@ -43,4 +43,18 @@ export function getExerciseQuestionDistribution(categoryId?: string): ExerciseQu
 export function getExerciseQuestionsForTopic(categoryId?: string, topicId?: string) {
   if (!categoryId || !topicId) return [];
   return getExerciseQuestionDistribution(categoryId).questionsByTopic.get(topicId) ?? [];
+}
+
+export function hasExerciseQuestions(categoryId?: string, topicId?: string) {
+  return getExerciseQuestionsForTopic(categoryId, topicId).length > 0;
+}
+
+/** Exercises lists only topics that own questions; modules left empty are hidden. */
+export function getExerciseModules(categoryId?: string): BetaModule[] {
+  return getBetaModules(categoryId)
+    .map((module) => {
+      const topics = module.topics.filter((topic) => hasExerciseQuestions(categoryId, topic.id));
+      return { ...module, topics, topicCount: topics.length };
+    })
+    .filter((module) => module.topics.length > 0);
 }

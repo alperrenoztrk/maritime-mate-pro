@@ -14,6 +14,9 @@ import {
 import { getLessonTopicEnhancement } from "@/data/lessonTopicEnhancements";
 import { LessonEnhancementBlock } from "@/components/lessons/LessonEnhancementBlock";
 import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
+import { LessonAITutor } from "@/components/lessons/LessonAITutor";
+import { TopicGuidedLearningLink } from "@/components/lessons/TopicGuidedLearningLink";
+import { buildLessonText } from "@/utils/lessonText";
 import { MobileLayout } from "@/components/MobileLayout";
 import { PageHeader } from "@/components/layout/PageHeader";
 
@@ -110,6 +113,8 @@ export default function LessonTopicDetailPage() {
           </div>
         )}
 
+        <TopicGuidedLearningLink categoryKey={categoryId} topic={content} />
+
         {sections.map(({ section, hideImage, alreadyUsedImages }, index) => (
           <div
             id={section.id}
@@ -148,6 +153,10 @@ export default function LessonTopicDetailPage() {
               ))}
             </ul>
           </section>
+        )}
+
+        {content.sections.length > 0 && (
+          <LessonAITutor topicTitle={content.title} lessonText={buildLessonText(content)} />
         )}
         <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />
       </div>

@@ -50,3 +50,4 @@ export const learningBranches = [
 export const courseHref = (key: string) => key.startsWith("machine-")
   ? `/machine/${key.slice(8)}/topics` : `/lessons/${key}/topics`;
 export const topicHref = (key: string, topicId: string) => `${courseHref(key)}/${encodeURIComponent(topicId)}`;
+export const topicLearnHref = (key: string, topicId: string) => `${topicHref(key, topicId)}/learn`;

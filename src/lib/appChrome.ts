@@ -3,7 +3,8 @@ const CHROMELESS_ROUTES = [
   /^\/reset-password$/,
   /^\/\.lovable\/oauth\/consent$/,
   
-  /^\/exercises\/[^/]+\/topics\/[^/]+\/learn$/,
+  /^\/lessons\/[^/]+\/topics\/[^/]+\/learn$/,
+  /^\/machine\/[^/]+\/topics\/[^/]+\/learn$/,
 ];
 
 export const isAppChromeHidden = (pathname: string) =>

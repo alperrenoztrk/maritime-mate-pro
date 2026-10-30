@@ -14,6 +14,16 @@ import { getLessonFlow } from "@/data/lessonFlow";
 import type { RecapQuestion } from "@/data/lessonFlow";
 import { buildLessonSequence, buildReviewSequence, getReviewSections, type LessonSequenceItem } from "@/utils/lessonSequence";
 import { getBetaTopic } from "@/data/betaLessons";
+import { courseHref, topicHref } from "@/data/learningGuide";
+
+/** Deck: /lessons/:categoryId/topics/:topicTitle/learn — Engine: /machine/:topicSlug/topics/:subTopicTitle/learn */
+function useGuidedParams() {
+  const { categoryId, topicTitle, topicSlug, subTopicTitle } = useParams();
+  return {
+    categoryId: categoryId ?? (topicSlug ? `machine-${topicSlug}` : undefined),
+    topicTitle: topicTitle ?? subTopicTitle,
+  };
+}
 
 /** Fisher-Yates karıştırma. */
 function shuffle<T>(arr: T[]): T[] {
@@ -28,18 +38,18 @@ function shuffle<T>(arr: T[]): T[] {
 type FlowItem = LessonSequenceItem;
 
 /**
- * "Exercises" — rehberli ders oturumu (güverte + makine, tüm konular).
+ * Konular (Topics) — rehberli ders oturumu (güverte + makine, tüm konular).
  * Akış (lessonFlow) yazılmış konularda Duolingo modu: ÖNCE ANLAT → KARIŞIK SOR,
  * yanlışlar sonda tekrar. Akışı henüz olmayan konularda REHBERLİ OKUMA modu:
  * bölümler sırayla öğretilir (içerik mevcut anlatımdan, read-only).
  */
 export default function GuidedLessonSession() {
-  const { categoryId, topicTitle } = useParams();
+  const { categoryId, topicTitle } = useGuidedParams();
   return <GuidedSession key={`${categoryId}-${topicTitle}`} />;
 }
 
 function GuidedSession() {
-  const { categoryId, topicTitle } = useParams<{ categoryId: string; topicTitle: string }>();
+  const { categoryId, topicTitle } = useGuidedParams();
   const { goBack } = useBackNavigation();
   const decodedTitle = topicTitle ? decodeURIComponent(topicTitle): "";
   const content = useMemo(() => {
@@ -80,7 +90,7 @@ function GuidedSession() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 text-center">
         <p className="text-muted-foreground">The narrative content for this topic has not been prepared yet.</p>
         <Link
-          to={`/exercises/${categoryId}/topics`}
+          to={courseHref(categoryId ?? "")}
           className="text-sm text-primary underline"
         >
           Back to topics
@@ -186,7 +196,7 @@ function GuidedSession() {
                     </p>
                     <ul className="mt-2 space-y-1">
                       {weakSections.map((s) => (
-                        <li key={s} className="text-sm text-foreground/85"><Link className="underline" to={`/exercises/${categoryId}/topics/${content.id}#${getReviewSections(content, s)[0]?.id ?? ""}`}>{getReviewSections(content, s)[0]?.title ?? s}</Link></li>
+                        <li key={s} className="text-sm text-foreground/85"><Link className="underline" to={`${topicHref(categoryId!, content.id ?? decodedTitle)}#${getReviewSections(content, s)[0]?.id ?? ""}`}>{getReviewSections(content, s)[0]?.title ?? s}</Link></li>
                       ))}
                     </ul>
                   </div>
@@ -209,7 +219,7 @@ function GuidedSession() {
                 <RotateCcw className="mr-2 h-4 w-4" /> Start Again
               </Button>
               <Button asChild variant="outline" className="w-full">
-                <Link to={`/exercises/${categoryId}/topics/${encodeURIComponent(decodedTitle)}`}>
+                <Link to={topicHref(categoryId!, content.id ?? decodedTitle)}>
                   <Sparkles className="mr-2 h-4 w-4" /> Ask the AI Instructor
                 </Link>
               </Button>

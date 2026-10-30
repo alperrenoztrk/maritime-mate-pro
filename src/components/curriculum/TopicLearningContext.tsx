@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, ChevronRight } from "lucide-react";
 import { getBetaModules, type BetaTopic } from "@/data/betaLessons";
 import { getCurriculumCourse } from "@/data/curriculumHierarchy";
+import { hasExerciseQuestions } from "@/data/exerciseQuestionDistribution";
 import { courseHref, courseLearningGuides, topicHref } from "@/data/learningGuide";
 import { useLearningProgress } from "@/hooks/useLearningProgress";
 import { updateTopicProgress } from "@/utils/learningProgress";
@@ -51,7 +52,7 @@ export function TopicLearningContext({ categoryKey, topic, placement = "before" 
         <button type="button" className="min-h-11 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground" onClick={() => {
           setSaveError(!updateTopicProgress(topic.id!, { reviewedAt: reviewed ? undefined : new Date().toISOString() }));
         }}>{reviewed ? "Mark as unread" : "Mark as reviewed"}</button>
-        <Link className="inline-flex min-h-11 items-center rounded-xl border px-4 py-2 text-sm font-semibold text-primary" to={`/exercises/${categoryKey}/topics/${encodeURIComponent(topic.id)}`}>Practise this topic</Link>
+        {hasExerciseQuestions(categoryKey, topic.id) && <Link className="inline-flex min-h-11 items-center rounded-xl border px-4 py-2 text-sm font-semibold text-primary" to={`/exercises/${categoryKey}/topics/${encodeURIComponent(topic.id)}`}>Practise this topic</Link>}
       </div>
       {saveError && <p role="status" className="text-sm text-amber-700 dark:text-amber-300">Your browser could not save progress. You can continue reading.</p>}
       {record?.practice && <p className="text-sm text-muted-foreground"><span>Last practice:</span>{" "}{record.practice.correct} / {record.practice.total}{" "}<span>correct answers</span></p>}

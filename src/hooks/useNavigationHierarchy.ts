@@ -15,6 +15,10 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/lessons\/map$/, parent: () => "/lessons" },
   { pattern: /^\/lessons\/([^/]+)\/reference$/, parent: (match) => `/lessons/${match[1]}/topics` },
   {
+    pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)\/learn$/,
+    parent: (match) => `/lessons/${match[1]}/topics/${match[2]}`,
+  },
+  {
     pattern: /^\/lessons\/([^/]+)\/topics\/([^/]+)$/,
     parent: (match) => `/lessons/${match[1]}/topics`,
   },
@@ -28,10 +32,6 @@ const navigationRules: NavigationRule[] = [
   },
 
   // ── Exercises ───────────────────────────────
-  {
-    pattern: /^\/exercises\/([^/]+)\/topics\/([^/]+)\/learn$/,
-    parent: (match) => `/exercises/${match[1]}/topics/${match[2]}`,
-  },
   {
     pattern: /^\/exercises\/([^/]+)\/topics\/([^/]+)$/,
     parent: (match) => `/exercises/${match[1]}/topics`,
@@ -62,6 +62,11 @@ const navigationRules: NavigationRule[] = [
   { pattern: /^\/ship-operations$/, parent: () => '/library' },
 
   // ── Machine: topic details ───────────────────────────────
+  // /machine/<topic>/topics/<sub>/learn → /machine/<topic>/topics/<sub>
+  {
+    pattern: /^\/machine\/([^/]+)\/topics\/([^/]+)\/learn$/,
+    parent: (match) => `/machine/${match[1]}/topics/${match[2]}`,
+  },
   // /machine/<topic>/topics/<sub> → /machine/<topic>/topics
   {
     pattern: /^\/machine\/([^/]+)\/topics\/([^/]+)$/,
@@ -393,6 +398,17 @@ export const useNavigationHierarchy = () => {
     if (typeof window === 'undefined' || Capacitor.isNativePlatform()) return;
 
     const url = pathnameRef.current + searchRef.current;
+    // A child <Navigate replace> may already have moved history on during this
+    // commit; tagging now would write the stale URL back over the redirect.
+    // The next render's effect tags the new entry.
+    const sameEntry = (a: string, b: string) => {
+      try {
+        return decodeURI(a) === decodeURI(b);
+      } catch {
+        return a === b;
+      }
+    };
+    if (!sameEntry(window.location.pathname, pathnameRef.current)) return;
     const state = (window.history.state ?? {}) as Record<string, unknown>;
 
     try {

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { CheckCircle, ListChecks, RotateCcw, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
+import { BookOpen, CheckCircle, ListChecks, RotateCcw, Trophy } from "lucide-react";
 import { shuffleAnswerOptions } from "@/utils/practiceQuestion";
 import { updateTopicProgress } from "@/utils/learningProgress";
 import { getReviewSections } from "@/utils/lessonSequence";
 import { Button } from "@/components/ui/button";
 import { KnowledgeCheck } from "@/components/lessons/KnowledgeCheck";
-import { LessonTeachCard } from "@/components/lessons/LessonTeachCard";
 import type { BetaTopic } from "@/data/betaLessons";
+import { topicHref } from "@/data/learningGuide";
 import type { QuizQuestion } from "@/types/quiz";
 const prepare = (questions: QuizQuestion[]) => {
   const result = questions.map((question) => shuffleAnswerOptions(question));
@@ -63,7 +64,10 @@ export function TopicExerciseQuestionSet({ questions, topicId, topic, categoryId
       {!saved && <p role="status" className="text-sm text-muted-foreground">Your browser could not save progress. You can continue reading.</p>}
     </div> : <div className="space-y-4">
       <p className="text-xs text-muted-foreground">{reviewRound ? "Review round" : "First attempt"} · Question {current + 1} / {order.length}</p>
-      {showReview && <div aria-label="Related teaching" className="space-y-4 rounded-xl border p-4">{getReviewSections(topic, question.sectionRef).map((section, index) => <LessonTeachCard key={section.id ?? index} section={section} categoryId={categoryId} topicTitle={topic.title} />)}</div>}
+      {showReview && <nav aria-label="Related lesson sections" className="space-y-2 rounded-xl border p-4">
+        <p className="text-sm font-semibold">Review in the lesson</p>
+        <ul className="space-y-1">{getReviewSections(topic, question.sectionRef).map((section, index) => <li key={section.id ?? index}><Link to={`${topicHref(categoryId, topic.id ?? topic.title)}${section.id ? `#${section.id}` : ""}`} className="inline-flex min-h-11 items-center gap-2 text-sm text-primary underline"><BookOpen className="h-4 w-4 shrink-0" />{section.title}</Link></li>)}</ul>
+      </nav>}
       <KnowledgeCheck key={`${run}-${current}`} question={question} onAnswered={handleAnswered} onReview={() => setShowReview((value) => !value)} />
       {answered && <Button onClick={next} className="w-full">{current < order.length - 1 ? "Next Question" : "See Result"}<CheckCircle className="ml-2 h-4 w-4" /></Button>}
     </div>}
