@@ -35,6 +35,7 @@ const CATEGORY_META: Record<Category, { title: string; description: string; icon
 // Ship-system articles, tide tutorials and static formula references live in Learn/Library.
 const TOOLS: CalcTool[] = [
   { id: "nav-calc", title: "Navigation Calculations", description: "Courses, distances and navigational problems", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "cpa", title: "CPA / TCPA", description: "Relative motion and closest approach", icon: Compass, to: "/navigation/calc/cpa", category: "navigation" },
   { id: "draft-survey", title: "Draft Survey", description: "Draft and displacement survey worksheet", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "cargo" },
   { id: "preloading", title: "Preloading", description: "Draft survey before cargo operations", icon: Ship, to: "/cargo/calculations/preloading", category: "cargo" },
   { id: "ballast", title: "Draft Change Estimate", description: "Approximate displacement change from drafts and TPC", icon: Droplets, to: "/cargo/calculations/ballast", category: "cargo" },
@@ -61,7 +62,7 @@ const LEGACY_TOOL_IDS: Record<string, string> = {
 };
 const RECENT_STORAGE_KEY = "marine-expert-recent-calcs";
 const FAVORITES_STORAGE_KEY = "marine-expert-fav-calcs";
-const QUICK_IDS = ["draft-survey", "nav-calc", "stability-calc", "unit-conv", "cargo", "thermodynamics"];
+const QUICK_IDS = ["draft-survey", "cpa", "nav-calc", "stability-calc", "unit-conv", "cargo", "thermodynamics"];
 
 function readStoredList(key: string): string[] {
   try {
