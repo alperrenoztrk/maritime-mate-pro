@@ -4440,5 +4440,229 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
       }
     ]
+  },
+  "meteorology-dikey-gelisimli-bulutlar-cumulus-cumulonimbus": {
+    "id": "meteorology-dikey-gelisimli-bulutlar-cumulus-cumulonimbus-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Cumulonimbus clouds have strong vertical growth and may bring squalls, intense precipitation, lightning, gust fronts and sudden visibility change. The cloud's visible shape is evidence of convective activity but does not determine precise wind speed.\n\nCommon error: Never treat the edge of a visible anvil as an exact boundary of dangerous lightning or gusts.",
+    "example": {
+      "problem": "A towering convective cloud develops a broad anvil directly across a planned offshore supply boat route.",
+      "steps": [
+        "Identify rapidly building cumulonimbus and check updated local radar/weather warnings and lightning data.",
+        "Estimate practical avoidance margin according to actual storm movement, visibility and ship handling limitations.",
+        "Review course, speed, personnel-on-deck exposure and cargo lashing with the Master before approaching."
+      ],
+      "result": "A cumulonimbus anvil warrants thunderstorm avoidance planning, not a guarantee of a specific Beaufort number."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-izobar-yapisi-ve-gradyan": {
+    "id": "meteorology-izobar-yapisi-ve-gradyan-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Closer isobar spacing in a fixed map scale often implies a stronger horizontal pressure gradient and stronger geostrophic wind, subject to latitude, surface friction and synoptic structure.\n\nCommon error: Do not equate identical pressure differences with identical wind if map distances differ.",
+    "example": {
+      "problem": "A forecast chart has two regions each showing 8 hPa pressure difference, one over 100 NM and one over 300 NM.",
+      "steps": [
+        "Compute pressure gradient magnitudes: 8/100 = 0.08 hPa/NM versus 8/300 ≈ 0.027 hPa/NM.",
+        "Recognise that the first gradient is approximately three times stronger over the specified distances.",
+        "Inspect latitude, stability and forecast wind data before translating gradients into surface wind speeds."
+      ],
+      "result": "The 100 NM interval has about threefold the isobaric pressure gradient, not necessarily exactly threefold the surface wind."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-beaufort-skalasi-uygulamalari": {
+    "id": "meteorology-beaufort-skalasi-uygulamalari-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Beaufort is an observational wind-force scale; actual measured wind speed depends on averaging interval, instrument exposure and gust characteristics. Sea state is only a supporting observation, especially with swell or restricted fetch.\n\nCommon error: Do not assign Beaufort force solely from significant wave height in mixed swell and wind seas.",
+    "example": {
+      "problem": "A deck report calls conditions Beaufort 7 from wave size, but calibrated anemometer readings are 22 knots sustained with 34-knot gusts.",
+      "steps": [
+        "Differentiate sustained wind, gusts and swell-driven significant wave height in the log.",
+        "Refer to the standard wind-speed conversion table and the observation averaging period before assigning Beaufort force.",
+        "Report the measured winds and gusts separately from the sea state and any operational limits."
+      ],
+      "result": "Gust peaks and pre-existing swell do not by themselves define the Beaufort force for sustained conditions."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-tehlikeli-seyir-yapilabilir-yarim-daire": {
+    "id": "meteorology-tehlikeli-seyir-yapilabilir-yarim-daire-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "In the Northern Hemisphere the right semicircle relative to tropical cyclone motion is often the more dangerous due to rotational wind and storm translation. Forecast-track uncertainty, sea room and vessel speed make simple manoeuvre mnemonics insufficient.\n\nCommon error: Never use a fixed heading-turn mnemonic without checking cyclone hemisphere and true motion.",
+    "example": {
+      "problem": "A ship's projected route would pass east of a northward-moving tropical cyclone in the Northern Hemisphere.",
+      "steps": [
+        "Mark the cyclone's current and forecast positions, movement direction and forecast uncertainty/danger region.",
+        "Identify the eastern side as the right-hand/dangerous side for a north-moving cyclone in the Northern Hemisphere.",
+        "Use updated authoritative marine forecasts and Masters' heavy-weather plan to create ample separation before the danger sector."
+      ],
+      "result": "The right side of a northward-tracking Northern Hemisphere storm warrants heightened avoidance; the cyclone's actual dangerous area exceeds a line on the chart."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-kacinma-manevrasi-prensipleri": {
+    "id": "meteorology-kacinma-manevrasi-prensipleri-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Tropical cyclone avoidance should use forecast motion, wind radii, track uncertainty, vessel capability and sea room. Historical 'dangerous semicircle' rules are only one decision aid, not a universal escape plan.\n\nCommon error: Do not wait for gale-force winds to reach the ship before reassessing the passage.",
+    "example": {
+      "problem": "A storm forecast updates and the projected 34-knot wind area moves 80 NM closer to a vessel's present route.",
+      "steps": [
+        "Replot official forecast centre and wind radii at each forecast interval, including the uncertainty envelope.",
+        "Assess minimum distance to the whole danger area rather than to only the forecast centre.",
+        "Plan early navigational adjustments and alternative routing while maintaining adequate fuel/sea-room margins."
+      ],
+      "result": "A route safely clear of yesterday's storm centre can be unsafe after the forecast envelope expands."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-synoptik-harita-sembolleri": {
+    "id": "meteorology-synoptik-harita-sembolleri-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Surface analysis charts locate pressure centres, fronts, troughs and weather features at a stated valid time. A front's coloured symbols indicate front type and advance direction, while forecast and analysis charts have different time references.\n\nCommon error: Do not confuse the date the chart was received with its actual meteorological valid time.",
+    "example": {
+      "problem": "A bridge watchkeeper sees a cold-front symbol crossing the vessel's intended course on a weatherfax chart.",
+      "steps": [
+        "Read the chart issue and valid times, geographic projection, scale and the legend of front symbols.",
+        "Compare planned vessel movement with the symbol's direction, then assess wind shift, showers and visibility forecasts.",
+        "Obtain latest analysis/forecast and mark practical hazards along the route with a revised watch briefing."
+      ],
+      "result": "A front drawn on an analysis chart is not a prediction of its exact current location hours later."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-set-ve-drift-degerlendirmesi": {
+    "id": "meteorology-set-ve-drift-degerlendirmesi-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "Meteorological and tidal currents may change in both magnitude and direction. Set is the direction toward which current flows and drift is speed; the ship's COG/SOG differs from heading/log through water accordingly.\n\nCommon error: Never subtract scalar speeds to infer current direction when heading and COG differ.",
+    "example": {
+      "problem": "A ship steers 000°T at 12 kn through water while observed COG is 014°T and SOG 12.4 kn.",
+      "steps": [
+        "Resolve ground motion: east = 12.4 sin14° ≈3.00 kn, north = 12.4 cos14° ≈12.03 kn.",
+        "Subtract water-relative motion (east 0, north 12.00): current ≈3.00 kn east and 0.03 kn north.",
+        "Approximate set 089°T and drift 3.0 kn, assuming no separate leeway and consistent instrument references."
+      ],
+      "result": "The estimated current is nearly due east at about 3 kn, not '14 knots of drift'."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
+  },
+  "meteorology-akintinin-eta-ve-yakita-etkisi": {
+    "id": "meteorology-akintinin-eta-ve-yakita-etkisi-professional-application",
+    "title": "Weather observation and voyage reasoning",
+    "content": "ETA is driven by distance over ground divided by SOG, and through-water speed plus current may vary along the route. Fuel use depends on machinery loading and operating hours, so less time does not always imply proportional fuel savings.\n\nCommon error: Do not infer exact bunker consumption from SOG without engine and resistance data.",
+    "example": {
+      "problem": "A 120 NM voyage is made at 12 kn through water with a 2 kn following current or a 2 kn opposing current.",
+      "steps": [
+        "Compute following-current SOG=14 kn, ETA=120/14≈8.57 h.",
+        "Compute opposing-current SOG=10 kn, ETA=120/10=12.0 h.",
+        "Compare time difference ≈3.43 h and use actual fuel curves rather than directly scaling fuel by speed over ground."
+      ],
+      "result": "The current reverses ETA materially even at the same engine setpoint."
+    },
+    "references": [
+      {
+        "title": "WMO International Cloud Atlas",
+        "url": "https://cloudatlas.wmo.int/en/clouds-definitions.html"
+      },
+      {
+        "title": "NOAA Ocean Prediction Center — Surface Analysis Charts",
+        "url": "https://ocean.weather.gov/product_description/abtsfc.php"
+      },
+      {
+        "title": "NOAA NHC — Marine Safety",
+        "url": "https://www.nhc.noaa.gov/prepare/marine.php"
+      }
+    ]
   }
 };
