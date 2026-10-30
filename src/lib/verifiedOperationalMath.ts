@@ -98,7 +98,7 @@ export function calculateStaticUkc(
   chartedDepthM: number, tideHeightM: number, maximumDraftM: number,
   squatAllowanceM: number, otherAllowancesM: number,
 ) {
-  const charted = nonNegative(chartedDepthM, "Charted depth");
+  const charted = finite(chartedDepthM, "Signed charted depth");
   const tide = finite(tideHeightM, "Tide height");
   const draft = nonNegative(maximumDraftM, "Maximum ship draft");
   const squat = nonNegative(squatAllowanceM, "Squat allowance");
