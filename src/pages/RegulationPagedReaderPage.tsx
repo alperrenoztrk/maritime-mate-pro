@@ -64,7 +64,7 @@ function renderRegulationContent(item: RegulationItem, page: RegulationReadingSt
           <p><strong>Appropriate response:</strong> {narrative.scenario.correctApproach}</p>
         </ReadingNote> : null}
       </div>;
-    case "chapter-takeaways-" + (page.chapterIndex ?? 0):
+    case "chapter-takeaways":
       return <TextList items={slice(chapter?.chapterTakeaways)} />;
     case "detailed":
       return <p className="whitespace-pre-line">{item.detailedSections?.[selected].body}</p>;
