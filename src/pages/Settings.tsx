@@ -1,4 +1,4 @@
-import { APP_VERSION } from "@/lib/appVersion";
+import { APP_VERSION, BUILD_NUMBER } from "@/lib/appVersion";
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -439,7 +439,7 @@ const Settings = () => {
             </Card>
 
             <p className="pt-4 pb-2 text-center text-xs text-muted-foreground" translate="no">
-              Version {APP_VERSION}
+              Version {APP_VERSION} ({BUILD_NUMBER})
             </p>
           </div>
 
