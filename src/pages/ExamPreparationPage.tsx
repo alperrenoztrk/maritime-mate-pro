@@ -485,7 +485,7 @@ export default function ExamPreparationPage() {
                     transition={{ delay: index * 0.05 }}
                   >
                     <Card className={`relative overflow-hidden hover:shadow-lg transition-[background-color,color,border-color,box-shadow,opacity,transform,width] ${module.borderColor} ${module.bgColor}`}>
-                      <div className={`absolute inset-0 bg-gradient-to-br ${module.color} opacity-5`} />
+                      <div className={`absolute inset-0 pointer-events-none bg-gradient-to-br ${module.color} opacity-5`} />
                       <CardHeader className="pb-2">
                         <div className="flex items-start justify-between">
                           <div className={`p-2 rounded-lg bg-gradient-to-br ${module.color}`}>
@@ -556,7 +556,7 @@ export default function ExamPreparationPage() {
                     <Card className="relative overflow-hidden hover:shadow-lg transition-[background-color,color,border-color,box-shadow,opacity,transform,width] cursor-pointer group"
                       onClick={() => startPresetExam(preset.id)}
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${preset.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
+                      <div className={`absolute inset-0 pointer-events-none bg-gradient-to-br ${preset.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                       <CardContent className="flex items-center gap-4 p-6">
                         <div className={`p-3 rounded-xl bg-gradient-to-br ${preset.color}`}>
                           <Icon className="h-6 w-6 text-white" />
