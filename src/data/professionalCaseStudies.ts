@@ -2516,5 +2516,245 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
       }
     ]
+  },
+  "navigation-rota-planlama": {
+    "id": "navigation-rota-planlama-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Passage planning is a berth-to-berth process of appraisal, planning, execution and monitoring. A route drawn through an ENC is only one part: safety depth/contour, squat, tidal margins, prohibited areas, MSI and contingency actions need evaluation.\n\nCommon error: Do not treat ECDIS route validation as proof of charted depth, squat and local tide adequacy.",
+    "example": {
+      "problem": "The preliminary ECDIS route passes a shallow approach with a sounding close to the vessel's anticipated draught.",
+      "steps": [
+        "Gather current charts, notices/MSI, ship draught/trim and tidal data for the appraisal.",
+        "Calculate a ship-specific UKC envelope with squat and uncertainties; set relevant ECDIS safety parameters, inspect the entire route.",
+        "Conduct an independent route check and Master's approval, documenting abort points and monitoring method."
+      ],
+      "result": "The route is not ready merely because ECDIS displays no route-check alarms."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-appraisal": {
+    "id": "navigation-appraisal-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Appraisal precedes detailed route design: chart coverage and quality, weather, tidal stream, services, machinery constraints and reporting requirements determine whether a proposed passage is feasible.\n\nCommon error: Do not treat an arrival time as feasible without assessing its tidal and weather context.",
+    "example": {
+      "problem": "A pilot-book estimate suggests a destination is reachable, but the required high-water window overlaps forecast gale-force conditions.",
+      "steps": [
+        "Compile primary charts, tide predictions, weather advisories, notices and port entry requirements.",
+        "Identify the conflict between arrival and metocean window, plus any refuge or delay options.",
+        "Present safe alternative arrival plans to the Master before committing to detailed waypoints."
+      ],
+      "result": "Feasibility may require delaying the passage rather than drawing a nominally shorter route."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-xte": {
+    "id": "navigation-xte-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Cross-track error (XTE) is the lateral displacement from the active intended route leg, not a replacement for position uncertainty or danger-clearance limits. Turns, antenna offsets and chart accuracy also affect the interpretation.\n\nCommon error: Never correct XTE automatically by making a large unassessed heading change near shoals.",
+    "example": {
+      "problem": "XTE shows 0.18 NM to starboard on a narrow-waterway route where the planned maximum corridor is 0.10 NM.",
+      "steps": [
+        "Verify own-ship position and whether the active leg/waypoint sequence is correct.",
+        "Evaluate the actual obstacle clearance, tidal/current effects and route corridor rather than blindly steering to eliminate the number.",
+        "Notify the Master under standing orders and navigate by approved safe manoeuvre and independent fixes."
+      ],
+      "result": "The 0.18 NM XTE exceeds the hypothetical 0.10 NM corridor but does not give the remaining water depth."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-planning": {
+    "id": "navigation-planning-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "The planning phase converts appraisal evidence into waypoints and cross-track limits. The plan must account for manoeuvring radius, wheel-over positions, depth constraints, VTS reporting and contingency manoeuvres.\n\nCommon error: Do not use charted waypoint positions alone to judge whether the turn is safe.",
+    "example": {
+      "problem": "A planned course change at a pilot station has an abrupt 70° turn next to restricted waters.",
+      "steps": [
+        "Read ship manoeuvring data, under-keel envelope, traffic scheme and pilotage rules.",
+        "Insert feasible turn geometry and check all intermediate swept paths and course alterations, not merely waypoint locations.",
+        "Record alternates and no-go boundaries, then obtain the required independent review and approval."
+      ],
+      "result": "A geometric line joining valid waypoints can still demand an impossible ship manoeuvre."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-monitoring": {
+    "id": "navigation-monitoring-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Passage monitoring continuously verifies progress against the approved plan through independent fixes, guard zones, wheel-over confirmation and updates for actual traffic and environment.\n\nCommon error: Do not rely on repeated screenshots of the same GNSS source as an independent position check.",
+    "example": {
+      "problem": "A coastal leg remains within XTE tolerance, but repeated radar ranges are progressively inconsistent with the GNSS track.",
+      "steps": [
+        "Correlate radar targets and check whether sensor errors, wrong chart datum or gyro offsets explain the trend.",
+        "Increase independent fix frequency and monitor clearance to hazards, not only XTE.",
+        "Notify the Master, review safe speed and adjust/abort passage as approved if the discrepancy persists."
+      ],
+      "result": "A small displayed XTE does not demonstrate a safe absolute position when the position input is suspect."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-emniyetli-hiz-kural-6": {
+    "id": "navigation-emniyetli-hiz-kural-6-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "COLREG Rule 6 requires safe speed appropriate to conditions, including visibility, density of traffic, manoeuvrability, background light, weather and proximity of navigational hazards. There is no universally lawful fixed speed for restricted visibility.\n\nCommon error: Never treat the port's maximum speed as a minimum safe-speed target.",
+    "example": {
+      "problem": "Visibility falls to 0.25 NM in a trafficked coastal approach while the ship still makes 13 kn.",
+      "steps": [
+        "Evaluate stopping distance and manoeuvrability against current visibility and traffic density.",
+        "Check radar detection limitations and additional Rule 6 factors; brief the Master and post appropriate lookout.",
+        "Set a safe speed under standing orders and keep reassessing as conditions change."
+      ],
+      "result": "The required speed is a risk-based operational decision, not automatically a prescribed 6 knots or similar constant."
+    },
+    "references": [
+      {
+        "title": "IMO — Convention on the International Regulations for Preventing Collisions at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      }
+    ]
+  },
+  "navigation-catismadan-kacinma-manevrasi-kural-8": {
+    "id": "navigation-catismadan-kacinma-manevrasi-kural-8-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Rule 8 avoidance action should be positive, made in ample time and with due regard to good seamanship. A succession of small adjustments may obscure intent and fail to achieve adequate separation.\n\nCommon error: Do not assume a large alteration is automatically safe when shoals and multiple targets are present.",
+    "example": {
+      "problem": "Radar plots a closing target while the OOW makes successive 2° course changes rather than a clear early manoeuvre.",
+      "steps": [
+        "Assess encounter classification, all available CPA/trend evidence, sea room and nearby traffic.",
+        "Agree an early, readily apparent and substantial action appropriate to the applicable Rules.",
+        "Check its effectiveness until the other vessel is finally past and clear, adjusting safely if necessary."
+      ],
+      "result": "Effective action is judged by separation and clarity, not just that some helm order was given."
+    },
+    "references": [
+      {
+        "title": "IMO — Convention on the International Regulations for Preventing Collisions at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      }
+    ]
+  },
+  "navigation-echo-sounder-iskandil": {
+    "id": "navigation-echo-sounder-iskandil-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "An echo sounder measures acoustic travel time to a reflecting surface; depth readout may be below the transducer or adjusted to a different reference. Draft, squat, offset, sound speed and seabed shape affect clearance.\n\nCommon error: Never add draught to a depth-below-transducer reading without verifying what is being measured.",
+    "example": {
+      "problem": "The echo sounder shows 5.0 m below transducer, whose face is 1.5 m above the keel, while charted depth is 7.0 m.",
+      "steps": [
+        "Read the actual sounder reference setting and transducer offset from equipment configuration.",
+        "If reading is 5.0 m below a transducer 1.5 m above the keel, geometric clearance below keel is approximately 3.5 m, before motion/accuracy allowances.",
+        "Cross-check with approved UKC assessment, tide and independent sounding/position information."
+      ],
+      "result": "A 5.0 m sounder reading cannot be labelled UKC without the instrument's datum and sensor location."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-kopruustu-vardiyasi-standing-orders-ve-kaptani-cagirma": {
+    "id": "navigation-kopruustu-vardiyasi-standing-orders-ve-kaptani-cagirma-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Standing orders and Master's night orders define bridge watch escalation triggers. Calling the Master is an additional safety measure and never transfers the watch officer's immediate duty to avoid danger.\n\nCommon error: Do not delay collision-avoidance action until the Master reaches the bridge.",
+    "example": {
+      "problem": "An OOW encounters unforecast squalls and deteriorating visibility close to a pilotage sector; written orders require calling the Master when visibility worsens.",
+      "steps": [
+        "Call the Master promptly with position, visibility, traffic, speed and immediate risks.",
+        "Maintain continuous lookout, assess COLREG and navigational needs, and take timely action rather than awaiting a reply.",
+        "Log key events and confirm the bridge-team allocation when additional officers arrive."
+      ],
+      "result": "The Master call and the OOW's independent safety response proceed in parallel."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-master-pilot-exchange-ve-pilotaj-vardiyasi": {
+    "id": "navigation-master-pilot-exchange-ve-pilotaj-vardiyasi-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Pilotage does not relieve the Master or officer in charge of the navigational watch of their safety duties. The master–pilot exchange must cover vessel handling limits, communication, route, tugs and any agreed abort decisions.\n\nCommon error: Never interpret pilot boarding as transfer of all navigational accountability.",
+    "example": {
+      "problem": "The pilot proposes a turn at a speed outside the vessel's manoeuvring booklet for that waterway.",
+      "steps": [
+        "State the ship's turning/stopping limitations and seek a clear explanation of the pilot's plan.",
+        "Compare actual speed, depth, traffic and available tug assistance with approved manoeuvring limits.",
+        "Escalate clearly to the Master, challenge unsafe orders and maintain independent bridge navigation monitoring."
+      ],
+      "result": "A pilot's local knowledge complements, but does not replace, ship-specific manoeuvring limitations."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-tidal-window-liman-giris-zamani": {
+    "id": "navigation-tidal-window-liman-giris-zamani-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "A tidal window is the period when actual depth and operational restrictions permit passage. It depends on chart datum, forecast tide, squat, uncertainty and required UKC, which may change with speed and sea state.\n\nCommon error: Do not consider a charted depth safe simply because it is greater than ship's draught.",
+    "example": {
+      "problem": "Charted channel depth is 8.2 m, draught is 8.0 m and a simplified required clearance allowance is 1.0 m; the predicted tide height is 0.6 m.",
+      "steps": [
+        "Calculate static predicted depth: 8.2 + 0.6 = 8.8 m above the assumed chart datum.",
+        "Compare with required draught-plus-allowance 8.0 + 1.0 = 9.0 m; shortfall is 0.2 m before further corrections.",
+        "Delay entry or revise the authorised plan using validated local tide, speed/squat and port rules."
+      ],
+      "result": "This simplified condition is unsuitable at that predicted tide under the stated 1.0 m clearance requirement."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-demirleme-ve-demir-tarama-hesaplari": {
+    "id": "navigation-demirleme-ve-demir-tarama-hesaplari-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Anchor watch uses planned swinging circle, actual chain length, fixing uncertainty and observed trends. Radius is not simply the number of shackles paid out: chain catenary, depth, hull length and weather affect the envelope.\n\nCommon error: Do not mistake normal swinging due to wind shift for dragging without checking changing fixed references.",
+    "example": {
+      "problem": "A vessel anchors in 25 m water, pays out 6 shackles of 27.5 m (165 m), and has a nearby shoal.",
+      "steps": [
+        "Check holding ground, wind/current, safe depth and planned cable length against the anchoring plan.",
+        "Estimate conservative swinging envelope using ship length, possible horizontal chain reach and position fixing errors.",
+        "Plot anchor position and monitor reliable fixed bearings, radar ranges and GNSS alarm as a supplementary trend."
+      ],
+      "result": "An initial anchor drop coordinate and a single GNSS circle are insufficient for a reliable dragging assessment."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
   }
 };
