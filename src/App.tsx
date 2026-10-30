@@ -178,6 +178,7 @@ const MachineCalculationsPage = lazyWithReload(() => import("./pages/MachineCalc
 const MachineFormulasPage = lazyWithReload(() => import("./pages/MachineFormulas"));
 const MachineQuizPage = lazyWithReload(() => import("./pages/MachineQuiz"));
 const RegulationDetailPage = lazyWithReload(() => import("./pages/RegulationDetailPage"));
+const RegulationPagedReaderPage = lazyWithReload(() => import("./pages/RegulationPagedReaderPage"));
 const ExamPreparationPage = lazyWithReload(() => import("./pages/ExamPreparationPage"));
 
 const MaritimeNews = lazyWithReload(() => import("./pages/MaritimeNews"));
@@ -485,7 +486,8 @@ const AnimatedRoutes = () => {
         <Route path="/image-credits" element={<PageTransition><ImageCreditsPage /></PageTransition>} />
         <Route path="/formulas" element={<PageTransition><Formulas /></PageTransition>} />
         <Route path="/regulations" element={<PageTransition><Regulations /></PageTransition>} />
-        <Route path="/regulations/:slug" element={<PageTransition><RegulationDetailPage /></PageTransition>} />
+        <Route path="/regulations/:slug/reference" element={<PageTransition><RegulationDetailPage /></PageTransition>} />
+        <Route path="/regulations/:slug" element={<PageTransition><RegulationPagedReaderPage /></PageTransition>} />
         <Route path="/clock" element={<PageTransition><ClockPage /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><AuthPage /></PageTransition>} />
         <Route path="/auth/callback" element={<PageTransition><AuthCallbackPage /></PageTransition>} />
