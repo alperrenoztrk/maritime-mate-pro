@@ -13,9 +13,10 @@ import { fmt, parseNumber } from "@/components/tools/format";
 import { ChoiceField, Outcome, UtcField } from "./fields";
 import { attempt, fmtBearing, fmtUtc, need, parseUtc } from "./navFormat";
 import { useNavForm } from "./useNavForm";
+import { TidePredictionSection } from "./TidePredictionSection";
 
 export function TidesTool() {
-  const { form, set } = useNavForm("tides", {
+  const { form, set, setForm } = useNavForm("tides", {
     lwTime: "",
     lwHeight: "",
     hwTime: "",
@@ -67,6 +68,7 @@ export function TidesTool() {
 
   return (
     <>
+      <TidePredictionSection queryUtc={form.query} onUse={(values) => setForm((prev) => ({ ...prev, ...values }))} />
       <ToolSection title="Height of tide" icon={Waves} description="Consecutive low and high water from the tide tables (secondary port corrections applied).">
         <FormulaLine>Rule of twelfths: 1 · 2 · 3 · 3 · 2 · 1 twelfths of the range per tidal hour</FormulaLine>
         <FieldGrid>

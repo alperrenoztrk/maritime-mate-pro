@@ -3698,5 +3698,35 @@
  },
  "Zenith Distance (ZD)": {
   "en": "Zenith Distance (ZD)"
+ },
+ "Change station": {
+  "en": "Change station"
+ },
+ "Heights above MLLW, the chart datum of US charts. Predictions are astronomical: wind, pressure and river flow are not included. Each station was checked against NOAA's published predictions (largest difference": {
+  "en": "Heights above MLLW, the chart datum of US charts. Predictions are astronomical: wind, pressure and river flow are not included. Each station was checked against NOAA's published predictions (largest difference"
+ },
+ "High and low waters (48 h)": {
+  "en": "High and low waters (48 h)"
+ },
+ "m).": {
+  "en": "m)."
+ },
+ "Name, state or station number": {
+  "en": "Name, state or station number"
+ },
+ "No NOAA station matches. Outside US waters use the Admiralty Tide Tables or TotalTide.": {
+  "en": "No NOAA station matches. Outside US waters use the Admiralty Tide Tables or TotalTide."
+ },
+ "Station": {
+  "en": "Station"
+ },
+ "Tide prediction (NOAA stations)": {
+  "en": "Tide prediction (NOAA stations)"
+ },
+ "Turkish coasts: the tidal range is only a few centimetres and the sea level is driven by wind and pressure, so no prediction is given. For the observed sea level see TUDES (tudes.harita.gov.tr). Other areas: Admiralty Tide Tables or TotalTide.": {
+  "en": "Turkish coasts: the tidal range is only a few centimetres and the sea level is driven by wind and pressure, so no prediction is given. For the observed sea level see TUDES (tudes.harita.gov.tr). Other areas: Admiralty Tide Tables or TotalTide."
+ },
+ "Use the tides around the time required below": {
+  "en": "Use the tides around the time required below"
  }
 }

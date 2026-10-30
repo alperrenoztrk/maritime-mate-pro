@@ -233,6 +233,16 @@ export default defineConfig(({ mode }) => ({
           },
 
           {
+            // Offline tide station pack (public/data/tides/*.json), loaded by the Tides tool
+            urlPattern: ({ url }) => url.pathname.startsWith("/data/tides/") && url.pathname.endsWith(".json"),
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "tide-stations-v1",
+              expiration: { maxEntries: 4, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             // Per-language static translation dictionaries (public/locales/*.json)
             urlPattern: ({ url }) => url.pathname.includes("/locales/") && url.pathname.endsWith(".json"),
             handler: "StaleWhileRevalidate",

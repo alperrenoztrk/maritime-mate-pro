@@ -124,7 +124,8 @@ search patterns; Met Office / WMO Beaufort scale; Barrass squat; Admiralty tidal
 | Sextant correction card | Learn | SD and parallax added on top of the main correction; IE sign | Hs + IC − dip + MC | Fixed | — |
 | Weather | weather | V = 2·B^1.5, wave 0.025·V², leeway and wind force heuristics | Met Office / WMO Beaufort table only (user decision) | Removed / New | idem |
 | Emergency | emergency | Square leg 2S, sector radius √2, rescue time ignoring drift direction | IAMSAR SS (S, S, 2S, 2S…), VS (9 × radius, 120° turns), PS; times | Fixed (user decision) | idem |
-| Tide station forecast | tides | Moon-phase model with invented port offsets and amplitudes | Removed from the page (files kept) — **asked** | Hidden – asked | — |
+| Tide station forecast | tides | Moon-phase model with invented port offsets and amplitudes, auto-filled into UKC | Removed from the page; files kept by the user's decision | Removed | — |
+| Tide prediction (NOAA) | tides | — | Offline harmonic prediction (Schureman / NOAA convention, f and u at mid-year) for 1,246 NOAA harmonic stations, heights above MLLW. Every station checked against NOAA's hourly predictions (largest difference 1.0 cm); stations without NOAA predictions and Anchorage (non-standard constituents) left out. Turkish coasts: explanation only (user decision 30 Oct 2026) | New | `tidePrediction.test.ts` (HW/LW vs NOAA ±6 min, ±3 cm) |
 | Formulas page | /navigation/formulas | 23 hand-written cards (wrong CTS sign, ROT 30·V/R, Lon = GHA + LHA, Lat = 90 − ZD ± δ, danger angle arcsin, squat V²/100B…) | Course entries (one source) + detail pages; added chart scale, light range, doubling the angle, danger angle, turn geometry | Fixed | course test |
 
 Page shells: all navigation pages use the Tools shell; Buoyage and Sound Signals data checked against
