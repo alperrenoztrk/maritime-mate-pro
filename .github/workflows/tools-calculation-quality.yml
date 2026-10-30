@@ -1,0 +1,42 @@
+name: Tools calculation quality
+on:
+  pull_request:
+    paths:
+      - 'src/pages/Converter.tsx'
+      - 'src/pages/DraftSurveyBallast.tsx'
+      - 'src/pages/DraftSurveyBunker.tsx'
+      - 'src/pages/DraftSurveyDensity.tsx'
+      - 'src/pages/TankCalculations.tsx'
+      - 'src/pages/library/CalculationsLibraryPage.tsx'
+      - 'src/lib/maritimeUnits.ts'
+      - 'src/lib/maritimeUnits.test.ts'
+      - 'src/lib/toolCalculations.ts'
+      - 'src/lib/toolCalculations.test.ts'
+      - 'scripts/check-tools-directory.mjs'
+      - 'package.json'
+      - '.github/workflows/tools-calculation-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Tools numerical and route regressions
+        run: npm run test:tools
+      - name: TypeScript checks
+        run: npm run typecheck
+      - name: Build app
+        env:
+          VITE_SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: public-test-key
+          VITE_PRO_GATING_ENABLED: 'false'
+          VITE_ADS_ENABLED: 'false'
+        run: npm run build
