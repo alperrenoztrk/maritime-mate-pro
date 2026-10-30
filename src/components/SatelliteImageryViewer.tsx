@@ -33,6 +33,7 @@ export const SatelliteImageryViewer = () => {
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
   const [selectedRegion, setSelectedRegion] = useState<'europe' | 'full-disk'>('europe');
   const [autoRefresh, setAutoRefresh] = useState(false);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const channels: SatelliteChannel[] = [
     {
@@ -111,33 +112,33 @@ export const SatelliteImageryViewer = () => {
   };
 
   const getEumetsatImageUrl = (channelId: string) => {
-    // EUMETSAT public WMS service for Meteosat imagery
-    const baseUrl = 'https://eumetview.eumetsat.int/static-images/latestImages/';
-    const timestamp = Math.floor(Date.now() / (15 * 60 * 1000)) * (15 * 60 * 1000); // Round to nearest 15 min
-    
-    const regionPath = selectedRegion === 'europe' ? 'EUMETSAT_MSG_' : 'EUMETSAT_MSG_FD_';
-    
-    const channelMap: Record<string, string> = {
-      'rgb': `${regionPath}RGBNatColor-westernEurope.jpg`,
-      'vis': `${regionPath}VIS006-westernEurope.jpg`,
-      'ir108': `${regionPath}IR108-westernEurope.jpg`,
-      'wv': `${regionPath}WV062-westernEurope.jpg`,
-      'ir039': `${regionPath}IR039-westernEurope.jpg`,
-      'airmass': `${regionPath}RGBAirmass-westernEurope.jpg`
+    // Live Meteosat 0° (msg_fes) layers from the EUMETView WMS service
+    const layerMap: Record<string, string> = {
+      'rgb': 'msg_fes:rgb_natural',
+      'vis': 'msg_fes:vis006',
+      'ir108': 'msg_fes:ir108',
+      'wv': 'msg_fes:wv062',
+      'ir039': 'msg_fes:ir039',
+      'airmass': 'msg_fes:rgb_airmass'
     };
-
-    // Fallback to a static demonstration image for each channel type
-    const fallbackImages: Record<string, string> = {
-      'rgb': 'https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=800&auto=format&fit=crop',
-      'vis': 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&auto=format&fit=crop',
-      'ir108': 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&auto=format&fit=crop',
-      'wv': 'https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=800&auto=format&fit=crop',
-      'ir039': 'https://images.unsplash.com/photo-1532978379173-0e5793ce6e1d?w=800&auto=format&fit=crop',
-      'airmass': 'https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=800&auto=format&fit=crop'
-    };
-
-    // Return the fallback image with cache-busting parameter
-    return `${fallbackImages[channelId]}&t=${timestamp}`;
+    const area = selectedRegion === 'europe'
+      ? { bbox: '-15,25,40,65', width: 1100, height: 800 }
+      : { bbox: '-75,-75,75,75', width: 1000, height: 1000 };
+    const params = new URLSearchParams({
+      service: 'WMS',
+      version: '1.1.1',
+      request: 'GetMap',
+      layers: layerMap[channelId],
+      styles: '',
+      srs: 'EPSG:4326',
+      bbox: area.bbox,
+      width: String(area.width),
+      height: String(area.height),
+      format: 'image/jpeg',
+      // Changes on manual/auto refresh so the browser fetches the newest scan
+      t: String(lastUpdate.getTime())
+    });
+    return `https://view.eumetsat.int/geoserver/ows?${params}`;
   };
 
   return (
@@ -278,15 +279,20 @@ export const SatelliteImageryViewer = () => {
               </CardHeader>
               <CardContent>
                 <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  <img
-                    src={getEumetsatImageUrl(channel.id)}
-                    alt={`${channel.name} satellite image`}
-                    className="w-full h-auto"
-                    onError={(e) => {
-                      // Fallback if image fails to load
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=800&auto=format&fit=crop';
-                    }}
-                  />
+                  {failedImages[`${channel.id}-${selectedRegion}-${lastUpdate.getTime()}`] ? (
+                    <div className="flex aspect-[11/8] items-center justify-center p-6 text-center text-sm text-muted-foreground">
+                      The live satellite image could not be loaded. Check the connection and press Refresh.
+                    </div>
+                  ) : (
+                    <img
+                      src={getEumetsatImageUrl(channel.id)}
+                      alt={`${channel.name} satellite image`}
+                      className="w-full h-auto"
+                      onError={() =>
+                        setFailedImages((prev) => ({ ...prev, [`${channel.id}-${selectedRegion}-${lastUpdate.getTime()}`]: true }))
+                      }
+                    />
+                  )}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                     <div className="text-white text-sm space-y-1">
                       <div className="font-semibold">{channel.name}</div>

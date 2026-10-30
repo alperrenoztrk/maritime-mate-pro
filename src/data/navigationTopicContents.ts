@@ -1,8 +1,6 @@
 // Navigation topic detailed content
 // Import images - Dünya'nın Şekli (gerçek NASA fotoğrafları + teknik SVG diyagramlar)
-import earthBlueMarble from "@/assets/navigation/real/earth-blue-marble.jpg";
 import realAISReceiverScreen from "@/assets/bridge/ais-display.jpg";
-const earthOblate = earthBlueMarble; // NASA Apollo-tip Earth görüntüsü
 
 
 // Coğrafi Koordinat Sistemi + Enlem — Tur 2: Teknik SVG diyagramlar (AI görseller değiştirildi)
@@ -66,8 +64,6 @@ export const navigationTopicContents: Record<string, TopicDetailContent> = {
       {
         title: "Dünya'nın Şekli",
         content: "Dünya, mükemmel bir küre değildir. Kendi ekseni etrafındaki dönüşü nedeniyle ekvator bölgesinde şişkin, kutuplarda basık bir yapı gösterir. Basık dönel elipsoid, Dünya için kullanılan düzgün matematiksel bir referans yüzeyidir. Geoit ise yerçekimi alanına bağlı, ortalama deniz seviyesini temsil eden eşpotansiyel yüzey modelidir; elipsoid ile aynı yüzey değildir.",
-        image: earthOblate,
-        imageAlt: "The oblate spheroid shape of the Earth",
         bulletPoints: [
           "Ekvator yarıçapı, kutup yarıçapından daha büyüktür",
           "Yerçekimi her noktada eşit değildir",

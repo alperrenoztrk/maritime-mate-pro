@@ -13,9 +13,8 @@ import {
 const bridgeDeviceImages = {
   vhfRadio: new URL("../assets/bridge/vhf-radio.jpg", import.meta.url).href,
   dscPanel: new URL("../assets/bridge/dsc-panel.jpg", import.meta.url).href,
-  ecdisDisplay: new URL("../assets/bridge/ecdis-display.jpg", import.meta.url).href,
   ecdisConsole: new URL("../assets/bridge/ecdis-radar-console.jpg", import.meta.url).href,
-  radarDisplay: new URL("../assets/bridge/radar-display.jpg", import.meta.url).href,
+  radarDisplay: new URL("../assets/ship-systems/radar.jpg", import.meta.url).href,
   navtexReceiver: new URL("../assets/bridge/navtex-receiver.jpg", import.meta.url).href,
   aisDisplay: new URL("../assets/bridge/ais-display.jpg", import.meta.url).href,
   gyroCompass: new URL("../assets/bridge/gyro-compass.jpg", import.meta.url).href,
@@ -127,7 +126,7 @@ export const bridgeDevices: BridgeDeviceInfo[] = [
       "Elektronik seyir haritası sistemi; SOLAS uyumlu rota planlama, ENCs, alarmlar ve sensör entegrasyonu ile kâğıt haritaya eşdeğer resmi seyir sağlar.",
     icon: Navigation,
     accent: "from-emerald-500 via-teal-500 to-cyan-500",
-    images: [bridgeDeviceImages.ecdisDisplay, bridgeDeviceImages.ecdisConsole],
+    images: [bridgeDeviceImages.ecdisConsole],
     duties: [
       "Passage plan üretimi: appraisal–planning–execution–monitoring aşamalarının dijital yönetimi",
       "ENC güncellemeleri, T&P notları ve katmanların (CATZOC, batimetri, AIO) doğrulanması",

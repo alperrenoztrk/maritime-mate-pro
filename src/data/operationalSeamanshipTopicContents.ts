@@ -3,7 +3,7 @@ import type { TopicDetailContent } from "@/data/navigationTopicContents";
 /** İleri gemicilik, manevra, demirleme, bağlama ve gemi yapısı içerikleri. */
 // Ders görselleri — depoda hâlihazırda bulunan varlıklar.
 import tugImage from "@/assets/lessons/tug-assisting.jpg";
-import rudderPropellerImage from "@/assets/seamanship/rudder-propeller.jpg";
+import rudderPropellerImage from "@/assets/ship-systems/rudder.jpg";
 import anchorChainImage from "@/assets/seamanship/anchor-chain.jpg";
 import mooringEquipmentImage from "@/assets/seamanship/mooring-equipment.jpg";
 

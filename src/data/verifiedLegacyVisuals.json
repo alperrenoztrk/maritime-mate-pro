@@ -44,12 +44,12 @@
     {
       "surface": "seamanship",
       "topicId": "rudder-types",
-      "asset": "src/assets/seamanship/rudder-propeller.jpg",
+      "asset": "src/assets/ship-systems/rudder.jpg",
       "title": "Ship propeller and rudder",
-      "description": "Propeller and rudder of a real ship. This photograph does not, by itself, classify the balance type or give area ratios.",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Propeller_and_rudder_Gerd_Knutsen.jpg",
-      "author": "Hervé Cozanet",
-      "license": "CC BY-SA 3.0"
+      "description": "Rudder and propeller of a real ship in dry dock. This photograph does not, by itself, classify the balance type or give area ratios.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brosen_propeller_rudder.jpg",
+      "author": "Brosen",
+      "license": "CC BY 2.5"
     },
     {
       "surface": "seamanship",

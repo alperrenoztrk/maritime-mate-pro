@@ -41,7 +41,7 @@ import photoWindlass from "@/assets/seamanship/windlass.jpg";
 import photoFireExtinguishers from "@/assets/seamanship/fire-extinguishers.jpg";
 import photoLiferaftCanister from "@/assets/seamanship/liferaft-canister.jpg";
 import photoLsaPersonal from "@/assets/seamanship/lsa-personal.jpg";
-import photoRudderPropeller from "@/assets/seamanship/rudder-propeller.jpg";
+import photoRudderPropeller from "@/assets/ship-systems/rudder.jpg";
 import photoSteeringGear from "@/assets/seamanship/steering-gear.jpg";
 import photoAnchorStockless from "@/assets/seamanship/anchor-stockless.jpg";
 import photoLifeboatDavit from "@/assets/seamanship/lifeboat-davit.jpg";
