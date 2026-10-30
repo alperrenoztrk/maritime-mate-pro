@@ -134,20 +134,16 @@ export default function CalculationsLibraryPage() {
   }, [activeCategory, normalizedQuery]);
 
   const recordVisit = (id: string) => {
-    setRecents((previous) => {
-      const next = [id, ...previous.filter((item) => item !== id)].slice(0, 6);
-      storeList(RECENT_STORAGE_KEY, next);
-      return next;
-    });
+    const next = [id, ...recents.filter((item) => item !== id)].slice(0, 6);
+    setRecents(next);
+    storeList(RECENT_STORAGE_KEY, next);
   };
   const toggleFavorite = (id: string) => {
-    setFavorites((previous) => {
-      const next = previous.includes(id)
-        ? previous.filter((item) => item !== id)
-        : [id, ...previous].slice(0, 8);
-      storeList(FAVORITES_STORAGE_KEY, next);
-      return next;
-    });
+    const next = favorites.includes(id)
+      ? favorites.filter((item) => item !== id)
+      : [id, ...favorites].slice(0, 8);
+    setFavorites(next);
+    storeList(FAVORITES_STORAGE_KEY, next);
   };
   const renderTools = (tools: CalcTool[]) => (
     <div className="grid gap-2 sm:grid-cols-2">
