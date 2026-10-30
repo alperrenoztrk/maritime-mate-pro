@@ -72,6 +72,7 @@
     "test:ui-copy": "node --import tsx --test src/i18n/coreUiTranslations.test.ts",
     "test:navigation-ui": "node --import tsx --test src/lib/appNavigation.test.ts",
     "check:ocean-ui": "node scripts/check-ocean-ui.mjs",
+    "test:tools": "node --import tsx --test src/lib/toolCalculations.test.ts src/lib/maritimeUnits.test.ts && node scripts/check-tools-directory.mjs",
     "test:seakeeping": "node --import tsx --test src/lib/seakeeping.test.ts src/lib/oceanSimulation.test.ts",
     "test:celestial": "node --import tsx --test src/components/calculations/navigationMath.test.ts",
     "test:study-activity": "node --import tsx --test src/lib/studyActivity.test.ts",
