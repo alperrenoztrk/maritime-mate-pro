@@ -1,4 +1,4 @@
-import { BookOpenCheck, ClipboardList, Droplets, Fuel, Gauge, GitCompareArrows, Layers, PackageCheck, Scale } from "lucide-react";
+import { BookOpenCheck, Bot, ClipboardList, Droplets, Fuel, Gauge, GitCompareArrows, Layers, ListChecks, PackageCheck, RefreshCcw, Scale } from "lucide-react";
 import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import { LibraryCompactCard, LibrarySectionHeading } from "@/components/library/LibraryInterface";
 import { ToolPage } from "@/components/tools/ToolKit";
@@ -16,6 +16,13 @@ const SUPPORT_TOOLS = [
   { title: "Density Correction", icon: Droplets, to: "/cargo/calculations/density" },
   { title: "Bunker Quantity", icon: Fuel, to: "/cargo/calculations/bunker" },
   { title: "Draft Survey Procedure", icon: BookOpenCheck, to: "/cargo/formulas" },
+  { title: "Tank Sounding", icon: Gauge, to: "/tank" },
+  { title: "Ballast Operations", icon: RefreshCcw, to: "/ballast" },
+];
+
+const PRACTICE = [
+  { title: "Cargo Assistant", icon: Bot, to: "/cargo/assistant" },
+  { title: "Cargo Handling and Stowage Quiz", icon: ListChecks, to: "/cargo/quiz" },
 ];
 
 export default function CargoCalculationsPage() {
@@ -34,6 +41,14 @@ export default function CargoCalculationsPage() {
         <InsetGroupedList columns={2}>
           {SUPPORT_TOOLS.map((tool) => (
             <LibraryCompactCard key={tool.to} title={tool.title} icon={tool.icon} accent="accent-ocean" to={tool.to} />
+          ))}
+        </InsetGroupedList>
+      </section>
+      <section className="space-y-3">
+        <LibrarySectionHeading badge={PRACTICE.length}>Assistant and practice</LibrarySectionHeading>
+        <InsetGroupedList columns={2}>
+          {PRACTICE.map((tool) => (
+            <LibraryCompactCard key={tool.to} title={tool.title} icon={tool.icon} accent="accent-slate" to={tool.to} />
           ))}
         </InsetGroupedList>
       </section>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ToolNotice, ToolPage, ToolSection } from "@/components/tools/ToolKit";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Lightbulb } from "lucide-react";
@@ -302,24 +302,24 @@ const UI_TRANSLATIONS: Record<string, {
 
 interface AssistantInterfaceProps {
   title: string;
-  badge: string;
+  /** @deprecated The title already names the assistant. */
+  badge?: string;
   quickPrompts: string[];
   systemPrompt: string;
   placeholder?: string;
   icon: LucideIcon;
+  /** @deprecated Kept for existing callers; the shared tool shell sets the colours. */
   accentGradient?: string;
+  /** @deprecated */
   iconColor?: string;
 }
 
 export function AssistantInterface({
   title,
-  badge,
   quickPrompts,
   systemPrompt,
   placeholder,
   icon: Icon,
-  accentGradient = "from-emerald-600 via-green-600 to-teal-600",
-  iconColor = "text-emerald-600",
 }: AssistantInterfaceProps) {
   const { currentLanguage } = useLanguage();
   const ui = UI_TRANSLATIONS[currentLanguage] ?? UI_TRANSLATIONS.en;
@@ -377,113 +377,62 @@ MANDATORY FORMAT RULES:
   };
 
   return (
-    <div
-      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[hsl(220,50%,6%)] dark:via-[hsl(220,50%,8%)] dark:to-[hsl(220,50%,10%)]"
-    >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -left-32 w-80 h-80 bg-green-400/10 rounded-full blur-3xl" />
-      </div>
+    <ToolPage title={title} icon={Icon}>
+      <ToolNotice>
+        AI answers can be wrong. Check figures, rules and limits against the ship's documents and the regulations
+        before acting on them.
+      </ToolNotice>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
-        <div className="text-center mb-12 animate-fade-in">
-          <div className="inline-flex items-center justify-center p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl mb-4">
-            <Icon className={`h-10 w-10 ${iconColor}`} />
-          </div>
-          <div className="text-sm text-muted-foreground mb-1">{badge}</div>
-          <h1 className={`text-4xl font-extrabold bg-gradient-to-r ${accentGradient} bg-clip-text text-transparent mb-3`}>
-            {title}
-          </h1>
+      <ToolSection title={ui.quickQuestions} icon={Lightbulb}>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {quickPrompts.map((prompt, index) => (
+            <Button
+              key={`${prompt}-${index}`}
+              variant="outline"
+              size="sm"
+              className="h-auto justify-start whitespace-normal px-3 py-2 text-left text-xs leading-snug"
+              onClick={() => {
+                setQuestion(prompt);
+                askQuestion(prompt);
+              }}
+              disabled={loading}
+            >
+              {prompt}
+            </Button>
+          ))}
         </div>
+      </ToolSection>
 
-        <div className="space-y-6">
-          <Card className="border-border/60 bg-card/85">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Lightbulb className="h-5 w-5 text-amber-500" />
-                {ui.quickQuestions}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {quickPrompts.map((prompt, index) => (
-                  <Button
-                    key={`${prompt}-${index}`}
-                    variant="outline"
-                    size="sm"
-                    className="text-xs h-auto py-2 px-3 whitespace-normal text-left"
-                    onClick={() => {
-                      setQuestion(prompt);
-                      askQuestion(prompt);
-                    }}
-                    disabled={loading}
-                  >
-                    {prompt.substring(0, 50)}...
-                  </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border/60 bg-card/85">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg">{ui.writeQuestion}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <Textarea
-                placeholder={effectivePlaceholder}
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                className="min-h-[100px] resize-none"
-              />
-              <Button
-                onClick={() => askQuestion(question)}
-                disabled={loading || !question.trim()}
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    {ui.preparing}
-                  </>
-                ) : (
-                  <>
-                    {ui.send}
-                  </>
-                )}
-              </Button>
-            </CardContent>
-          </Card>
-
-          {response && (
-            <Card className="border-border/60 bg-card/85 animate-fade-in">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <Lightbulb className="h-5 w-5 text-emerald-600" />
-                  {ui.response}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="prose prose-sm dark:prose-invert max-w-none">
-                  <div
-                    className="whitespace-pre-wrap text-sm text-foreground leading-relaxed notranslate"
-                    translate="no"
-                  >
-                    {stripMarkdown(response)}
-                  </div>
-                </div>
-                <div className="mt-3 border-t border-border/40 pt-2">
-                  <ReportAiContentButton
-                    surface="assistant_interface"
-                    content={response}
-                    prompt={question}
-                  />
-                </div>
-              </CardContent>
-            </Card>
+      <ToolSection title={ui.writeQuestion}>
+        <Textarea
+          placeholder={effectivePlaceholder}
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          className="min-h-[100px] resize-none"
+          aria-label={ui.writeQuestion}
+        />
+        <Button onClick={() => askQuestion(question)} disabled={loading || !question.trim()} className="w-full gap-2">
+          {loading ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              {ui.preparing}
+            </>
+          ) : (
+            ui.send
           )}
-        </div>
-      </div>
-    </div>
+        </Button>
+      </ToolSection>
+
+      {response && (
+        <ToolSection title={ui.response} icon={Lightbulb}>
+          <div className="whitespace-pre-wrap text-sm leading-relaxed text-foreground notranslate" translate="no">
+            {stripMarkdown(response)}
+          </div>
+          <div className="border-t border-border/40 pt-2">
+            <ReportAiContentButton surface="assistant_interface" content={response} prompt={question} />
+          </div>
+        </ToolSection>
+      )}
+    </ToolPage>
   );
 }

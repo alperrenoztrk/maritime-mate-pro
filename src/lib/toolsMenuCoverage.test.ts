@@ -14,12 +14,9 @@ import path from "node:path";
 import { appTabForPath } from "./appNavigation";
 
 const PENDING = new Set([
-  "/cargo/assistant",
-  "/cargo/quiz",
   "/meteorology/formulas",
   "/meteorology/assistant",
   "/meteorology/quiz",
-  "/ballast",
   "/engine",
   "/hydrodynamics",
   "/structural",

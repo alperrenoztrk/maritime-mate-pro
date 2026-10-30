@@ -94,6 +94,12 @@ Kaynak: kullanıcının CLAUDE.md metnindeki çekirdek sözlük (Ekim 2026).
 | Orsa | Luff / close to wind |
 | Kavanço | Gybe / wear |
 
+## Stabilite
+
+| Türkçe | İngilizce | Not |
+|---|---|---|
+| Rulo (yalpa) periyodu | Rolling period | IMO IS Code 2008 Part A 2.3.4; kullanıcı onayı 30 Eki 2026 |
+
 ## Bilinen makine çevirisi hataları
 
 | Terim | Yanlış (MT çıktısı) | Doğru |
@@ -125,6 +131,5 @@ Uygulamadaki otomatik kontroller: `scripts/i18n/sense-error-rules.mjs`
 | Kumandadan aciz | ICS F: "I am disabled"; COLREG: not under command | Bağlama göre — kullanıcı onayı bekliyor |
 | Mors lambası | Signalling lamp (Aldis lamp) | kullanıcı onayı bekliyor |
 | Sert gemi / Yumuşak gemi | Stiff ship / Tender ship | kullanıcı onayı bekliyor |
-| Rulo (yalpa) periyodu | Rolling period | kullanıcı onayı bekliyor |
 | Çevresel kuvvet (demirleme) | Environmental force | kullanıcı onayı bekliyor |
 | Hortum erişimi | Hose reach | kullanıcı onayı bekliyor |

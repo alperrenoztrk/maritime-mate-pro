@@ -63,3 +63,52 @@ export function tankFsm(g: TankGeometry, depth: number, density: number): number
     }
   }
 }
+
+export interface TankTableRow {
+  /** Sounding or ullage, as tabulated (cm or m — same unit as the reading). */
+  reading: number;
+  /** Volume (m³). */
+  volume: number;
+  vcg?: number;
+  lcg?: number;
+  /** Free surface moment at ρ = 1.000 t/m³ (or as tabulated). */
+  fsm?: number;
+}
+
+export interface TankTableResult {
+  correctedReading: number;
+  volume: number;
+  vcg?: number;
+  lcg?: number;
+  fsm?: number;
+  /** True when the reading lies outside the rows given. */
+  extrapolated: boolean;
+}
+
+/**
+ * Calibration-table look-up: the reading (sounding or ullage) is corrected for
+ * trim and list with the table's own corrections, then every column is
+ * interpolated linearly between the two bracketing rows.
+ */
+export function lookUpTankTable(rows: TankTableRow[], reading: number, trimCorrection = 0, listCorrection = 0): TankTableResult {
+  const sorted = [...rows].sort((a, b) => a.reading - b.reading);
+  if (sorted.length < 2) throw new Error("Enter at least two table rows.");
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i].reading === sorted[i - 1].reading) throw new Error("Table readings must be different.");
+  }
+  const x = reading + trimCorrection + listCorrection;
+  let i = sorted.findIndex((r) => r.reading >= x);
+  if (i <= 0) i = i === 0 ? 1 : sorted.length - 1;
+  const a = sorted[i - 1];
+  const b = sorted[i];
+  const f = (x - a.reading) / (b.reading - a.reading);
+  const lerp = (p?: number, q?: number) => (p === undefined || q === undefined ? undefined : p + (q - p) * f);
+  return {
+    correctedReading: x,
+    volume: a.volume + (b.volume - a.volume) * f,
+    vcg: lerp(a.vcg, b.vcg),
+    lcg: lerp(a.lcg, b.lcg),
+    fsm: lerp(a.fsm, b.fsm),
+    extrapolated: x < sorted[0].reading || x > sorted[sorted.length - 1].reading,
+  };
+}

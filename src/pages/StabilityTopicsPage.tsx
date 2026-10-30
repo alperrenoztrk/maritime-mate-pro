@@ -59,7 +59,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     icon: BookOpen,
     subtopics: [
       { id: "stability-definition", title: "Definition of stability", hasContent: true },
-      { id: "balance-concepts", title: "Concepts of balance, tipping and straightening", hasContent: true },
+      { id: "balance-concepts", title: "Concepts of equilibrium, heeling and righting", hasContent: true },
       { id: "static-stability", title: "Static stability", hasContent: true },
       { id: "dynamic-stability-intro", title: "Dynamic stability", hasContent: true },
       { id: "initial-stability", title: "First concept of stability", hasContent: true },
@@ -175,7 +175,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "gz-curve-generation", title: "Obtaining the GZ curve", hasContent: true },
       { id: "max-gz", title: "Maximum GZ", hasContent: true },
       { id: "stability-area", title: "Stability area", hasContent: true },
-      { id: "capsizing-angle", title: "Tipping angle", hasContent: true },
+      { id: "capsizing-angle", title: "Angle of vanishing stability", hasContent: true },
       { id: "gz-curve-interpretation", title: "Interpretation of the GZ curve", hasContent: true },
     ],
   },
@@ -288,7 +288,7 @@ The stability of a body is determined by how it responds when it is moved from i
 On ships, stability changes continuously with the loading condition, the level of the tanks, the weather and the operations being carried out. A stability calculation must therefore be made for every loading condition.`,
     bulletPoints: [
       "Stability = Ability to maintain balance + return to balance",
-      "Insufficient stability = risk of tipping over",
+      "Insufficient stability = risk of capsizing",
       "Excessive stability = Harsh oscillation, load damage",
       "Optimum stability = Safe and comfortable sailing",
     ],
@@ -299,8 +299,8 @@ On ships, stability changes continuously with the loading condition, the level o
     ],
   },
   "balance-concepts": {
-    title: "Concepts of Balance, Tilting and Straightening",
-    introduction: "Equilibrium in ships is the state in which the forces acting on them are in balance. Overturning is the disruption of this balance, and straightening is the restoration of the balance.",
+    title: "Concepts of Equilibrium, Heeling and Righting",
+    introduction: "Equilibrium in ships is the state in which the forces acting on them are in balance. Heeling disturbs this equilibrium; righting restores it.",
     content: `Two fundamental forces act on a ship in equilibrium:
 1. The weight force (W) – acting downwards through the centre of gravity (G)
 2. The buoyancy force (B) – acting upwards through the centre of buoyancy (B)
@@ -317,7 +317,7 @@ If the moment tries to heel the ship further, the ship is unstable.`,
       "Equilibrium: W = B, G and B are in the same vertical line",
       "Lying: Point B shifts to the lying side",
       "Righting moment: The moment that brings the ship to an upright position.",
-      "Overturning moment: The moment that tilts the ship more.",
+      "Heeling moment: the moment that heels the ship further.",
     ],
     formula: {
       name: "Righting Moment",
@@ -418,12 +418,12 @@ Negative GM = an unstable ship, danger!`,
   },
   "metacenter-m": {
     title: "Concept of metacentre (M)",
-    introduction: "The metacentre is the point where the curve followed by the center of lift intersects with the vertical axis when the ship is tilted at small angles and is the geometric basis of initial stability.",
+    introduction: "The metacentre is the point where the line of action of buoyancy through the centre of buoyancy intersects the centreline when the ship is heeled to small angles and is the geometric basis of initial stability.",
     content: `The metacentre (M) is the point at which the vertical drawn through the new position of the centre of buoyancy (B), when the ship heels through a very small angle, intersects the ship's centreline. This point determines whether or not a righting moment is produced at small angles.
 
 The position of the metacentre is determined by the distance BM, calculated from the waterplane moment of inertia and the immersed volume. BM is the vertical distance between B and M and is sensitive to the shape of the waterplane.`,
     bulletPoints: [
-      "Point M is considered fixed at small angles of repose",
+      "Point M is considered fixed at small angles of heel",
       "BM distance depends on waterline geometry",
       "Metacentre is the geometric reference point of initial stability",
     ],
@@ -544,13 +544,13 @@ A negative GM can cause the ship to come to rest at an angle of loll. This condi
 Diagram: G above M, the ship heeled through a small angle, with the GZ lever and the moment arrows shown in the capsizing direction.`,
     bulletPoints: [
       "Negative GM indicates imbalance",
-      "GZ becomes negative and an overturning moment occurs",
+      "GZ becomes negative and a capsizing moment acts",
       "Loll angle may occur and operational risk arises",
     ],
     formula: {
       name: "Negative GM Status",
       expression: "GZ ≈ GM × sin θ; RM = Δ × GZ",
-      description: "If GM is negative, GZ and RM are also negative and the moment is in the direction of overturning.",
+      description: "If GM is negative, GZ and RM are also negative and the moment acts to heel the ship further (capsizing).",
     },
     examples: [
       {
@@ -918,13 +918,13 @@ As the ship begins to heel, B moves towards the low side. This movement creates 
 For simple prismatic shapes B lies at the centre of the immersed volume and, in the upright condition, is T/2 above the keel.`,
     bulletPoints: [
       "B is the geometric center of the submerged volume",
-      "When the ship is heeling, B slides to the leaning side",
+      "When the ship heels, B moves towards the low side",
       "The slip of B is the basis of the righting moment",
     ],
     formula: {
       name: "Lift Center Height",
       expression: "KB = (∫ z · d∇) / ∇",
-      description: "KB: Vertical distance from keel to center of lift, z: depth coordinate",
+      description: "KB: vertical distance from the keel to the centre of buoyancy, z: depth coordinate",
     },
     examples: [
       {
@@ -963,7 +963,7 @@ At small angles GZ is taken as approximately GM × sinθ. This relationship prov
   },
   "gz-curve-generation": {
     title: "Obtaining the GZ Curve",
-    introduction: "GZ curve is the stability curve created by calculating the ship's righting arms at different leaning angles.",
+    introduction: "GZ curve is the stability curve created by calculating the ship's righting levers at different angles of heel.",
     content: `The GZ curve is obtained by calculating the GZ values for a range of angles of heel (usually 0°-90°, and further if required). These calculations are based on the geometry and hydrostatic properties of the ship in a given loading condition.
 
 The classical method involves the following steps:
@@ -1026,14 +1026,14 @@ In practice the area is calculated by numerical integration or with stability so
       description: "A: Area (m rad), GZ: righting arm (m), θ: angle of heel (rad)",
     },
     keyPoints: [
-      "As the area increases, the risk of tipping decreases",
+      "As the area increases, the risk of capsizing decreases",
       "Area values depend on the shape of the GZ curve",
       "Free surface and top loads reduce the area",
     ],
   },
   "capsizing-angle": {
     title: "Vanishing Stability Angle",
-    introduction: "Angle of Vanishing Stability (AVS) is the angle at which the GZ curve leaves the positive region and falls back to zero and the ship stops producing a righting moment. After this angle, GZ becomes negative and the ship cannot turn around (overturns).",
+    introduction: "Angle of Vanishing Stability (AVS) is the angle at which the GZ curve leaves the positive region and falls back to zero and the ship stops producing a righting moment. Beyond this angle GZ is negative and the ship cannot return to the upright (she capsizes).",
     content: `AVS AND THE RANGE OF STABILITY:
 After its peak the GZ curve falls and reaches zero at a certain angle; this angle is the AVS. The range from the origin to the AVS is called the "range of positive stability". The wider the range, the greater the angle from which the ship can return.
 
@@ -1045,7 +1045,7 @@ WHAT IT DEPENDS ON:
 THE DOWNFLOODING ANGLE (θf) — THE PRACTICAL LIMIT:
 Openings on the ship that cannot be closed (air vents, fan intakes, doors) become immersed at a certain angle of heel; this is the downflooding angle (θf). Once water begins to enter, the ship loses stability rapidly. The PRACTICAL safe range is therefore not the AVS but WHICHEVER IS SMALLER of the AVS and θf. The IMO area/range criteria are most often cut off at θf.`,
     bulletPoints: [
-      "AVS: Angle at which GZ returns to zero; post negative (tipping)",
+      "AVS: angle at which GZ returns to zero; beyond it GZ is negative (capsizing)",
       "Positive stability range = origin to AVS",
       "KG↑/FSE reduces AVS; Increases freeboard/closed superstructure",
       "Practical limit = min(AVS, downflooding angle θf)",
@@ -1115,7 +1115,7 @@ Flotation is necessary for static equilibrium but not sufficient. A floating bod
       "The equation W = ρ × ∇ defines the equilibrium condition",
       "Submerged volume must ≤ total volume",
       "Freeboard is a visual indicator of buoyancy",
-      "Stability for swimming must also be ensured",
+      "Floating is not enough: stability must also be ensured",
     ],
     formula: {
       name: "Buoyancy Equation",
@@ -1163,7 +1163,7 @@ A ship must be in stable equilibrium if it is to make a safe passage.`,
     ],
     keyPoints: [
       "Stable equilibrium is mandatory for navigation",
-      "Unstable balance is a risk of tipping over",
+      "Unstable equilibrium means a risk of capsizing",
       "Neutral balance is operationally unacceptable",
     ],
     warnings: [
@@ -1187,7 +1187,7 @@ When this moment is positive it acts to bring the ship upright. When it is negat
 The righting moment is the fundamental measure of a ship's stability. The IMO criteria require a minimum righting capacity at defined angles.`,
     bulletPoints: [
       "Calculated with the formula RM = Δ × GZ",
-      "Positive RM straightens the ship",
+      "A positive RM returns the ship towards the upright",
       "Negative RM increases lying down",
       "RM size indicates stability capacity",
     ],
@@ -1321,7 +1321,7 @@ A cargo shift, a ballast transfer or crane operations can cause this kind of hee
   },
   "small-angle-stability": {
     title: "Stability for Small Angles",
-    introduction: "At small angles of repose (up to about 10°) the metacenter is considered constant and simplified formulas are used.",
+    introduction: "At small angles of heel (up to about 10°) the metacenter is considered constant and simplified formulas are used.",
     content: `Small-angle stability examines the ship's behaviour close to upright. In this range the metacentre (M) is taken as fixed and GZ increases linearly.
 
 The basic relationship:
@@ -1355,7 +1355,7 @@ The small-angle approximation can also be written as sin θ ≈ θ (in radians).
   },
   "large-angle-stability": {
     title: "Stability for Large Angles",
-    introduction: "At repose angles above approximately 10°, the metacenter (M) does not remain constant and the small angle approximation GZ = GM·sinθ becomes invalid. Large angle stability is examined directly from the GZ curve, taking into account the actual movement of the center of lift (B).",
+    introduction: "At angles of heel above approximately 10°, the metacenter (M) does not remain constant and the small angle approximation GZ = GM·sinθ becomes invalid. Large angle stability is examined directly from the GZ curve, taking into account the actual movement of the centre of buoyancy (B).",
     content: `WHY THE SMALL-ANGLE APPROXIMATION BREAKS DOWN:
 At small angles M is almost fixed and GZ ≈ GM·sinθ can be used. As the angle increases the shape of the immersed volume (and so the position of B) changes markedly; M moves down and GZ departs from the simple sine relationship.
 
@@ -1732,7 +1732,7 @@ where w is the weight and d the longitudinal distance it is moved.`,
     formula: {
       name: "MCT Formula",
       expression: "MCT = (Δ × GML) / (100 × LBP); Trim = (w × d) / MCT",
-      description: "MCT: Trim changing moment (t·m/cm), GML: Longitudinal metacentric height (m), LBP: Between two struts (m)",
+      description: "MCT: Trim changing moment (t·m/cm), GML: Longitudinal metacentric height (m), LBP: length between perpendiculars (m)",
     },
     examples: [
       {
@@ -1886,7 +1886,7 @@ Reading the draft is the starting point of the loading calculation.`,
     ],
     keyPoints: [
       "Draft reading is the beginning of the operation",
-      "Freeboard = Summer Load Line - Draft",
+      "Freeboard = depth to the deck line − draft, measured amidships",
       "Minimum freeboard limit must not be exceeded",
     ],
   },
@@ -2087,7 +2087,7 @@ The area is calculated by numerical integration or the trapezoidal rule.`,
   },
   "static-vs-dynamic": {
     title: "Difference Between Static and Dynamic Stability",
-    introduction: "Static stability examines the instantaneous righting force (TZ/moment) at a given angle of heel. Dynamic stability examines the WORK (energy) required to tilt the ship to that angle and is measured by the area under the GZ curve. The two measure different things and should be considered together.",
+    introduction: "Static stability examines the righting lever (GZ) and righting moment at a given angle of heel. Dynamic stability examines the WORK (energy) required to tilt the ship to that angle and is measured by the area under the GZ curve. The two measure different things and should be considered together.",
     content: `STATIC STABILITY:
 - Instantaneous equilibrium at a given angle: the righting lever GZ and the righting moment (Δ·GZ).
 - Assessed by GM at small angles and by the GZ curve at large angles.
@@ -2135,7 +2135,7 @@ The IMO wind and wave criteria take these effects into account.`,
     bulletPoints: [
       "Waves transfer lying energy",
       "The wave period and the roll period may resonate",
-      "There is a risk of parametric yawing in fore and aft waves",
+      "There is a risk of parametric rolling in head and following seas",
       "Stability areas absorb wave energy",
     ],
     keyPoints: [
@@ -2318,9 +2318,9 @@ Deliberately filling the tanks on the opposite side to reduce the list. This ope
 The cross-flooding capacity is determined in the design of the ship.`,
     bulletPoints: [
       "Asymmetric flooding creates a dangerous list",
-      "Cross sync list reduces",
-      "SOLAS allows a maximum cross synchronization time of 15 minutes",
-      "Deck edge sinking causes tipping",
+      "Cross-flooding reduces the list",
+      "SOLAS limits the cross-flooding equalisation time; see the damage stability information",
+      "Deck edge immersion reduces GZ and can lead to capsizing",
     ],
     formula: {
       name: "List Angle Estimation",
@@ -2604,8 +2604,8 @@ PRECAUTIONS:
 SOLAS and the Grain Code make anti-shifting measures mandatory.`,
     bulletPoints: [
       "Cargo shifting creates dangerous list",
-      "Cast cargo carries special risks",
-      "Tie breakage may cause tipping",
+      "Bulk cargo carries special risks",
+      "Failure of lashings can lead to cargo shift and capsizing",
       "IMO load safety rules are mandatory",
     ],
     formula: {
@@ -2650,8 +2650,8 @@ Removing ice is critically important.`,
     bulletPoints: [
       "Icing increases KG",
       "GM decreases, stability deteriorates",
-      "There is a risk of tipping over in severe icing",
-      "Ice cleaning should be done regularly",
+      "There is a risk of capsizing in severe icing",
+      "Ice should be removed regularly",
     ],
     formula: {
       name: "KG Change with Ice Weight",
@@ -2666,7 +2666,7 @@ Removing ice is critically important.`,
     ],
     keyPoints: [
       "Icing is observed during cold region cruises.",
-      "Ice cleaning is the priority operation",
+      "Ice removal is the priority task",
       "Icing rate is very high in severe conditions",
     ],
     warnings: [
@@ -2718,7 +2718,7 @@ These criteria are for intact stability. Damage stability criteria are defined s
   },
   "intact-stability-code": {
     title: "Intact Stability Code",
-    introduction: "The Intact Stability Code (IS Code) contains comprehensive stability requirements and calculation methods for undamaged ships. It is accepted by the 2008 IS Code (MSC.267(85)) and is mandatory under SOLAS and the Load Line Agreement.",
+    introduction: "The Intact Stability Code (IS Code) contains comprehensive stability requirements and calculation methods for undamaged ships. It is accepted by the 2008 IS Code (MSC.267(85)) and is mandatory under SOLAS and the Load Line Convention.",
     content: `The Intact Stability Code (the 2008 IS Code) was adopted by resolution MSC.267(85).
 
 STRUCTURE:
@@ -2751,7 +2751,7 @@ Every loading condition is checked against these criteria in the ship's approved
     formula: {
       name: "Weather Criterion",
       expression: "b ≥ a",
-      description: "The GZ area (b) that resists overturning must be greater than/equal to the area (a) applied by the wind + yawing moment.",
+      description: "Area b under the GZ curve must be at least equal to area a produced by the gust wind and rolling.",
     },
     keyPoints: [
       "It is the basis of the IS Code stability booklet criteria.",
@@ -3223,7 +3223,7 @@ PRECAUTIONS:
     keyPoints: [
       "Docking temporarily reduces active stability.",
       "Over trim large P at one point → more GM loss.",
-      "Side blocks and struts provide support while sitting.",
+      "Side blocks and shores support the ship once she sits on the blocks.",
     ],
     warnings: [
       "Docking with inadequate GM or excessive trim can cause the ship to slip off the blocks or capsize",

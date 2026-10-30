@@ -76,3 +76,20 @@ compared the class with values generated from the class itself;
 
 Not yet migrated in this round (shared components, later rounds): `/stability/assistant`
 and `/stability/quiz` (AssistantInterface and the quiz component are shared by all modules).
+
+## 3. Cargo, tank and ballast (`/tank`, `/ballast`, `/cargo/assistant`, `/cargo/quiz`)
+
+Engine: `src/lib/calc/tank.ts` (calibration table look-up), `src/lib/calc/ballast.ts`.
+Source: BWM Convention 2004 regulations B-4, D-1, D-2 (values checked on the IMO
+convention page).
+
+| Calculation | Page | Before | Now | Status | Test |
+|---|---|---|---|---|---|
+| Tank contents | `/tank` | V = A·h only; "moment" = V·h/2 (m⁴, meaningless) | Calibration table rows → reading corrected for trim/list → volume, weight, VCG, LCG, FSM | Fixed / New | `tank.test.ts` |
+| Ballast tank FSM | `/ballast` | Tank length and breadth "estimated" as √(capacity/12) | Removed; FSM comes from the tank tables (Free Surface Effect page) | Removed | — |
+| Ballast transfer trim | `/ballast` | Trim = moment / (Δ·GML/100) — LBP missing | δt = −w·Δx/MCTC (cm), heel tan θ = w·Δy/(Δ·GM), pumping time | Fixed | `ballast.test.ts` |
+| Exchange (D-1) | `/ballast` | Text only | Sequential / flow-through plan, 3 × volume rule, time; B-4 location check | New | idem |
+| D-2 standard | `/ballast` | Text only | Sample values against the five D-2 limits (strict "less than") | New | idem |
+| Default tank list | `/ballast` | Six invented tanks with levels and positions | Empty rows for the ship's own tanks | Removed | — |
+| AI assistants | all `/…/assistant` pages | Gradient hero, prompts cut at 50 characters | Tool shell, full prompts, caution that AI answers can be wrong | UI | — |
+| Quizzes | 8 topic quiz pages | Bare container | Shared `QuizShell`; question banks not audited in this round | UI | — |
