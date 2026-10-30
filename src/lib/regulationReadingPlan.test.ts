@@ -66,7 +66,7 @@ test("legislation reading plan is ordered, unique, and includes each source cate
   }
   assert.equal(pages.filter((p) => p.kind === "narrative" && p.chapterIndex === 0).length, 3);
   assert.equal(pages.filter((p) => p.kind === "narrative" && p.chapterIndex === 1).length, 1);
-  assert.equal(pages.filter((p) => p.kind === "chapter-takeaways-1")[0]?.chapterIndex, 1);
+  assert.equal(pages.filter((p) => p.kind === "chapter-takeaways" && p.chapterIndex === 1)[0]?.chapterIndex, 1);
   assert.deepEqual(pages.filter((p) => p.kind === "narrative" && p.chapterIndex === 0)
     .map((p) => [p.start, p.end]), [[0, 2], [2, 4], [4, 5]]);
 });
