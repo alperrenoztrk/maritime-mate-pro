@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { calculateCounterflowLmtd } from "@/lib/verifiedOperationalMath";
 import { CalculatorPanel, CalculatorNumberField, CalculatorResultPanel, parseProfessionalFields, buildProfessionalReport } from "@/components/calculations/ProfessionalCalculator";
 import type { ProfessionalGroup, ProfessionalOutput } from "@/lib/professionalCalculatorCore";
 import { useParams } from "react-router-dom";
@@ -29,6 +30,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const TH = v.th + 273.15;
         const TL = v.tl + 273.15;
+        if (TH <= 0 || TL <= 0 || TL >= TH) {
+          throw new RangeError("Absolute temperatures must be above 0 K and the hot reservoir must be hotter than the cold reservoir.");
+        }
         const eta = (1 - TL / TH) * 100;
         return [{ label: "Carnot Efficiency (η)", value: `${eta.toFixed(2)}%` }];
       },
@@ -43,11 +47,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "t2o", label: "Cold Outlet", unit: "°C", placeholder: "50" },
       ],
       calculate: (v) => {
-        const dt1 = v.t1i - v.t2o;
-        const dt2 = v.t1o - v.t2i;
-        if (dt1 <= 0 || dt2 <= 0) return [{ label: "Error", value: "The temperature differences must be positive" }];
-        const lmtd = Math.abs(dt1 - dt2) < 0.01 ? dt1 : (dt1 - dt2) / Math.log(dt1 / dt2);
-        return [{ label: "LMTD", value: `${lmtd.toFixed(2)} °C` }];
+        const { lmtdK } = calculateCounterflowLmtd(v.t1i, v.t1o, v.t2i, v.t2o);
+        return [{ label: "LMTD", value: `${lmtdK.toFixed(2)} K` }];
       },
     },
     {
@@ -59,6 +60,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "lmtd", label: "LMTD", unit: "°C", placeholder: "35" },
       ],
       calculate: (v) => {
+        if (v.q < 0 || v.u <= 0 || v.lmtd <= 0) {
+          throw new RangeError("Heat load cannot be negative; U and LMTD must be positive.");
+        }
         const area = (v.q * 1000) / (v.u * v.lmtd);
         return [{ label: "Required Area (A)", value: `${area.toFixed(2)} m²` }];
       },
@@ -72,6 +76,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "gamma", label: "Specific Heat Ratio (γ)", unit: "", placeholder: "1.4" },
       ],
       calculate: (v) => {
+        if (v.r <= 1 || v.rc <= 1 || v.rc >= v.r || v.gamma <= 1) {
+          throw new RangeError("Diesel cycle requires compression ratio > cutoff ratio > 1 and gamma > 1.");
+        }
         const eta = (1 - (1 / Math.pow(v.r, v.gamma - 1)) * ((Math.pow(v.rc, v.gamma) - 1) / (v.gamma * (v.rc - 1)))) * 100;
         return [{ label: "Diesel Cycle Efficiency (η)", value: `${eta.toFixed(2)}%` }];
       },
@@ -84,6 +91,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "gamma", label: "Specific Heat Ratio (γ)", unit: "", placeholder: "1.4" },
       ],
       calculate: (v) => {
+        if (v.r <= 1 || v.gamma <= 1) throw new RangeError("Otto cycle requires r > 1 and gamma > 1.");
         const eta = (1 - 1 / Math.pow(v.r, v.gamma - 1)) * 100;
         return [{ label: "Otto Cycle Efficiency (η)", value: `${eta.toFixed(2)}%` }];
       },
