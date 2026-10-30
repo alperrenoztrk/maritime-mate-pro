@@ -50,6 +50,12 @@ Ayrıntılar (Pro abonelik, Play yayını, beyaz ekran tuzakları):
 - Elle kontrol edilmiş metinler: `scripts/i18n/verified/*.json`. Dosya bir dili
   listelemiyorsa o dilde İngilizcesi gösterilir; `"fill": false` varsa
   gösterilmez.
+- Native derlemede (`build:native`) `dist/locales/<dil>.json` dosyaları
+  `scripts/i18n/pack-locales.mjs` ile paketlenir: ortak `packed/keys.json` +
+  dil başına değer dizisi (İngilizceyle/anahtarla aynı değer işaretle yazılır).
+  Her dil birebir doğrulanmadan tam JSON çıktıdan kalkmaz; repodaki
+  `public/locales` ve web derlemesi değişmez. Release'te R8 açık
+  (`minifyEnabled`/`shrinkResources`, kurallar `android/app/proguard-rules.pro`).
 - Sözlük sayfası paketleri: `src/data/glossary-i18n/<dil>.json` (en, de, fr, es,
   it, pt, nl kontrol edildi).
 - Anlam hatası taraması: `scripts/i18n/sense-error-rules.mjs` →

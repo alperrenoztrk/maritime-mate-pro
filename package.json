@@ -68,7 +68,7 @@
     "i18n:repair-en": "node scripts/i18n/repair-english-terminology.mjs",
     "test:i18n-extractor": "npm run i18n:extract && node --test scripts/i18n/extract-strings.test.mjs",
     "test:i18n-terms": "node --import tsx --test scripts/i18n/term-audit-rules.test.mjs scripts/i18n/sense-error-rules.test.mjs src/utils/englishMaritimeTerminology.test.ts src/utils/protectedTerms.test.ts src/utils/technicalText.test.ts src/utils/turkishText.test.ts",
-    "test:i18n-barrier": "node --import tsx --test src/utils/routeTranslation.test.ts src/utils/staticTranslations.test.ts",
+    "test:i18n-barrier": "node --import tsx --test src/utils/routeTranslation.test.ts src/utils/staticTranslations.test.ts src/utils/staticTranslations.packed.test.ts",
     "test:ui-copy": "node --import tsx --test src/i18n/coreUiTranslations.test.ts",
     "test:navigation-ui": "node --import tsx --test src/lib/appNavigation.test.ts",
     "check:ocean-ui": "node scripts/check-ocean-ui.mjs",

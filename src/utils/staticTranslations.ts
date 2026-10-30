@@ -22,10 +22,76 @@ const DICTIONARY_FETCH_TIMEOUT_MS = 8_000;
 // worker's StaleWhileRevalidate entry on the first load after a locale rebuild.
 export const STATIC_DICTIONARY_CACHE_VERSION = 'v5';
 
-const baseUrl = (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/';
+const viteEnv = (import.meta as unknown as { env?: { BASE_URL?: string; MODE?: string } }).env;
+const baseUrl = viteEnv?.BASE_URL ?? '/';
 
 const dictionaryUrl = (languageCode: string): string =>
   `${baseUrl.replace(/\/$/, '')}/locales/${languageCode}.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
+
+// Packed build output (scripts/i18n/pack-locales.mjs): the Turkish source keys
+// ship once in keys.json and each language ships only a value array, instead of
+// repeating every key in 24 files. The native build ships only this form; the
+// web build ships the full JSON only, so it does not ask for packs (tests run
+// without Vite's env and exercise the packed path).
+const PREFER_PACKED = viteEnv?.MODE === undefined || viteEnv.MODE === 'native';
+const PACK_FORMAT = 1;
+const SAME_AS_KEY = 1;
+const SAME_AS_BASE = 0;
+const packedUrl = (name: string): string =>
+  `${baseUrl.replace(/\/$/, '')}/locales/packed/${name}.json?v=${STATIC_DICTIONARY_CACHE_VERSION}`;
+
+type PackedValue = string | typeof SAME_AS_KEY | typeof SAME_AS_BASE | null;
+interface PackedKeys { format: number; id: string; keys: string[] }
+interface PackedLanguage { format: number; keysId: string; base: string | null; values: PackedValue[] }
+
+const fetchJson = async <T>(url: string, signal?: AbortSignal): Promise<T> => {
+  const response = await fetch(url, { cache: 'force-cache', signal });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return (await response.json()) as T;
+};
+
+const fetchPackedLanguage = async (name: string, keys: PackedKeys, signal?: AbortSignal): Promise<PackedLanguage> => {
+  const pack = await fetchJson<PackedLanguage>(packedUrl(name), signal);
+  if (pack.format !== PACK_FORMAT || pack.keysId !== keys.id || !Array.isArray(pack.values) || pack.values.length !== keys.keys.length) {
+    throw new Error(`Packed locale ${name} does not match keys.json`);
+  }
+  return pack;
+};
+
+/** Rebuilds the same dictionary the full <lang>.json gives; throws when the pack is unusable. */
+const loadPackedDictionary = async (languageCode: string, signal?: AbortSignal): Promise<StaticDictionary> => {
+  const keys = await fetchJson<PackedKeys>(packedUrl('keys'), signal);
+  if (keys.format !== PACK_FORMAT || !Array.isArray(keys.keys)) throw new Error('Unsupported keys.json');
+  const pack = await fetchPackedLanguage(languageCode, keys, signal);
+  const baseValues = pack.base ? (await fetchPackedLanguage(pack.base, keys, signal)).values : null;
+  const dict: StaticDictionary = {};
+  for (let i = 0; i < keys.keys.length; i += 1) {
+    const key = keys.keys[i];
+    const value = pack.values[i];
+    if (typeof value === 'string') dict[key] = value;
+    else if (value === SAME_AS_KEY) dict[key] = key;
+    else if (value === SAME_AS_BASE) {
+      const base = baseValues?.[i];
+      // The base pack is never itself base-relative, so it holds a string or the key marker.
+      if (typeof base === 'string') dict[key] = base;
+      else if (base === SAME_AS_KEY) dict[key] = key;
+      else throw new Error(`Packed locale ${languageCode} refers to a missing base entry`);
+    }
+  }
+  return dict;
+};
+
+const loadLegacyDictionary = async (languageCode: string, signal?: AbortSignal): Promise<StaticDictionary> => {
+  const response = await fetch(dictionaryUrl(languageCode), { cache: 'force-cache', signal });
+  if (!response.ok) return {};
+  const raw = (await response.json()) as Record<string, unknown>;
+  const dict: StaticDictionary = {};
+  for (const [key, value] of Object.entries(raw)) {
+    if (key.startsWith(META_PREFIX)) continue;
+    if (typeof value === 'string') dict[key] = value;
+  }
+  return dict;
+};
 
 // Checked English for the long lesson paragraphs (`paragraphs` fields), shared
 // by every language (scripts/i18n/build-paragraph-pack.mjs). It is kept out of
@@ -101,20 +167,15 @@ export const loadStaticDictionary = async (languageCode: string): Promise<Static
       ? globalThis.setTimeout(() => controller.abort(), DICTIONARY_FETCH_TIMEOUT_MS)
       : null;
     try {
-      const response = await fetch(dictionaryUrl(languageCode), {
-        cache: 'force-cache',
-        signal: controller?.signal,
-      });
-      if (!response.ok) {
-        loadedDictionaries[languageCode] = {};
-        return {};
+      let dict: StaticDictionary | null = null;
+      if (PREFER_PACKED) {
+        try {
+          dict = await loadPackedDictionary(languageCode, controller?.signal);
+        } catch (error) {
+          if (controller?.signal.aborted) throw error;
+        }
       }
-      const raw = (await response.json()) as Record<string, unknown>;
-      const dict: StaticDictionary = {};
-      for (const [key, value] of Object.entries(raw)) {
-        if (key.startsWith(META_PREFIX)) continue;
-        if (typeof value === 'string') dict[key] = value;
-      }
+      dict ??= await loadLegacyDictionary(languageCode, controller?.signal);
       // Only next to a real pack: an empty dictionary must stay empty so the
       // runtime keeps using the live translator (see isDictionaryComplete).
       if (Object.keys(dict).length > 0) {

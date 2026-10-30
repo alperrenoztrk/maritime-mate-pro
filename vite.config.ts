@@ -6,6 +6,7 @@ import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
 import legacy, { cspHashes } from "@vitejs/plugin-legacy";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
+import { packLocales } from "./scripts/i18n/pack-locales.mjs";
 
 // Content-Security-Policy — üretim build'ine <meta> olarak enjekte edilir.
 // Barındırma (Lovable) ve Capacitor WebView'inde HTTP başlıklarını kontrol
@@ -107,6 +108,27 @@ function verifyPrecachePlugin(): Plugin {
             "çevrimdışı açılmaz; yayınlanmamalı.",
         );
       }
+    },
+  };
+}
+
+// Native paket: dil sözlüklerindeki Türkçe anahtarlar 24 dosyada tekrarlanıyor
+// ve AAB'nin büyük kısmını oluşturuyordu. Kopyalanan dist/locales/<dil>.json
+// dosyaları ortak anahtar listesi + dil başına değer dizisine paketlenir
+// (scripts/i18n/pack-locales.mjs); her dil birebir doğrulanmadan tam JSON
+// çıktıdan kaldırılmaz. Repodaki public/locales değişmez. Web derlemesi tam
+// JSON'u olduğu gibi yayınlar.
+function packLocalesPlugin(): Plugin {
+  let outDir = "dist";
+  return {
+    name: "pack-locales",
+    apply: "build",
+    configResolved(config) {
+      outDir = config.build.outDir;
+    },
+    closeBundle() {
+      const localesDir = path.resolve(__dirname, outDir, "locales");
+      if (fs.existsSync(localesDir)) packLocales({ localesDir, removeLegacy: true });
     },
   };
 }
@@ -317,6 +339,7 @@ export default defineConfig(({ mode }) => ({
     }),
     // VitePWA sw.js'i closeBundle'da ürettiği için doğrulama en sonda durmalı.
     mode !== "native" && verifyPrecachePlugin(),
+    mode === "native" && packLocalesPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
