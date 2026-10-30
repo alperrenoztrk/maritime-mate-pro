@@ -22,7 +22,6 @@ export default function ConverterPage() {
   const [toId, setToId] = useState("km");
   const [value, setValue] = useState("");
   const category = MARITIME_UNIT_CATEGORIES.find((item) => item.id === categoryId)!;
-  const from = category.units.find((unit) => unit.id === fromId)!;
   const to = category.units.find((unit) => unit.id === toId)!;
   const parsed = parseDecimal(value);
   let converted: number | null = null;
