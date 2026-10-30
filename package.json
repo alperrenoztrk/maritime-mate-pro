@@ -188,6 +188,8 @@
     "@capacitor/cli": "^7.4.2",
     "@electric-sql/pglite": "0.3.14",
     "@eslint/js": "^9.13.0",
+    "@lovable.dev/vite-plugin-dev-server-bridge": "^1.0.2",
+    "@lovable.dev/vite-plugin-hmr-gate": "^1.8.0",
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^22.8.4",
     "@types/react": "^18.3.12",
