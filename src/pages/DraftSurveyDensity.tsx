@@ -1,81 +1,34 @@
-import { useState } from "react";
 import { Thermometer } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { LibraryPageShell } from "@/components/library/LibraryInterface";
+import { ProfessionalCalculator, type ProfessionalGroup } from "@/components/calculations/ProfessionalCalculator";
 import { correctReferenceDisplacement } from "@/lib/toolCalculations";
 
+const GROUPS: ProfessionalGroup[] = [{
+  title: "Water and Hydrostatic Data",
+  fields: [
+    { key: "actual", label: "Observed water density", unit: "t/m³", min: 0.000001, placeholder: "1.010" },
+    { key: "reference", label: "Hydrostatic reference density", unit: "t/m³", min: 0.000001, defaultValue: "1.025" },
+    { key: "displacement", label: "Table displacement at reference density", unit: "t", min: 0, placeholder: "10000" },
+  ],
+}];
+
 export default function DraftSurveyDensity() {
-  const [data, setData] = useState({ actual: "", reference: "1.025", displacement: "" });
-  const [result, setResult] = useState<ReturnType<typeof correctReferenceDisplacement> | null>(null);
-  const [error, setError] = useState("");
-  const update = (key: keyof typeof data, value: string) => {
-    setData((prev) => ({ ...prev, [key]: value }));
-    setResult(null);
-    setError("");
-  };
-  const calculate = () => {
-    if (Object.values(data).some((v) => !v.trim())) {
-      setError("Enter both densities and reference displacement.");
-      setResult(null);
-      return;
-    }
-    try {
-      setResult(correctReferenceDisplacement(
-        Number(data.displacement), Number(data.actual), Number(data.reference),
-      ));
-      setError("");
-    } catch (e) {
-      setResult(null);
-      setError(e instanceof Error ? e.message : "Check the inputs.");
-    }
-  };
-  return (
-    <LibraryPageShell title="Displacement Density Correction" icon={Thermometer} maxWidth="max-w-3xl">
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        Correct a displacement read from hydrostatic tables at a reference water density to
-        the same submerged volume at the observed water density. This is a mass correction,
-        not freshwater allowance or change of draft.
-      </p>
-      <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
-        <CardHeader><CardTitle className="text-base">Measured values</CardTitle></CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {([
-              ["actual", "Observed water density (t/m³)", "1.010"],
-              ["reference", "Hydrostatic-table reference density (t/m³)", "1.025"],
-              ["displacement", "Displacement from reference-density tables (t)", "10000"],
-            ] as const).map(([key, label, placeholder]) => (
-              <div key={key} className="space-y-2">
-                <Label htmlFor={key}>{label}</Label>
-                <Input id={key} type="number" inputMode="decimal" step="any" min="0"
-                  value={data[key]} placeholder={placeholder}
-                  onChange={(e) => update(key, e.target.value)} />
-              </div>
-            ))}
-          </div>
-          <Button onClick={calculate} className="w-full">Calculate correction</Button>
-          {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-        </CardContent>
-      </Card>
-      {result && (
-        <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
-          <CardHeader><CardTitle className="text-base">Density-corrected displacement</CardTitle></CardHeader>
-          <CardContent className="space-y-3">
-            <p className="text-xl font-semibold tabular-nums">{result.correctedDisplacementTonnes.toFixed(3)} t</p>
-            <p className="text-sm text-muted-foreground">
-              Correction relative to table displacement: {result.correctionTonnes >= 0 ? "+" : ""}
-              {result.correctionTonnes.toFixed(3)} t
-            </p>
-          </CardContent>
-        </Card>
-      )}
-      <p className="text-xs leading-relaxed text-muted-foreground">
-        Δ(actual) = Δ(table) × ρ(actual) / ρ(table). Use a calibrated hydrometer and
-        ship-approved hydrostatic tables; trim and draft-mark corrections are separate.
-      </p>
-    </LibraryPageShell>
-  );
+  return <ProfessionalCalculator title="Displacement Density Correction" icon={Thermometer}
+    description="Correct hydrostatic-table displacement for measured water density, assuming the same immersed hull volume."
+    groups={GROUPS} resultTitle="Density-corrected Displacement"
+    formula="Displacement(actual) = Displacement(table) × ρ(actual) / ρ(reference)"
+    solve={({ actual, reference, displacement }) => {
+      const r = correctReferenceDisplacement(displacement, actual, reference);
+      return {
+        results: [
+          { label: "Corrected displacement", value: `${r.correctedDisplacementTonnes.toFixed(3)} t`, primary: true },
+          { label: "Correction to table displacement", value: `${r.correctionTonnes >= 0 ? "+" : ""}${r.correctionTonnes.toFixed(3)} t` },
+        ],
+        steps: [
+          `Density ratio = ${actual} / ${reference} = ${(actual / reference).toFixed(6)}.`,
+          `Actual displacement = ${displacement} × ${(actual / reference).toFixed(6)} = ${r.correctedDisplacementTonnes.toFixed(3)} t.`,
+          `Correction = ${r.correctedDisplacementTonnes.toFixed(3)} − ${displacement} = ${r.correctionTonnes.toFixed(3)} t.`,
+        ],
+      };
+    }}
+    limitations="Not a freshwater allowance or draft correction. Draft mark positions, trim corrections and approved hydrostatic data must be handled separately." />;
 }
