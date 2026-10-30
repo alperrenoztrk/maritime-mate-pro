@@ -2756,5 +2756,125 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
       }
     ]
+  },
+  "communication-arama-kurtarma-haberlesmesi-ve-olay-yeri-koordinasyonu": {
+    "id": "communication-arama-kurtarma-haberlesmesi-ve-olay-yeri-koordinasyonu-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "Search and rescue communication distinguishes the MRCC, an appointed On-Scene Coordinator and individual assisting units. A first-arriving merchant ship must not assume unrestricted command authority.\n\nCommon error: Do not independently order other SAR units to change search patterns without agreed coordination.",
+    "example": {
+      "problem": "A merchant vessel joins two ships and a helicopter searching near the last reported EPIRB position.",
+      "steps": [
+        "Transmit own position, limitations, recovery capability and observations to the designated coordination authority.",
+        "Confirm assigned search sector, the responsible OSC, frequency and relevant position datum before manoeuvring.",
+        "Log and communicate new sightings, drift estimates and rescue actions while maintaining safe bridge watch."
+      ],
+      "result": "Coordinated sector assignments improve the search while respecting uncertainty in the original EPIRB datum."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-inmarsat-ve-uydu-haberlesme-sistemleri": {
+    "id": "communication-inmarsat-ve-uydu-haberlesme-sistemleri-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "GMDSS-approved mobile satellite terminals carry defined distress and safety functions within their recognised coverage. A vessel's commercial satellite internet access is not automatically a certified GMDSS alerting route.\n\nCommon error: Do not assume every commercial Inmarsat or Iridium device is approved for the same GMDSS functions.",
+    "example": {
+      "problem": "A ship sailing toward high latitudes has broadband satellite internet and a separate older GMDSS terminal.",
+      "steps": [
+        "Check the Safety Radio Certificate and Record of Equipment to identify the recognised service and terminal model.",
+        "Compare its actual approved coverage and distress/MSI capabilities with the entire passage route.",
+        "Verify reserve supply, registration and backup radio arrangements; escalate any coverage or equipment gaps."
+      ],
+      "result": "The vessel's certified satellite-service coverage, not generic broadband availability, governs the relevant GMDSS assessment."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-telsiz-anten-sistemleri-ve-acil-guc-kaynaklari": {
+    "id": "communication-telsiz-anten-sistemleri-ve-acil-guc-kaynaklari-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "Reserve GMDSS power must sustain required radio functions through approved supply arrangements and maintained batteries. Battery open-circuit voltage does not establish usable capacity under load.\n\nCommon error: Do not disconnect a live reserve battery or interrupt required DSC watches for an ad hoc test.",
+    "example": {
+      "problem": "At a survey the radio backup battery shows nominal voltage but collapses quickly under its approved load test.",
+      "steps": [
+        "Identify the reserve supply architecture and all connected required radio consumers in ship drawings.",
+        "Conduct authorised battery testing while protecting continuous distress-watch capability.",
+        "Record battery condition and restore compliant reserve capacity with approved replacement and documentation."
+      ],
+      "result": "A normal resting voltage cannot compensate for inadequate capacity during emergency radiocommunications."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-smcp-standart-deniz-haberlesme-ifadeleri": {
+    "id": "communication-smcp-standart-deniz-haberlesme-ifadeleri-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "Standard Marine Communication Phrases minimise misunderstandings between VTS, pilots, bridge teams and ships. Course, speed, distance and urgency must be spoken and read back without ambiguity.\n\nCommon error: Never treat uncertain radio instructions as permission to disregard collision regulations or ship handling limits.",
+    "example": {
+      "problem": "In poor radio reception the bridge hears a VTS transmission referring to heading 270 but not whether it is advice or an instruction.",
+      "steps": [
+        "Read back the intended heading using clear numbers and ask the station to clarify the nature of the message.",
+        "Cross-check target traffic, charted hazards and COLREG responsibilities before any non-emergency alteration.",
+        "Record the agreed understanding and brief the Master or pilot when the change affects passage safety."
+      ],
+      "result": "Read-back and clarification detect a potentially dangerous ambiguity before the helm is altered."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-vts-ve-gemi-raporlama-sistemleri": {
+    "id": "communication-vts-ve-gemi-raporlama-sistemleri-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "VTS provides local traffic information and may issue instructions under local rules, but participation does not remove the Master's safe-navigation responsibilities or COLREG duties.\n\nCommon error: Do not follow an ambiguous reporting instruction into an immediate navigational hazard.",
+    "example": {
+      "problem": "A vessel reaches a mandatory reporting point at the same time as close-quarters fishing traffic develops.",
+      "steps": [
+        "Prioritise lookout, safe speed and collision avoidance, requesting the Master's support if needed.",
+        "Report the verified ship position, speed, traffic concern and manoeuvring intentions on the published channel.",
+        "Clarify any conflicting VTS instruction and document the exchange while maintaining safe navigation."
+      ],
+      "result": "Traffic reporting and collision avoidance must be coordinated, not treated as competing substitutes."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
   }
 };
