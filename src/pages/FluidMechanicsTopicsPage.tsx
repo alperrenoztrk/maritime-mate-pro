@@ -1,3 +1,4 @@
+import { LegacyTopicBook } from "@/components/reader/LegacyTopicBook";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -256,62 +257,11 @@ export default function FluidMechanicsTopicsPage() {
               </div>
             </div>
 
-            <ScrollArea className="min-h-0 flex-1">
-              <div className="mx-auto max-w-4xl space-y-6 p-4 pb-[calc(5rem+var(--safe-bottom))]">
-                <div className="rounded-xl border-l-4 border-primary bg-primary/5 p-4">
-                  <p className="font-medium leading-relaxed text-foreground">
-                    {currentContent.introduction}
-                  </p>
-                </div>
-
-                <StructuredLessonText text={currentContent.content} />
-
-                {currentContent.bulletPoints && currentContent.bulletPoints.length > 0 && (
-                  <div className="space-y-2 rounded-xl bg-muted/50 p-4">
-                    <h3 className="mb-3 font-semibold text-foreground">Highlights</h3>
-                    {currentContent.bulletPoints.map((point, index) => (
-                      <div key={index} className="flex items-start gap-2">
-                        <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                        <span className="text-sm text-foreground">{point}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {currentContent.formula && (
-                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4">
-                    <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-amber-600" />
-                      <h3 className="font-semibold text-amber-700 dark:text-amber-400">
-                        {currentContent.formula.name}
-                      </h3>
-                    </div>
-                    <div className="mt-2 font-mono text-sm text-amber-700 dark:text-amber-400">
-                      {currentContent.formula.expression}
-                    </div>
-                    <p className="mt-2 text-xs text-muted-foreground">
-                      {currentContent.formula.description}
-                    </p>
-                  </div>
-                )}
-
-                {currentContent.keyPoints && currentContent.keyPoints.length > 0 && (
-                  <div className="rounded-xl border border-border/40 bg-card/60 p-4">
-                    <h3 className="mb-3 font-semibold text-foreground">Notes</h3>
-                    <div className="space-y-2">
-                      {currentContent.keyPoints.map((point, index) => (
-                        <div key={index} className="flex items-start gap-3 text-sm text-foreground/80">
-                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                            {index + 1}
-                          </span>
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </ScrollArea>
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <LegacyTopicBook key={selectedTopic} topic={currentContent}
+        storageKey={`mariners-book:reference:FluidMechanicsTopicsPage:${selectedTopic}`}
+         />
+    </div>
           </motion.div>
         )}
       </AnimatePresence>
