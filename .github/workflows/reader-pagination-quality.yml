@@ -1,0 +1,39 @@
+name: Reader pagination quality
+on:
+  pull_request:
+    paths:
+      - 'src/components/reader/**'
+      - 'src/pages/RegulationPagedReaderPage.tsx'
+      - 'src/pages/RegulationDetailPage.tsx'
+      - 'src/pages/LessonTopicDetailPage.tsx'
+      - 'src/lib/regulationReadingPlan.ts'
+      - 'src/lib/regulationReadingPlan.test.ts'
+      - 'src/App.tsx'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/reader-pagination-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reader:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Pagination integrity tests
+        run: npm run test:reader-pagination
+      - name: TypeScript checks
+        run: npm run typecheck
+      - name: Production build
+        env:
+          VITE_SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: public-test-key
+          VITE_PRO_GATING_ENABLED: 'false'
+          VITE_ADS_ENABLED: 'false'
+        run: npm run build
