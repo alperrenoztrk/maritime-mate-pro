@@ -89,3 +89,55 @@ export function calculateFuelEndurance(
   const days = finiteResult(availableTonnes / daily);
   return { availableTonnes, days, hours: finiteResult(days * 24) };
 }
+
+/**
+ * Static UKC worksheet (all terms in metres). Charted depth and tide height
+ * must use the same chart datum; draft is a vertical draft, NOT an air draft.
+ */
+export function calculateStaticUkc(
+  chartedDepthM: number, tideHeightM: number, maximumDraftM: number,
+  squatAllowanceM: number, otherAllowancesM: number,
+) {
+  const charted = nonNegative(chartedDepthM, "Charted depth");
+  const tide = finite(tideHeightM, "Tide height");
+  const draft = nonNegative(maximumDraftM, "Maximum ship draft");
+  const squat = nonNegative(squatAllowanceM, "Squat allowance");
+  const other = nonNegative(otherAllowancesM, "Other allowances");
+  const waterDepthM = finiteResult(charted + tide);
+  const staticUkcM = finiteResult(waterDepthM - draft);
+  const adjustedUkcM = finiteResult(staticUkcM - squat - other);
+  return { waterDepthM, staticUkcM, adjustedUkcM };
+}
+
+/** Initial transverse equilibrium approximation; NOT a complete righting-arm analysis. */
+export function calculateTransverseWeightShift(
+  movedMassTonnes: number, transverseDistanceM: number,
+  shipDisplacementTonnes: number, effectiveGmM: number,
+) {
+  const w = nonNegative(movedMassTonnes, "Moved weight");
+  const d = finite(transverseDistanceM, "Signed transverse movement");
+  const delta = positive(shipDisplacementTonnes, "Ship displacement");
+  const gm = positive(effectiveGmM, "Effective initial GM");
+  const transverseGShiftM = finiteResult(w * d / delta);
+  const angleDeg = finiteResult(Math.atan(transverseGShiftM / gm) * 180 / Math.PI);
+  return { transverseGShiftM, angleDeg };
+}
+
+/** Log mean temperature difference, counter-current, for positive terminal ΔT values. */
+export function calculateCounterflowLmtd(
+  hotInC: number, hotOutC: number, coldInC: number, coldOutC: number,
+) {
+  const hi = finite(hotInC, "Hot inlet");
+  const ho = finite(hotOutC, "Hot outlet");
+  const ci = finite(coldInC, "Cold inlet");
+  const co = finite(coldOutC, "Cold outlet");
+  const hotEndDeltaK = hi - co;
+  const coldEndDeltaK = ho - ci;
+  if (hotEndDeltaK <= 0 || coldEndDeltaK <= 0) {
+    throw new RangeError("Both counterflow terminal temperature differences must be positive.");
+  }
+  const lmtdK = Math.abs(hotEndDeltaK - coldEndDeltaK) <= 1e-10 * Math.max(hotEndDeltaK, coldEndDeltaK)
+    ? hotEndDeltaK
+    : (hotEndDeltaK - coldEndDeltaK) / Math.log(hotEndDeltaK / coldEndDeltaK);
+  return { hotEndDeltaK, coldEndDeltaK, lmtdK: finiteResult(lmtdK) };
+}
