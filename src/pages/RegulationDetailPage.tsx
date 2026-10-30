@@ -608,6 +608,7 @@ export default function RegulationDetailPage() {
               <div className="min-w-0">
                 <p className="text-sm text-muted-foreground">{regulation.category}</p>
                 <PageHeader title={regulation.label} />
+                <Link to={`/regulations/${regulation.slug}`} className="mt-2 inline-flex min-h-10 items-center gap-2 rounded-xl border border-primary/30 bg-primary/5 px-3 py-2 text-xs font-semibold text-primary hover:bg-primary/10"><BookOpen className="h-4 w-4" /> Return to paged book reader</Link>
               </div>
             </div>
             <div className="flex flex-wrap gap-2 text-micro font-semibold text-muted-foreground">

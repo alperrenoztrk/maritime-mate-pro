@@ -12,7 +12,7 @@ import { LessonAITutor } from "@/components/lessons/LessonAITutor";
 import { TopicGuidedLearningLink } from "@/components/lessons/TopicGuidedLearningLink";
 import { buildLessonText } from "@/utils/lessonText";
 import { MobileLayout } from "@/components/MobileLayout";
-import { PageHeader } from "@/components/layout/PageHeader";
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { LessonImage } from "@/components/ui/LessonImage";
 
 export default function MachineTopicDetailPage() {
@@ -43,41 +43,30 @@ export default function MachineTopicDetailPage() {
   }
 
   const TopicIcon = topicConfig.icon;
-
-  return (
-    <MobileLayout>
-      <div className="mx-auto flex max-w-4xl flex-col gap-6 pb-24">
-        <PageHeader title={content.title} icon={TopicIcon} />
-        <div className="flex items-center gap-2">
-          <div
-            className={`flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${topicConfig.accent} text-white`}
-          >
-            <TopicIcon className="h-4 w-4" />
+  const readingPages: ReadingPage[] = [
+    {
+      id: "overview",
+      title: content.title,
+      section: "Introduction",
+      content: (
+        <div className="space-y-5">
+          <div className="flex items-center gap-2">
+            <TopicIcon className="h-5 w-5 text-primary" />
+            <span className="text-sm font-semibold">{topicConfig.title}</span>
+            {content.level && <span className="ml-auto text-xs font-semibold uppercase text-muted-foreground">{content.level}</span>}
           </div>
-          <span className="text-xs font-medium text-muted-foreground">{topicConfig.title}</span>
-          {content.level && (
-            <span className="ml-auto rounded-full bg-primary/10 px-2 py-0.5 text-micro font-semibold uppercase text-primary">
-              {content.level === "foundation"
-                ? "Basic"
-                : content.level === "operational"
-                  ? "Operational"
-                  : "Advanced"}
-            </span>
-          )}
+          <TopicLearningContext categoryKey={categoryKey} topic={content} />
+          {content.introduction && <p>{content.introduction}</p>}
+          {categoryKey && <TopicGuidedLearningLink categoryKey={categoryKey} topic={content} />}
         </div>
-
-        <TopicLearningContext categoryKey={categoryKey} topic={content} />
-
-        {content.introduction && (
-          <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-            <p className="text-sm leading-relaxed text-foreground/90">{content.introduction}</p>
-          </div>
-        )}
-
-        {categoryKey && <TopicGuidedLearningLink categoryKey={categoryKey} topic={content} />}
-
-        {content.sections.map((section, index) => (
-          <section id={section.id} key={section.id ?? `${section.title}-${index}`} className="surface-2 space-y-4 rounded-2xl border p-5 shadow-elev-1">
+      ),
+    },
+    ...content.sections.map((section, index) => ({
+      id: section.id ?? `section-${index}`,
+      title: section.title,
+      section: `Engineering lesson · ${index + 1} / ${content.sections.length}`,
+      content: (
+        <section id={section.id} key={section.id ?? `${section.title}-${index}`} className="surface-2 space-y-4 rounded-2xl border p-5 shadow-elev-1">
             <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
 
             <StructuredLessonText text={section.content} />
@@ -171,35 +160,57 @@ export default function MachineTopicDetailPage() {
               </figure>
             )}
           </section>
-        ))}
+      ),
+    })),
+  ];
 
-        {enhancement && <LessonEnhancementBlock data={enhancement} />}
+  if (enhancement) {
+    readingPages.push({
+      id: "enhancements",
+      title: "Practical applications",
+      section: "Learning",
+      content: <LessonEnhancementBlock data={enhancement} />,
+    });
+  }
+  if (content.keyPoints?.length) {
+    readingPages.push({
+      id: "highlights",
+      title: "Key points",
+      section: "Review",
+      content: (
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-primary"><Lightbulb className="h-5 w-5" /> Highlights</div>
+          <ul className="list-disc space-y-3 pl-5">
+            {content.keyPoints.map((point, index) => <li key={index}>{point}</li>)}
+          </ul>
+        </div>
+      ),
+    });
+  }
+  if (content.sections.length > 0) {
+    readingPages.push({
+      id: "ai-tutor",
+      title: "Ask about this lesson",
+      section: "Practice",
+      content: <LessonAITutor topicTitle={content.title} lessonText={buildLessonText(content)} />,
+    });
+  }
+  readingPages.push({
+    id: "next-step",
+    title: "Continue learning",
+    section: "Review",
+    content: <TopicLearningContext categoryKey={categoryKey} topic={content} placement="after" />,
+  });
 
-        {content.keyPoints && content.keyPoints.length > 0 && (
-          <section className="rounded-xl border border-border/40 bg-card/60 p-5">
-            <div className="mb-4 flex items-center gap-2">
-              <Lightbulb className="h-5 w-5 text-amber-500" />
-              <h2 className="font-semibold text-foreground">Highlights</h2>
-            </div>
-            <ul className="space-y-2">
-              {content.keyPoints.map((point, index) => (
-                <li key={point} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {content.sections.length > 0 && (
-          <LessonAITutor topicTitle={content.title} lessonText={buildLessonText(content)} />
-        )}
-        <TopicLearningContext categoryKey={categoryKey} topic={content} placement="after" />
-      </div>
-
+  return (
+    <MobileLayout>
+      <PagedReadingSurface
+        key={`${topicSlug}:${decodedTitleOrId}`}
+        title={content.title}
+        subtitle={topicConfig.title}
+        pages={readingPages}
+        storageKey={`mariners-book:machine-reader:${topicSlug}:${content.sourceTitle ?? content.title}`}
+      />
       <ImageViewerModal
         src={viewerImage || ""}
         alt={viewerAlt}
