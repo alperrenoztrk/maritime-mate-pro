@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { AlertCircle, Calculator, ListOrdered } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import type { CalcStep, CourseEntry } from "@/data/courseContent/types";
 import { StepByStepSolution } from "./StepByStepSolution";
 import { buildAutoSteps } from "./autoSteps";
 import { CalculationRecordPanel } from "./CalculationRecordPanel";
 import { hapticNotify } from "@/lib/haptics";
+import { CalculatorPanel, CalculatorNumberField } from "@/components/calculations/ProfessionalCalculator";
 import {
   buildCalculationRecord,
   hasCalculationError,
@@ -107,47 +105,29 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
   };
 
   return (
-    <Card className="bg-card/80 border-border/40">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base">{entry.name}</CardTitle>
-        <div className="mt-1 rounded-lg bg-background p-2 text-center font-mono text-sm text-primary">
-          <span translate="no" className="notranslate">{entry.formula}</span>
+    <CalculatorPanel title={entry.name} description={entry.note}>
+      <div className="space-y-4">
+        <div className="rounded-xl border border-border/60 bg-background/70 p-3 font-mono text-xs leading-relaxed text-primary">
+          <span translate="no" className="notranslate break-words">{entry.formula}</span>
         </div>
-        {entry.note && <p className="text-xs text-muted-foreground">{entry.note}</p>}
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           {inputs.map((inp) => (
-            <div key={inp.key} className="space-y-1">
-              <Label className="text-xs">
-                {inp.label} {inp.unit && <span className="text-muted-foreground">({inp.unit})</span>}
-              </Label>
-              <Input
-                type="number"
-                inputMode="decimal"
-                placeholder={inp.placeholder}
-                value={vals[inp.key] || ""}
-                onChange={(e) => updateValue(inp.key, e.target.value)}
-                min={inp.min}
-                max={inp.max}
-                step={inp.step ?? "any"}
-                required={inp.required !== false}
-                aria-invalid={Boolean(fieldErrors[inp.key])}
-                aria-describedby={fieldErrors[inp.key] ? `${entry.id}-${inp.key}-error` : inp.help ? `${entry.id}-${inp.key}-help` : undefined}
-                className="h-9"
-              />
-              {inp.help && !fieldErrors[inp.key] && (
-                <p id={`${entry.id}-${inp.key}-help`} className="text-micro text-muted-foreground">{inp.help}</p>
-              )}
-              {fieldErrors[inp.key] && (
-                <p id={`${entry.id}-${inp.key}-error`} className="flex items-center gap-1 text-micro text-destructive">
-                  <AlertCircle className="h-3 w-3 shrink-0" /> {fieldErrors[inp.key]}
-                </p>
-              )}
-            </div>
+            <CalculatorNumberField
+              key={inp.key}
+              id={`${entry.id}-${inp.key}`}
+              label={inp.label}
+              unit={inp.unit}
+              placeholder={inp.placeholder}
+              help={inp.help}
+              min={inp.min}
+              max={inp.max}
+              value={vals[inp.key] ?? ""}
+              onChange={(value) => updateValue(inp.key, value)}
+              error={fieldErrors[inp.key]}
+            />
           ))}
         </div>
-        <Button onClick={handleCalc} size="sm" className="w-full gap-2">
+        <Button onClick={handleCalc} size="lg" className="min-h-11 w-full gap-2 rounded-xl">
           <Calculator className="h-4 w-4" /> Calculate
         </Button>
         {calculationError && (
@@ -182,7 +162,7 @@ export function CalculatorCard({ entry }: { entry: CourseEntry }) {
             {entry.source.detail ? ` — ${entry.source.detail}` : ""}
           </p>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </CalculatorPanel>
   );
 }
