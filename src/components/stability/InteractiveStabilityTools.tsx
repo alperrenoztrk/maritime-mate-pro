@@ -35,12 +35,9 @@ export const GMCalculator = () => {
   const km = metacenter;
   const gm = km - kg;
   
-  const getStabilityStatus = () => {
-    if (gm > 1.5) return { status: "Very Good", color: "bg-green-500" };
-    if (gm > 0.5) return { status: "Normal", color: "bg-blue-500" };
-    if (gm > 0) return { status: "Low", color: "bg-yellow-500" };
-    return { status: "Kritik!", color: "bg-red-500" };
-  };
+  const getStabilityStatus = () => gm <= 0
+    ? { status: "Non-positive GM — investigate", color: "bg-destructive" }
+    : { status: "Positive uncorrected GM — verify criteria", color: "bg-muted text-foreground" };
 
   const stabilityStatus = getStabilityStatus();
 
@@ -142,7 +139,7 @@ export const GMCalculator = () => {
             <div className="flex items-center gap-2">
               <Badge className={stabilityStatus.color}>{stabilityStatus.status}</Badge>
               <span className="text-xs text-muted-foreground">
-                {gm > 0 ? "The ship is stable" : "The ship is unstable!"}
+                {gm > 0 ? "A positive GM alone does not establish stability compliance." : "Non-positive initial GM warrants immediate professional assessment."}
               </span>
             </div>
             
@@ -233,7 +230,7 @@ export const FreeSurfaceCalculator = () => {
           </div>
           
           <p className="text-micro text-muted-foreground mt-2">
-            <strong>Formula:</strong> FSE = (l × b³ × ρ) / (12 × Δ)
+            <strong>Formula:</strong> FSC = (l × b³ × ρ) / (12 × Δ). Assumes a rectangular freely communicating slack tank.
           </p>
         </div>
       </CardContent>
@@ -437,7 +434,7 @@ export const IMOCriteriaChecker = () => {
               <AlertTriangle className="h-4 w-4 text-red-500" />
             )}
             <span className={`text-xs font-bold ${allPassed ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
-              {allPassed ? 'All criteria are met' : 'Some criteria are not met!'}
+              {allPassed ? 'Selected numerical checks passed (not full IMO compliance)' : 'One or more selected numerical checks failed'}
             </span>
           </div>
         </div>
@@ -457,7 +454,7 @@ export const GrainStabilityCalculator = () => {
   const ghm = shiftVolume * deltaKG * grainDensity;
   const tanTheta = displacement && gm ? ghm / (displacement * gm) : 0;
   const heelingAngle = Math.atan(tanTheta) * (180 / Math.PI);
-  const passesIMO = heelingAngle <= 12;
+  const withinIllustrativeAngle = Number.isFinite(heelingAngle) && heelingAngle <= 12;
 
   return (
     <Card className="border-primary/20">
@@ -532,7 +529,7 @@ export const GrainStabilityCalculator = () => {
             <span className="text-muted-foreground">Angle of heel (θ):</span>
             <span className="font-mono font-bold text-primary">{heelingAngle.toFixed(2)}°</span>
           </div>
-          <div className={`mt-2 rounded p-2 ${passesIMO ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
+          <div className={`mt-2 rounded p-2 ${withinIllustrativeAngle ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
             <div className="flex items-center gap-2">
               {passesIMO ? (
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
@@ -540,7 +537,7 @@ export const GrainStabilityCalculator = () => {
                 <AlertTriangle className="h-4 w-4 text-red-500" />
               )}
               <span className={`text-xs ${passesIMO ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
-                {passesIMO ? 'Within IMO limit (≤ 12°)' : 'IMO limit exceeded (> 12°)'}
+                {withinIllustrativeAngle ? 'Indicative heel ≤12° — NOT IMO grain approval' : 'Indicative heel >12° — investigate with approved grain booklet'}
               </span>
             </div>
           </div>
