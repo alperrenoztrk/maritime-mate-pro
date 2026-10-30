@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -52,16 +53,10 @@ const requirementGroups = [
 ];
 
 const SOLASShipRequirementsPage = () => {
-  return (
-          <div className="min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <PageHeader title="SOLAS Ship Requirements" />
-
-        {/* Requirement Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {requirementGroups.map((group) => (
-            <Card key={group.title} className="border border-indigo-100/60 shadow-md shadow-indigo-500/10">
+  const pages: ReadingPage[] = requirementGroups.map((group,index)=>({
+    id: String(group.title), title: group.title,
+    section: `Reference ${index+1} / ${requirementGroups.length}`,
+    content: (<Card key={group.title} className="border border-indigo-100/60 shadow-md shadow-indigo-500/10">
               <CardHeader className="space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="text-xs">{group.badge}</Badge>
@@ -78,12 +73,10 @@ const SOLASShipRequirementsPage = () => {
                   </div>
                 ))}
               </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+            </Card>),
+  }));
+  return <PagedReadingSurface title="SOLAS Ship Requirements" subtitle="SOLAS reference library"
+    pages={pages} storageKey="mariners-book:solas-book:SOLASShipRequirements" />;
 };
 
 export default SOLASShipRequirementsPage;
