@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   calculateVoyageEta, calculateRectangularFreeSurface, calculateTpcFromWaterplaneArea,
   calculateEngineFuelConsumption, calculateFuelEndurance,
+  calculateStaticUkc, calculateTransverseWeightShift, calculateCounterflowLmtd,
 } from "./verifiedOperationalMath";
 
 const near = (actual: number, expected: number, tolerance = 1e-8) =>
@@ -60,4 +61,29 @@ test("Endurance excludes reserve and rejects impossible reserve or zero daily us
   near(r.hours, 96);
   assert.throws(() => calculateFuelEndurance(100, 120, 10));
   assert.throws(() => calculateFuelEndurance(100, 0, 0));
+});
+
+test("Static UKC: chart datum depth + tide - draft - squat - allowances", () => {
+  const r = calculateStaticUkc(12, 1.5, 9, 0.7, 0.3);
+  near(r.waterDepthM, 13.5);
+  near(r.staticUkcM, 4.5);
+  near(r.adjustedUkcM, 3.5);
+  near(calculateStaticUkc(-0.4, 1.8, 1.0, 0.1, 0).adjustedUkcM, 0.3);
+});
+test("UKC negative clearance is preserved rather than clamped as 'safe'", () => {
+  const r = calculateStaticUkc(5, 0, 7, 0.5, 0.5);
+  near(r.adjustedUkcM, -3);
+  assert.throws(() => calculateStaticUkc(8, 0, 4, -1, 0));
+});
+test("Transverse weight shift: 100 t moved 5 m on 10000 t with 1 m GM", () => {
+  const r = calculateTransverseWeightShift(100, 5, 10000, 1);
+  near(r.transverseGShiftM, 0.05);
+  near(r.angleDeg, Math.atan(0.05) * 180 / Math.PI);
+  near(calculateTransverseWeightShift(0, 5, 10000, 1).angleDeg, 0);
+  assert.throws(() => calculateTransverseWeightShift(100, 5, 10000, 0));
+});
+test("Counterflow LMTD: handles equal temperature differences and rejects cross-over", () => {
+  near(calculateCounterflowLmtd(90, 60, 20, 50).lmtdK, 40);
+  near(calculateCounterflowLmtd(100, 60, 20, 50).lmtdK, 10 / Math.log(50 / 40));
+  assert.throws(() => calculateCounterflowLmtd(90, 60, 50, 95));
 });
