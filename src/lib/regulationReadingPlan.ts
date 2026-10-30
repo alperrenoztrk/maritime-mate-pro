@@ -27,7 +27,7 @@ export function createRegulationReadingPlan(data: RegulationItem): RegulationRea
   const add = (step: RegulationReadingStep) => pages.push(step);
   const groups = (kind: string, section: string, title: string, count: number, chunk: number, chapterIndex?: number) => {
     paginateItems(count, chunk).forEach(([start, end]) => add({
-      id: `${kind}-${start}`, title: `${title}${count > chunk ? ` · ${start + 1}–${end}` : ""}`,
+      id: `${kind}-${chapterIndex ?? "general"}-${start}`, title: `${title}${count > chunk ? ` · ${start + 1}–${end}` : ""}`,
       section, kind, start, end, chapterIndex,
     }));
   };
@@ -41,7 +41,7 @@ export function createRegulationReadingPlan(data: RegulationItem): RegulationRea
       const id = `n-${chapterIndex}-${sectionIndex}`;
       const base = { chapterIndex, sectionIndex, section: `${chapterIndex + 1}.${sectionIndex + 1} — ${chapter.title}` };
       paginateItems(subsection.paragraphs.length, 2).forEach(([start, end]) => {
-        add({ ...base, kind: "narrative", id: `${id}-${start}`, title: subsection.heading, start, end });
+        add({ ...base, kind: "narrative", id: `${id}-${start}`, title: `${subsection.heading}${subsection.paragraphs.length > 2 ? ` · Part ${Math.floor(start / 2) + 1}` : ""}`, start, end });
       });
       if (subsection.shipboardMeaning || subsection.references?.length || subsection.commonMistakes?.length || subsection.scenario) {
         add({ ...base, kind: "narrative-application", id: `${id}-application`, title: `${subsection.heading} — On board` });
@@ -51,7 +51,7 @@ export function createRegulationReadingPlan(data: RegulationItem): RegulationRea
         add({ ...base, kind: "narrative", id: `${id}-empty`, title: subsection.heading, start: 0, end: 0 });
       }
     });
-    groups(`chapter-takeaways-${chapterIndex}`, `Chapter ${chapterIndex + 1}`, "Key takeaways", chapter.chapterTakeaways?.length ?? 0, 4, chapterIndex);
+    groups("chapter-takeaways", `Chapter ${chapterIndex + 1}`, "Key takeaways", chapter.chapterTakeaways?.length ?? 0, 4, chapterIndex);
   });
 
   data.detailedSections?.forEach((item, itemIndex) =>
