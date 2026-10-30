@@ -135,6 +135,6 @@ export default function CrewTaskDeepDive() {
   return loading
     ? <p className="p-6 text-sm text-muted-foreground">Loading crew task lesson…</p>
     : <PagedReadingSurface key={`${roleSlug}:${taskIndex}`} title={taskMeta.title}
-      subtitle={role.title} pages={pages}
+      subtitle={role.rank} pages={pages}
       storageKey={`mariners-book:crew-task:${roleSlug}:${taskIndex}`} />;
 }
