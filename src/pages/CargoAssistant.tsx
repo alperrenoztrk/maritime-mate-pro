@@ -19,7 +19,7 @@ Detect the language the user asked the question in and answer in that same langu
 export default function CargoAssistantPage() {
   return (
     <AssistantInterface
-      title="Cargo Handling and Stacking Assistant"
+      title="Cargo Handling and Stowage Assistant"
       badge="Cargo Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

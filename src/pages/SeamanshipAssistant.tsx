@@ -18,7 +18,7 @@ Detect the language the user asked the question in and answer in that same langu
 export default function SeamanshipAssistantPage() {
   return (
     <AssistantInterface
-      title="Maritime Assistant"
+      title="Seamanship Assistant"
       badge="Maritime Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

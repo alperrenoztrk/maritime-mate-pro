@@ -19,7 +19,7 @@ Detect the language the user asked the question in and answer in that same langu
 export default function EconomicsAssistantPage() {
   return (
     <AssistantInterface
-      title="Business Operations Assistant"
+      title="Maritime Economics Assistant"
       badge="Shipping Business Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}

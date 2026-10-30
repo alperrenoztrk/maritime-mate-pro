@@ -19,7 +19,7 @@ Detect the language the user asked the question in and answer in that same langu
 export default function MachineAssistant() {
   return (
     <AssistantInterface
-      title="Machine Assistant"
+      title="Marine Engineering Assistant"
       badge="Machine Assistant"
       quickPrompts={quickPrompts}
       systemPrompt={systemPrompt}
