@@ -65,3 +65,17 @@ export function estimateDisplacementChange(
     displacementChangeTonnes: draftChangeM * 100 * tpc,
   };
 }
+
+/**
+ * Net observed oil volume and table-derived volume correction factor (VCF).
+ * Density must be the certified density at 15 °C in tonnes/m³.
+ */
+export function estimateBunkerMass(
+  netObservedVolumeM3: number, volumeCorrectionFactor: number, densityAt15TonnesM3: number,
+) {
+  const volume = nonNegative(netObservedVolumeM3, "Net observed volume");
+  const vcf = positive(volumeCorrectionFactor, "Volume correction factor");
+  const density = positive(densityAt15TonnesM3, "Density at 15 °C");
+  const standardVolumeM3 = volume * vcf;
+  return { standardVolumeM3, massTonnes: standardVolumeM3 * density };
+}
