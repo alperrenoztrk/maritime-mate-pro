@@ -99,6 +99,7 @@ Kaynak: kullanıcının CLAUDE.md metnindeki çekirdek sözlük (Ekim 2026).
 | Türkçe | İngilizce | Not |
 |---|---|---|
 | Rulo (yalpa) periyodu | Rolling period | IMO IS Code 2008 Part A 2.3.4; kullanıcı onayı 30 Eki 2026 |
+| Sert gemi / Yumuşak gemi | Stiff ship / Tender ship | Büyük GM: kısa, sert yalpa; küçük GM: uzun, yumuşak yalpa; kullanıcı onayı 30 Eki 2026 |
 
 ## Bilinen makine çevirisi hataları
 
@@ -130,6 +131,5 @@ Uygulamadaki otomatik kontroller: `scripts/i18n/sense-error-rules.mjs`
 | Demir tarıyor | I am dragging my anchor / dragging anchor | ICS Y — kullanıcı onayı bekliyor |
 | Kumandadan aciz | ICS F: "I am disabled"; COLREG: not under command | Bağlama göre — kullanıcı onayı bekliyor |
 | Mors lambası | Signalling lamp (Aldis lamp) | kullanıcı onayı bekliyor |
-| Sert gemi / Yumuşak gemi | Stiff ship / Tender ship | kullanıcı onayı bekliyor |
 | Çevresel kuvvet (demirleme) | Environmental force | kullanıcı onayı bekliyor |
 | Hortum erişimi | Hose reach | kullanıcı onayı bekliyor |

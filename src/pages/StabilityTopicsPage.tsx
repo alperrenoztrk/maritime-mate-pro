@@ -62,7 +62,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "balance-concepts", title: "Concepts of equilibrium, heeling and righting", hasContent: true },
       { id: "static-stability", title: "Static stability", hasContent: true },
       { id: "dynamic-stability-intro", title: "Dynamic stability", hasContent: true },
-      { id: "initial-stability", title: "First concept of stability", hasContent: true },
+      { id: "initial-stability", title: "Initial stability", hasContent: true },
       { id: "stability-safety", title: "Relationship between stability and navigational safety", hasContent: true },
     ],
   },
@@ -75,7 +75,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "weight-w", title: "Weight (W)", hasContent: true },
       { id: "center-of-gravity", title: "Center of gravity (G)", hasContent: true },
       { id: "buoyancy-force", title: "Buoyancy", hasContent: true },
-      { id: "center-of-buoyancy", title: "Lift center (B)", hasContent: true },
+      { id: "center-of-buoyancy", title: "Centre of buoyancy (B)", hasContent: true },
       { id: "floatation-condition", title: "Buoyancy condition", hasContent: true },
       { id: "equilibrium-states", title: "Equilibrium states (stable, unstable, neutral equilibrium)", hasContent: true },
     ],
@@ -97,7 +97,7 @@ const stabilityTopics: StabilityMainTopic[] = [
   {
     id: "cog-shift",
     number: 4,
-    title: "Displacement of the Center of Gravity",
+    title: "Shift of the Centre of Gravity",
     icon: Settings,
     subtopics: [
       { id: "weight-addition", title: "Adding weight", hasContent: true },
@@ -117,7 +117,7 @@ const stabilityTopics: StabilityMainTopic[] = [
       { id: "righting-moment", title: "Righting moment", hasContent: true },
       { id: "heeling-moment", title: "Heeling moment", hasContent: true },
       { id: "angle-of-equilibrium", title: "Equilibrium angle", hasContent: true },
-      { id: "heel-from-weight-shift", title: "Lying down due to weight shift", hasContent: true },
+      { id: "heel-from-weight-shift", title: "List due to weight shift", hasContent: true },
       { id: "small-angle-stability", title: "Stability for small angles", hasContent: true },
       { id: "large-angle-stability", title: "Stability for large angles", hasContent: true },
     ],
@@ -143,7 +143,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     icon: Anchor,
     subtopics: [
       { id: "lcg", title: "Longitudinal center of gravity (LCG)", hasContent: true },
-      { id: "lcb", title: "Center of buoyancy (LCB)", hasContent: true },
+      { id: "lcb", title: "Longitudinal centre of buoyancy (LCB)", hasContent: true },
       { id: "trim-concept", title: "Trim concept", hasContent: true },
       { id: "mct", title: "MCT (Moment to Change Trim)", hasContent: true },
       { id: "trim-calculations", title: "Trim calculations", hasContent: true },
@@ -158,8 +158,8 @@ const stabilityTopics: StabilityMainTopic[] = [
     subtopics: [
       { id: "displacement", title: "Displacement", hasContent: true },
       { id: "draft", title: "Draft", hasContent: true },
-      { id: "draft-displacement-relation", title: "Draft–away relationship", hasContent: true },
-      { id: "tpc", title: "TPC (Ton Per Centimeter)", hasContent: true },
+      { id: "draft-displacement-relation", title: "Draft–displacement relationship", hasContent: true },
+      { id: "tpc", title: "TPC (Tonnes per Centimetre Immersion)", hasContent: true },
       { id: "km-values", title: "KM values", hasContent: true },
       { id: "hydrostatic-tables-usage", title: "Use of hydrostatic tables", hasContent: true },
       { id: "inclining-experiment", title: "Inclining Experiment", hasContent: true },
@@ -186,7 +186,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     icon: Zap,
     subtopics: [
       { id: "dynamic-righting-moment", title: "Dynamic righting moment", hasContent: true },
-      { id: "area-concept", title: "Concept of space", hasContent: true },
+      { id: "area-concept", title: "Areas under the GZ curve", hasContent: true },
       { id: "static-vs-dynamic", title: "Static and dynamic stability difference", hasContent: true },
       { id: "wave-effect", title: "Wave effects", hasContent: true },
       { id: "wind-effect", title: "Wind effect", hasContent: true },
@@ -214,11 +214,11 @@ const stabilityTopics: StabilityMainTopic[] = [
     icon: Ship,
     subtopics: [
       { id: "heavy-lift", title: "Heavy lift operations", hasContent: true },
-      { id: "deck-cargo", title: "Deck loads", hasContent: true },
+      { id: "deck-cargo", title: "Deck cargo", hasContent: true },
       { id: "suspended-weight", title: "Suspended load effect", hasContent: true },
       { id: "ballast-operations", title: "Ballast operations", hasContent: true },
       { id: "cargo-shift", title: "Cargo shift", hasContent: true },
-      { id: "icing-effect", title: "Frosting effect", hasContent: true },
+      { id: "icing-effect", title: "Icing effect", hasContent: true },
       { id: "drydocking-stability", title: "Drydocking stability", hasContent: true },
     ],
   },
@@ -244,7 +244,7 @@ const stabilityTopics: StabilityMainTopic[] = [
     subtopics: [
       { id: "loading-errors", title: "Loading errors", hasContent: true },
       { id: "fse-accidents", title: "Free surface accidents", hasContent: true },
-      { id: "wrong-gm-interpretation", title: "Incorrect GM comments", hasContent: true },
+      { id: "wrong-gm-interpretation", title: "Misinterpreting GM", hasContent: true },
       { id: "trim-operation-errors", title: "Operation errors caused by trim", hasContent: true },
       { id: "psc-findings", title: "Stability-related PSC findings", hasContent: true },
     ],
@@ -289,7 +289,7 @@ On ships, stability changes continuously with the loading condition, the level o
     bulletPoints: [
       "Stability = Ability to maintain balance + return to balance",
       "Insufficient stability = risk of capsizing",
-      "Excessive stability = Harsh oscillation, load damage",
+      "Excessive GM = violent, short rolling and cargo damage",
       "Optimum stability = Safe and comfortable sailing",
     ],
     keyPoints: [
@@ -307,7 +307,7 @@ On ships, stability changes continuously with the loading condition, the level o
 
 In equilibrium: W = B, and G and B lie on the same vertical line.
 
-CAPSIZING:
+HEELING:
 When the ship heels, G stays where it is while B moves towards the low side. This creates a moment.
 
 RIGHTING:
@@ -315,7 +315,7 @@ If the moment created tries to bring the ship upright, it is a "righting moment"
 If the moment tries to heel the ship further, the ship is unstable.`,
     bulletPoints: [
       "Equilibrium: W = B, G and B are in the same vertical line",
-      "Lying: Point B shifts to the lying side",
+      "Heeling: B moves towards the low side",
       "Righting moment: The moment that brings the ship to an upright position.",
       "Heeling moment: the moment that heels the ship further.",
     ],
@@ -326,7 +326,7 @@ If the moment tries to heel the ship further, the ship is unstable.`,
     },
     keyPoints: [
       "Equilibrium means that the forces are equal and the moments are zero.",
-      "Rollover is a dangerous disruption of balance",
+      "Capsizing follows when the heeling moment exceeds the righting moment",
       "Righting is the ship's ability to right itself",
     ],
   },
@@ -349,7 +349,7 @@ A negative GZ value shows that the ship tends to heel further.`,
     ],
     keyPoints: [
       "Static stability examines the state of equilibrium at a particular moment",
-      "GZ curve provides stability information for all lean angles",
+      "The GZ curve shows the stability at all angles of heel",
       "IMO criteria are based on static stability",
     ],
   },
@@ -367,7 +367,7 @@ A large area = more energy absorbing capacity = better dynamic stability`,
       "Dynamic = There is movement, energy balance analysis",
       "External forces transfer energy to the ship",
       "Area under curve GZ = Energy capacity",
-      "IMO criteria determine space requirements",
+      "IMO criteria set minimum areas under the GZ curve",
     ],
     formula: {
       name: "Dynamic Stability",
@@ -377,11 +377,11 @@ A large area = more energy absorbing capacity = better dynamic stability`,
     keyPoints: [
       "Dynamic stability reflects real sea conditions",
       "Energy balance is critical",
-      "Field criteria are mandated by IMO",
+      "The area criteria are set by the IS Code (Part A 2.2.1)",
     ],
   },
   "initial-stability": {
-    title: "First Concept of Stability",
+    title: "Initial Stability",
     introduction: "Initial stability defines the stability behavior of the ship at small heel angles (0-10°) and is expressed as the GM value.",
     content: `Initial stability is the stability of the ship at small angles of heel from upright (generally up to 10°). Within this range the metacentre (M) is taken as fixed.
 
@@ -408,7 +408,7 @@ Negative GM = an unstable ship, danger!`,
     },
     keyPoints: [
       "GM must be positive - negative GM is dangerous",
-      "Too large GM causes harsh oscillation",
+      "Too large a GM causes violent rolling",
       "Too small GM means slow response and risk",
     ],
     warnings: [
@@ -424,13 +424,13 @@ Negative GM = an unstable ship, danger!`,
 The position of the metacentre is determined by the distance BM, calculated from the waterplane moment of inertia and the immersed volume. BM is the vertical distance between B and M and is sensitive to the shape of the waterplane.`,
     bulletPoints: [
       "Point M is considered fixed at small angles of heel",
-      "BM distance depends on waterline geometry",
+      "BM depends on the geometry of the waterplane",
       "Metacentre is the geometric reference point of initial stability",
     ],
     formula: {
       name: "Metacentric Radius",
       expression: "BM = I / ∇; KM = KB + BM",
-      description: "BM: Metacentric radius (m), I: Waterline moment of inertia (m⁴), ∇: Submerged volume (m³), KB: Keel to buoyancy center (m)",
+      description: "BM: Metacentric radius (m), I: moment of inertia of the waterplane (m⁴), ∇: immersed volume (m³), KB: keel to centre of buoyancy (m)",
     },
     examples: [
       {
@@ -470,7 +470,7 @@ Diagram: a sketch showing KB, G and M on the same vertical line above the keel, 
     ],
     keyPoints: [
       "As GM increases, the righting moment increases.",
-      "As the GM becomes smaller, the ship becomes softer and its tendency to list increases.",
+      "As GM becomes smaller the ship becomes tender and heels more easily under a given heeling moment.",
       "If GM is negative the ship moves to loll angle",
     ],
   },
@@ -484,13 +484,13 @@ When these three quantities are brought together, KM is calculated first and the
 Diagram: the keel, KB, BM and KG points on a transverse section of the ship, with the KM and GM intervals shown by dimension lines.`,
     bulletPoints: [
       "KB comes from the hydrostatic table",
-      "BM is sensitive to waterline shape",
+      "BM is sensitive to the shape of the waterplane",
       "KG depends on loading condition",
     ],
     formula: {
       name: "Geometric Relationships",
       expression: "KM = KB + BM; GM = KM - KG",
-      description: "KM: From keel to metacenter (m), KB: From keel to center of gravity (m), BM: Metacentric radius (m), KG: From keel to center of gravity (m)",
+      description: "KM: From keel to metacenter (m), KB: keel to centre of buoyancy (m), BM: metacentric radius (m), KG: keel to centre of gravity (m)",
     },
     examples: [
       {
@@ -500,7 +500,7 @@ Diagram: the keel, KB, BM and KG points on a transverse section of the ship, wit
     ],
     keyPoints: [
       "As KG increases, GM decreases",
-      "BM depends on waterline width and form",
+      "BM depends on the breadth and form of the waterplane",
       "KB and BM should be supported by hydrostatic tables",
     ],
   },
@@ -518,7 +518,7 @@ Diagram: G below M, the ship heeled through a small angle, with the GZ lever and
       "Righting moment makes the ship upright",
     ],
     formula: {
-      name: "Small Angle Rectification Relationship",
+      name: "Small-Angle Righting Relationship",
       expression: "GZ ≈ GM × sin θ; RM = Δ × GZ",
       description: "GZ: Righting arm (m), GM: Metacentric height (m), θ: Angle of heel (degrees), RM: Righting moment (t m), Δ: Displacement (tons)",
     },
@@ -531,7 +531,7 @@ Diagram: G below M, the ship heeled through a small angle, with the GZ lever and
     keyPoints: [
       "Positive GM provides safe initial stability",
       "GZ and RM values increase with angle",
-      "Small angles approach valid up to 10 degrees",
+      "The small-angle approach is valid up to about 10°",
     ],
   },
   "negative-gm": {
@@ -543,7 +543,7 @@ A negative GM can cause the ship to come to rest at an angle of loll. This condi
 
 Diagram: G above M, the ship heeled through a small angle, with the GZ lever and the moment arrows shown in the capsizing direction.`,
     bulletPoints: [
-      "Negative GM indicates imbalance",
+      "Negative GM means the ship is unstable when upright",
       "GZ becomes negative and a capsizing moment acts",
       "Loll angle may occur and operational risk arises",
     ],
@@ -566,21 +566,21 @@ Diagram: G above M, the ship heeled through a small angle, with the GZ lever and
   },
   "gm-ship-movements": {
     title: "GM's impact on ship movements",
-    introduction: "GM determines the roll period and movement character of the ship; Large GM causes hard movements, small GM causes soft movements.",
+    introduction: "GM determines the rolling period and movement character of the ship; Large GM causes hard movements, small GM causes soft movements.",
     content: `As GM increases the ship's righting moment increases and the rolling period shortens. This makes the ship stiff and increases the dynamic forces on the cargo.
 
 As GM decreases the rolling period lengthens, the ship rolls slowly and passenger comfort may improve; but the margin of stability is reduced. The GM value must therefore be weighed carefully between safety and comfort.
 
 Diagram: a comparison of the rolling period curve and the amplitude of roll for different GM values.`,
     bulletPoints: [
-      "Big GM = Short period, hard action",
-      "Small GM = long period, smooth action",
+      "Large GM = short rolling period, stiff motion",
+      "Small GM = long rolling period, easy motion",
       "Balance required between comfort and safety",
     ],
     formula: {
       name: "Rolling Period",
       expression: "T = 2π × √(k² / (g × GM))",
-      description: "T: Roll period (s), k: Inertia radius (m), g: Gravitational acceleration (9.81 m s²), GM: Metacentric height (m)",
+      description: "T: rolling period (s), k: radius of gyration (m), g: gravitational acceleration (9.81 m/s²), GM: Metacentric height (m)",
     },
     examples: [
       {
@@ -605,10 +605,10 @@ The relationship between stability and safety:
 3. Environmental safety: fuel and cargo can leak into the sea
 4. Economic safety: the loss of ship and cargo causes major financial damage
 
-The ISM (International Safety Management) Code makes stability management mandatory. The master must verify that stability is adequate in every loading condition.`,
+Stability information is required by SOLAS II-1/5-1 and the Load Line Convention, and the ISM Code requires procedures for key shipboard operations such as loading. The master must verify that stability is adequate in every loading condition.`,
     bulletPoints: [
       "Insufficient stability = risk of loss of life",
-      "ISM Code mandates stability management",
+      "SOLAS and the Load Line Convention require stability information; the SMS covers the procedures",
       "The Master bears responsibility for stability",
       "Stability calculation is essential for every loading",
     ],
@@ -684,7 +684,7 @@ Diagram: the movement of G in the opposite direction after the weight is removed
   },
   "weight-shift": {
     title: "Weight shifting",
-    introduction: "Weight shifting causes the center of gravity to change direction without changing displacement and can create list/trim.",
+    introduction: "Shifting a weight moves the centre of gravity without changing the displacement and can cause list or trim.",
     content: `Shifting weight means moving a weight from one position to another within the ship. The total displacement does not change in this operation, but G moves in the direction in which the weight is moved.
 
 A transverse shift causes list and a longitudinal shift causes a change of trim. A vertical shift affects GM directly. The effect of shifting weight must therefore always be calculated during crane operations, container moves and ballast transfers.
@@ -692,7 +692,7 @@ A transverse shift causes list and a longitudinal shift causes a change of trim.
 Diagram: the weight moved to its new position, with the vector of the shift of G and the resulting moment arm shown.`,
     bulletPoints: [
       "Displacement remains constant, point G moves",
-      "Creates a cross-scrolling list",
+      "A transverse shift of weight creates a list",
       "Longitudinal shift changes trim",
     ],
     formula: {
@@ -756,7 +756,7 @@ Diagram: the transverse movement of the weight, the shift of TCG and the resulti
       "Container and pallet relocations can create lists",
     ],
     formula: {
-      name: "List Angle in Transverse Scroll",
+      name: "Angle of List after a Transverse Shift",
       expression: "tan θ = (w × d) / (Δ × GM)",
       description: "θ: list angle (rad), w: weight carried (t), d: transverse carrying distance (m), Δ: displacement (t), GM: metacentric height (m)",
     },
@@ -798,7 +798,7 @@ Diagram: the weight shifted forward/aft, the shift of LCG and the resulting dire
     ],
     keyPoints: [
       "Trim change affects fuel consumption and speed",
-      "LCB compliance should be checked with LCG drift",
+      "Compare LCG with LCB to find the trim",
       "MCT value is taken from hydrostatic tables",
     ],
   },
@@ -830,7 +830,7 @@ Displacement is the basis of stability calculations. The righting moment is the 
     examples: [
       {
         problem: "If lightship = 3,500 t, cargo = 1,200 t, fuel = 300 t and fresh water = 50 t, what is the displacement in tonnes?",
-        solution: "Δ = 3.500 + 1.200 + 300 + 50 = 5.050 ton",
+        solution: "Δ = 3,500 + 1,200 + 300 + 50 = 5,050 t",
       },
     ],
     keyPoints: [
@@ -888,18 +888,18 @@ In stability calculations the buoyancy force is taken as equal to the ship's dis
 B = W = Δ`,
     bulletPoints: [
       "The buoyant force is upward and acts at point B.",
-      "On a floating ship there is an equilibrium Y = W",
+      "On a floating ship buoyancy equals weight: B = W",
       "As the density of water changes, the buoyant force changes.",
     ],
     formula: {
       name: "Buoyant force",
-      expression: "Y = ρ × g × ∇",
+      expression: "B = ρ × g × ∇",
       description: "Y: Buoyancy force (kN), ρ: Density (t/m³), g: 9.81 m/s², ∇: Submerged volume (m³)",
     },
     examples: [
       {
         problem: "For a ship with ∇ = 3,000 m³ in water of ρ = 1.025 t/m³, what is the buoyancy force in kN?",
-        solution: "Y = 1.025 × 9.81 × 3.000 ≈ 30 166 kN",
+        solution: "B = 1.025 × 9.81 × 3,000 ≈ 30,166 kN",
       },
     ],
     keyPoints: [
@@ -909,7 +909,7 @@ B = W = Δ`,
     ],
   },
   "center-of-buoyancy": {
-    title: "Lift Center (B)",
+    title: "Centre of Buoyancy (B)",
     introduction: "The center of buoyancy (B) is the geometric center of gravity of the submerged volume and the point of action of the buoyant force.",
     content: `The centre of buoyancy (B) is the geometric centre of the ship's immersed volume. This point moves when the ship heels because the shape of the immersed volume changes.
 
@@ -919,10 +919,10 @@ For simple prismatic shapes B lies at the centre of the immersed volume and, in 
     bulletPoints: [
       "B is the geometric center of the submerged volume",
       "When the ship heels, B moves towards the low side",
-      "The slip of B is the basis of the righting moment",
+      "The movement of B when heeled creates the righting moment",
     ],
     formula: {
-      name: "Lift Center Height",
+      name: "Height of the Centre of Buoyancy (KB)",
       expression: "KB = (∫ z · d∇) / ∇",
       description: "KB: vertical distance from the keel to the centre of buoyancy, z: depth coordinate",
     },
@@ -940,13 +940,13 @@ For simple prismatic shapes B lies at the centre of the immersed volume and, in 
   },
   "gz-righting-lever": {
     title: "Righting Lever (GZ)",
-    introduction: "GZ refers to the horizontal distance between the gravity force and the buoyancy force when the ship is tilted and is the basis of the righting moment.",
+    introduction: "GZ refers to the horizontal distance between the lines of action of weight and buoyancy when the ship is heeled and is the basis of the righting moment.",
     content: `GZ (the righting lever) is the horizontal distance between the centre of gravity (G) and the line of action of the buoyancy force when the ship is heeled through a given angle. This lever produces the righting moment and shows the ship's tendency to return upright.
 
 At small angles GZ is taken as approximately GM × sinθ. This relationship provides a quick check in initial stability assessments. When GZ is positive the righting moment brings the ship upright; when GZ is negative the ship tends to heel further.`,
     bulletPoints: [
       "GZ is the arm of the righting moment",
-      "Positive GZ: the ship tends to steepen",
+      "Positive GZ: the ship tends to return upright",
       "Negative GZ: tendency to tip over",
       "At small angles GZ ≈ GM × sinθ",
     ],
@@ -986,10 +986,10 @@ In modern practice this process is carried out automatically by stability softwa
   },
   "max-gz": {
     title: "Maximum GZ",
-    introduction: "Maximum GZ is the angle at which the righting arm reaches its maximum value and is an important indicator of the ship's stability capacity.",
+    introduction: "Maximum GZ is the largest righting lever on the GZ curve; it and the angle at which it occurs are important indicators of the ship's stability.",
     content: `The GZ curve rises up to a certain angle and then falls away towards zero. The peak of the curve shows the ship's greatest righting capacity.
 
-Criteria such as the IMO 2008 IS Code require the maximum GZ value and the angle at which it occurs to meet defined minima. For general cargo ships, for example, GZmax ≥ 0.20 m is required and this maximum is expected to occur at around at least 25°-30° (this varies with ship type).
+Criteria such as the IMO 2008 IS Code require the maximum GZ value and the angle at which it occurs to meet defined minima. The IS Code 2008 general criteria (Part A 2.2.2–2.2.3) require GZ of at least 0.20 m at an angle of heel of 30° or more, and the maximum GZ at not less than 25°.
 
 A very low maximum GZ, or one that occurs at a small angle, can indicate inadequate stability.`,
     bulletPoints: [
@@ -1047,11 +1047,11 @@ Openings on the ship that cannot be closed (air vents, fan intakes, doors) becom
     bulletPoints: [
       "AVS: angle at which GZ returns to zero; beyond it GZ is negative (capsizing)",
       "Positive stability range = origin to AVS",
-      "KG↑/FSE reduces AVS; Increases freeboard/closed superstructure",
+      "Higher KG and free surface reduce the AVS; more freeboard and enclosed superstructure increase it",
       "Practical limit = min(AVS, downflooding angle θf)",
     ],
     keyPoints: [
-      "Large positive range = ability to bounce back from big leans.",
+      "A large range of positive stability = ability to return from large angles of heel.",
       "The downflooding angle often precedes the AVS and is the true limit.",
       "In damaged stability, AVS shrinks significantly.",
     ],
@@ -1091,7 +1091,7 @@ An increase in weight high up (KG↑) and free surface (FSE) pull the curve down
     keyPoints: [
       "The entire shape of the curve should be read, not a single value.",
       "GM (slope), GZmax, range and area are evaluated together.",
-      "KG↑ and FSE lower the curve; It extends the freeboard range.",
+      "Higher KG and free surface lower the curve; more freeboard extends the range of stability.",
       "The GZ curve is the basis of IMO criteria and operational limits.",
     ],
   },
@@ -1100,7 +1100,7 @@ An increase in weight high up (KG↑) and free surface (FSE) pull the curve down
   // =====================================================
   "floatation-condition": {
     title: "Buoyancy Condition",
-    introduction: "In order for an object to remain afloat, its total weight must be equal to or less than the weight of the water displaced by its submerged volume.",
+    introduction: "In order for an object to remain afloat, its total weight must be equal to or less than the weight of water displaced by its whole watertight volume when fully immersed.",
     content: `By Archimedes' principle a body receives a buoyancy force equal to the weight of the fluid it displaces. The condition for flotation is derived from this principle.
 
 The flotation condition:
@@ -1113,8 +1113,8 @@ The flotation condition must always be satisfied on ships. Even in the light con
 Flotation is necessary for static equilibrium but not sufficient. A floating body may not be stable.`,
     bulletPoints: [
       "The equation W = ρ × ∇ defines the equilibrium condition",
-      "Submerged volume must ≤ total volume",
-      "Freeboard is a visual indicator of buoyancy",
+      "The immersed volume must be less than the total watertight volume",
+      "Freeboard is a visual indicator of reserve buoyancy",
       "Floating is not enough: stability must also be ensured",
     ],
     formula: {
@@ -1125,7 +1125,7 @@ Flotation is necessary for static equilibrium but not sufficient. A floating bod
     examples: [
       {
         problem: "If a ship's immersed volume is ∇ = 4,800 m³ and the sea water density is ρ = 1.025 t/m³, what is the maximum displacement in tonnes?",
-        solution: "Δ = ρ × ∇ = 1.025 × 4,800 = 4,920 tonnes. Result: the ship can be loaded up to 4,920 tonnes.",
+        solution: "Δ = ρ × ∇ = 1.025 × 4,800 = 4,920 tonnes. Result: the displacement at that draft is 4,920 tonnes.",
       },
     ],
     keyPoints: [
@@ -1150,8 +1150,8 @@ The body stays in its new position; it neither returns nor moves further. This o
 
 A ship must be in stable equilibrium if it is to make a safe passage.`,
     bulletPoints: [
-      "Stable equilibrium: Positive GM, M under G",
-      "Unstable balance: Negative GM, M on G",
+      "Stable equilibrium: positive GM, M above G",
+      "Unstable equilibrium: negative GM, M below G",
       "Neutral balance: GM = 0, G and M coincide",
       "Safety of navigation requires stable equilibrium",
     ],
@@ -1176,7 +1176,7 @@ A ship must be in stable equilibrium if it is to make a safe passage.`,
   // =====================================================
   "righting-moment": {
     title: "Righting Moment",
-    introduction: "The righting moment is the moment created by the weight and buoyancy forces when the ship is tilted and tries to return the ship to an upright position.",
+    introduction: "The righting moment is the moment created by weight and buoyancy when the ship is heeled and tends to return the ship to an upright position.",
     content: `When the ship is heeled through a given angle, the weight force acts downwards through G and the buoyancy force acts upwards through B. The horizontal distance between these two forces is called GZ (the righting lever).
 
 The righting moment (RM) is the displacement multiplied by GZ:
@@ -1188,7 +1188,7 @@ The righting moment is the fundamental measure of a ship's stability. The IMO cr
     bulletPoints: [
       "Calculated with the formula RM = Δ × GZ",
       "A positive RM returns the ship towards the upright",
-      "Negative RM increases lying down",
+      "A negative RM increases the heel",
       "RM size indicates stability capacity",
     ],
     formula: {
@@ -1209,8 +1209,8 @@ The righting moment is the fundamental measure of a ship's stability. The IMO cr
     ],
   },
   "heeling-moment": {
-    title: "Listing Moment",
-    introduction: "The heeling moment is the moment created by external forces that tilt the ship and is balanced by the righting moment.",
+    title: "Heeling Moment",
+    introduction: "The heeling moment is the moment created by external forces that heel the ship and is balanced by the righting moment.",
     content: `The heeling moment (HM) arises from external effects such as wind, waves, a shift of weight, a turning manoeuvre or a suspended load.
 
 When the ship comes to equilibrium at a given angle:
@@ -1228,7 +1228,7 @@ If the heeling moment exceeds the righting moment the ship capsizes. The sources
     formula: {
       name: "Heeling Moment (Wind)",
       expression: "HM = P × A × h",
-      description: "HM: Heeling moment (t·m), P: Wind pressure (t/m²), A: Area exposed to wind (m²), h: Lift arm (m)",
+      description: "HM: Heeling moment (t·m), P: Wind pressure (t/m²), A: area exposed to wind (m²), h: heeling lever — vertical distance between the centres of the windage and underwater lateral areas (m)",
     },
     examples: [
       {
@@ -1237,14 +1237,14 @@ If the heeling moment exceeds the righting moment the ship capsizes. The sources
       },
     ],
     keyPoints: [
-      "HM resources must be calculated in advance",
+      "Sources of heeling moment must be calculated in advance",
       "Operational limits are determined according to HM",
       "IMO wind criterion is based on HM calculation",
     ],
   },
   "angle-of-equilibrium": {
     title: "Equilibrium angle",
-    introduction: "The stability angle is the angle of heel at which the heeling moment and the righting moment are equal and the ship remains stationary at this angle.",
+    introduction: "The angle of equilibrium is the angle of heel at which the heeling moment and the righting moment are equal and the ship remains stationary at this angle.",
     content: `When an external force applies a heeling moment to the ship, the ship produces a righting moment. When the two moments are equal the ship reaches equilibrium at a given angle.
 
 On the GZ curve this angle is the point at which the heeling moment line cuts the curve.
@@ -1279,7 +1279,7 @@ For small angles the approximation tan θ ≈ HM / (Δ × GM) can be used.`,
     ],
   },
   "heel-from-weight-shift": {
-    title: "Lying Due to Weight Shift",
+    title: "List Due to Weight Shift",
     introduction: "The transverse shift of a weight on the ship creates a list by shifting the center of gravity.",
     content: `A shift of weight moves G transversely without changing the displacement. This shift is equivalent to a heeling moment.
 
@@ -1296,10 +1296,10 @@ A cargo shift, a ballast transfer or crane operations can cause this kind of hee
       "Transverse weight shift creates list",
       "The formula HM = w × d is applied",
       "If GM is small, the same shift creates a larger angle",
-      "Cargo safety ties prevent slipping",
+      "Lashings prevent the cargo from shifting",
     ],
     formula: {
-      name: "Lying With Weight Shift",
+      name: "List from a Weight Shift",
       expression: "tan θ = (w × d) / (Δ × GM)",
       description: "θ: Angle of heel, w: Shifted weight (ton), d: Shift distance (m), Δ: Displacement (ton), GM: Metacentric height (m)",
     },
@@ -1312,7 +1312,7 @@ A cargo shift, a ballast transfer or crane operations can cause this kind of hee
     keyPoints: [
       "Cargo shifting is one of the important causes of accidents",
       "Lashing and securing procedures are critical",
-      "Slippage must be monitored while driving",
+      "Check the cargo securing during the voyage",
     ],
     warnings: [
       "With large shifts the list can increase rapidly",
@@ -1357,7 +1357,7 @@ The small-angle approximation can also be written as sin θ ≈ θ (in radians).
     title: "Stability for Large Angles",
     introduction: "At angles of heel above approximately 10°, the metacenter (M) does not remain constant and the small angle approximation GZ = GM·sinθ becomes invalid. Large angle stability is examined directly from the GZ curve, taking into account the actual movement of the centre of buoyancy (B).",
     content: `WHY THE SMALL-ANGLE APPROXIMATION BREAKS DOWN:
-At small angles M is almost fixed and GZ ≈ GM·sinθ can be used. As the angle increases the shape of the immersed volume (and so the position of B) changes markedly; M moves down and GZ departs from the simple sine relationship.
+At small angles M is almost fixed and GZ ≈ GM·sinθ can be used. As the angle increases the shape of the immersed volume (and so the position of B) changes markedly; M no longer stays fixed and GZ departs from the simple sine relationship.
 
 THE WALL-SIDED FORMULA:
 Before the deck edge is immersed and before the keel emerges, and assuming a wall-sided hull, GZ is calculated approximately as:
@@ -1370,7 +1370,7 @@ DECK EDGE IMMERSION:
 Once the deck edge is immersed the waterplane area narrows, BM falls and the increase in GZ slows or stops; the curve peaks and begins to fall.
 
 IMO LARGE-ANGLE CRITERIA:
-- GZ ≥ 0.20 m (usually at ≥30°)
+- GZ ≥ 0.20 m at an angle of heel of 30° or more
 - The angle of GZmax ≥ 25° (preferably ≥30°)
 - The 0-30°, 0-40° and 30-40° area criteria (IS Code).`,
     bulletPoints: [
@@ -1404,14 +1404,14 @@ This movement creates a virtual rise in KG and reduces GM. The phenomenon is cal
 The free surface effect:
 - The wider the tank, the greater the effect
 - A higher liquid density increases the effect
-- Tank subdivisions (longitudinal or transverse) reduce the effect
+- Longitudinal subdivision of tanks reduces the effect; transverse subdivision does not
 
 Every partly filled tank creates a free surface effect: fuel, ballast, fresh water, cargo oil.`,
     bulletPoints: [
       "Partially full tank = Free surface effect",
       "Fluid movement virtually raises KG",
       "GM decreases, stability weakens",
-      "Tank partitions reduce impact",
+      "Longitudinal tank divisions reduce the free surface effect",
     ],
     keyPoints: [
       "The free surface effect exists in every partially filled tank",
@@ -1419,7 +1419,7 @@ Every partly filled tank creates a free surface effect: fuel, ballast, fresh wat
       "It must be included in the stability calculation",
     ],
     warnings: [
-      "Several tanks with free surfaces can multiply the effect",
+      "The effects of several slack tanks add up",
       "Tank conditions must be monitored during the passage",
     ],
   },
@@ -1454,7 +1454,7 @@ If the effective GM (GMfluid) becomes negative the ship becomes unstable. The fr
     keyPoints: [
       "Stability calculation should always use GMfluid",
       "FSM values are taken from tank tables",
-      "FSMs are collected for multiple tanks",
+      "The FSMs of all slack tanks are summed",
     ],
   },
   "fsm": {
@@ -1473,7 +1473,7 @@ FSM values are usually given in the tank tables. There may be different FSM valu
     bulletPoints: [
       "Calculated with the formula FSM = ρ × I",
       "I is the moment of inertia of the water surface",
-      "Width is proportional to the cube of (B)",
+      "FSM is proportional to the cube of the tank breadth (b³)",
       "Tank tables give FSM values",
     ],
     formula: {
@@ -1489,13 +1489,13 @@ FSM values are usually given in the tank tables. There may be different FSM valu
     ],
     keyPoints: [
       "FSM is very sensitive to tank width (B³)",
-      "Baffled tanks significantly reduce FSM",
+      "Longitudinal divisions reduce FSM; wash plates only damp sloshing",
       "Separate FSM is calculated for each tank",
     ],
   },
   "fse-calc": {
     title: "Free Surface Effect (FSE)",
-    introduction: "Free Surface Effect is the virtual lift value found by dividing the free surface moment by the displacement and added to the KG.",
+    introduction: "The free surface effect is the virtual rise of G found by dividing the free surface moments by the displacement; it is added to the KG.",
     content: `The FSE (or GG') shows how far the free surface raises the centre of gravity virtually.
 
 FSE = FSM / Δ
@@ -1510,7 +1510,7 @@ If there are several tanks with free surfaces, all the FSMs are added together a
     bulletPoints: [
       "The formula FSE = FSM / Δ is used",
       "FSE is added to KG or subtracted from GM",
-      "FSMs are collected for multiple tanks",
+      "The FSMs of all slack tanks are summed",
       "As displacement increases, FSE decreases",
     ],
     formula: {
@@ -1536,7 +1536,7 @@ If there are several tanks with free surfaces, all the FSMs are added together a
     content: `In the FSM calculation the moment of inertia (I) is proportional to the cube of the tank's breadth. Wide tanks therefore create a far greater free surface effect.
 
 Longitudinal subdivision:
-Dividing a tank longitudinally down the middle reduces the total FSM to a quarter (2 × (B/2)³ / 2 = B³/4).
+Dividing a tank longitudinally down the middle reduces the total FSM to a quarter (2 × L(B/2)³/12 = ¼ × L·B³/12).
 
 Transverse subdivision:
 Transverse divisions do not change the FSM; they only restrict the flow of the liquid.
@@ -1641,7 +1641,7 @@ The difference between LCG and LCB determines the trim.`,
     ],
   },
   "lcb": {
-    title: "Center for Buoyancy (LCB)",
+    title: "Longitudinal Centre of Buoyancy (LCB)",
     introduction: "LCB is the longitudinal geometric center of the ship's submerged volume and is compared to LCG in trim calculations.",
     content: `The LCB (Longitudinal Centre of Buoyancy) is the longitudinal centre of the immersed volume. The buoyancy force acts upwards through this point.
 
@@ -1676,7 +1676,7 @@ In equilibrium the LCG and LCB must lie on the same vertical line. Otherwise a l
   },
   "trim-concept": {
     title: "Trim Concept",
-    introduction: "Trim refers to the difference between the fore and aft drafts of the ship and indicates longitudinal stability.",
+    introduction: "Trim is the difference between the aft and forward drafts; it shows the longitudinal attitude of the ship.",
     content: `Trim is the longitudinal inclination of the ship and is expressed in two ways:
 1. As a difference: Trim = Taft - Tfwd
 2. As an angle: θ = arctan(Trim / LBP)
@@ -1688,8 +1688,8 @@ If the trim is 0: even keel
 Trim affects the ship's performance, propeller efficiency and deck wetness. Optimum trim values are established in commercial operations.`,
     bulletPoints: [
       "Trim = T aft - T fore",
-      "Positive trim = Aft trim",
-      "Negative trim = Head trim",
+      "Positive trim = trim by the stern",
+      "Negative trim = trim by the head",
       "Optimum trim increases fuel efficiency",
     ],
     formula: {
@@ -1727,7 +1727,7 @@ where w is the weight and d the longitudinal distance it is moved.`,
       "MCT is the moment that changes trim by 1 cm",
       "Read from hydrostatic tables",
       "Varies with draft",
-      "Trim = Torque / MCT formula is used",
+      "Change of trim = trimming moment / MCTC",
     ],
     formula: {
       name: "MCT Formula",
@@ -1757,12 +1757,12 @@ The change of trim:
 ΔTrim = (w × d) / MCT
 
 The changes in the forward and after drafts:
-ΔTfwd = (ΔTrim × LCF) / LBP
-ΔTaft = ΔTrim - ΔTfwd
+ΔTaft = ΔTrim × LCF / LBP   (LCF measured from the AP)
+ΔTfwd = ΔTrim − ΔTaft
 
 The LCF (Longitudinal Centre of Flotation) is the longitudinal position of the centre of flotation.`,
     bulletPoints: [
-      "Trim change = Torque / MCT",
+      "Change of trim = trimming moment / MCTC",
       "LCF determines draft distribution",
       "Fore and aft drafts are calculated separately",
       "Trim calculation is mandatory in the loading plan",
@@ -1770,7 +1770,7 @@ The LCF (Longitudinal Centre of Flotation) is the longitudinal position of the c
     formula: {
       name: "Trim and Draft Change",
       expression: "ΔTrim = (w × d) / MCT; ΔTfwd = ΔTrim × (LBP - LCF) / LBP",
-      description: "ΔTrim: Trim change (cm), LCF: Distance from the center of buoyancy to the stern (m)",
+      description: "ΔTrim: Trim change (cm), LCF: distance of the centre of flotation from the AP (m)",
     },
     examples: [
       {
@@ -1854,10 +1854,11 @@ The displacement value:
   "draft": {
     title: "Draft",
     introduction: "Draft is the vertical distance from the ship's keel to the waterline and is indicative of the loading condition.",
-    content: `The draft shows how deep the ship is immersed. It is measured at three positions:
+    content: `The draft shows how deep the ship is immersed. It is read at three positions:
 1. Forward draft
-2. Aft draft
-3. Mean draft
+2. Midship draft
+3. Aft draft
+The mean draft is calculated from the readings, not read.
 
 Mean draft = (Tfwd + Taft) / 2
 
@@ -1874,9 +1875,9 @@ Reading the draft is the starting point of the loading calculation.`,
       "Freeboard limits determine the draft limit",
     ],
     formula: {
-      name: "Medium Draft",
+      name: "Mean Draft",
       expression: "Tmean = (Tfwd + Taft) / 2",
-      description: "Tmean: Middle draft (m), Thead: Fore draft (m), Tstern: Aft draft (m)",
+      description: "Tmean: mean draft (m), Tfwd: forward draft (m), Taft: aft draft (m)",
     },
     examples: [
       {
@@ -1891,7 +1892,7 @@ Reading the draft is the starting point of the loading calculation.`,
     ],
   },
   "draft-displacement-relation": {
-    title: "Draft-Away Relationship",
+    title: "Draft–Displacement Relationship",
     introduction: "The relationship between draft and displacement is defined by hydrostatic curves and used in loading calculations.",
     content: `As the draft increases the immersed volume, and therefore the displacement, increases. This relationship is not linear; it depends on the form of the ship.
 
@@ -1915,7 +1916,7 @@ During loading the displacement is found by measuring the draft, or conversely t
     ],
   },
   "tpc": {
-    title: "TPC (Ton Per Centimeter)",
+    title: "TPC (Tonnes per Centimetre Immersion)",
     introduction: "TPC indicates the weight required to increase draft by 1 cm and is used in rapid loading calculations.",
     content: `The TPC (Tonnes Per Centimetre Immersion) is related to the ship's waterplane area.
 
@@ -1929,15 +1930,15 @@ Using the TPC:
 
 The TPC value varies with draft; it is read from the hydrostatic tables.`,
     bulletPoints: [
-      "TPC is the tone required to sink 1 cm",
-      "Depends on waterline area",
+      "TPC is the weight that changes the mean draft by 1 cm",
+      "Depends on the waterplane area",
       "Read from hydrostatic tables",
       "Used in fast loading calculation",
     ],
     formula: {
       name: "TPC Calculation",
       expression: "TPC = (A × ρ) / 100; ΔT = w / TPC",
-      description: "TPC: Ton per cm (ton/cm), A: Waterline area (m²), ρ: Density (t/m³), ΔT: Draft change (cm), w: Weight (ton)",
+      description: "TPC: tonnes per centimetre immersion (t/cm), A: waterplane area (m²), ρ: density (t/m³), ΔT: draft change (cm), w: weight (t)",
     },
     examples: [
       {
@@ -1965,7 +1966,7 @@ The KM value:
 - Is read from the hydrostatic tables
 - Is used in the GM calculation: GM = KM - KG
 
-The KM value depends on the geometry of the ship and does not change with loading (it changes only with a change of draft).`,
+KM depends on the hull form at the waterline: it changes with draft and trim, not with KG. Typically it is high at light drafts, falls to a minimum and rises again.`,
     bulletPoints: [
       "The formula KM = KB + BM applies",
       "Taken from hydrostatic tables",
@@ -1975,7 +1976,7 @@ The KM value depends on the geometry of the ship and does not change with loadin
     formula: {
       name: "KM and GM Relationship",
       expression: "KM = KB + BM; GM = KM - KG",
-      description: "KM: From keel to metacenter (m), KB: From keel to center of gravity (m), BM: Metacentric radius (m), KG: From keel to center of gravity (m)",
+      description: "KM: From keel to metacenter (m), KB: keel to centre of buoyancy (m), BM: metacentric radius (m), KG: keel to centre of gravity (m)",
     },
     examples: [
       {
@@ -1985,7 +1986,7 @@ The KM value depends on the geometry of the ship and does not change with loadin
     ],
     keyPoints: [
       "KM is ship-specific hydrostatic data",
-      "KM generally decreases as draft increases",
+      "KM varies with draft: read it from the hydrostatic table",
       "KM must be read correctly in stability calculation",
     ],
   },
@@ -2021,7 +2022,7 @@ Modern stability computers use these tables automatically; but the tables must b
   // =====================================================
   "dynamic-righting-moment": {
     title: "Dynamic Righting Moment",
-    introduction: "Dynamic righting moment is the total righting capacity produced by the ship against external forces while in motion.",
+    introduction: "Dynamical stability is the work done in heeling the ship to a given angle: the displacement times the area under the GZ curve up to that angle.",
     content: `Dynamic stability expresses the amount of energy a ship can absorb up to a given angle. This capacity is measured by the area under the GZ curve.
 
 The dynamic righting moment:
@@ -2036,7 +2037,7 @@ The difference from static stability:
       "Dynamic stability is the energy capacity",
       "Measured by the area under the GZ curve",
       "Absorbs wave and wind energy",
-      "IMO field criteria check dynamic stability",
+      "The area criteria check dynamical stability",
     ],
     formula: {
       name: "Dynamic Stability",
@@ -2056,15 +2057,15 @@ The difference from static stability:
 
 The IMO criteria define the following areas:
 - A₁: the area from 0° to 30° ≥ 0.055 m·rad
-- A₂: the area from 0° to 40° ≥ 0.090 m·rad
-- A₃: the area from 30° to 40° ≥ 0.030 m·rad
+- A₂: the area from 0° to 40° (or θf if less) ≥ 0.090 m·rad
+- A₃: the area from 30° to 40° (or θf if less) ≥ 0.030 m·rad
 
 These areas guarantee that the ship has an adequate energy reserve in various heeling scenarios.
 
 The area is calculated by numerical integration or the trapezoidal rule.`,
     bulletPoints: [
       "Area = Energy capacity",
-      "IMO defines minimum space criteria",
+      "The IS Code sets minimum area criteria",
       "0-30°, 0-40° and 30-40° areas are checked",
       "Calculated by numerical integration",
     ],
@@ -2080,14 +2081,14 @@ The area is calculated by numerical integration or the trapezoidal rule.`,
       },
     ],
     keyPoints: [
-      "All field criteria must be satisfied at the same time",
-      "Loading changes affect fields",
+      "All area criteria must be met at the same time",
+      "Changes in loading change the areas",
       "Area control is mandatory for critical installations",
     ],
   },
   "static-vs-dynamic": {
     title: "Difference Between Static and Dynamic Stability",
-    introduction: "Static stability examines the righting lever (GZ) and righting moment at a given angle of heel. Dynamic stability examines the WORK (energy) required to tilt the ship to that angle and is measured by the area under the GZ curve. The two measure different things and should be considered together.",
+    introduction: "Static stability examines the righting lever (GZ) and righting moment at a given angle of heel. Dynamic stability examines the WORK (energy) required to heel the ship to that angle and is measured by the area under the GZ curve. The two measure different things and should be considered together.",
     content: `STATIC STABILITY:
 - Instantaneous equilibrium at a given angle: the righting lever GZ and the righting moment (Δ·GZ).
 - Assessed by GM at small angles and by the GZ curve at large angles.
@@ -2109,7 +2110,7 @@ A squall or a wave transfers WORK (energy) to the ship. If the ship does not hav
     formula: {
       name: "Dynamic stability (energy)",
       expression: "Dynamic stability = Δ × ∫₀^θ GZ dθ  (the area under the curve)",
-      description: "The area under the GZ curve gives the work (energy reserve) done to tilt the ship to that angle.",
+      description: "The area under the GZ curve gives the work (energy reserve) needed to heel the ship to that angle (× displacement).",
     },
     keyPoints: [
       "Static = force, dynamic = energy; The two measure different things.",
@@ -2133,8 +2134,8 @@ A squall or a wave transfers WORK (energy) to the ship. If the ship does not hav
 
 The IMO wind and wave criteria take these effects into account.`,
     bulletPoints: [
-      "Waves transfer lying energy",
-      "The wave period and the roll period may resonate",
+      "Waves transfer heeling energy",
+      "The wave encounter period and the rolling period may resonate",
       "There is a risk of parametric rolling in head and following seas",
       "Stability areas absorb wave energy",
     ],
@@ -2168,10 +2169,10 @@ The IMO weather criterion is the stability check that guarantees the ship will n
     formula: {
       name: "Wind Heeling Moment",
       expression: "HM = P × A × h; P = 0.5 × ρ × V²",
-      description: "HM: Heeling moment (N·m), P: Wind pressure (Pa), A: Exposed area (m²), h: Lift arm (m), V: Wind speed (m/s)",
+      description: "HM: Heeling moment (N·m), P: Wind pressure (Pa), A: exposed area (m²), h: heeling lever (m), V: Wind speed (m/s)",
     },
     keyPoints: [
-      "Wind criterion is mandatory for all ships",
+      "The weather criterion applies to cargo and passenger ships of 24 m and over",
       "Sudden wind (gust) is taken into account",
       "Angle of heel limits are checked",
     ],
@@ -2192,13 +2193,14 @@ Reserve buoyancy is the watertight volume above the waterline. If the water ente
 
 The permeability factor (μ) shows how much of the compartment can fill with water:
 - Engine room: μ = 0.85
-- Cargo hold (general cargo): μ = 0.60
-- Passenger spaces: μ = 0.95
-- Empty tanks: μ = 0.95
+- Stores: μ = 0.60
+- Accommodation: μ = 0.95
+- Void spaces: μ = 0.95
+- Cargo spaces: by draught, from SOLAS II-1/7-3
 
 Flooded volume = Actual volume × μ`,
     bulletPoints: [
-      "Reserve buoyancy = Water-resistant volume above the waterline",
+      "Reserve buoyancy = watertight volume above the waterline",
       "Permeability (μ) varies by compartment",
       "Damaged volume = Volume × μ",
       "Subdivision increases the ship's resistance to sinking",
@@ -2210,8 +2212,8 @@ Flooded volume = Actual volume × μ`,
     },
     examples: [
       {
-        problem: "A cargo hold of 500 m³ is damaged. If the permeability is μ = 0.60, how much water enters?",
-        solution: "Vflooded = 500 × 0.60 = 300 m³. Result: 300 m³ of water enters the hold.",
+        problem: "A stores space of 500 m³ is damaged. With the permeability μ = 0.60, how much water enters?",
+        solution: "Vflooded = 500 × 0.60 = 300 m³. Result: 300 m³ of water enters the space.",
       },
     ],
     keyPoints: [
@@ -2235,7 +2237,7 @@ Both methods give the same final draft and trim; only the logic of the calculati
 
 Modern stability computers generally use the added weight method.`,
     bulletPoints: [
-      "Lost buoyancy: Bulkhead does not produce buoyancy",
+      "Lost buoyancy: the flooded compartment no longer provides buoyancy",
       "Added weight: Water is added as a weight",
       "Both methods give the same result",
       "Added weight takes into account free surface",
@@ -2259,7 +2261,7 @@ Modern stability computers generally use the added weight method.`,
   },
   "reserve-buoyancy": {
     title: "Reserve Buoyancy",
-    introduction: "Reserve buoyancy is the water-resistant volume of the ship above the waterline and forms the safety margin against sinking in case of damage.",
+    introduction: "Reserve buoyancy is the watertight volume of the ship above the waterline and forms the safety margin against sinking in case of damage.",
     content: `Reserve buoyancy is the volume formed by the ship's freeboard and enclosed superstructures. This volume provides additional buoyancy in a damaged condition.
 
 Factors in reserve buoyancy:
@@ -2268,7 +2270,7 @@ Factors in reserve buoyancy:
 - Watertight subdivision
 - The condition of doors and openings
 
-SOLAS requirements:
+Load Line Convention (1966, 1988 Protocol) requirements:
 - Minimum freeboard values
 - Limits on compartment length
 - Watertight door standards
@@ -2281,7 +2283,7 @@ Adequate reserve buoyancy keeps the ship afloat even in a damaged condition.`,
       "Reserve buoyancy = Freeboard + Closed superstructures",
       "As freeboard decreases, reserve buoyancy decreases.",
       "Watertight compartmentation maintains reserve buoyancy",
-      "SOLAS establishes minimum freeboard values",
+      "The Load Line Convention sets the minimum freeboards",
     ],
     formula: {
       name: "Reserve Buoyancy",
@@ -2294,7 +2296,7 @@ Adequate reserve buoyancy keeps the ship afloat even in a damaged condition.`,
       "Closed doors maintain reserve buoyancy",
     ],
     warnings: [
-      "Open hatches and doors reduce reserve buoyancy to zero",
+      "Open hatches and doors reduce the effective reserve buoyancy",
       "The freeboard line must not be exceeded",
     ],
   },
@@ -2310,10 +2312,9 @@ The dangers of asymmetric flooding:
 4. The risk of capsizing
 
 Cross-flooding:
-Deliberately filling the tanks on the opposite side to reduce the list. This operation:
-- Is required by SOLAS
-- Must be completed within a maximum of 15 minutes
-- Reduces the list to an acceptable value
+Cross-flooding arrangements connect compartments on both sides so that floodwater equalises and the list is reduced. Where fitted:
+- SOLAS II-1 limits the equalisation time (see the ship's damage stability information)
+- They reduce the list to an acceptable value
 
 The cross-flooding capacity is determined in the design of the ship.`,
     bulletPoints: [
@@ -2335,8 +2336,8 @@ The cross-flooding capacity is determined in the design of the ship.`,
     ],
     keyPoints: [
       "Asymmetric flooding is the most dangerous damage situation",
-      "Cross-syncing systems are critical",
-      "List angle should not exceed 15°",
+      "Cross-flooding arrangements are critical",
+      "The final angle of list must stay within the SOLAS damage stability limits for the ship type",
     ],
   },
   "progressive-flooding": {
@@ -2365,7 +2366,7 @@ SOLAS assesses the duration of progressive flooding and the final condition of t
     ],
     keyPoints: [
       "The condition of doors and dampers is critical",
-      "Regular waterproofing checks should be carried out",
+      "Watertight closures should be checked regularly",
       "Crew training is important",
     ],
     warnings: [
@@ -2418,14 +2419,12 @@ SOLAS defines minimum GZ and area values for the damaged condition.`,
     content: `Changes in stability during a heavy lift:
 
 1. VIRTUAL RISE OF KG:
-Once the weight leaves the ground its centre of gravity behaves as if it had moved to the head of the derrick.
+As soon as the weight is lifted clear, its centre of gravity acts as if it were at the head of the derrick.
 KGnew = KG + (w × h) / Δ
-h: the height of lift
+h: vertical distance from the weight's original centre of gravity to the derrick or crane head
 
-2. PENDULUM EFFECT:
-The suspended weight behaves like a pendulum and reduces GM.
-GMreduced = GM - (w × l²) / (Δ × GM)
-l: the length of the sling
+2. THE WEIGHT HANGS FROM THE HEAD:
+This rise of G is the whole effect of the suspended weight; there is no further "pendulum" loss of GM to add.
 
 3. FORMATION OF LIST:
 A transverse moment arises when the boom is swung outboard.
@@ -2436,19 +2435,19 @@ Safety precautions:
 - Continuous monitoring during the lift
 - Checking the wind and sea state`,
     bulletPoints: [
-      "KG increases virtually when the load is removed",
-      "Suspended load creates pendulum effect",
+      "KG rises virtually as soon as the load is lifted clear",
+      "The suspended load acts at the derrick head",
       "GM decreases during lifting",
       "Stability calculation should be made before the operation",
     ],
     formula: {
       name: "Virtual KG Elevation",
       expression: "ΔKG = (w × h) / Δ",
-      description: "ΔKG: KG gain (m), w: Load weight (ton), h: Lifting height (m), Δ: Displacement (ton)",
+      description: "ΔKG: rise of G (m), w: weight lifted (t), h: vertical distance from the weight's centre of gravity to the derrick head (m), Δ: displacement (t)",
     },
     examples: [
       {
-        problem: "A 50-tonne weight is lifted to a height of 10 m. If Δ = 5,000 tonnes, by how much does KG increase?",
+        problem: "A 50-tonne weight hangs from a derrick head 10 m above its original centre of gravity. If Δ = 5,000 tonnes, by how much does KG rise?",
         solution: "ΔKG = (50 × 10) / 5,000 = 0.10 m. Result: KG rises virtually by 10 cm.",
       },
     ],
@@ -2460,7 +2459,7 @@ Safety precautions:
   },
   "deck-cargo": {
     title: "Deck Loads",
-    introduction: "Deck loads reduce GM by increasing KG and adversely affect stability by increasing wind area.",
+    introduction: "Deck cargo reduces GM by increasing KG and adversely affect stability by increasing wind area.",
     content: `The stability effects of deck cargo:
 
 1. RISE IN KG:
@@ -2496,7 +2495,7 @@ Limits on deck cargo:
     keyPoints: [
       "Deck load limits must not be exceeded",
       "Stability calculation must include deck load",
-      "A bonding plan must be prepared",
+      "Secure the cargo to the Cargo Securing Manual",
     ],
   },
   "suspended-weight": {
@@ -2512,16 +2511,13 @@ The centre of gravity of a suspended weight is taken as having moved to the poin
 GG' = (w × d) / Δ
 d: the distance between the actual KG of the weight and the point of suspension
 
-THE PENDULUM EFFECT:
-A suspended weight swings outboard when the ship heels and increases the heel. This effect is similar to free surface.
-
-GM with a suspended weight:
-GMeffective = GM - (w × l²) / (Δ × GM)
-l: the length of the sling`,
+EFFECT ON GM:
+When the ship heels the weight swings so that it always hangs vertically below the point of suspension; this is why G is taken at the point of suspension. The loss of GM is GG' itself:
+GMeffective = GM − (w × d) / Δ`,
     bulletPoints: [
       "Suspended load virtually raises KG",
-      "Swing effect reduces stability",
-      "Creates a free surface-like effect",
+      "The loss of GM equals the virtual rise of G",
+      "Like free surface, it is a virtual rise of G",
       "Critical in lifting operations",
     ],
     formula: {
@@ -2571,7 +2567,7 @@ The sequence of ballast operations matters — stability must not fall below cri
     formula: {
       name: "KG Change with Ballast",
       expression: "KGnew = (Δ × KG + wballast × KGtank) / (Δ + wballast)",
-      description: "New KG is calculated when ballast is purchased",
+      description: "New KG is calculated when ballast is taken on",
     },
     keyPoints: [
       "Ballast operation plan should be prepared",
@@ -2581,7 +2577,7 @@ The sequence of ballast operations matters — stability must not fall below cri
   },
   "cargo-shift": {
     title: "Cargo Shift",
-    introduction: "Cargo drift is the displacement of cargo by the movement of the ship and can lead to sudden collapse or rollover.",
+    introduction: "Cargo shift is the movement of cargo caused by the motion of the ship; it can cause a sudden heavy list or capsize.",
     content: `A cargo shift is one of the most dangerous causes of stability casualties.
 
 TYPES OF SHIFT:
@@ -2611,7 +2607,7 @@ SOLAS and the Grain Code make anti-shifting measures mandatory.`,
     formula: {
       name: "Cargo Shift List Angle",
       expression: "tan(θ) = (w × d) / (Δ × GM)",
-      description: "θ: List angle, w: Sliding weight (ton), d: Sliding distance (m)",
+      description: "θ: angle of list, w: weight of cargo shifted (t), d: transverse shift (m)",
     },
     examples: [
       {
@@ -2621,7 +2617,7 @@ SOLAS and the Grain Code make anti-shifting measures mandatory.`,
     ],
     keyPoints: [
       "Load security is an integral part of the operation",
-      "Load control should be done while driving",
+      "Check the cargo during the voyage",
       "Bindings should be checked before bad weather",
     ],
   },
@@ -2637,12 +2633,11 @@ ICE ACCRETION:
 
 WEIGHT OF ICE:
 Ice builds up on superstructures, equipment and the deck.
-- Moderate icing: 30 kg/m²
-- Severe icing: 50+ kg/m²
+- IS Code 2008 Part B 6.1 allowance: 30 kg/m² on exposed weather decks and gangways and 7.5 kg/m² on the projected lateral area above the waterline
 
 STABILITY EFFECT:
 Ice has a high KG.
-ΔKG = (wice × KGice) / (Δ + wice)
+KGnew = (Δ × KG + wice × KGice) / (Δ + wice)
 
 GM falls rapidly and the risk of capsizing increases.
 
@@ -2655,8 +2650,8 @@ Removing ice is critically important.`,
     ],
     formula: {
       name: "KG Change with Ice Weight",
-      expression: "ΔKG = (mice × hice) / Δ",
-      description: "ΔKG: KG increase (m), mice: Mass of ice (tons), hice: Average height of ice (m)",
+      expression: "ΔKG = wice × (KGice − KG) / (Δ + wice)",
+      description: "ΔKG: rise of KG (m), wice: weight of ice (t), KGice: height of the centre of the ice above the keel (m)",
     },
     examples: [
       {
@@ -2679,18 +2674,18 @@ Removing ice is critically important.`,
   // =====================================================
   "imo-stability-criteria": {
     title: "IMO Stability Criteria",
-    introduction: "IMO stability criteria define the minimum safety requirements of ships and are mandatory for all commercial ships.",
+    introduction: "IMO stability criteria define the minimum safety requirements of ships and apply to cargo and passenger ships of 24 m in length and over (IS Code 2008 Part A).",
     content: `The IMO (International Maritime Organization) stability criteria are set out in the MSC.267(85) Intact Stability Code.
 
 THE BASIC CRITERIA:
 
 1. AREA CRITERIA:
 - The area from 0° to 30° ≥ 0.055 m·rad
-- The area from 0° to 40° ≥ 0.090 m·rad
-- The area from 30° to 40° ≥ 0.030 m·rad
+- The area from 0° to 40° (or θf if less) ≥ 0.090 m·rad
+- The area from 30° to 40° (or θf if less) ≥ 0.030 m·rad
 
 2. GZ CRITERIA:
-- Maximum GZ ≥ 0.20 m
+- GZ ≥ 0.20 m at an angle of heel of 30° or more
 - The maximum GZ must occur at an angle of at least 25°
 - Preferably at 30° or above
 
@@ -2700,20 +2695,20 @@ THE BASIC CRITERIA:
 
 These criteria are for intact stability. Damage stability criteria are defined separately.`,
     bulletPoints: [
-      "Field criteria control dynamic stability",
+      "The area criteria check dynamical stability",
       "GZ criteria guarantee adequate righting arm",
       "GM criterion provides initial stability",
       "All criteria must be met at the same time",
     ],
     formula: {
-      name: "IMO Field Criteria",
+      name: "IMO Area Criteria",
       expression: "A₁ ≥ 0.055; A₂ ≥ 0.090; A₃ ≥ 0.030 (m·rad)",
-      description: "A₁: 0-30° field, A₂: 0-40° field, A₃: 30-40° field",
+      description: "A₁: area 0–30°, A₂: area 0–40° (or θf), A₃: area 30–40° (or θf)",
     },
     keyPoints: [
       "Criteria must be met for all loading cases",
-      "Stability booklet lists approved states",
-      "Non-criteria work is prohibited",
+      "The stability booklet lists the approved loading conditions",
+      "Do not sail in a condition that does not meet the criteria",
     ],
   },
   "intact-stability-code": {
@@ -2766,8 +2761,8 @@ Every loading condition is checked against these criteria in the ship's approved
     content: `The weather criterion tests the ship's survival under a combination of a sudden gust and waves.
 
 THE SCENARIO:
-1. A steady wind heels the ship to angle θ₁
-2. Wave action rolls the ship to windward to angle θ₂
+1. A steady wind heels the ship to the angle θ0
+2. Wave action rolls the ship to windward by the angle θ1 (from θ0); θ2 is the least of θf, 50° and the second lw2 intercept
 3. A gust pushes the ship back to leeward
 
 THE CRITERION:
@@ -2792,7 +2787,7 @@ This criterion is particularly critical for ships with a large superstructure.`,
       description: "a: area of the wind heeling energy, b: reserve area under the righting arm (GZ) curve",
     },
     keyPoints: [
-      "Weather Criterion is mandatory for all ships",
+      "The weather criterion applies to cargo and passenger ships of 24 m and over",
       "High freeboard makes this criterion difficult",
       "Must be taken into account in design",
     ],
@@ -2811,8 +2806,8 @@ SURF-RIDING AND BROACHING:
 In following seas the ship can be carried along with the wave and fall into an uncontrolled turn.
 
 IMO RECOMMENDATIONS:
-- MSC.1/Circ.1228: parametric rolling
-- MSC.1/Circ.707: avoiding dangerous situations
+- MSC.1/Circ.1228: revised guidance to the master for avoiding dangerous situations in adverse weather and sea conditions (supersedes MSC/Circ.707)
+- MSC.1/Circ.1627: interim guidelines on the second generation intact stability criteria
 
 Operational measures: a change of course and speed.`,
     bulletPoints: [
@@ -2822,7 +2817,7 @@ Operational measures: a change of course and speed.`,
       "Avoided by route and speed adjustment",
     ],
     keyPoints: [
-      "The relationship between wave period and roll period is critical",
+      "The relationship between wave period and rolling period is critical",
       "Operational awareness is required",
       "Simulation tools are used in risk assessment",
     ],
@@ -2839,7 +2834,7 @@ The IS Code requires GM₀ ≥ 0.15 m for the initial metacentric height. In pra
 
 BY SHIP TYPE:
 - General cargo ship: GM₀ ≥ 0.15 m (plus the KG limit curve).
-- Passenger ships: additional turning/passenger crowding criteria.
+- Passenger ships: additional criteria for heel due to turning and to the crowding of passengers on one side.
 - Tankers: generally a higher GM in the ballast condition.
 - Container ships: a calculation specific to the loading condition because of the risk of parametric rolling.
 
@@ -2859,7 +2854,7 @@ GM and the rolling period are inversely related. A very high GM → a short peri
     keyPoints: [
       "The minimum GM comes from the KG limit curve that satisfies the IMO criteria.",
       "Both too low and too high GM are dangerous.",
-      "The roll period is the practical indicator of GM (T = 2πk/√(gGM)).",
+      "The rolling period is the practical indicator of GM (T = 2πk/√(gGM)).",
       "Calculation should be made before GM reducing operation.",
     ],
     warnings: [
@@ -2982,8 +2977,8 @@ The remedy: keep tanks either full or empty and monitor the FSE continuously.`,
     ],
   },
   "wrong-gm-interpretation": {
-    title: "Incorrect GM Comments",
-    introduction: "Incorrect interpretation of the GM value can cause operational errors and accidents.",
+    title: "Misinterpreting GM",
+    introduction: "Misinterpreting the GM value can lead to operational errors and accidents.",
     content: `Errors in interpreting GM:
 
 1. THE FALLACY THAT A VERY HIGH GM IS GOOD:
@@ -2997,7 +2992,7 @@ A very high GM leads to violent rolling (a stiff ship):
 On some ships an optimum trim improves fuel efficiency.
 
 3. FAILING TO RECOGNISE A NEGATIVE GM:
-An angle of loll (unstable equilibrium) can be misinterpreted:
+An angle of loll (the ship is unstable when upright) can be misinterpreted:
 - It is taken for the effect of the wind
 - An attempt to correct it makes the situation worse
 
@@ -3011,11 +3006,11 @@ An adequate GM does not mean adequate dynamic stability.`,
     ],
     keyPoints: [
       "GM should be kept at a balanced value",
-      "Loll angle is a dangerous warning",
-      "Field criteria should also be checked",
+      "An angle of loll is a serious warning of negative GM",
+      "The area criteria should also be checked",
     ],
     warnings: [
-      "Ballast must not be taken into the low side when the ship is at an angle of loll",
+      "At an angle of loll do not start with a high-side tank: fill the lowest divided double-bottom tank on the low side first",
       "Water must first be taken into the lowest tanks",
     ],
   },
@@ -3047,7 +3042,7 @@ Fuel consumption during the passage changes the trim.`,
       "Excessive bow trim causes deck wetness",
       "Excessive aft trim reduces maneuverability",
       "Optimum trim saves fuel",
-      "Trim changes while cruising",
+      "Trim changes during the voyage",
     ],
     keyPoints: [
       "Trim values must be constantly monitored",
@@ -3099,10 +3094,10 @@ Detention: the ship is not allowed to sail where critical findings arise.`,
 
   "inclining-experiment": {
     title: "Inclining Experiment",
-    introduction: "The heeling test is a controlled test to experimentally determine the lightship's center of gravity height (KG) and empty ship displacement. The KG value on which all stability calculations are based is obtained with this test.",
+    introduction: "The inclining experiment is a controlled test to determine the lightship displacement and the height of its centre of gravity (KG). The KG value on which all stability calculations are based is obtained with this test.",
     content: `PURPOSE:
 
-A ship's stability calculations cannot be made without knowing the lightship weight and the height of its centre of gravity (KG). The inclining experiment measures KG directly by heeling the ship in a controlled way with known weights. It is mandatory for newly built ships and for ships that have undergone major alterations.
+A ship's stability calculations cannot be made without knowing the lightship weight and the height of its centre of gravity (KG). The inclining experiment heels the ship in a controlled way with known weights; the measured GM gives KG = KM − GM. It is mandatory for newly built ships and for ships that have undergone major alterations.
 
 METHOD:
 
@@ -3135,7 +3130,7 @@ The lightship displacement and KG obtained from the experiment are entered in th
       "Free surface and external influences are minimized; The average is taken repeatedly.",
     ],
     keyPoints: [
-      "The basis for all stability calculations is KG; The heel test gives the KG.",
+      "All stability calculations start from the lightship KG found by the inclining experiment.",
       "Required after new construction/major renovation.",
       "Tank free surface and external forces directly affect accuracy.",
     ],
@@ -3169,7 +3164,7 @@ WHY IT MATTERS AT SEA:
 
 The probabilistic approach gives the designer flexibility in subdivision while aiming to produce statistically safer ships. What matters to the officer is knowing that the ship's approved loading/damage conditions are defined in the Stability Booklet and the damage control information, and that they must be complied with.`,
     formula: {
-      name: "Achieved Segmentation Index",
+      name: "Attained Subdivision Index",
       expression: "A = Σ (pᵢ × sᵢ) ≥ R",
       description: "pᵢ: probability of damage to region i, sᵢ: probability of surviving after that damage, R: required index.",
     },
@@ -3180,7 +3175,7 @@ The probabilistic approach gives the designer flexibility in subdivision while a
       "A = Σ(p×s); p is the probability of damage, s is the probability of survival.",
     ],
     keyPoints: [
-      "SOLAS uses the probabilistic method on dry bulk/passenger ships.",
+      "SOLAS uses the probabilistic method for cargo and passenger ships.",
       "A ≥ R must be satisfied.",
       "It is the officer's responsibility to comply with approved loading/damage conditions.",
     ],
@@ -3188,7 +3183,7 @@ The probabilistic approach gives the designer flexibility in subdivision while a
 
   "drydocking-stability": {
     title: "Drydocking Stability",
-    introduction: "When the ship begins to settle on dry dock blocks during docking, the upward reaction force exerted by the blocks reduces the effective stability of the ship. The most critical moment is when the aft keel first contacts the blocks.",
+    introduction: "When the ship begins to settle on dry dock blocks during docking, the upward reaction force exerted by the blocks reduces the effective stability of the ship. The critical instant is just before the ship takes the blocks fore and aft, when the upthrust at the stern is greatest.",
     content: `WHAT HAPPENS:
 
 When a ship is taken into a dry dock the water is pumped out; the ship comes down and (usually because of trim) the after end of the keel touches the blocks first. At this point of contact the blocks apply an upward reaction force (P). This force amounts to support acting upwards from a point below the keel line and REDUCES the ship's metacentric height (GM); that is, it behaves as though KG had risen.
@@ -3212,18 +3207,18 @@ PRECAUTIONS:
     formula: {
       name: "GM Loss in Docking (approximately)",
       expression: "Loss of GM ≈ (P × KM) / W",
-      description: "P: upward reaction force of the blocks, KM: metacentric height, W: displacement. As P increases, effective GM decreases.",
+      description: "P: upthrust of the blocks, KM: height of the metacentre above the keel, W: displacement. As P increases, effective GM decreases.",
     },
     bulletPoints: [
       "The upward reaction force (P) on contact with the blocks reduces the effective GM.",
-      "The most critical moment: the transition moment when the aft keel begins to settle.",
+      "The critical instant: just before the ship takes the blocks overall.",
       "Dry-docking is done with a small stern trim + adequate initial GM.",
       "Once fully landed, the ship is stable again.",
     ],
     keyPoints: [
       "Docking temporarily reduces active stability.",
       "Over trim large P at one point → more GM loss.",
-      "Side blocks and shores support the ship once she sits on the blocks.",
+      "Side blocks and shores support the ship when she sits on the blocks.",
     ],
     warnings: [
       "Docking with inadequate GM or excessive trim can cause the ship to slip off the blocks or capsize",

@@ -93,3 +93,23 @@ convention page).
 | Default tank list | `/ballast` | Six invented tanks with levels and positions | Empty rows for the ship's own tanks | Removed | — |
 | AI assistants | all `/…/assistant` pages | Gradient hero, prompts cut at 50 characters | Tool shell, full prompts, caution that AI answers can be wrong | UI | — |
 | Quizzes | 8 topic quiz pages | Bare container | Shared `QuizShell`; question banks not audited in this round | UI | — |
+
+## Lesson text: stability book (`src/pages/StabilityTopicsPage.tsx`)
+
+Reviewed with the terminology-reviewer agent (98 findings plus the first list).
+Fixed factual errors include: stable/unstable equilibrium stated the wrong way
+round (M under/over G); KB described as height of the centre of gravity; KM
+called "metacentric height"; trim distribution formula using LCF from the AP for
+the forward draft; LCF described as centre of buoyancy; transverse subdivision
+said to reduce FSM; "pendulum" GM loss added on top of the virtual rise of G
+for suspended weights; icing ΔKG formulas; minimum freeboard attributed to
+SOLAS; IS Code area and GZ criteria without the θf rule or the "at ≥ 30°"
+condition; weather criterion angles; scope "all ships" (now ≥ 24 m); MSC
+circulars for adverse weather; dry-docking critical instant; loll correction
+order (now: low-side divided double bottom first). Terms: centre of buoyancy,
+angle of heel, capsizing/righting, rolling period, stiff/tender (approved),
+inclining experiment, Attained Subdivision Index, area criteria, waterplane.
+
+Removed because the value could not be verified: SOLAS cross-flooding
+equalisation time, maximum list after damage, draught-dependent permeability
+of cargo spaces (the verified stores/accommodation/machinery/void values kept).
