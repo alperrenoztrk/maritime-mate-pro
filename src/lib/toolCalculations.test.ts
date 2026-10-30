@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  correctReferenceDisplacement, estimateDisplacementChange, estimateRectangularTank,
+  correctReferenceDisplacement, estimateDisplacementChange, estimateRectangularTank, estimateBunkerMass,
 } from "./toolCalculations";
 
 test("rectangular tank: volume, mass and mass-based vertical moment", () => {
@@ -34,4 +34,11 @@ test("draft based displacement changes retain correct sign", () => {
   assert.ok(Math.abs(result.displacementChangeTonnes - 200) < 1e-8);
   assert.ok(Math.abs(estimateDisplacementChange(after, before, 20).displacementChangeTonnes + 200) < 1e-8);
   assert.throws(() => estimateDisplacementChange(before, after, -20));
+});
+
+test("bunker quantity uses tabulated VCF rather than an assumed temperature coefficient", () => {
+  const result = estimateBunkerMass(100, 0.99, 0.95);
+  assert.ok(Math.abs(result.standardVolumeM3 - 99) < 1e-9);
+  assert.ok(Math.abs(result.massTonnes - 94.05) < 1e-9);
+  assert.throws(() => estimateBunkerMass(100, 0, 0.95));
 });
