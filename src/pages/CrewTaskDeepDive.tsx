@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { BookOpen, AlertTriangle, BookMarked, Lightbulb, Scale, FileText, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
@@ -47,62 +48,15 @@ export default function CrewTaskDeepDive() {
     );
   }
 
-  return (
-    <div className="relative min-h-screen px-4 pb-32 py-8">
-      <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-5">
-        <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
-          <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">
-            <BookOpen className="h-4 w-4" /> Detailed Explanation
-          </div>
-          <h1 className="text-2xl font-black leading-tight text-foreground">{taskMeta.title}</h1>
-        </header>
-
-        {loading && (
-          <div className="flex items-center justify-center gap-2 rounded-xl border border-border/40 bg-card/60 p-8 text-sm text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin" /> Content loading…
-          </div>
-        )}
-
-        {!loading && !content && (
-          <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 text-center">
-            <p className="text-sm font-semibold text-foreground">A detailed explanation is being prepared for this mission.</p>
-            <p className="mt-2 text-xs text-muted-foreground">
-              For now, you have to settle for the summary explanation. The full narrative will be published soon.
-            </p>
-            <p className="mt-4 rounded-lg border border-border/40 bg-background/60 p-4 text-left text-sm leading-relaxed">
-              {taskMeta.description}
-            </p>
-          </div>
-        )}
-
-        {content && (
-          <>
-            {/* Chapter chips */}
-            <nav className="sticky top-2 z-20 -mx-1 overflow-x-auto rounded-xl border border-border/40 bg-card/80 p-2">
-              <div className="flex gap-1.5">
-                {content.chapters.map((ch, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveChapter(i)}
-                    className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
-                      activeChapter === i
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background/60 text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {`${i + 1}. ${ch.heading.replace(/^\d+\.\s*/, "")}`}
-                  </button>
-                ))}
-              </div>
-            </nav>
-
-            {/* Active chapter */}
-            <article className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
-              {(() => {
-                const ch = content.chapters[activeChapter];
-                return (
-                  <>
-                    <h2 className="mb-3 text-xl font-bold text-foreground">{ch.heading}</h2>
+  const pages: ReadingPage[] = [
+    {id:"summary",title:taskMeta.title,section:"Introduction",
+      content:<div className="space-y-4">
+        <p>{taskMeta.description}</p>
+        {!content && <p className="text-sm text-muted-foreground">Long-form chapters are not available for this task yet.</p>}
+      </div>},
+    ...((content?.chapters ?? []).map((ch,index)=>({
+      id:`chapter-${index}`,title:ch.heading,section:`Chapter ${index+1} / ${content!.chapters.length}`,
+      content:<div className="space-y-5"><h2 className="mb-3 text-xl font-bold text-foreground">{ch.heading}</h2>
                     {ch.lead && (
                       <p className="mb-5 rounded-lg border-l-4 border-primary/40 bg-primary/5 p-3 text-sm italic leading-relaxed text-foreground/90">
                         {ch.lead}
@@ -171,45 +125,16 @@ export default function CrewTaskDeepDive() {
                         })}
                       </section>
                     ))}
-                  </>
-                );
-              })()}
-
-              {/* Prev/Next */}
-              <div className="mt-6 flex items-center justify-between border-t border-border/30 pt-4">
-                <button
-                  onClick={() => setActiveChapter((v) => Math.max(0, v - 1))}
-                  disabled={activeChapter === 0}
-                  className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
-                >
-                  <ChevronLeft className="h-4 w-4" /> Previous
-                </button>
-                <span className="text-xs text-muted-foreground">
-                  {activeChapter + 1} / {content.chapters.length}
-                </span>
-                <button
-                  onClick={() => setActiveChapter((v) => Math.min(content.chapters.length - 1, v + 1))}
-                  disabled={activeChapter === content.chapters.length - 1}
-                  className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
-                >
-                  Next <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-            </article>
-
-            {content.sources && content.sources.length > 0 && (
-              <aside className="rounded-2xl border border-border/40 bg-card/60 p-5 text-xs text-muted-foreground">
-                <div className="mb-2 font-semibold text-foreground">Resources</div>
-                <ul className="list-disc space-y-1 pl-5">
-                  {content.sources.map((s, i) => (
-                    <li key={i}>{s}</li>
-                  ))}
-                </ul>
-              </aside>
-            )}
-          </>
-        )}
-      </div>
-    </div>
-  );
+</div>,
+    }))),
+    ...(content?.sources?.length ? [{
+      id:"sources",title:"Source references",section:"References",
+      content:<ul className="list-disc space-y-3 pl-5">{content.sources.map((v,i)=><li key={i}>{v}</li>)}</ul>,
+    }] : []),
+  ];
+  return loading
+    ? <p className="p-6 text-sm text-muted-foreground">Loading crew task lesson…</p>
+    : <PagedReadingSurface key={`${roleSlug}:${taskIndex}`} title={taskMeta.title}
+      subtitle={role.title} pages={pages}
+      storageKey={`mariners-book:crew-task:${roleSlug}:${taskIndex}`} />;
 }
