@@ -157,7 +157,7 @@ export function PagedReadingSurface({
           tabIndex={0} aria-label={`Reading page ${index + 1}: ${current.title}`}>
           <article className="mx-auto max-w-[72ch] space-y-5 break-words">
             <h2 className="text-xl font-bold leading-snug text-foreground sm:text-2xl">{current.title}</h2>
-            <div className="space-y-4 leading-[1.85] text-foreground/90"
+            <div className="space-y-4 leading-[1.85] text-foreground/90 [&_p]:text-[inherit] [&_li]:text-[inherit] [&_dd]:text-[inherit]"
               style={{ fontSize: `${fontScale}rem` }}>
               {current.content}
             </div>
