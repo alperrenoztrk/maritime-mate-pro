@@ -1,3 +1,4 @@
+import { calculateFouledHeatExchangerArea, calculateSpecificEmissionRate } from "@/lib/verifiedOperationalMath";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -245,8 +246,9 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
   const calculateHeatExchangerArea = (): { area: number; tubes: number; length: number } => {
     // Q = U × A × LMTD
     // A = Q / (U × LMTD)
-    const effectiveHeatTransferCoeff = 1 / (1 / data.overallHeatTransferCoeff + data.foulingFactor);
-    const area = (data.heatLoad * 1000) / (effectiveHeatTransferCoeff * data.logMeanTempDiff);
+    const { requiredAreaM2: area } = calculateFouledHeatExchangerArea(
+      data.heatLoad, data.overallHeatTransferCoeff, data.foulingFactor, data.logMeanTempDiff,
+    );
     
     // Assuming tube diameter 25mm, pitch 32mm
     const tubeArea = Math.PI * 0.025 * 4; // 4m tube length
@@ -303,10 +305,10 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       const selectedNoxLimit = noxCalc.limits[data.requiredNoxTier];
       const noxDailyEmission = (noxCalc.rate * powerOutput * data.dailyRunningHours) / 1000; // kg/day
       
-      const soxEmissionRate = calculateSOxEmissions(hourlyConsumption) / powerOutput * 1000; // g/kWh
+      const soxEmissionRate = calculateSpecificEmissionRate(calculateSOxEmissions(hourlyConsumption), powerOutput).gramsKwh;
       const soxDailyEmission = calculateSOxEmissions(hourlyConsumption) * data.dailyRunningHours; // kg/day
       
-      const co2EmissionRate = (calculateCO2Emissions(hourlyConsumption) / powerOutput) * 1000; // g/kWh
+      const co2EmissionRate = calculateSpecificEmissionRate(calculateCO2Emissions(hourlyConsumption), powerOutput).gramsKwh;
       const co2DailyEmission = calculateCO2Emissions(hourlyConsumption) * data.dailyRunningHours; // kg/day
       
       // Cooling system calculations
