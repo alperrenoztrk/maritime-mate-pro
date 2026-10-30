@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import {
-  Anchor, BarChart3, ChevronRight, Compass, Droplets, Flame, Gauge,
+  Anchor, BarChart3, ChevronRight, Compass, Droplets, Flame, Fuel, Gauge,
   Layers, LifeBuoy, Navigation, Ruler, Scale, Ship, Star, Thermometer,
   Wrench, Zap, type LucideIcon,
 } from "lucide-react";
@@ -35,6 +35,14 @@ const CATEGORY_META: Record<Category, { title: string; description: string; icon
 // Ship-system articles, tide tutorials and static formula references live in Learn/Library.
 const TOOLS: CalcTool[] = [
   { id: "nav-calc", title: "Navigation Calculations", description: "Courses, distances and navigational problems", icon: Navigation, to: "/lessons/navigation/calculations", category: "navigation" },
+  { id: "static-ukc", title: "Under Keel Clearance (UKC)", description: "Charted depth, tide, draft and allowances", icon: Anchor, to: "/tools/verified/static-ukc", category: "navigation" },
+  { id: "weight-shift", title: "Transverse Weight Shift", description: "Initial heel from cargo or weight movement", icon: Scale, to: "/tools/verified/transverse-weight-shift", category: "stability" },
+  { id: "counterflow-lmtd", title: "Counterflow LMTD", description: "Heat exchanger temperature differences", icon: Thermometer, to: "/tools/verified/counterflow-lmtd", category: "machinery" },
+  { id: "voyage-eta", title: "Voyage ETA (UTC)", description: "UTC time and passage duration", icon: Compass, to: "/tools/verified/voyage-eta", category: "navigation" },
+  { id: "free-surface-verified", title: "Free Surface Correction", description: "GM reduction for one slack rectangular tank", icon: Droplets, to: "/tools/verified/free-surface", category: "stability" },
+  { id: "waterplane-tpc", title: "TPC from Waterplane Area", description: "Hydrostatic TPC at a defined draft", icon: Scale, to: "/tools/verified/waterplane-tpc", category: "stability" },
+  { id: "engine-sfoc", title: "Engine Fuel Consumption", description: "Power × SFOC × operating hours", icon: Fuel, to: "/tools/verified/engine-sfoc", category: "machinery" },
+  { id: "fuel-endurance", title: "Fuel Endurance", description: "Fuel ROB excluding protected reserve", icon: Gauge, to: "/tools/verified/fuel-endurance", category: "machinery" },
   { id: "cpa", title: "CPA / TCPA", description: "Relative motion and closest approach", icon: Compass, to: "/navigation/calc/cpa", category: "navigation" },
   { id: "draft-survey", title: "Draft Survey", description: "Draft and displacement survey worksheet", icon: Ruler, to: "/cargo/calculations/draft-survey", category: "cargo" },
   { id: "preloading", title: "Preloading", description: "Draft survey before cargo operations", icon: Ship, to: "/cargo/calculations/preloading", category: "cargo" },
@@ -62,7 +70,7 @@ const LEGACY_TOOL_IDS: Record<string, string> = {
 };
 const RECENT_STORAGE_KEY = "marine-expert-recent-calcs";
 const FAVORITES_STORAGE_KEY = "marine-expert-fav-calcs";
-const QUICK_IDS = ["draft-survey", "cpa", "nav-calc", "stability-calc", "unit-conv", "cargo", "thermodynamics"];
+const QUICK_IDS = ["draft-survey", "static-ukc", "voyage-eta", "free-surface-verified", "engine-sfoc", "cpa", "nav-calc", "stability-calc", "unit-conv", "cargo", "thermodynamics"];
 
 function readStoredList(key: string): string[] {
   try {

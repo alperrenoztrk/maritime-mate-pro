@@ -1,3 +1,4 @@
+import { calculateFouledHeatExchangerArea, calculateSpecificEmissionRate } from "@/lib/verifiedOperationalMath";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -121,7 +122,7 @@ interface EngineResult {
   co2DailyEmission: number; // Daily CO2 emission (kg)
   pmEmissionRate: number; // PM emission rate (g/kWh)
   eeoi: number; // Energy Efficiency Operational Indicator
-  cii: number; // Carbon Intensity Indicator
+  cii: number | null; // requires actual annual consumption/distance/capacity data
   
   // Heat Exchanger
   heatExchangerArea: number; // Required heat exchanger area (m²)
@@ -245,8 +246,9 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
   const calculateHeatExchangerArea = (): { area: number; tubes: number; length: number } => {
     // Q = U × A × LMTD
     // A = Q / (U × LMTD)
-    const cleanHeatTransferCoeff = 1 / (1/data.overallHeatTransferCoeff - data.foulingFactor);
-    const area = (data.heatLoad * 1000) / (cleanHeatTransferCoeff * data.logMeanTempDiff);
+    const { requiredAreaM2: area } = calculateFouledHeatExchangerArea(
+      data.heatLoad, data.overallHeatTransferCoeff, data.foulingFactor, data.logMeanTempDiff,
+    );
     
     // Assuming tube diameter 25mm, pitch 32mm
     const tubeArea = Math.PI * 0.025 * 4; // 4m tube length
@@ -271,6 +273,17 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
 
   const calculate = () => {
     try {
+      const numericInputs = Object.entries(data).filter((entry): entry is [string, number] => typeof entry[1] === "number");
+      if (numericInputs.some(([, value]) => !Number.isFinite(value))) {
+        throw new Error("All numeric inputs must be finite numbers. Check empty fields.");
+      }
+      if (data.mcrPower <= 0 || data.currentLoad <= 0 || data.currentLoad > 100 ||
+          data.engineRPM <= 0 || data.cylinderNumber <= 0 || data.dailyRunningHours <= 0 ||
+          data.lowerCalorificValue <= 0 || data.indicatedPower <= 0 ||
+          data.changeoverFlowRate <= 0 || data.overallHeatTransferCoeff <= 0 ||
+          data.logMeanTempDiff <= 0 || data.foulingFactor < 0) {
+        throw new Error("Power, load (0–100%), RPM, cylinder count, running hours, LCV and heat exchanger inputs must be physically valid.");
+      }
       const currentSFOC = calculateSFOC(data.currentLoad);
       const powerOutput = (data.mcrPower * data.currentLoad) / 100;
       
@@ -292,10 +305,10 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       const selectedNoxLimit = noxCalc.limits[data.requiredNoxTier];
       const noxDailyEmission = (noxCalc.rate * powerOutput * data.dailyRunningHours) / 1000; // kg/day
       
-      const soxEmissionRate = calculateSOxEmissions(1) / powerOutput * 1000; // g/kWh
+      const soxEmissionRate = calculateSpecificEmissionRate(calculateSOxEmissions(hourlyConsumption), powerOutput).gramsKwh;
       const soxDailyEmission = calculateSOxEmissions(hourlyConsumption) * data.dailyRunningHours; // kg/day
       
-      const co2EmissionRate = (calculateCO2Emissions(1) / powerOutput) * 1000000; // g/kWh
+      const co2EmissionRate = calculateSpecificEmissionRate(calculateCO2Emissions(hourlyConsumption), powerOutput).gramsKwh;
       const co2DailyEmission = calculateCO2Emissions(hourlyConsumption) * data.dailyRunningHours; // kg/day
       
       // Cooling system calculations
@@ -312,26 +325,14 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       const changeoverTime = data.preheatingTime + (data.pipelineVolume / data.changeoverFlowRate);
       const fuelWasteVolume = data.pipelineVolume * 1.1; // 10% safety margin
       
-      // Compliance checks
-      const noxCompliance: 'compliant' | 'non_compliant' | 'marginal' = (() => {
-        if (selectedNoxLimit <= 0) return 'non_compliant';
-        // Give a small margin band (within +5%) as "marginal"
-        if (noxCalc.rate <= selectedNoxLimit) return 'compliant';
-        if (noxCalc.rate <= selectedNoxLimit * 1.05) return 'marginal';
-        return 'non_compliant';
-      })();
-      
-      const soxCompliance: 'compliant' | 'non_compliant' | 'marginal' = 
-        data.fuelSulfurContent <= 0.1 ? 'compliant' :
-        data.fuelSulfurContent <= 0.5 ? 'marginal' : 'non_compliant';
-      
-      // Simple proxy: if user selects Tier III, treat this as "NOx ECA / Tier III area check".
-      const ecaCompliance = data.requiredNoxTier === 'III'
-        ? (data.fuelSulfurContent <= 0.1 && noxCalc.rate <= selectedNoxLimit)
-        : (data.fuelSulfurContent <= 0.1);
-      
+      // An assumed NOx rate is not an EIAPP/NOx Technical File measurement.
+      // Fuel sulphur alone cannot prove geographic and regulatory compliance.
+      const noxCompliance: EngineResult["noxCompliance"] = "marginal"; // displayed as not assessed
+      const soxCompliance: EngineResult["soxCompliance"] = "marginal"; // displayed as not assessed
+      const ecaCompliance = false; // never presented as a compliance verdict
+
       // EEOI calculation (kg CO2/nm)
-      const eeoi = (co2DailyEmission * 1000) / (14.5 * 24); // Assuming 14.5 knots speed
+      const eeoi = co2DailyEmission / (14.5 * 24); // kg CO₂/NM at assumed SOG, NOT EEOI
       
       // Recommendations and warnings
       const recommendations = [];
@@ -353,13 +354,8 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         warnings.push("Fuel sulfur content exceeds MARPOL limit");
       }
       
-      if (noxCalc.rate > selectedNoxLimit) {
-        warnings.push(`NOx emission exceeds the MARPOL Tier ${data.requiredNoxTier} limit (Limit: ${selectedNoxLimit.toFixed(2)} g/kWh)`);
-      }
-      
-      if (!ecaCompliance) {
-        warnings.push("Does not meet ECA zone requirements");
-      }
+      warnings.push("NOx rate is illustrative, not measured/certified. MARPOL/EIAPP compliance is NOT assessed.");
+      warnings.push("SOx/ECA compliance and EEOI/CII cannot be determined by these inputs. Check certificates and approved records.");
 
       const calculatedResult: EngineResult = {
         currentSFOC,
@@ -393,7 +389,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         co2DailyEmission,
         pmEmissionRate: 0.4, // Typical PM emission
         eeoi,
-        cii: eeoi * 1.2, // Simplified CII calculation
+        cii: null, // CII requires verified annual fuel/distance/capacity inputs
         heatExchangerArea: heatExchanger.area,
         numberOfTubes: heatExchanger.tubes,
         tubeLength: heatExchanger.length,
@@ -927,15 +923,14 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <Label className="text-sm font-medium">NOx Emission</Label>
+                  <Label className="text-sm font-medium">NOx illustrative estimate (not measured)</Label>
                   <p className="text-lg font-semibold">{result.noxEmissionRate.toFixed(2)} g/kWh</p>
                   <p className="text-xs text-muted-foreground">
                     Limit (Tier {data.requiredNoxTier}, RPM {data.engineRPM}): {result.noxLimit.toFixed(2)} g/kWh
                   </p>
                   <Badge variant={result.noxCompliance === 'compliant' ? 'default' : 
                                  result.noxCompliance === 'marginal' ? 'secondary' : 'destructive'}>
-                    {result.noxCompliance === 'compliant' ? 'Suitable' :
-                     result.noxCompliance === 'marginal' ? 'on the border' : 'Not Suitable'}
+                    Not assessed
                   </Badge>
                 </div>
                 <div>
@@ -943,8 +938,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                   <p className="text-lg font-semibold">{result.soxEmissionRate.toFixed(2)} g/kWh</p>
                   <Badge variant={result.soxCompliance === 'compliant' ? 'default' : 
                                  result.soxCompliance === 'marginal' ? 'secondary' : 'destructive'}>
-                    {result.soxCompliance === 'compliant' ? 'Suitable' :
-                     result.soxCompliance === 'marginal' ? 'on the border' : 'Not Suitable'}
+                    Not assessed
                   </Badge>
                 </div>
                 <div>
@@ -957,12 +951,10 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
                 </div>
                 <div>
                   <Label className="text-sm font-medium">ECA Compliance</Label>
-                  <Badge variant={result.ecaCompliance ? 'default' : 'destructive'}>
-                    {result.ecaCompliance ? 'Compatible' : 'Not Compatible'}
-                  </Badge>
+                  <Badge variant="secondary">Not assessed</Badge>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">EEOI</Label>
+                  <Label className="text-sm font-medium">CO₂ per NM (14.5 kn assumed; NOT EEOI)</Label>
                   <p className="text-lg font-semibold">{result.eeoi.toFixed(2)} kg CO₂/nm</p>
                 </div>
               </div>

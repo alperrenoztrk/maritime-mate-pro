@@ -689,22 +689,14 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
   };
 
   const calculateLoll = () => {
-    const kg = parseFloat(lollInputs.kg);
-    const km = parseFloat(lollInputs.km);
-    
-    if (isNaN(kg) || isNaN(km)) {
-      toast({ title: "Error", description: "Please enter valid numerical values", variant: "destructive" });
-      return;
-    }
-    
-    if (!runStabilityLogic("loll", { km, kg })) {
-      toast({ title: "Logical Check Error", description: "The values must satisfy KM > KG.", variant: "destructive" });
-      return;
-    }
-    
-    const lollAngle = Math.acos(kg / km) * (180 / Math.PI);
-    setLollResult(lollAngle);
-    toast({ title: "Calculation Completed", description: `Loll Angle: ${lollAngle.toFixed(2)}°` });
+    // A loll angle cannot be obtained from KG and KM alone. The legacy
+    // arccos(KG/KM) relation was dimensionally plausible but not physically valid.
+    setLollResult(null);
+    toast({
+      title: "Cannot determine angle of loll",
+      description: "KG and KM alone are insufficient. Use the vessel's approved cross-curves/GZ data and loading condition; do not rely on arccos(KG/KM).",
+      variant: "destructive",
+    });
   };
 
   // TRANSVERSE STABILITY CALCULATIONS
@@ -2177,7 +2169,7 @@ export const HydrostaticsStabilityCalculations = ({ singleMode = false, section,
           {/* Loll Açısı Hesaplama */}
           {(!singleMode || !calc || calc==='loll') && (
           <div className="bg-red-50 dark:bg-gray-700 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Loll Angle (φloll = arccos(KG / KM))</h4>
+            <h4 className="font-semibold mb-3">Angle of Loll — approved GZ curve required</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
               <div>
                 <Label htmlFor="loll-kg">KG (m)</Label>

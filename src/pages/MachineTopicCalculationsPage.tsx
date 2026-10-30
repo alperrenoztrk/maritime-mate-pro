@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { calculateCounterflowLmtd } from "@/lib/verifiedOperationalMath";
+import { CalculatorPanel, CalculatorNumberField, CalculatorResultPanel, parseProfessionalFields, buildProfessionalReport } from "@/components/calculations/ProfessionalCalculator";
+import type { ProfessionalGroup, ProfessionalOutput } from "@/lib/professionalCalculatorCore";
 import { useParams } from "react-router-dom";
 import { machineTopicBySlug } from "@/data/machineTopicData";
-import { ArrowRight, Calculator } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { getCourseTopic } from "@/data/courseContent";
 import { CourseTopicHeader } from "@/components/courseContent/CourseTopicHeader";
 import { CalculatorList } from "@/components/courseContent/CalculatorList";
@@ -30,6 +30,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
       calculate: (v) => {
         const TH = v.th + 273.15;
         const TL = v.tl + 273.15;
+        if (TH <= 0 || TL <= 0 || TL >= TH) {
+          throw new RangeError("Absolute temperatures must be above 0 K and the hot reservoir must be hotter than the cold reservoir.");
+        }
         const eta = (1 - TL / TH) * 100;
         return [{ label: "Carnot Efficiency (η)", value: `${eta.toFixed(2)}%` }];
       },
@@ -44,11 +47,8 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "t2o", label: "Cold Outlet", unit: "°C", placeholder: "50" },
       ],
       calculate: (v) => {
-        const dt1 = v.t1i - v.t2o;
-        const dt2 = v.t1o - v.t2i;
-        if (dt1 <= 0 || dt2 <= 0) return [{ label: "Error", value: "The temperature differences must be positive" }];
-        const lmtd = Math.abs(dt1 - dt2) < 0.01 ? dt1 : (dt1 - dt2) / Math.log(dt1 / dt2);
-        return [{ label: "LMTD", value: `${lmtd.toFixed(2)} °C` }];
+        const { lmtdK } = calculateCounterflowLmtd(v.t1i, v.t1o, v.t2i, v.t2o);
+        return [{ label: "LMTD", value: `${lmtdK.toFixed(2)} K` }];
       },
     },
     {
@@ -60,6 +60,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "lmtd", label: "LMTD", unit: "°C", placeholder: "35" },
       ],
       calculate: (v) => {
+        if (v.q < 0 || v.u <= 0 || v.lmtd <= 0) {
+          throw new RangeError("Heat load cannot be negative; U and LMTD must be positive.");
+        }
         const area = (v.q * 1000) / (v.u * v.lmtd);
         return [{ label: "Required Area (A)", value: `${area.toFixed(2)} m²` }];
       },
@@ -73,6 +76,9 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "gamma", label: "Specific Heat Ratio (γ)", unit: "", placeholder: "1.4" },
       ],
       calculate: (v) => {
+        if (v.r <= 1 || v.rc <= 1 || v.rc >= v.r || v.gamma <= 1) {
+          throw new RangeError("Diesel cycle requires compression ratio > cutoff ratio > 1 and gamma > 1.");
+        }
         const eta = (1 - (1 / Math.pow(v.r, v.gamma - 1)) * ((Math.pow(v.rc, v.gamma) - 1) / (v.gamma * (v.rc - 1)))) * 100;
         return [{ label: "Diesel Cycle Efficiency (η)", value: `${eta.toFixed(2)}%` }];
       },
@@ -85,6 +91,7 @@ const topicCalculations: Record<string, CalcTool[]> = {
         { key: "gamma", label: "Specific Heat Ratio (γ)", unit: "", placeholder: "1.4" },
       ],
       calculate: (v) => {
+        if (v.r <= 1 || v.gamma <= 1) throw new RangeError("Otto cycle requires r > 1 and gamma > 1.");
         const eta = (1 - 1 / Math.pow(v.r, v.gamma - 1)) * 100;
         return [{ label: "Otto Cycle Efficiency (η)", value: `${eta.toFixed(2)}%` }];
       },
@@ -1470,54 +1477,87 @@ const topicCalculations: Record<string, CalcTool[]> = {
 
 function CalcToolCard({ tool }: { tool: CalcTool }) {
   const [vals, setVals] = useState<Record<string, string>>({});
-  const [results, setResults] = useState<{ label: string; value: string }[] | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [results, setResults] = useState<ProfessionalOutput | null>(null);
+  const [lastInputs, setLastInputs] = useState<Record<string, number>>({});
+  const [computedAtUtc, setComputedAtUtc] = useState("");
+  const [message, setMessage] = useState("");
+  const [copyStatus, setCopyStatus] = useState("");
 
-  const handleCalc = () => {
-    const numVals: Record<string, number> = {};
-    for (const inp of tool.inputs) {
-      const v = parseFloat(vals[inp.key] || "0");
-      if (isNaN(v)) return;
-      numVals[inp.key] = v;
-    }
-    const r = tool.calculate(numVals);
-    setResults(Array.isArray(r) ? r : [r]);
+  const groups: ProfessionalGroup[] = [{
+    title: "Machine Calculation Inputs",
+    fields: tool.inputs.map((input) => ({ ...input })),
+  }];
+
+  const update = (key: string, value: string) => {
+    setVals((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => {
+      if (!prev[key]) return prev;
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+    setResults(null);
+    setCopyStatus("");
+    setMessage("");
   };
-
+  const calculate = () => {
+    const checked = parseProfessionalFields(groups, vals);
+    setErrors(checked.errors);
+    setResults(null);
+    setCopyStatus("");
+    if (Object.keys(checked.errors).length > 0) {
+      setMessage("Complete the highlighted inputs with valid numbers.");
+      return;
+    }
+    try {
+      const values = tool.calculate(checked.values);
+      if (!Array.isArray(values) || values.length === 0) throw new Error("No calculation result was returned.");
+      const errorResult = values.find((item) =>
+        /^(?:error|hata)$/i.test(item.label) || /\b(?:NaN|Infinity|undefined)\b/i.test(item.value));
+      if (errorResult) throw new Error(errorResult.value);
+      setLastInputs(checked.values);
+      setComputedAtUtc(new Date().toISOString());
+      setResults({
+        results: values.map((value, index) => ({ ...value, primary: index === 0 })),
+        steps: [],
+        notices: ["Legacy formula: input completeness and output finiteness were checked, but this specific formula has not necessarily undergone an independent vessel-level audit."],
+      });
+      setMessage("");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Calculation failed.");
+    }
+  };
+  const copy = async () => {
+    if (!results) return;
+    try {
+      await navigator.clipboard.writeText(buildProfessionalReport(
+        tool.name, groups, lastInputs, results, tool.description, computedAtUtc));
+      setCopyStatus("Copied");
+    } catch {
+      setCopyStatus("Clipboard unavailable.");
+    }
+  };
   return (
-    <Card className="bg-card/80 border-border/40">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base">{tool.name}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="grid gap-3 sm:grid-cols-2">
-          {tool.inputs.map((inp) => (
-            <div key={inp.key} className="space-y-1">
-              <Label className="text-xs">{inp.label} {inp.unit && <span className="text-muted-foreground">({inp.unit})</span>}</Label>
-              <Input
-                type="number"
-                placeholder={inp.placeholder}
-                value={vals[inp.key] || ""}
-                onChange={(e) => setVals((p) => ({ ...p, [inp.key]: e.target.value }))}
-                className="h-9"
-              />
-            </div>
+    <CalculatorPanel title={tool.name} description={tool.description}>
+      <div className="space-y-4">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {tool.inputs.map((field) => (
+            <CalculatorNumberField key={field.key} id={`machine-${tool.name.replace(/[^a-z0-9]/gi, "-")}-${field.key}`}
+              label={field.label} unit={field.unit} placeholder={field.placeholder}
+              value={vals[field.key] ?? ""} onChange={(value) => update(field.key, value)}
+              error={errors[field.key]} />
           ))}
         </div>
-        <Button onClick={handleCalc} size="sm" className="w-full gap-2">
+        <Button onClick={calculate} size="lg" className="min-h-11 w-full gap-2 rounded-xl">
           <Calculator className="h-4 w-4" /> Calculate
         </Button>
-        {results && (
-          <div className="bg-primary/5 rounded-lg p-3 space-y-1">
-            {results.map((r, i) => (
-              <div key={i} className="flex justify-between text-sm">
-                <span className="text-muted-foreground">{r.label}</span>
-                <span className="font-semibold text-foreground">{r.value}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </CardContent>
-    </Card>
+        {message && <p role="alert" className="text-sm text-destructive">{message}</p>}
+        {results && <CalculatorResultPanel
+          results={results.results} formula={tool.description}
+          notices={results.notices} onCopy={copy} copyStatus={copyStatus} />}
+      </div>
+    </CalculatorPanel>
   );
 }
 
@@ -1568,6 +1608,7 @@ export default function MachineTopicCalculationsPage() {
           </div>
         </header>
 
+        <CalculationQualityBanner />
         <div className="grid gap-4">
           {calcs.map((tool, idx) => (
             <CalcToolCard key={idx} tool={tool} />
