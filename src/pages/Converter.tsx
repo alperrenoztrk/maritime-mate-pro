@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { ArrowLeftRight, Ruler } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { CalculatorPanel, CalculatorNumberField, CalculatorResultPanel } from "@/components/calculations/ProfessionalCalculator";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { LibraryPageShell } from "@/components/library/LibraryInterface";
@@ -66,9 +65,8 @@ export default function ConverterPage() {
           </button>
         ))}
       </nav>
-      <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
-        <CardHeader><CardTitle className="text-base">{category.label}</CardTitle></CardHeader>
-        <CardContent className="space-y-5">
+      <CalculatorPanel title={category.label}>
+        <div className="space-y-5">
           <div className="grid gap-2">
             <Label htmlFor="unit-from">From</Label>
             <Select value={fromId} onValueChange={setFromId}>
@@ -78,10 +76,9 @@ export default function ConverterPage() {
                   <SelectItem key={unit.id} value={unit.id}>{unit.label} ({unit.symbol})</SelectItem>)}
               </SelectContent>
             </Select>
-            <Label htmlFor="converter-input">Value</Label>
-            <Input id="converter-input" type="text" inputMode="decimal"
+            <CalculatorNumberField id="converter-input" label="Value"
               value={value} placeholder="Enter a value"
-              onChange={(event) => setValue(event.target.value)} />
+              onChange={setValue} error={error || undefined} />
           </div>
           <Button type="button" onClick={swap} variant="outline" className="w-full gap-2">
             <ArrowLeftRight className="h-4 w-4" aria-hidden /> Swap units
@@ -95,18 +92,23 @@ export default function ConverterPage() {
                   <SelectItem key={unit.id} value={unit.id}>{unit.label} ({unit.symbol})</SelectItem>)}
               </SelectContent>
             </Select>
-            <div aria-live="polite" className="rounded-xl border border-border/70 bg-background/70 p-4">
-              <p className="text-xs text-muted-foreground">Converted value</p>
-              <p className="mt-1 break-words text-xl font-semibold tabular-nums text-foreground">
-                {converted !== null
-                  ? `${Number(converted.toPrecision(10)).toLocaleString(undefined, { maximumFractionDigits: 10 })} ${to.symbol}`
-                  : "—"}
+            {converted !== null ? (
+              <CalculatorResultPanel title="Converted Value"
+                results={[{
+                  label: `${category.units.find((unit) => unit.id === fromId)?.symbol} → ${to.symbol}`,
+                  value: `${Number(converted.toPrecision(10)).toLocaleString(undefined, { maximumFractionDigits: 10 })} ${to.symbol}`,
+                  primary: true,
+                }]}
+                steps={[`Express ${parsed} ${category.units.find((unit) => unit.id === fromId)?.symbol} in the SI reference for ${category.label}, then convert to ${to.symbol}.`]}
+              />
+            ) : (
+              <p className="rounded-xl border border-dashed border-border p-3 text-xs text-muted-foreground" aria-live="polite">
+                Enter a value to see the converted result.
               </p>
-              {error && <p role="alert" className="mt-2 text-sm text-destructive">{error}</p>}
-            </div>
+            )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </CalculatorPanel>
       <p className="text-xs leading-relaxed text-muted-foreground">
         1 NM = 1,852 m; 1 kn = 1 NM/h; 1 cable = 0.1 NM.
         Temperature conversions are absolute temperatures, not temperature differences.
