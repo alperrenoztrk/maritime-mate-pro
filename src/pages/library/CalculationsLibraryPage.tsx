@@ -6,7 +6,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AppSymbol } from "@/components/ui/AppSymbol";
-import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import { hapticImpact, hapticSelection } from "@/lib/haptics";
 import {
   LibraryEntryCard, LibraryPageShell, LibrarySearchField, LibrarySectionHeading,
@@ -40,7 +39,7 @@ const TOOLS: CalcTool[] = [
   { id: "preloading", title: "Preloading", description: "Draft survey before cargo operations", icon: Ship, to: "/cargo/calculations/preloading", category: "cargo" },
   { id: "ballast", title: "Draft Change Estimate", description: "Approximate displacement change from drafts and TPC", icon: Droplets, to: "/cargo/calculations/ballast", category: "cargo" },
   { id: "density", title: "Density Correction", description: "Displacement correction for measured water density", icon: Thermometer, to: "/cargo/calculations/density", category: "cargo" },
-  { id: "bunker", title: "Bunker Survey", description: "Fuel oil quantity calculations", icon: Gauge, to: "/cargo/calculations/bunker", category: "cargo" },
+  { id: "bunker", title: "Bunker Quantity Estimate", description: "Fuel volume and density calculations", icon: Gauge, to: "/cargo/calculations/bunker", category: "cargo" },
   { id: "cargo", title: "Cargo Calculations", description: "Browse cargo calculation worksheets", icon: Layers, to: "/cargo/calculations", category: "cargo" },
   { id: "stability-calc", title: "Stability Calculations", description: "GM, GZ and related stability worksheets", icon: Scale, to: "/stability/calculations", category: "stability" },
   { id: "tank", title: "Rectangular Tank Estimate", description: "Volume, mass and vertical moment; not a sounding table", icon: Anchor, to: "/tank", category: "stability" },
@@ -171,14 +170,14 @@ export default function CalculationsLibraryPage() {
         placeholder="Search maritime calculations…" ariaLabel="Search tools" />
       {atRoot && (
         <>
-          <InsetGroupedList columns={2}>
+          <div className="grid gap-2 sm:grid-cols-2">
             {(Object.entries(CATEGORY_META) as Array<[Category, (typeof CATEGORY_META)[Category]]>).map(([id, meta]) => (
               <LibraryEntryCard key={id} title={meta.title} description={meta.description}
                 icon={meta.icon} accent={meta.accent}
                 badge={TOOLS.filter((tool) => tool.category === id).length}
                 onClick={() => setActiveCategory(id)} />
             ))}
-          </InsetGroupedList>
+          </div>
           {favorites.length > 0 && (
             <section className="space-y-3">
               <LibrarySectionHeading badge={favorites.length}>Favorites</LibrarySectionHeading>
