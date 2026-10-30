@@ -1,3 +1,4 @@
+import { splitLegacyReadingText } from "@/lib/legacyReadingText";
 import type { ReactNode } from "react";
 import { StructuredLessonText } from "@/components/lessons/StructuredLessonText";
 import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
@@ -20,22 +21,6 @@ export interface LegacyBookExtra {
 }
 
 /** Preserve full source text, splitting only at blank-line boundaries. */
-export function splitLegacyReadingText(input: string, maxChars = 1250): string[] {
-  if (!input.trim()) return [];
-  const paragraphs = input.trim().split(/\n\s*\n/).filter(Boolean);
-  const pages: string[] = [];
-  let current = "";
-  for (const paragraph of paragraphs) {
-    if (current && current.length + paragraph.length + 2 > maxChars) {
-      pages.push(current);
-      current = "";
-    }
-    current += (current ? "\n\n" : "") + paragraph;
-  }
-  if (current) pages.push(current);
-  return pages;
-}
-
 export function createLegacyReadingPlan(topic: LegacyBookTopic, extras: readonly LegacyBookExtra[] = []): ReadingPage[] {
   const pages: ReadingPage[] = [{
     id: "intro", title: topic.title, section: "Introduction",
