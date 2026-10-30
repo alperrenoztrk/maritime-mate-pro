@@ -141,3 +141,20 @@ export function calculateCounterflowLmtd(
     : (hotEndDeltaK - coldEndDeltaK) / Math.log(hotEndDeltaK / coldEndDeltaK);
   return { hotEndDeltaK, coldEndDeltaK, lmtdK: finiteResult(lmtdK) };
 }
+
+/** Heat transfer with a positive fouling resistance added in series to clean 1/U. */
+export function calculateFouledHeatExchangerArea(
+  heatLoadKw: number, cleanUWattsM2K: number, foulingResistanceM2KWatts: number, lmtdK: number,
+) {
+  const q = nonNegative(heatLoadKw, "Heat load");
+  const u = positive(cleanUWattsM2K, "Clean heat transfer coefficient");
+  const rf = nonNegative(foulingResistanceM2KWatts, "Fouling resistance");
+  const dt = positive(lmtdK, "Log mean temperature difference");
+  const effectiveUWattsM2K = finiteResult(1 / (1 / u + rf));
+  return { effectiveUWattsM2K, requiredAreaM2: finiteResult(q * 1000 / (effectiveUWattsM2K * dt)) };
+}
+
+/** Exhaust/fuel mass emission rate converted from kg/h to g/kWh of delivered power. */
+export function calculateSpecificEmissionRate(emissionKgHour: number, powerKw: number) {
+  return { gramsKwh: finiteResult(nonNegative(emissionKgHour, "Emission mass flow") * 1000 / positive(powerKw, "Power output")) };
+}
