@@ -531,12 +531,12 @@ export const GrainStabilityCalculator = () => {
           </div>
           <div className={`mt-2 rounded p-2 ${withinIllustrativeAngle ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
             <div className="flex items-center gap-2">
-              {passesIMO ? (
+              {withinIllustrativeAngle ? (
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
               ) : (
                 <AlertTriangle className="h-4 w-4 text-red-500" />
               )}
-              <span className={`text-xs ${passesIMO ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
+              <span className={`text-xs ${withinIllustrativeAngle ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
                 {withinIllustrativeAngle ? 'Indicative heel ≤12° — NOT IMO grain approval' : 'Indicative heel >12° — investigate with approved grain booklet'}
               </span>
             </div>
