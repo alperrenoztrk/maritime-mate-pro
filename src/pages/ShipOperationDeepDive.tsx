@@ -1,3 +1,4 @@
+import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -74,59 +75,18 @@ export default function ShipOperationDeepDive() {
   const totalPages = chapters.length + 1;
   const chapter = activePage > 0 ? chapters[activePage - 1] : undefined;
 
-  return (
-    <MobileLayout>
-      <div className="relative min-h-screen px-4 pb-32 py-8">
-        <div className="relative z-10 mx-auto flex max-w-3xl flex-col gap-5">
-          <header className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
-            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary">
-              <BookOpen className="h-4 w-4" /> Detailed Explanation
-            </div>
-            <p className="mb-1 text-xs text-muted-foreground">
-              {ship.label} · {department?.label}
-            </p>
-            <h1 className="text-2xl font-black leading-tight text-foreground">{opMeta.title}</h1>
-          </header>
-
-          {loading && (
-            <div className="flex items-center justify-center gap-2 rounded-xl border border-border/40 bg-card/60 p-8 text-sm text-muted-foreground">
-              <Loader2 className="h-4 w-4 animate-spin" /> Content loading…
-            </div>
-          )}
-
-          {!loading && (
-            <>
-              {/* Chapter chips */}
-              {chapters.length > 0 && (
-                <nav className="sticky top-2 z-20 -mx-1 overflow-x-auto rounded-xl border border-border/40 bg-card/80 p-2">
-                  <div className="flex gap-1.5">
-                    {["Summary", ...chapters.map((ch) => ch.heading.replace(/^\d+\.\s*/, ""))].map((label, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setActivePage(i)}
-                        className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
-                          activePage === i
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-background/60 text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        {i === 0 ? label : `${i}. ${label}`}
-                      </button>
-                    ))}
-                  </div>
-                </nav>
-              )}
-
-              <article className="rounded-2xl border border-border/50 bg-card/80 p-6 shadow-md dark:bg-slate-900/60">
-                {chapter ? (
-                  <>
-                    <h2 className="mb-3 text-xl font-bold text-foreground">{chapter.heading}</h2>
-                    {chapter.lead && (
+  const pages: ReadingPage[] = [
+    {id:"summary",title:"Operation summary",section:department?.label ?? "Operations",
+      content:<OperationSummary operation={opMeta} longFormMissing={!content} />},
+    ...chapters.map((ch,index)=>({
+      id:`chapter-${index}`,title:ch.heading,section:`Section ${index+1} / ${chapters.length}`,
+      content:<div className="space-y-5"><h2 className="mb-3 text-xl font-bold text-foreground">{ch.heading}</h2>
+                    {ch.lead && (
                       <p className="mb-5 rounded-lg border-l-4 border-primary/40 bg-primary/5 p-3 text-sm italic leading-relaxed text-foreground/90">
-                        {chapter.lead}
+                        {ch.lead}
                       </p>
                     )}
-                    {chapter.sections.map((sec, si) => (
+                    {ch.sections.map((sec, si) => (
                       <section key={si} className="mb-7">
                         <h3 className="mb-2 text-base font-semibold text-foreground">{sec.subheading}</h3>
                         {sec.paragraphs?.map((p, pi) => (
@@ -189,49 +149,19 @@ export default function ShipOperationDeepDive() {
                         })}
                       </section>
                     ))}
-                  </>
-                ) : (
-                  <OperationSummary operation={opMeta} longFormMissing={!content} />
-                )}
-
-                {/* Prev/Next */}
-                {totalPages > 1 && (
-                  <div className="mt-6 flex items-center justify-between border-t border-border/30 pt-4">
-                    <button
-                      onClick={() => setActivePage((v) => Math.max(0, v - 1))}
-                      disabled={activePage === 0}
-                      className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
-                    >
-                      <ChevronLeft className="h-4 w-4" /> Previous
-                    </button>
-                    <span className="text-xs text-muted-foreground">
-                      {activePage + 1} / {totalPages}
-                    </span>
-                    <button
-                      onClick={() => setActivePage((v) => Math.min(totalPages - 1, v + 1))}
-                      disabled={activePage === totalPages - 1}
-                      className="flex items-center gap-1.5 rounded-lg border border-border/40 bg-background/60 px-3 py-2 text-xs font-semibold text-foreground disabled:opacity-40"
-                    >
-                      Next <ChevronRight className="h-4 w-4" />
-                    </button>
-                  </div>
-                )}
-              </article>
-
-              {content?.sources && content.sources.length > 0 && (
-                <aside className="rounded-2xl border border-border/40 bg-card/60 p-5 text-xs text-muted-foreground">
-                  <div className="mb-2 font-semibold text-foreground">Resources</div>
-                  <ul className="list-disc space-y-1 pl-5">
-                    {content.sources.map((s, i) => (
-                      <li key={i}>{s}</li>
-                    ))}
-                  </ul>
-                </aside>
-              )}
-            </>
-          )}
-        </div>
-      </div>
+</div>,
+    })),
+    ...(content?.sources?.length ? [{
+      id:"sources",title:"Source references",section:"Further reading",
+      content:<ul className="list-disc space-y-3 pl-5">{content.sources.map((v,i)=><li key={i}>{v}</li>)}</ul>,
+    }] : []),
+  ];
+  return (
+    <MobileLayout>
+      {loading ? <p className="p-6 text-sm text-muted-foreground">Loading operation lesson…</p> :
+        <PagedReadingSurface key={`${shipType}:${dept}:${opIndex}`} title={opMeta.title}
+          subtitle={`${ship.label} · ${department?.label ?? ""}`} pages={pages}
+          storageKey={`mariners-book:ship-operation:${shipType}:${dept}:${opIndex}`} />}
     </MobileLayout>
   );
 }
