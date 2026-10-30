@@ -25,10 +25,10 @@ export function paginateItems(count: number, batchSize: number): Array<[number, 
 export function createRegulationReadingPlan(data: RegulationItem): RegulationReadingStep[] {
   const pages: RegulationReadingStep[] = [];
   const add = (step: RegulationReadingStep) => pages.push(step);
-  const groups = (kind: string, section: string, title: string, count: number, chunk: number) => {
+  const groups = (kind: string, section: string, title: string, count: number, chunk: number, chapterIndex?: number) => {
     paginateItems(count, chunk).forEach(([start, end]) => add({
       id: `${kind}-${start}`, title: `${title}${count > chunk ? ` · ${start + 1}–${end}` : ""}`,
-      section, kind, start, end,
+      section, kind, start, end, chapterIndex,
     }));
   };
   add({ id: "overview", title: data.label, section: "Introduction", kind: "overview" });
@@ -51,7 +51,7 @@ export function createRegulationReadingPlan(data: RegulationItem): RegulationRea
         add({ ...base, kind: "narrative", id: `${id}-empty`, title: subsection.heading, start: 0, end: 0 });
       }
     });
-    groups(`chapter-takeaways-${chapterIndex}`, `Chapter ${chapterIndex + 1}`, "Key takeaways", chapter.chapterTakeaways?.length ?? 0, 4);
+    groups(`chapter-takeaways-${chapterIndex}`, `Chapter ${chapterIndex + 1}`, "Key takeaways", chapter.chapterTakeaways?.length ?? 0, 4, chapterIndex);
   });
 
   data.detailedSections?.forEach((item, itemIndex) =>
