@@ -2228,5 +2228,985 @@ export const professionalCaseStudies: Record<string, BetaSection> = {
         "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
       }
     ]
+  },
+  "stability-2-0-kaldirma-kuvveti-buoyancy-force-1": {
+    "id": "stability-2-0-kaldirma-kuvveti-buoyancy-force-1-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Buoyancy equals the weight of displaced water in equilibrium; displacement volume must be multiplied by the actual water density. Different seawater and dockwater densities give different immersed volumes for the same floating mass.\n\nCommon error: Do not use 1.000 t/m³ as a universal seawater density.",
+    "example": {
+      "problem": "A hull displaces 10,000 m³ in water of density 1.025 t/m³.",
+      "steps": [
+        "Multiply 10,000 × 1.025 to obtain 10,250 tonnes displaced mass.",
+        "Check that 10,000 m³ is the actual immersed hull volume, not gross vessel volume.",
+        "Recalculate using measured water density if a draught survey is made in brackish water."
+      ],
+      "result": "The displacement is 10,250 t under the stated conditions."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-2-1-agirlik-merkezi-g-2": {
+    "id": "stability-2-1-agirlik-merkezi-g-2-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "KG changes as a moment-weighted average when weights are added, shifted or removed. The final displacement changes with added mass, but not with movement of existing mass. Free-surface correction is considered separately.\n\nCommon error: Never divide final moments by the vessel's old displacement.",
+    "example": {
+      "problem": "Initial displacement is 8,000 t with KG 6.0 m; 200 t cargo with KG 15.0 m is loaded.",
+      "steps": [
+        "Original moment: 8,000 × 6 = 48,000 t·m.",
+        "Add 200 × 15 = 3,000 t·m, and use new displacement 8,200 t.",
+        "New KG = 51,000 / 8,200 ≈ 6.22 m; assess actual GM and GZ limits."
+      ],
+      "result": "The higher cargo raises KG by about 0.22 m in this example."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-2-5-metasentrik-nokta-ve-metasentrik-yukseklik-6": {
+    "id": "stability-2-5-metasentrik-nokta-ve-metasentrik-yukseklik-6-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Initial metacentric height GM = KM minus KG at the loading draught. Free-surface correction lowers effective GM; small-angle positive GM alone cannot certify the entire righting-arm or damage-stability behaviour.\n\nCommon error: Never deduct free-surface correction again if the loader already applied it.",
+    "example": {
+      "problem": "A condition has KM 7.60 m, KG 6.80 m and free-surface correction 0.25 m.",
+      "steps": [
+        "Uncorrected GM = 7.60 − 6.80 = 0.80 m.",
+        "Corrected GM = 0.80 − 0.25 = 0.55 m.",
+        "Check the approved GZ curve, downflooding points and any special loading limits."
+      ],
+      "result": "Corrected initial GM is 0.55 m, not an all-criteria pass."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-5-4-parametrik-yalpa-parametric-rolling-4": {
+    "id": "stability-5-4-parametrik-yalpa-parametric-rolling-4-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Parametric rolling arises from periodic stability variation as waves encounter the hull. It can grow in head or following seas, depending on ship geometry, wave encounter period, natural rolling and speed, and threatens deck cargo securing.\n\nCommon error: Do not prescribe one universal alteration that may increase another wave-motion hazard.",
+    "example": {
+      "problem": "A container vessel in nearly head seas develops rapidly increasing alternating roll amplitudes.",
+      "steps": [
+        "Evaluate actual roll trend, encounter period, sea direction and course/speed against ship-specific guidance.",
+        "Notify the Master, secure exposed operations and assess lashings and crew safety.",
+        "Apply the vessel-approved heavy weather speed/course mitigation and monitor effects continuously."
+      ],
+      "result": "Increasing roll in head seas can be a warning of parametric rolling rather than ordinary beam-sea response."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-6-1-gz-egrisi-nedir-1": {
+    "id": "stability-6-1-gz-egrisi-nedir-1-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "The GZ curve describes righting lever versus heel for a specific loading condition. Its peak, positive range, integral and downflooding limits each convey different stability information; identical GM does not imply identical reserve stability.\n\nCommon error: Do not extrapolate GZ = GM × sin(heel) across all heel angles.",
+    "example": {
+      "problem": "Two cargo conditions have equal initial GM but different downflooding angles and curve maxima.",
+      "steps": [
+        "Compare complete righting-arm curves over the relevant heel interval.",
+        "Read peak GZ, location of peak, range of positive stability and first downflooding angle.",
+        "Evaluate required GZ areas and angle criteria for the actual ship and stability booklet."
+      ],
+      "result": "Equal initial GM cannot establish equivalent large-angle or reserve stability."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-6-3-dinamik-stabilite-ve-enerji-yaklasimi-3": {
+    "id": "stability-6-3-dinamik-stabilite-ve-enerji-yaklasimi-3-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "The integral of GZ over heel angle represents the quasi-static dynamic-stability area, expressed in m·rad. Displacement weight times this integral approximates work against heel; it is not a prediction of ship motions in random seas.\n\nCommon error: Never label an integral over degrees as m·rad.",
+    "example": {
+      "problem": "An approved GZ curve has area 0.080 m·rad between zero and 30° heel; displacement is 10,000 t.",
+      "steps": [
+        "Confirm the angle integration uses radians, not degrees.",
+        "Calculate 10,000,000 kg × 9.81 m/s² × 0.080 m ≈ 7.85 MJ.",
+        "Evaluate the applicable area criteria and downflooding restrictions in the approved stability record."
+      ],
+      "result": "The 7.85 MJ result is a quasi-static illustration, not a universal capsize energy threshold."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-7-4-tank-geometrisinin-etkisi-4": {
+    "id": "stability-7-4-tank-geometrisinin-etkisi-4-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "In an ideal rectangular slack tank, transverse free-surface moment scales with length times breadth cubed; actual tank shape, fill, baffles and liquid density modify the approved tabulated moment. Volume alone is insufficient.\n\nCommon error: Do not assign identical FSM to equal-volume tanks with different breadth.",
+    "example": {
+      "problem": "Two equal-length rectangular tanks of width 4 m and 8 m contain slack liquid of the same density.",
+      "steps": [
+        "Hold density and tank length constant in the simplified comparison.",
+        "Free-surface scaling ratio = (8 / 4)³ = 8.",
+        "Replace this estimate with approved tank-specific FSM tables for operational stability."
+      ],
+      "result": "Doubling tank breadth raises idealised free-surface moment eightfold."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-8-5-yukleme-planlamasi-ve-trim-optimizasyonu-5": {
+    "id": "stability-8-5-yukleme-planlamasi-ve-trim-optimizasyonu-5-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Longitudinal weight movement creates a trimming moment and changes trim, with the response governed by hydrostatic MCT 1 cm and LCF. A simple estimate does not provide the individual forward and aft draught changes.\n\nCommon error: Never ignore LCF position, free surface or strength criteria.",
+    "example": {
+      "problem": "MCT 1 cm is 180 t·m/cm at the current draught; 90 t is moved 20 m forward.",
+      "steps": [
+        "Compute trimming moment 90 × 20 = 1,800 t·m forward.",
+        "Estimate trim change magnitude 1,800 / 180 = 10 cm toward the added forward moment.",
+        "Use LCF and approved loader hydrostatics to assess both end draughts and longitudinal strength."
+      ],
+      "result": "Approximately 10 cm overall trim change, not 10 cm at the bow alone."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-9-5-progressive-flooding-ardisik-su-basmasi-5": {
+    "id": "stability-9-5-progressive-flooding-ardisik-su-basmasi-5-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Progressive flooding develops when initial water ingress spreads through additional boundaries such as ducts, penetrations, doors and vents. Initial dry soundings do not rule out later loss of residual stability.\n\nCommon error: Do not assume subdivision integrity from one early sounding.",
+    "example": {
+      "problem": "A collision floods a void space, while a neighbouring space is dry but has a compromised access-door seal.",
+      "steps": [
+        "Account for people and preserve watertight boundaries without opening a pressurised door.",
+        "Trace all connected spaces, vents and penetrations using the damage control plan.",
+        "Monitor sequential soundings, heel and trim and run the approved damage-stability assessment."
+      ],
+      "result": "A neighbouring space may flood later even if initially dry."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-10-1-imo-intact-stability-code-2008-is-code-1": {
+    "id": "stability-10-1-imo-intact-stability-code-2008-is-code-1-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "The 2008 IS Code combines mandatory and recommended criteria, with ship-specific limitations and approved information. Positive initial GM is only one component of the intact stability assessment; the complete righting-arm curve matters.\n\nCommon error: Do not mistake a generic training calculator for a certified shipboard loading system.",
+    "example": {
+      "problem": "A training spreadsheet reports 'pass' because GM exceeds a single chosen threshold.",
+      "steps": [
+        "Confirm the ship's actual approved booklet and governing criteria.",
+        "Review GZ areas, peak and angle, downflooding points, operational and weather limits as appropriate.",
+        "Recalculate the final load case using the ship-approved stability instrument before authorising departure."
+      ],
+      "result": "One green GM cell cannot demonstrate all IMO intact-stability criteria."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "stability-9-4-hasar-kontrol-ve-mudahale-4": {
+    "id": "stability-9-4-hasar-kontrol-ve-mudahale-4-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "Damage control requires monitored ingress rates, boundary integrity and stability throughout the response. Pump operation, intentional transfers and counterflooding can affect free-surface and longitudinal stability in unexpected ways.\n\nCommon error: Never open cross-connections or counterflood without assessing the ship's residual stability.",
+    "example": {
+      "problem": "A damaged compartment continues flooding and list increases despite a bilge pump running.",
+      "steps": [
+        "Account for personnel, identify damaged boundaries and avoid unassessed access.",
+        "Take repeated soundings; compare ingress and pump performance, heel and trim trends.",
+        "Escalate to the Master and damage-control team for approved modelling and pumping decisions."
+      ],
+      "result": "A pump running is not evidence that flooding has been controlled."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "pre-departure-checklist": {
+    "id": "pre-departure-checklist-professional-application",
+    "title": "Technical calculation and shipboard interpretation",
+    "content": "A final departure stability check must use actual cargo, fuel, water, ballast, free-surface states and shipboard draughts. A previously approved loadcase can become invalid after any substantial late shift of a high or longitudinally displaced weight.\n\nCommon error: Never take a stale loading-condition report as the departure calculation.",
+    "example": {
+      "problem": "The loading instrument shows approved but a 150 t deck load was moved after the condition was saved.",
+      "steps": [
+        "Correct the cargo centre of gravity and longitudinal position, ballast and tank states in the loading instrument.",
+        "Verify final GM/GZ compliance, trim/draught, shear and bending limits using the approved book and instrument.",
+        "Record the validated final condition and inform the Master before unmooring."
+      ],
+      "result": "A saved green status is not proof that the actual final condition remains approved."
+    },
+    "references": [
+      {
+        "title": "IMO 2008 IS Code — MSC.267(85)",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.267%2885%29.pdf"
+      },
+      {
+        "title": "IMO ship design and stability",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/shipdesignandstability-default.aspx"
+      }
+    ]
+  },
+  "navigation-rota-planlama": {
+    "id": "navigation-rota-planlama-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Passage planning is a berth-to-berth process of appraisal, planning, execution and monitoring. A route drawn through an ENC is only one part: safety depth/contour, squat, tidal margins, prohibited areas, MSI and contingency actions need evaluation.\n\nCommon error: Do not treat ECDIS route validation as proof of charted depth, squat and local tide adequacy.",
+    "example": {
+      "problem": "The preliminary ECDIS route passes a shallow approach with a sounding close to the vessel's anticipated draught.",
+      "steps": [
+        "Gather current charts, notices/MSI, ship draught/trim and tidal data for the appraisal.",
+        "Calculate a ship-specific UKC envelope with squat and uncertainties; set relevant ECDIS safety parameters, inspect the entire route.",
+        "Conduct an independent route check and Master's approval, documenting abort points and monitoring method."
+      ],
+      "result": "The route is not ready merely because ECDIS displays no route-check alarms."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-appraisal": {
+    "id": "navigation-appraisal-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Appraisal precedes detailed route design: chart coverage and quality, weather, tidal stream, services, machinery constraints and reporting requirements determine whether a proposed passage is feasible.\n\nCommon error: Do not treat an arrival time as feasible without assessing its tidal and weather context.",
+    "example": {
+      "problem": "A pilot-book estimate suggests a destination is reachable, but the required high-water window overlaps forecast gale-force conditions.",
+      "steps": [
+        "Compile primary charts, tide predictions, weather advisories, notices and port entry requirements.",
+        "Identify the conflict between arrival and metocean window, plus any refuge or delay options.",
+        "Present safe alternative arrival plans to the Master before committing to detailed waypoints."
+      ],
+      "result": "Feasibility may require delaying the passage rather than drawing a nominally shorter route."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-xte": {
+    "id": "navigation-xte-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Cross-track error (XTE) is the lateral displacement from the active intended route leg, not a replacement for position uncertainty or danger-clearance limits. Turns, antenna offsets and chart accuracy also affect the interpretation.\n\nCommon error: Never correct XTE automatically by making a large unassessed heading change near shoals.",
+    "example": {
+      "problem": "XTE shows 0.18 NM to starboard on a narrow-waterway route where the planned maximum corridor is 0.10 NM.",
+      "steps": [
+        "Verify own-ship position and whether the active leg/waypoint sequence is correct.",
+        "Evaluate the actual obstacle clearance, tidal/current effects and route corridor rather than blindly steering to eliminate the number.",
+        "Notify the Master under standing orders and navigate by approved safe manoeuvre and independent fixes."
+      ],
+      "result": "The 0.18 NM XTE exceeds the hypothetical 0.10 NM corridor but does not give the remaining water depth."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-planning": {
+    "id": "navigation-planning-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "The planning phase converts appraisal evidence into waypoints and cross-track limits. The plan must account for manoeuvring radius, wheel-over positions, depth constraints, VTS reporting and contingency manoeuvres.\n\nCommon error: Do not use charted waypoint positions alone to judge whether the turn is safe.",
+    "example": {
+      "problem": "A planned course change at a pilot station has an abrupt 70° turn next to restricted waters.",
+      "steps": [
+        "Read ship manoeuvring data, under-keel envelope, traffic scheme and pilotage rules.",
+        "Insert feasible turn geometry and check all intermediate swept paths and course alterations, not merely waypoint locations.",
+        "Record alternates and no-go boundaries, then obtain the required independent review and approval."
+      ],
+      "result": "A geometric line joining valid waypoints can still demand an impossible ship manoeuvre."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-monitoring": {
+    "id": "navigation-monitoring-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Passage monitoring continuously verifies progress against the approved plan through independent fixes, guard zones, wheel-over confirmation and updates for actual traffic and environment.\n\nCommon error: Do not rely on repeated screenshots of the same GNSS source as an independent position check.",
+    "example": {
+      "problem": "A coastal leg remains within XTE tolerance, but repeated radar ranges are progressively inconsistent with the GNSS track.",
+      "steps": [
+        "Correlate radar targets and check whether sensor errors, wrong chart datum or gyro offsets explain the trend.",
+        "Increase independent fix frequency and monitor clearance to hazards, not only XTE.",
+        "Notify the Master, review safe speed and adjust/abort passage as approved if the discrepancy persists."
+      ],
+      "result": "A small displayed XTE does not demonstrate a safe absolute position when the position input is suspect."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-emniyetli-hiz-kural-6": {
+    "id": "navigation-emniyetli-hiz-kural-6-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "COLREG Rule 6 requires safe speed appropriate to conditions, including visibility, density of traffic, manoeuvrability, background light, weather and proximity of navigational hazards. There is no universally lawful fixed speed for restricted visibility.\n\nCommon error: Never treat the port's maximum speed as a minimum safe-speed target.",
+    "example": {
+      "problem": "Visibility falls to 0.25 NM in a trafficked coastal approach while the ship still makes 13 kn.",
+      "steps": [
+        "Evaluate stopping distance and manoeuvrability against current visibility and traffic density.",
+        "Check radar detection limitations and additional Rule 6 factors; brief the Master and post appropriate lookout.",
+        "Set a safe speed under standing orders and keep reassessing as conditions change."
+      ],
+      "result": "The required speed is a risk-based operational decision, not automatically a prescribed 6 knots or similar constant."
+    },
+    "references": [
+      {
+        "title": "IMO — Convention on the International Regulations for Preventing Collisions at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      }
+    ]
+  },
+  "navigation-catismadan-kacinma-manevrasi-kural-8": {
+    "id": "navigation-catismadan-kacinma-manevrasi-kural-8-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Rule 8 avoidance action should be positive, made in ample time and with due regard to good seamanship. A succession of small adjustments may obscure intent and fail to achieve adequate separation.\n\nCommon error: Do not assume a large alteration is automatically safe when shoals and multiple targets are present.",
+    "example": {
+      "problem": "Radar plots a closing target while the OOW makes successive 2° course changes rather than a clear early manoeuvre.",
+      "steps": [
+        "Assess encounter classification, all available CPA/trend evidence, sea room and nearby traffic.",
+        "Agree an early, readily apparent and substantial action appropriate to the applicable Rules.",
+        "Check its effectiveness until the other vessel is finally past and clear, adjusting safely if necessary."
+      ],
+      "result": "Effective action is judged by separation and clarity, not just that some helm order was given."
+    },
+    "references": [
+      {
+        "title": "IMO — Convention on the International Regulations for Preventing Collisions at Sea",
+        "url": "https://www.imo.org/en/about/conventions/pages/colreg.aspx"
+      }
+    ]
+  },
+  "navigation-echo-sounder-iskandil": {
+    "id": "navigation-echo-sounder-iskandil-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "An echo sounder measures acoustic travel time to a reflecting surface; depth readout may be below the transducer or adjusted to a different reference. Draft, squat, offset, sound speed and seabed shape affect clearance.\n\nCommon error: Never add draught to a depth-below-transducer reading without verifying what is being measured.",
+    "example": {
+      "problem": "The echo sounder shows 5.0 m below transducer, whose face is 1.5 m above the keel, while charted depth is 7.0 m.",
+      "steps": [
+        "Read the actual sounder reference setting and transducer offset from equipment configuration.",
+        "If reading is 5.0 m below a transducer 1.5 m above the keel, geometric clearance below keel is approximately 3.5 m, before motion/accuracy allowances.",
+        "Cross-check with approved UKC assessment, tide and independent sounding/position information."
+      ],
+      "result": "A 5.0 m sounder reading cannot be labelled UKC without the instrument's datum and sensor location."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-kopruustu-vardiyasi-standing-orders-ve-kaptani-cagirma": {
+    "id": "navigation-kopruustu-vardiyasi-standing-orders-ve-kaptani-cagirma-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Standing orders and Master's night orders define bridge watch escalation triggers. Calling the Master is an additional safety measure and never transfers the watch officer's immediate duty to avoid danger.\n\nCommon error: Do not delay collision-avoidance action until the Master reaches the bridge.",
+    "example": {
+      "problem": "An OOW encounters unforecast squalls and deteriorating visibility close to a pilotage sector; written orders require calling the Master when visibility worsens.",
+      "steps": [
+        "Call the Master promptly with position, visibility, traffic, speed and immediate risks.",
+        "Maintain continuous lookout, assess COLREG and navigational needs, and take timely action rather than awaiting a reply.",
+        "Log key events and confirm the bridge-team allocation when additional officers arrive."
+      ],
+      "result": "The Master call and the OOW's independent safety response proceed in parallel."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-master-pilot-exchange-ve-pilotaj-vardiyasi": {
+    "id": "navigation-master-pilot-exchange-ve-pilotaj-vardiyasi-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Pilotage does not relieve the Master or officer in charge of the navigational watch of their safety duties. The master–pilot exchange must cover vessel handling limits, communication, route, tugs and any agreed abort decisions.\n\nCommon error: Never interpret pilot boarding as transfer of all navigational accountability.",
+    "example": {
+      "problem": "The pilot proposes a turn at a speed outside the vessel's manoeuvring booklet for that waterway.",
+      "steps": [
+        "State the ship's turning/stopping limitations and seek a clear explanation of the pilot's plan.",
+        "Compare actual speed, depth, traffic and available tug assistance with approved manoeuvring limits.",
+        "Escalate clearly to the Master, challenge unsafe orders and maintain independent bridge navigation monitoring."
+      ],
+      "result": "A pilot's local knowledge complements, but does not replace, ship-specific manoeuvring limitations."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-tidal-window-liman-giris-zamani": {
+    "id": "navigation-tidal-window-liman-giris-zamani-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "A tidal window is the period when actual depth and operational restrictions permit passage. It depends on chart datum, forecast tide, squat, uncertainty and required UKC, which may change with speed and sea state.\n\nCommon error: Do not consider a charted depth safe simply because it is greater than ship's draught.",
+    "example": {
+      "problem": "Charted channel depth is 8.2 m, draught is 8.0 m and a simplified required clearance allowance is 1.0 m; the predicted tide height is 0.6 m.",
+      "steps": [
+        "Calculate static predicted depth: 8.2 + 0.6 = 8.8 m above the assumed chart datum.",
+        "Compare with required draught-plus-allowance 8.0 + 1.0 = 9.0 m; shortfall is 0.2 m before further corrections.",
+        "Delay entry or revise the authorised plan using validated local tide, speed/squat and port rules."
+      ],
+      "result": "This simplified condition is unsuitable at that predicted tide under the stated 1.0 m clearance requirement."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "navigation-demirleme-ve-demir-tarama-hesaplari": {
+    "id": "navigation-demirleme-ve-demir-tarama-hesaplari-professional-application",
+    "title": "Bridge-watch calculation and decision",
+    "content": "Anchor watch uses planned swinging circle, actual chain length, fixing uncertainty and observed trends. Radius is not simply the number of shackles paid out: chain catenary, depth, hull length and weather affect the envelope.\n\nCommon error: Do not mistake normal swinging due to wind shift for dragging without checking changing fixed references.",
+    "example": {
+      "problem": "A vessel anchors in 25 m water, pays out 6 shackles of 27.5 m (165 m), and has a nearby shoal.",
+      "steps": [
+        "Check holding ground, wind/current, safe depth and planned cable length against the anchoring plan.",
+        "Estimate conservative swinging envelope using ship length, possible horizontal chain reach and position fixing errors.",
+        "Plot anchor position and monitor reliable fixed bearings, radar ranges and GNSS alarm as a supplementary trend."
+      ],
+      "result": "An initial anchor drop coordinate and a single GNSS circle are insufficient for a reliable dragging assessment."
+    },
+    "references": [
+      {
+        "title": "IMO A.893(21) Guidelines for voyage planning",
+        "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/AssemblyDocuments/A.893%2821%29.pdf"
+      }
+    ]
+  },
+  "communication-arama-kurtarma-haberlesmesi-ve-olay-yeri-koordinasyonu": {
+    "id": "communication-arama-kurtarma-haberlesmesi-ve-olay-yeri-koordinasyonu-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "Search and rescue communication distinguishes the MRCC, an appointed On-Scene Coordinator and individual assisting units. A first-arriving merchant ship must not assume unrestricted command authority.\n\nCommon error: Do not independently order other SAR units to change search patterns without agreed coordination.",
+    "example": {
+      "problem": "A merchant vessel joins two ships and a helicopter searching near the last reported EPIRB position.",
+      "steps": [
+        "Transmit own position, limitations, recovery capability and observations to the designated coordination authority.",
+        "Confirm assigned search sector, the responsible OSC, frequency and relevant position datum before manoeuvring.",
+        "Log and communicate new sightings, drift estimates and rescue actions while maintaining safe bridge watch."
+      ],
+      "result": "Coordinated sector assignments improve the search while respecting uncertainty in the original EPIRB datum."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-inmarsat-ve-uydu-haberlesme-sistemleri": {
+    "id": "communication-inmarsat-ve-uydu-haberlesme-sistemleri-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "GMDSS-approved mobile satellite terminals carry defined distress and safety functions within their recognised coverage. A vessel's commercial satellite internet access is not automatically a certified GMDSS alerting route.\n\nCommon error: Do not assume every commercial Inmarsat or Iridium device is approved for the same GMDSS functions.",
+    "example": {
+      "problem": "A ship sailing toward high latitudes has broadband satellite internet and a separate older GMDSS terminal.",
+      "steps": [
+        "Check the Safety Radio Certificate and Record of Equipment to identify the recognised service and terminal model.",
+        "Compare its actual approved coverage and distress/MSI capabilities with the entire passage route.",
+        "Verify reserve supply, registration and backup radio arrangements; escalate any coverage or equipment gaps."
+      ],
+      "result": "The vessel's certified satellite-service coverage, not generic broadband availability, governs the relevant GMDSS assessment."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-telsiz-anten-sistemleri-ve-acil-guc-kaynaklari": {
+    "id": "communication-telsiz-anten-sistemleri-ve-acil-guc-kaynaklari-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "Reserve GMDSS power must sustain required radio functions through approved supply arrangements and maintained batteries. Battery open-circuit voltage does not establish usable capacity under load.\n\nCommon error: Do not disconnect a live reserve battery or interrupt required DSC watches for an ad hoc test.",
+    "example": {
+      "problem": "At a survey the radio backup battery shows nominal voltage but collapses quickly under its approved load test.",
+      "steps": [
+        "Identify the reserve supply architecture and all connected required radio consumers in ship drawings.",
+        "Conduct authorised battery testing while protecting continuous distress-watch capability.",
+        "Record battery condition and restore compliant reserve capacity with approved replacement and documentation."
+      ],
+      "result": "A normal resting voltage cannot compensate for inadequate capacity during emergency radiocommunications."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-smcp-standart-deniz-haberlesme-ifadeleri": {
+    "id": "communication-smcp-standart-deniz-haberlesme-ifadeleri-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "Standard Marine Communication Phrases minimise misunderstandings between VTS, pilots, bridge teams and ships. Course, speed, distance and urgency must be spoken and read back without ambiguity.\n\nCommon error: Never treat uncertain radio instructions as permission to disregard collision regulations or ship handling limits.",
+    "example": {
+      "problem": "In poor radio reception the bridge hears a VTS transmission referring to heading 270 but not whether it is advice or an instruction.",
+      "steps": [
+        "Read back the intended heading using clear numbers and ask the station to clarify the nature of the message.",
+        "Cross-check target traffic, charted hazards and COLREG responsibilities before any non-emergency alteration.",
+        "Record the agreed understanding and brief the Master or pilot when the change affects passage safety."
+      ],
+      "result": "Read-back and clarification detect a potentially dangerous ambiguity before the helm is altered."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "communication-vts-ve-gemi-raporlama-sistemleri": {
+    "id": "communication-vts-ve-gemi-raporlama-sistemleri-professional-application",
+    "title": "GMDSS communications and coordination case",
+    "content": "VTS provides local traffic information and may issue instructions under local rules, but participation does not remove the Master's safe-navigation responsibilities or COLREG duties.\n\nCommon error: Do not follow an ambiguous reporting instruction into an immediate navigational hazard.",
+    "example": {
+      "problem": "A vessel reaches a mandatory reporting point at the same time as close-quarters fishing traffic develops.",
+      "steps": [
+        "Prioritise lookout, safe speed and collision avoidance, requesting the Master's support if needed.",
+        "Report the verified ship position, speed, traffic concern and manoeuvring intentions on the published channel.",
+        "Clarify any conflicting VTS instruction and document the exchange while maintaining safe navigation."
+      ],
+      "result": "Traffic reporting and collision avoidance must be coordinated, not treated as competing substitutes."
+    },
+    "references": [
+      {
+        "title": "IMO — GMDSS and radiocommunications",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/radiocommunications-default.aspx"
+      },
+      {
+        "title": "IMO — GMDSS circulars",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/imo-circulars-related-to-the-gmdss.aspx"
+      }
+    ]
+  },
+  "safety-isps-gemi-guvenligi-ve-korsanlik": {
+    "id": "safety-isps-gemi-guvenligi-ve-korsanlik-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Ship Security Assessment, approved Ship Security Plan and security levels determine authorised access and incident response. SSAS security alerts must not be confused with DSC or EPIRB distress broadcasts.\n\nCommon error: Do not publish SSAS locations, protected access credentials or ship-specific security weaknesses.",
+    "example": {
+      "problem": "A visitor tries to board outside the controlled gangway while the vessel is operating under enhanced security measures.",
+      "steps": [
+        "Prevent unsafe access without physical confrontation; alert the watch and preserve crew safety.",
+        "Escalate to the Ship Security Officer and port security contacts using restricted plan procedures.",
+        "Document the attempt factually and verify approved visitor-control measures without exposing protected information."
+      ],
+      "result": "A controlled security response protects personnel and preserves incident evidence without releasing sensitive plan details."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS safety management and ISPS Code",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "safety-violence-harassment-prevention": {
+    "id": "safety-violence-harassment-prevention-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Prevention of harassment and violence requires safe reporting, protection from retaliation and a fair, authorised investigation. Immediate safeguarding is distinct from the later determination of facts.\n\nCommon error: Never promise absolute confidentiality when necessary restricted reporting or safeguarding obligations apply.",
+    "example": {
+      "problem": "An engine-room trainee reports repeated threats by someone senior in their direct watchkeeping chain.",
+      "steps": [
+        "Assess immediate safety and ensure a safe place and appropriate watch arrangements away from immediate risk.",
+        "Provide a confidential company or designated reporting route that does not require approaching the alleged offender.",
+        "Preserve timestamps, factual messages and witnesses; escalate to the authorised investigator and monitor retaliation risks."
+      ],
+      "result": "A victim-sensitive yet procedurally fair response enables protection and evidence-based investigation."
+    },
+    "references": [
+      {
+        "title": "IMO — SOLAS safety management and ISPS Code",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-uretim-sistemi-paralel-jenerator-baglama-4": {
+    "id": "machine-electrical-elektrik-uretim-sistemi-paralel-jenerator-baglama-4-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "AC synchronising requires compatible voltage, frequency, phase sequence and phase angle before a generator breaker closes on a live bus. Out-of-phase closing may cause damaging torque and currents.\n\nCommon error: Never force-close the breaker to compensate for a synchronisation fault.",
+    "example": {
+      "problem": "A standby generator has near-matching bus voltage but its frequency differs by 1.5 Hz from the running bus.",
+      "steps": [
+        "Keep the generator breaker open; check synchronising permissives and appropriate generator frequency control.",
+        "Verify voltage, phase sequence and changing phase angle using the fitted synchronising equipment and maker's limits.",
+        "Only an authorised engineer closes under approved procedure, then checks active/reactive power sharing and protection status."
+      ],
+      "result": "Matched voltage alone does not justify connecting a machine to an energised busbar."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-elektrik-dagitim-sistemi-insulasyon-direnci-olcumu-ve-izleme-5": {
+    "id": "machine-electrical-elektrik-dagitim-sistemi-insulasyon-direnci-olcumu-ve-izleme-5-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Insulation monitoring detects deterioration on certain marine insulated distribution systems. An alarm may occur without immediate breaker operation, so controlled investigation and electronic equipment protection are essential.\n\nCommon error: Do not apply a megohmmeter to live electronic circuits without approved isolation.",
+    "example": {
+      "problem": "Insulation resistance trends downward on a machinery distribution panel, but all essential consumers still appear to function.",
+      "steps": [
+        "Identify the affected system, alarms and actual earthing scheme from the ship's electrical drawings.",
+        "Plan authorised sectional isolation or testing while maintaining required essential services and protecting electronics.",
+        "Repair the fault and document insulation testing performed with suitable equipment only after appropriate de-energisation."
+      ],
+      "result": "A low insulation trend demands diagnosis even when the circuit remains energised and functional."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-electrical-battery-thermal-runaway": {
+    "id": "machine-electrical-battery-thermal-runaway-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Battery thermal runaway can spread between cells while producing heat, flammable gases and toxic decomposition products. Chemistry-specific maker instructions and installed detection/suppression systems govern response.\n\nCommon error: Do not treat a battery pack as an ordinary electrical cabinet fire or assume that extinguishing flame ends the event.",
+    "example": {
+      "problem": "The ship's battery energy storage enclosure reports rapidly rising temperature and abnormal off-gas alarms.",
+      "steps": [
+        "Activate the installation-approved isolation and emergency response without entering or opening the enclosure casually.",
+        "Notify fire and engineering command and assess gas accumulation, propagation and re-ignition risk from safe positions.",
+        "Maintain exclusion, atmosphere monitoring and maker-approved post-event controls until specialists establish safe recovery."
+      ],
+      "result": "The event may remain hazardous after visible flame or alarm indications reduce."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-plc-ve-otomasyon-sistemleri-alarm-ve-izleme-sistemi-ams-3": {
+    "id": "machine-automation-plc-ve-otomasyon-sistemleri-alarm-ve-izleme-sistemi-ams-3-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Alarm Monitoring Systems observe sensor and control signals, but alarm acknowledgement is not fault rectification. A single high-level alarm may arise from real flooding, bad sensors, wiring or data transport.\n\nCommon error: Never bypass or inhibit a protective alarm solely to remove nuisance indications.",
+    "example": {
+      "problem": "A machinery bilge high-high alarm is acknowledged and clears intermittently, yet local sighting still shows rising level.",
+      "steps": [
+        "Confirm the physical level and inspect process flow from a safe location, without assuming the panel is correct.",
+        "Check pump, valves, leakage and independent alarms against the approved bilge and flooding response procedures.",
+        "Record the recurrence, investigate the measurement path and restore tested alarm protection after authorised maintenance."
+      ],
+      "result": "The abnormal water level remains a safety issue regardless of whether the screen is showing an acknowledged alarm."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "machine-automation-ot-cybersecurity": {
+    "id": "machine-automation-ot-cybersecurity-professional-application",
+    "title": "Practical machinery and shipboard risk analysis",
+    "content": "Operational technology runs critical propulsion, power and cargo systems and requires controlled changes, validated firmware and secure vendor access. A legitimate-looking USB drive may introduce unsafe software.\n\nCommon error: Do not equate a vendor logo or urgent maintenance request with software trustworthiness.",
+    "example": {
+      "problem": "A technician offers an unverified USB drive to update a propulsion PLC while the plant is operating.",
+      "steps": [
+        "Do not connect the media; confirm vendor identity, update provenance and company cyber-change approval.",
+        "Review backups, maintenance windows, recovery plan and potential operational impact with authorised engineers.",
+        "Perform only a verified, approved update under controlled conditions and report suspicious access attempts."
+      ],
+      "result": "A traceable maintenance change protects critical plant continuity better than an unscheduled update."
+    },
+    "references": [
+      {
+        "title": "MCA — Code of Safe Working Practices for Merchant Seafarers",
+        "url": "https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition"
+      }
+    ]
+  },
+  "seamanship-halatlar-knot-ve-baglama-teknikleri": {
+    "id": "seamanship-halatlar-knot-ve-baglama-teknikleri-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Knot suitability depends on intended load, rope construction, bend radius, slip resistance and approved use. A correctly tied demonstration knot is not necessarily a certified cargo-lifting termination.\n\nCommon error: Do not infer SWL from the appearance of a correctly tied knot.",
+    "example": {
+      "problem": "A deck crew member proposes a bowline as a lifting sling termination for an unmarked synthetic rope.",
+      "steps": [
+        "Check the rope's identification, manufacturer's limits and approved lifting/rigging plan.",
+        "Distinguish seamanship knots for securing from certified lifting attachments and select approved rigging.",
+        "Inspect rope condition and protect against abrasion and shock loading before authorised use."
+      ],
+      "result": "Ordinary seamanship knots must not replace certified lifting terminations without approved evidence."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "seamanship-demir-ve-demirleme": {
+    "id": "seamanship-demir-ve-demirleme-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Anchoring must consider holding ground, water depth, current, weather, planned swinging room and actual cable condition. The planned paid-out chain length is not the same as the vessel's distance from the anchor.\n\nCommon error: Never treat the number of shackles paid out as the horizontal swinging radius.",
+    "example": {
+      "problem": "A vessel intends to anchor in 30 m of water close to another ship's anticipated swing circle.",
+      "steps": [
+        "Review permitted anchorage, seabed conditions, forecast and vessel-specific minimum holding provisions.",
+        "Plan anchor drop and cable scope while checking conservative swing envelopes and possible vessel interactions.",
+        "Monitor fixed references and alarm boundaries while keeping machinery and anchor watch ready for dragging."
+      ],
+      "result": "Safe anchoring is a spatial and weather decision, not a universal shackles-per-depth formula."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "seamanship-ileri-mooring-ve-halat-yonetimi": {
+    "id": "seamanship-ileri-mooring-ve-halat-yonetimi-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Mooring hazards include stored elastic energy, poor lead angles, mixed-line elasticity and damaged fittings. Snap-back paths vary with the actual line and hardware arrangement, not solely marked deck zones.\n\nCommon error: Do not assume every snap-back trajectory can be captured by a permanent painted polygon.",
+    "example": {
+      "problem": "A spring line develops a large lead angle across a fairlead while personnel stand near its presumed safe marked zone.",
+      "steps": [
+        "Identify rope MBL, condition, fitting SWL and the approved mooring plan rather than relying on painted floor markings.",
+        "Reassess potential recoil paths, high-energy bights, equipment interference and crew positions.",
+        "Stop the operation until a safe lead, communications and exclusion arrangement is established."
+      ],
+      "result": "An apparently marked safe spot may still be in the line of fire for a particular lead."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "seamanship-romorkor-kullanimi-ve-yanasma-plani": {
+    "id": "seamanship-romorkor-kullanimi-ve-yanasma-plani-professional-application",
+    "title": "Deck operation worked case",
+    "content": "A tug's useful force depends on thrust direction, towline geometry and safe connection arrangements; rated bollard pull is not automatically available as lateral force at the ship's hull.\n\nCommon error: Never use a tug's published pull rating as proof a shipboard fairlead can sustain that tow.",
+    "example": {
+      "problem": "A 60 t bollard-pull tug is proposed for a stern-quarter line that cannot act perpendicular to the ship.",
+      "steps": [
+        "Review the tug arrangement, towline lead, available thrusters, weather and interaction with the vessel's propeller/rudder.",
+        "Evaluate likely resultant force direction and connection/fitting ratings rather than multiplying the nominal bollard pull by one assumed lever.",
+        "Discuss the manoeuvre, communications, abort points and emergency release with Master, pilot and tug before approach."
+      ],
+      "result": "Nominal bollard pull does not equal the effective controlled sideways thrust in every arrangement."
+    },
+    "references": [
+      {
+        "title": "IMO — safe mooring",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/safemooring.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-yuk-plani-ve-agirlik-dagilimi": {
+    "id": "cargo-yuk-plani-ve-agirlik-dagilimi-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Cargo plans must satisfy local structural loading, longitudinal strength, trim and intact stability as well as deck-space geometry. Two cargo plans with the same total mass can impose very different bending and shear forces.\n\nCommon error: Do not approve a revised stowage arrangement based on total tonnes alone.",
+    "example": {
+      "problem": "A 500 t load is shifted from a central hold to a far-forward position while overall cargo weight is unchanged.",
+      "steps": [
+        "Update longitudinal and vertical centres for the revised location and check deck/hold permissible loading.",
+        "Re-run shear force, bending moment, draught and stability calculations on the approved instrument.",
+        "Review lashing strength, access and any deck machinery restrictions before endorsing the final plan."
+      ],
+      "result": "Unchanged total cargo mass does not imply unchanged hull loads or trim."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-konteyner-yukleme-ve-bay-plani": {
+    "id": "cargo-konteyner-yukleme-ve-bay-plani-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Bay-row-tier slot codes locate containers in the stowage plan; load distribution, GM, stack-weight limits, lashing loads and verified gross mass are separate checks.\n\nCommon error: Do not treat a correct slot address as approval of weight and lashing limits.",
+    "example": {
+      "problem": "A heavy 40-foot container with a valid VGM is planned on a high outboard tier to save turnaround time.",
+      "steps": [
+        "Check the true bay/row/tier allocation, gross weight and container type against the verified bay plan.",
+        "Review allowable stack loads, lashing forces, local structure and stability under approved stowage calculations.",
+        "Confirm dangerous goods segregation and access requirements before the load is accepted."
+      ],
+      "result": "Valid VGM establishes declared weight but cannot prove the selected position is structurally and dynamically safe."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-cargo-care-terleme-ve-ambar-havalandirmasi": {
+    "id": "cargo-cargo-care-terleme-ve-ambar-havalandirmasi-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Cargo sweat and ship sweat arise from differing temperature and moisture conditions. The decision to ventilate depends on cargo properties, external air dew point and measured hold conditions, not simply on outside relative humidity.\n\nCommon error: Never use a blanket rule to ventilate all cargoes whenever outdoor humidity is lower.",
+    "example": {
+      "problem": "A warm loaded hold is entering cold weather; the watch proposes opening all vents because the outside humidity reads 60%.",
+      "steps": [
+        "Identify cargo susceptibility, current cargo/hold temperatures and dew points of inside and outside air.",
+        "Evaluate whether ventilation would remove moisture or promote condensation on cargo or steel surfaces.",
+        "Follow the cargo-specific ventilation plan, monitor condensation and record actual measurements."
+      ],
+      "result": "Relative humidity alone, without temperature, is insufficient to establish the condensation risk."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
+  },
+  "cargo-lost-containers-danger-message": {
+    "id": "cargo-lost-containers-danger-message-professional-application",
+    "title": "Deck operation worked case",
+    "content": "Lost containers can create a navigation hazard and may also pose pollution or dangerous-goods risks. Immediate response must follow the ship's emergency and reporting procedures while preserving safe navigation and evidence.\n\nCommon error: Do not delay navigational danger reporting while waiting for a complete commercial claim file.",
+    "example": {
+      "problem": "After heavy weather a ship finds two overboard containers missing from an outboard bay, one marked with dangerous goods labels.",
+      "steps": [
+        "Account for personnel, assess structural/lashing damage and stabilise the ship's motion before further deck exposure.",
+        "Record last known position, time, number, cargo details and likely drift, and notify relevant coastal/traffic authorities using prescribed danger-report procedures.",
+        "Preserve stowage, VGM, dangerous-goods and event records for the investigation while monitoring additional stack risks."
+      ],
+      "result": "A missing container remains a hazard even if no vessel is visually nearby."
+    },
+    "references": [
+      {
+        "title": "IMO — cargoes and cargo securing",
+        "url": "https://www.imo.org/en/ourwork/safety/pages/cargoes.aspx"
+      },
+      {
+        "title": "IMO — SOLAS safety framework",
+        "url": "https://www.imo.org/en/about/conventions/pages/international-convention-for-the-safety-of-life-at-sea-%28solas%29%2C-1974.aspx"
+      }
+    ]
   }
 };
