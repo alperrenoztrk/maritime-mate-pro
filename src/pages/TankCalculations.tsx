@@ -1,223 +1,79 @@
-import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useToast } from '@/hooks/use-toast';
-import { MobileLayout } from "@/components/MobileLayout";
-import { CalculationPage } from "@/components/ui/calculation-list";
+import { useState } from "react";
+import { Droplets } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { LibraryPageShell } from "@/components/library/LibraryInterface";
+import { estimateRectangularTank } from "@/lib/toolCalculations";
 
-interface TankData {
-  tankArea: number;
-  liquidHeight: number;
-  volume: number;
-  liquidDensity: number;
-  tankType: 'cargo' | 'ballast' | 'fuel' | 'freshwater';
-}
-
-interface TankResults {
-  volume: number;
-  weight: number;
-  moment: number;
-}
-
-const TankCalculationsPage = ({ initialTab }: { initialTab?: string } = {}) => {
-  const { toast } = useToast();
-  const [activeTab, setActiveTab] = useState(initialTab || 'sounding');
-  const [tankData, setTankData] = useState<TankData>({
-    tankArea: 0,
-    liquidHeight: 0,
-    volume: 0,
-    liquidDensity: 1025,
-    tankType: 'ballast'
-  });
-  const [soundingResults, setSoundingResults] = useState<TankResults | null>(null);
-
-  const calculateSoundingTable = () => {
-    const volume = tankData.tankArea * tankData.liquidHeight;
-    const weight = volume * (tankData.liquidDensity / 1000);
-    const moment = volume * (tankData.liquidHeight / 2);
-    
-    setSoundingResults({
-      volume,
-      weight,
-      moment
-    });
-    
-    toast({
-      title: "Successful!",
-      description: "Sounding Table calculations complete!"
-    });
+export default function TankCalculationsPage() {
+  const [data, setData] = useState({ area: "", height: "", density: "1025" });
+  const [result, setResult] = useState<ReturnType<typeof estimateRectangularTank> | null>(null);
+  const [error, setError] = useState("");
+  const update = (key: keyof typeof data, value: string) => {
+    setData((prev) => ({ ...prev, [key]: value }));
+    setResult(null);
+    setError("");
   };
-
+  const calculate = () => {
+    if (Object.values(data).some((v) => !v.trim())) {
+      setError("Enter the area, liquid height and density.");
+      setResult(null);
+      return;
+    }
+    try {
+      setResult(estimateRectangularTank(Number(data.area), Number(data.height), Number(data.density)));
+      setError("");
+    } catch (e) {
+      setResult(null);
+      setError(e instanceof Error ? e.message : "Check the inputs.");
+    }
+  };
   return (
-    <MobileLayout>
-      <CalculationPage
-        title="Tank Calculations"
-      >
-        <Card className="bg-card border-border shadow-lg">
-          <CardContent className="pt-6">
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="flex flex-wrap gap-1 p-2 bg-muted/50 rounded-lg">
-                <TabsTrigger value="sounding" className="flex-1 min-w-[120px] text-xs">Sounding Table</TabsTrigger>
-              </TabsList>
-              
-              <div className="mt-8"></div>
-
-              <TabsContent value="sounding" className="space-y-6">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Underwater Volume Calculation</h3>
-                  <p className="text-sm text-muted-foreground">V = A × h</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="tankArea">Tank Area A [m²]</Label>
-                      <Input
-                        id="tankArea"
-                        type="number"
-                        step="0.01"
-                        value={tankData.tankArea || ''}
-                        onChange={(e) => setTankData({...tankData, tankArea: parseFloat(e.target.value)})}
-                        placeholder="50"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="liquidHeight">Liquid Height h [m]</Label>
-                      <Input
-                        id="liquidHeight"
-                        type="number"
-                        step="0.01"
-                        value={tankData.liquidHeight || ''}
-                        onChange={(e) => setTankData({...tankData, liquidHeight: parseFloat(e.target.value)})}
-                        placeholder="2.5"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Weight Calculation</h3>
-                  <p className="text-sm text-muted-foreground">W = V × ρ</p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="volume_weight">Volume V [m³]</Label>
-                      <Input
-                        id="volume_weight"
-                        type="number"
-                        step="0.1"
-                        value={tankData.volume || ''}
-                        onChange={(e) => setTankData({...tankData, volume: parseFloat(e.target.value)})}
-                        placeholder="125"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="liquidDensity">Liquid Density ρ [kg/m³]</Label>
-                      <Input
-                        id="liquidDensity"
-                        type="number"
-                        step="0.1"
-                        value={tankData.liquidDensity || ''}
-                        onChange={(e) => setTankData({...tankData, liquidDensity: parseFloat(e.target.value)})}
-                        placeholder="1025"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="tankType">Tank Type</Label>
-                      <Select
-                        value={tankData.tankType || ''}
-                        onValueChange={(value) => setTankData({...tankData, tankType: value as TankData["tankType"]})}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select tank type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="fuel">Fuel Tank</SelectItem>
-                          <SelectItem value="ballast">Ballast Tank</SelectItem>
-                          <SelectItem value="freshwater">Fresh Water Tank</SelectItem>
-                          <SelectItem value="cargo">Cargo Tank</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#2F5BFF]">Moment Calculation</h3>
-                  <p className="text-sm text-muted-foreground">M = V × h/2</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="volume_moment">Volume V [m³]</Label>
-                      <Input
-                        id="volume_moment"
-                        type="number"
-                        step="0.1"
-                        value={tankData.volume || ''}
-                        onChange={(e) => setTankData({...tankData, volume: parseFloat(e.target.value)})}
-                        placeholder="125"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="liquidHeight_moment">Liquid Height h [m]</Label>
-                      <Input
-                        id="liquidHeight_moment"
-                        type="number"
-                        step="0.01"
-                        value={tankData.liquidHeight || ''}
-                        onChange={(e) => setTankData({...tankData, liquidHeight: parseFloat(e.target.value)})}
-                        placeholder="2.5"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex justify-center pt-4">
-                  <Button 
-                    onClick={calculateSoundingTable} 
-                    className="px-8 py-2 bg-[#2F5BFF] hover:bg-[#2F5BFF]/90 text-white"
-                  >
-                    Calculate
-                  </Button>
-                </div>
-
-                {soundingResults && (
-                  <div className="space-y-4 p-4 bg-primary/5 rounded-lg">
-                    <h3 className="text-lg font-semibold text-[#1d3e8a]">Sounding Table Results</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="space-y-2">
-                        <Label className="text-sm font-medium">Underwater Volume (V)</Label>
-                        <div className="text-lg font-bold text-[#2F5BFF]">
-                          {soundingResults.volume.toFixed(1)} m³
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label className="text-sm font-medium">Weight (W)</Label>
-                        <div className="text-lg font-bold text-[#2F5BFF]">
-                          {soundingResults.weight.toFixed(1)} ton
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label className="text-sm font-medium">Torque (M)</Label>
-                        <div className="text-lg font-bold text-[#2F5BFF]">
-                          {soundingResults.moment.toFixed(1)} ton.m
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </TabsContent>
-            </Tabs>
+    <LibraryPageShell title="Rectangular Tank Estimate" icon={Droplets} maxWidth="max-w-3xl">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Training estimate for a vertical prismatic tank with constant cross-sectional area and a level,
+        homogeneous liquid. A real ship tank must use its approved sounding/ullage and calibration tables.
+      </p>
+      <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
+        <CardHeader><CardTitle className="text-base">Tank measurements</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {([
+              ["area", "Horizontal cross-sectional area (m²)", "50"],
+              ["height", "Liquid height above tank bottom (m)", "2.5"],
+              ["density", "Liquid density (kg/m³)", "1025"],
+            ] as const).map(([key, label, placeholder]) => (
+              <div key={key} className="space-y-2">
+                <Label htmlFor={key}>{label}</Label>
+                <Input id={key} type="number" inputMode="decimal" min="0" step="any"
+                  value={data[key]} placeholder={placeholder}
+                  onChange={(e) => update(key, e.target.value)} />
+              </div>
+            ))}
+          </div>
+          <Button className="w-full" onClick={calculate}>Calculate</Button>
+          {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+        </CardContent>
+      </Card>
+      {result && (
+        <Card className="surface-2 rounded-2xl border-border/60 shadow-none">
+          <CardHeader><CardTitle className="text-base">Estimated quantities</CardTitle></CardHeader>
+          <CardContent className="grid gap-3 text-sm sm:grid-cols-3">
+            <div><p className="text-muted-foreground">Volume</p><p className="text-lg font-semibold tabular-nums">{result.volumeM3.toFixed(3)} m³</p></div>
+            <div><p className="text-muted-foreground">Liquid mass</p><p className="text-lg font-semibold tabular-nums">{result.massTonnes.toFixed(3)} t</p></div>
+            <div><p className="text-muted-foreground">Vertical mass moment about tank bottom</p>
+              <p className="text-lg font-semibold tabular-nums">{result.verticalMomentTonneMetres.toFixed(3)} t·m</p></div>
           </CardContent>
         </Card>
-      </CalculationPage>
-    </MobileLayout>
+      )}
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        V = A × h; mass = V × ρ / 1000; vertical moment = mass × h/2.
+        This is not a sounding table, free-surface correction or a full ship stability calculation.
+      </p>
+    </LibraryPageShell>
   );
-};
+}
 
-export default TankCalculationsPage;
 export { TankCalculationsPage as TankCalculations };
