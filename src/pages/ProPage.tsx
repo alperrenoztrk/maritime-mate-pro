@@ -250,7 +250,7 @@ const ProPage = () => {
                     >
                       {note && (
                         <Badge
-                          className={`absolute -top-2.5 left-1/2 -translate-x-1/2 ${highlight ? "bg-amber-500 text-black" : "bg-muted text-muted-foreground"}`}
+                          className={`absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap ${highlight ? "bg-amber-500 text-black" : "bg-muted text-muted-foreground"}`}
                         >
                           <span data-translatable>{note}</span>
                         </Badge>
