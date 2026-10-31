@@ -499,7 +499,7 @@ All colors MUST be HSL.
 
   /* No pull-to-refresh / rubber-band, while vertical scrolling stays free. */
   html {
-    overflow-y: auto;
+
     overscroll-behavior-y: none;
   }
 
