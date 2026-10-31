@@ -26,12 +26,23 @@ serve(async (req) => {
       );
     }
 
-    // SSRF protection: only allow http(s) URLs on public hosts, and follow
-    // redirects manually so every hop is re-validated.
+    // Outbound restriction: only fetch files hosted in this project's own
+    // storage. Arbitrary external destinations are rejected so the function
+    // cannot be used as a proxy to caller-chosen websites.
     let fileResponse: Response;
     try {
-      await assertSafeUrl(fileUrl);
-      fileResponse = await safeFetch(fileUrl, {}, { maxRedirects: 3, timeoutMs: 15000 });
+      if (typeof fileUrl !== 'string' || fileUrl.length > 2048) throw new Error('bad url');
+      const projectOrigin = new URL(Deno.env.get('SUPABASE_URL') ?? '').origin;
+      const target = new URL(fileUrl);
+      if (
+        target.origin !== projectOrigin ||
+        !target.pathname.startsWith('/storage/v1/object/') ||
+        target.username || target.password
+      ) {
+        throw new Error('disallowed host');
+      }
+      await assertSafeUrl(target.toString());
+      fileResponse = await safeFetch(target.toString(), {}, { maxRedirects: 0, timeoutMs: 15000 });
     } catch {
       return errorResponse(corsHeaders, 400, 'Invalid or disallowed file URL');
     }
