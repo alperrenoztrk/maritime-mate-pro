@@ -94,6 +94,6 @@ export const hasTurkishText = (value: string): boolean => {
   if (TURKISH_LETTERS.test(value)) return true;
   // SART is an all-capitals maritime rescue-transponder abbreviation, not
   // the Turkish word "sart". Preserve detection of lowercase Turkish prose.
-  const plain = stripAccents(value).replace(/\\b(?:AIS-)?SART\\b/g, " ");
+  const plain = stripAccents(value).replace(/\b(?:AIS-)?SART\b/g, " ");
   return TURKISH_WORD_RE.test(plain) || TURKISH_SUFFIX_RE.test(plain);
 };
