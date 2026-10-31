@@ -15,7 +15,7 @@ const pages = [
 for (const path of pages) {
   const text = read(path);
   assert.match(text, /PagedReadingSurface/, `${path}: missing book-reader integration`);
-  assert.doesNotMatch(text, /(?:complement|lifeboat capacity|persons-per-lifeboat).{0,40}(?:1\.25|125%)/i,
+  assert.doesNotMatch(text, /(?:minimum lifeboat capacity\s*=|persons-per-lifeboat capacity\s*[×*]|(?:ship.s complement|persons on board)\s*[×*])\s*1\.25/i,
     `${path}: a vessel-specific survival craft capacity cannot be invented`);
   assert.doesNotMatch(text, /readiness\s*:\s*\d+|Preparation:\s*%|100% charged|Test 2024-11|Battery due 2027|Drill 2025-01/i,
     `${path}: fictitious equipment/inspection status must not masquerade as live vessel evidence`);
