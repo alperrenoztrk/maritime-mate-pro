@@ -62,4 +62,22 @@ public class LearningBootTest {
             assertEquals("true", evaluate(scenario, "location.hostname === 'localhost'"));
         }
     }
+    /**
+     * Offline storage acceptance for the native WebView: reader progress and
+     * typography preferences must survive an Android activity recreation.
+     * This does not assert that auth-protected lessons work without login.
+     */
+    @Test
+    public void localReaderProgressAndPreferencesSurviveOfflineRecreation() throws Exception {
+        try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
+            awaitTrue(scenario, "Boolean(window.Capacitor && window.Capacitor.isNativePlatform() && document.querySelector('#root')?.children.length)");
+            evaluate(scenario, "localStorage.setItem('mariners-book:regulation-page:instrumentation', 'chapter-2'); localStorage.setItem('mariners-book:reader-font-scale', '1.2'); true");
+            scenario.recreate();
+            awaitTrue(scenario, "Boolean(window.Capacitor && window.Capacitor.isNativePlatform() && document.querySelector('#root')?.children.length)");
+            assertEquals("\"chapter-2\"", evaluate(scenario, "localStorage.getItem('mariners-book:regulation-page:instrumentation')"));
+            assertEquals("\"1.2\"", evaluate(scenario, "localStorage.getItem('mariners-book:reader-font-scale')"));
+            evaluate(scenario, "localStorage.removeItem('mariners-book:regulation-page:instrumentation'); localStorage.removeItem('mariners-book:reader-font-scale'); true");
+        }
+    }
+
 }

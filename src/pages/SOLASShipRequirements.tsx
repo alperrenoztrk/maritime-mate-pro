@@ -1,82 +1,23 @@
 import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
-import { PageHeader } from "@/components/layout/PageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Anchor } from "lucide-react";
 
-const requirementGroups = [
-  {
-    title: "Structural & Stability",
-    badge: "Part II-1",
-    description: "Compartmentation, dewatering scenarios and damage stability requirements.",
-    items: [
-      "Watertight subdivision lines and door plans must be available digitally",
-      "The Damage Control Booklet must be kept up to date on the bridge",
-      "The computer-based stability program must be approved by class",
-    ],
-    readiness: 82,
-  },
-  {
-    title: "Fire Safety",
-    badge: "Chapter II-2",
-    description: "Fire compartments, sprinkler/drencher systems, fixed gas extinguishing and detection equipment.",
-    items: [
-      "A copy of the Fire Control Plan for each zone and glow-in-the-dark cards",
-      "CO₂ room access, locking and counting systems are in working order",
-      "Test records of the engine room heat sensors and high-fog systems",
-    ],
-    readiness: 76,
-  },
-  {
-    title: "Lifesaving & Evacuation",
-    badge: "Part III",
-    description: "Lifeboats, liferafts, MES systems and muster arrangements.",
-    items: [
-      "Five-yearly load test certificates for the lifeboats and davits are on file",
-      "MES deployment drill videos and checklists are retained",
-      "The muster list and duty cards are up to date for every watch",
-    ],
-    readiness: 88,
-  },
-  {
-    title: "Navigation and Communication",
-    badge: "Part V",
-    description: "Navigation equipment, recorders, logbooks and GMDSS procedures.",
-    items: [
-      "BNWAS, VDR and ECDIS function test reports within 90 days",
-      "The passage plan templates have been revised to SOLAS requirements",
-      "GMDSS confirmation messages and test logs are signed monthly",
-    ],
-    readiness: 90,
-  },
+const requirements = [
+  { id:"structure", title:"Structure and stability", part:"SOLAS II-1",
+    checks:["Verify approved damage stability information and appropriate loading documentation.", "Cross-check watertight integrity arrangements and vessel-specific test/maintenance records."] },
+  { id:"fire", title:"Fire protection", part:"SOLAS II-2",
+    checks:["Use the vessel's approved fire control plan to locate systems and confirm their applicable maintenance requirements.", "Verify applicable drills, inspections and deficiencies rather than assuming a universal test interval."] },
+  { id:"survival", title:"Life-saving arrangements", part:"SOLAS III",
+    checks:["Verify survival craft, rescue boats and launching arrangements against the ship's safety equipment certificate and approved LSA inventory.", "Confirm vessel-specific maintenance, servicing, drill and muster documentation."] },
+  { id:"navigation", title:"Navigation and radiocommunications", part:"SOLAS IV–V",
+    checks:["Verify navigational carriage requirements and permitted exemptions for this particular vessel.", "Verify GMDSS testing, records and emergency power provisions using the installed equipment manuals and applicable legislation."] },
 ];
-
-const SOLASShipRequirementsPage = () => {
-  const pages: ReadingPage[] = requirementGroups.map((group,index)=>({
-    id: String(group.title), title: group.title,
-    section: `Reference ${index+1} / ${requirementGroups.length}`,
-    content: (<Card key={group.title} className="border border-indigo-100/60 shadow-md shadow-indigo-500/10">
-              <CardHeader className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-xs">{group.badge}</Badge>
-                  <span className="text-xs text-muted-foreground">Preparation: %{group.readiness}</span>
-                </div>
-                <CardTitle>{group.title}</CardTitle>
-                <Progress value={group.readiness} className="h-2" />
-              </CardHeader>
-              <CardContent className="space-y-3 text-sm text-muted-foreground">
-                {group.items.map((item) => (
-                  <div key={item} className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-indigo-500" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>),
+export default function SOLASShipRequirementsPage() {
+  const pages: ReadingPage[] = requirements.map((group,i)=>({
+    id:group.id,title:group.title,section:`Reference ${i+1} / ${requirements.length}`,
+    content:<div className="space-y-5">
+      <p className="font-medium text-primary">{group.part}</p>
+      <ul className="list-disc space-y-3 pl-5">{group.checks.map(x=><li key={x}>{x}</li>)}</ul>
+      <p className="text-sm text-muted-foreground">Readiness percentages are not shown: without vessel records, assigning a safety compliance score would be misleading.</p>
+    </div>,
   }));
-  return <PagedReadingSurface title="SOLAS Ship Requirements" subtitle="SOLAS reference library"
-    pages={pages} storageKey="mariners-book:solas-book:SOLASShipRequirements" />;
-};
-
-export default SOLASShipRequirementsPage;
+  return <PagedReadingSurface title="SOLAS Ship Requirements" subtitle="Reference and verification" pages={pages} storageKey="mariners-book:solas-book:SOLASShipRequirements" />;
+}

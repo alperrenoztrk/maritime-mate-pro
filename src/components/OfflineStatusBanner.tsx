@@ -22,11 +22,11 @@ export function OfflineStatusBanner() {
     <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 shadow-sm dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-100">
       <div className="flex flex-wrap items-center gap-2 font-medium">
         <WifiOff className="h-4 w-4" />
-        Offline mode: Calculation sheets and local datasets are available.
+        Offline: packaged lessons and selected calculation tools may remain available. Live information is unavailable.
       </div>
       <div className="mt-1 flex items-center gap-2 text-xs opacity-90">
         <AlertTriangle className="h-3 w-3" />
-        Data update date: {offlineDataMeta.lastUpdated} · {offlineDataMeta.notes}
+        Local dataset baseline: {offlineDataMeta.lastUpdated} · {offlineDataMeta.notes}. Do not use cached tides, forecasts, charts or regulations as proof of current conditions.
       </div>
     </div>
   );

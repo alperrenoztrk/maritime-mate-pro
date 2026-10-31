@@ -1,105 +1,22 @@
 import { PagedReadingSurface, type ReadingPage } from "@/components/reader/PagedReadingSurface";
-import { PageHeader } from "@/components/layout/PageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Flame, Radio, LifeBuoy } from "lucide-react";
 
-const equipmentSets = [
-  {
-    title: "Lifesaving Equipment",
-    icon: LifeBuoy,
-    badge: "Part III",
-    summary: "Lifeboat, liferaft, MES and personal equipment inventory.",
-    checks: [
-      "Compliance with the persons-per-lifeboat capacity × 1.25 rule",
-      "The latest service dates of the HRUs and painter buoys are on record",
-      "The number and size distribution of immersion suits and lifejackets is adequate",
-    ],
-    stock: [
-      { label: "Lifeboat", qty: "2 x 70 pers.", status: "Operational" },
-      { label: "Liferaft", qty: "6 x 25 pers.", status: "Serviced 2026" },
-      { label: "MES", qty: "2 sets", status: "Drill 2025-01" },
-    ],
-  },
-  {
-    title: "Fire Extinguishing Systems",
-    icon: Flame,
-    badge: "Chapter II-2",
-    summary: "Fixed and portable fire extinguishing equipment.",
-    checks: [
-      "The CO₂ room is sealed and the bottle weight/mass records are available",
-      "Sprinkler/drencher pumps appear in the weekly test logs",
-      "Monthly checklist plus annual service labels for the portable extinguishers",
-    ],
-    stock: [
-      { label: "Fixed CO₂ System", qty: "1 set (45 bottles)", status: "Test 2024-11" },
-      { label: "Foam Monitor", qty: "2 pieces", status: "Nozzles clean" },
-      { label: "Portable Extinguishers", qty: "48 pieces", status: "100% charged" },
-    ],
-  },
-  {
-    title: "Emergency Communication & Navigation",
-    icon: Radio,
-    badge: "Chapters IV - V",
-    summary: "GMDSS equipment, alarms and navigational aids.",
-    checks: [
-      "Self-test logs for the SART, EPIRB and handheld VHF radios",
-      "Daily approval signatures for BNWAS, GMDSS and NAVTEX",
-      "Emergency lighting UPS / battery records tested every 6 months",
-    ],
-    stock: [
-      { label: "EPIRB", qty: "1 piece", status: "Battery due 2027" },
-      { label: "SART", qty: "2 pieces", status: "Test 2025-02" },
-      { label: "Handheld GMDSS", qty: "3 pieces", status: "Spare batteries ready" },
-    ],
-  },
+const groups = [
+  { id: "lifesaving", title: "Life-saving appliances", reference: "SOLAS Chapter III / LSA Code",
+    checks: ["Confirm survival craft and rescue boat type, number and aggregate capacity using the vessel's approved arrangement and the applicable SOLAS III/21 or III/31.", "Verify liferaft servicing, HRU expiry, release gear, passenger/crew complement and manufacturer maintenance instructions.", "Check immersion suits, lifejackets, lifebuoys, distress signals and muster arrangements against the approved safety equipment list."] },
+  { id: "fire", title: "Fire protection and extinguishing", reference: "SOLAS Chapter II-2 / FSS Code",
+    checks: ["Compare installed fixed systems and portable equipment with the approved Fire Control Plan.", "Verify inspection logs, applicable service intervals and the maker's test procedure; fixed gas systems must not be test-operated casually.", "Check fire detection, pumps, hydrants, hoses, breathing apparatus and equipment familiarization."] },
+  { id: "radio", title: "Emergency communications", reference: "SOLAS Chapter IV / GMDSS",
+    checks: ["Check the applicable sea area and ship radio equipment requirements.", "Check EPIRB, SART, AIS-SART and survival craft radios against the vessel-specific carriage rules.", "Cross-check batteries, expiry dates and test records; follow manufacturer-approved self-test instructions."] },
 ];
-
-const SOLASSafetyEquipmentPage = () => {
-  const pages: ReadingPage[] = equipmentSets.map((set,index)=>({
-    id: String(set.title), title: set.title,
-    section: `Reference ${index+1} / ${equipmentSets.length}`,
-    content: (<Card key={set.title} className="border border-orange-100/60 shadow-lg shadow-orange-500/10">
-              <CardHeader className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <set.icon className="w-8 h-8 text-orange-500" />
-                  <Badge variant="outline" className="text-xs">{set.badge}</Badge>
-                </div>
-                <CardTitle>{set.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm text-muted-foreground">
-                <div>
-                  <p className="font-semibold text-orange-700 mb-2">Checklist</p>
-                  <ul className="space-y-1">
-                    {set.checks.map((check) => (
-                      <li key={check} className="flex gap-2">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-orange-500" />
-                        <span>{check}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <Separator />
-                <div>
-                  <p className="font-semibold text-orange-700 mb-2">Inventory Status</p>
-                  <div className="space-y-2">
-                    {set.stock.map((item) => (
-                      <div key={item.label} className="flex items-center justify-between rounded-lg bg-white/80 dark:bg-slate-900/50 px-3 py-2">
-                        <div>
-                          <p className="font-medium text-foreground">{item.label}</p>
-                          <p className="text-xs text-muted-foreground">{item.qty}</p>
-                        </div>
-                        <Badge variant="secondary" className="text-micro tracking-wide">{item.status}</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>),
+export default function SOLASSafetyEquipmentPage() {
+  const pages: ReadingPage[] = groups.map((g, i) => ({
+    id: g.id, title: g.title, section: `Reference ${i + 1} / ${groups.length}`,
+    content: <div className="space-y-5">
+      <p className="font-medium text-primary">{g.reference}</p>
+      <ul className="list-disc space-y-3 pl-5">{g.checks.map(x=><li key={x}>{x}</li>)}</ul>
+      <p className="text-sm text-muted-foreground">No equipment quantities, service dates or 'operational' status are assumed without actual vessel records. This screen is educational, not a live inventory.</p>
+      <a href="https://www.imo.org/en/ourwork/safety/pages/lifesavingappliances-default.aspx" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-primary underline">IMO — Life-saving appliances</a>
+    </div>,
   }));
-  return <PagedReadingSurface title="SOLAS Safety Equipment" subtitle="SOLAS reference library"
-    pages={pages} storageKey="mariners-book:solas-book:SOLASSafetyEquipment" />;
-};
-
-export default SOLASSafetyEquipmentPage;
+  return <PagedReadingSurface title="SOLAS Safety Equipment" subtitle="Safety reference" pages={pages} storageKey="mariners-book:solas-book:SOLASSafetyEquipment" />;
+}

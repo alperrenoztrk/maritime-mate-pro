@@ -84,6 +84,14 @@ jobs:
       # başarısız olursa AAB hiç üretilmez; terim hatası içeren bir sürüm
       # Play'e gidemez. source-strings.json repoda tutulmuyor, kapsam
       # kontrolü için önce üretilir.
+      - name: Purchase, reading, numerical and offline regression gates
+        run: |
+          npm run test:billing-contract
+          npm run test:verified-operational
+          npm run test:reader-pagination
+          npm run test:learning-progress
+          node scripts/check-regulatory-factuality.mjs
+
       - name: i18n — extract source strings
         run: npm run i18n:extract
 

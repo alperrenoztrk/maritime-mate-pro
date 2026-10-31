@@ -66,3 +66,9 @@ test('pure formulas are still language independent', () => {
     assert.equal(isTechnicalString(value), true, value);
   }
 });
+
+test('SOLAS rescue transponder acronym is not misclassified as Turkish prose', () => {
+  assert.equal(hasTurkishText('Check EPIRB, SART, AIS-SART and survival craft radios against the vessel-specific carriage rules.'), false);
+  assert.equal(hasTurkishText('sart'), true);
+  assert.equal(hasTurkishText('SART için test'), true);
+});
