@@ -109,7 +109,8 @@ const Index = () => {
           })}
         </div>
 
-        <div className="grid items-start">
+        {/* Keep long study titles from widening the shared tab-panel track. */}
+        <div className="grid grid-cols-1 items-start">
         <AnimatePresence mode="sync" initial={false}>
           <motion.section
             key={activeView}
@@ -119,7 +120,7 @@ const Index = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : MOTION_SECONDS.control, ease: MOTION_EASE_OUT }}
-            className="col-start-1 row-start-1 py-5"
+            className="col-start-1 row-start-1 min-w-0 py-5"
           >
             {activeView === "overview" && (
               <div className="space-y-6">
