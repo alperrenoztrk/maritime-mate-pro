@@ -98,6 +98,8 @@ window.onunhandledrejection = (event) => {
 };
 
 async function bootstrap() {
+  // Install the crash-proof storage wrapper before importing React or app modules.
+  await import('./lib/safeStorage');
   // This is deliberately the first import. Every remaining dependency is
   // loaded only after the global crash screen above has been installed.
   const [
