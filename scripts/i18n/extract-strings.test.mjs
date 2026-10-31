@@ -49,5 +49,8 @@ test('JSX character references are decoded like React renders them', () => {
     false,
     'a dictionary key with an HTML entity never matches the rendered DOM text',
   );
-  assert.equal(sources.has('SOLAS Certificates & Renewal Tracking'), true);
+  // The old SOLAS page heading was removed when the lessons were repaginated.
+  // Test a currently rendered JSX entity instead of obsolete UI copy.
+  assert.equal(sources.has('Mariner’s Book'), true);
+  assert.equal(sources.has('Mariner&rsquo;s Book'), false);
 });
