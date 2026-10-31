@@ -1,8 +1,11 @@
 import { ClipboardList } from "lucide-react";
 import { shipTypes } from "@/data/shipOperationsData";
+import { englishShipTypeLabel } from "@/data/shipOperations/english";
+import { useLanguage } from "@/contexts/useLanguage";
 import { LibraryBookCard, LibraryPageShell } from "@/components/library/LibraryInterface";
 
 export default function ShipOperationsPage() {
+  const { currentLanguage } = useLanguage();
   return (
     <LibraryPageShell title="Ship Operations" icon={ClipboardList}>
       <section className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -10,7 +13,7 @@ export default function ShipOperationsPage() {
           <LibraryBookCard
             key={ship.id}
             to={`/ship-operations/${ship.id}`}
-            title={ship.label}
+            title={currentLanguage === "en" ? englishShipTypeLabel(ship.id, ship.label) : ship.label}
             accent={ship.color}
           />
         ))}
