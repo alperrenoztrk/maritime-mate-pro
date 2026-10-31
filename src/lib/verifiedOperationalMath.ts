@@ -131,6 +131,9 @@ export function calculateCounterflowLmtd(
   const ho = finite(hotOutC, "Hot outlet");
   const ci = finite(coldInC, "Cold inlet");
   const co = finite(coldOutC, "Cold outlet");
+  if (ho > hi || co < ci) {
+    throw new RangeError("Counterflow heat exchanger must cool the hot stream and heat the cold stream (or allow phase-change isothermal sides).");
+  }
   const hotEndDeltaK = hi - co;
   const coldEndDeltaK = ho - ci;
   if (hotEndDeltaK <= 0 || coldEndDeltaK <= 0) {
