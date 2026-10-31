@@ -2,7 +2,7 @@ import { APP_VERSION, BUILD_NUMBER } from "@/lib/appVersion";
 import { useEffect, useState } from "react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, Settings2 as SettingsIcon, Type, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun, Crown, Infinity as InfinityIcon } from "lucide-react";
+import { Globe, Settings2 as SettingsIcon, LogOut, Mail, Megaphone, Trash2, ShieldCheck, FileText, ExternalLink, Monitor, Moon, Sun, Crown, Infinity as InfinityIcon } from "lucide-react";
 import { hapticImpact } from "@/lib/haptics";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -10,8 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useNavigate } from "react-router-dom";
-import { FONT_SIZE_OPTIONS, type FontSizeKey } from "@/contexts/font-size-context";
-import { useFontSize } from "@/contexts/useFontSize";
 import { useLanguage } from "@/contexts/useLanguage";
 import { useAuth } from "@/hooks/useAuthContext";
 import { useEntitlement } from "@/contexts/useEntitlement";
@@ -29,7 +27,6 @@ import { useTheme, type Theme } from "@/hooks/useTheme";
 import { PrivacyChoices } from "@/components/privacy/PrivacyChoices";
 
 const Settings = () => {
-  const { fontSize, setFontSize } = useFontSize();
   const { theme, setTheme } = useTheme();
   const { currentLanguage, changeLanguage, supportedLanguages, getLanguageName } = useLanguage();
   // RequireAuth already keeps anonymous visitors out of this page and carries
@@ -92,10 +89,6 @@ const Settings = () => {
   };
   const providerLabel = providerLabels[provider] || (provider ? provider.charAt(0).toUpperCase() + provider.slice(1) : "Unknown");
 
-  const fontSizeLabels: Partial<Record<FontSizeKey, string>> = {
-    normal: "Normal",
-    large: "Large",
-  };
 
 
   const appearanceOptions: Array<{ value: Theme; label: string; icon: typeof Monitor }> = [
@@ -104,10 +97,6 @@ const Settings = () => {
     { value: "dark", label: "Dark", icon: Moon },
   ];
 
-  const handleFontSizeChange = (value: string) => {
-    setFontSize(value as FontSizeKey);
-    toast.success(`Text size: ${fontSizeLabels[value as FontSizeKey]}`);
-  };
 
   // Reklam onayı (UMP): Google, onay formu gösterilen bölgelerde kullanıcının
   // tercihini sonradan değiştirebileceği bir giriş noktası zorunlu kılar.
@@ -368,42 +357,6 @@ const Settings = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Font Size Settings */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Type className="w-5 h-5" />
-                  <span data-translatable>Font Size</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="font-size-select">
-                      <span data-translatable>Font Size</span>
-                    </Label>
-                    <Select value={fontSize} onValueChange={handleFontSizeChange}>
-                      <SelectTrigger id="font-size-select">
-                        <SelectValue>
-                          <span data-translatable>{fontSizeLabels[fontSize]}</span>
-                        </SelectValue>
-                      </SelectTrigger>
-                      <SelectContent>
-                        {FONT_SIZE_OPTIONS.map((opt) => (
-                          <SelectItem key={opt.key} value={opt.key}>
-                            <span data-translatable>{opt.label}</span>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-
-
 
             {/* Language Settings */}
             <Card>

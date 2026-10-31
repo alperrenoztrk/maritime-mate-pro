@@ -19,6 +19,9 @@ import {
 } from "lucide-react";
 import { MobileLayout } from "@/components/MobileLayout";
 import { shipTypeMap } from "@/data/shipOperationsData";
+import { englishShipOperation, englishShipOpLongForm, englishShipTypeLabel } from "@/data/shipOperations/english";
+import { useLanguage } from "@/contexts/useLanguage";
+import { getStaticTranslation, loadStaticDictionary } from "@/utils/staticTranslations";
 import type { DepartmentId, ShipOperation } from "@/data/shipOperationsData";
 import { loadShipOpLongForm, type ShipOpLongForm, type ShipOpCallout } from "@/data/shipOperations/longform/types";
 import { scrollToTop } from "@/lib/scrollToTop";
@@ -32,11 +35,13 @@ const calloutMeta: Record<ShipOpCallout["type"], { Icon: typeof AlertTriangle; c
 };
 
 export default function ShipOperationDeepDive() {
+  const { currentLanguage } = useLanguage();
   const { shipType, dept, opIndex } = useParams<{ shipType: string; dept: string; opIndex: string }>();
   const idx = Number(opIndex);
   const ship = shipType ? shipTypeMap[shipType] : undefined;
   const department = ship?.departments.find((d) => d.id === (dept as DepartmentId));
-  const opMeta = department?.operations[idx];
+  const rawOpMeta = department?.operations[idx];
+  const opMeta = currentLanguage === "en" && rawOpMeta ? englishShipOperation(rawOpMeta) : rawOpMeta;
 
   const [content, setContent] = useState<ShipOpLongForm | null>(null);
   const [loading, setLoading] = useState(true);
@@ -48,11 +53,17 @@ export default function ShipOperationDeepDive() {
     if (!shipType || !dept || Number.isNaN(idx)) return;
     setLoading(true);
     setActivePage(0);
-    loadShipOpLongForm(shipType, dept, idx)
-      .then((c) => setContent(c))
-      .catch(() => setContent(null))
-      .finally(() => setLoading(false));
-  }, [shipType, dept, idx]);
+    let active = true;
+    const request = currentLanguage === "en"
+      ? Promise.all([loadShipOpLongForm(shipType, dept, idx), loadStaticDictionary("en")])
+          .then(([data]) => data ? englishShipOpLongForm(data) : null)
+      : loadShipOpLongForm(shipType, dept, idx);
+    void request
+      .then((data) => { if (active) setContent(data); })
+      .catch(() => { if (active) setContent(null); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [shipType, dept, idx, currentLanguage]);
 
   // Each chapter is its own page ("2 / 8"), so Önceki/Sonraki and the chapter
   // chips have to start at the top instead of dropping the reader halfway
@@ -76,7 +87,7 @@ export default function ShipOperationDeepDive() {
   const chapter = activePage > 0 ? chapters[activePage - 1] : undefined;
 
   const pages: ReadingPage[] = [
-    {id:"summary",title:"Operation summary",section:department?.label ?? "Operations",
+    {id:"summary",title:"Operation summary",section:currentLanguage === "en" ? getStaticTranslation(department?.label ?? "", "en") ?? "Operations" : department?.label ?? "Operations",
       content:<OperationSummary operation={opMeta} longFormMissing={!content} />},
     ...chapters.map((ch,index)=>({
       id:`chapter-${index}`,title:ch.heading,section:`Section ${index+1} / ${chapters.length}`,
@@ -159,8 +170,8 @@ export default function ShipOperationDeepDive() {
   return (
     <MobileLayout>
       {loading ? <p className="p-6 text-sm text-muted-foreground">Loading operation lesson…</p> :
-        <PagedReadingSurface key={`${shipType}:${dept}:${opIndex}`} title={opMeta.title}
-          subtitle={`${ship.label} · ${department?.label ?? ""}`} pages={pages}
+        <PagedReadingSurface key={`${currentLanguage}:${shipType}:${dept}:${opIndex}`} title={opMeta.title}
+          subtitle={`${currentLanguage === "en" ? englishShipTypeLabel(ship.id, ship.label) : ship.label} · ${currentLanguage === "en" ? getStaticTranslation(department?.label ?? "", "en") ?? "Operations" : department?.label ?? ""}`} pages={pages}
           storageKey={`mariners-book:ship-operation:${shipType}:${dept}:${opIndex}`} />}
     </MobileLayout>
   );

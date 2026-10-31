@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
-import { ChevronLeft, ChevronRight, List, Minus, Plus } from "lucide-react";
+import { ChevronLeft, ChevronRight, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export interface ReadingPage {
@@ -35,20 +35,9 @@ export function PagedReadingSurface({
 }) {
   const [index, setIndex] = useState(() => readInitialPage(storageKey, pages));
   const [contentsOpen, setContentsOpen] = useState(false);
-  const [fontScale, setFontScale] = useState(() => {
-    try {
-      const saved = Number(window.localStorage.getItem("mariners-book:reader-font-scale"));
-      return saved >= 0.9 && saved <= 1.4 ? saved : 1;
-    } catch { return 1; }
-  });
   const articleRef = useRef<HTMLDivElement>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const total = pages.length;
-  const updateFont = (delta: number) => {
-    const next = Math.round(Math.min(1.4, Math.max(0.9, fontScale + delta)) * 10) / 10;
-    setFontScale(next);
-    try { window.localStorage.setItem("mariners-book:reader-font-scale", String(next)); } catch { /* disabled */ }
-  };
   const current = pages[Math.min(index, Math.max(0, total - 1))];
   const pageId = current?.id;
 
@@ -109,19 +98,6 @@ export function PagedReadingSurface({
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
           {headerAction}
-          <div className="flex items-center gap-1 rounded-xl border border-border/60 p-0.5" aria-label="Text size controls">
-            <button type="button" aria-label="Decrease text size" title="Smaller text"
-              disabled={fontScale <= 0.9} onClick={() => updateFont(-0.1)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg hover:bg-muted disabled:opacity-40">
-              <Minus className="h-4 w-4" aria-hidden />
-            </button>
-            <span className="text-xs font-semibold text-muted-foreground" aria-hidden>Aa</span>
-            <button type="button" aria-label="Increase text size" title="Larger text"
-              disabled={fontScale >= 1.4} onClick={() => updateFont(0.1)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg hover:bg-muted disabled:opacity-40">
-              <Plus className="h-4 w-4" aria-hidden />
-            </button>
-          </div>
           <Button variant="outline" size="sm" className="min-h-10 gap-2 rounded-xl" type="button"
             onClick={() => setContentsOpen((previous) => !previous)} aria-expanded={contentsOpen}
             aria-controls="reader-chapters">
@@ -157,8 +133,7 @@ export function PagedReadingSurface({
           tabIndex={0} aria-label={`Reading page ${index + 1}: ${current.title}`}>
           <article className="mx-auto max-w-[72ch] space-y-5 break-words">
             <h2 className="text-xl font-bold leading-snug text-foreground sm:text-2xl">{current.title}</h2>
-            <div className="space-y-4 leading-[1.85] text-foreground/90 [&_p]:text-[inherit] [&_li]:text-[inherit] [&_dd]:text-[inherit]"
-              style={{ fontSize: `${fontScale}rem` }}>
+            <div className="space-y-4 text-base leading-[1.85] text-foreground/90 [&_p]:text-[inherit] [&_li]:text-[inherit] [&_dd]:text-[inherit]">
               {current.content}
             </div>
           </article>

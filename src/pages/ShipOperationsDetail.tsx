@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Anchor, ChevronRight, ClipboardList, Wrench } from "lucide-react";
 import { shipTypeMap, type DepartmentId } from "@/data/shipOperationsData";
+import { englishShipOperation } from "@/data/shipOperations/english";
+import { useLanguage } from "@/contexts/useLanguage";
+import { loadStaticDictionary, getStaticTranslation } from "@/utils/staticTranslations";
 import { LibraryPageShell } from "@/components/library/LibraryInterface";
 import { accentGradient } from "@/components/library/libraryAccent";
 
@@ -20,6 +23,20 @@ export default function ShipOperationsDetail() {
   const { shipType } = useParams<{ shipType: string }>();
   const ship = shipType ? shipTypeMap[shipType] : undefined;
   const [activeDepartment, setActiveDepartment] = useState<DepartmentId>("guverte");
+  const { currentLanguage } = useLanguage();
+  const [englishLoaded, setEnglishLoaded] = useState(false);
+
+  useEffect(() => {
+    if (currentLanguage !== "en") {
+      setEnglishLoaded(false);
+      return;
+    }
+    let active = true;
+    void loadStaticDictionary("en").then(() => {
+      if (active) setEnglishLoaded(true);
+    });
+    return () => { active = false; };
+  }, [currentLanguage]);
 
   if (!ship) {
     return (
@@ -30,6 +47,16 @@ export default function ShipOperationsDetail() {
   const currentDepartment = ship.departments.find(
     (department) => department.id === activeDepartment,
   );
+  const useEnglish = currentLanguage === "en" && englishLoaded;
+  const englishText = (source: string) => getStaticTranslation(source, "en") ?? source;
+
+  if (currentLanguage === "en" && !englishLoaded) {
+    return (
+      <LibraryPageShell title={shipOperationsTitles[ship.id] ?? "Ship Operations"} backHref="/ship-operations">
+        <p className="p-4 text-sm text-muted-foreground">Loading ship operations…</p>
+      </LibraryPageShell>
+    );
+  }
 
   return (
     <LibraryPageShell
@@ -56,7 +83,7 @@ export default function ShipOperationsDetail() {
                 }`}
               >
                 <Icon className="h-4 w-4" />
-                {department.label}
+                {useEnglish ? englishText(department.label) : department.label}
               </button>
             );
           })}
@@ -68,9 +95,11 @@ export default function ShipOperationsDetail() {
           {/* Liste yalnız başlık taşır: amaç, prosedür, mevzuat, risk ve kayıt
               başlıkları operasyonun detaylı anlatımındaki "Summary" bölümünde
               tek kaynaktan okunur. */}
-          {currentDepartment.operations.map((operation, index) => (
+          {currentDepartment.operations.map((sourceOperation, index) => {
+            const operation = useEnglish ? englishShipOperation(sourceOperation) : sourceOperation;
+            return (
             <Link
-              key={`${activeDepartment}-${operation.title}`}
+              key={`${currentLanguage}-${activeDepartment}-${operation.title}`}
               to={`/ship-operations/${shipType}/${activeDepartment}/${index}`}
               className="flex items-center gap-3 overflow-hidden rounded-2xl border border-border/60 bg-card/80 p-4 shadow-sm transition hover:bg-muted/40"
             >
@@ -85,7 +114,8 @@ export default function ShipOperationsDetail() {
               </span>
               <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" />
             </Link>
-          ))}
+            );
+          })}
         </section>
       )}
     </LibraryPageShell>
