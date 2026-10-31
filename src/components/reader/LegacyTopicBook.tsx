@@ -22,10 +22,9 @@ export interface LegacyBookExtra {
 
 /** Preserve full source text, splitting only at blank-line boundaries. */
 export function createLegacyReadingPlan(topic: LegacyBookTopic, extras: readonly LegacyBookExtra[] = []): ReadingPage[] {
-  const pages: ReadingPage[] = [{
-    id: "intro", title: topic.title, section: "Introduction",
-    content: <p className="whitespace-pre-line">{topic.introduction || "Read the following topic."}</p>,
-  }];
+  // No separate "Introduction" page: the book opens on the subject itself and
+  // the topic's introduction leads the first page (see the end of this function).
+  const pages: ReadingPage[] = [];
   pages.push(...extras.map((entry) => ({
     id: `extra-${entry.id}`, title: entry.title, section: "Illustrations and demonstrations", content: entry.content,
   })));
@@ -56,6 +55,16 @@ export function createLegacyReadingPlan(topic: LegacyBookTopic, extras: readonly
     content:<ol className="list-decimal space-y-3 pl-6">{topic.keyPoints.map((point,i)=><li key={i}>{point}</li>)}</ol>});
   if(topic.warnings?.length)pages.push({id:"warnings",title:"Operational warnings",section:"Safety",
     content:<ul className="list-disc space-y-3 pl-5">{topic.warnings.map((v,i)=><li key={i}>{v}</li>)}</ul>});
+  const introduction = topic.introduction?.trim();
+  if (pages.length === 0) {
+    return [{ id: "intro", title: topic.title, section: "Introduction",
+      content: <p className="whitespace-pre-line">{introduction || "Read the following topic."}</p> }];
+  }
+  if (introduction) {
+    const [first, ...rest] = pages;
+    pages.splice(0, pages.length, { ...first, content: <div className="space-y-4">
+      <p className="whitespace-pre-line">{introduction}</p>{first.content}</div> }, ...rest);
+  }
   return pages;
 }
 

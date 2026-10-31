@@ -1732,14 +1732,13 @@ Harita ölçeği, tek başına seyri güvenli hâle getirmez; ancak yanlış öl
 
 Bu nedenle büyük daire kavramı tek başına bir seyir yöntemi değil, rota planlamasında referans alınan geometrik bir ilkedir. Pratik uygulamada rhumb line veya composite rota ile birlikte değerlendirilir.
 
-────────────
 **Büyük Daire Tanım İlişkileri ve Temel İfade**
 
 Merkezden geçen düzlem → Büyük daire  
 Merkezden geçmeyen düzlem → Küçük daire
 
 İki mevki arasındaki en kısa küresel yol → Büyük daire yayı
-────────────`
+`
       },
       {
         title: "Sayısal Açıklayıcı Örnek",
@@ -1792,12 +1791,10 @@ Bu ifade, büyük daire tarafının referans mesafesini verir.`
 
 
 
-────────────  
 **Rhumb Line Temel Geometrik Özelliği**  
 Meridyenlerle yapılan açı = **sabit**  
 Kurs değişimi = **yok**  
 Mesafe = **büyük daireye göre daha uzun**  
-────────────
 
 **Rhumb line mesafesi ve kurs bağıntıları**
 
@@ -2035,9 +2032,7 @@ Mercator projeksiyonunun bu avantajı, alan ve mesafe bozulmalarının enlemle h
         title: "İzometrik Enlem (Mercator Enlemi)",
         content: `Mercator projeksiyonunda enlemler arası açılma izometrik enlem ile ifade edilir. Rhumb line hesaplarının temel büyüklüğü bu dönüşümdür:
 
-────────────  
 **ψ = ln [ tan (45° + φ / 2) ]**  
-────────────
 
 Burada ψ, Mercator enlemi; φ ise küresel enlemdir. Bu dönüşüm, enlemlerin harita üzerindeki gerçek yerlerini temsil eder.`
       },

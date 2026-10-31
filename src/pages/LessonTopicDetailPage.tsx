@@ -98,26 +98,20 @@ export default function LessonTopicDetailPage() {
     };
   });
 
-  const readingPages: ReadingPage[] = [
-    {
-      id: "overview",
-      title: content.title,
-      section: "Introduction",
-      content: (
-        <div className="space-y-5">
-          <TopicLearningContext categoryKey={categoryId} topic={content} />
-          {content.introduction && (
-            <p className="text-base leading-relaxed">{stripMarkdown(content.introduction)}</p>
-          )}
-          <TopicGuidedLearningLink categoryKey={categoryId} topic={content} />
-        </div>
-      ),
-    },
-    ...sections.map(({ section, hideImage, alreadyUsedImages }, index) => ({
-      id: section.id ?? `section-${index}`,
-      title: section.title,
-      section: `Lesson · ${index + 1} / ${sections.length}`,
-      content: (
+  const introduction = content.introduction ? stripMarkdown(content.introduction) : "";
+  // The reader opens straight on the first lesson section: no separate
+  // "Introduction" page. The topic's short introduction leads the first
+  // section, and the learning-map context and the guided-learning entry
+  // ("Start Learning") live on the closing "Continue learning" page.
+  const readingPages: ReadingPage[] = sections.map(({ section, hideImage, alreadyUsedImages }, index) => ({
+    id: section.id ?? `section-${index}`,
+    title: section.title,
+    section: `Lesson · ${index + 1} / ${sections.length}`,
+    content: (
+      <div className="space-y-5">
+        {index === 0 && introduction && (
+          <p className="text-base leading-relaxed text-foreground/85">{introduction}</p>
+        )}
         <LessonTeachCard
           section={section}
           categoryId={categoryId}
@@ -125,9 +119,24 @@ export default function LessonTopicDetailPage() {
           hideImage={hideImage}
           alreadyUsedImages={alreadyUsedImages}
         />
+      </div>
+    ),
+  }));
+
+  // A topic without sections still needs one page to read.
+  if (readingPages.length === 0) {
+    readingPages.push({
+      id: "overview",
+      title: content.title,
+      section: "Introduction",
+      content: (
+        <div className="space-y-5">
+          <TopicLearningContext categoryKey={categoryId} topic={content} />
+          {introduction && <p className="text-base leading-relaxed">{introduction}</p>}
+        </div>
       ),
-    })),
-  ];
+    });
+  }
 
   if (enhancement) {
     readingPages.push({
@@ -168,7 +177,12 @@ export default function LessonTopicDetailPage() {
     id: "next-step",
     title: "Continue learning",
     section: "Review",
-    content: <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />,
+    content: (
+      <div className="space-y-5">
+        <TopicGuidedLearningLink categoryKey={categoryId} topic={content} />
+        <TopicLearningContext categoryKey={categoryId} topic={content} placement="after" />
+      </div>
+    ),
   });
 
   return (

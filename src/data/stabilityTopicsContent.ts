@@ -218,15 +218,11 @@ Kaldırma kuvveti, bir geminin su üzerinde kalabilmesini sağlayan temel fiziks
 
 Kaldırma kuvvetinin büyüklüğü, geminin şekline ya da malzemesine değil, yalnızca yer değiştirdiği su hacmine ve suyun yoğunluğuna bağlıdır. Bu ilişki Arşimet prensibi ile ifade edilir ve gemi stabilitesinin matematiksel temelini oluşturur. İlke şu şekilde tanımlanır:
 
-────────────
 Kaldırma Kuvveti = Yer Değiştirilen Su Ağırlığı
-────────────
 
 Başka bir ifadeyle:
 
-────────────
 Fᵦ = ρ · g · ∇
-────────────
 
 Burada
 *Fᵦ* : Kaldırma kuvveti
@@ -254,17 +250,13 @@ Ağırlık merkezinin konumu üç eksen üzerinden tanımlanır. Düşey konum, 
 
 Ağırlık merkezinin hesaplanmasında temel prensip moment dengesine dayanır. Gemide bulunan her bir ağırlık, kendi büyüklüğü ile referans noktasına olan mesafesinin çarpımı kadar moment üretir. Tüm ağırlıkların momentleri toplanarak toplam ağırlığa bölündüğünde ağırlık merkezinin konumu bulunur. Bu ilişki matematiksel olarak şu şekilde ifade edilir:
 
-────────────
 KG = Toplam Düşey Moment / Toplam Ağırlık
-────────────
 
 Burada kullanılan momentler mutlak değerlerle hesaplanır; ağırlığın yukarıda ya da aşağıda olması yön bilgisi olarak değerlendirilir, sayısal işlem sırasında işaret kullanılmaz. Örnek olarak, toplam ağırlığı 10 000 ton olan bir gemide, düşey momentlerin toplamı 52 000 ton·metre olarak bulunmuşsa, düşey ağırlık merkezi 52 000 / 10 000 = 5,2 metre olarak hesaplanır. Bu değer, ağırlık merkezinin omurgadan itibaren 5,2 metre yukarıda bulunduğunu gösterir.
 
 Yükleme sırasında ağırlık merkezinin yer değiştirmesi, eklenen veya çıkarılan ağırlıkların konumuna bağlıdır. Gemide yeni bir yük alındığında, bu yükün ağırlığı ile kendi düşey mesafesi çarpılarak yeni bir moment oluşturulur ve toplam momente eklenir. Aynı şekilde, gemiden çıkarılan bir ağırlık, mevcut momentten düşülür. Yeni toplam moment, yeni toplam ağırlığa bölünerek güncel ağırlık merkezi hesaplanır. Bu işlem sırası her zaman aynı mantıkla yürütülür ve hiçbir adım atlanmaz.
 
-────────────
 Yeni KG = (Eski Toplam Moment ± Eklenen veya Çıkarılan Moment) / Yeni Toplam Ağırlık
-────────────
 
 Örneğin, KG’si 5,2 metre olan ve toplam ağırlığı 10 000 ton olan bir gemiye, omurgadan 9 metre yükseklikte bulunan bir noktaya 500 ton yük eklendiğinde, eklenen moment 500 × 9 = 4 500 ton·metre olur. Eski toplam moment 52 000 ton·metre olduğuna göre yeni toplam moment 56 500 ton·metreye yükselir. Yeni toplam ağırlık 10 500 ton olarak alınır ve yeni KG 56 500 / 10 500 ≈ 5,38 metre olarak bulunur. Bu sonuç, yüklemenin ağırlık merkezini yukarı taşıdığını ve geminin stabilitesini olumsuz yönde etkilediğini açıkça gösterir.
 
@@ -302,15 +294,11 @@ Yüzerlik şartının özü son derece nettir: Geminin ağırlığı ile gemiye 
 
 Bu temel koşul şu şekilde ifade edilir:
 
-────────────
 Gemi Ağırlığı = Kaldırma Kuvveti
-────────────
 
 Matematiksel olarak:
 
-────────────
 W = ρ · g · ∇
-────────────
 
 Burada
 *W* : Geminin toplam ağırlığı
@@ -342,9 +330,7 @@ Denge hâlleri, ağırlık merkezi ile kaldırma merkezinin göreli konumları v
 
 Bu durum matematiksel olarak doğrultma kolunun pozitif olmasıyla ifade edilir:
 
-────────────
 GZ > 0
-────────────
 
 Burada *GZ*, ağırlık merkezi ile kaldırma kuvvetinin doğrultusu arasındaki yatay mesafeyi temsil eder. Pozitif bir GZ, geminin doğrultma kabiliyetine sahip olduğunu gösterir.
 
@@ -352,9 +338,7 @@ Burada *GZ*, ağırlık merkezi ile kaldırma kuvvetinin doğrultusu arasındaki
 
 Kararsız dengede doğrultma kolu negatiftir:
 
-────────────
 GZ < 0
-────────────
 
 Bu ifade, oluşan momentin doğrultma değil, devirmeye yönelik olduğunu açıkça ortaya koyar.
 
@@ -362,9 +346,7 @@ Nötr denge ise geminin küçük bir yatma sonrası yeni konumunda kalma eğilim
 
 Nötr dengede doğrultma kolu sıfırdır:
 
-────────────
 GZ = 0
-────────────
 
 Bu üç denge hâli, gemi stabilitesinin kavramsal çerçevesini oluşturur. Ancak gerçek gemilerde denge hâli, yalnızca tek bir açı için değil, bir açı aralığı boyunca değerlendirilir. Bu nedenle pratik stabilite analizlerinde GZ eğrileri kullanılır ve geminin belirli bir açı aralığında kararlı denge sergileyip sergilemediği incelenir.
 
@@ -382,23 +364,17 @@ Metasentrik yükseklik ise ağırlık merkezi ile metasentrik nokta arasındaki 
 
 Metasentrik yüksekliğin hesaplanmasında kullanılan temel ilişki, kaldırma merkezinin konumu ile ağırlık merkezinin konumunu birlikte ele alır. Bu ilişki şu şekilde ifade edilir:
 
-────────────
 GM = KM − KG
-────────────
 
 Burada KM, omurgadan metasentrik noktaya olan düşey mesafeyi; KG ise omurgadan ağırlık merkezine olan düşey mesafeyi temsil eder. KG değeri yükleme durumuna bağlı olarak değişirken, KM değeri geminin gövde formuna ve deplasmanına bağlıdır ve hidrostatik tablolar yardımıyla belirlenir.
 
 KM değeri kendi içinde iki bileşenden oluşur:
 
-────────────
 KM = KB + BM
-────────────
 
 KB, kaldırma merkezinin omurgadan olan düşey mesafesini; BM ise metasentrik yarıçapı ifade eder. Metasentrik yarıçap, su hattı alanının ikinci momenti ile deplasman arasındaki ilişkiyle tanımlanır ve teorik olarak şu şekilde ifade edilir:
 
-────────────
 BM = I / ∇
-────────────
 
 Burada I, su hattı alanının gemi orta hattına göre ikinci momentini; ∇ ise geminin deplasman hacmini temsil eder. Bu ifade, gövde formunun stabilite üzerindeki etkisini açıkça ortaya koyar. Geniş su hattına sahip gemilerde I büyür ve buna bağlı olarak BM artar; bu da metasentrik yüksekliğin büyümesine katkı sağlar.
 
@@ -498,9 +474,7 @@ Doğrultma kolu, geminin yatmış bir durumda tekrar dik konumuna dönme eğilim
 
 Küçük yatma açıları için doğrultma kolu, metasentrik yaklaşım yardımıyla basit bir trigonometrik ilişkiyle ifade edilebilir. Bu bölgede metasentrik nokta sabit kabul edilir ve GZ değeri yatma açısının sinüsü ile orantılıdır. Matematiksel ifade şu şekildedir:
 
-────────────
 GZ = GM × sin θ
-────────────
 
 Burada GM, metasentrik yükseklik; θ ise geminin yatma açısıdır. Bu ifade yalnızca küçük açılar için geçerlidir ve genellikle yaklaşık 7–10 dereceye kadar kabul edilebilir sonuçlar verir. Bu aralığın ötesinde kaldırma merkezinin hareketi doğrusal olmaktan çıkar ve metasentrik yaklaşım geçerliliğini yitirir.
 
@@ -510,9 +484,7 @@ Doğrultma kolunun yatma açısına karşı değişimi, GZ eğrisi ile gösteril
 
 Doğrultma momenti, doğrultma kolu ile deplasmanın çarpımı olarak tanımlanır:
 
-────────────
 Doğrultma Momenti = Deplasman × GZ
-────────────
 
 Bu ifade, GZ’nin neden stabilite analizlerinin merkezinde yer aldığını açıkça gösterir. Aynı GZ değerine sahip iki gemiden deplasmanı büyük olanın doğrultma momenti daha büyük olacaktır. Ancak pratikte stabilite değerlendirmeleri momentten ziyade GZ üzerinden yapılır; çünkü GZ, geminin geometrik ve yükleme durumunu doğrudan yansıtan normalize bir büyüklüktür.
 
@@ -1068,9 +1040,7 @@ Eğim testi, bilinen bir ağırlığın gemide bilinen bir mesafe kaydırılmas�
 **GM Hesabı**
 
 Temel formül:
-────────────
 GM = (w × d) / (Δ × tan θ)
-────────────
 
 Burada:
 - w = Kaydırılan ağırlık (ton)
@@ -1335,15 +1305,11 @@ GM'deki bu periyodik değişim, gemi rulo periyodunun yarısına eşit olduğund
 **Kritik Koşullar**
 
 **Dalga Boyu - Gemi Boyu Oranı:**
-────────────
 λ / L ≈ 0.8 - 2.0
-────────────
 (λ: dalga boyu, L: gemi boyu)
 
 **Karşılaşma Periyodu İlişkisi:**
-────────────
 Te ≈ Tr / 2  veya  Te ≈ Tr
-────────────
 (Te: karşılaşma periyodu, Tr: doğal rulo periyodu)
 
 **Hız Etkisi:**
@@ -1425,10 +1391,8 @@ Te ≈ Tr / 2  veya  Te ≈ Tr
 
 **Rulo Sönümleme Ölçümü (Serbest Salınım)**
 Geminin serbest rulo salınımında ardışık tepe açıları ölçülerek sönümleme bulunur:
-────────────
 δ = ln(θ₁ / θ₂)
 ζ ≈ δ / (2π)
-────────────
 Burada:
 - θ₁, θ₂: Ardışık iki tepe rulo açısı
 - δ: Logaritmik decrement
@@ -1820,9 +1784,7 @@ Dikey bordalı gemilerde, yatma sırasında:
 
 **Wall-Sided GZ Formülü**
 
-────────────────────────────
 GZ = sin θ × (GM + ½ BM × tan² θ)
-────────────────────────────
 
 Burada:
 - θ = Yatma açısı
@@ -2793,9 +2755,7 @@ Draft markaları genellikle perpendikülerlerde (FP ve AP) değildir:
 
 **Düzeltme Formülü:**
 
-────────────────────────────
 Düzeltme = (Mesafe × Trim) / LBP
-────────────────────────────
 
 Burada:
 - Mesafe = Draft markası ile perpendikül arasındaki mesafe
@@ -3186,9 +3146,7 @@ Cross-flooding, asimetrik su basmasını dengelemek için kullanılan kontrollü
 **Cross-Flooding Zaman Hesabı**
 
 Zaman formülü:
-────────────────────────────
 t = V / (A × C × √(2gh))
-────────────────────────────
 
 Burada:
 - t = Doldurma süresi (s)
@@ -3751,9 +3709,7 @@ Ballast Arrival (Balast Varış) durumu, uzun bir balast seyiri sonrasında mini
 
 **Intermediate Conditions (Ara Durumlar)**, kalkış ve varış arasındaki geçiş dönemlerini kapsar. Yakıt tüketiminin %50 seviyesinde olması, kısmi boşaltma veya yükleme durumları ve balast transferleri sırasında oluşan geçici durumlar bu kategoriye girer. Ara durumlar, özellikle serbest yüzey etkisinin maksimum olduğu dönemlerde stabilite açısından kritik olabilir.
 
-────────────
 Δ = Lightship + DWT
-────────────
 
 Burada DWT (Deadweight), kargo, yakıt, tatlı su, balast, kumanya ve personel ağırlıklarının toplamıdır. Her yükleme durumu için bu bileşenlerin ayrı ayrı miktarları ve VCG değerleri belirlenir, moment hesabı yapılır ve toplam KG bulunur.
 
@@ -3818,9 +3774,7 @@ Kritik durumların tespiti, geminin emniyetli işletimi açısından hayati öne
 
 Bu durumların analizi için limit VCG/KG eğrisi temel referans aracıdır:
 
-────────────
 VCGmax = KM − GMgerekli
-────────────
 
 Burada GMgerekli, IMO kriterlerini sağlamak için gereken minimum GM değeridir ve serbest yüzey düzeltmesini de içerir. Eğer hesaplanan VCG bu sınırı aşarsa, yükleme planı revize edilmeli veya ek balast alınmalıdır.
 
@@ -3889,9 +3843,7 @@ Tank sıralamasının temel prensibi, herhangi bir ara yükleme durumunda gemini
 
 Balast Tank Sıralaması ise trim ve stabilite kontrolü için aktif olarak yönetilen bir süreçtir. Balast alma sırasında önce çift dip tankları doldurulur (stabilite artışı için), ardından baş pik tankı (trim düzeltmesi için) ve son olarak yan tanklar (ince ayar için) doldurulur. Balast boşaltma sırasında önce üst tanklar boşaltılır (GM artışı), ardından yan tanklar (heel kontrolü) ve en son dip tankları (son aşama) boşaltılır.
 
-────────────
 FSCtoplam = Σ(ρᵢ × iᵢ) / Δ
-────────────
 
 Bu formülde her kısmen dolu tankın serbest yüzey momenti ayrı ayrı hesaplanır ve toplam FSC, GMsolid değerinden çıkarılarak operasyonel GM elde edilir. Tank sıralaması, bu toplam değerin her ara durumda kabul edilebilir sınırlar içinde kalmasını hedefler.
 
@@ -3961,17 +3913,13 @@ Kuru Dökme Kargolar arasında tahıl (buğday, mısır, arpa, pirinç), maden c
 
 Tahıl taşıyan gemiler için IMO Tahıl Kodu şu temel kriterleri zorunlu kılar:
 
-────────────
 GMfluid ≥ 0,30 m
-────────────
 
 Bu değer, genel kargo gemileri için geçerli olan 0,15 m minimumunun iki katıdır ve tahıl kaymasının yarattığı ek riski telafi etmek için daha yüksek tutulmuştur. Tahıl kaymasından dolayı oluşan yatma açısı 12°'yi geçmemelidir ve GZ eğrisinde tahıl heeling arm'ı ile GZ eğrisi arasındaki artık alan en az 0,075 m·rad olmalıdır.
 
 Tahıl heeling arm hesabı, volumetrik kayma momentine (VHM) dayanır:
 
-────────────
 λ = VHM / (SF × Δ)
-────────────
 
 Burada VHM hacimsel heeling momentini, SF stowage factor'ü ve Δ deplasmanı ifade eder. VHM değeri, ambarın geometrisine, doluluk durumuna ve yük tutma cihazlarının (shifting board, overstowing) kullanımına bağlı olarak değişir.
 
@@ -4016,23 +3964,17 @@ Ağır yük tipleri arasında endüstriyel ekipmanlar (transformatörler, jenera
 
 **Vinç Operasyonu ve Stabilite Etkisi**, ağır yük taşımacılığının en kritik aşamasıdır. Bir yük vinçle kaldırıldığı anda, yükün ağırlığı vincin pivot noktasına transfer olur. Bu transfer, ağırlık merkezinin aniden yukarı ve yana kaymasına neden olur. Kaldırma sırasında oluşan yatırıcı moment şu şekilde hesaplanır:
 
-────────────
 Mvinç = W × R × cos(θ)
-────────────
 
 Burada W yükün ağırlığı, R vincin yarıçapı ve θ boom açısıdır. Ancak bunun ötesinde, asılı bir yük serbest yüzey etkisine benzer bir davranış gösterir. Asılı yük, geminin yatmasıyla birlikte sallanır ve ağırlık merkezini yatılan tarafa kaydırır. Bu "asılı yük serbest yüzey etkisi" şu şekilde ifade edilir:
 
-────────────
 GG₁ = W × h / Δ
-────────────
 
 Burada h, yükün asılma noktası ile ağırlık merkezi arasındaki düşey mesafedir. Bu etki, serbest yüzey etkisine benzer biçimde GM'i düşürür ve vinç operasyonu sırasında stabilite kaybına neden olabilir. Bu nedenle ağır yük kaldırma operasyonlarında, operasyon başlamadan önce tüm stabilite hesapları yapılmalı, yeterli GM marjı sağlanmalı ve gerekirse karşı balast hazırlanmalıdır.
 
 **Sabitleme (Lashing) Hesabı**, seyir sırasında ağır yükün güvenli taşınmasını garanti etmek için zorunludur. IMO CSS Code (Code of Safe Practice for Cargo Stowage and Securing), sabitleme kuvvetlerinin hesaplanması için standart yöntemleri tanımlar. Sabitleme kuvveti şu şekilde hesaplanır:
 
-────────────
 Flashing = m × a × SF
-────────────
 
 Burada m yükün kütlesi, a beklenen maksimum ivme (gemi hareketlerinden kaynaklanan) ve SF güvenlik faktörüdür. İvme değerleri, geminin rulo, pitch ve heave hareketlerinin bileşimi olarak hesaplanır ve yükün gemideki konumuna göre değişir. Baş ve kıç uçlardaki ivmeler, geminin ortasına göre daha büyüktür.
 
@@ -4077,9 +4019,7 @@ Dökme tehlikeli maddelerde kayma potansiyeli, nem hassasiyeti, kendiliğinden �
 
 Sıvı tehlikeli maddelerin sıcaklık genleşmesi de dikkate alınmalıdır:
 
-────────────
 Vgenleşme = V₀ × β × ΔT
-────────────
 
 Burada V₀ başlangıç hacmi, β termal genleşme katsayısı ve ΔT sıcaklık değişimidir. Tankların doluluk oranı, bu genleşmeyi karşılayacak şekilde %98'i geçmemelidir.
 
@@ -4118,9 +4058,7 @@ Standart konteyner boyutları şu şekildedir: 20 ft TEU (6,1 m × 2,4 m × 2,6 
 
 **Yüksek VCG Problemi**, konteyner gemilerinin en temel stabilite sorunudur. Modern konteyner gemileri, güverte üstünde 6 ila 10 katman konteyner istifleyebilir. Bu istifleme, VCG'yi önemli ölçüde yükseltir ve GM'i düşürür. İstif VCG hesabı şu şekilde yapılır:
 
-────────────
 VCGistif = Σ(Wᵢ × VCGᵢ) / Σ(Wᵢ)
-────────────
 
 Burada her katmandaki (tier) konteynerlerin ağırlıkları ve düşey konumları ayrı ayrı hesaba katılır. Bay-Row-Tier sistemi, her konteynerin gemideki tam konumunu tanımlar ve stabilite yazılımları bu sistemi kullanarak detaylı hesaplamalar yapar.
 
@@ -4307,15 +4245,11 @@ PSC (Port State Control) denetimlerinde, yükleme bilgisayarının onay belgeler
 
 Bir kargo gemisinin hidrostatik verilerine göre mevcut deplasmanında KM = 8,50 m'dir. Gemideki ağırlık bileşenleri şu şekildedir:
 
-────────────────────────────────────────────
 Bileşen         Ağırlık (t)   VCG (m)   Moment (t·m)
-────────────────────────────────────────────
 Lightship        7 500         7,20       54 000
 Kargo            5 000         6,50       32 500
 Yakıt            2 500         3,00        7 500
-────────────────────────────────────────────
 Toplam          15 000          —         94 000
-────────────────────────────────────────────
 
 Adım 1 — KG hesabı:
 KG = Toplam Moment / Toplam Ağırlık = 94 000 / 15 000 = 6,27 m
@@ -4471,9 +4405,7 @@ Bu hesap, MCT₁cm değerinin deplasmanla değiştiğini göz ardı eder. Büyü
 
 Bir geminin hesaplanmış GZ değerleri aşağıdaki tabloda verilmiştir:
 
-────────────────────────
 Açı (°)    GZ (m)
-────────────────────────
   0         0,000
  10         0,180
  20         0,380
@@ -4482,7 +4414,6 @@ Açı (°)    GZ (m)
  50         0,320
  60         0,150
  70        −0,020
-────────────────────────
 
 IMO A.749 (2008 IS Code) kriterlerini kontrol ediniz.
 
@@ -4549,16 +4480,13 @@ Bu geminin iyi bir stabilite profili vardır. GZmax değeri yeterince büyük (0
 
 Bir kargo gemisi (L = 180 m) için basitleştirilmiş ağırlık ve kaldırma kuvveti dağılımı aşağıda verilmiştir:
 
-────────────────────────────────────────────────────────
 Kesit (m)   Ağırlık (t/m)   Kaldırma (t/m)   Net Yük (t/m)
-────────────────────────────────────────────────────────
 0 – 30         80               60               +20
 30 – 60       120              100               +20
 60 – 90       150              160               −10
 90 – 120      140              160               −20
 120 – 150     100              100                 0
 150 – 180      60               40               +20
-────────────────────────────────────────────────────────
 
 Pozitif net yük: ağırlık > kaldırma (gemi o bölgede batmak ister)
 Negatif net yük: kaldırma > ağırlık (gemi o bölgede yükselmek ister)
@@ -4569,9 +4497,7 @@ Kesme kuvveti, net yük dağılımının integralidir:
 
 SF(x) = ∫₀ˣ (w − b) dx
 
-────────────────────────────────
 Kesit Sonu       Kesme Kuvveti (ton)
-────────────────────────────────
 x = 0                0
 x = 30       0 + 20 × 30 = 600
 x = 60     600 + 20 × 30 = 1 200
@@ -4579,7 +4505,6 @@ x = 90   1 200 + (−10) × 30 = 900
 x = 120    900 + (−20) × 30 = 300
 x = 150    300 + 0 × 30 = 300
 x = 180    300 + 20 × 30 = 900
-────────────────────────────────
 
 Maksimum kesme kuvveti: 1 200 ton (x = 60 m'de)
 
@@ -4589,16 +4514,13 @@ Eğilme momenti, kesme kuvvetinin integralidir:
 
 BM(x) = ∫₀ˣ SF dx
 
-────────────────────────────────────────
 Kesit       Eğilme Momenti (t·m)
-────────────────────────────────────────
 x = 0                0
 x = 30     (0 + 600) / 2 × 30 = 9 000
 x = 60     9 000 + (600 + 1 200) / 2 × 30 = 36 000
 x = 90     36 000 + (1 200 + 900) / 2 × 30 = 67 500
 x = 120    67 500 + (900 + 300) / 2 × 30 = 85 500
 x = 150    85 500 + (300 + 300) / 2 × 30 = 94 500
-────────────────────────────────────────
 
 Maksimum eğilme momenti: yaklaşık 94 500 t·m (x ≈ 150 m'de)
 
@@ -4664,14 +4586,11 @@ Operasyonel Değerlendirme aşamasında, beklenen hava koşulları, yolculuk sü
 
 Onay ve Belgeleme aşamasında, kaptan stabilite hesaplarını inceleyerek onaylar. Stabilite hesap kağıdı imzalanır ve dosyalanır. Yükleme planı kayıt altına alınır. Bu belgeler, PSC denetimleri ve olası kaza soruşturmaları için yasal geçerliliğe sahiptir.
 
-────────────────────────────────────────────
 Parametre         IMO Min.     Önerilen
-────────────────────────────────────────────
 GM₀               0,15 m       ≥ 0,50 m
 GZ₃₀              0,20 m       ≥ 0,25 m
 Alan 0°–30°       0,055 m·rad  ≥ 0,070 m·rad
 SF / BM            ≤ %100       ≤ %85
-────────────────────────────────────────────
 
 Kriterlere tam sınırda kalmak, küçük bir ek etki veya hesaplama hatasının geminin güvenliğini tehlikeye düşürmesine zemin hazırlar. Bu nedenle her zaman yeterli bir güvenlik marjı bırakılmalıdır.`,
         keyPoints: [
@@ -4705,9 +4624,7 @@ A longer observed rolling period requires assessment; it is not an automatic ins
 
 Rolling periyodundan GM tahmini yapmak için pratik formül kullanılabilir:
 
-────────────
 GM ≈ (C × B / T)²
-────────────
 
 Burada C deneysel katsayı (0,7–0,9), B geminin genişliği ve T ölçülen rolling periyodudur. Bu yaklaşım, geminin stabilitesi hakkında hızlı bir fikir verir; ancak kesin değer yükleme bilgisayarından alınmalıdır.`,
         keyPoints: [
@@ -4773,9 +4690,7 @@ Flow-through (Sürekli Akış) yönteminde, tanktan su sürekli olarak boşaltı
 
 **Havuz (Dry Dock) Operasyonları**, stabilitenin en kritik anlara ulaştığı özel durumlardır. Gemi havuza girdiğinde, su çekilirken geminin ağırlığı keel block'lar tarafından taşınmaya başlar. Su çekilme sürecinde, geminin kaldırma kuvveti azalır ve keel block tepki kuvveti (P) artar. Kritik an (critical instant), GM'in sıfıra düştüğü ve geminin artık suyun desteği olmadan keel block'lar üzerinde dengede kaldığı noktadır:
 
-────────────
 P = Δ × GM / KM
-────────────
 
 Bu formül, geminin havuza girerken yeterli başlangıç GM'ine sahip olması gerektiğini gösterir. Yetersiz GM, havuz operasyonu sırasında geminin devrilmesine neden olabilir. Havuza girmeden önce gemi mümkün olduğunca dik (upright) olmalı, serbest yüzey etkisi minimize edilmeli ve yeterli GM marjı sağlanmalıdır.`,
         formulas: [
@@ -4816,112 +4731,82 @@ Bu formül, geminin havuza girerken yeterli başlangıç GM'ine sahip olması ge
 
 Metasantrik yükseklik, gemi stabilitesinin birincil göstergesidir ve şu bileşenlerden oluşur:
 
-────────────
 KM = KB + BM
-────────────
 
-────────────
 GM = KM − KG
-────────────
 
 Burada KB omurgadan kaldırma merkezine, BM metasantrik yarıçapı (BM = I / ∇), KG omurgadan ağırlık merkezine olan düşey mesafeleri ifade eder. KM, gemi geometrisine ve deplasmana bağlıdır ve hidrostatik tablolardan okunur. KG, yükleme durumuna bağlıdır ve moment hesabıyla belirlenir.
 
 Serbest yüzey düzeltmesi, kısmen dolu tanklardaki sıvıların etkisini hesaba katar:
 
-────────────
 GMeff = GM − Σ(ρᵢ × iᵢ) / Δ
-────────────
 
 Küçük açılarda doğrultma kolu ve doğrultma momenti:
 
-────────────
 GZ = GM × sin θ
 MR = Δ × GZ = Δ × GM × sin θ
-────────────
 
 Büyük açılarda doğrultma kolu (Cross Curves yöntemi):
 
-────────────
 GZ = KN − KG × sin θ
-────────────
 
 Wall-sided formül (düz bordalı gemiler, orta açılar):
 
-────────────
 GZ = sin θ × (GM + ½ BM × tan² θ)
-────────────
 
 **Trim Formülleri**
 
-────────────
 Trim = TA − TF
 MCT₁cm = (Δ × GML) / (100 × L)
 ΔTrim = (w × d) / MCT₁cm
-────────────
 
 Baş ve kıç draft değişimleri:
 
-────────────
 ΔTF = ΔTrim × (LBP − LCF) / LBP
 ΔTA = ΔTrim × LCF / LBP
-────────────
 
 **Ağırlık ve Moment Formülleri**
 
-────────────
 KG = Σ(wᵢ × VCGᵢ) / Σwᵢ
 LCG = Σ(wᵢ × LCGᵢ) / Σwᵢ
-────────────
 
 **Hidrostatik Formüller**
 
-────────────
 Δ = ρ × ∇
 TPC = (Awp × ρ) / 100
 FWA = Δ / (4 × TPC)
 DWA = FWA × (1025 − ρdock) / 25
-────────────
 
 **Rulo Periyodu**
 
-────────────
 T ≈ C × B / √GM
 GM ≈ (C × B / T)²
-────────────
 
 **Eğim Testi**
 
-────────────
 GM = (w × d) / (Δ × tan θ)
-────────────
 
 **Serbest Yüzey Momenti**
 
-────────────
 FSM = ρₜ × l × b³ / 12      (dikdörtgen tank)
 FSMbölünmüş = FSMorijinal / n²   (n parçaya bölünmüş tank)
-────────────
 
 **IMO Intact Stability Kriterleri (2008 IS Code)**
 
-────────────────────────────────────
 Kriter                      Minimum Değer
-────────────────────────────────────
 GM₀ (serbest yüzey dahil)  ≥ 0,15 m
 GZmax                      ≥ 0,20 m
 θ(GZmax)                   ≥ 25°
 Alan 0°–30°                 ≥ 0,055 m·rad
 Alan 0°–40°                 ≥ 0,090 m·rad
 Alan 30°–40°                ≥ 0,030 m·rad
-────────────────────────────────────
 
 Tahıl taşıyan gemiler için ek kriterler:
 
-────────────────────────────────────
 GMfluid                    ≥ 0,30 m
 Tahıl kayma açısı           ≤ 12°
 Artık alan                  ≥ 0,075 m·rad
-────────────────────────────────────`,
+`,
         keyPoints: [
           "Formüllerin birbiriyle olan ilişkilerini kavrayın",
           "Birim tutarlılığına dikkat edin — özellikle cm/m ve rad/derece",

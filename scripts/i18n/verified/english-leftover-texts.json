@@ -71,56 +71,50 @@
   "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 uydu": {
     "en": "√[(x−xᵢ)²+(y−yᵢ)²+(z−zᵢ)²] = c·(tᵢ − dtr) | i = 1,2,3,4 satellites"
   },
-  "────────────\nKG = Toplam Düşey Moment / Toplam Ağırlık\n────────────": {
-    "en": "────────────\nKG = Total Vertical Moment / Total Weight\n────────────"
+  "KG = Toplam Düşey Moment / Toplam Ağırlık": {
+    "en": "KG = Total Vertical Moment / Total Weight"
   },
-  "──────────── FSM = ρₜ × l × b³ / 12 (dikdörtgen tank) FSMbölünmüş = FSMorijinal / n² (n parçaya bölünmüş tank) ────────────": {
-    "en": "──────────── FSM = ρₜ × l × b³ / 12 (rectangular tank) FSMdivided = FSMoriginal / n² (tank divided into n parts) ────────────"
+  "FSM = ρₜ × l × b³ / 12 (dikdörtgen tank) FSMbölünmüş = FSMorijinal / n² (n parçaya bölünmüş tank)": {
+    "en": "FSM = ρₜ × l × b³ / 12 (rectangular tank) FSMdivided = FSMoriginal / n² (tank divided into n parts)"
   },
-  "──────────── Kaldırma Kuvveti = Yer Değiştirilen Su Ağırlığı ────────────": {
-    "en": "──────────── Buoyancy = Weight of Water Displaced ────────────"
+  "Kaldırma Kuvveti = Yer Değiştirilen Su Ağırlığı": {
+    "en": "Buoyancy = Weight of Water Displaced"
   },
-  "──────────── KG = Toplam Düşey Moment / Toplam Ağırlık ────────────": {
-    "en": "──────────── KG = Total Vertical Moment / Total Weight ────────────"
+  "Te ≈ Tr / 2  veya  Te ≈ Tr (Te: karşılaşma periyodu, Tr: doğal rulo periyodu)": {
+    "en": "Te ≈ Tr / 2 or Te ≈ Tr (Te: encounter period, Tr: natural roll period)"
   },
-  "──────────── Te ≈ Tr / 2 veya Te ≈ Tr ──────────── (Te: karşılaşma periyodu, Tr: doğal rulo periyodu)": {
-    "en": "──────────── Te ≈ Tr / 2 or Te ≈ Tr ──────────── (Te: encounter period, Tr: natural roll period)"
+  "Vgenleşme = V₀ × β × ΔT": {
+    "en": "Vexpansion = V₀ × β × ΔT"
   },
-  "──────────── Vgenleşme = V₀ × β × ΔT ────────────": {
-    "en": "──────────── Vexpansion = V₀ × β × ΔT ────────────"
+  "Yeni KG = (Eski Toplam Moment ± Eklenen veya Çıkarılan Moment) / Yeni Toplam Ağırlık": {
+    "en": "New KG = (Old Total Moment ± Moment Added or Removed) / New Total Weight"
   },
-  "──────────── Yeni KG = (Eski Toplam Moment ± Eklenen veya Çıkarılan Moment) / Yeni Toplam Ağırlık ────────────": {
-    "en": "──────────── New KG = (Old Total Moment ± Moment Added or Removed) / New Total Weight ────────────"
+  "λ / L ≈ 0.8 - 2.0 (λ: dalga boyu, L: gemi boyu)": {
+    "en": "λ / L ≈ 0.8 - 2.0 (λ: wavelength, L: ship length)"
   },
-  "──────────── λ / L ≈ 0.8 - 2.0 ──────────── (λ: dalga boyu, L: gemi boyu)": {
-    "en": "──────────── λ / L ≈ 0.8 - 2.0 ──────────── (λ: wavelength, L: ship length)"
+  "Açı (°)    GZ (m) 0         0,000 10         0,180 20         0,380 30         0,520 40         0,450 50         0,320 60         0,150 70        −0,020": {
+    "en": "Angle (°) GZ (m) 0 0.000 10 0.180 20 0.380 30 0.520 40 0.450 50 0.320 60 0.150 70 −0.020"
   },
-  "──────────────────────── Açı (°) GZ (m) ──────────────────────── 0 0,000 10 0,180 20 0,380 30 0,520 40 0,450 50 0,320 60 0,150 70 −0,020 ────────────────────────": {
-    "en": "──────────────────────── Angle (°) GZ (m) ──────────────────────── 0 0.000 10 0.180 20 0.380 30 0.520 40 0.450 50 0.320 60 0.150 70 −0.020 ────────────────────────"
+  "Düzeltme = (Mesafe × Trim) / LBP": {
+    "en": "Correction = (Distance × Trim) / LBP"
   },
-  "──────────────────────────── Düzeltme = (Mesafe × Trim) / LBP ────────────────────────────": {
-    "en": "──────────────────────────── Correction = (Distance × Trim) / LBP ────────────────────────────"
+  "Kesit Sonu       Kesme Kuvveti (ton) x = 0                0 x = 30       0 + 20 × 30 = 600 x = 60     600 + 20 × 30 = 1 200 x = 90   1 200 + (−10) × 30 = 900 x = 120    900 + (−20) × 30 = 300 x = 150    300 + 0 × 30 = 300 x = 180    300 + 20 × 30 = 900": {
+    "en": "Section end Shear force (t) x = 0 0 x = 30 0 + 20 × 30 = 600 x = 60 600 + 20 × 30 = 1 200 x = 90 1 200 + (−10) × 30 = 900 x = 120 900 + (−20) × 30 = 300 x = 150 300 + 0 × 30 = 300 x = 180 300 + 20 × 30 = 900"
   },
-  "──────────────────────────────── Kesit Sonu Kesme Kuvveti (ton) ──────────────────────────────── x = 0 0 x = 30 0 + 20 × 30 = 600 x = 60 600 + 20 × 30 = 1 200 x = 90 1 200 + (−10) × 30 = 900 x = 120 900 + (−20) × 30 = 300 x = 150 300 + 0 × 30 = 300 x = 180 300 + 20 × 30 = 900 ────────────────────────────────": {
-    "en": "──────────────────────────────── Section end Shear force (t) ──────────────────────────────── x = 0 0 x = 30 0 + 20 × 30 = 600 x = 60 600 + 20 × 30 = 1 200 x = 90 1 200 + (−10) × 30 = 900 x = 120 900 + (−20) × 30 = 300 x = 150 300 + 0 × 30 = 300 x = 180 300 + 20 × 30 = 900 ────────────────────────────────"
+  "GMfluid ≥ 0,30 m Tahıl kayma açısı ≤ 12° Artık alan ≥ 0,075 m·rad": {
+    "en": "GMfluid ≥ 0.30 m Grain heeling angle ≤ 12° Residual area ≥ 0.075 m·rad"
   },
-  "──────────────────────────────────── GMfluid ≥ 0,30 m Tahıl kayma açısı ≤ 12° Artık alan ≥ 0,075 m·rad ────────────────────────────────────": {
-    "en": "──────────────────────────────────── GMfluid ≥ 0.30 m Grain heeling angle ≤ 12° Residual area ≥ 0.075 m·rad ────────────────────────────────────"
+  "Kriter                      Minimum Değer GM₀ (serbest yüzey dahil)  ≥ 0,15 m GZmax                      ≥ 0,20 m θ(GZmax)                   ≥ 25° Alan 0°–30°                 ≥ 0,055 m·rad Alan 0°–40°                 ≥ 0,090 m·rad Alan 30°–40°                ≥ 0,030 m·rad": {
+    "en": "Criterion Minimum value GM₀ (including free surface) ≥ 0.15 m GZmax ≥ 0.20 m θ(GZmax) ≥ 25° Area 0°–30° ≥ 0.055 m·rad Area 0°–40° ≥ 0.090 m·rad Area 30°–40° ≥ 0.030 m·rad"
   },
-  "──────────────────────────────────── Kriter Minimum Değer ──────────────────────────────────── GM₀ (serbest yüzey dahil) ≥ 0,15 m GZmax ≥ 0,20 m θ(GZmax) ≥ 25° Alan 0°–30° ≥ 0,055 m·rad Alan 0°–40° ≥ 0,090 m·rad Alan 30°–40° ≥ 0,030 m·rad ────────────────────────────────────": {
-    "en": "──────────────────────────────────── Criterion Minimum value ──────────────────────────────────── GM₀ (including free surface) ≥ 0.15 m GZmax ≥ 0.20 m θ(GZmax) ≥ 25° Area 0°–30° ≥ 0.055 m·rad Area 0°–40° ≥ 0.090 m·rad Area 30°–40° ≥ 0.030 m·rad ────────────────────────────────────"
+  "Kesit       Eğilme Momenti (t·m) x = 0                0 x = 30     (0 + 600) / 2 × 30 = 9 000 x = 60     9 000 + (600 + 1 200) / 2 × 30 = 36 000 x = 90     36 000 + (1 200 + 900) / 2 × 30 = 67 500 x = 120    67 500 + (900 + 300) / 2 × 30 = 85 500 x = 150    85 500 + (300 + 300) / 2 × 30 = 94 500": {
+    "en": "Section Bending moment (t·m) x = 0 0 x = 30 (0 + 600) / 2 × 30 = 9 000 x = 60 9 000 + (600 + 1 200) / 2 × 30 = 36 000 x = 90 36 000 + (1 200 + 900) / 2 × 30 = 67 500 x = 120 67 500 + (900 + 300) / 2 × 30 = 85 500 x = 150 85 500 + (300 + 300) / 2 × 30 = 94 500"
   },
-  "──────────────────────────────────────── Kesit Eğilme Momenti (t·m) ──────────────────────────────────────── x = 0 0 x = 30 (0 + 600) / 2 × 30 = 9 000 x = 60 9 000 + (600 + 1 200) / 2 × 30 = 36 000 x = 90 36 000 + (1 200 + 900) / 2 × 30 = 67 500 x = 120 67 500 + (900 + 300) / 2 × 30 = 85 500 x = 150 85 500 + (300 + 300) / 2 × 30 = 94 500 ────────────────────────────────────────": {
-    "en": "──────────────────────────────────────── Section Bending moment (t·m) ──────────────────────────────────────── x = 0 0 x = 30 (0 + 600) / 2 × 30 = 9 000 x = 60 9 000 + (600 + 1 200) / 2 × 30 = 36 000 x = 90 36 000 + (1 200 + 900) / 2 × 30 = 67 500 x = 120 67 500 + (900 + 300) / 2 × 30 = 85 500 x = 150 85 500 + (300 + 300) / 2 × 30 = 94 500 ────────────────────────────────────────"
+  "Bileşen         Ağırlık (t)   VCG (m)   Moment (t·m) Lightship        7 500         7,20       54 000 Kargo            5 000         6,50       32 500 Yakıt            2 500         3,00        7 500 Toplam          15 000          —         94 000": {
+    "en": "Component Weight (t) VCG (m) Moment (t·m) Lightship 7 500 7,20 54 000 Cargo 5 000 6,50 32 500 Fuel 2 500 3,00 7 500 Total 15 000 — 94 000"
   },
-  "────────────────────────────────────────────\nBileşen         Ağırlık (t)   VCG (m)   Moment (t·m)\n────────────────────────────────────────────\nLightship        7 500         7,20       54 000\nKargo            5 000         6,50       32 500\nYakıt            2 500         3,00        7 500\n────────────────────────────────────────────\nToplam          15 000          —         94 000\n────────────────────────────────────────────": {
-    "en": "────────────────────────────────────────────\nComponent       Weight (t)    VCG (m)   Moment (t·m)\n────────────────────────────────────────────\nLightship        7 500         7,20       54 000\nCargo            5 000         6,50       32 500\nFuel             2 500         3,00        7 500\n────────────────────────────────────────────\nTotal           15 000          —         94 000\n────────────────────────────────────────────"
-  },
-  "──────────────────────────────────────────── Bileşen Ağırlık (t) VCG (m) Moment (t·m) ──────────────────────────────────────────── Lightship 7 500 7,20 54 000 Kargo 5 000 6,50 32 500 Yakıt 2 500 3,00 7 500 ──────────────────────────────────────────── Toplam 15 000 — 94 000 ────────────────────────────────────────────": {
-    "en": "──────────────────────────────────────────── Component Weight (t) VCG (m) Moment (t·m) ──────────────────────────────────────────── Lightship 7 500 7,20 54 000 Cargo 5 000 6,50 32 500 Fuel 2 500 3,00 7 500 ──────────────────────────────────────────── Total 15 000 — 94 000 ────────────────────────────────────────────"
-  },
-  "──────────────────────────────────────────────────────── Kesit (m) Ağırlık (t/m) Kaldırma (t/m) Net Yük (t/m) ──────────────────────────────────────────────────────── 0 – 30 80 60 +20 30 – 60 120 100 +20 60 – 90 150 160 −10 90 – 120 140 160 −20 120 – 150 100 100 0 150 – 180 60 40 +20 ────────────────────────────────────────────────────────": {
-    "en": "──────────────────────────────────────────────────────── Section (m) Weight (t/m) Buoyancy (t/m) Net load (t/m) ──────────────────────────────────────────────────────── 0 – 30 80 60 +20 30 – 60 120 100 +20 60 – 90 150 160 −10 90 – 120 140 160 −20 120 – 150 100 100 0 150 – 180 60 40 +20 ────────────────────────────────────────────────────────"
+  "Kesit (m)   Ağırlık (t/m)   Kaldırma (t/m)   Net Yük (t/m) 0 – 30         80               60               +20 30 – 60       120              100               +20 60 – 90       150              160               −10 90 – 120      140              160               −20 120 – 150     100              100                 0 150 – 180      60               40               +20": {
+    "en": "Section (m) Weight (t/m) Buoyancy (t/m) Net load (t/m) 0 – 30 80 60 +20 30 – 60 120 100 +20 60 – 90 150 160 −10 90 – 120 140 160 −20 120 – 150 100 100 0 150 – 180 60 40 +20"
   },
   "════════════════════\n045°T + 180°\n= 225°T\nFenerden\n225°T doğrultusunda\nLOP₁\n════════════════════": {
     "en": "════════════════════\n045°T + 180°\n= 225°T\nLOP₁ drawn from the light\nalong 225°T\n════════════════════"
@@ -2901,8 +2895,8 @@
   "Geminin çalışma gerilimi ile kıyı gerilimi farklıysa trafo kullanılır.": {
     "en": "If the ship's operating voltage differs from the shore voltage, a transformer is used."
   },
-  "Geminin serbest rulo salınımında ardışık tepe açıları ölçülerek sönümleme bulunur: ──────────── δ = ln(θ₁ / θ₂) ζ ≈ δ / (2π) ──────────── Burada:": {
-    "en": "Damping is found by measuring successive peak angles in the ship's free rolling: ──────────── δ = ln(θ₁ / θ₂) ζ ≈ δ / (2π) ──────────── Where:"
+  "Geminin serbest rulo salınımında ardışık tepe açıları ölçülerek sönümleme bulunur: δ = ln(θ₁ / θ₂) ζ ≈ δ / (2π) Burada:": {
+    "en": "Damping is found by measuring successive peak angles in the ship's free rolling: δ = ln(θ₁ / θ₂) ζ ≈ δ / (2π) Where:"
   },
   "Geminin uygulanabilir SOLAS hükümleri; gemi tipi, gros tonaj, inşa/önemli tadilat tarihi ve sefer niteliğine göre bir uygunluk matrisiyle izlenmeli, buna bağlı emniyet sertifikaları geçerli sörvey onaylarıyla korunmalıdır.": {
     "en": "The applicable SOLAS provisions for the ship must be tracked in a compliance matrix according to ship type, gross tonnage, date of build/major conversion and the nature of the voyage, and the related safety certificates must be maintained with valid survey endorsements."
@@ -8196,11 +8190,8 @@
   "Zaman dilimi geçişlerini unutmak (E'den W'ya geçişte saat geri alınır).": {
     "en": "Forgetting time zone changes (clocks are put back when going from east to west)."
   },
-  "Zaman formülü:\n────────────────────────────\nt = V / (A × C × √(2gh))\n────────────────────────────": {
-    "en": "Time formula:\n────────────────────────────\nt = V / (A × C × √(2gh))\n────────────────────────────"
-  },
-  "Zaman formülü: ──────────────────────────── t = V / (A × C × √(2gh)) ────────────────────────────": {
-    "en": "Time formula: ──────────────────────────── t = V / (A × C × √(2gh)) ────────────────────────────"
+  "Zaman formülü: t = V / (A × C × √(2gh))": {
+    "en": "Time formula: t = V / (A × C × √(2gh))"
   },
   "Zamanında: Kritik bilgi gecikmeden iletilmelidir.": {
     "en": "Timely: critical information must be passed on without delay."
@@ -9024,9 +9015,6 @@
   "Mvinç = W × R × cos(θ)": {
     "en": "Mcrane = W × R × cos(θ)"
   },
-  "Vgenleşme = V₀ × β × ΔT": {
-    "en": "Vexpansion = V₀ × β × ΔT"
-  },
   "GM₀               0,15 m       ≥ 0,50 m GZ₃₀              0,20 m       ≥ 0,25 m Alan 0°–30°       0,055 m·rad  ≥ 0,070 m·rad SF / BM            ≤ %100       ≤ %85": {
     "en": "GM₀               0.15 m       ≥ 0.50 m GZ₃₀              0.20 m       ≥ 0.25 m Area 0°–30°       0.055 m·rad  ≥ 0.070 m·rad SF / BM            ≤ 100%       ≤ 85%"
   },
@@ -9193,8 +9181,8 @@
   "Ballast arrival en kritik durumlardan biridir": {
     "en": "Ballast arrival is one of the most critical conditions"
   },
-  "──────────────────────────────────────────── Parametre IMO Min. Önerilen ──────────────────────────────────────────── GM₀ 0,15 m ≥ 0,50 m GZ₃₀ 0,20 m ≥ 0,25 m Alan 0°–30° 0,055 m·rad ≥ 0,070 m·rad SF / BM ≤ %100 ≤ %85 ────────────────────────────────────────────": {
-    "en": "──────────────────────────────────────────── Parameter IMO Min. Recommended ──────────────────────────────────────────── GM₀ 0.15 m ≥ 0.50 m GZ₃₀ 0.20 m ≥ 0.25 m Area 0°–30° 0.055 m·rad ≥ 0.070 m·rad SF / BM ≤ 100% ≤ 85% ────────────────────────────────────────────"
+  "Parametre         IMO Min.     Önerilen GM₀               0,15 m       ≥ 0,50 m GZ₃₀              0,20 m       ≥ 0,25 m Alan 0°–30°       0,055 m·rad  ≥ 0,070 m·rad SF / BM            ≤ %100       ≤ %85": {
+    "en": "Parameter IMO Min. Recommended GM₀ 0.15 m ≥ 0.50 m GZ₃₀ 0.20 m ≥ 0.25 m Area 0°–30° 0.055 m·rad ≥ 0.070 m·rad SF / BM ≤ 100% ≤ 85%"
   },
   "Eksik veri ile hesap yapmayın": {
     "en": "Do not calculate with incomplete data"
@@ -9286,8 +9274,8 @@
   "Merkezden geçmeyen düzlem → Küçük daire": {
     "en": "Plane not through the centre → Small circle"
   },
-  "İki mevki arasındaki en kısa küresel yol → Büyük daire yayı ────────────": {
-    "en": "Shortest path on the sphere between two positions → Great circle arc ────────────"
+  "İki mevki arasındaki en kısa küresel yol → Büyük daire yayı": {
+    "en": "Shortest path on the sphere between two positions → Great circle arc"
   },
   "Kaynak: SOLAS V/34 — IMO Resolution A.893(21)": {
     "en": "Source: SOLAS V/34 — IMO Resolution A.893(21)"
@@ -40093,8 +40081,8 @@
   "ATT ikincil liman tablosundaki interpolasyon: Standart limanda spring HW yüksekliği 6.0 m için düzeltme +0.3 m; neap HW yüksekliği 3.5 m için düzeltme −0.1 m. O gün standart limanda HW = 5.0 m ise: Düzeltme = +0.3 + [(5.0 − 6.0) / (3.5 − 6.0)] × (−0.1 − 0.3) = +0.3 + [0.4] × (−0.4) = +0.3 − 0.16 = +0.14 m (yaklaşık +0.1 m). Bu ikincil liman için uygulanacak yükseklik düzeltmesidir.": {
     "en": "Interpolation in the ATT secondary port table: the correction is +0.3 m for a spring HW height of 6.0 m at the standard port and −0.1 m for a neap HW height of 3.5 m. If HW at the standard port is 5.0 m that day: Correction = +0.3 + [(5.0 − 6.0) / (3.5 − 6.0)] × (−0.1 − 0.3) = +0.3 + [0.4] × (−0.4) = +0.3 − 0.16 = +0.14 m (about +0.1 m). This is the height correction to be applied for the secondary port."
   },
-  "──────────── Gemi Ağırlığı = Kaldırma Kuvveti ────────────": {
-    "en": "──────────── Ship's Weight = Buoyancy ────────────"
+  "Gemi Ağırlığı = Kaldırma Kuvveti": {
+    "en": "Ship's Weight = Buoyancy"
   },
   "1. Çalışma prensibi ve frekanslar": {
     "en": "1. Operating principle and frequencies"
@@ -40956,5 +40944,8 @@
   },
   "Uzak alarmları test etmeyip yalnız köprüüstü alarmını denemek": {
     "en": "Testing only the bridge alarm and not the remote alarms"
+  },
+  "Temel formül: GM = (w × d) / (Δ × tan θ)": {
+    "en": "Basic formula: GM = (w × d) / (Δ × tan θ)"
   }
 }
