@@ -179,7 +179,7 @@ export function PagedReadingSurface({
               Next <ChevronRight className="h-4 w-4" aria-hidden />
             </Button>
           </div>
-          <p className="mt-2 text-center text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-center text-caption leading-relaxed text-muted-foreground">
             Swipe sideways to change pages. Long pages scroll inside the book.
           </p>
         </div>
