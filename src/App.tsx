@@ -32,6 +32,7 @@ import { lazyWithReload } from "@/lib/lazyWithReload";
 import { topicLearnHref } from "@/data/learningGuide";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { RequireAuth } from "@/components/auth/RequireAuth";
+import { FirstSignInPlacement } from "@/components/curriculum/FirstSignInPlacement";
 import { ProRoute, LibraryBookRoute } from "@/components/pro/ProRoute";
 import { AdsController } from "@/components/ads/AdsController";
 import { prefersReducedMotion } from "@/hooks/useAppMotion";
@@ -563,6 +564,9 @@ const App = () => {
                             so a gate outside RequireAuth could never be released. */}
                         <RouteTranslationGate />
                         <AnimatedRoutes />
+                        {/* Required once per account after the first sign-in;
+                            covers the app until every question is answered. */}
+                        <FirstSignInPlacement />
                       </RequireAuth>
                     </BrowserRouter>
                   </div>

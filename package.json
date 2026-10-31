@@ -98,7 +98,7 @@
     "check:launch-ui": "node scripts/check-launch-ui.mjs",
     "check:legacy-pages": "node scripts/check-legacy-pages.mjs",
     "test:splash": "node --test scripts/splash-regression.test.mjs",
-    "test:learning-assessment": "node --import tsx --test src/data/learningAssessment.test.ts",
+    "test:learning-assessment": "node --import tsx --test src/data/learningAssessment.test.ts src/lib/learningPlacementGate.test.ts",
     "check:learning-assessment-ui": "node scripts/check-learning-assessment-ui.mjs",
     "check:epirb-lesson": "node scripts/check-epirb-lesson.mjs",
     "audit:technical-lessons": "node scripts/audit-technical-lesson-depth.mjs",

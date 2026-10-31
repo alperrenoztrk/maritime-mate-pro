@@ -18,7 +18,8 @@ const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIG
 const output = process.env.LEARNING_SCREENSHOT_DIR ?? "tmp/learning-ui";
 fs.mkdirSync(output, { recursive: true });
 const pageErrors = [];
-const user = { id: "00000000-0000-4000-8000-000000000001", aud: "authenticated", role: "authenticated", email: "curriculum-test@example.invalid", app_metadata: { provider: "email", providers: ["email"] }, user_metadata: {}, created_at: "2026-10-21T00:00:00Z" };
+// The account has finished the first-sign-in placement (covered by check-learning-assessment-ui.mjs).
+const user = { id: "00000000-0000-4000-8000-000000000001", aud: "authenticated", role: "authenticated", email: "curriculum-test@example.invalid", app_metadata: { provider: "email", providers: ["email"] }, user_metadata: { learning_placement_completed_at: "2026-10-21T00:00:00.000Z" }, created_at: "2026-10-21T00:00:00Z" };
 const exp = Math.floor(Date.now() / 1000) + 3600;
 const token = [Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64url"), Buffer.from(JSON.stringify({ sub: user.id, aud: "authenticated", role: "authenticated", exp, aal: "aal1" })).toString("base64url"), Buffer.from("local-test").toString("base64url")].join(".");
 const page = await browser.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
@@ -51,7 +52,6 @@ try {
   await goto("/lessons");
   assert(await page.locator('a[href="/lessons/map"]').count() > 0, "Learning map is not discoverable from lessons");
   await page.locator('a[href="/lessons/map"]').click();
-  await page.getByRole("button", { name: "Explore subjects without placement", exact: true }).click();
   await page.locator('input[placeholder="Find a course or topic…"]').waitFor();
   await noOverflow();
   await page.screenshot({ path: path.join(output, "learning-map-mobile.png"), fullPage: true });
@@ -160,7 +160,6 @@ try {
   rejectSync = true;
   await page.evaluate(() => window.dispatchEvent(new Event("mariners-book:learning-progress")));
   await goto("/lessons/map");
-  await page.getByRole("button", { name: "Explore subjects without placement", exact: true }).click();
   await page.getByText("Progress is saved on this device. Account sync is pending; it will retry when available.", { exact: true }).waitFor();
   rejectSync = false;
   await page.getByRole("button", { name: "Retry sync", exact: true }).click();

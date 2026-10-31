@@ -8,7 +8,8 @@ import { preview, resolveConfig } from "vite";
 const config = await resolveConfig({ mode: "native" }, "serve");
 const backend = new URL(JSON.parse(config.define["import.meta.env.VITE_SUPABASE_URL"]));
 const storageKey = `sb-${backend.hostname.split(".")[0]}-auth-token`;
-const user = { id: "00000000-0000-4000-8000-000000000001", aud: "authenticated", role: "authenticated", email: "ui-test@example.invalid", app_metadata: {}, user_metadata: {}, created_at: "2026-01-01T00:00:00Z", factors: [] };
+// The account has finished the first-sign-in placement (covered by check-learning-assessment-ui.mjs).
+const user = { id: "00000000-0000-4000-8000-000000000001", aud: "authenticated", role: "authenticated", email: "ui-test@example.invalid", app_metadata: {}, user_metadata: { learning_placement_completed_at: "2026-01-01T00:00:00.000Z" }, created_at: "2026-01-01T00:00:00Z", factors: [] };
 const expires = Math.floor(Date.now() / 1000) + 3600;
 const token = [{ alg: "HS256", typ: "JWT" }, { sub: user.id, exp: expires, aal: "aal1" }].map((value) => Buffer.from(JSON.stringify(value)).toString("base64url")).join(".") + ".local-test-only";
 const session = { access_token: token, refresh_token: "local-test-only", token_type: "bearer", expires_in: 3600, expires_at: expires, user };

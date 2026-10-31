@@ -32,7 +32,9 @@ const normalise = (value: string) => value.toLocaleLowerCase("tr").normalize("NF
 export default function MaritimeLearningMapPage() {
   const { currentLanguage } = useLanguage();
   const translated = (value: string) => getStaticTranslation(value, currentLanguage) ?? value;
-  const [exploring, setExploring] = useState(false);
+  // The placement opens by itself only once, after the first sign-in
+  // (FirstSignInPlacement); here it waits behind "My personal learning path".
+  const [exploring, setExploring] = useState(true);
   const [query, setQuery] = useState("");
   const [pathId, setPathId] = useState("new");
   const progress = useLearningProgress();

@@ -825,3 +825,24 @@ html.dark body.marine-global :where(.min-h-screen, [class*="min-h-[100"]):not(.m
   background: var(--surface-2) !important;
   border-color: var(--surface-border) !important;
 }
+
+/* Learning placement guide (GuideAvatar.tsx): the question is "spoken" into the
+   speech bubble by a mask sweeping left to right. The words stay one text node
+   per sentence, because the runtime translator replaces whole text nodes.
+   Reduced motion ends the sweep at once (tokens.css), leaving the text shown. */
+.guide-speech-reveal {
+  -webkit-mask-image: linear-gradient(105deg, #000 40%, transparent 60%);
+  mask-image: linear-gradient(105deg, #000 40%, transparent 60%);
+  -webkit-mask-size: 250% 100%;
+  mask-size: 250% 100%;
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+  animation: guide-speech-reveal 720ms var(--ease-out-ios) forwards;
+}
+
+@keyframes guide-speech-reveal {
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}

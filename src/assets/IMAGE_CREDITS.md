@@ -56,6 +56,7 @@ gelmektedir. Yayın öncesi kullanım haklarının doğrulanması gerekir.
 | `instruments/seiko-marine-clock.jpg` | Seiko köprüüstü saati | Kullanıcı arşivi |
 | `instruments/wind-indicator.jpg` | Koshin rüzgâr hız/yön paneli | Kullanıcı arşivi |
 | `instruments/gps-receiver.webp` | Samyung SGN-500 GPS/GLONASS alıcısı | Kullanıcı arşivi |
+| `onboarding/guide-avatar.webp` | Öğrenme yolu anketinin rehber avatarı (beyaz kaptan üniformalı kadın) | Uygulama sahibi tarafından sağlandı (31 Eki 2026); figüre kırpıldı, 1600 px'e küçültüldü |
 | `clouds/cumulonimbus-incus.jpg` | [Cumulonimbus incus over Warsaw, Poland.jpg](https://commons.wikimedia.org/wiki/File:Cumulonimbus_incus_over_Warsaw%2C_Poland.jpg) | Kamil Nowacki | CC BY-SA 4.0 |
 | `clouds/cirrostratus-halo.jpg` | [2024-03-01 - Cirrostratus - halo (22 deg) centered on sun - DSN2151-1.jpg](https://commons.wikimedia.org/wiki/File:2024-03-01_-_Cirrostratus_-_halo_%2822_deg%29_centered_on_sun_-_DSN2151-1.jpg) | Franz van Duns | CC BY 4.0 |
 | `clouds/nimbostratus-pannus.jpg` | [Nimbostratus pannus.jpg](https://commons.wikimedia.org/wiki/File:Nimbostratus_pannus.jpg) | GerritR | CC BY-SA 4.0 |
