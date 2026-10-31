@@ -100,18 +100,15 @@ window.onunhandledrejection = (event) => {
 async function bootstrap() {
   // This is deliberately the first import. Every remaining dependency is
   // loaded only after the global crash screen above has been installed.
-  const { safeLocalStorage } = await import('./lib/safeStorage');
   const [
     { createRoot },
     { createElement },
-    { FONT_SCALES },
     { weatherPreloader },
     { registerOfflineSupport },
     { AppRoot },
   ] = await Promise.all([
     import('react-dom/client'),
     import('react'),
-    import('./contexts/font-size-context'),
     import('./services/weatherPreloader'),
     import('./serviceWorkerRegistration'),
     import('./AppRoot'),
@@ -141,20 +138,6 @@ console.log('[Main] Starting Maritime Calculator App v2...');
   }, 1000);
 }
 
-
-// Apply a manual saved font size before first paint. Dynamic Type is read from
-// the native iOS bridge as soon as FontSizeProvider mounts.
-  try {
-    const storedFontSize = safeLocalStorage.getItem('maritime-ui-font-size');
-    if (storedFontSize && storedFontSize in FONT_SCALES) {
-      const scale = FONT_SCALES[storedFontSize as keyof typeof FONT_SCALES];
-      document.documentElement.style.setProperty('--font-scale', String(scale));
-      document.documentElement.setAttribute('data-font-size', storedFontSize);
-      document.documentElement.setAttribute('data-font-size-source', storedFontSize === 'system' ? 'system' : 'manual');
-    }
-  } catch (e) {
-    console.warn('[Main] Font size could not be applied:', e);
-  }
 
 // Register service worker for offline support (production only — skipped in dev/iframe).
   void registerOfflineSupport();
