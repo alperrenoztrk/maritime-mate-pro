@@ -1,4 +1,5 @@
 import { getStaticTranslation } from "@/utils/staticTranslations";
+import { getMaritimeTranslationOverride } from "@/utils/maritimeGlossary";
 import type { ShipOperation } from "./types";
 import type { ShipOpLongForm } from "./longform/types";
 
