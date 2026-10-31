@@ -128,8 +128,13 @@ export function PagedReadingSurface({
             {index + 1} / {total}
           </span>
         </div>
+        {/* Vertical overscroll must chain to the page (overscroll-y-auto, which
+            also overrides the global `.overflow-y-auto { overscroll-behavior:
+            contain }` rule). With `contain`, a drag on the reading area of a
+            short page, or at the end of a long one, moved nothing, so the page
+            could not be scrolled down to the Previous/Next controls. */}
         <div ref={articleRef} key={current.id} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}
-          className="h-[clamp(22rem,calc(100dvh-16rem),58rem)] overflow-y-auto overscroll-contain px-4 py-5 touch-pan-y sm:px-8 sm:py-8"
+          className="h-[clamp(22rem,calc(100dvh-16rem),58rem)] overflow-y-auto overscroll-y-auto px-4 py-5 touch-pan-y sm:px-8 sm:py-8"
           tabIndex={0} aria-label={`Reading page ${index + 1}: ${current.title}`}>
           <article className="mx-auto max-w-[72ch] space-y-5 break-words">
             <h2 className="text-xl font-bold leading-snug text-foreground sm:text-2xl">{current.title}</h2>
