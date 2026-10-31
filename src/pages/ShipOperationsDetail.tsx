@@ -27,7 +27,10 @@ export default function ShipOperationsDetail() {
   const [englishLoaded, setEnglishLoaded] = useState(false);
 
   useEffect(() => {
-    if (currentLanguage !== "en") return;
+    if (currentLanguage !== "en") {
+      setEnglishLoaded(false);
+      return;
+    }
     let active = true;
     void loadStaticDictionary("en").then(() => {
       if (active) setEnglishLoaded(true);
