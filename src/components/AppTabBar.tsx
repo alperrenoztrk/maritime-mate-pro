@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   BookOpenText,
@@ -55,10 +55,34 @@ export function AppTabBar() {
     return () => document.body.classList.remove("app-tabbar-visible");
   }, [hidden]);
 
+  // Large Android system text can wrap labels onto two lines and make the bar
+  // taller than --app-tabbar-height; publish the real height for the content
+  // reserve (see tokens.css) so the last row of a page is never covered.
+  const navRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const node = navRef.current;
+    const root = typeof document === "undefined" ? null : document.documentElement;
+    if (!node || !root) return;
+    const publish = () => {
+      root.style.setProperty("--app-tabbar-measured", `${Math.ceil(node.getBoundingClientRect().height)}px`);
+    };
+    publish();
+    if (typeof ResizeObserver === "undefined") {
+      return () => root.style.removeProperty("--app-tabbar-measured");
+    }
+    const observer = new ResizeObserver(publish);
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty("--app-tabbar-measured");
+    };
+  }, [hidden]);
+
   if (hidden) return null;
 
   return (
     <nav
+      ref={navRef}
       aria-label={localize("Main sections")}
       className="app-tabbar surface-glass notranslate"
       data-app-tabbar
