@@ -3113,5 +3113,23 @@
  },
  "Copy": {
   "en": "Copy"
+ },
+ "Loading ship operations…": {
+  "en": "Loading ship operations…"
+ },
+ "Location permission request": {
+  "en": "Location permission request"
+ },
+ "Use your location?": {
+  "en": "Use your location?"
+ },
+ "If you choose Not now, an approximate location based on your internet connection is used. You can turn it on later in Location Picker → Use device location.": {
+  "en": "If you choose Not now, an approximate location based on your internet connection is used. You can turn it on later in Location Picker → Use device location."
+ },
+ "To fetch this information, your coordinates are sent to the weather service (Open-Meteo) and the place-name service (BigDataCloud).": {
+  "en": "To fetch this information, your coordinates are sent to the weather service (Open-Meteo) and the place-name service (BigDataCloud)."
+ },
+ "Your location is used to show local weather, sunrise and sunset times and your position in the navigation tools.": {
+  "en": "Your location is used to show local weather, sunrise and sunset times and your position in the navigation tools."
  }
 }

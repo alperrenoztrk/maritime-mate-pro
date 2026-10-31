@@ -80,11 +80,86 @@ export const getGeoPermissionState = async (): Promise<GeoPermissionState> => {
   }
 };
 
+// ── İzin gerekçesi ────────────────────────────────────────────────────────
+// Sistem izin penceresinden önce uygulama içinde konumun ne için kullanıldığı
+// anlatılır (Play izin politikası). Pencere LocationRationaleHost'ta (App'te
+// bir kez bağlı). Cevap cihazda saklanır; "Not now" denirse bir daha
+// sorulmaz, IP tabanlı yaklaşık konum kullanılır. Kullanıcı Konum Seçici →
+// "Use device location" ile yeniden açabilir (resetLocationRationale).
+
+const RATIONALE_KEY = "maritime-geo-rationale";
+type RationaleAnswer = "accepted" | "declined";
+type RationaleRequest = (resolve: (allow: boolean) => void) => void;
+
+let rationaleListener: RationaleRequest | null = null;
+let pendingRationale: Promise<boolean> | null = null;
+let queuedResolve: ((allow: boolean) => void) | null = null;
+
+const readRationale = (): RationaleAnswer | null => {
+  try {
+    const value = safeLocalStorage.getItem(RATIONALE_KEY);
+    return value === "accepted" || value === "declined" ? value : null;
+  } catch {
+    return null;
+  }
+};
+
+const writeRationale = (answer: RationaleAnswer) => {
+  try {
+    safeLocalStorage.setItem(RATIONALE_KEY, answer);
+  } catch {
+    // yok sayılır
+  }
+};
+
+/** Kullanıcı konumu kendisi açmak istediğinde gerekçe yeniden sorulabilsin. */
+export const resetLocationRationale = () => {
+  try {
+    safeLocalStorage.removeItem(RATIONALE_KEY);
+  } catch {
+    // yok sayılır
+  }
+};
+
+/** LocationRationaleHost bu dinleyiciyle pencereyi açar. */
+export const onLocationRationaleRequest = (listener: RationaleRequest): (() => void) => {
+  rationaleListener = listener;
+  if (queuedResolve) {
+    const resolve = queuedResolve;
+    queuedResolve = null;
+    listener(resolve);
+  }
+  return () => {
+    if (rationaleListener === listener) rationaleListener = null;
+  };
+};
+
+const askLocationRationale = (): Promise<boolean> => {
+  if (pendingRationale) return pendingRationale;
+  pendingRationale = new Promise<boolean>((resolve) => {
+    const finish = (allow: boolean) => {
+      writeRationale(allow ? "accepted" : "declined");
+      pendingRationale = null;
+      resolve(allow);
+    };
+    if (rationaleListener) rationaleListener(finish);
+    else queuedResolve = finish; // pencere henüz bağlanmadı; bağlanınca açılır
+  });
+  return pendingRationale;
+};
+
 /**
  * Konum isteği yapılmalı mı? Reddedilmiş izinde tekrar sormayız (tarayıcı zaten
- * sessizce reddeder, native kabukta ise kullanıcıyı rahatsız eder).
+ * sessizce reddeder, native kabukta ise kullanıcıyı rahatsız eder). İzin henüz
+ * sorulmadıysa önce uygulama içi gerekçe gösterilir.
  */
 export const shouldRequestLocation = async (): Promise<boolean> => {
   const state = await getGeoPermissionState();
-  return state !== "denied";
+  if (state === "denied") return false;
+  if (state === "granted") return true;
+  const answer = readRationale();
+  if (answer === "declined") return false;
+  // Bu sürümden önce zaten izin sorulmuş kullanıcıya gerekçe gösterilmez.
+  if (answer === "accepted" || hasPromptedForLocation()) return true;
+  return askLocationRationale();
 };

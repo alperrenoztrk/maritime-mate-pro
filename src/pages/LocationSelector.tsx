@@ -10,6 +10,7 @@ import { useCurrentWeather } from '@/hooks/useCurrentWeather';
 import { formatDecimalAsDMS } from '@/utils/coordinateUtils';
 import { useLocation } from '@/contexts/useSelectedLocation';
 import { toast } from 'sonner';
+import { resetLocationRationale } from '@/lib/geolocationPermission';
 
 function LocationCard({ location, onSelect }: { location: LocationResult; onSelect: (location: LocationResult) => void }) {
   return (
@@ -94,6 +95,8 @@ export default function LocationSelector() {
   };
 
   const handleUseDeviceLocation = () => {
+    // "Not now" denmişse kullanıcı burada konumu kendisi açıyor: gerekçe yeniden sorulsun.
+    resetLocationRationale();
     setSelectedLocation(null);
     toast.success("Device location will be used");
     navigate(returnTo);

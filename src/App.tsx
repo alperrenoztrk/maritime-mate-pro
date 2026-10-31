@@ -4,6 +4,7 @@ import { GlobalMaritimeBackground } from "@/components/GlobalMaritimeBackground"
 import { Toaster } from "@/components/ui/sonner";
 import { AskAIPopup } from "@/components/AskAIPopup";
 import { ConsentDialogHost } from "@/components/privacy/ConsentDialogHost";
+import { LocationRationaleHost } from "@/components/privacy/LocationRationaleHost";
 import { DocumentExpiryNotifier } from "@/components/documents/DocumentExpiryNotifier";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -538,6 +539,7 @@ const App = () => {
                   <DocumentExpiryNotifier />
                   <AskAIPopup />
                   <ConsentDialogHost />
+                  <LocationRationaleHost />
                   <LanguageChangeOverlay />
                   <div className="min-h-screen text-foreground overflow-x-hidden">
                     <BrowserRouter>

@@ -218,7 +218,7 @@ export default function BetaDocumentTracker() {
   };
 
   const handleDelete = async (document: MaritimeDocumentRecord) => {
-    if (!window.confirm(`“${document.title}” document and its photograph permanently?`)) {
+    if (!window.confirm(`Delete “${document.title}” and its photo permanently?`)) {
       return;
     }
     try {
