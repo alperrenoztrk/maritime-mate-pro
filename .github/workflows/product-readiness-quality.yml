@@ -1,0 +1,52 @@
+name: Product readiness quality
+on:
+  pull_request:
+    paths:
+      - 'scripts/i18n/extract-strings.test.mjs'
+      - 'src/components/reader/**'
+      - 'src/pages/library/CalculationsLibraryPage.tsx'
+      - 'src/pages/SOLAS*.tsx'
+      - 'src/lib/verifiedOperationalMath.ts'
+      - 'src/lib/engineeringReferenceVectors.test.ts'
+      - 'src/services/billing.ts'
+      - 'src/services/playPurchaseSafety*'
+      - 'src/utils/learningProgress*'
+      - 'scripts/check-design-system.mjs'
+      - 'scripts/check-regulatory-factuality.mjs'
+      - 'package.json'
+      - '.github/workflows/product-readiness-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  release-guards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: React text extraction (the prior Android release blocker)
+        run: npm run i18n:extract && node --test scripts/i18n/extract-strings.test.mjs
+      - name: iOS design and library layout
+        run: npm run check:design-system && npm run check:ux-consistency
+      - name: Engineering reference vectors
+        run: npm run test:verified-operational
+      - name: Play purchase contracts
+        run: npm run test:billing-contract
+      - name: Local and offline progress with DB RLS simulation
+        run: npm run test:learning-progress
+      - name: Safety claims
+        run: node scripts/check-regulatory-factuality.mjs
+      - name: TypeScript
+        run: npm run typecheck
+      - name: Packaged mobile web (native profile)
+        env:
+          VITE_SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: public-test-key
+          VITE_PRO_GATING_ENABLED: 'false'
+          VITE_ADS_ENABLED: 'false'
+        run: npm run build:native && npm run check:native-build
