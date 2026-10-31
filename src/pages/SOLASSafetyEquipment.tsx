@@ -6,7 +6,7 @@ const groups = [
   { id: "fire", title: "Fire protection and extinguishing", reference: "SOLAS Chapter II-2 / FSS Code",
     checks: ["Compare installed fixed systems and portable equipment with the approved Fire Control Plan.", "Verify inspection logs, applicable service intervals and the maker's test procedure; fixed gas systems must not be test-operated casually.", "Check fire detection, pumps, hydrants, hoses, breathing apparatus and equipment familiarization."] },
   { id: "radio", title: "Emergency communications", reference: "SOLAS Chapter IV / GMDSS",
-    checks: ["Check the applicable sea area and ship radio equipment requirements.", "Verify EPIRB, SART or AIS-SART and survival craft radio arrangements against the applicable carriage rules.", "Cross-check batteries, expiry dates and test records; follow manufacturer-approved self-test instructions."] },
+    checks: ["Check the applicable sea area and ship radio equipment requirements.", "Check EPIRB, SART, AIS-SART and survival craft radios against the vessel-specific carriage rules.", "Cross-check batteries, expiry dates and test records; follow manufacturer-approved self-test instructions."] },
 ];
 export default function SOLASSafetyEquipmentPage() {
   const pages: ReadingPage[] = groups.map((g, i) => ({
