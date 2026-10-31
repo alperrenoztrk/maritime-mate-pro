@@ -8,6 +8,9 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { UnifiedMaritimeAssistant } from "@/components/UnifiedMaritimeAssistant";
+
+const escapeHtml = (v: string) =>
+  String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 import { requireConsent } from "@/lib/consent";
 
 const Formulas = () => {
@@ -300,10 +303,10 @@ Example questions:
                                   <body>
                                     <h1>Maritime Calculator - AI Response</h1>
                                     <div class="question">
-                                      <strong>Question:</strong> ${question}
+                                      <strong>Question:</strong> ${escapeHtml(question)}
                                     </div>
                                     <div class="answer">
-                                      ${aiResponse.replace(/\n/g, '<br>')}
+                                      ${escapeHtml(aiResponse).replace(/\n/g, '<br>')}
                                     </div>
                                     <hr style="margin-top: 40px;">
                                     <p style="text-align: center; color: #666; font-size: 12px;">
