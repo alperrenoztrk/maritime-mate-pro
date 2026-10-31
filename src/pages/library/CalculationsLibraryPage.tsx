@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AppSymbol } from "@/components/ui/AppSymbol";
+import { InsetGroupedList } from "@/components/ui/InsetGroupedList";
 import { hapticImpact, hapticSelection } from "@/lib/haptics";
 import {
   LibraryEntryCard, LibraryPageShell, LibrarySearchField, LibrarySectionHeading,
@@ -155,12 +156,12 @@ export default function CalculationsLibraryPage() {
     storeList(FAVORITES_STORAGE_KEY, next);
   };
   const renderTools = (tools: CalcTool[]) => (
-    <div className="grid gap-2 sm:grid-cols-2">
+    <InsetGroupedList columns={2}>
       {tools.map((tool) => <ToolCard key={tool.id} tool={tool}
         favorite={favorites.includes(tool.id)}
         onFavorite={() => toggleFavorite(tool.id)}
         onVisit={() => recordVisit(tool.id)} />)}
-    </div>
+    </InsetGroupedList>
   );
   const atRoot = !activeCategory && !normalizedQuery;
   const activeMeta = activeCategory ? CATEGORY_META[activeCategory] : null;
