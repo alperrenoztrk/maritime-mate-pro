@@ -541,7 +541,7 @@ const App = () => {
                   <ConsentDialogHost />
                   <LocationRationaleHost />
                   <LanguageChangeOverlay />
-                  <div className="min-h-screen text-foreground overflow-x-hidden">
+                  <div className="min-h-screen text-foreground overflow-x-clip">
                     <BrowserRouter>
                       {/* Inside the router on purpose: the backdrop reads the
                           current path so the drifting waves render on the home

@@ -487,13 +487,20 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  /* `clip` (not `hidden`) so html/body never become nested scroll containers;
+     the document itself stays the single vertical scroller on every device. */
   html,
   body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
-    /* No rubber-band drag or pull-to-refresh on the app shell. */
-    overscroll-behavior: none;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  /* No pull-to-refresh / rubber-band, while vertical scrolling stays free. */
+  html {
+
+    overscroll-behavior-y: none;
   }
 
   /* Inner scroll areas stop at their edges instead of dragging the page. */
