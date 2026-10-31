@@ -8,7 +8,8 @@
  */
 import { Capacitor } from '@capacitor/core';
 import { supabase } from '@/integrations/supabase/safeClient';
-import { PlayBilling, type PlayPurchase } from '@/plugins/playBilling';
+import { PlayBilling } from '@/plugins/playBilling';
+import { normalizePurchases, isVerifiedResponse, type VerificationInput } from './playPurchaseSafety';
 import { loadProOffers, selectSubscriptionOffer, getProductPrice, type ProOffers } from './billingOffers';
 export type { ProOffers } from './billingOffers';
 import {
@@ -45,7 +46,7 @@ export async function fetchProOffers(): Promise<ProOffers> {
 }
 
 /** Satın alımları sunucuda doğrulatır ve güncel paketi döndürür. */
-async function verifyOnServer(purchases: Array<{ productId: string; purchaseToken: string; type: 'subs' | 'inapp' }>): Promise<VerifyResult> {
+async function verifyOnServer(purchases: VerificationInput[]): Promise<VerifyResult> {
   const { data, error } = await supabase.functions.invoke('verify-purchase', {
     body: { purchases },
   });
@@ -57,21 +58,14 @@ async function verifyOnServer(purchases: Array<{ productId: string; purchaseToke
     if (readStatus(error) === 503) throw new BillingNotConfiguredError();
     throw error;
   }
-  return data as VerifyResult;
+  if (!isVerifiedResponse(data)) throw new Error('Purchase verification service returned invalid results. No Pro access was granted.');
+  return data;
 }
 
 /** functions.invoke hatasından HTTP durum kodunu okur (FunctionsHttpError.context). */
 function readStatus(error: unknown): number | null {
   const context = (error as { context?: { status?: unknown } } | null)?.context;
   return typeof context?.status === 'number' ? context.status : null;
-}
-
-function toVerifyInput(purchase: PlayPurchase, type: 'subs' | 'inapp') {
-  return purchase.productIds.map((productId) => ({
-    productId,
-    purchaseToken: purchase.purchaseToken,
-    type,
-  }));
 }
 
 /**
@@ -104,7 +98,9 @@ export async function purchasePlan(plan: ProPlan, userId: string): Promise<Verif
       }
       throw new Error('The purchase could not be completed');
     }
-    return await verifyOnServer(completed.flatMap((p) => toVerifyInput(p, type)));
+    const checked = normalizePurchases(completed, type, [productId]);
+    if (checked.inputs.length === 0) throw new Error('Google Play did not return a valid, matching purchased product.');
+    return await verifyOnServer(checked.inputs);
   } catch (e) {
     if (isBillingErrorCode(e, 'ITEM_ALREADY_OWNED')) {
       // Ürün bu Google hesabında zaten var: doğrulayıp bu Supabase
@@ -127,8 +123,8 @@ export async function restorePurchases(): Promise<VerifyResult> {
   ]);
 
   const inputs = [
-    ...subs.purchases.filter((p) => p.purchaseState === 1).flatMap((p) => toVerifyInput(p, 'subs' as const)),
-    ...inapp.purchases.filter((p) => p.purchaseState === 1).flatMap((p) => toVerifyInput(p, 'inapp' as const)),
+    ...normalizePurchases(subs.purchases, 'subs', [PRODUCT_IDS.monthly, PRODUCT_IDS.yearly]).inputs,
+    ...normalizePurchases(inapp.purchases, 'inapp', [PRODUCT_IDS.lifetime]).inputs,
   ];
 
   if (inputs.length === 0) {
