@@ -19,6 +19,7 @@ export function LessonTeachCard({
   categoryId,
   topicTitle,
   hideImage = false,
+  hideTitle = false,
   alreadyUsedImages,
 }: {
   section: BetaSection;
@@ -26,6 +27,11 @@ export function LessonTeachCard({
   topicTitle: string;
   /** Görsel aynı konuda daha önce gösterildiyse tekrar basılmaz. */
   hideImage?: boolean;
+  /**
+   * The surrounding page already shows the section title (the paged book
+   * reader titles each page with it), so the card's own heading is dropped.
+   */
+  hideTitle?: boolean;
   /**
    * Konunun ÖNCEKİ bölümlerinde basılmış görseller. Metin içindeki markdown
    * görselleri bunlara karşı da elenir; aksi hâlde aynı diyagram bir konunun
@@ -55,7 +61,7 @@ export function LessonTeachCard({
 
   return (
     <section className="space-y-4">
-      <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>
+      {!hideTitle && <h2 className="text-lg font-semibold text-foreground">{section.title}</h2>}
 
       {sectionImage && (
         <button

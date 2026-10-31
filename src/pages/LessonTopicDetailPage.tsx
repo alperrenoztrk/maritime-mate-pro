@@ -117,6 +117,7 @@ export default function LessonTopicDetailPage() {
           categoryId={categoryId}
           topicTitle={sourceTopicTitle}
           hideImage={hideImage}
+          hideTitle
           alreadyUsedImages={alreadyUsedImages}
         />
       </div>

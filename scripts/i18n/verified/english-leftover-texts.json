@@ -111,7 +111,7 @@
     "en": "Section Bending moment (t·m) x = 0 0 x = 30 (0 + 600) / 2 × 30 = 9 000 x = 60 9 000 + (600 + 1 200) / 2 × 30 = 36 000 x = 90 36 000 + (1 200 + 900) / 2 × 30 = 67 500 x = 120 67 500 + (900 + 300) / 2 × 30 = 85 500 x = 150 85 500 + (300 + 300) / 2 × 30 = 94 500"
   },
   "Bileşen         Ağırlık (t)   VCG (m)   Moment (t·m) Lightship        7 500         7,20       54 000 Kargo            5 000         6,50       32 500 Yakıt            2 500         3,00        7 500 Toplam          15 000          —         94 000": {
-    "en": "Component Weight (t) VCG (m) Moment (t·m) Lightship 7 500 7,20 54 000 Cargo 5 000 6,50 32 500 Fuel 2 500 3,00 7 500 Total 15 000 — 94 000"
+    "en": "Component Weight (t) VCG (m) Moment (t·m) Lightship 7 500 7.20 54 000 Cargo 5 000 6.50 32 500 Fuel 2 500 3.00 7 500 Total 15 000 — 94 000"
   },
   "Kesit (m)   Ağırlık (t/m)   Kaldırma (t/m)   Net Yük (t/m) 0 – 30         80               60               +20 30 – 60       120              100               +20 60 – 90       150              160               −10 90 – 120      140              160               −20 120 – 150     100              100                 0 150 – 180      60               40               +20": {
     "en": "Section (m) Weight (t/m) Buoyancy (t/m) Net load (t/m) 0 – 30 80 60 +20 30 – 60 120 100 +20 60 – 90 150 160 −10 90 – 120 140 160 −20 120 – 150 100 100 0 150 – 180 60 40 +20"
@@ -528,19 +528,19 @@
     "en": "Step 1: Writing the horizontal error formula"
   },
   "Adım 2 — GM hesabı: GM = KM − KG = 8,50 − 6,27 = 2,23 m": {
-    "en": "Step 2 — GM calculation: GM = KM − KG = 8,50 − 6,27 = 2,23 m"
+    "en": "Step 2 — GM calculation: GM = KM − KG = 8.50 − 6.27 = 2.23 m"
   },
   "Adım 2: Sayısal değerlerin yerine konması": {
     "en": "Step 2: Substituting the numerical values"
   },
   "Adım 3 — Yeni KG: KG = 91 700 / 15 500 = 5,92 m": {
-    "en": "Step 3 — New KG: KG = 91 700 / 15 500 = 5,92 m"
+    "en": "Step 3 — New KG: KG = 91 700 / 15 500 = 5.92 m"
   },
   "Adım 3: Sonucun hesaplanması": {
     "en": "Step 3: Calculating the result"
   },
   "Adım 4 — Yeni GM: GM = 8,40 − 5,92 = 2,48 m": {
-    "en": "Step 4 — New GM: GM = 8,40 − 5,92 = 2,48 m"
+    "en": "Step 4 — New GM: GM = 8.40 − 5.92 = 2.48 m"
   },
   "Adoption tarihini yürürlük tarihi sanmak": {
     "en": "Taking the adoption date for the entry-into-force date"
