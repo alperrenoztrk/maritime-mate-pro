@@ -8,7 +8,9 @@ import type { ShipOpLongForm } from "./longform/types";
 // those strings before rendering so a slow DOM translation pass cannot leave
 // Turkish titles, procedures, tables or callouts in the English reader.
 const english = (value: string): string =>
-  getStaticTranslation(value.trim(), "en") ?? value;
+  getMaritimeTranslationOverride(value.trim(), "en") ??
+  getStaticTranslation(value.trim(), "en") ??
+  value;
 
 export const englishShipTypeLabel = (id: string, original: string): string =>
   ({
