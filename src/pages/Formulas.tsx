@@ -5,15 +5,20 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Brain, MessageCircle, Send, Loader2, CheckCircle, AlertTriangle, Lightbulb, Trash2, Printer, Copy, Share2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { UnifiedMaritimeAssistant } from "@/components/UnifiedMaritimeAssistant";
+import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { AiAnswerText } from "@/components/ai/AiAnswerText";
+import { readAIAccessError } from "@/services/aiClient";
+import { requireConsent } from "@/lib/consent";
 
 const escapeHtml = (v: string) =>
   String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-import { requireConsent } from "@/lib/consent";
 
 const Formulas = () => {
+  const navigate = useNavigate();
   const [question, setQuestion] = useState("");
   const [aiResponse, setAiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -40,28 +45,9 @@ const Formulas = () => {
     }
   }, [conversationHistory]);
 
-  // Check Gemini API status on mount
-  useEffect(() => {
-    checkGeminiApiStatus();
-  }, []);
-
-  const checkGeminiApiStatus = async () => {
-    try {
-      const { data, error } = await supabase.functions.invoke('ask-ai', {
-        body: { question: "test" }
-      });
-      
-      if (error) {
-        setGeminiApiStatus('error');
-      } else if (data?.source === 'gemini' || data?.source === 'hybrid') {
-        setGeminiApiStatus('working');
-      } else {
-        setGeminiApiStatus('error');
-      }
-    } catch (error) {
-      setGeminiApiStatus('error');
-    }
-  };
+  // No status ping on mount: it sent a question to the AI on every visit —
+  // before consent, and against the user's monthly quota. The status is set
+  // from the first real answer instead.
 
   const askAI = async () => {
     if (!question.trim()) {
@@ -87,6 +73,16 @@ const Formulas = () => {
       });
 
       if (error) {
+        const accessError = await readAIAccessError(error);
+        if (accessError) {
+          toast.info(accessError.message, {
+            duration: 10_000,
+            action: accessError.code === "AUTH_REQUIRED"
+              ? undefined
+              : { label: "See Pro plans", onClick: () => navigate("/pro") },
+          });
+          return;
+        }
         throw new Error(`Edge Function Error: ${error.message}`);
       }
 
@@ -280,7 +276,7 @@ Example questions:
                           }}
                           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
                           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
-                          title="Kopyala"
+                          title="Copy"
                         >
                           <Copy style={{ width: '18px', height: '18px', color: '#2563eb' }} />
                         </button>
@@ -362,100 +358,12 @@ Example questions:
                       </div>
                     </div>
                     <div style={{ fontSize: '15px', lineHeight: '1.8', color: '#1f2937' }}>
-                      {aiResponse.split('\n').map((line, index) => {
-                        // Highlight the headings
-                        if (line.startsWith('**') && line.endsWith('**')) {
-                          return (
-                            <h3 key={index} style={{ 
-                              fontSize: '18px', 
-                              fontWeight: 'bold', 
-                              color: '#1e40af', 
-                              marginTop: '16px', 
-                              marginBottom: '8px',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px'
-                            }}>
-                              <span style={{ 
-                                width: '4px', 
-                                height: '20px', 
-                                background: '#3b82f6', 
-                                borderRadius: '2px' 
-                              }}></span>
-                              {line.replace(/\*\*/g, '')}
-                            </h3>
-                          );
-                        }
-                        
-                        // Sub-headings (bold text)
-                        if (line.includes('**') && !line.startsWith('**')) {
-                          const parts = line.split('**');
-                          return (
-                            <p key={index} className="mb-2">
-                              {parts.map((part, i) => 
-                                i % 2 === 1 ? <strong key={i} className="text-primary font-semibold">{part}</strong> : part
-                              )}
-                            </p>
-                          );
-                        }
-                        
-                        // List items
-                        if (line.startsWith('- ') || line.startsWith('• ')) {
-                          return (
-                            <div key={index} className="flex items-start gap-2 ml-2">
-                              <span className="text-primary mt-1.5">•</span>
-                              <span className="flex-1">{line.substring(2)}</span>
-                            </div>
-                          );
-                        }
-                        
-                        // Numbered list
-                        if (/^\d+\./.test(line)) {
-                          const [num, ...content] = line.split('.');
-                          return (
-                            <div key={index} className="flex items-start gap-3 ml-2">
-                              <span className="text-primary font-semibold min-w-[20px]">{num}.</span>
-                              <span className="flex-1">{content.join('.').trim()}</span>
-                            </div>
-                          );
-                        }
-                        
-                        // Code blocks (delimited by backticks)
-                        if (line.includes('`')) {
-                          const parts = line.split('`');
-                          return (
-                            <p key={index} className="mb-2">
-                              {parts.map((part, i) => 
-                                 i % 2 === 1 ? (
-                                   <code key={i} className="bg-card border border-primary/20 px-2 py-1 rounded text-sm font-mono text-card-foreground">
-                                     {part}
-                                   </code>
-                                 ) : part
-                              )}
-                            </p>
-                          );
-                        }
-                        
-                        // Formula lines (those containing =)
-                        if (line.includes('=') && (line.includes('×') || line.includes('+') || line.includes('-') || line.includes('/'))) {
-                          return (
-                            <div key={index} className="bg-card border-2 border-primary/30 p-3 rounded-lg font-mono text-sm shadow-sm">
-                              <code className="text-card-foreground">{line}</code>
-                            </div>
-                          );
-                        }
-                        
-                        // Normal paragraf
-                        if (line.trim()) {
-                          return (
-                            <p key={index} className="mb-2">
-                              {line}
-                            </p>
-                          );
-                        }
-                        
-                        return <div key={index} className="h-2"></div>;
-                      })}
+                      <AiAnswerText text={aiResponse} />
+                    </div>
+                    {/* Google Play Üretken Yapay Zekâ politikası: AI yanıtı
+                        gösteren her yüzeyde uygulama içi bildirim olmalı. */}
+                    <div className="mt-3 flex justify-end">
+                      <ReportAiContentButton content={aiResponse} prompt={question} surface="ask_ai" />
                     </div>
                   </div>
                 </div>

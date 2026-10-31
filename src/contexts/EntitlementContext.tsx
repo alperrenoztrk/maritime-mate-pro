@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Capacitor } from "@capacitor/core";
+import { App as CapacitorApp } from "@capacitor/app";
 import { useAuth } from "@/hooks/useAuthContext";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { safeLocalStorage } from "@/lib/safeStorage";
@@ -6,6 +8,7 @@ import { OFFLINE_GRACE_DAYS } from "@/config/products";
 import {
   purchasePlan,
   restorePurchases,
+  syncOwnedPurchases,
   type Tier,
 } from "@/services/billing";
 import type { ProPlan } from "@/config/products";
@@ -36,6 +39,14 @@ interface EntitlementCache {
 }
 
 const CACHE_KEY = "mmp.entitlement.v1";
+
+// Arka plan satın alma eşitlemesi (bkz. syncOwnedPurchases). Onaylanmamış
+// satın alma her ön plana dönüşte denenir (en sık dakikada bir); "sunucuda Pro
+// yok ama Play'de ürün var" kontrolü ise başarılı bir denemeden sonra 12 saat
+// bekler — başka hesaba bağlı bir satın alma her açılışta istek atmasın.
+const SYNC_MIN_INTERVAL_MS = 60_000;
+const RELINK_INTERVAL_MS = 12 * 60 * 60 * 1000;
+const relinkKey = (userId: string) => `mmp.billing.relink.v1.${userId}`;
 
 // Sunucudaki isRowActive ile aynı kurallar (bkz. _shared/entitlements.ts):
 // canceled abonelik expires_at'e kadar erişimlidir; on_hold/paused erişimsiz.
@@ -165,18 +176,98 @@ export const EntitlementProvider = ({ children }: { children: ReactNode }) => {
     void refresh();
   }, [refresh]);
 
+  // Arka plan eşitlemesi için güncel durum; callback'ler yeniden kurulmasın
+  // diye ref'te tutulur.
+  const stateRef = useRef({ tier, fromCache, loading });
+  stateRef.current = { tier, fromCache, loading };
+  /** Ön planda satın alma/geri yükleme sürerken arka plan eşitlemesi durur. */
+  const billingBusy = useRef(false);
+  const syncInFlight = useRef(false);
+  const lastSyncAt = useRef(0);
+
+  const backgroundSync = useCallback(async () => {
+    if (!user || mfaChallengeRequired || !Capacitor.isNativePlatform()) return;
+    const state = stateRef.current;
+    if (state.loading || billingBusy.current || syncInFlight.current) return;
+    const now = Date.now();
+    if (now - lastSyncAt.current < SYNC_MIN_INTERVAL_MS) return;
+    lastSyncAt.current = now;
+    syncInFlight.current = true;
+    try {
+      let lastRelink = 0;
+      try {
+        lastRelink = Number(safeLocalStorage.getItem(relinkKey(user.id)) ?? 0) || 0;
+      } catch {
+        lastRelink = 0;
+      }
+      // Çevrimdışıyken sunucudaki durumu bilmiyoruz; yalnızca onaylanmamış
+      // satın almalar denenir (o da bağlantı yoksa sessizce başarısız olur).
+      const allowRelink = !state.fromCache && now - lastRelink >= RELINK_INTERVAL_MS;
+      const serverHasAccess = state.tier === "pro" || state.tier === "lifetime";
+      const synced = await syncOwnedPurchases(serverHasAccess, allowRelink);
+      if (!synced) return;
+      if (synced.reason === "not_on_server") {
+        try {
+          safeLocalStorage.setItem(relinkKey(user.id), String(now));
+        } catch {
+          // depolama yoksa bir sonraki açılışta yeniden denenir
+        }
+      }
+      await refresh();
+    } catch {
+      // Bağlantı yok / Play kullanılamıyor: bir sonraki ön plana dönüşte denenir.
+    } finally {
+      syncInFlight.current = false;
+    }
+  }, [user, mfaChallengeRequired, refresh]);
+
+  // Açılışta (ilk sunucu okuması bitince) bir kez, sonra her ön plana dönüşte.
+  useEffect(() => {
+    if (!loading) void backgroundSync();
+  }, [loading, backgroundSync]);
+
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+    let removed = false;
+    let remove: (() => void) | null = null;
+    CapacitorApp.addListener("resume", () => {
+      void backgroundSync();
+    })
+      .then((handle) => {
+        if (removed) void handle.remove();
+        else remove = () => void handle.remove();
+      })
+      .catch(() => {
+        // App eklentisi yoksa yalnızca açılış eşitlemesi çalışır.
+      });
+    return () => {
+      removed = true;
+      remove?.();
+    };
+  }, [backgroundSync]);
+
   const purchase = useCallback(async (plan: ProPlan): Promise<Tier> => {
     if (!user) throw new Error("You must be logged in to purchase");
-    const result = await purchasePlan(plan, user.id);
-    await refresh();
-    return result.tier;
+    billingBusy.current = true;
+    try {
+      const result = await purchasePlan(plan, user.id);
+      await refresh();
+      return result.tier;
+    } finally {
+      billingBusy.current = false;
+    }
   }, [user, refresh]);
 
   const restore = useCallback(async (): Promise<Tier> => {
     if (!user) throw new Error("You must be logged in to restore");
-    const result = await restorePurchases();
-    await refresh();
-    return result.tier;
+    billingBusy.current = true;
+    try {
+      const result = await restorePurchases();
+      await refresh();
+      return result.tier;
+    } finally {
+      billingBusy.current = false;
+    }
   }, [user, refresh]);
 
   const value = useMemo(() => ({

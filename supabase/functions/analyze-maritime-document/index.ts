@@ -233,7 +233,7 @@ Deno.serve(async (req) => {
 
   try {
     const service = createServiceClient();
-    const quota = await consumeAiQuota(service, auth.user.id);
+    const quota = await consumeAiQuota(service, auth.user.id, 'document');
     if (!quota.allowed) return quotaExceededResponse(cors, quota);
 
     const analysis = normalizeAnalysis(await analyze(body.imageDataUrl));

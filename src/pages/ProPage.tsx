@@ -15,10 +15,11 @@ import {
   isUserCanceled,
   BillingPendingError,
   BillingNotConfiguredError,
+  BillingVerificationDeferredError,
   type ProOffers,
 } from "@/services/billing";
 import { getPlaySubscriptionManagementUrl, type ProPlan } from "@/config/products";
-import { getTermsOfUseUrl } from "@/config/legal";
+import { getPrivacyPolicyUrl, getTermsOfUseUrl } from "@/config/legal";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getProductPrice } from "@/services/billingOffers";
 
@@ -34,8 +35,8 @@ const PRO_FEATURES = [
   "All books and professional content",
   "Advanced calculations and simulations",
   "All quizzes and exam preparation modules",
-  "3D stability and ship simulations",
-  "A high monthly quota on the AI assistant",
+  "The 3D stability simulation",
+  "The AI assistant, with a high monthly quota",
 ];
 
 const FREE_FEATURES = [
@@ -43,7 +44,7 @@ const FREE_FEATURES = [
   "Basic COLREG and safety content",
   "Selected books and basic calculators",
   "News and weather",
-  "Exercises and a limited monthly AI quota",
+  "Exercises and the Beta tools",
 ];
 
 interface PlanCardData {
@@ -124,6 +125,9 @@ const ProPage = () => {
         // kullanıcı vazgeçti; sessiz geç
       } else if (e instanceof BillingPendingError) {
         toast.info(e.message);
+      } else if (e instanceof BillingVerificationDeferredError) {
+        // Ödeme alındı; "tekrar dene" demek ikinci kez ödemeye yönlendirir.
+        toast.info(e.message, { duration: 10_000 });
       } else if (e instanceof BillingNotConfiguredError) {
         // Sunucu yapılandırma hatası: "try again" demek yanıltıcı olur.
         toast.error(e.message, { duration: 10_000 });
@@ -357,7 +361,15 @@ const ProPage = () => {
                   >
                     <span data-translatable>Terms of Use</span>
                   </a>
-                  .
+                  {" · "}
+                  <a
+                    href={getPrivacyPolicyUrl(currentLanguage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline underline-offset-4"
+                  >
+                    <span data-translatable>Privacy Policy</span>
+                  </a>
                 </p>
               </div>
             </>

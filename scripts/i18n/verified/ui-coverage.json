@@ -2195,5 +2195,923 @@
  },
  "Review in the lesson": {
   "en": "Review in the lesson"
+ },
+ ". Do not use cached tides, forecasts, charts or regulations as proof of current conditions.": {
+  "en": ". Do not use cached tides, forecasts, charts or regulations as proof of current conditions."
+ },
+ "1 NM = 1,852 m; 1 kn = 1 NM/h; 1 cable = 0.1 NM. Temperature conversions are absolute temperatures, not temperature differences. For contractual cargo and bunker quantities, follow the designated measurement standard.": {
+  "en": "1 NM = 1,852 m; 1 kn = 1 NM/h; 1 cable = 0.1 NM. Temperature conversions are absolute temperatures, not temperature differences. For contractual cargo and bunker quantities, follow the designated measurement standard."
+ },
+ "A positive GM alone does not establish stability compliance.": {
+  "en": "A positive GM alone does not establish stability compliance."
+ },
+ "Aa": {
+  "en": "Aa"
+ },
+ "Adjusted UKC": {
+  "en": "Adjusted UKC"
+ },
+ "After Drafts": {
+  "en": "After Drafts"
+ },
+ "After mean draft": {
+  "en": "After mean draft"
+ },
+ "Anchoring and deck operations": {
+  "en": "Anchoring and deck operations"
+ },
+ "Angle of Loll — approved GZ curve required": {
+  "en": "Angle of Loll — approved GZ curve required"
+ },
+ "Apply the rules using the ship’s actual procedures and documents, not a memorised statement alone.": {
+  "en": "Apply the rules using the ship’s actual procedures and documents, not a memorised statement alone."
+ },
+ "Appropriate response:": {
+  "en": "Appropriate response:"
+ },
+ "Approximate displacement change from drafts and TPC": {
+  "en": "Approximate displacement change from drafts and TPC"
+ },
+ "Approximate equilibrium heel": {
+  "en": "Approximate equilibrium heel"
+ },
+ "Ask about this lesson": {
+  "en": "Ask about this lesson"
+ },
+ "Average delivered power": {
+  "en": "Average delivered power"
+ },
+ "Before Drafts": {
+  "en": "Before Drafts"
+ },
+ "Before mean draft": {
+  "en": "Before mean draft"
+ },
+ "Book contents": {
+  "en": "Book contents"
+ },
+ "Book reader": {
+  "en": "Book reader"
+ },
+ "Browse cargo calculation worksheets": {
+  "en": "Browse cargo calculation worksheets"
+ },
+ "Bunker Quantity Estimate": {
+  "en": "Bunker Quantity Estimate"
+ },
+ "Calculate fuel mass from actual engine power output, representative SFOC and total operating time.": {
+  "en": "Calculate fuel mass from actual engine power output, representative SFOC and total operating time."
+ },
+ "Calculate logarithmic mean temperature difference for steady countercurrent heat exchange with positive terminal temperature differences.": {
+  "en": "Calculate logarithmic mean temperature difference for steady countercurrent heat exchange with positive terminal temperature differences."
+ },
+ "Calculate passage time and UTC arrival clock from distance, constant speed over ground, and departure clock. D+1 means the next UTC day.": {
+  "en": "Calculate passage time and UTC arrival clock from distance, constant speed over ground, and departure clock. D+1 means the next UTC day."
+ },
+ "calculation record": {
+  "en": "calculation record"
+ },
+ "Calculation Record": {
+  "en": "Calculation Record"
+ },
+ "Cannot determine angle of loll": {
+  "en": "Cannot determine angle of loll"
+ },
+ "Cargo & Draft Survey": {
+  "en": "Cargo & Draft Survey"
+ },
+ "Cargo Calculations": {
+  "en": "Cargo Calculations"
+ },
+ "Category:": {
+  "en": "Category:"
+ },
+ "Certified density at 15 °C": {
+  "en": "Certified density at 15 °C"
+ },
+ "Change in mean draft": {
+  "en": "Change in mean draft"
+ },
+ "Charted depth, tide, draft and allowances": {
+  "en": "Charted depth, tide, draft and allowances"
+ },
+ "Clearance Allowances": {
+  "en": "Clearance Allowances"
+ },
+ "Cloud types": {
+  "en": "Cloud types"
+ },
+ "CO₂ per NM (14.5 kn assumed; NOT EEOI)": {
+  "en": "CO₂ per NM (14.5 kn assumed; NOT EEOI)"
+ },
+ "Cold inlet temperature": {
+  "en": "Cold inlet temperature"
+ },
+ "Cold outlet temperature": {
+  "en": "Cold outlet temperature"
+ },
+ "Cold Side": {
+  "en": "Cold Side"
+ },
+ "Compute static chart-datum clearance and deduct conservative allowances. Negative adjusted UKC is displayed as a warning, not suppressed.": {
+  "en": "Compute static chart-datum clearance and deduct conservative allowances. Negative adjusted UKC is displayed as a warning, not suppressed."
+ },
+ "Construction, machinery and stability": {
+  "en": "Construction, machinery and stability"
+ },
+ "Contents": {
+  "en": "Contents"
+ },
+ "Conversion categories": {
+  "en": "Conversion categories"
+ },
+ "Convert maritime and engineering units with consistent SI definitions.": {
+  "en": "Convert maritime and engineering units with consistent SI definitions."
+ },
+ "Converted Value": {
+  "en": "Converted Value"
+ },
+ "Converters": {
+  "en": "Converters"
+ },
+ "Cooling & HVAC": {
+  "en": "Cooling & HVAC"
+ },
+ "Copy calculation": {
+  "en": "Copy calculation"
+ },
+ "Copy record": {
+  "en": "Copy record"
+ },
+ "Corrected displacement": {
+  "en": "Corrected displacement"
+ },
+ "Correction to table displacement": {
+  "en": "Correction to table displacement"
+ },
+ "Counterflow LMTD": {
+  "en": "Counterflow LMTD"
+ },
+ "Course over ground": {
+  "en": "Course over ground"
+ },
+ "Courses, distances and navigational problems": {
+  "en": "Courses, distances and navigational problems"
+ },
+ "CPA / TCPA Calculator": {
+  "en": "CPA / TCPA Calculator"
+ },
+ "Critical operational notes": {
+  "en": "Critical operational notes"
+ },
+ "Deck-operation calculations": {
+  "en": "Deck-operation calculations"
+ },
+ "Decrease text size": {
+  "en": "Decrease text size"
+ },
+ "Departure UTC (decimal hour)": {
+  "en": "Departure UTC (decimal hour)"
+ },
+ "Departure UTC (decimal hours)": {
+  "en": "Departure UTC (decimal hours)"
+ },
+ "Depth Inputs": {
+  "en": "Depth Inputs"
+ },
+ "Displacement correction for measured water density": {
+  "en": "Displacement correction for measured water density"
+ },
+ "Displacement Density Correction": {
+  "en": "Displacement Density Correction"
+ },
+ "Displacement, draft and quantities": {
+  "en": "Displacement, draft and quantities"
+ },
+ "Distance, speed, mass, volume and more": {
+  "en": "Distance, speed, mass, volume and more"
+ },
+ "Draft and displacement survey worksheet": {
+  "en": "Draft and displacement survey worksheet"
+ },
+ "Draft Change Estimate": {
+  "en": "Draft Change Estimate"
+ },
+ "Draft survey before cargo operations": {
+  "en": "Draft survey before cargo operations"
+ },
+ "Educational reference — always verify the applicable official text and amendments.": {
+  "en": "Educational reference — always verify the applicable official text and amendments."
+ },
+ "Effective initial GM including FSC": {
+  "en": "Effective initial GM including FSC"
+ },
+ "Emergency communications": {
+  "en": "Emergency communications"
+ },
+ "Emissions & Environment": {
+  "en": "Emissions & Environment"
+ },
+ "Endurance excluding reserve": {
+  "en": "Endurance excluding reserve"
+ },
+ "Engine Fuel Consumption": {
+  "en": "Engine Fuel Consumption"
+ },
+ "Engine performance calculations": {
+  "en": "Engine performance calculations"
+ },
+ "Engine Performance Data": {
+  "en": "Engine Performance Data"
+ },
+ "Engines, energy and machinery": {
+  "en": "Engines, energy and machinery"
+ },
+ "Enter a value": {
+  "en": "Enter a value"
+ },
+ "Enter a value to see the converted result.": {
+  "en": "Enter a value to see the converted result."
+ },
+ "Entered values": {
+  "en": "Entered values"
+ },
+ "Estimate initial transverse G shift and corresponding small-angle equilibrium heel due to internal relocation of a weight.": {
+  "en": "Estimate initial transverse G shift and corresponding small-angle equilibrium heel due to internal relocation of a weight."
+ },
+ "Estimate operating endurance from fuel remaining on board, a protected reserve and expected daily use.": {
+  "en": "Estimate operating endurance from fuel remaining on board, a protected reserve and expected daily use."
+ },
+ "Estimate tonnes per centimetre immersion from waterplane area at the specified draft and actual water density.": {
+  "en": "Estimate tonnes per centimetre immersion from waterplane area at the specified draft and actual water density."
+ },
+ "Estimated arrival (UTC)": {
+  "en": "Estimated arrival (UTC)"
+ },
+ "Estimated bunker mass": {
+  "en": "Estimated bunker mass"
+ },
+ "Estimated consumption": {
+  "en": "Estimated consumption"
+ },
+ "Estimated displacement difference": {
+  "en": "Estimated displacement difference"
+ },
+ "ETA (UTC)": {
+  "en": "ETA (UTC)"
+ },
+ "ETD is entered as a UTC decimal hour (e.g. 14:30 UTC = 14.5). D+N identifies whole UTC days after ETD; no calendar date is inferred.": {
+  "en": "ETD is entered as a UTC decimal hour (e.g. 14:30 UTC = 14.5). D+N identifies whole UTC days after ETD; no calendar date is inferred."
+ },
+ "Evaluate intact-stability criteria": {
+  "en": "Evaluate intact-stability criteria"
+ },
+ "Expanded view": {
+  "en": "Expanded view"
+ },
+ "Expected consumption": {
+  "en": "Expected consumption"
+ },
+ "Expected SOG": {
+  "en": "Expected SOG"
+ },
+ "Expected speed over ground": {
+  "en": "Expected speed over ground"
+ },
+ "Fire protection": {
+  "en": "Fire protection"
+ },
+ "Fire protection and extinguishing": {
+  "en": "Fire protection and extinguishing"
+ },
+ "Fire protection and firefighting": {
+  "en": "Fire protection and firefighting"
+ },
+ "First terminal ΔT": {
+  "en": "First terminal ΔT"
+ },
+ "Forecasting methods": {
+  "en": "Forecasting methods"
+ },
+ "Formula not found.": {
+  "en": "Formula not found."
+ },
+ "Formula trace": {
+  "en": "Formula trace"
+ },
+ "Free surface correction": {
+  "en": "Free surface correction"
+ },
+ "Free Surface Correction (GM)": {
+  "en": "Free Surface Correction (GM)"
+ },
+ "Free surface moment": {
+  "en": "Free surface moment"
+ },
+ "Free-surface breadth (port to starboard)": {
+  "en": "Free-surface breadth (port to starboard)"
+ },
+ "Free-surface length (fore and aft)": {
+  "en": "Free-surface length (fore and aft)"
+ },
+ "Frequently Used": {
+  "en": "Frequently Used"
+ },
+ "FSC = (l × b³ × ρ) / (12 × Δ). Assumes a rectangular freely communicating slack tank.": {
+  "en": "FSC = (l × b³ × ρ) / (12 × Δ). Assumes a rectangular freely communicating slack tank."
+ },
+ "Fuel and Tank Data": {
+  "en": "Fuel and Tank Data"
+ },
+ "Fuel consumption per operating hour": {
+  "en": "Fuel consumption per operating hour"
+ },
+ "Fuel Endurance": {
+  "en": "Fuel Endurance"
+ },
+ "Fuel Planning Inputs": {
+  "en": "Fuel Planning Inputs"
+ },
+ "Fuel properties and consumption": {
+  "en": "Fuel properties and consumption"
+ },
+ "Fuel remaining on board": {
+  "en": "Fuel remaining on board"
+ },
+ "Fuel ROB excluding protected reserve": {
+  "en": "Fuel ROB excluding protected reserve"
+ },
+ "Fuel Technology": {
+  "en": "Fuel Technology"
+ },
+ "Fuel volume and density calculations": {
+  "en": "Fuel volume and density calculations"
+ },
+ "Full reference": {
+  "en": "Full reference"
+ },
+ "General duties": {
+  "en": "General duties"
+ },
+ "General provisions": {
+  "en": "General provisions"
+ },
+ "GM after this tank correction": {
+  "en": "GM after this tank correction"
+ },
+ "GM before free-surface correction": {
+  "en": "GM before free-surface correction"
+ },
+ "GM reduction for one slack rectangular tank": {
+  "en": "GM reduction for one slack rectangular tank"
+ },
+ "GM, GZ and related stability worksheets": {
+  "en": "GM, GZ and related stability worksheets"
+ },
+ "GMDSS equipment and watchkeeping applicable to the vessel's sea areas.": {
+  "en": "GMDSS equipment and watchkeeping applicable to the vessel's sea areas."
+ },
+ "Heat Exchanger LMTD": {
+  "en": "Heat Exchanger LMTD"
+ },
+ "Heat exchanger temperature differences": {
+  "en": "Heat exchanger temperature differences"
+ },
+ "Heat, cycles and efficiency": {
+  "en": "Heat, cycles and efficiency"
+ },
+ "Hide": {
+  "en": "Hide"
+ },
+ "Horizontal cross-sectional area": {
+  "en": "Horizontal cross-sectional area"
+ },
+ "Hot inlet temperature": {
+  "en": "Hot inlet temperature"
+ },
+ "Hot outlet temperature": {
+  "en": "Hot outlet temperature"
+ },
+ "Hot Side": {
+  "en": "Hot Side"
+ },
+ "Hydrostatic Inputs": {
+  "en": "Hydrostatic Inputs"
+ },
+ "Hydrostatic reference density": {
+  "en": "Hydrostatic reference density"
+ },
+ "Hydrostatic TPC at a defined draft": {
+  "en": "Hydrostatic TPC at a defined draft"
+ },
+ "Hydrostatics and stability criteria": {
+  "en": "Hydrostatics and stability criteria"
+ },
+ "Illustrative interval": {
+  "en": "Illustrative interval"
+ },
+ "Illustrative learning summary. Certificate applicability, survey windows and renewal requirements vary by vessel type, flag state, endorsements and the current legal text. Always check the official requirements.": {
+  "en": "Illustrative learning summary. Certificate applicability, survey windows and renewal requirements vary by vessel type, flag state, endorsements and the current legal text. Always check the official requirements."
+ },
+ "IMO — Chapter III official summary": {
+  "en": "IMO — Chapter III official summary"
+ },
+ "IMO — Life-saving appliances": {
+  "en": "IMO — Life-saving appliances"
+ },
+ "Importance:": {
+  "en": "Importance:"
+ },
+ "Important details": {
+  "en": "Important details"
+ },
+ "Increase text size": {
+  "en": "Increase text size"
+ },
+ "Indicative heel >12° — investigate with approved grain booklet": {
+  "en": "Indicative heel >12° — investigate with approved grain booklet"
+ },
+ "Indicative heel ≤12° — NOT IMO grain approval": {
+  "en": "Indicative heel ≤12° — NOT IMO grain approval"
+ },
+ "Indicative validity and surveys:": {
+  "en": "Indicative validity and surveys:"
+ },
+ "Initial heel from cargo or weight movement": {
+  "en": "Initial heel from cargo or weight movement"
+ },
+ "Issuing authority:": {
+  "en": "Issuing authority:"
+ },
+ "Item": {
+  "en": "Item"
+ },
+ "Keep survey and corrective action evidence, matching document revisions and expiry alerts.": {
+  "en": "Keep survey and corrective action evidence, matching document revisions and expiry alerts."
+ },
+ "Key points": {
+  "en": "Key points"
+ },
+ "KG and KM alone are insufficient. Use the vessel's approved cross-curves/GZ data and loading condition; do not rely on arccos(KG/KM).": {
+  "en": "KG and KM alone are insufficient. Use the vessel's approved cross-curves/GZ data and loading condition; do not rely on arccos(KG/KM)."
+ },
+ "Knots and splices": {
+  "en": "Knots and splices"
+ },
+ "Larger text": {
+  "en": "Larger text"
+ },
+ "Learning library": {
+  "en": "Learning library"
+ },
+ "Legal analysis:": {
+  "en": "Legal analysis:"
+ },
+ "Life-saving appliances": {
+  "en": "Life-saving appliances"
+ },
+ "Life-saving appliances and arrangements": {
+  "en": "Life-saving appliances and arrangements"
+ },
+ "Life-saving arrangements": {
+  "en": "Life-saving arrangements"
+ },
+ "Liquid height from tank bottom": {
+  "en": "Liquid height from tank bottom"
+ },
+ "Liquid mass": {
+  "en": "Liquid mass"
+ },
+ "Loading crew task lesson…": {
+  "en": "Loading crew task lesson…"
+ },
+ "Loading operation lesson…": {
+  "en": "Loading operation lesson…"
+ },
+ "Loading system lesson…": {
+  "en": "Loading system lesson…"
+ },
+ "Local dataset baseline:": {
+  "en": "Local dataset baseline:"
+ },
+ "Long-form chapters are not available for this task yet.": {
+  "en": "Long-form chapters are not available for this task yet."
+ },
+ "Machine Calculation Inputs": {
+  "en": "Machine Calculation Inputs"
+ },
+ "Machinery environmental calculations": {
+  "en": "Machinery environmental calculations"
+ },
+ "Mandatory verification": {
+  "en": "Mandatory verification"
+ },
+ "Marine hazard:": {
+  "en": "Marine hazard:"
+ },
+ "Marine impact:": {
+  "en": "Marine impact:"
+ },
+ "Marine meteorology": {
+  "en": "Marine meteorology"
+ },
+ "Maritime unit conversions": {
+  "en": "Maritime unit conversions"
+ },
+ "Maximum effective ship draft": {
+  "en": "Maximum effective ship draft"
+ },
+ "Mechanical design calculations": {
+  "en": "Mechanical design calculations"
+ },
+ "Moved weight": {
+  "en": "Moved weight"
+ },
+ "Navigation and radiocommunications": {
+  "en": "Navigation and radiocommunications"
+ },
+ "NAVTEX warnings": {
+  "en": "NAVTEX warnings"
+ },
+ "Net observed fuel volume": {
+  "en": "Net observed fuel volume"
+ },
+ "No equipment quantities, service dates or 'operational' status are assumed without actual vessel records. This screen is educational, not a live inventory.": {
+  "en": "No equipment quantities, service dates or 'operational' status are assumed without actual vessel records. This screen is educational, not a live inventory."
+ },
+ "No matching calculator found. Try a category or another search term.": {
+  "en": "No matching calculator found. Try a category or another search term."
+ },
+ "Non-positive initial GM warrants immediate professional assessment.": {
+  "en": "Non-positive initial GM warrants immediate professional assessment."
+ },
+ "Not assessed": {
+  "en": "Not assessed"
+ },
+ "NOx illustrative estimate (not measured)": {
+  "en": "NOx illustrative estimate (not measured)"
+ },
+ "Observed range": {
+  "en": "Observed range"
+ },
+ "Observed true bearing": {
+  "en": "Observed true bearing"
+ },
+ "Observed water density": {
+  "en": "Observed water density"
+ },
+ "Offline: packaged lessons and selected calculation tools may remain available. Live information is unavailable.": {
+  "en": "Offline: packaged lessons and selected calculation tools may remain available. Live information is unavailable."
+ },
+ "One or more selected numerical checks failed": {
+  "en": "One or more selected numerical checks failed"
+ },
+ "Open Sailor's Knots — step-by-step references": {
+  "en": "Open Sailor's Knots — step-by-step references"
+ },
+ "Operation summary": {
+  "en": "Operation summary"
+ },
+ "Operational warnings": {
+  "en": "Operational warnings"
+ },
+ "Original source and licence": {
+  "en": "Original source and licence"
+ },
+ "Other deductions (wave, heel, margins, etc.)": {
+  "en": "Other deductions (wave, heel, margins, etc.)"
+ },
+ "Passage and position calculations": {
+  "en": "Passage and position calculations"
+ },
+ "Passage Inputs": {
+  "en": "Passage Inputs"
+ },
+ "Passage planning, bridge equipment and navigational operational procedures.": {
+  "en": "Passage planning, bridge equipment and navigational operational procedures."
+ },
+ "Passage time": {
+  "en": "Passage time"
+ },
+ "Power × SFOC × operating hours": {
+  "en": "Power × SFOC × operating hours"
+ },
+ "Practical applications": {
+  "en": "Practical applications"
+ },
+ "Practical guidance": {
+  "en": "Practical guidance"
+ },
+ "Practical learning & applications": {
+  "en": "Practical learning & applications"
+ },
+ "Precautions": {
+  "en": "Precautions"
+ },
+ "Preloading": {
+  "en": "Preloading"
+ },
+ "Pressure range:": {
+  "en": "Pressure range:"
+ },
+ "Protected fuel reserve": {
+  "en": "Protected fuel reserve"
+ },
+ "Read the following topic.": {
+  "en": "Read the following topic."
+ },
+ "Readiness percentages are not shown: without vessel records, assigning a safety compliance score would be misleading.": {
+  "en": "Readiness percentages are not shown: without vessel records, assigning a safety compliance score would be misleading."
+ },
+ "Reading progress": {
+  "en": "Reading progress"
+ },
+ "Rectangular Tank Estimate": {
+  "en": "Rectangular Tank Estimate"
+ },
+ "Refrigeration and ventilation calculations": {
+  "en": "Refrigeration and ventilation calculations"
+ },
+ "Regulation not found.": {
+  "en": "Regulation not found."
+ },
+ "Relative motion and closest approach": {
+  "en": "Relative motion and closest approach"
+ },
+ "Relevant legislation": {
+  "en": "Relevant legislation"
+ },
+ "Remaining distance": {
+  "en": "Remaining distance"
+ },
+ "Responsibilities": {
+  "en": "Responsibilities"
+ },
+ "Responsibilities in every situation": {
+  "en": "Responsibilities in every situation"
+ },
+ "Responsibility matrix": {
+  "en": "Responsibility matrix"
+ },
+ "Results": {
+  "en": "Results"
+ },
+ "Return to paged book reader": {
+  "en": "Return to paged book reader"
+ },
+ "Role": {
+  "en": "Role"
+ },
+ "Safety actions": {
+  "en": "Safety actions"
+ },
+ "Safety of navigation": {
+  "en": "Safety of navigation"
+ },
+ "Satellite imagery": {
+  "en": "Satellite imagery"
+ },
+ "Scope and limitations:": {
+  "en": "Scope and limitations:"
+ },
+ "Sea state:": {
+  "en": "Sea state:"
+ },
+ "Search maritime calculations…": {
+  "en": "Search maritime calculations…"
+ },
+ "Second terminal ΔT": {
+  "en": "Second terminal ΔT"
+ },
+ "Selected numerical checks passed (not full IMO compliance)": {
+  "en": "Selected numerical checks passed (not full IMO compliance)"
+ },
+ "Severe weather and safety": {
+  "en": "Severe weather and safety"
+ },
+ "Ship displacement including tank liquid": {
+  "en": "Ship displacement including tank liquid"
+ },
+ "Shipboard checklist": {
+  "en": "Shipboard checklist"
+ },
+ "Shipboard photographs": {
+  "en": "Shipboard photographs"
+ },
+ "Shipboard:": {
+  "en": "Shipboard:"
+ },
+ "Show": {
+  "en": "Show"
+ },
+ "Signed charted depth": {
+  "en": "Signed charted depth"
+ },
+ "Signed transverse shift": {
+  "en": "Signed transverse shift"
+ },
+ "Simplified vertical prismatic tank with a constant horizontal area.": {
+  "en": "Simplified vertical prismatic tank with a constant horizontal area."
+ },
+ "Situation:": {
+  "en": "Situation:"
+ },
+ "Slack Tank Geometry": {
+  "en": "Slack Tank Geometry"
+ },
+ "Smaller text": {
+  "en": "Smaller text"
+ },
+ "SOLAS — Chapter Reference": {
+  "en": "SOLAS — Chapter Reference"
+ },
+ "SOLAS Certificates & Surveys": {
+  "en": "SOLAS Certificates & Surveys"
+ },
+ "Source reference": {
+  "en": "Source reference"
+ },
+ "Source references": {
+  "en": "Source references"
+ },
+ "Specific fuel oil consumption": {
+  "en": "Specific fuel oil consumption"
+ },
+ "Squat deduction": {
+  "en": "Squat deduction"
+ },
+ "Standard volume at 15 °C": {
+  "en": "Standard volume at 15 °C"
+ },
+ "Static UKC before allowances": {
+  "en": "Static UKC before allowances"
+ },
+ "Step-by-step solution": {
+  "en": "Step-by-step solution"
+ },
+ "Structural fire protection, detection and firefighting arrangements.": {
+  "en": "Structural fire protection, detection and firefighting arrangements."
+ },
+ "Structure and stability": {
+  "en": "Structure and stability"
+ },
+ "Subdivision, stability, machinery and electrical installation provisions.": {
+  "en": "Subdivision, stability, machinery and electrical installation provisions."
+ },
+ "subtopics. Continue to read them individually.": {
+  "en": "subtopics. Continue to read them individually."
+ },
+ "Survey and renewal reference": {
+  "en": "Survey and renewal reference"
+ },
+ "Surveys, certificates and convention application.": {
+  "en": "Surveys, certificates and convention application."
+ },
+ "Survival craft, rescue boats, personal appliances, drills and inspections.": {
+  "en": "Survival craft, rescue boats, personal appliances, drills and inspections."
+ },
+ "Swap units": {
+  "en": "Swap units"
+ },
+ "Swipe sideways to change pages. Long pages scroll inside the book.": {
+  "en": "Swipe sideways to change pages. Long pages scroll inside the book."
+ },
+ "Table displacement at reference density": {
+  "en": "Table displacement at reference density"
+ },
+ "Tank liquid density": {
+  "en": "Tank liquid density"
+ },
+ "Tank Measurements": {
+  "en": "Tank Measurements"
+ },
+ "Target course over ground": {
+  "en": "Target course over ground"
+ },
+ "Target Ship": {
+  "en": "Target Ship"
+ },
+ "Target speed over ground": {
+  "en": "Target speed over ground"
+ },
+ "Technical diagram": {
+  "en": "Technical diagram"
+ },
+ "Text size controls": {
+  "en": "Text size controls"
+ },
+ "These calculators support training and cross-checks. Use vessel-approved hydrostatic data, sounding tables and official publications for operational decisions.": {
+  "en": "These calculators support training and cross-checks. Use vessel-approved hydrostatic data, sounding tables and official publications for operational decisions."
+ },
+ "These figures are not ship-approved. Check SOLAS as amended, the applicable survey and certification regime and flag administration or recognized organization instructions before acting.": {
+  "en": "These figures are not ship-approved. Check SOLAS as amended, the applicable survey and certification regime and flag administration or recognized organization instructions before acting."
+ },
+ "This chapter has": {
+  "en": "This chapter has"
+ },
+ "This chapter has no reading pages.": {
+  "en": "This chapter has no reading pages."
+ },
+ "This is a study checklist, not evidence of compliance or a complete legal instrument. Apply current amendments, flag directions, the ship's certificates and approved plans.": {
+  "en": "This is a study checklist, not evidence of compliance or a complete legal instrument. Apply current amendments, flag directions, the ship's certificates and approved plans."
+ },
+ "Tide height relative to chart datum": {
+  "en": "Tide height relative to chart datum"
+ },
+ "Tonnes per centimetre immersion": {
+  "en": "Tonnes per centimetre immersion"
+ },
+ "Total displacement": {
+  "en": "Total displacement"
+ },
+ "TPC from Waterplane Area": {
+  "en": "TPC from Waterplane Area"
+ },
+ "Tracking:": {
+  "en": "Tracking:"
+ },
+ "Transverse G movement (GG₁)": {
+  "en": "Transverse G movement (GG₁)"
+ },
+ "Transverse second moment": {
+  "en": "Transverse second moment"
+ },
+ "Transverse small-angle correction for ONE partially filled, freely communicating rectangular tank. Enter GM before free-surface correction.": {
+  "en": "Transverse small-angle correction for ONE partially filled, freely communicating rectangular tank. Enter GM before free-surface correction."
+ },
+ "Transverse Weight Shift": {
+  "en": "Transverse Weight Shift"
+ },
+ "True target bearing and current range at the same observation time.": {
+  "en": "True target bearing and current range at the same observation time."
+ },
+ "Usable fuel above reserve": {
+  "en": "Usable fuel above reserve"
+ },
+ "Use corrected net observed volume from vessel tank tables and a table-derived VCF.": {
+  "en": "Use corrected net observed volume from vessel tank tables and a table-derived VCF."
+ },
+ "Use course and speed over ground, not heading and speed through water.": {
+  "en": "Use course and speed over ground, not heading and speed through water."
+ },
+ "UTC time and passage duration": {
+  "en": "UTC time and passage duration"
+ },
+ "Verification on board": {
+  "en": "Verification on board"
+ },
+ "Version": {
+  "en": "Version"
+ },
+ "Vertical mass moment": {
+  "en": "Vertical mass moment"
+ },
+ "Vessel Hydrostatic Data": {
+  "en": "Vessel Hydrostatic Data"
+ },
+ "Vessel Hydrostatics": {
+  "en": "Vessel Hydrostatics"
+ },
+ "Vessel Stability": {
+  "en": "Vessel Stability"
+ },
+ "Visibility:": {
+  "en": "Visibility:"
+ },
+ "Volume correction factor to 15 °C": {
+  "en": "Volume correction factor to 15 °C"
+ },
+ "Volume, mass and vertical moment; not a sounding table": {
+  "en": "Volume, mass and vertical moment; not a sounding table"
+ },
+ "Voyage ETA (UTC)": {
+  "en": "Voyage ETA (UTC)"
+ },
+ "Water and Hydrostatic Data": {
+  "en": "Water and Hydrostatic Data"
+ },
+ "Water depth above chart datum": {
+  "en": "Water depth above chart datum"
+ },
+ "Waterplane area at draft": {
+  "en": "Waterplane area at draft"
+ },
+ "Weather chart practice": {
+  "en": "Weather chart practice"
+ },
+ "Weather systems, atmospheric pressure, storms, clouds and forecasting tools. Use official marine forecasts and the vessel's approved passage plan for operational decisions.": {
+  "en": "Weather systems, atmospheric pressure, storms, clouds and forecasting tools. Use official marine forecasts and the vessel's approved passage plan for operational decisions."
+ },
+ "Weight Movement": {
+  "en": "Weight Movement"
+ },
+ "Whole UTC days after departure": {
+  "en": "Whole UTC days after departure"
+ },
+ "Why this equipment matters": {
+  "en": "Why this equipment matters"
+ },
+ "Copy": {
+  "en": "Copy"
  }
 }

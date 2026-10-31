@@ -329,7 +329,7 @@ const AnimatedRoutes = () => {
         <Route path="/pro" element={<PageTransition><ProPage /></PageTransition>} />
         <Route path="/beta" element={<PageTransition><BetaFeaturesPage /></PageTransition>} />
         <Route path="/beta/psc-checklist" element={<PageTransition><BetaPscChecklist /></PageTransition>} />
-        <Route path="/beta/ship-simulator" element={<PageTransition><ProRoute feature="The 3D ship simulator"><BetaShipSimulator /></ProRoute></PageTransition>} />
+        <Route path="/beta/ship-simulator" element={<PageTransition><BetaShipSimulator /></PageTransition>} />
         <Route path="/beta/documents" element={<PageTransition><BetaDocumentTracker /></PageTransition>} />
 
 

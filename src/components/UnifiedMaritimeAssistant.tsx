@@ -9,8 +9,8 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/useLanguage";
 import { getLanguageDisplayName } from "@/services/aiClient";
-import { stripMarkdown } from "@/utils/cleanText";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { AiAnswerText } from "@/components/ai/AiAnswerText";
 import { requireConsent } from "@/lib/consent";
 
 export const UnifiedMaritimeAssistant = () => {
@@ -365,33 +365,7 @@ Ask a detailed question and I will provide you with calculations and explanation
               <Calculator className="w-5 h-5" />
               Expert Evaluation:
             </h4>
-            <div className="text-sm text-card-foreground whitespace-pre-wrap leading-relaxed space-y-2">
-              {response.split('\n').map((line, index) => {
-                const cleaned = stripMarkdown(line);
-                // Formül satırları için özel stil
-                if (line.includes('=') && (line.includes('×') || line.includes('+') || line.includes('-') || line.includes('/'))) {
-                  return (
-                    <div key={index} className="bg-muted border border-primary/30 p-3 rounded-lg font-mono text-sm">
-                      <code className="text-foreground">{cleaned}</code>
-                    </div>
-                  );
-                }
-                // Başlık satırları
-                if (line.startsWith('**') && line.endsWith('**')) {
-                  return (
-                    <h5 key={index} className="font-semibold text-primary mt-3 mb-1">
-                      {cleaned}
-                    </h5>
-                  );
-                }
-                // Normal satırlar
-                return cleaned.trim() ? (
-                  <p key={index} className="mb-1">{cleaned}</p>
-                ) : (
-                  <div key={index} className="h-2"></div>
-                );
-              })}
-            </div>
+            <AiAnswerText text={response} className="text-sm text-card-foreground" />
             <div className="mt-3 border-t border-border/40 pt-2">
               <ReportAiContentButton
                 surface="maritime_assistant"

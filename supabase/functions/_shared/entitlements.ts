@@ -69,17 +69,30 @@ export interface QuotaResult {
   limit: number;
   remaining: number;
   period: string;
+  /** Ücretsiz pakette bu kullanım hiç yok: istemci "Pro gerekli" gösterir. */
+  proRequired: boolean;
 }
 
-function quotaForTier(tier: Tier): number {
-  const env = (name: string, fallback: number) => {
+/**
+ * AI kullanım türü. Soru sormak (asistan, ders öğretmeni, formül/hesap
+ * soruları) ücretsiz pakette kapalıdır (Ekim 2026 kararı); belge okuma
+ * (Document Tracker) ücretsiz pakette de sınırlı kotayla açıktır. İkisi aynı
+ * aylık sayaçtan düşer.
+ */
+export type AiUse = 'question' | 'document';
+
+function quotaForTier(tier: Tier, use: AiUse): number {
+  const env = (name: string, fallback: number, allowZero = false) => {
     const v = parseInt(Deno.env.get(name) ?? '', 10);
-    return Number.isFinite(v) && v > 0 ? v : fallback;
+    return Number.isFinite(v) && (allowZero ? v >= 0 : v > 0) ? v : fallback;
   };
   switch (tier) {
     case 'pro': return env('AI_QUOTA_PRO', 300);
     case 'lifetime': return env('AI_QUOTA_LIFETIME', 30);
-    default: return env('AI_QUOTA_FREE', 10);
+    default:
+      return use === 'question'
+        ? env('AI_QUOTA_FREE_QUESTIONS', 0, true)
+        : env('AI_QUOTA_FREE', 10);
   }
 }
 
@@ -91,10 +104,20 @@ export function currentPeriod(now: Date = new Date()): string {
  * Bir AI isteği için kota düşer. allowed=false dönerse istek AI'a
  * iletilmemeli, istemciye kota-doldu yanıtı verilmelidir.
  */
-export async function consumeAiQuota(client: SupabaseClient, userId: string): Promise<QuotaResult> {
+export async function consumeAiQuota(
+  client: SupabaseClient,
+  userId: string,
+  use: AiUse = 'question',
+): Promise<QuotaResult> {
   const tier = await getUserTier(client, userId);
-  const limit = quotaForTier(tier);
+  const limit = quotaForTier(tier, use);
   const period = currentPeriod();
+  const proRequired = tier === 'free' && limit === 0;
+
+  // Bu pakette hiç hak yok: sayaca dokunmadan reddet.
+  if (limit <= 0) {
+    return { allowed: false, tier, used: 0, limit: 0, remaining: 0, period, proRequired };
+  }
 
   const { data, error } = await client.rpc('consume_ai_credit', {
     p_user_id: userId,
@@ -106,14 +129,19 @@ export async function consumeAiQuota(client: SupabaseClient, userId: string): Pr
   const row = Array.isArray(data) ? data[0] : data;
   const used = row?.used ?? 0;
   const allowed = row?.allowed === true;
-  return { allowed, tier, used, limit, remaining: Math.max(0, limit - used), period };
+  return { allowed, tier, used, limit, remaining: Math.max(0, limit - used), period, proRequired };
 }
 
 /** Kota düşmeden mevcut durumu döndürür (arayüzde göstermek için). */
-export async function getAiQuotaStatus(client: SupabaseClient, userId: string): Promise<QuotaResult> {
+export async function getAiQuotaStatus(
+  client: SupabaseClient,
+  userId: string,
+  use: AiUse = 'question',
+): Promise<QuotaResult> {
   const tier = await getUserTier(client, userId);
-  const limit = quotaForTier(tier);
+  const limit = quotaForTier(tier, use);
   const period = currentPeriod();
+  const proRequired = tier === 'free' && limit === 0;
 
   const { data, error } = await client
     .from('ai_usage')
@@ -124,7 +152,7 @@ export async function getAiQuotaStatus(client: SupabaseClient, userId: string): 
   if (error) throw new Error(`ai_usage lookup failed: ${error.message}`);
 
   const used = data?.used ?? 0;
-  return { allowed: used < limit, tier, used, limit, remaining: Math.max(0, limit - used), period };
+  return { allowed: used < limit, tier, used, limit, remaining: Math.max(0, limit - used), period, proRequired };
 }
 
 /** Kota-doldu için standart 429 yanıtı. */
@@ -134,8 +162,12 @@ export function quotaExceededResponse(
 ): Response {
   return new Response(
     JSON.stringify({
-      error: 'Your monthly artificial intelligence usage allowance has expired.',
+      error: quota.proRequired
+        ? "The AI assistant is part of Mariner's Book Pro."
+        : 'Your monthly artificial intelligence usage allowance has expired.',
+      // Eski uygulama sürümleri yalnızca bu kodu tanıyor; ayrım `reason` ile.
       code: 'AI_QUOTA_EXCEEDED',
+      reason: quota.proRequired ? 'pro_required' : 'quota_used',
       quota: { tier: quota.tier, used: quota.used, limit: quota.limit, remaining: quota.remaining, period: quota.period },
     }),
     { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },

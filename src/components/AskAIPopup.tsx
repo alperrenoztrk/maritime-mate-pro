@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTextSelection } from '@/hooks/useTextSelection';
 import { supabase } from '@/integrations/supabase/safeClient';
 import { useLanguage } from '@/contexts/useLanguage';
-import { AIMessage } from '@/services/aiClient';
+import { AIAccessError, AIMessage, readAIAccessError } from '@/services/aiClient';
 import { Sparkles, X, Loader2, Highlighter } from 'lucide-react';
 import { toast } from 'sonner';
 import { addNote } from '@/lib/notesStorage';
 import { ReportAiContentButton } from '@/components/ai/ReportAiContentButton';
+import { AiAnswerText } from "@/components/ai/AiAnswerText";
 import { ConsentDeclinedError, requireConsent } from "@/lib/consent";
 
 async function askGeminiAboutText(text: string, language: string): Promise<string> {
@@ -26,7 +27,7 @@ async function askGeminiAboutText(text: string, language: string): Promise<strin
     body: { messages },
   });
 
-  if (error) throw error;
+  if (error) throw (await readAIAccessError(error)) ?? error;
   return (data?.text || data?.answer || '').toString().trim();
 }
 
@@ -61,7 +62,11 @@ export function AskAIPopup() {
       const result = await askGeminiAboutText(selectedText, currentLanguage);
       setAnswer(result);
     } catch (err) {
-      setError(err instanceof ConsentDeclinedError ? err.message : 'No explanation received. Please try again.');
+      setError(
+        err instanceof ConsentDeclinedError || err instanceof AIAccessError
+          ? err.message
+          : 'No explanation received. Please try again.',
+      );
     } finally {
       setLoading(false);
     }
@@ -173,7 +178,7 @@ export function AskAIPopup() {
               {error && <p className="text-base text-destructive">{error}</p>}
               {answer && !loading && (
                 <>
-                  <p className="whitespace-pre-wrap text-base leading-relaxed text-foreground">{answer}</p>
+                  <AiAnswerText text={answer} className="text-base text-foreground" />
                   <ReportAiContentButton
                     surface="ask_ai"
                     content={answer}

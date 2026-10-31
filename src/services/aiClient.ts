@@ -140,14 +140,20 @@ RESPONSE STYLE:
 export class AIAccessError extends Error {
   constructor(
     message: string,
-    public readonly code: 'AI_QUOTA_EXCEEDED' | 'AUTH_REQUIRED',
+    public readonly code: 'AI_QUOTA_EXCEEDED' | 'AI_PRO_REQUIRED' | 'AUTH_REQUIRED',
   ) {
     super(message);
     this.name = 'AIAccessError';
   }
 }
 
-async function extractAccessError(error: unknown): Promise<AIAccessError | null> {
+/**
+ * Reads an AI edge function error (gemini-chat, ask-ai) into a message the
+ * user can act on. Free accounts get "Pro required" (no AI questions in the
+ * free package since Oct 2026); paid accounts that used the month's quota get
+ * the quota message.
+ */
+export async function readAIAccessError(error: unknown): Promise<AIAccessError | null> {
   const context = (error as { context?: Response })?.context;
   if (!(context instanceof Response)) return null;
   if (context.status === 401) {
@@ -156,6 +162,12 @@ async function extractAccessError(error: unknown): Promise<AIAccessError | null>
   if (context.status === 429) {
     try {
       const body = await context.clone().json();
+      if (body?.code === 'AI_QUOTA_EXCEEDED' && body?.reason === 'pro_required') {
+        return new AIAccessError(
+          'The AI assistant is part of Mariner\'s Book Pro. See the plans in Settings → Mariner\'s Book Pro.',
+          'AI_PRO_REQUIRED',
+        );
+      }
       if (body?.code === 'AI_QUOTA_EXCEEDED') {
         return new AIAccessError(
           'You have used this month\'s AI allowance. The Pro package raises your monthly quota (Settings → Mariner\'s Book Pro).',
@@ -177,7 +189,7 @@ async function callGemini(messages: AIMessage[]): Promise<string> {
     body: { messages },
   });
   if (error) {
-    const accessError = await extractAccessError(error);
+    const accessError = await readAIAccessError(error);
     if (accessError) throw accessError;
     throw error;
   }

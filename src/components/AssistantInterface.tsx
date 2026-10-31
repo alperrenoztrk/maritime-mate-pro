@@ -7,8 +7,8 @@ import type { LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { useLanguage } from "@/contexts/useLanguage";
-import { stripMarkdown } from "@/utils/cleanText";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { AiAnswerText } from "@/components/ai/AiAnswerText";
 import { requireConsent } from "@/lib/consent";
 
 // UI string translations for all 25 supported languages
@@ -465,12 +465,7 @@ MANDATORY FORMAT RULES:
               </CardHeader>
               <CardContent>
                 <div className="prose prose-sm dark:prose-invert max-w-none">
-                  <div
-                    className="whitespace-pre-wrap text-sm text-foreground leading-relaxed notranslate"
-                    translate="no"
-                  >
-                    {stripMarkdown(response)}
-                  </div>
+                  <AiAnswerText text={response} className="text-sm text-foreground" />
                 </div>
                 <div className="mt-3 border-t border-border/40 pt-2">
                   <ReportAiContentButton

@@ -11,10 +11,13 @@
  *  - Library books, except the free books listed in FREE_LIBRARY_KEYS
  *  - Quizzes and the exam-preparation centre (exercises stay free)
  *  - Advanced calculations: advanced stability analyses and the draft survey suite
- *  - 3D models and the ship simulator
+ *  - The 3D stability simulation
+ *  - AI questions (assistant, lesson tutor, formula questions) — the free
+ *    package has none; enforced by the server (AI_QUOTA_FREE_QUESTIONS,
+ *    supabase/functions/_shared/entitlements.ts), not here
  * Always free: glossary, news, weather, basic calculators, formulas, crew,
- * bridge, ship tasks/operations, notes, and a limited monthly AI quota
- * (the AI quota itself is enforced by the server, not here).
+ * bridge, ship tasks/operations, notes, exercises, and the Beta section
+ * (the 3D ship simulator stays a free beta tool, not a Pro feature).
  */
 export const PRO_GATING_ENABLED: boolean =
   String(import.meta.env.VITE_PRO_GATING_ENABLED ?? "").trim().toLowerCase() === "true";

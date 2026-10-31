@@ -30,6 +30,41 @@ export function normalizePurchases(
   }
   return { inputs, pending };
 }
+/**
+ * Why a background check should send the device's Play purchases to the
+ * server, or null when nothing needs doing.
+ *
+ *  - "unacknowledged": Google Play holds a completed purchase the server has
+ *    not acknowledged yet (a pending payment that has since cleared, an app
+ *    closed before verification, no connection on board). Google refunds
+ *    unacknowledged purchases after three days, so this must be verified as
+ *    soon as the app can reach the server.
+ *  - "not_on_server": the account has no Pro access on the server although
+ *    Google Play reports an owned Pro product (a renewal the server missed,
+ *    a purchase made before signing in). Worth one throttled check.
+ */
+export type BackgroundSyncReason = "unacknowledged" | "not_on_server";
+
+export function planBackgroundSync(
+  subs: readonly PlayPurchase[],
+  inapp: readonly PlayPurchase[],
+  productIds: { subs: readonly string[]; inapp: readonly string[] },
+  serverHasAccess: boolean,
+): { inputs: VerificationInput[]; reason: BackgroundSyncReason | null } {
+  const inputs = [
+    ...normalizePurchases(subs, "subs", productIds.subs).inputs,
+    ...normalizePurchases(inapp, "inapp", productIds.inapp).inputs,
+  ];
+  if (inputs.length === 0) return { inputs, reason: null };
+  const known = new Set([...productIds.subs, ...productIds.inapp]);
+  const unacknowledged = [...subs, ...inapp].some((purchase) =>
+    purchase.purchaseState === 1 && purchase.acknowledged === false &&
+    (purchase.productIds ?? []).some((id) => known.has(id)));
+  if (unacknowledged) return { inputs, reason: "unacknowledged" };
+  if (!serverHasAccess) return { inputs, reason: "not_on_server" };
+  return { inputs, reason: null };
+}
+
 export function isVerifiedResponse(value: unknown): value is {
   tier: "free" | "pro" | "lifetime";
   results: Array<{ productId: string; status: string; active: boolean; expiresAt: string | null; error?: string }>;

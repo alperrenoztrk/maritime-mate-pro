@@ -10,8 +10,8 @@ import { callMaritimeRegulationsAssistant, type AIMessage } from "@/services/aiC
 import { HydrostaticCalculations } from "@/services/hydrostaticCalculations";
 import type { ShipGeometry } from "@/types/hydrostatic";
 import { useToast } from "@/hooks/use-toast";
-import { stripMarkdown } from "@/utils/cleanText";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { AiAnswerText } from "@/components/ai/AiAnswerText";
 
  type AssistantMode = 'idle' | 'gm' | 'tpc' | 'imo';
  
@@ -186,7 +186,7 @@ import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
                        {messages.map((m, i)=> (
                          <div key={i} className={`text-sm ${m.role==='user'?'text-right':''}`}>
                            <div className={`inline-flex items-center gap-2`}>
-                             <div className={`inline-block px-2 py-1 rounded ${m.role==='user'?'bg-blue-600 text-white':'bg-card border border-border'}`}>{stripMarkdown(m.content)}</div>
+                             <div className={`inline-block px-2 py-1 rounded ${m.role==='user'?'bg-blue-600 text-white':'bg-card border border-border'}`}>{m.role === 'user' ? m.content : <AiAnswerText text={m.content} />}</div>
                              <button aria-label="Kopyala" onClick={()=> copyText(m.content)} className="text-xs text-muted-foreground hover:text-foreground">
                                <Copy className="h-3 w-3" />
                              </button>

@@ -19,6 +19,9 @@ description: Mariners Book (com.marinersbook.app) proje bağlamı. Capacitor/And
 ## Pro abonelik
 - Model: ücretsiz + Pro. Google Play ürün kimlikleri: `pro_monthly`, `pro_yearly`, `pro_lifetime`.
 - Pro erişimi `user_entitlements` tablosunda tutuluyor; Pro kontrolüne dokunan değişikliklerde bu tabloyla tutarlı kal.
+- Pro kapsamı `src/config/proGating.ts` başındaki listede (Ekim 2026 kararı). Ücretsiz pakette yapay zekâya soru yok (`AI_QUOTA_FREE_QUESTIONS`, varsayılan 0, `_shared/entitlements.ts`); belge okuma ücretsizde ayda 10. 3D gemi simülatörü Pro değil, Beta bölümünde ücretsiz.
+- Onaylanmamış Play satın alımları uygulama açılışında ve ön plana dönüşte sunucuya doğrulatılır (`EntitlementContext` → `syncOwnedPurchases`); Google onaylanmayanı 3 günde iade eder.
+- Kilitler yalnızca `PRO_GATING_ENABLED=true` repo değişkeniyle derlenen AAB'de açılır; Ayarlar'daki Pro kartı ve satın alma ekranı kilitler kapalıyken de görünür.
 
 ## Bilinen tuzaklar (beyaz ekran olayından)
 - Açılışta yakalanmayan bir promise reddi uygulamayı beyaz ekranda bırakmıştı: `"SecureStorage.then()" is not implemented on android`. Capacitor eklenti proxy'si `.then` erişimini native çağrıya çeviriyor. Eklenti nesnesini doğrudan `await` etme ve `async` fonksiyondan döndürme; sadece metotlarını çağırıp onların sonucunu bekle.

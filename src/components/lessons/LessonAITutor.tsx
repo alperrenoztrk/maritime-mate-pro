@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/useLanguage";
 import { askLessonTutor, type AIMessage, type TutorLevel } from "@/services/aiClient";
 import { supabase } from "@/integrations/supabase/safeClient";
 import { ReportAiContentButton } from "@/components/ai/ReportAiContentButton";
+import { AiAnswerText } from "@/components/ai/AiAnswerText";
 
 
 /**
@@ -111,13 +112,13 @@ export function LessonAITutor({
               </div>
               <div className="max-w-[80%]">
                 <div
-                  className={`whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
+                  className={`rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
                     m.role === "user"
-                      ? "bg-primary text-primary-foreground"
+                      ? "whitespace-pre-wrap bg-primary text-primary-foreground"
                       : "bg-card text-foreground/90"
                   }`}
                 >
-                  {m.content}
+                  {m.role === "user" ? m.content : <AiAnswerText text={m.content} />}
                 </div>
                 {m.role !== "user" && (
                   <ReportAiContentButton
