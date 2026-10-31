@@ -12,6 +12,7 @@ const fixedFontSize: FontSizeContextValue = {
 export function FontSizeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     safeLocalStorage.removeItem("maritime-ui-font-size");
+    safeLocalStorage.removeItem("mariners-book:reader-font-scale");
     document.documentElement.style.setProperty("--font-scale", "1");
     document.documentElement.setAttribute("data-font-size", "normal");
     document.documentElement.setAttribute("data-font-size-source", "fixed");
