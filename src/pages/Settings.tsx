@@ -24,6 +24,7 @@ import {
 } from "@/services/ads";
 import { toast } from "sonner";
 import { useTheme, type Theme } from "@/hooks/useTheme";
+import { getUserAvatarUrl } from "@/lib/userAvatar";
 import { PrivacyChoices } from "@/components/privacy/PrivacyChoices";
 
 const Settings = () => {
@@ -76,7 +77,9 @@ const Settings = () => {
 
 
   const displayName = (user?.user_metadata?.full_name as string) || "";
-  const avatarUrl = user?.user_metadata?.avatar_url as string | undefined;
+  const avatarUrl = getUserAvatarUrl(user);
+  const [failedAvatarUrl, setFailedAvatarUrl] = useState<string | null>(null);
+  const showAvatar = Boolean(avatarUrl) && failedAvatarUrl !== avatarUrl;
   const initials = displayName ? displayName.charAt(0).toUpperCase() : user?.email ? user.email.charAt(0).toUpperCase() : "?";
 
   const provider =
@@ -193,8 +196,19 @@ const Settings = () => {
               <CardContent>
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                    {avatarUrl ? (
-                      <img src={avatarUrl} alt={displayName} className="w-full h-full object-cover" />
+                    {showAvatar ? (
+                      // Google profile photos (lh3.googleusercontent.com) can refuse
+                      // requests that carry a Referer; if the photo still fails, show
+                      // the initial instead of a broken-image icon.
+                      <img
+                        src={avatarUrl}
+                        alt={displayName}
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                        decoding="async"
+                        onError={() => setFailedAvatarUrl(avatarUrl ?? null)}
+                        className="w-full h-full object-cover"
+                      />
                     ) : (
                       <span className="text-lg font-semibold text-primary">{initials}</span>
                     )}
@@ -329,7 +343,9 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="surface-1 grid grid-cols-3 gap-1 rounded-xl border p-1" role="radiogroup" aria-label="Appearance">
+                {/* Columns sized in em: when Android's system font size enlarges the text,
+                    the three options drop to a second row instead of truncating ("Sys…"). */}
+                <div className="surface-1 grid gap-1 rounded-xl border p-1 text-sm [grid-template-columns:repeat(auto-fit,minmax(min(100%,4.5em),1fr))]" role="radiogroup" aria-label="Appearance">
                   {appearanceOptions.map(({ value, label, icon: Icon }) => {
                     const selected = theme === value;
                     return (
@@ -342,14 +358,14 @@ const Settings = () => {
                           setTheme(value);
                           hapticImpact("light");
                         }}
-                        className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-lg px-1.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
+                        className={`inline-flex min-h-11 min-w-0 flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 rounded-lg px-1.5 py-1 text-sm font-medium transition-[background-color,color,box-shadow] duration-control ${
                           selected
                             ? "bg-background text-foreground shadow-elev-1"
                             : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
                         <Icon className="h-4 w-4 shrink-0" />
-                        <span className="truncate" data-translatable>{label}</span>
+                        <span className="min-w-0 break-words text-center leading-tight" data-translatable>{label}</span>
 
                       </button>
                     );
