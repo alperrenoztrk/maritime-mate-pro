@@ -31,6 +31,8 @@ jobs:
       - run: npm ci
       - name: React text extraction (the prior Android release blocker)
         run: npm run i18n:extract && node --test scripts/i18n/extract-strings.test.mjs
+      - name: Fill not-yet-reviewed UI strings with explicitly marked English fallback
+        run: node --import tsx scripts/i18n/fill-english-coverage.mjs --ci
       - name: Complete translation terminology and coverage gate
         run: npm run i18n:verify
       - name: Curriculum and photo/reference coverage inventory
