@@ -23,7 +23,7 @@ export const MobileLayout = ({ children, className }: MobileLayoutProps) => {
         // gradient, glow and waves once, fixed, for the whole app. This shell
         // used to repaint all three — which meant every MobileLayout page ran
         // a second wave animation over an occluded first one.
-        "marine-shell relative min-h-[100svh] w-full overflow-x-hidden text-foreground antialiased",
+        "marine-shell relative min-h-[100svh] w-full min-w-0 overflow-x-clip text-foreground antialiased",
         className
       )}
     >

@@ -582,7 +582,6 @@ html[data-font-size="max"] .library-page-title {
 .edge-swipe-page {
   position: relative;
   z-index: 3;
-  overflow: hidden;
   background: var(--maritime-shell-background);
 }
 
