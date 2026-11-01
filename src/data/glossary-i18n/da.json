@@ -1,0 +1,3166 @@
+{
+ "categories": {
+  "Gemicilik": "Sømandskab",
+  "Seyir": "Navigation",
+  "Stabilite": "Stabilitet",
+  "Makine": "Marineteknik",
+  "Kargo": "Last",
+  "Güvenlik": "Sikkerhed",
+  "Meteoroloji": "Meteorologi",
+  "Hidrodinamik": "Hydrodynamik",
+  "Halatçılık": "Tovværk",
+  "Elektrik & Elektronik": "El & Elektronik",
+  "Hukuk & Mevzuat": "Lov og regler",
+  "Liman & Manevra": "Port & Manoeuvring"
+ },
+ "terms": {
+  "Viyalamak": [
+   "Steady (helm order)",
+   "To bring the rudder back so that the ship's head stays on the ordered course; the order 'Viya!' (Steady!) tells the helmsman to hold the ship's head steady on that course."
+  ],
+  "Küpeşte": [
+   "Bulwark",
+   "Den solide skinne eller plettering langs kanten af dækket; det forhindrer folk om bord i at falde over bord."
+  ],
+  "Borda": [
+   "Ship's side",
+   "Skibets sideskal; omtalt som bagbord eller styrbord side."
+  ],
+  "İskele (Port)": [
+   "Port (side)",
+   "Venstre side af skibet ser fremad; vist om natten af det røde sidelys."
+  ],
+  "Sancak": [
+   "Starboard (side)",
+   "Den højre side af skibet ser fremad; vist om natten af det grønne sidelys."
+  ],
+  "Pruva": [
+   "Bow",
+   "Den forreste ende af skibet, formet til at skille vandet og møde bølgerne."
+  ],
+  "Kıç": [
+   "Stern",
+   "Skibets bagende, hvor roret og propellen er placeret."
+  ],
+  "Omurga (Keel)": [
+   "Keel",
+   "Det vigtigste strukturelle element løber for og bag langs bunden af skibet; skrogets rygrad."
+  ],
+  "Postalar (Frames)": [
+   "Frames",
+   "Tværgående konstruktionsdele monteret vinkelret på kølen; de giver skroget sin form."
+  ],
+  "Güverte (Deck)": [
+   "Deck",
+   "Et vandret niveau af skibet; bruges til at gå, arbejde og transportere last."
+  ],
+  "Ambar (Hold)": [
+   "Cargo hold",
+   "Et lukket rum under dæk til transport af last."
+  ],
+  "Sintine (Bilge)": [
+   "Bilge",
+   "Den laveste del af indersiden af skroget, mellem kølen og skibssiden, hvor lækagevand samles."
+  ],
+  "Baca (Funnel)": [
+   "Funnel",
+   "Den struktur, der fører motorrummets udstødningsgasser ud af skibet; dens farver identificerer også rederiet."
+  ],
+  "Köprü Üstü (Bridge)": [
+   "Bridge",
+   "Skibets kommandocentral: det lukkede rum, der rummer navigations-, manøvrerings- og kommunikationsudstyret."
+  ],
+  "Kamarot": [
+   "Steward",
+   "Et besætningsmedlem, der er ansvarlig for at passe og rengøre passager- eller besætningskabiner."
+  ],
+  "Lostromo (Bosun)": [
+   "Bosun (Boatswain)",
+   "Seniordæksvurderingen; står for rebarbejde, maling og dækvedligeholdelse."
+  ],
+  "Vardiya": [
+   "Watch",
+   "Den tjenesteperiode, som skibets mandskab holder; normalt organiseret som fire timer tændt og otte timer fri (4-8) eller seks tændt og seks slukket (6-6)."
+  ],
+  "Alabanda": [
+   "Hard over",
+   "Drejning af roret til dets maksimale vinkel; angivet som ordrerne 'hard a-port' eller 'hard a-starboard'."
+  ],
+  "Alesta": [
+   "Stand by",
+   "En maritim orden, der betyder 'vær klar'."
+  ],
+  "Apiko": [
+   "Up and down",
+   "Det øjeblik, hvor ankerkablet er lodret, og ankeret er ved at bryde ud af havbunden."
+  ],
+  "Baş Bodoslama": [
+   "Stem",
+   "Det strukturelle element i den helt forreste ende af stævnen, der rejser sig lodret fra kølen."
+  ],
+  "Kıç Bodoslama": [
+   "Sternpost",
+   "Det strukturelle element i bagenden, der rejser sig lodret fra kølen."
+  ],
+  "Borda Feneri": [
+   "Sidelights",
+   "Navigationslysene på bagbord og styrbord side af skibet; rød til bagbord, grøn til styrbord."
+  ],
+  "Çarmık": [
+   "Shrouds",
+   "Reb eller wirer sat op mellem masten og skibssiden for at understøtte masten; ratlines på dem lader besætningen kravle op."
+  ],
+  "Matafora": [
+   "Davit",
+   "Et kranlignende mekanisk arrangement, der bruges til at sænke redningsbåde og redningsbåde i vandet."
+  ],
+  "Karakol": [
+   "Lookout",
+   "Vagten holdt øje med alt, der påvirker skibets sikre navigation."
+  ],
+  "Grandi": [
+   "Mainsail",
+   "Storsejlet, normalt det største sejl, sat på stormasten."
+  ],
+  "Flama": [
+   "Pennant",
+   "Et langt, smalt flag, der bruges til signalering."
+  ],
+  "Çıma": [
+   "Rope end (working end)",
+   "Den frie ende af et reb, den del, der flyttes, når man laver en knude eller passerer linjen."
+  ],
+  "Babafingo": [
+   "Topgallant sail",
+   "På firkantede sejlskibe satte sejlet sig over topsejlet, højt oppe på masten."
+  ],
+  "Bocurgat (Windlass)": [
+   "Windlass",
+   "Maskinen på forkastet plejede at hive ind og udbetale ankerkablet."
+  ],
+  "Palamar": [
+   "Mooring line",
+   "Det generelle navn for rebene, der bruges til at gøre skibet fast til en kaj eller en bøje."
+  ],
+  "Kaptan Köşkü": [
+   "Wheelhouse",
+   "Den del af broen, hvor skibsføreren står, og navigationsordrene gives."
+  ],
+  "Çamaşırlık": [
+   "Laundry",
+   "Rummet, hvor besætningen vasker deres tøj; et separat rum på store skibe."
+  ],
+  "Karantina Bayrağı": [
+   "Quarantine flag (Q flag)",
+   "Det gule flag Q; det betyder 'Mit kar er sundt, og jeg anmoder om gratis pratique'. Et ankommende skib flyver det, indtil pratique er givet."
+  ],
+  "Volta": [
+   "Making fast",
+   "Sikring af et reb ved at skiftes rundt om en pullert eller bits."
+  ],
+  "Bağ (Knot)": [
+   "Knot",
+   "En fastgørelse lavet ved at binde et reb til sig selv eller til et andet reb."
+  ],
+  "Ek (Splice)": [
+   "Splice",
+   "En permanent sammenføjning lavet ved at sammenvæve tråde af rebender."
+  ],
+  "Kasa Bağı": [
+   "Eye splice",
+   "En splejsning, der danner et permanent øje (løkke) for enden af et reb."
+  ],
+  "Camadan": [
+   "Reef (reef knot)",
+   "Reduktion af arealet af et sejl ved at samle en del af det og binde det fast; den flade knude, der bruges til dette, er revknuden."
+  ],
+  "Palanga": [
+   "Tackle",
+   "En kombination af blokke og reb, der bruges til at multiplicere trækkraften."
+  ],
+  "Makara (Block)": [
+   "Block",
+   "En skive i en ramme, hvorigennem et reb løber; den ændrer trækretningen eller, kombineret i en tackling, multiplicerer den."
+  ],
+  "Kıstırma (Stopper)": [
+   "Stopper",
+   "En anordning, der bruges til at holde et reb eller en kæde under belastning, så det kan overføres til bits eller en klump."
+  ],
+  "Yeke": [
+   "Tiller",
+   "Håndtaget, der bruges til at dreje roret med hånden; bruges til direkte styring på små både."
+  ],
+  "Baba (Bollard)": [
+   "Bollard",
+   "En kort, kraftig lodret stolpe på en kaj eller om bord, hvortil der fastgøres fortøjningsliner."
+  ],
+  "Bite (Bitt)": [
+   "Bitts",
+   "Et par kraftige stolper på dækket, omkring hvilke fortøjningsliner er slået op."
+  ],
+  "Sapan (Sling)": [
+   "Sling",
+   "Et wire- eller syntetisk reb arrangement, der bruges til at fastgøre en byrde til en løftekrog."
+  ],
+  "Mevki (Position)": [
+   "Position",
+   "Et skibs placering på et givet tidspunkt, udtrykt i bredde- og længdegrad."
+  ],
+  "DGPS": [
+   "DGPS",
+   "Differential GPS: satellitpositionering forbedret til at måle eller bedre nøjagtighed ved korrektioner fra referencestationer."
+  ],
+  "Kerteriz (Bearing)": [
+   "Bearing",
+   "Retningen fra observatøren til et objekt; målt med et kompas og udtrykt i grader."
+  ],
+  "Rota (Course)": [
+   "Course",
+   "Den retning, hvori skibet styres eller er planlagt at gå; målt med uret fra nord."
+  ],
+  "Büyük Daire Seyri (Great Circle)": [
+   "Great circle sailing",
+   "Sejler langs buen af en stor cirkel, som er den korteste afstand mellem to punkter på jordens overflade."
+  ],
+  "Loksodrom (Rhumb Line)": [
+   "Rhumb line (loxodrome)",
+   "En linje, der krydser hver meridian i samme vinkel; sporet fulgt, når kompaskursen ikke ændres."
+  ],
+  "Meridyen": [
+   "Meridian",
+   "En imaginær halvcirkel, der løber fra Nordpolen til Sydpolen; den definerer længdegraden."
+  ],
+  "Paralel": [
+   "Parallel of latitude",
+   "En imaginær cirkel, der løber parallelt med ækvator; det definerer breddegrad."
+  ],
+  "Enlem (Latitude)": [
+   "Latitude",
+   "Vinkelafstanden af et sted nord eller syd for ækvator, målt fra 0° til 90°."
+  ],
+  "Boylam (Longitude)": [
+   "Longitude",
+   "Vinkelafstanden af et sted øst eller vest for Greenwich-meridianen, målt fra 0° til 180°."
+  ],
+  "Deniz Mili (Nautical Mile)": [
+   "Nautical mile",
+   "Enheden for afstand lig med et minuts breddebue; 1852 meter."
+  ],
+  "Knot": [
+   "Knot (speed)",
+   "Enheden for fart til søs: en sømil i timen."
+  ],
+  "ETA (Estimated Time of Arrival)": [
+   "ETA (Estimated Time of Arrival)",
+   "Det tidspunkt, hvor skibet forventes at ankomme til en havn eller en given position."
+  ],
+  "ETD (Estimated Time of Departure)": [
+   "ETD (Estimated Time of Departure)",
+   "Det tidspunkt, hvor skibet forventes at forlade havnen."
+  ],
+  "AIS (Automatic Identification System)": [
+   "AIS (Automatic Identification System)",
+   "Et radiosystem, der automatisk sender skibets identitet, position, kurs og fart."
+  ],
+  "ECDIS": [
+   "ECDIS",
+   "Elektronisk kortdisplay og informationssystem; når det opfylder transportreglerne, accepteres det som ækvivalent med papirkort."
+  ],
+  "Radar": [
+   "Radar",
+   "Udstyr, der bruger radiobølger til at registrere position, rækkevidde og bevægelse af omgivende genstande."
+  ],
+  "ARPA": [
+   "ARPA",
+   "Automatisk radarplotningshjælp; beregner automatisk kursen, hastigheden og det nærmeste indflyvningspunkt for sporede mål."
+  ],
+  "CPA (Closest Point of Approach)": [
+   "CPA (Closest Point of Approach)",
+   "Den forudsagte mindste afstand, hvor to skibe vil passere hinanden."
+  ],
+  "TCPA (Time to CPA)": [
+   "TCPA (Time to CPA)",
+   "Den forventede resterende tid, indtil to skibe når deres nærmeste indflyvningspunkt."
+  ],
+  "Pusula Hatası (Compass Error)": [
+   "Compass error",
+   "Den samlede forskel mellem nord vist af kompasset og sandt nord; summen af variation og afvigelse."
+  ],
+  "Sapma (Variation)": [
+   "Variation",
+   "Vinklen mellem sand nord og magnetisk nord; det ændrer sig med geografisk placering."
+  ],
+  "İnhiraf (Deviation)": [
+   "Deviation",
+   "Forskellen mellem magnetisk nord og kompas nord, forårsaget af skibets eget jern og stål."
+  ],
+  "Seyir Planı (Passage Plan)": [
+   "Passage plan",
+   "En detaljeret kaj-til-plads plan udarbejdet, så skibet kan foretage sejladsen sikkert."
+  ],
+  "Waypoint": [
+   "Waypoint",
+   "Et mellemdrejnings- eller kontrolpunkt angivet i passageplanen."
+  ],
+  "Dümen Açısı": [
+   "Rudder angle",
+   "Vinklen, hvormed roret drejes til bagbord eller styrbord fra midtskibspositionen."
+  ],
+  "Derinlik Ölçer (Echo Sounder)": [
+   "Echo sounder",
+   "Udstyr, der måler vanddybden under skibet ved at sende lydimpulser til havbunden."
+  ],
+  "Fener (Lighthouse)": [
+   "Lighthouse",
+   "Et lys, fastgjort på kysten eller til søs, der guider skibe."
+  ],
+  "Şamandıra (Buoy)": [
+   "Buoy",
+   "Et flydende mærke fortøjet på havoverfladen for at hjælpe med sikker navigation."
+  ],
+  "IALA İşaretleme Sistemi": [
+   "IALA Maritime Buoyage System",
+   "De internationale regler for bøjer og mærker; opdelt i region A og region B."
+  ],
+  "Kıyı Seyri (Coastal Navigation)": [
+   "Coastal navigation",
+   "Navigation tæt på kysten ved hjælp af visuelle referencer og elektroniske hjælpemidler."
+  ],
+  "Açık Deniz Seyri (Ocean Navigation)": [
+   "Ocean navigation",
+   "Navigation langt fra kysten ved hjælp af himmellegemer og elektroniske systemer."
+  ],
+  "GPS": [
+   "GPS",
+   "Global Positioning System; giver position, hastighed og tid fra satellitsignaler."
+  ],
+  "Gyro Pusula": [
+   "Gyrocompass",
+   "Et kompas, der bruger Jordens rotation til at pege mod det rigtige nord; mekaniske eller med optiske (laser/fiberoptiske) sensorer."
+  ],
+  "Manyetik Pusula": [
+   "Magnetic compass",
+   "Det traditionelle kompas, som peger mod nord ifølge Jordens magnetfelt."
+  ],
+  "Running Fix": [
+   "Running fix",
+   "En position fundet fra to pejlinger af det samme objekt taget på forskellige tidspunkter."
+  ],
+  "Cross Bearing": [
+   "Cross bearing fix",
+   "En position fundet fra pejlinger af to eller flere objekter taget på samme tid."
+  ],
+  "Set & Drift": [
+   "Set and drift",
+   "Effekten af strømmen på skibet: sæt er strømmens retning, drift dens hastighed."
+  ],
+  "Leeway": [
+   "Leeway",
+   "Skibets sidelæns bevægelse ud af kursen forårsaget af vinden."
+  ],
+  "GM (Metasentrik Yükseklik)": [
+   "GM (Metacentric height)",
+   "Den lodrette afstand mellem tyngdepunktet G og metacentret M; det vigtigste mål for initial stabilitet."
+  ],
+  "Serbest Yüzey Etkisi": [
+   "Free surface effect",
+   "Tabet af GM forårsaget af væske, der bevæger sig i delvis fyldte tanke."
+  ],
+  "Ağırlık Merkezleri (KG)": [
+   "Centre of gravity (KG)",
+   "Den lodrette afstand af skibets tyngdepunkt over kølen; en kritisk værdi i stabilitetsberegninger."
+  ],
+  "Trim": [
+   "Trim",
+   "Skibets hældning frem og tilbage; trim efter hovedet eller trim efter agterstavnen."
+  ],
+  "Deplasman (Displacement)": [
+   "Displacement",
+   "Vægten af vand fortrængt af skibet; udtrykt i tons."
+  ],
+  "Yüzdürme Merkezi (B – Buoyancy)": [
+   "Centre of buoyancy (B)",
+   "Det geometriske centrum af skrogets undervandsvolumen."
+  ],
+  "GZ (Doğrultucu Kol)": [
+   "GZ (Righting lever)",
+   "Den vandrette afstand mellem tyngdepunktet og opdriftslinjen, når skibet krænges."
+  ],
+  "BM (Metasentrik Yarıçap)": [
+   "BM (Metacentric radius)",
+   "Afstanden mellem centrum af opdrift B og metacentret M; BM = I / ∇."
+  ],
+  "KB": [
+   "KB",
+   "Den lodrette afstand fra kølen til centrum af opdrift."
+  ],
+  "KM": [
+   "KM",
+   "Den lodrette afstand fra kølen til metacentret; KM = KB + BM."
+  ],
+  "KG": [
+   "KG",
+   "Den lodrette afstand fra kølen til skibets tyngdepunkt."
+  ],
+  "Doğrultucu Moment": [
+   "Righting moment",
+   "Øjeblikket, der bringer et krænget skib tilbage til oprejst; M = Δ × GZ."
+  ],
+  "Devrilme Momenti": [
+   "Heeling moment",
+   "Øjeblikket for de ydre kræfter, der krænger skibet; forårsaget af vind, bølger eller skiftende last."
+  ],
+  "Denge Açısı (Angle of Loll)": [
+   "Angle of loll",
+   "Krængningsvinklen, ved hvilken et skib med negativ initial GM kommer til hvile."
+  ],
+  "Dinamik Stabilite": [
+   "Dynamic stability",
+   "Arealet under GZ-kurven; den viser det arbejde, der skal til for at krænge skibet."
+  ],
+  "Statik Stabilite Eğrisi (GZ Curve)": [
+   "Curve of statical stability (GZ curve)",
+   "En graf af GZ mod krængningsvinklen; det grundlæggende værktøj til stabilitetsvurdering."
+  ],
+  "TPC (Tonnes Per Centimetre)": [
+   "TPC (Tonnes per centimetre immersion)",
+   "Vægten, der ændrer middeldybgangen med en centimeter."
+  ],
+  "MCT (Moment to Change Trim)": [
+   "MCTC (Moment to change trim)",
+   "Øjeblikket, der ændrer trimningen med en centimeter; bruges i trimberegninger."
+  ],
+  "LCG (Longitudinal Centre of Gravity)": [
+   "LCG (Longitudinal centre of gravity)",
+   "Tyngdepunktets for-og-bagende position."
+  ],
+  "LCB (Longitudinal Centre of Buoyancy)": [
+   "LCB (Longitudinal centre of buoyancy)",
+   "For-og-agterpositionen af centrum af opdrift."
+  ],
+  "İnklinasyon Deneyi (Inclining Test)": [
+   "Inclining test",
+   "En test, hvor kendte vægte flyttes hen over dækket for at finde skibets KG."
+  ],
+  "Permeabilite": [
+   "Permeability",
+   "Andelen af et rum, der kan fyldes med vand; bruges i skadestabilitetsberegninger."
+  ],
+  "Floodable Length": [
+   "Floodable length",
+   "The greatest length of a compartment that can be flooded without the ship sinking beyond the margin line."
+  ],
+  "Yük Kaydırma": [
+   "Cargo shift",
+   "Bevægelse af last, der flytter tyngdepunktet; det kan forårsage en farlig liste."
+  ],
+  "Karina (Hull)": [
+   "Underwater hull",
+   "Den del af skroget under vandlinjen."
+  ],
+  "Su Çekimi (Draft)": [
+   "Draught",
+   "Den lodrette afstand fra vandlinjen til bunden af kølen."
+  ],
+  "Fribord (Freeboard)": [
+   "Freeboard",
+   "Den lodrette afstand fra vandlinjen til dækket; nok Fribord er afgørende for sødygtighed."
+  ],
+  "Plimsoll Markası": [
+   "Plimsoll mark (load line mark)",
+   "Mærkerne på skibssiden, der viser den maksimalt tilladte dybgang for forskellige årstider og farvande."
+  ],
+  "Kavitasyon": [
+   "Cavitation",
+   "Dannelse og kollaps af dampbobler i en væske, når trykket falder under damptrykket."
+  ],
+  "Dizel Motor (Marine Diesel)": [
+   "Marine diesel engine",
+   "En forbrændingsmotor med kompressionstænding, der bruges som hovedfremdrift af de fleste skibe."
+  ],
+  "Turboşarj (Turbocharger)": [
+   "Turbocharger",
+   "En enhed drevet af udstødningsgassen, der leverer komprimeret luft til cylindrene; det øger motorkraften og effektiviteten."
+  ],
+  "SFOC (Specific Fuel Oil Consumption)": [
+   "SFOC (Specific Fuel Oil Consumption)",
+   "Mængden af brændstof motoren forbrænder pr. produceret effektenhed; udtrykt i g/kWh."
+  ],
+  "Separatör (Purifier)": [
+   "Separator (purifier)",
+   "En centrifuge, der fjerner vand og faste partikler fra brændselsolie og smøreolie."
+  ],
+  "Yağlama Sistemi": [
+   "Lubrication system",
+   "Systemet, der cirkulerer olie for at reducere friktionen mellem motor- og maskindele."
+  ],
+  "Soğutma Sistemi": [
+   "Cooling system",
+   "Ferskvands- og havvandskredsløbene, der holder hovedmotoren og hjælpemaskineriet mod overophedning."
+  ],
+  "Kazan (Boiler)": [
+   "Boiler",
+   "En trykbeholder, der opvarmer vand for at producere damp til hjælpemaskineri og opvarmning."
+  ],
+  "Jeneratör": [
+   "Generator",
+   "En maskine, der omdanner mekanisk energi til elektrisk energi og forsyner skibets elektriske belastning."
+  ],
+  "Şaft (Shaft)": [
+   "Propeller shaft",
+   "Akslen, der overfører hovedmotorens rotation til propellen."
+  ],
+  "Pervane (Propeller)": [
+   "Propeller",
+   "En anordning med blade, der frembringer skub, når den drejer og driver skibet foran eller agterud."
+  ],
+  "Dümen (Rudder)": [
+   "Rudder",
+   "Den bevægelige klinge ved agterstavnen, der drejes for at ændre skibets kurs."
+  ],
+  "Bow Thruster": [
+   "Bow thruster",
+   "En propel i en tværgående tunnel i stævnen; det forbedrer manøvrering ved lav hastighed."
+  ],
+  "Stern Tube": [
+   "Stern tube",
+   "Røret, hvorigennem propelakslen forlader skroget; den indeholder aksellejer og tætninger."
+  ],
+  "Yardımcı Motor": [
+   "Auxiliary engine",
+   "En motor om bord, der bruges til at generere elektricitet og drive hjælpesystemer."
+  ],
+  "Emercensi Jeneratör": [
+   "Emergency generator",
+   "Generatoren, der starter og leverer væsentlige tjenester, når hovedstrømforsyningen svigter."
+  ],
+  "Egzoz Gazı Temizleme (Scrubber)": [
+   "Exhaust gas cleaning system (scrubber)",
+   "Et emissionskontrolsystem, der fjerner svovloxider fra udstødningsgassen ved at vaske den."
+  ],
+  "Balast Pompası": [
+   "Ballast pump",
+   "Pumpen plejede at tage havvand ind i og udlede det fra ballasttankene."
+  ],
+  "Sintine Pompası": [
+   "Bilge pump",
+   "Pumpen bruges til at opsamle og pumpe lænsevand ud."
+  ],
+  "OWS (Oil Water Separator)": [
+   "OWS (Oily Water Separator)",
+   "Udstyr, der adskiller olie fra lænsevand, så det kan udledes inden for den lovmæssige grænse på 15 ppm."
+  ],
+  "İncineratör (Yakma Fırını)": [
+   "Incinerator",
+   "En ovn, der brænder fast affald og olieslam produceret om bord ved høj temperatur."
+  ],
+  "Kompresör": [
+   "Air compressor",
+   "En maskine, der producerer trykluft til start af motorer og til pneumatiske systemer."
+  ],
+  "Piston": [
+   "Piston",
+   "Motordelen, der bevæger sig op og ned i cylinderen og omdanner gastrykket til mekanisk arbejde."
+  ],
+  "Silindir Gömleği (Cylinder Liner)": [
+   "Cylinder liner",
+   "Den udskiftelige stålmuffe monteret i cylinderblokken, hvori stemplet bevæger sig."
+  ],
+  "Süpap (Valve)": [
+   "Valve (engine)",
+   "En mekanisk del, der åbner og lukker motorens indsugnings- og udstødningskanaler."
+  ],
+  "Dökme Yük (Bulk Cargo)": [
+   "Bulk cargo",
+   "Gods som korn, kul eller malm lastes direkte ind i lastrummet uden emballage."
+  ],
+  "Konteyner": [
+   "Container",
+   "En metalkasse i standardstørrelse (20 fod, 40 fod), der bruges til at transportere last."
+  ],
+  "TEU (Twenty-foot Equivalent Unit)": [
+   "TEU (Twenty-foot Equivalent Unit)",
+   "Én 20 fods containerækvivalent; standardenheden for kapaciteten af skibe og terminaler."
+  ],
+  "Stowage Factor": [
+   "Stowage factor",
+   "Den mængde, som et ton last fylder i lastrummet; udtrykt i m³/t."
+  ],
+  "Broken Stowage": [
+   "Broken stowage",
+   "Andelen af lastrum, der ikke kan bruges på grund af hullerne mellem pakkerne."
+  ],
+  "Dunnage": [
+   "Dunnage",
+   "Træ, brædder, måtter eller airbags bruges til at beskytte lasten mod fugt, beskadigelse og forskydning."
+  ],
+  "Lashing": [
+   "Lashing",
+   "Sikring af last med surringer, så den ikke kan flytte sig til søs."
+  ],
+  "Manifest": [
+   "Manifest",
+   "Dokumentet med en liste over al last medført om bord."
+  ],
+  "Bill of Lading (Konşimento)": [
+   "Bill of lading",
+   "Et dokument udstedt af transportøren: en kvittering for den afsendte last, bevis for transportkontrakten og et ejendomsdokument."
+  ],
+  "Ambar Kapağı (Hatch Cover)": [
+   "Hatch cover",
+   "Ståldækslet, der lukker en lugeåbning vejrtæt."
+  ],
+  "Grain Stability": [
+   "Grain stability",
+   "Stabilitetsvurderingen af risikoen for, at korn forskyder sig på havet og forårsager en farlig liste."
+  ],
+  "IMDG Code": [
+   "IMDG Code",
+   "International Maritime Dangerous Goods Code: reglerne for transport af farligt gods i emballeret form ad søvejen."
+  ],
+  "IMSBC Code": [
+   "IMSBC Code",
+   "IMO-koden for sikker transport af faste bulklaster."
+  ],
+  "Draft Survey": [
+   "Draught survey",
+   "En metode til at beregne vægten af lastet eller losset fra skibets dybgangsaflæsninger."
+  ],
+  "Ullage": [
+   "Ullage",
+   "Det tomme rum i en tank, målt fra væskeoverfladen til toppen af tanken."
+  ],
+  "Sounding": [
+   "Sounding",
+   "Dybden af væske i en tank, målt fra bunden af tanken."
+  ],
+  "Deadweight (DWT)": [
+   "Deadweight (DWT)",
+   "Den samlede vægt skibet kan bære: last, brændstof, vand, lagre og besætning."
+  ],
+  "Lightweight": [
+   "Lightweight",
+   "Vægten af selve skibet, uden last, brændstof, vand og lagre."
+  ],
+  "Tonnage (Gross / Net)": [
+   "Tonnage (gross / net)",
+   "Mål for skibets indre volumen: Bruttotonnage dækker hele skibet, nettotonnage lastrummene."
+  ],
+  "Reefer Konteyner": [
+   "Reefer container",
+   "En container med egen køleenhed til temperaturstyret last."
+  ],
+  "Tanker": [
+   "Tanker",
+   "Et skib designet til at transportere flydende last i bulk (olie, kemikalier, LPG/LNG)."
+  ],
+  "RoRo (Roll-on Roll-off)": [
+   "Ro-Ro (Roll-on/Roll-off)",
+   "Et skib, hvorpå køretøjer og last på hjul køres af og på over en rampe."
+  ],
+  "SOLAS": [
+   "SOLAS",
+   "Den internationale konvention om sikkerhed for menneskeliv til søs; den sætter standarder for konstruktion, udstyr og drift af skibe."
+  ],
+  "MARPOL": [
+   "MARPOL",
+   "Den internationale konvention om forebyggelse af forurening fra skibe."
+  ],
+  "ISM Code": [
+   "ISM Code",
+   "Den internationale sikkerhedsledelseskodeks; standarden for sikkerhedsstyring i skibsdrift."
+  ],
+  "ISPS Code": [
+   "ISPS Code",
+   "Den internationale sikkerhedskode for skibe og havnefaciliteter; foranstaltninger mod sikkerhedstrusler såsom terrorisme."
+  ],
+  "Can Yeleği (Life Jacket)": [
+   "Lifejacket",
+   "Personligt udstyr, der holder en person flydende i vandet; påkrævet for hver person om bord."
+  ],
+  "Can Simidi (Life Buoy)": [
+   "Lifebuoy",
+   "En ringformet flydeanordning kastet til en person i vandet."
+  ],
+  "Filika (Lifeboat)": [
+   "Lifeboat",
+   "En lukket båd bruges til at evakuere besætning og passagerer, når skibet er forladt."
+  ],
+  "Can Salı (Life Raft)": [
+   "Liferaft",
+   "Et oppusteligt redningsfartøj; pumpes automatisk eller i hånden."
+  ],
+  "EPIRB": [
+   "EPIRB",
+   "Nødpositionsindikerende radiofyr; sender en nødalarm via satellit."
+  ],
+  "SART": [
+   "SART",
+   "Eftersøgnings- og redningstransponder; viser dens position på radarskærmene på ransagende skibe og fly."
+  ],
+  "GMDSS": [
+   "GMDSS",
+   "Globalt maritime nød- og sikkerhedssystem; det internationale system for nød- og sikkerhedskommunikation."
+  ],
+  "MOB (Man Overboard)": [
+   "Man overboard (MOB)",
+   "Nødsituationen, når en person falder i havet; genopretningsmanøvren og proceduren startes på én gang."
+  ],
+  "Muster Station": [
+   "Muster station",
+   "Stedet, hvor besætningen og passagererne samles i en nødsituation."
+  ],
+  "Fire Drill": [
+   "Fire drill",
+   "En praktisk øvelse, hvor besætningen træner brandslukningsprocedurer."
+  ],
+  "Abandon Ship Drill": [
+   "Abandon ship drill",
+   "En øvelse, der dækker mønstring og brug af redningsbåde og redningsflåder."
+  ],
+  "SCBA": [
+   "SCBA",
+   "Selvstændig åndedrætsværn; bruges til at komme ind i lukkede rum og til brandslukning."
+  ],
+  "CO₂ Söndürme Sistemi": [
+   "CO₂ fire extinguishing system",
+   "Et fast kuldioxidsystem, der bruges til at slukke brande i maskinrummet og lastrum."
+  ],
+  "Köpüklü Söndürme": [
+   "Foam fire extinguishing system",
+   "Et skumbaseret system, der anvendes ved brande i brandfarlige væsker."
+  ],
+  "Yangın Tulumbası (Fire Pump)": [
+   "Fire pump",
+   "En pumpe, der leverer vand under tryk til hovedbrandledning og slanger; der er hoved- og nødbrandpumper."
+  ],
+  "Emercensi Dümen": [
+   "Emergency steering",
+   "Arrangementet, der bruges til at styre skibet, når hovedstyresystemet svigter."
+  ],
+  "SOPEP": [
+   "SOPEP",
+   "Nødplan for olieforurening om bord; de procedurer, der skal følges efter et olieudslip."
+  ],
+  "Enclosed Space Entry": [
+   "Enclosed space entry",
+   "Proceduren for at komme ind i et lukket rum; det kræver atmosfæretestning, ventilation og supervision."
+  ],
+  "Hot Work Permit": [
+   "Hot work permit",
+   "En skriftlig tilladelse kræves før varmt arbejde som svejsning eller skæring."
+  ],
+  "Buharlaşma (Evaporation)": [
+   "Evaporation",
+   "Vandets ændring fra væske til gas, når det absorberer varme; det påvirker fugtigheden og vejret."
+  ],
+  "Dew Point (Çiy Noktası)": [
+   "Dew point",
+   "Den temperatur, som luften skal afkøles til for at blive mættet, så kondens starter."
+  ],
+  "Beaufort Skalası": [
+   "Beaufort scale",
+   "Den internationale skala, der graderer vindstyrken fra 0 til 12."
+  ],
+  "Tropikal Siklon": [
+   "Tropical cyclone",
+   "En roterende storm, der dannes over varmt hav, med voldsom vind og kraftig regn."
+  ],
+  "Kasırga (Hurricane)": [
+   "Hurricane",
+   "En tropisk cyklon med vind på 64 knob eller mere i Atlanterhavet og det nordøstlige Stillehav."
+  ],
+  "Tayfun (Typhoon)": [
+   "Typhoon",
+   "En tropisk cyklon af orkanstyrke i det nordvestlige Stillehav."
+  ],
+  "Barometrik Basınç": [
+   "Atmospheric pressure",
+   "Atmosfærens vægt på et givet punkt; målt i hPa (mbar)."
+  ],
+  "Antisiklon (High Pressure)": [
+   "Anticyclone (high)",
+   "Et center for højtryk; det bringer sædvanligvis roligt, godt vejr."
+  ],
+  "Siklon (Low Pressure)": [
+   "Depression (low)",
+   "Et center med lavt tryk; forbundet med vind, regn og storme."
+  ],
+  "Cephe (Front)": [
+   "Front",
+   "Grænsezonen, hvor luftmasser af forskellig temperatur og luftfugtighed mødes."
+  ],
+  "Sis (Fog)": [
+   "Fog",
+   "Kondensering af vanddamp nær overfladen, der reducerer sigtbarheden til mindre end 1000 meter."
+  ],
+  "Deniz Suyu Sıcaklığı (SST)": [
+   "Sea surface temperature (SST)",
+   "Temperaturen på havoverfladen; vigtig for vejrudsigten og udviklingen af tropiske cykloner."
+  ],
+  "Trade Winds (Alize Rüzgârları)": [
+   "Trade winds",
+   "Tropernes jævne nordøstlige og sydøstlige vinde."
+  ],
+  "Gel-Git (Tide)": [
+   "Tide",
+   "Den periodiske stigning og fald i havniveauet forårsaget af Månens og Solens tiltrækning."
+  ],
+  "Spring Tide (Büyük Gel-Git)": [
+   "Spring tide",
+   "Tidevandet med den største rækkevidde, ved nymåne og fuldmåne, når solens og månens træk kombineres."
+  ],
+  "Neap Tide (Küçük Gel-Git)": [
+   "Neap tide",
+   "Tidevandet med den mindste rækkevidde, ved første og sidste kvartal, når Solen og Månen trækker i rette vinkler."
+  ],
+  "Swell (Ölü Deniz)": [
+   "Swell",
+   "Langtidsbølger, der har rejst væk fra det område, hvor de blev genereret, og bliver regelmæssige."
+  ],
+  "Navtex": [
+   "NAVTEX",
+   "Et system, der automatisk modtager navigations- og meteorologiske advarsler i trykt eller vist tekst."
+  ],
+  "Rüzgâr Gülü": [
+   "Wind rose",
+   "Et diagram, der viser, hvor ofte vinden blæser fra hver retning, og hvor kraftigt, et givet sted."
+  ],
+  "İzobar": [
+   "Isobar",
+   "En linje på et vejrkort, der forbinder steder med lige tryk."
+  ],
+  "Dalga Yükü (Wave Load)": [
+   "Wave load",
+   "De dynamiske belastninger forårsaget af bølger på skroget; bruges i søhold og styrkeberegninger."
+  ],
+  "Direnç (Resistance)": [
+   "Resistance",
+   "Den samlede kraft, der modarbejder skibets bevægelse gennem vandet; hovedsageligt friktions- og bølgedannende modstand."
+  ],
+  "Sürtünme Direnci (Frictional Resistance)": [
+   "Frictional resistance",
+   "Den del af modstanden, der forårsages af friktion mellem skroget og vandet."
+  ],
+  "Dalga Direnci (Wave Resistance)": [
+   "Wave-making resistance",
+   "Den del af modstanden, der forårsages af energien brugt på at skabe skibets bølgesystem."
+  ],
+  "Froude Sayısı": [
+   "Froude number",
+   "Et dimensionsløst tal, der relaterer skibshastighed til bølgedannelse; Fn = V / √(g × L)."
+  ],
+  "Reynolds Sayısı": [
+   "Reynolds number",
+   "Et dimensionsløst tal, der kendetegner flowet; det adskiller laminært fra turbulent flow."
+  ],
+  "İtme Kuvveti (Thrust)": [
+   "Thrust",
+   "Kraften produceret af den drejende propel, der driver skibet."
+  ],
+  "Wake Fraction": [
+   "Wake fraction",
+   "Den proportionelle forskel mellem skibets hastighed og hastigheden af vandet, der strømmer ind i propellen."
+  ],
+  "Thrust Deduction": [
+   "Thrust deduction",
+   "Brøkdelen af propeltryk tabt, fordi arbejdspropellen øger skrogets modstand."
+  ],
+  "Propulsive Efficiency": [
+   "Propulsive efficiency",
+   "Hvor effektivt omdannes motorkraft til effektiv kraft til at flytte skibet; produktet af skrog, propel og andre effektivitetsgevinster."
+  ],
+  "Squat Effect": [
+   "Squat",
+   "Sænkningen og ændringen af trim af et skib, der bevæger sig på lavt vand, stigende med hastigheden; fyldige skibe (høj Cb) sætter sig mere på hug ved stævnen, finlinede skibe i agterstavnen."
+  ],
+  "Bank Effect": [
+   "Bank effect",
+   "I en smal kanal trækker den nærliggende bred agterstavnen mod sig og skubber stævnen væk."
+  ],
+  "Slamming": [
+   "Slamming",
+   "Stævnens voldsomme påvirkning af havoverfladen i bølger; det forårsager høje strukturelle belastninger."
+  ],
+  "Broaching": [
+   "Broaching",
+   "I et efterfølgende hav svinger skibet ukontrolleret bredside til bølgerne; det medfører risiko for kæntring."
+  ],
+  "Parametrik Rolling": [
+   "Parametric rolling",
+   "Stor, hurtigt voksende rulning forårsaget, når bølgemødeperioden er omkring halvdelen af skibets naturlige rulningsperiode."
+  ],
+  "Added Mass": [
+   "Added mass",
+   "Den ekstra masseeffekt af vandet, der skal accelereres med skibet, når dets hastighed eller bevægelse ændres."
+  ],
+  "Sinkage & Trim": [
+   "Sinkage and trim",
+   "Den kropslige nedsænkning og ændring af trim af et bevægende skib, som øges med farten på lavt vand."
+  ],
+  "Boundary Layer": [
+   "Boundary layer",
+   "Det tynde lag vand ved siden af skroget, hvor strømningshastigheden ændres fra nul til fristrømshastigheden."
+  ],
+  "Ana Şalt (Main Switchboard)": [
+   "Main switchboard",
+   "Centraltavlen, hvorigennem strømmen fra generatorerne fordeles."
+  ],
+  "Shore Connection": [
+   "Shore power connection",
+   "Tilslutning af skibet til landstrømforsyningen i havn, så generatorerne kan stoppes."
+  ],
+  "UPS": [
+   "UPS",
+   "Uafbrydelig strømforsyning; holder kritisk udstyr kørende under et strømsvigt."
+  ],
+  "VHF Telsiz": [
+   "VHF radio",
+   "En meget højfrekvent radio, der bruges til kortrækkende maritim kommunikation."
+  ],
+  "MF/HF Telsiz": [
+   "MF/HF radio",
+   "En radio, der bruges til mellem- og langdistance maritim kommunikation."
+  ],
+  "Inmarsat": [
+   "Inmarsat",
+   "Satellitsystemet, der leverer tale, data og nødkommunikation til skibe."
+  ],
+  "Log (Hız Ölçer)": [
+   "Speed log",
+   "Et instrument, der måler skibets fart gennem vandet eller over jorden."
+  ],
+  "Anemometre": [
+   "Anemometer",
+   "Et instrument, der måler vindhastighed og retning."
+  ],
+  "Voyage Data Recorder (VDR)": [
+   "VDR (Voyage Data Recorder)",
+   "Udstyr, der registrerer navigation, maskineri og brodata; skibets 'sorte boks'."
+  ],
+  "Autopilot": [
+   "Autopilot",
+   "Et elektronisk styrekontrolsystem, der automatisk holder skibet på den indstillede kurs."
+  ],
+  "COLREG": [
+   "COLREG",
+   "De internationale regler til forebyggelse af kollisioner til søs; reglerne skibe følger, når de mødes."
+  ],
+  "STCW": [
+   "STCW",
+   "Den internationale konvention om standarder for uddannelse, certificering og vagthold for søfarende."
+  ],
+  "MLC 2006": [
+   "MLC 2006",
+   "Søfartsarbejdskonventionen; den fastsætter arbejds- og levevilkårene for søfarende."
+  ],
+  "Flag State (Bayrak Devleti)": [
+   "Flag State",
+   "Den stat, hvori skibet er registreret; den er ansvarlig for skibets tekniske og sikkerhedsmæssige tilsyn."
+  ],
+  "Port State Control (PSC)": [
+   "Port State Control (PSC)",
+   "Inspektion af udenlandske skibe i havn for at kontrollere, at de overholder internationale standarder."
+  ],
+  "Class Survey (Klas Denetimi)": [
+   "Class survey",
+   "En periodisk undersøgelse foretaget af klassifikationsselskabet for at kontrollere skibets struktur og maskineri."
+  ],
+  "P&I Club": [
+   "P&I Club",
+   "En gensidig forsikringsforening, der dækker skibsrederes tredjemandsansvar."
+  ],
+  "Charter Party": [
+   "Charter party",
+   "Kontrakten om leje af et skib; arrangeret som en rejse, time eller bareboat charter."
+  ],
+  "Salvage (Kurtarma)": [
+   "Salvage",
+   "Redning af et skib eller en last i fare; vellykket bjærgning giver ret til en bjærgningspris."
+  ],
+  "General Average (Müşterek Avarya)": [
+   "General average",
+   "Princippet om, at ofre og udgifter for at redde skib og last fra en fælles fare, deles af alle parter."
+  ],
+  "Demurrage": [
+   "Demurrage",
+   "Det aftalte beløb, der betales, når skibet opbevares til lastning eller losning ud over den tilladte liggetid."
+  ],
+  "Despatch": [
+   "Despatch",
+   "Beløbet optjent ved lastning eller losning er afsluttet inden liggetiden er udløbet."
+  ],
+  "NOR (Notice of Readiness)": [
+   "NOR (Notice of Readiness)",
+   "Den skriftlige meddelelse om, at skibet er klar til at laste eller losse."
+  ],
+  "Lay Time (Starya Süresi)": [
+   "Laytime",
+   "Den tilladte tid til lastning og losning."
+  ],
+  "LOF (Lloyd's Open Form)": [
+   "LOF (Lloyd's Open Form)",
+   "Standard bjærgningsaftalen, baseret på princippet 'no cure, no pay'."
+  ],
+  "Yanaşma (Berthing)": [
+   "Berthing",
+   "At bringe skibet langs en kaj eller mole under kontrol og gøre hende hurtig."
+  ],
+  "Kalkma (Unberthing)": [
+   "Unberthing",
+   "Giver slip fra køjen og går i gang."
+  ],
+  "Demir Atma (Anchoring)": [
+   "Anchoring",
+   "Slip ankeret til havbunden, så skibet forbliver på plads."
+  ],
+  "Demir Alma (Weighing Anchor)": [
+   "Weighing anchor",
+   "Hivning af ankeret op fra havbunden for at afslutte ankringen."
+  ],
+  "Römorkör (Tug)": [
+   "Tug",
+   "Et lille, kraftfuldt fartøj, der hjælper store skibe med at manøvrere i havnen."
+  ],
+  "Kılavuz Kaptan (Pilot)": [
+   "Pilot",
+   "En person med lokalkendskab, der går ombord for at rådgive skibsføreren om broen, når skibet anløber eller forlader havn."
+  ],
+  "Pilot Merdiveni": [
+   "Pilot ladder",
+   "En rebstige rigget over skibssiden, så lodsen kan gå ombord."
+  ],
+  "Çıpa (Anchor)": [
+   "Anchor",
+   "Det tunge beslag, der holder skibet på plads ved at gribe havbunden; typer omfatter Hall, AC-14 og Danforth."
+  ],
+  "Zincir (Chain)": [
+   "Anchor cable",
+   "Den tunge stålkæde, der forbinder ankeret med skibet; dens længde måles i lænker."
+  ],
+  "Posa (Shackle)": [
+   "Shackle (length of cable)",
+   "Enheden for længden af ankerkabel; en bøjle er 27,5 meter (15 favne)."
+  ],
+  "Usturmaça (Fender)": [
+   "Fender",
+   "En pude placeret mellem skibet og kajen for at absorbere stødet."
+  ],
+  "Swing Circle": [
+   "Swinging circle",
+   "Cirklen, hvori et forankret skib kan svinge med vind og strøm; den bestemmer den sikre forankringsafstand."
+  ],
+  "Turning Circle": [
+   "Turning circle",
+   "Cirklen skibet laver, når den drejer med fuldt (hårdt over) ror; et mål for manøvredygtighed."
+  ],
+  "Advance & Transfer": [
+   "Advance and transfer",
+   "De afstande, skibet bevæger sig frem (frem) og sidelæns (overførsel), efter at roret er sat over."
+  ],
+  "Crash Stop": [
+   "Crash stop",
+   "I en nødsituation, standsning af skibet ved at gå fra fuld frem til fuld agter."
+  ],
+  "Dead Slow": [
+   "Dead slow",
+   "Den laveste motorhastighedsrækkefølge; bruges under manøvrering."
+  ],
+  "VTS (Vessel Traffic Service)": [
+   "VTS (Vessel Traffic Service)",
+   "En landbaseret tjeneste, der overvåger og organiserer skibstrafikken i havne og snævre farvande."
+  ],
+  "Kanal Seyrüseferi": [
+   "Canal transit",
+   "Passerer gennem menneskeskabte vandveje som Suez og Panama; det involverer særlige regler og lodsning."
+  ],
+  "Dry Dock (Havuz)": [
+   "Dry dock",
+   "En dok, hvorfra vandet pumpes ud, så skibets undervandsskrog kan vedligeholdes og repareres."
+  ],
+  "Şamandıraya Bağlanma": [
+   "Mooring to a buoy",
+   "At gøre skibet hurtigt til en fast fortøjningsbøje med reb i stedet for ankring."
+  ],
+  "Amade": [
+   "Ready for sea",
+   "Skibet er klar til at sejle; alle kontroller er gennemført, og hun er klar til at tage af sted."
+  ],
+  "Demir Yeri (Anchorage)": [
+   "Anchorage",
+   "Et udpeget område med passende dybde og havbund til forankring."
+  ],
+  "Enine Perde (Bulkhead)": [
+   "Transverse bulkhead",
+   "En lodret strukturel opdeling, der opdeler skroget i vandtætte rum."
+  ],
+  "Forkastel (Forecastle)": [
+   "Forecastle",
+   "Den hævede del af dækket ved stævnen; den bærer forankrings- og fortøjningsudstyret."
+  ],
+  "Güverte Ambarı (Tweendeck)": [
+   "Tweendeck",
+   "Et mellemdæk mellem det nederste lastrum og det øverste dæk; bruges til stykgods."
+  ],
+  "Havuzlama (Dry Docking)": [
+   "Dry-docking",
+   "Tager skibet i tørdok for at vedligeholde og reparere undervandsskroget."
+  ],
+  "Koferdamı (Cofferdam)": [
+   "Cofferdam",
+   "Et smalt tomt rum mellem to tanke eller rum, der er tilvejebragt for at forhindre lækage fra den ene til den anden."
+  ],
+  "Lumboz (Porthole)": [
+   "Porthole (side scuttle)",
+   "Et rundt vindue i skibssiden, der giver lys og ventilation."
+  ],
+  "Manika": [
+   "Cowl ventilator",
+   "Åbningen af en ventilationsstamme på dækket; svampe- eller svanehalsformet."
+  ],
+  "Mayıstra": [
+   "Mainsail",
+   "Det største sejl, sat på stormasten; et sejlskibs hovedsejl."
+  ],
+  "Neta": [
+   "Shipshape",
+   "Orden og orden på dækket; gør alt løst udstyr sikkert."
+  ],
+  "Orsalamak": [
+   "To luff",
+   "At dreje et sejlskibs hoved mod vinden."
+  ],
+  "Pupa": [
+   "Stern",
+   "Efterenden af skibet; en vind fra agterstavnen blæser fra højre agter (en følgevind)."
+  ],
+  "Safra (Ballast)": [
+   "Ballast",
+   "Havvand eller fast vægt båret i tanke for at give skibet den nødvendige stabilitet, dybgang og trim."
+  ],
+  "Uskuna (Schooner)": [
+   "Schooner",
+   "Et sejlskib med to eller flere master og for- og agtersejl."
+  ],
+  "Mercator Projeksiyonu": [
+   "Mercator projection",
+   "Et cylindrisk kortprojektion, hvor rhumb-linjer er lige linjer; områder udvides i stigende grad mod høje breddegrader."
+  ],
+  "Gnomonic Projeksiyon": [
+   "Gnomonic projection",
+   "En diagramprojektion, hvor storcirkler er rette linjer; bruges til planlægning af stor cirkelsejlads."
+  ],
+  "Dead Reckoning (Tahmini Seyir)": [
+   "Dead reckoning (DR)",
+   "Udregning af skibets position fra den sidst kendte position ved kun at bruge kurs og fart gennem vandet."
+  ],
+  "Fix (Kesin Mevki)": [
+   "Fix",
+   "En pålidelig position fundet ved observation eller elektroniske hjælpemidler."
+  ],
+  "Estimated Position (EP)": [
+   "Estimated position (EP)",
+   "En position estimeret ud fra dødregning med korrektioner for strøm og vind; mindre pålidelig end en fix."
+  ],
+  "DLat (Enlem Değişimi)": [
+   "D.Lat (Difference of latitude)",
+   "Forskellen i breddegrad mellem to positioner; udtrykt i bueminutter."
+  ],
+  "DLong (Boylam Değişimi)": [
+   "D.Long (Difference of longitude)",
+   "Forskellen i længdegrad mellem to positioner; udtrykt i bueminutter."
+  ],
+  "Departure": [
+   "Departure",
+   "Den øst-vestlige afstand i sømil, der svarer til en længdeforskel; Dep = D.Lang × cos(Lat)."
+  ],
+  "Vertex (Tepe Noktası)": [
+   "Vertex",
+   "Punktet på en storcirkel nærmest polen; der når banen sin højeste breddegrad."
+  ],
+  "Composite Great Circle": [
+   "Composite great circle",
+   "En rute, der følger store cirkler og en parallel af breddegrad for ikke at gå ud over en begrænsende breddegrad."
+  ],
+  "Course Made Good (CMG)": [
+   "Course made good (CMG)",
+   "Retningen blev faktisk godt af skibet, inklusive effekterne af strøm og vind."
+  ],
+  "Speed Made Good (SMG)": [
+   "Speed made good (SMG)",
+   "Hastigheden gjorde sig faktisk godt over jorden, inklusive effekten af strømmen."
+  ],
+  "Chart Datum": [
+   "Chart datum",
+   "Referenceniveauet, hvorfra de kortlagte dybder måles; normalt laveste astronomiske tidevand (LAT)."
+  ],
+  "Sextant": [
+   "Sextant",
+   "Et optisk instrument, der måler vinklen mellem et himmellegeme og horisonten; bruges i himmelsnavigation."
+  ],
+  "Chronometer": [
+   "Chronometer",
+   "Et præcist ur, der holder Greenwich-tiden; afgørende for at finde længdegrad."
+  ],
+  "Nautical Almanac": [
+   "Nautical Almanac",
+   "Den årlige publikation, der viser himmellegemernes daglige positioner (GHA, dec.)."
+  ],
+  "Sight Reduction Tables": [
+   "Sight reduction tables",
+   "Forudberegnede tabeller, der bruges til at løse himmelske navigationseværdigheder."
+  ],
+  "Height of Eye": [
+   "Height of eye",
+   "Højden af observatørens øje over havoverfladen; bruges i sekstant højdekorrektioner."
+  ],
+  "Dip (Ufuk Alçalması)": [
+   "Dip of the horizon",
+   "Vinklen mellem den sande vandrette og den synlige horisont, forårsaget af observatørens øjenhøjde."
+  ],
+  "Index Error": [
+   "Index error",
+   "Sekstantfejlen, der eksisterer, når indeks- og horisontspejlene ikke er parallelle ved nul."
+  ],
+  "Azimut": [
+   "Azimuth",
+   "Den vandrette retning af et himmellegeme eller et objekt, målt med uret fra nord."
+  ],
+  "Amplitude": [
+   "Amplitude",
+   "Vinklen mellem ægte øst eller vest og retningen af Solen eller et andet legeme ved dets op- eller nedgang."
+  ],
+  "Intercept (Aradaki Fark)": [
+   "Intercept",
+   "Forskellen mellem de observerede og beregnede højder; bruges til at tegne positionslinjen."
+  ],
+  "Position Line (Mevki Doğrusu)": [
+   "Position line",
+   "En linje, opnået fra en observation, hvorpå skibet er et sted; to positionslinjer, der krydser, giver et fix."
+  ],
+  "Under Keel Clearance (UKC)": [
+   "Under keel clearance (UKC)",
+   "Den sikre vanddybde mellem kølebunden og havbunden."
+  ],
+  "Traffic Separation Scheme (TSS)": [
+   "Traffic separation scheme (TSS)",
+   "En ruteforanstaltning, der adskiller modsatrettede trafikstrømme i baner."
+  ],
+  "Precautionary Area": [
+   "Precautionary area",
+   "Et afgrænset område, hvor skibe skal navigere med særlig forsigtighed; ofte hvor kørebaner mødes."
+  ],
+  "Tidal Stream": [
+   "Tidal stream",
+   "Vandets vandrette bevægelse forårsaget af tidevandet; dens retning og hastighedsændring gennem tidevandscyklussen."
+  ],
+  "Chart Correction": [
+   "Chart correction",
+   "Opdatering af søkort med information offentliggjort i Notices to Mariners."
+  ],
+  "Notice to Mariners (NtM)": [
+   "Notices to Mariners (NtM)",
+   "Periodiske meddelelser offentliggjort for at holde søkort og nautiske publikationer ajour."
+  ],
+  "Metacenter (M)": [
+   "Metacentre (M)",
+   "Ved små krængningsvinkler, det punkt, hvor opdriftslinjen krydser skibets midterlinje."
+  ],
+  "Vanishing Angle": [
+   "Angle of vanishing stability",
+   "Krængningsvinklen, ved hvilken GZ vender tilbage til nul; ud over det har skibet ingen opretningsarm."
+  ],
+  "Range of Stability": [
+   "Range of stability",
+   "Hælområdet, over hvilket GZ forbliver positivt; et bredt udvalg betyder en stor sikkerhedsmargin."
+  ],
+  "Righting Lever Maximum": [
+   "Maximum righting lever",
+   "Den største værdi på GZ-kurven, hvor skibets modstand mod krængning er størst."
+  ],
+  "Cross Curves of Stability": [
+   "Cross curves of stability",
+   "Kurver, der viser KN ved faste hælvinkler for forskellige forskydninger."
+  ],
+  "Intact Stability": [
+   "Intact stability",
+   "Stabiliteten af det ubeskadigede skib; den skal opfylde minimumskriterierne fastsat af IMO."
+  ],
+  "Damage Stability": [
+   "Damage stability",
+   "The stability of the ship with one or more compartments flooded."
+  ],
+  "Subdivision": [
+   "Subdivision",
+   "Opdeling af skroget i rum af vandtætte skotter; det beskytter skibet mod at synke."
+  ],
+  "Margin Line": [
+   "Margin line",
+   "En linje 76 mm under den øvre overflade af skotdækket i siden; ved skadesberegninger må vandlinjen ikke gå over den."
+  ],
+  "Heel (Yatma)": [
+   "Heel",
+   "En tværgående hældning af skibet forårsaget af en ydre kraft såsom vind, en forskudt vægt eller drejning."
+  ],
+  "List": [
+   "List",
+   "En tværgående hældning, der forbliver på grund af interne årsager, såsom off-center last eller tankindhold."
+  ],
+  "Loll": [
+   "Loll",
+   "Tilstanden af et skib med negativ initial GM, der ligger i en vinkel på loll; en yderst farlig tilstand."
+  ],
+  "Waterplane Area": [
+   "Waterplane area",
+   "Området omgivet af vandlinjen; bruges i TPC og BM beregninger."
+  ],
+  "Block Coefficient (Cb)": [
+   "Block coefficient (Cb)",
+   "Et mål for skrogets fylde: undervandsvolumenet divideret med længde × bredde × dybgang."
+  ],
+  "Midship Coefficient (Cm)": [
+   "Midship section coefficient (Cm)",
+   "Forholdet mellem det nedsænkede midtskibssektionsareal og bredde × dybgang."
+  ],
+  "Prismatic Coefficient (Cp)": [
+   "Prismatic coefficient (Cp)",
+   "Forholdet mellem undervandsvolumen og midtskibssektionsareal × længde; det påvirker modstand og hastighed."
+  ],
+  "Crosshead (Çapraz Kafa)": [
+   "Crosshead",
+   "I totakts lavhastighedsmotorer er det glidende led, der forbinder stempelstangen med plejlstangen."
+  ],
+  "Crankshaft (Krank Mili)": [
+   "Crankshaft",
+   "Hovedmotorakslen, der omdanner stemplernes frem- og tilbagegående bevægelse til rotation."
+  ],
+  "Camshaft (Kam Mili)": [
+   "Camshaft",
+   "Akslen, hvis knaster styrer timingen af ventilerne og brændstofpumperne."
+  ],
+  "Connecting Rod (Biyel Kolu)": [
+   "Connecting rod",
+   "Stangen, der forbinder stemplet (eller krydshovedet) til krumtapakslen og omdanner frem- og tilbagegående bevægelse til rotation."
+  ],
+  "Fuel Injector (Enjektör)": [
+   "Fuel injector",
+   "Enheden, der sprøjter forstøvet brændstof ind i cylinderen ved højt tryk."
+  ],
+  "Exhaust Valve (Egzoz Süpabı)": [
+   "Exhaust valve",
+   "Ventilen, der lukker de brændte gasser ud af cylinderen."
+  ],
+  "Scavenging (Süpürme)": [
+   "Scavenging",
+   "Fjernelse af de brændte gasser fra cylinderen og fyld den med frisk luft."
+  ],
+  "Deaerator": [
+   "Deaerator",
+   "Udstyr, der fjerner opløst ilt og gasser fra kedlens fødevand for at forhindre korrosion."
+  ],
+  "Economizer": [
+   "Economiser",
+   "En varmeveksler, der bruger udstødningsgasvarme til at forvarme kedelfødevand eller hæve damp."
+  ],
+  "Evaporator (Tatlı Su Üreteci)": [
+   "Fresh water generator (evaporator)",
+   "Udstyr, der producerer ferskvand ved at fordampe havvand, normalt med motorspildvarme eller lavtryksdamp."
+  ],
+  "Oily Water Separator (OWS)": [
+   "Oily water separator (OWS)",
+   "Udskilleren, der reducerer olieindholdet i lænsevand til under 15 ppm, så det kan udledes lovligt."
+  ],
+  "Sewage Treatment Plant": [
+   "Sewage treatment plant",
+   "Systemet, der behandler skibets spildevand biologisk eller kemisk inden udledning."
+  ],
+  "Ballast Water Treatment (BWTS)": [
+   "Ballast water treatment system (BWTS)",
+   "Et system, der dræber eller fjerner organismer og patogener i ballastvand for at forhindre deres spredning."
+  ],
+  "Stern Tube Seal": [
+   "Stern tube seal",
+   "Tætningen, der holder vand ude, hvor propelakslen passerer gennem skroget."
+  ],
+  "Controllable Pitch Propeller (CPP)": [
+   "Controllable pitch propeller (CPP)",
+   "En propel, hvis bladvinkel kan ændres; drivkraften justeres, mens motorhastigheden forbliver konstant."
+  ],
+  "Fixed Pitch Propeller (FPP)": [
+   "Fixed pitch propeller (FPP)",
+   "Den traditionelle propel med faste blade; drivkraften styres af motorens omdrejningstal og retning."
+  ],
+  "Reduction Gear (Dişli Kutusu)": [
+   "Reduction gear",
+   "En gearkasse, der reducerer hastigheden på en højhastighedsmotor til den hastighed, propellen har brug for."
+  ],
+  "Heat Exchanger (Isı Değiştirici)": [
+   "Heat exchanger",
+   "Udstyr, der overfører varme mellem to væsker; bruges i køle- og varmekredsløb."
+  ],
+  "Centrifugal Pump": [
+   "Centrifugal pump",
+   "En pumpe med et roterende pumpehjul, der flytter væske ved centrifugalkraft; fælles for køling og ballast."
+  ],
+  "Positive Displacement Pump": [
+   "Positive displacement pump",
+   "En pumpe, der flytter et fast volumen væske hver gang eller omdrejning; bruges til smøreolie og brændstofoverførsel."
+  ],
+  "Air Compressor (Hava Kompresörü)": [
+   "Starting air compressor",
+   "En kompressor, der producerer trykluft ved ca. 30 bar til start af hovedmotoren og til styresystemer."
+  ],
+  "Indicator Diagram": [
+   "Indicator diagram",
+   "Et tryk-volumen diagram af cylinderen; bruges til præstationsanalyse og fejlfinding."
+  ],
+  "Mean Effective Pressure (MEP)": [
+   "Mean effective pressure (MEP)",
+   "Det gennemsnitlige effektive tryk i cylinderen over en cyklus; bruges til at beregne motoreffekt."
+  ],
+  "Brake Power": [
+   "Brake power",
+   "Effekten målt ved motorens udgangsaksel; udtrykt i kW."
+  ],
+  "Indicated Power": [
+   "Indicated power",
+   "Effekten udviklet i cylinderne, beregnet ud fra gastrykket; mekaniske tab fratrækkes ikke."
+  ],
+  "Thermal Efficiency": [
+   "Thermal efficiency",
+   "Andelen af brændstoffets varmeenergi, der omdannes til mekanisk arbejde; udtrykt i procent."
+  ],
+  "LSA Code": [
+   "LSA Code",
+   "International Life-Saving Appliance Code; standarder for redningsbåde, redningsflåder, redningsveste og andre redningsmidler."
+  ],
+  "FSS Code": [
+   "FSS Code",
+   "Den internationale kodeks for brandsikkerhedssystemer; standarder for branddetektions- og slukningssystemer."
+  ],
+  "IAMSAR Manual": [
+   "IAMSAR Manual",
+   "International Aeronautical and Maritime Search and Rescue Manual; den fastlægger procedurerne for SAR-operationer."
+  ],
+  "Williamson Turn": [
+   "Williamson turn",
+   "En mand over bord genopretningsmanøvre, der bringer skibet tilbage på sit eget spor i den modsatte retning."
+  ],
+  "Scharnow Turn": [
+   "Scharnow turn",
+   "En mand over bord manøvre brugt, når personen har været savnet i nogen tid (forsinket handling)."
+  ],
+  "Anderson Turn": [
+   "Anderson turn",
+   "En hurtig, enkeltsving mand over bord manøvre for skibe med en snæver vendecirkel (øjeblikkelig handling)."
+  ],
+  "Immersion Suit": [
+   "Immersion suit",
+   "En vandtæt, isoleret helkropsdragt, der beskytter bæreren i koldt vand."
+  ],
+  "Thermal Protective Aid (TPA)": [
+   "Thermal protective aid (TPA)",
+   "En taske eller dragt af vandtæt materiale, der reducerer kropsvarmetab i en redningsflåde eller redningsbåd."
+  ],
+  "Pyrotechnic Signals": [
+   "Pyrotechnic distress signals",
+   "Nødsignaler som raketfaldskærmsblus, håndblus og flydende røgsignaler."
+  ],
+  "EEBD (Emergency Escape Breathing Device)": [
+   "EEBD (Emergency Escape Breathing Device)",
+   "En bærbar åndedrætsværn, der giver en kort tilførsel af luft til at undslippe fra en farlig atmosfære."
+  ],
+  "Fixed Fire Detection System": [
+   "Fixed fire detection and fire alarm system",
+   "Et fast system, der registrerer brand med røg-, varme- eller flammedetektorer og slår alarm."
+  ],
+  "Sprinkler System": [
+   "Sprinkler system",
+   "Et vandsprøjtesystem, der fungerer automatisk, når varme åbner sprinklerhovederne; påkrævet på passagerskibe."
+  ],
+  "Inert Gas System (IGS)": [
+   "Inert gas system (IGS)",
+   "Et system, der fylder tankskibes lasttanke med gas med lavt iltindhold for at forhindre eksplosioner."
+  ],
+  "Permit to Work": [
+   "Permit to work",
+   "En skriftlig tilladelse udstedt før farligt arbejde såsom varmt arbejde, indgang til lukkede rum eller arbejde i højden."
+  ],
+  "Risk Assessment": [
+   "Risk assessment",
+   "En systematisk gennemgang, der identificerer farerne ved et job og planlægger kontrolforanstaltningerne."
+  ],
+  "Toolbox Meeting": [
+   "Toolbox meeting",
+   "En kort sikkerhedsbriefing før arbejdet, hvor farerne og forholdsreglerne forklares for teamet."
+  ],
+  "Near Miss Report": [
+   "Near-miss report",
+   "En rapport om en hændelse, der kunne have forårsaget en ulykke; vigtigt for at opbygge en sikkerhedskultur."
+  ],
+  "Yoğunlaşma (Condensation)": [
+   "Condensation",
+   "Ændringen af vanddamp til væske, når den afkøles; processen bag sky, tåge og dug."
+  ],
+  "Adveksiyon Sisi": [
+   "Advection fog",
+   "Tåge, der dannes, når varm, fugtig luft bevæger sig over en koldere havoverflade."
+  ],
+  "Radyasyon Sisi": [
+   "Radiation fog",
+   "Tåge, der dannes over land om natten, når jorden afkøles, og luften over den når sit dugpunkt."
+  ],
+  "Coriolis Kuvveti": [
+   "Coriolis force",
+   "Den tilsyneladende kraft forårsaget af Jordens rotation; den afleder vinde og strømme til højre på den nordlige halvkugle og til venstre på den sydlige."
+  ],
+  "Geostrofik Rüzgâr": [
+   "Geostrophic wind",
+   "Den teoretiske vind, der blæser parallelt med isobarerne, når trykgradientkraften og Corioliskraften balancerer."
+  ],
+  "Konveksiyon": [
+   "Convection",
+   "Lodret luftbevægelse, når opvarmet luft stiger og afkøles; det producerer cumulusskyer og byger."
+  ],
+  "Soğuk Cephe": [
+   "Cold front",
+   "Grænsen hvor en kold luftmasse skubber ind under en varm luftmasse og løfter den."
+  ],
+  "Sıcak Cephe": [
+   "Warm front",
+   "Grænsen hvor en varm luftmasse stiger langsomt over en kold luftmasse."
+  ],
+  "Oklüzyon Cephesi": [
+   "Occluded front",
+   "En front dannet, når koldfronten overhaler varmfronten og løfter den varme luft op fra overfladen."
+  ],
+  "Hava Kütlesi": [
+   "Air mass",
+   "En stor luftmasse med lignende temperatur og luftfugtighed over et bredt område."
+  ],
+  "Jet Stream": [
+   "Jet stream",
+   "Et smalt bånd af meget stærk vind nær tropopausen; den kan nå 200-300 knob."
+  ],
+  "ITCZ (Ekvatoral Konverjans)": [
+   "ITCZ (Intertropical Convergence Zone)",
+   "Det tropiske bælte, hvor passatvindene fra de to halvkugler mødes; et område med kraftig regn og tordenvejr."
+  ],
+  "Fetch": [
+   "Fetch",
+   "Afstanden af åbent hav, over hvilken vinden blæser uhindret; det påvirker direkte størrelsen af bølgerne."
+  ],
+  "Significant Wave Height (Hs)": [
+   "Significant wave height (Hs)",
+   "Den gennemsnitlige højde af den højeste tredjedel af bølgerne; det vigtigste mål for havtilstand."
+  ],
+  "Typhoon Signal": [
+   "Typhoon signal",
+   "Et advarselssignal, der annoncerer, at en tropisk cyklon nærmer sig."
+  ],
+  "Buys Ballot Kuralı": [
+   "Buys Ballot's law",
+   "På den nordlige halvkugle, hvis du står med ryggen mod vinden, er lavtrykket på din venstre side."
+  ],
+  "Squall (Bora)": [
+   "Squall",
+   "En pludselig, kortvarig stærk vindstigning; ofte med kraftig regn og dårlig sigtbarhed."
+  ],
+  "Waterspout (Hortum)": [
+   "Waterspout",
+   "En roterende vindsøjle over havet, hængende fra en cumulonimbussky og trækker spray op."
+  ],
+  "Bulbous Bow (Bodoslama Bülbü)": [
+   "Bulbous bow",
+   "En pære, der rager frem under vandlinjen ved stævnen; det reducerer bølgedannelsesmodstanden og sparer brændstof."
+  ],
+  "Bilge Keel": [
+   "Bilge keel",
+   "En finne monteret langs lænsens drejning til fugtig rulning."
+  ],
+  "Stabilizer Fin": [
+   "Fin stabiliser",
+   "En aktiv finne, der rager ud fra skibssiden, der automatisk reducerer rulning til søs."
+  ],
+  "Slip (Kayma)": [
+   "Propeller slip",
+   "Forskellen mellem den teoretiske og den faktiske fremrykning af propellen; udtrykt i procent."
+  ],
+  "Pitch (Hatve)": [
+   "Pitch (propeller)",
+   "Den afstand, en propel teoretisk ville rykke i en omdrejning."
+  ],
+  "Cavitation": [
+   "Propeller cavitation",
+   "Dampbobler, der dannes på propelbladene, hvor trykket falder og derefter kollapser; det forårsager erosion og tab af effektivitet."
+  ],
+  "Interaction Effect": [
+   "Interaction",
+   "De hydrodynamiske kræfter mellem to skibe, der passerer tæt på hinanden."
+  ],
+  "Shallow Water Effect": [
+   "Shallow water effect",
+   "På lavt vand øges strømmen under skibet, og trykket falder; skibet synker og styrer mindre godt."
+  ],
+  "Trim Optimization": [
+   "Trim optimisation",
+   "Valg af trim, hvor skibet har mindst modstand; det sparer brændstof."
+  ],
+  "Alternator": [
+   "Alternator",
+   "En generator, der producerer vekselstrøm; på skibe normalt 440 V 60 Hz eller 380 V 50 Hz."
+  ],
+  "Transformer": [
+   "Transformer",
+   "En elektromagnetisk enhed, der hæver eller sænker AC-spændingen."
+  ],
+  "Circuit Breaker (Şalter)": [
+   "Circuit breaker",
+   "En beskyttelsesafbryder, der åbner kredsløbet automatisk ved overstrøm eller kortslutning."
+  ],
+  "Frequency Converter": [
+   "Frequency converter",
+   "Elektronisk udstyr, der konverterer frekvens og spænding, for eksempel til en landstrømsforbindelse."
+  ],
+  "Synchroscope": [
+   "Synchroscope",
+   "Et instrument, der viser, om frekvensen og fasen af en indgående generator matcher samleskinnen, før parallelføring."
+  ],
+  "AVR (Automatic Voltage Regulator)": [
+   "AVR (Automatic Voltage Regulator)",
+   "Kredsløbet, der holder generatorens udgangsspænding konstant."
+  ],
+  "Earth Fault Monitor": [
+   "Earth fault monitor",
+   "Et instrument, der registrerer jordfejl i et isoleret (ujordet) distributionssystem."
+  ],
+  "Motor Starter": [
+   "Motor starter",
+   "Kredsløbet, der starter en elektrisk motor under kontrol ved at begrænse startstrømmen."
+  ],
+  "PLC (Programmable Logic Controller)": [
+   "PLC (Programmable Logic Controller)",
+   "En programmerbar controller, der bruges til maskineri og processtyring i skibsautomatisering."
+  ],
+  "SCADA": [
+   "SCADA",
+   "Software til central overvågning og kontrol af maskinrum og hjælpesystemer."
+  ],
+  "BWM Convention": [
+   "BWM Convention",
+   "Konventionen om forvaltning af ballastvand; den har til formål at stoppe spredningen af organismer i skibes ballastvand."
+  ],
+  "SEEMP": [
+   "SEEMP",
+   "Plan for styring af skibs energieffektivitet; den obligatoriske plan for operationelle energieffektiviseringstiltag."
+  ],
+  "EEDI": [
+   "EEDI",
+   "Energieffektivitetsdesignindeks; den obligatoriske designstandard for nye skibes CO₂-effektivitet."
+  ],
+  "CII Rating": [
+   "CII rating",
+   "Kulstofintensitetsindikator; vurderer et skibs årlige operationelle kulstofeffektivitet fra A til E."
+  ],
+  "DOC (Document of Compliance)": [
+   "DOC (Document of Compliance)",
+   "ISM Kodecertifikatet, der viser, at virksomhedens sikkerhedsledelsessystem overholder."
+  ],
+  "SMC (Safety Management Certificate)": [
+   "SMC (Safety Management Certificate)",
+   "ISM-kodecertifikatet udstedt til skibet, som viser, at dets sikkerhedsledelsessystem overholder."
+  ],
+  "IOPP Certificate": [
+   "IOPP Certificate",
+   "Det internationale certifikat for forebyggelse af olieforurening, udstedt under MARPOL bilag I."
+  ],
+  "Load Line Certificate": [
+   "Load Line Certificate",
+   "Certifikatet, der bekræfter skibets tildelte lastelinjer og Fribord."
+  ],
+  "Safety Equipment Certificate": [
+   "Safety Equipment Certificate",
+   "Certifikatet, der viser, at rednings- og brandsikringsudstyret overholder SOLAS."
+  ],
+  "Tonnage Certificate": [
+   "Tonnage Certificate",
+   "Certifikatet med angivelse af skibets brutto- og nettotonnage."
+  ],
+  "Grain Loading Diagram": [
+   "Grain loading diagram",
+   "Et diagram, der viser virkningen af kornlast på stabiliteten for forskellige lastrumsfyldninger."
+  ],
+  "Lashing Calculator": [
+   "Lashing calculator",
+   "Et værktøj til at beregne kræfterne på container- og lastsurringer."
+  ],
+  "Cargo Securing Manual (CSM)": [
+   "Cargo Securing Manual (CSM)",
+   "Den obligatoriske skibsspecifikke manual om lastsikringsprocedurer og sikringsudstyr."
+  ],
+  "Ventilation Hold": [
+   "Hold ventilation",
+   "Ventilation af lastrummene for at kontrollere fugtighed og temperatur; det forhindrer sved og kondens."
+  ],
+  "Sweat (Terleme)": [
+   "Sweat",
+   "Kondensation på lasten eller på lastrummets struktur forårsaget af temperaturforskelle; opdelt i lastsved og skibssved."
+  ],
+  "TML (Transportable Moisture Limit)": [
+   "TML (Transportable Moisture Limit)",
+   "Det maksimale fugtindhold, hvorved en fast bulklast, der kan blive flydende, kan transporteres sikkert."
+  ],
+  "Flow Moisture Point (FMP)": [
+   "Flow Moisture Point (FMP)",
+   "Det fugtindhold, hvorved en fast bulklast begynder at opføre sig som en væske; TML = 0,9 × FMP."
+  ],
+  "Liquefaction": [
+   "Liquefaction",
+   "En fast bulklast begynder at opføre sig som en væske under vibration og skibsbevægelse; det kan føre til tab af stabilitet og kæntring."
+  ],
+  "Fumigation": [
+   "Fumigation",
+   "Dræber insekter og skadedyr i lasten med en giftig gas."
+  ],
+  "Classification Survey": [
+   "Classification survey",
+   "En teknisk inspektion foretaget af klassifikationsselskabet af skibets struktur og udstyr med fastsatte intervaller."
+  ],
+  "Damage Report (Hasar Raporu)": [
+   "Damage report",
+   "En skriftlig fortegnelse over skader eller mangler fundet i lasten."
+  ],
+  "Letter of Protest": [
+   "Letter of protest",
+   "Et formelt brev med indsigelse mod lastskade, forsinkelse eller uegnede forhold."
+  ],
+  "Dangerous Goods Declaration": [
+   "Dangerous goods declaration",
+   "Dokumentet, hvori afsenderen erklærer farligt gods klasse, egenskaber og nødoplysninger."
+  ],
+  "Mediterranean Mooring": [
+   "Mediterranean mooring",
+   "Fortøjning agter-til kajen med stævnen holdt af ankrene; almindelig i Middelhavet."
+  ],
+  "Single Point Mooring (SPM)": [
+   "Single point mooring (SPM)",
+   "En bøje offshore, hvortil et tankskib fortøjer på et tidspunkt under lastning eller losning."
+  ],
+  "Parallel Body": [
+   "Parallel body",
+   "Midtskibslængden af skroget, over hvilken tværsnittet forbliver det samme."
+  ],
+  "Pivot Point": [
+   "Pivot point",
+   "Det punkt, hvorom skibet ser ud til at dreje; når man går frem ligger den godt fremme."
+  ],
+  "Tactical Diameter": [
+   "Tactical diameter",
+   "Den afstand, skibet har bevæget sig sidelæns fra sit oprindelige spor, når det har drejet 180° med hårdt over ror."
+  ],
+  "Kick (Başlangıç Sapması)": [
+   "Kick",
+   "Lige efter at roret er sat over, svinger agterstavnen væk fra svingretningen, og skibet bevæger sig kort sidelæns i den modsatte retning."
+  ],
+  "Transverse Thrust": [
+   "Transverse thrust",
+   "Skub sidelæns af propellen på agterstavnen; den styrer håndtering ved lav hastighed."
+  ],
+  "Approach Speed": [
+   "Approach speed (berthing)",
+   "Skibets sidelæns fart mod kajen, mens den kommer langs; det må ikke overstige, hvad fenderne kan optage."
+  ],
+  "STS Operation": [
+   "STS operation",
+   "Skib-til-skib overførsel: To skibe ligger ved siden af hinanden for at overføre last."
+  ],
+  "Alabora": [
+   "Capsize",
+   "Et skib eller båd vender helt om, så kølen kommer over vandet."
+  ],
+  "Arma": [
+   "Rigging",
+   "På sejlskibe hele arrangementet af master, værfter, vanter, stag og reb."
+  ],
+  "Ayna Kıç": [
+   "Transom stern",
+   "En agterstavn med en flad, lodret ende; meget brugt på moderne fragtskibe."
+  ],
+  "Demir Taramak": [
+   "Dragging anchor",
+   "Ankeret formår ikke at holde og trækker langs havbunden; forårsaget af dårlig holdeplads eller for lidt kabel."
+  ],
+  "Duba": [
+   "Pontoon",
+   "En fladbundet flydende platform, med eller uden egen motor; bruges til lastoverførsel, som landingsplads eller som arbejdsplatform."
+  ],
+  "Gemiadamı": [
+   "Seafarer",
+   "En person, der er ansat om bord på et skib i enhver egenskab; omfatter skibsføreren, officerer og mandat."
+  ],
+  "Iskarmoz": [
+   "Thole pin",
+   "På små både, stiften eller gaffelen på revolveren, som åren hviler imod, når man roer."
+  ],
+  "Kontra": [
+   "Counter rudder",
+   "At sætte roret til den modsatte side for at kontrollere skibets sving."
+  ],
+  "Tayfa": [
+   "Rating",
+   "Et besætningsmedlem af dæk- eller maskinafdelingen, som ikke er officer."
+  ],
+  "Kazık Bağı (Clove Hitch)": [
+   "Clove hitch",
+   "Et hitch, der bruges til at lave et reb fast til en stolpe eller pullert; hurtig til at binde og løsne."
+  ],
+  "Gemici Bağı (Bowline)": [
+   "Bowline",
+   "En knude, der danner en fast løkke for enden af et reb, som ikke glider eller strammer; den mest basale sømandsknude."
+  ],
+  "Yoma (Sheet Bend)": [
+   "Sheet bend",
+   "En knude, der bruges til at forbinde to reb, også af forskellig tykkelse."
+  ],
+  "Balıkçı Bağı (Fisherman's Knot)": [
+   "Fisherman's knot",
+   "En stærk knude bruges til at forbinde to linjer permanent."
+  ],
+  "Figure of Eight": [
+   "Figure-of-eight knot",
+   "En stopperknude, der forhindrer enden af et reb i at løbe ud gennem en blok eller et hul."
+  ],
+  "Constrictor Bağı": [
+   "Constrictor knot",
+   "Et hitch, der griber en rund genstand meget stramt; bruges fx til at sikre en slange."
+  ],
+  "Rolling Hitch": [
+   "Rolling hitch",
+   "Et friktionstræk, der er bundet til et reb eller sparre, der holder mod et træk langs det; bruges til at tage belastningen af et reb under belastning."
+  ],
+  "Kısa Ek (Short Splice)": [
+   "Short splice",
+   "Sammenføjning af to reb-ender permanent ved at flette deres tråde sammen; det øger rebets diameter."
+  ],
+  "Uzun Ek (Long Splice)": [
+   "Long splice",
+   "En splejsning, der forbinder to reb uden at øge diameteren; bruges hvor rebet skal løbe gennem en blok."
+  ],
+  "Koçboynuzu": [
+   "Cleat",
+   "Et metalbeslag med to horn, hvorom et reb er lavet fast."
+  ],
+  "Panama Chock": [
+   "Panama chock",
+   "En lukket snor ved skibssiden, gennem hvilken fortøjningsliner føres; kræves til Panamakanalen transit."
+  ],
+  "Çıma Halatı (Heaving Line)": [
+   "Heaving line",
+   "En let line med en vægtet ende, kastet i land eller til et andet fartøj for at passere fortøjningslinerne."
+  ],
+  "Sentetik Halat": [
+   "Synthetic rope",
+   "Reb lavet af kunstfibre som nylon, polyester, polypropylen eller HMPE."
+  ],
+  "Tel Halat (Wire Rope)": [
+   "Wire rope",
+   "Højstyrke reb lavet af ståltråde; bruges til kraner, boretårne og lastsikring."
+  ],
+  "SWL (Safe Working Load)": [
+   "SWL (Safe Working Load)",
+   "Den maksimale belastning, som et reb, kæde eller løftegrej kan løfte eller holde ved normal brug."
+  ],
+  "MBL (Minimum Breaking Load)": [
+   "MBL (Minimum Breaking Load)",
+   "Den mindste kraft, ved hvilken et nyt reb eller kæde med garanti ikke knækker; sikkerhedsfaktoren er MBL divideret med SWL."
+  ],
+  "Snap Back Zone": [
+   "Snap-back zone",
+   "Det farlige område, som en fortøjningsline under spænding kan piske tilbage, hvis den skilles."
+  ],
+  "Doubling the Angle": [
+   "Doubling the angle on the bow",
+   "Finde afstanden fra et objekt ved at notere, hvornår dets relative pejling fordobles; afstanden mellem de to lejer er lig med afstanden."
+  ],
+  "Four Point Bearing": [
+   "Four point bearing",
+   "Finde afstanden fra et objekt fra lejer ved 45° og 90° på stævnen; strækningen er lig med afstanden udenfor."
+  ],
+  "Special Mark (Özel İşaret)": [
+   "Special mark",
+   "I IALA-systemet et gult mærke, der viser et særligt område eller træk, såsom et kabelområde eller skydebane."
+  ],
+  "Cardinal Mark": [
+   "Cardinal mark",
+   "I IALA-systemet er et mærke placeret nord, øst, syd eller vest for en fare; den viser på hvilken side det sikre vand ligger."
+  ],
+  "Isolated Danger Mark": [
+   "Isolated danger mark",
+   "I IALA-systemet er der sat et mærke på en fare af begrænset størrelse, der har sejlbart vand rundt omkring."
+  ],
+  "Safe Water Mark": [
+   "Safe water mark",
+   "I IALA-systemet, et rødt og hvidt lodret stribet mærke, der viser sikkert vand hele vejen rundt; bruges som et ilandførings- eller midtkanalmærke."
+  ],
+  "Liman Yanaşma Feneri": [
+   "Leading lights",
+   "Lys ved en havneindsejling, der, set på linje, markerer midten af en sejlrende eller den sikre indflyvningslinje."
+  ],
+  "Racon": [
+   "Racon",
+   "En radartransponder, der besvarer en radarpuls og viser et kodet mærke på radarskærmen."
+  ],
+  "Radar Shadow": [
+   "Radar shadow",
+   "Det blinde område bag store genstande, som radarstrålen ikke kan nå."
+  ],
+  "Lubber Line": [
+   "Lubber line",
+   "The fixed line on the compass bowl or radar display that marks the ship's head."
+  ],
+  "Pelorus": [
+   "Pelorus",
+   "Et sigteapparat, der bruges til at tage pejlinger; den har intet eget magnetisk kompas."
+  ],
+  "Rate of Turn Indicator": [
+   "Rate of turn indicator",
+   "Et instrument, der viser, hvor hurtigt skibet drejer, i grader i minuttet; krævet af SOLAS på skibe på 50.000 GT og derover."
+  ],
+  "Speed Log": [
+   "Speed and distance log",
+   "Et instrument, der måler skibets fart gennem vandet eller over jorden; Doppler eller elektromagnetisk."
+  ],
+  "Parallel Indexing": [
+   "Parallel indexing",
+   "En radarteknik: Linjer tegnet parallelt med det planlagte spor i en fastsat afstand fra et fast mål bruges til at overvåge skibets position."
+  ],
+  "Stiff Ship (Sert Gemi)": [
+   "Stiff ship",
+   "Et skib med en stor GM; hun ruller hurtigt og voldsomt og er utilpas, selvom hendes initiale stabilitet er høj."
+  ],
+  "Tender Ship (Yumuşak Gemi)": [
+   "Tender ship",
+   "Et skib med en lille GM; hun ruller langsomt med en lang periode, og risikoen for at kæntre er højere."
+  ],
+  "Hogging": [
+   "Hogging",
+   "Skibets Midte bøjer opad og Enderne hænger; det forårsager strukturel stress."
+  ],
+  "Sagging": [
+   "Sagging",
+   "Skibets Midte bøjer sig nedad, og Enderne hæver sig; det modsatte af hogging."
+  ],
+  "Still Water Bending Moment": [
+   "Still water bending moment",
+   "Det langsgående bøjningsmoment forårsaget af fordelingen af vægt og opdrift i roligt vand; grundlaget for styrkeberegninger."
+  ],
+  "Wave Bending Moment": [
+   "Wave bending moment",
+   "Det ekstra bøjningsmoment, der virker på skroget, når bølgerne passerer."
+  ],
+  "Torsional Stress": [
+   "Torsional stress",
+   "Stress forårsaget af vridende belastninger på skroget; især kritisk på store containerskibe."
+  ],
+  "FWA (Fresh Water Allowance)": [
+   "FWA (Fresh Water Allowance)",
+   "Den mængde, hvormed dybgangen øges, når skibet går fra saltvand til ferskvand; udtrykt i mm."
+  ],
+  "DWA (Dock Water Allowance)": [
+   "DWA (Dock Water Allowance)",
+   "Udkastkorrektionen for tætheden af havnevand mellem fersk- og saltvand."
+  ],
+  "Displacement Table": [
+   "Displacement table",
+   "En hydrostatisk tabel, der viser skibets deplacement ved forskellige dybgange."
+  ],
+  "Hydrostatic Curves": [
+   "Hydrostatic curves",
+   "Kurver, der giver værdier som TPC, MCTC, LCB og LCF mod dybgang."
+  ],
+  "KN Curves": [
+   "KN curves",
+   "Krydskurver af stabilitet: KN plottet mod forskydning for faste hælvinkler."
+  ],
+  "Wall-Sided Formula": [
+   "Wall-sided formula",
+   "GZ = sin θ × (GM + ½ BM tan² θ); giver GZ for et vægsidet skib, gældende indtil dækskanten dykker ned eller lænsen kommer frem."
+  ],
+  "Bilge Radius": [
+   "Bilge radius",
+   "Radius af den buede beklædning, hvor skibets bund vender ind i siden."
+  ],
+  "Shifting Boards": [
+   "Shifting boards",
+   "Lodrette langsgående opdelinger monteret i lastrummene for at forhindre kornlast i at flytte sig."
+  ],
+  "Grain Heeling Moment": [
+   "Grain heeling moment",
+   "Krængningsmomentet forårsaget af en antaget forskydning af kornlast; begrænset af IMO kornkoden."
+  ],
+  "Blowdown": [
+   "Boiler blowdown",
+   "Den kontrollerede udledning af kedelvand for at reducere de opløste faste stoffer i det."
+  ],
+  "Cylinder Lubrication": [
+   "Cylinder lubrication",
+   "I totaktsmotorer er det separate system, der smører cylinderforingen og stempelringene."
+  ],
+  "Crankcase Explosion": [
+   "Crankcase explosion",
+   "En farlig eksplosion forårsaget, når olietåge i krumtaphuset antændes af et hot spot."
+  ],
+  "Oil Mist Detector (OMD)": [
+   "Oil mist detector (OMD)",
+   "En detektor, der overvåger olietågekoncentrationen i krumtaphuset og giver en advarsel, før der kan opstå en eksplosion."
+  ],
+  "Scavenge Fire": [
+   "Scavenge fire",
+   "En brand i skylleluftrummet forårsaget af antændelse af olie- og kulstofaflejringer."
+  ],
+  "Stuffing Box": [
+   "Stuffing box",
+   "En pakket kirtel, der forsegler, hvor en aksel eller en stang passerer gennem et hus eller et skot."
+  ],
+  "Governor (Regülatör)": [
+   "Governor",
+   "Enheden, der justerer brændstoftilførslen automatisk for at holde motorhastigheden konstant, når belastningen ændres."
+  ],
+  "Indicator Card": [
+   "Indicator card",
+   "Tryk-volumendiagrammet taget fra en cylinder; bruges til at vurdere motorens ydeevne og finde fejl."
+  ],
+  "Compression Ratio": [
+   "Compression ratio",
+   "Cylindervolumenet med stemplet i nederste dødpunkt divideret med volumen ved øverste dødpunkt."
+  ],
+  "Clearance Volume": [
+   "Clearance volume",
+   "Volumen tilbage i cylinderen, når stemplet er i øverste dødpunkt."
+  ],
+  "TDC (Top Dead Centre)": [
+   "TDC (Top Dead Centre)",
+   "Stemplets højeste position i cylinderen."
+  ],
+  "BDC (Bottom Dead Centre)": [
+   "BDC (Bottom Dead Centre)",
+   "Stemplets laveste position i cylinderen."
+  ],
+  "Lub Oil Crosshead": [
+   "Crosshead lubricating oil",
+   "Smøreforsyningen til krydshovedets lejer; den har brug for olie ved højt tryk."
+  ],
+  "Plate Cooler": [
+   "Plate cooler",
+   "En plade-type varmeveksler; det overfører varme mellem havvand og ferskvand."
+  ],
+  "Relief Valve": [
+   "Relief valve",
+   "En sikkerhedsventil, der åbner automatisk ved overtryk for at beskytte systemet."
+  ],
+  "Thermostat": [
+   "Thermostatic valve",
+   "Et automatisk kontrolelement, der holder kølevandstemperaturen inden for et indstillet område."
+  ],
+  "Jacket Water": [
+   "Jacket cooling water",
+   "Ferskvandskølekredsløbet omkring motorcylindrene; et lukket kredsløb."
+  ],
+  "Expansion Tank": [
+   "Expansion tank",
+   "Hovedtanken i kølevandskredsløbet; det optager udvidelsen af vandet, når det opvarmes og lader luft undslippe."
+  ],
+  "Sea Chest": [
+   "Sea chest",
+   "En fordybning i undervandsskroget, dækket af et gitter, hvorigennem havvand suges ind."
+  ],
+  "Zinc Anode (Kurban Anot)": [
+   "Sacrificial anode (zinc anode)",
+   "En zinkanode monteret på undervandsskroget, der korroderer i stedet for stålet og forhindrer galvanisk korrosion."
+  ],
+  "ICCP": [
+   "ICCP (Impressed Current Cathodic Protection)",
+   "Et aktivt system, der beskytter skroget mod korrosion med en strøm tilført fra en ekstern kilde."
+  ],
+  "Tank Top": [
+   "Tank top",
+   "Den øverste belægning af den dobbelte bund; den danner gulvet i lastrummet og bærer lastens vægt."
+  ],
+  "Tweendeck": [
+   "Tweendeck",
+   "Et mellemdæk mellem det nederste lastrum og det øverste dæk; giver ekstra stuveplads til stykgods."
+  ],
+  "Feeder Vessel": [
+   "Feeder vessel",
+   "Et lille containerskib, der transporterer containere mellem mindre havne og de hub-havne, der betjenes af store skibe."
+  ],
+  "FCL (Full Container Load)": [
+   "FCL (Full Container Load)",
+   "En container, hvis hele indhold tilhører én afsender."
+  ],
+  "LCL (Less than Container Load)": [
+   "LCL (Less than Container Load)",
+   "En container fyldt med varer fra flere afsendere."
+  ],
+  "Outturn Report": [
+   "Outturn report",
+   "En optælling og tilstandsrapport for lasten efter losning."
+  ],
+  "Bagging": [
+   "Bagging",
+   "Anbringelse af bulklast i poser til transport."
+  ],
+  "Ship's Figures": [
+   "Ship's figures",
+   "Lastmængden fundet af skibet fra en dybgangsundersøgelse; sammenlignet med kysttallene."
+  ],
+  "Shore Figures": [
+   "Shore figures",
+   "Lastmængden fundet af kystvægten; en forskel fra skibets tal kan føre til en tvist."
+  ],
+  "Loading Computer": [
+   "Loading computer",
+   "Et indbygget computersystem, der beregner belastningstilstand, stabilitet og langsgående styrke."
+  ],
+  "COW (Crude Oil Washing)": [
+   "COW (Crude Oil Washing)",
+   "Vask af lasttankene på et råolietankskib med selve råolielasten; påkrævet af MARPOL."
+  ],
+  "Inert Gas (Asal Gaz)": [
+   "Inert gas",
+   "Gas med lavt iltindhold; bruges i tankskibes lasttanke for at forhindre eksplosioner."
+  ],
+  "Cargo Plan (Yükleme Planı)": [
+   "Cargo plan",
+   "Planen, der viser, hvor hver del af lasten er stuvet; udarbejdet med hensyn til stabilitet og rækkefølgen af havne."
+  ],
+  "Bay Plan": [
+   "Bay plan",
+   "På containerskibe, den detaljerede plan, der viser stuvningspositionen for hver container i hver bugt."
+  ],
+  "Segregation": [
+   "Segregation",
+   "Holde inkompatible klasser af farligt gods adskilt med de nødvendige afstande."
+  ],
+  "DSC (Digital Selective Calling)": [
+   "DSC (Digital Selective Calling)",
+   "Et system på VHF, MF og HF radioer til afsendelse af automatiske nødalarmer og opkaldsstationer."
+  ],
+  "Inmarsat-C": [
+   "Inmarsat-C",
+   "En meddelelsesbaseret satellitkommunikationsterminal; bruges til nødalarmer og til at modtage information om søfartssikkerhed."
+  ],
+  "LRIT": [
+   "LRIT",
+   "Langdistance identifikation og sporing; skibenes positioner rapporteres til og følges af deres flagstater."
+  ],
+  "SSAS": [
+   "SSAS",
+   "Skibssikkerhedsvarslingssystem; sender en skjult alarm i land i en sikkerhedstrussel som pirateri."
+  ],
+  "Foam Monitor": [
+   "Foam monitor",
+   "En fast eller bærbar skum-/vandkanon på dækket med langt kast."
+  ],
+  "Quick-Closing Valve": [
+   "Quick-closing valve",
+   "En ventil på en brændstof- eller olietank, der kan lukkes fra en fjern position i en brand."
+  ],
+  "Fire Damper": [
+   "Fire damper",
+   "En klap i en ventilationskanal, der lukker for at stoppe brandspredning gennem kanalen."
+  ],
+  "Watertight Door": [
+   "Watertight door",
+   "En dør i et vandtæt skot; den kan lukkes lokalt eller fra en fjernposition."
+  ],
+  "Muster List": [
+   "Muster list",
+   "Den officielle liste over opgaver og stationer for hver person om bord i en nødsituation."
+  ],
+  "Emergency Towing Arrangement": [
+   "Emergency towing arrangement",
+   "Bugseringsudstyret holdt klar ved stævn og agter, så skibet kan bugseres i nødstilfælde."
+  ],
+  "Lifeboat Releasing Gear": [
+   "Lifeboat release gear",
+   "Mekanismen, der frigør redningsbåden fra daviten, falder; on-load og off-load typer findes."
+  ],
+  "Free-Fall Lifeboat": [
+   "Free-fall lifeboat",
+   "En lukket redningsbåd søsat ved at glide ned ad en rampe i agterstavnen og falde frit i havet."
+  ],
+  "Rescue Boat": [
+   "Rescue boat",
+   "En hurtig båd, der bruges til at bjærge personer op af vandet og til at lede redningsflåder."
+  ],
+  "Line Throwing Appliance": [
+   "Line-throwing appliance",
+   "En anordning, der affyrer en line til et andet skib eller til en person i redningsaktioner."
+  ],
+  "DPA (Designated Person Ashore)": [
+   "DPA (Designated Person Ashore)",
+   "Den person i land, der i henhold til ISM-koden er udpeget til at forbinde skibet og rederiet i sikkerhedsspørgsmål."
+  ],
+  "Katabatik Rüzgâr": [
+   "Katabatic wind",
+   "En vind forårsaget af kold luft, der strømmer ned ad bakke under tyngdekraften fra højt terræn."
+  ],
+  "Anabatik Rüzgâr": [
+   "Anabatic wind",
+   "En vind, der blæser op ad en skråning, der er blevet varmet op af solen i løbet af dagen."
+  ],
+  "Sea Breeze (Deniz Meltemi)": [
+   "Sea breeze",
+   "En lokal vind blæser fra havet mod land i dagtimerne, fordi landet opvarmes hurtigere end havet."
+  ],
+  "Land Breeze (Kara Meltemi)": [
+   "Land breeze",
+   "En lokal vind blæser fra land mod havet om natten, fordi landet afkøles hurtigere end havet."
+  ],
+  "Monsun": [
+   "Monsoon",
+   "Et storstilet vindsystem, der vender retningen efter årstiderne; stærkest over Det Indiske Ocean."
+  ],
+  "Mistral": [
+   "Mistral",
+   "En kold, tør nordenvind, der blæser fra det sydlige Frankrig over Middelhavet."
+  ],
+  "Poyraz": [
+   "Poyraz",
+   "En kold, tør nordøstlig vind i Türkiye; stærk i Marmara- og Sortehavsregionerne."
+  ],
+  "Lodos": [
+   "Lodos",
+   "En varm, fugtig sydlig eller sydvestlig vind i Türkiye; stærk i Det Ægæiske Hav og Marmara."
+  ],
+  "Tramontana": [
+   "Tramontana",
+   "En kold nordlig eller nordvestlig vind i Middelhavet."
+  ],
+  "Douglas Deniz Durumu Skalası": [
+   "Douglas sea scale",
+   "En skala, der graderer havets tilstand fra 0 til 9 efter bølgehøjde."
+  ],
+  "Tropopoz": [
+   "Tropopause",
+   "Grænsen mellem troposfæren og stratosfæren; vejrets øvre grænse."
+  ],
+  "Bağıl Nem": [
+   "Relative humidity",
+   "Mængden af vanddamp i luften som en procentdel af det meste, den kunne rumme ved den temperatur."
+  ],
+  "Sling Psikrometresi": [
+   "Sling psychrometer",
+   "Et instrument med et vådt og et tørt termometer, hvirvlet i luften for at måle relativ luftfugtighed."
+  ],
+  "Kümülonimbus (Cb)": [
+   "Cumulonimbus (Cb)",
+   "En tårnhøj stormsky; det producerer torden, lyn, hagl og kraftig regn."
+  ],
+  "Sirrus (Ci)": [
+   "Cirrus (Ci)",
+   "En tynd, høj sky af iskrystaller; normalt pænt vejr, men det kan varsle en nærmer sig front."
+  ],
+  "Stratus (St)": [
+   "Stratus (St)",
+   "Et lavt, gråt lag sky; det giver støvregn og dårlig sigtbarhed."
+  ],
+  "Okta": [
+   "Okta",
+   "Enheden for skydække: ottendedele af himlen dækket, fra 0 (klar) til 8 (overskyet)."
+  ],
+  "METAR": [
+   "METAR",
+   "Det standardkodede format til rutinemæssige vejrobservationer fra lufthavne og kyststationer."
+  ],
+  "Form Factor (1+k)": [
+   "Form factor (1+k)",
+   "En faktor, der viser, hvordan skrogets form øger friktionsmodstanden; brugt i Holtrop-Mennen metoden."
+  ],
+  "Wave Pattern Resistance": [
+   "Wave pattern resistance",
+   "Modstandskomponenten på grund af energien i skibets bølgesystem."
+  ],
+  "Appendage Resistance": [
+   "Appendage resistance",
+   "Den ekstra modstand forårsaget af vedhæng som ror, finnestabilisatorer og lænsekøle."
+  ],
+  "Air Resistance": [
+   "Air resistance",
+   "Den aerodynamiske modstand af skibets skrog og overbygning over vand."
+  ],
+  "Effective Power (PE)": [
+   "Effective power (PE)",
+   "Den kraft, der skal til for at overvinde skibets modstand ved en given hastighed; PE = R × V."
+  ],
+  "Delivered Power (PD)": [
+   "Delivered power (PD)",
+   "Kraften leveret til propellen; kraften tilbage efter akseltabene."
+  ],
+  "Quasi-Propulsive Coefficient (QPC)": [
+   "Quasi-propulsive coefficient (QPC)",
+   "Den samlede fremdriftseffektivitet; skrogets produkt, relative rotations- og åbentvandseffektiviteter."
+  ],
+  "Open Water Efficiency": [
+   "Open water efficiency",
+   "Effektiviteten af propellen, der arbejder i åbent vand, uden påvirkning af skroget."
+  ],
+  "Hull Efficiency": [
+   "Hull efficiency",
+   "Beregnet som (1-t)/(1-w), hvor t er trykfradragsbrøken og w kølvandsbrøken."
+  ],
+  "Rudder Area Ratio": [
+   "Rudder area ratio",
+   "Rorarealet som en andel af det undersøiske sideareal; normalt mindst omkring 1,5-2% for god manøvredygtighed."
+  ],
+  "Resistance Test": [
+   "Resistance test",
+   "En bugsertanktest, hvor en skibsmodel bugseres for at måle dens modstand."
+  ],
+  "Propeller Open Water Test": [
+   "Propeller open water test",
+   "En test af en modelpropel under åbent vand for at finde KT, KQ og η₀."
+  ],
+  "Self-Propulsion Test": [
+   "Self-propulsion test",
+   "En modeltest, hvor modellen drives af sin egen propel for at simulere driftsforhold."
+  ],
+  "Preferential Trip": [
+   "Preferential trip",
+   "Automatisk frakobling af ikke-essentielle belastninger, når en generator er overbelastet."
+  ],
+  "Dead Ship Condition": [
+   "Dead ship condition",
+   "Den tilstand, hvori al magt er tabt; recovery bruger nødgenerator og batterier."
+  ],
+  "Power Management System (PMS)": [
+   "Power Management System (PMS)",
+   "Styresystemet, der starter og stopper generatorerne automatisk og deler belastningen mellem dem."
+  ],
+  "Load Sharing": [
+   "Load sharing",
+   "Generatorer, der kører parallelt, deler belastningen ligeligt eller i forhold til deres ratings."
+  ],
+  "Synchronization": [
+   "Synchronising",
+   "Tilslutning af en indgående generator til samleskinnen, når dens spænding, frekvens og fase matcher."
+  ],
+  "Reverse Power Protection": [
+   "Reverse power protection",
+   "Et beskyttelsesrelæ, der udløser en generator, når den begynder at tage strøm fra samleskinnen og køre som en motor."
+  ],
+  "VFD (Variable Frequency Drive)": [
+   "VFD (Variable Frequency Drive)",
+   "Et drev, der styrer hastigheden af en elektrisk motor ved at ændre forsyningsfrekvensen; det sparer energi på pumper og blæsere."
+  ],
+  "Soft Starter": [
+   "Soft starter",
+   "Et elektronisk kredsløb, der starter en elektrisk motor jævnt ved at hæve spændingen gradvist."
+  ],
+  "Star-Delta Starter": [
+   "Star-delta starter",
+   "En startmetode, der kører motoren i stjerneforbindelse og derefter skifter til trekant, hvilket reducerer startstrømmen."
+  ],
+  "Megger Test": [
+   "Megger test",
+   "En isolationsmodstandstest lavet med en høj testspænding; resultatet er angivet i MΩ."
+  ],
+  "Navtex Receiver": [
+   "NAVTEX receiver",
+   "En modtager, der automatisk opfanger navigations- og meteorologiske advarsler på 518 kHz og udskriver eller viser dem."
+  ],
+  "S-Band / X-Band Radar": [
+   "S-band and X-band radar",
+   "S-bånd (10 cm): længere rækkevidde og bedre ydeevne i regn. X-bånd (3 cm): højere opløsning og registrerer SART'er."
+  ],
+  "Gyro Repeater": [
+   "Gyro repeater",
+   "En kompasrepeater drevet af mastergyrokompasset, der bruges til at læse kursen og tage pejling på andre positioner."
+  ],
+  "BNWAS": [
+   "BNWAS",
+   "Bridge Navigation Watch Alarm System; et obligatorisk system, der med mellemrum kontrollerer, at vagtbetjenten er opmærksom."
+  ],
+  "MARPOL Ek I": [
+   "MARPOL Annex I",
+   "Forebyggelse af forurening med olie; kræver blandt andet Oliejournalen og et oliefiltreringssystem."
+  ],
+  "MARPOL Ek II": [
+   "MARPOL Annex II",
+   "Regler for forebyggelse af forurening med skadelige flydende stoffer, der transporteres i bulk."
+  ],
+  "MARPOL Ek III": [
+   "MARPOL Annex III",
+   "Forebyggelse af forurening med skadelige stoffer, der transporteres ad søvejen i emballeret form."
+  ],
+  "MARPOL Ek IV": [
+   "MARPOL Annex IV",
+   "Regler for forebyggelse af forurening med spildevand fra skibe."
+  ],
+  "MARPOL Ek V": [
+   "MARPOL Annex V",
+   "Forebyggelse af forurening med affald fra skibe; der gælder skærpede udledningsforbud på særlige områder."
+  ],
+  "MARPOL Ek VI": [
+   "MARPOL Annex VI",
+   "Forebyggelse af luftforurening fra skibe; grænser for SOx-, NOx- og CO₂-emissioner."
+  ],
+  "ECA (Emission Control Area)": [
+   "ECA (Emission Control Area)",
+   "Et havområde, hvor brændstofsvovl ikke må overstige 0,10 % (SOx ECA) og/eller NOx Tier III grænser gælder (NOx ECA)."
+  ],
+  "SECA": [
+   "SECA",
+   "Svovlemissionskontrolområde; svovlindholdet i det anvendte brændstof er begrænset til 0,10 %."
+  ],
+  "NECA": [
+   "NECA",
+   "NOx-emissionskontrolområde; et område, hvor Tier III NOx-grænserne gælder."
+  ],
+  "SIRE (Ship Inspection Report)": [
+   "SIRE (Ship Inspection Report Programme)",
+   "Inspektionsprogrammet for tank- og gasskibe drevet af OCIMF."
+  ],
+  "CDI (Chemical Distribution Institute)": [
+   "CDI (Chemical Distribution Institute)",
+   "Inspektionsprogrammet for kemikalietankskibe og terminaler."
+  ],
+  "Rightship": [
+   "RightShip",
+   "Et kontrol- og sikkerhedsvurderingsprogram, primært til tørlastskibe."
+  ],
+  "IHM (Inventory of Hazardous Materials)": [
+   "IHM (Inventory of Hazardous Materials)",
+   "Dokumentet med en liste over de farlige materialer om bord, som kræves af Hong Kong-konventionen og EU's skibsophugningsforordning."
+  ],
+  "Continuous Synopsis Record (CSR)": [
+   "Continuous Synopsis Record (CSR)",
+   "En optegnelse over skibets historie om navn, flag, ejere og klasse; påkrævet af SOLAS Kapitel XI-1."
+  ],
+  "SMS (Safety Management System)": [
+   "SMS (Safety Management System)",
+   "Rederiets og skibets system af sikkerhedspolitikker og -procedurer under ISM-koden."
+  ],
+  "Warping": [
+   "Warping",
+   "Flytning af skibet langs kajen med sine fortøjningsliner ved hjælp af egne spil eller landhjælp."
+  ],
+  "Kedging": [
+   "Kedging",
+   "Flytning af et skib ved at lægge et lille (kedge) anker ud og hive ind på det."
+  ],
+  "Stern First Approach": [
+   "Stern-first approach",
+   "Nærmer sig køjen agterstavnen først; bruges i afgrænsede områder og til middelhavsfortøjning."
+  ],
+  "Wheel Over Point (WOP)": [
+   "Wheel over point (WOP)",
+   "Det punkt, hvor roret skal sættes over for at foretage en ændring, er selvfølgelig beregnet ud fra skibets fremrykning og overførsel."
+  ],
+  "Dragging Anchor": [
+   "Dragging anchor",
+   "Ankeret formår ikke at holde havbunden og trækker; det kræver en alarm og øjeblikkelig handling."
+  ],
+  "Holding Ground": [
+   "Holding ground",
+   "Hvor godt holder havbunden ankeret: mudder og sand holder godt, sten og koraller dårligt."
+  ],
+  "Scope (Zincir Uzunluğu)": [
+   "Scope",
+   "Forholdet mellem kabellængden udbetalt og vanddybden; 5 til 7 gange anbefales for god holding."
+  ],
+  "Let Go (Demir Bırak)": [
+   "Let go (the anchor)",
+   "Ordren om at udløse ankerspilsbremsen, så ankeret falder til havbunden."
+  ],
+  "Short Stay": [
+   "Short stay",
+   "Mens du hæver op, er ankerkablet blevet forkortet og fører stejlt ned; scenen før 'up and down'."
+  ],
+  "Long Stay": [
+   "Long stay",
+   "Ankerkablet er langt og fører næsten vandret ud; et tegn på, at ankeret holder godt."
+  ],
+  "Breast Line": [
+   "Breast line",
+   "En fortøjningsline førte vinkelret på skibets midterlinje; det stopper skibet i at bevæge sig væk fra kajen."
+  ],
+  "Spring Line": [
+   "Spring line",
+   "En fortøjningsline ført diagonalt, der stopper skibet i at bevæge sig frem eller bagud langs kajen; der er frem og efter fjedre."
+  ],
+  "Head Line": [
+   "Head line",
+   "En fortøjningsline førte frem fra stævnen til køjen."
+  ],
+  "Stern Line": [
+   "Stern line",
+   "En fortøjningsline førte agter fra agter til kaj."
+  ],
+  "Bow Stopper": [
+   "Bow stopper (chain stopper)",
+   "Beslaget på forkastlen, der låser ankerkablet og tager dets last af ankerspillet."
+  ],
+  "Single Up": [
+   "Single up",
+   "Ordren før afgang om at reducere fortøjningerne til en linje ved hver position."
+  ],
+  "All Fast": [
+   "All fast",
+   "Rapporten om, at alle fortøjningsliner er lavet hurtige; anløbsoperationen er afsluttet."
+  ],
+  "Stand By Engine": [
+   "Stand by engine",
+   "Ordren til maskinrummet for at gøre motoren klar til manøvrering."
+  ],
+  "Finished With Engine (FWE)": [
+   "Finished with engine (FWE)",
+   "Telegrafordren om, at motoren ikke længere er påkrævet; normalt givet efter at skibet har lagt til kaj eller ankret."
+  ]
+ },
+ "meta": {
+  "generated": "pivot",
+  "gates": "1f852a1686b4",
+  "sources": {
+   "c:Gemicilik": "8c44fab82667b496",
+   "c:Seyir": "cf03cf2e9cdf95a2",
+   "c:Stabilite": "785ca9526809c90e",
+   "c:Makine": "435e36201c2989a8",
+   "c:Kargo": "6c98e86fc49b32d6",
+   "c:Güvenlik": "db6e7e410412f585",
+   "c:Meteoroloji": "dede2dd99c4c9dbc",
+   "c:Hidrodinamik": "afdf85eabb06d920",
+   "c:Halatçılık": "d2e76530e0d41f03",
+   "c:Elektrik & Elektronik": "7cf9da711a38bda9",
+   "c:Hukuk & Mevzuat": "7ac63081dc32a7fb",
+   "c:Liman & Manevra": "f3f9e22b563e4b65",
+   "t:Viyalamak": "92477d94dd88c73c",
+   "t:Küpeşte": "024f7a5c691c9e1a",
+   "t:Borda": "de36a16f17cd3d40",
+   "t:İskele (Port)": "0ec5eccf44e8e5c0",
+   "t:Sancak": "035ad3df01e0a750",
+   "t:Pruva": "2f8b67c0e657bd88",
+   "t:Kıç": "f177cdcf5065bf78",
+   "t:Omurga (Keel)": "f2da504c9be1dc39",
+   "t:Postalar (Frames)": "ab71ab7131ad6890",
+   "t:Güverte (Deck)": "c26f67bca7ac2ec5",
+   "t:Ambar (Hold)": "8f314378e94c2e8c",
+   "t:Sintine (Bilge)": "15829ed77275d669",
+   "t:Baca (Funnel)": "501c72f760f9251f",
+   "t:Köprü Üstü (Bridge)": "49c190e1989e2dc1",
+   "t:Kamarot": "62172886b319a8c3",
+   "t:Lostromo (Bosun)": "d0e62c934a25ac06",
+   "t:Vardiya": "03cc081dda41116b",
+   "t:Alabanda": "3bc3f6a4d1f22e25",
+   "t:Alesta": "92522188d8c84a87",
+   "t:Apiko": "ffd26b1b0e4b8cc0",
+   "t:Baş Bodoslama": "01f7fcd03aba94a0",
+   "t:Kıç Bodoslama": "b57cb209faea6bcd",
+   "t:Borda Feneri": "7902c2d9322c5cb2",
+   "t:Çarmık": "30e1433314aae726",
+   "t:Matafora": "0c827d18a34ad158",
+   "t:Karakol": "dc70fbdad0645095",
+   "t:Grandi": "2d8dfb0e2de0f4a9",
+   "t:Flama": "545fdb37e5744980",
+   "t:Çıma": "9a754d1b5f333d8a",
+   "t:Babafingo": "e0e57c12f5e5093d",
+   "t:Bocurgat (Windlass)": "b2048036e6a4d4a6",
+   "t:Palamar": "e4c0cde8aa5623ab",
+   "t:Kaptan Köşkü": "60be3ba93046db94",
+   "t:Çamaşırlık": "d3de1920f3f144fc",
+   "t:Karantina Bayrağı": "9bcc62630348ec7b",
+   "t:Volta": "0340747ff9d52872",
+   "t:Bağ (Knot)": "cfb0225acb82295f",
+   "t:Ek (Splice)": "83e2a86833b515e8",
+   "t:Kasa Bağı": "c33335b7c78958f9",
+   "t:Camadan": "011da1efd4cbc268",
+   "t:Palanga": "71425143b7226cdb",
+   "t:Makara (Block)": "a30b884fe8ef06cc",
+   "t:Kıstırma (Stopper)": "570bbe6cfd145d00",
+   "t:Yeke": "0fad1e9fe80429d2",
+   "t:Baba (Bollard)": "b42e8a8c1be44719",
+   "t:Bite (Bitt)": "85b2a8a691b48204",
+   "t:Sapan (Sling)": "d5b4a3c674508a33",
+   "t:Mevki (Position)": "59a17753a8f6dee3",
+   "t:DGPS": "32ad5f4b2b2eecbc",
+   "t:Kerteriz (Bearing)": "567e567c82809da1",
+   "t:Rota (Course)": "4fcc66cec8becf3f",
+   "t:Büyük Daire Seyri (Great Circle)": "9d172916a295174e",
+   "t:Loksodrom (Rhumb Line)": "957e7b9af7991156",
+   "t:Meridyen": "83c398a07635c5bb",
+   "t:Paralel": "ca84271878cfb8c6",
+   "t:Enlem (Latitude)": "3d19d33ef82026e9",
+   "t:Boylam (Longitude)": "e23e78b9656cc8f6",
+   "t:Deniz Mili (Nautical Mile)": "779c02561a41d156",
+   "t:Knot": "0aafe38af141c957",
+   "t:ETA (Estimated Time of Arrival)": "824cdd4bc4a12173",
+   "t:ETD (Estimated Time of Departure)": "77a63b112b066e2c",
+   "t:AIS (Automatic Identification System)": "d758a41261a59ec4",
+   "t:ECDIS": "6b0a0ecc96400eb8",
+   "t:Radar": "0cef4664aa3a0daf",
+   "t:ARPA": "eaade26e32f88895",
+   "t:CPA (Closest Point of Approach)": "2c0ba91a348912c5",
+   "t:TCPA (Time to CPA)": "2ca7cf280709a67f",
+   "t:Pusula Hatası (Compass Error)": "791dd19e5398bfd6",
+   "t:Sapma (Variation)": "7f571aa62f58242d",
+   "t:İnhiraf (Deviation)": "520e2a6849f9812f",
+   "t:Seyir Planı (Passage Plan)": "7267f1c7baf17d12",
+   "t:Waypoint": "2651d768ed9abd61",
+   "t:Dümen Açısı": "d05d1f65d753d329",
+   "t:Derinlik Ölçer (Echo Sounder)": "c567693672c96b6c",
+   "t:Fener (Lighthouse)": "695020c5af6d58da",
+   "t:Şamandıra (Buoy)": "9a6c16cadf243d4c",
+   "t:IALA İşaretleme Sistemi": "08c5d742ad968f52",
+   "t:Kıyı Seyri (Coastal Navigation)": "73d24357c0df88fe",
+   "t:Açık Deniz Seyri (Ocean Navigation)": "7cb31a50d95ea582",
+   "t:GPS": "ccca22bbc314a07f",
+   "t:Gyro Pusula": "8aad766d38938a96",
+   "t:Manyetik Pusula": "f7611d431edcc14c",
+   "t:Running Fix": "870d33e572af4816",
+   "t:Cross Bearing": "bed97e60d6f30cd2",
+   "t:Set & Drift": "567c19c7f8a9197a",
+   "t:Leeway": "63330d0c7abf913c",
+   "t:GM (Metasentrik Yükseklik)": "eea928b831cfb58f",
+   "t:Serbest Yüzey Etkisi": "3ad31a1c3bc5e546",
+   "t:Ağırlık Merkezleri (KG)": "f4627c15d1eb60e6",
+   "t:Trim": "30ed613be143023d",
+   "t:Deplasman (Displacement)": "fbbc88563cb43663",
+   "t:Yüzdürme Merkezi (B – Buoyancy)": "db4a3990603938e1",
+   "t:GZ (Doğrultucu Kol)": "5bcd6a363f013ecc",
+   "t:BM (Metasentrik Yarıçap)": "fc6f0efe4564d1c4",
+   "t:KB": "f38c2206fd0c59d8",
+   "t:KM": "05c68d9538a6569e",
+   "t:KG": "972be1170d758258",
+   "t:Doğrultucu Moment": "61d74b2fc4449672",
+   "t:Devrilme Momenti": "196e1c975638fb70",
+   "t:Denge Açısı (Angle of Loll)": "250cc7a1c3d4e293",
+   "t:Dinamik Stabilite": "1c510c66a237b22a",
+   "t:Statik Stabilite Eğrisi (GZ Curve)": "2f976d0d64fe6192",
+   "t:TPC (Tonnes Per Centimetre)": "ba3d8491f0fafe81",
+   "t:MCT (Moment to Change Trim)": "e758936bc000d36d",
+   "t:LCG (Longitudinal Centre of Gravity)": "2d1e033352941bee",
+   "t:LCB (Longitudinal Centre of Buoyancy)": "552707b99626fadc",
+   "t:İnklinasyon Deneyi (Inclining Test)": "7a1ccc777e6a8b11",
+   "t:Permeabilite": "d1bdcfa51b2fe194",
+   "t:Floodable Length": "b4dde981bdb5409f",
+   "t:Yük Kaydırma": "994a952bd3e46b64",
+   "t:Karina (Hull)": "f9bf2d4f8a7e0740",
+   "t:Su Çekimi (Draft)": "c788bb1b6c0dcafc",
+   "t:Fribord (Freeboard)": "bf741295fcc5f9ce",
+   "t:Plimsoll Markası": "25032f703439b7eb",
+   "t:Kavitasyon": "aeeb2052fea93863",
+   "t:Dizel Motor (Marine Diesel)": "4076bed0a95e33e5",
+   "t:Turboşarj (Turbocharger)": "73abdb3b5a788269",
+   "t:SFOC (Specific Fuel Oil Consumption)": "36d0ddaa5ba61fd1",
+   "t:Separatör (Purifier)": "dbbd639c3b4383c8",
+   "t:Yağlama Sistemi": "978e7cbd2bcf6271",
+   "t:Soğutma Sistemi": "2b0ab136121f180e",
+   "t:Kazan (Boiler)": "42e224f83484a6f8",
+   "t:Jeneratör": "577ed0b500844cc7",
+   "t:Şaft (Shaft)": "4bab08282741a8c7",
+   "t:Pervane (Propeller)": "e86fffed88b34980",
+   "t:Dümen (Rudder)": "810b94f5186c115f",
+   "t:Bow Thruster": "3b119d78df1fcc05",
+   "t:Stern Tube": "94f09521ee39a760",
+   "t:Yardımcı Motor": "3c0551851701c1c6",
+   "t:Emercensi Jeneratör": "858eb3aef761619e",
+   "t:Egzoz Gazı Temizleme (Scrubber)": "0f5a17896d3a73c5",
+   "t:Balast Pompası": "4e3964b343846047",
+   "t:Sintine Pompası": "2fa84fdcf99b5178",
+   "t:OWS (Oil Water Separator)": "5e550c589e6c4743",
+   "t:İncineratör (Yakma Fırını)": "c5d8eea5c2a25f87",
+   "t:Kompresör": "63f9cccf59307557",
+   "t:Piston": "9dcc7289f864fe3d",
+   "t:Silindir Gömleği (Cylinder Liner)": "31cf0cee33bd23c8",
+   "t:Süpap (Valve)": "4d280a690edb8eff",
+   "t:Dökme Yük (Bulk Cargo)": "6c0ccb04e43cb8f0",
+   "t:Konteyner": "ae5bfe5e88385df7",
+   "t:TEU (Twenty-foot Equivalent Unit)": "8bbe7ec2fbfd8561",
+   "t:Stowage Factor": "bd4d08deea6932f3",
+   "t:Broken Stowage": "5daf7ca5075893e4",
+   "t:Dunnage": "cd2241f9a2841c37",
+   "t:Lashing": "95e7d0d62f88febe",
+   "t:Manifest": "4de8d2c354f062ce",
+   "t:Bill of Lading (Konşimento)": "06610d0ce525e21d",
+   "t:Ambar Kapağı (Hatch Cover)": "799da713034b76ae",
+   "t:Grain Stability": "4b7d83dbfc4f8f55",
+   "t:IMDG Code": "67d1165ff4140eb3",
+   "t:IMSBC Code": "29d06a26f65aeeae",
+   "t:Draft Survey": "090ed3d9be5ad608",
+   "t:Ullage": "521bedd2ac2447ea",
+   "t:Sounding": "c66b5b82a223804e",
+   "t:Deadweight (DWT)": "1e2814f980f586ad",
+   "t:Lightweight": "26b6b176f0fdd786",
+   "t:Tonnage (Gross / Net)": "1d998a35469113e9",
+   "t:Reefer Konteyner": "cbd3de051c514703",
+   "t:Tanker": "c9e3df6c3b1c46ad",
+   "t:RoRo (Roll-on Roll-off)": "e6395b0823b73d88",
+   "t:SOLAS": "28b9b984d8200ef7",
+   "t:MARPOL": "e6f2ce0294e728b1",
+   "t:ISM Code": "158e4ad7ffa326c2",
+   "t:ISPS Code": "a95d59e6eaf5e752",
+   "t:Can Yeleği (Life Jacket)": "9ec16a290ad807c9",
+   "t:Can Simidi (Life Buoy)": "b156784c65d8f920",
+   "t:Filika (Lifeboat)": "5ef9328b967e93de",
+   "t:Can Salı (Life Raft)": "ab8647ee698208da",
+   "t:EPIRB": "69573f4b2cfe4bcd",
+   "t:SART": "0332bc100228a18f",
+   "t:GMDSS": "0975729b3f643325",
+   "t:MOB (Man Overboard)": "bc93288498b72616",
+   "t:Muster Station": "f58985b782027b3a",
+   "t:Fire Drill": "4aebe65dfe5f847a",
+   "t:Abandon Ship Drill": "ba3a2e68262d805b",
+   "t:SCBA": "bb8e53050a5e4f8a",
+   "t:CO₂ Söndürme Sistemi": "c1c24f3bb36fa766",
+   "t:Köpüklü Söndürme": "6a2092f5a82ad5a4",
+   "t:Yangın Tulumbası (Fire Pump)": "21ecbce1124fe181",
+   "t:Emercensi Dümen": "77651897012d57f9",
+   "t:SOPEP": "612a1b9fbf73f7b5",
+   "t:Enclosed Space Entry": "a765be0071877db0",
+   "t:Hot Work Permit": "66093dcee3bd7112",
+   "t:Buharlaşma (Evaporation)": "f6a35aa5cc15cca0",
+   "t:Dew Point (Çiy Noktası)": "439771eec253c797",
+   "t:Beaufort Skalası": "1155bf6b02dc8a6c",
+   "t:Tropikal Siklon": "1fa6e4dd1994aa5f",
+   "t:Kasırga (Hurricane)": "36ebce99fda331da",
+   "t:Tayfun (Typhoon)": "ef811fe2be43a5a6",
+   "t:Barometrik Basınç": "0fb2e5b1945b8d71",
+   "t:Antisiklon (High Pressure)": "72f8dacbe42700fb",
+   "t:Siklon (Low Pressure)": "9cb70b1e4b14e011",
+   "t:Cephe (Front)": "af334872ec924892",
+   "t:Sis (Fog)": "a3c1542683c1600d",
+   "t:Deniz Suyu Sıcaklığı (SST)": "02c9514a560c0677",
+   "t:Trade Winds (Alize Rüzgârları)": "0c12547df67e65a7",
+   "t:Gel-Git (Tide)": "ae64cda96ab6e22e",
+   "t:Spring Tide (Büyük Gel-Git)": "09a335d6ce66b9ca",
+   "t:Neap Tide (Küçük Gel-Git)": "272fa8499e2eda49",
+   "t:Swell (Ölü Deniz)": "3478cff2ce25cf28",
+   "t:Navtex": "f22652808cdc6380",
+   "t:Rüzgâr Gülü": "33ac7ad45cbf457e",
+   "t:İzobar": "8fe94dcb4a778206",
+   "t:Dalga Yükü (Wave Load)": "6c47609aba34f7c2",
+   "t:Direnç (Resistance)": "53801a39178cb854",
+   "t:Sürtünme Direnci (Frictional Resistance)": "f37983f28130c00c",
+   "t:Dalga Direnci (Wave Resistance)": "d33a84acc7b3a5d3",
+   "t:Froude Sayısı": "cabe19039e10eb05",
+   "t:Reynolds Sayısı": "4ff8c48680ccddf3",
+   "t:İtme Kuvveti (Thrust)": "96d6b990cbabb649",
+   "t:Wake Fraction": "dd555ee0ed0047fd",
+   "t:Thrust Deduction": "248bbe31348963c6",
+   "t:Propulsive Efficiency": "b255a3c1666c8e49",
+   "t:Squat Effect": "c2a1a93fb39762c2",
+   "t:Bank Effect": "9b487d533cabbc78",
+   "t:Slamming": "d1b78a1034eba416",
+   "t:Broaching": "c1232431471be17f",
+   "t:Parametrik Rolling": "288b54d87d68c7ec",
+   "t:Added Mass": "acf445899a07f794",
+   "t:Sinkage & Trim": "33fd559154b6c228",
+   "t:Boundary Layer": "40a2f2f0d55c2c68",
+   "t:Ana Şalt (Main Switchboard)": "47a245f484eb4a03",
+   "t:Shore Connection": "436f6d18ac1185af",
+   "t:UPS": "54f8e4f71fbe3a79",
+   "t:VHF Telsiz": "a21deb837945d77f",
+   "t:MF/HF Telsiz": "a3a72e4d58355401",
+   "t:Inmarsat": "041591278c81d14b",
+   "t:Log (Hız Ölçer)": "7bbcfa90d3524113",
+   "t:Anemometre": "0653bd37c443151b",
+   "t:Voyage Data Recorder (VDR)": "0ec7670656bb063c",
+   "t:Autopilot": "fb387c21bc40db30",
+   "t:COLREG": "c000797076b9d5f6",
+   "t:STCW": "0d07b294acc8b48b",
+   "t:MLC 2006": "4a22f4c804d00c4c",
+   "t:Flag State (Bayrak Devleti)": "63e0f0897888570c",
+   "t:Port State Control (PSC)": "49dd2014463bda73",
+   "t:Class Survey (Klas Denetimi)": "981a7b100b79a900",
+   "t:P&I Club": "aee1baa4c40604ef",
+   "t:Charter Party": "f0b85a0b93ef8af2",
+   "t:Salvage (Kurtarma)": "0e1ffc248acb901d",
+   "t:General Average (Müşterek Avarya)": "27fd0f72ec5c3bfb",
+   "t:Demurrage": "1d55b88535ee0088",
+   "t:Despatch": "7e4c54bf077bb81d",
+   "t:NOR (Notice of Readiness)": "0f6cfdc319910847",
+   "t:Lay Time (Starya Süresi)": "536b9914a7a76100",
+   "t:LOF (Lloyd's Open Form)": "777d72800a6ccfe7",
+   "t:Yanaşma (Berthing)": "096853fc729057fa",
+   "t:Kalkma (Unberthing)": "914031b829ca4ada",
+   "t:Demir Atma (Anchoring)": "4d64c24d927c839d",
+   "t:Demir Alma (Weighing Anchor)": "eadd3f535cb51b3d",
+   "t:Römorkör (Tug)": "eb448ea74b20ab19",
+   "t:Kılavuz Kaptan (Pilot)": "130ad44a4f459632",
+   "t:Pilot Merdiveni": "0ae7f3670ac6071d",
+   "t:Çıpa (Anchor)": "f5494b12f3892267",
+   "t:Zincir (Chain)": "52ac59647229a86d",
+   "t:Posa (Shackle)": "eb090757fa4266fa",
+   "t:Usturmaça (Fender)": "52eb428ea918a524",
+   "t:Swing Circle": "19164cdcaea153f6",
+   "t:Turning Circle": "7338c7c1d994a17d",
+   "t:Advance & Transfer": "a0fab07f3ad9e139",
+   "t:Crash Stop": "fe803a1faa84c91f",
+   "t:Dead Slow": "54ac966835f30ca2",
+   "t:VTS (Vessel Traffic Service)": "99767c30787a6a64",
+   "t:Kanal Seyrüseferi": "70c399068dc10064",
+   "t:Dry Dock (Havuz)": "703c652fc1a3d43b",
+   "t:Şamandıraya Bağlanma": "8216a22b2df0c356",
+   "t:Amade": "4c7655e15ad95485",
+   "t:Demir Yeri (Anchorage)": "12ba7f3b70a44036",
+   "t:Enine Perde (Bulkhead)": "f9c47e52b2b7f149",
+   "t:Forkastel (Forecastle)": "2044aa9ca186b2d9",
+   "t:Güverte Ambarı (Tweendeck)": "ae06a89cf43ec032",
+   "t:Havuzlama (Dry Docking)": "99ae718d883e057c",
+   "t:Koferdamı (Cofferdam)": "46b0b70606993743",
+   "t:Lumboz (Porthole)": "d5a941272cf3ca4d",
+   "t:Manika": "8330f89315c49a0b",
+   "t:Mayıstra": "8b881c34aee4a75d",
+   "t:Neta": "6f00399aba20f2c1",
+   "t:Orsalamak": "82b9acd4c483fdc7",
+   "t:Pupa": "842fc9e27e9ff950",
+   "t:Safra (Ballast)": "1f300bd727dc6a44",
+   "t:Uskuna (Schooner)": "37355a5af8b34fee",
+   "t:Mercator Projeksiyonu": "bbd7ca10d79296bb",
+   "t:Gnomonic Projeksiyon": "ccf9f7152b8ebebc",
+   "t:Dead Reckoning (Tahmini Seyir)": "82c07b098933dad1",
+   "t:Fix (Kesin Mevki)": "ed8221aef844b3d0",
+   "t:Estimated Position (EP)": "cbfd04a8d292fbf3",
+   "t:DLat (Enlem Değişimi)": "bee8a72681fb81e9",
+   "t:DLong (Boylam Değişimi)": "ae042d0faee8adf6",
+   "t:Departure": "02a0efb654d01664",
+   "t:Vertex (Tepe Noktası)": "b086c10360cdb0b8",
+   "t:Composite Great Circle": "a998fa51a1addb10",
+   "t:Course Made Good (CMG)": "6b710676d54a40c9",
+   "t:Speed Made Good (SMG)": "29fe2651bbce7f15",
+   "t:Chart Datum": "b6ff109b847c7241",
+   "t:Sextant": "724b0fc1fb4c29af",
+   "t:Chronometer": "74b54a5e8300ae7d",
+   "t:Nautical Almanac": "827ca1f15889efa1",
+   "t:Sight Reduction Tables": "4686d3b8330d9514",
+   "t:Height of Eye": "b2539673e3db7061",
+   "t:Dip (Ufuk Alçalması)": "18ad60f4b4580ce0",
+   "t:Index Error": "20522177d1501359",
+   "t:Azimut": "6e15e575509686ec",
+   "t:Amplitude": "eefddf447f0224ff",
+   "t:Intercept (Aradaki Fark)": "94e107783e12a110",
+   "t:Position Line (Mevki Doğrusu)": "0d86716fe4e76e02",
+   "t:Under Keel Clearance (UKC)": "95d810363f03d1e9",
+   "t:Traffic Separation Scheme (TSS)": "3344466aa7de93b6",
+   "t:Precautionary Area": "faeedb93bf265b4e",
+   "t:Tidal Stream": "94364deb87ee4f99",
+   "t:Chart Correction": "c08b696826d61408",
+   "t:Notice to Mariners (NtM)": "3df8c0f13e80ae7a",
+   "t:Metacenter (M)": "59553bba31b37f78",
+   "t:Vanishing Angle": "e9b2671e540b03cc",
+   "t:Range of Stability": "b69f911b5a26d27e",
+   "t:Righting Lever Maximum": "c38833fd6ab22357",
+   "t:Cross Curves of Stability": "e21dc4151a2b1a4d",
+   "t:Intact Stability": "e7b9983feafee5c1",
+   "t:Damage Stability": "5e72d42abd8bfa2e",
+   "t:Subdivision": "76f9e6c889b02467",
+   "t:Margin Line": "db859073d789620c",
+   "t:Heel (Yatma)": "5d7907f909ffd6ec",
+   "t:List": "6c2f7ee98c091f91",
+   "t:Loll": "7ba4f30d7b1182d5",
+   "t:Waterplane Area": "ea5413e9bebb36b2",
+   "t:Block Coefficient (Cb)": "1513ec179637bf39",
+   "t:Midship Coefficient (Cm)": "56a7b26bad03403e",
+   "t:Prismatic Coefficient (Cp)": "0f54b128f57b1934",
+   "t:Crosshead (Çapraz Kafa)": "9fbfc6df31e35243",
+   "t:Crankshaft (Krank Mili)": "7569c1efe6e34999",
+   "t:Camshaft (Kam Mili)": "6424b943fbfd8310",
+   "t:Connecting Rod (Biyel Kolu)": "c8ce9cc8d1e1c7ec",
+   "t:Fuel Injector (Enjektör)": "daab26d13b8f15e5",
+   "t:Exhaust Valve (Egzoz Süpabı)": "9696b058ae1e0b0c",
+   "t:Scavenging (Süpürme)": "e89590acb057df5d",
+   "t:Deaerator": "1fdd0fcb87102e94",
+   "t:Economizer": "3106ab3aa59dd1d3",
+   "t:Evaporator (Tatlı Su Üreteci)": "8285b4dc533e6241",
+   "t:Oily Water Separator (OWS)": "7c68af769555e5be",
+   "t:Sewage Treatment Plant": "7b3ce9acb6fac40d",
+   "t:Ballast Water Treatment (BWTS)": "989cdd0c835e47e4",
+   "t:Stern Tube Seal": "3276162a50d5adf3",
+   "t:Controllable Pitch Propeller (CPP)": "b65d29902b6f4443",
+   "t:Fixed Pitch Propeller (FPP)": "1a04fb364b12f25f",
+   "t:Reduction Gear (Dişli Kutusu)": "693169ea0be98098",
+   "t:Heat Exchanger (Isı Değiştirici)": "91fb4ab2234d0436",
+   "t:Centrifugal Pump": "951952a1c138d4f6",
+   "t:Positive Displacement Pump": "2013bc0ad02ca0a1",
+   "t:Air Compressor (Hava Kompresörü)": "04d4f03d93b6c9e4",
+   "t:Indicator Diagram": "5b5e0c40aa7102c4",
+   "t:Mean Effective Pressure (MEP)": "691aef3ea72b58fd",
+   "t:Brake Power": "e7a7c6fb433d4f8a",
+   "t:Indicated Power": "84bf4dffd897d921",
+   "t:Thermal Efficiency": "49253a55e15357a1",
+   "t:LSA Code": "35c7650b5128fd17",
+   "t:FSS Code": "67ea3489284aad43",
+   "t:IAMSAR Manual": "e21d8132a0d345f6",
+   "t:Williamson Turn": "013384c719997710",
+   "t:Scharnow Turn": "f4e9ddca3681b22c",
+   "t:Anderson Turn": "bca0d49396db0c39",
+   "t:Immersion Suit": "a8b30617868344d3",
+   "t:Thermal Protective Aid (TPA)": "33cc6dfa57140ad7",
+   "t:Pyrotechnic Signals": "724d28ba527dc698",
+   "t:EEBD (Emergency Escape Breathing Device)": "973f64df266ac2c8",
+   "t:Fixed Fire Detection System": "611b024d4058bc57",
+   "t:Sprinkler System": "2db0f61176f464b1",
+   "t:Inert Gas System (IGS)": "b3f73c3de9ffddcd",
+   "t:Permit to Work": "e1dbd2cc8629bb72",
+   "t:Risk Assessment": "6a939eee7649b573",
+   "t:Toolbox Meeting": "1088c03dc3be8a46",
+   "t:Near Miss Report": "da5e0764b937386c",
+   "t:Yoğunlaşma (Condensation)": "09b0480a5ce97d0f",
+   "t:Adveksiyon Sisi": "09edaa4b0191049b",
+   "t:Radyasyon Sisi": "8fa67741c2e29713",
+   "t:Coriolis Kuvveti": "58fd0ea1d695cfc2",
+   "t:Geostrofik Rüzgâr": "76fdcb402640749c",
+   "t:Konveksiyon": "d637d41e16c92fd4",
+   "t:Soğuk Cephe": "965ddf26e9aff82a",
+   "t:Sıcak Cephe": "ba55282caf7e4629",
+   "t:Oklüzyon Cephesi": "bf9d50fd6120d57b",
+   "t:Hava Kütlesi": "72d39fa4eddf9557",
+   "t:Jet Stream": "a25b7de037b80efa",
+   "t:ITCZ (Ekvatoral Konverjans)": "f6878e3bb8b8bc57",
+   "t:Fetch": "1252c9092c1ea580",
+   "t:Significant Wave Height (Hs)": "868a68a475b45cff",
+   "t:Typhoon Signal": "bcc453310c5e5af3",
+   "t:Buys Ballot Kuralı": "2a12a93336223cb3",
+   "t:Squall (Bora)": "e91ae0871491b817",
+   "t:Waterspout (Hortum)": "9b3c1429c99b494f",
+   "t:Bulbous Bow (Bodoslama Bülbü)": "b2e4ba4991c26d87",
+   "t:Bilge Keel": "0e89674752947996",
+   "t:Stabilizer Fin": "bdbfe583c924c853",
+   "t:Slip (Kayma)": "95b509d92abebe8a",
+   "t:Pitch (Hatve)": "f52bba14375c5be1",
+   "t:Cavitation": "67c3db6d3379dfc4",
+   "t:Interaction Effect": "33bf264755ddb7ac",
+   "t:Shallow Water Effect": "16e40cf0926f9958",
+   "t:Trim Optimization": "9cae2cbcc20770e5",
+   "t:Alternator": "4c17e312e254c315",
+   "t:Transformer": "77b7b3058d222202",
+   "t:Circuit Breaker (Şalter)": "69bcaa1266f1ccf4",
+   "t:Frequency Converter": "458646bb4054af8e",
+   "t:Synchroscope": "868a055bbecc8703",
+   "t:AVR (Automatic Voltage Regulator)": "bba437e151fd6b7e",
+   "t:Earth Fault Monitor": "4f60ddf1b788b94e",
+   "t:Motor Starter": "75bf714fdf2885ab",
+   "t:PLC (Programmable Logic Controller)": "c091ea89cc072f65",
+   "t:SCADA": "28abf3ff1abccf74",
+   "t:BWM Convention": "8817302732a90284",
+   "t:SEEMP": "b9518bd6959f19c6",
+   "t:EEDI": "5f77b05032965134",
+   "t:CII Rating": "13132dd605cd9510",
+   "t:DOC (Document of Compliance)": "3eb85c523b3901bc",
+   "t:SMC (Safety Management Certificate)": "1b438933da8e8ae9",
+   "t:IOPP Certificate": "85d07d555ead41a9",
+   "t:Load Line Certificate": "4e1b3c1a4c37a4b4",
+   "t:Safety Equipment Certificate": "76543102d7e80198",
+   "t:Tonnage Certificate": "844916c0909edf8c",
+   "t:Grain Loading Diagram": "3352ab5b887a6dad",
+   "t:Lashing Calculator": "3f31827109768b50",
+   "t:Cargo Securing Manual (CSM)": "2eb42b168b832c2b",
+   "t:Ventilation Hold": "50454e8fccdd3ea8",
+   "t:Sweat (Terleme)": "943b80589af5e8b1",
+   "t:TML (Transportable Moisture Limit)": "1de63c57c8984df3",
+   "t:Flow Moisture Point (FMP)": "424d3af790d7b53a",
+   "t:Liquefaction": "3de3858ccf0cc494",
+   "t:Fumigation": "8fa0724421ea45ca",
+   "t:Classification Survey": "6097f0e23ee0bcf0",
+   "t:Damage Report (Hasar Raporu)": "5cf3cbeefe589e4c",
+   "t:Letter of Protest": "fcb8a1f31efdcc18",
+   "t:Dangerous Goods Declaration": "3767f087a9e9a82c",
+   "t:Mediterranean Mooring": "618ed2f08f8d7354",
+   "t:Single Point Mooring (SPM)": "b5153ec46372d1a9",
+   "t:Parallel Body": "27369b3a502083d5",
+   "t:Pivot Point": "5e05fff747db154c",
+   "t:Tactical Diameter": "02909252e0ad00e0",
+   "t:Kick (Başlangıç Sapması)": "75b9d799c067f598",
+   "t:Transverse Thrust": "9dd921960db2f18d",
+   "t:Approach Speed": "f846e474fbefa6bd",
+   "t:STS Operation": "80ced8baf57f0250",
+   "t:Alabora": "7955319ff50e0c23",
+   "t:Arma": "a8fe4ef11015fa51",
+   "t:Ayna Kıç": "14cbc61a3188dd1b",
+   "t:Demir Taramak": "da689ff5b070c28e",
+   "t:Duba": "81bfda05ebe1fc13",
+   "t:Gemiadamı": "40c0e5f81b36e679",
+   "t:Iskarmoz": "39bff73a196de2ec",
+   "t:Kontra": "cd2bd42c6376b7e8",
+   "t:Tayfa": "6cb4d55f96f9f568",
+   "t:Kazık Bağı (Clove Hitch)": "451906a114853583",
+   "t:Gemici Bağı (Bowline)": "b43ad3dde1602e16",
+   "t:Yoma (Sheet Bend)": "b1e197e9c43434eb",
+   "t:Balıkçı Bağı (Fisherman's Knot)": "5e91f252bacab024",
+   "t:Figure of Eight": "e64e2d0267b5ad5a",
+   "t:Constrictor Bağı": "2737edf3fcf85637",
+   "t:Rolling Hitch": "51dffb70ff0b8ad2",
+   "t:Kısa Ek (Short Splice)": "a8597b21e9b34c35",
+   "t:Uzun Ek (Long Splice)": "2cf245726ff6b219",
+   "t:Koçboynuzu": "cb375573629882ed",
+   "t:Panama Chock": "58eece5ba00ba472",
+   "t:Çıma Halatı (Heaving Line)": "b1ce06ea93385a3c",
+   "t:Sentetik Halat": "51650ce18f8f6be6",
+   "t:Tel Halat (Wire Rope)": "b2d67d0d4098dae8",
+   "t:SWL (Safe Working Load)": "ece56e84286d535f",
+   "t:MBL (Minimum Breaking Load)": "432ebbf065335813",
+   "t:Snap Back Zone": "c16a8450d470d4e1",
+   "t:Doubling the Angle": "60f6641f926fe413",
+   "t:Four Point Bearing": "3b5af426105b59bc",
+   "t:Special Mark (Özel İşaret)": "523e7dbae6212d8d",
+   "t:Cardinal Mark": "2c615813d4d00703",
+   "t:Isolated Danger Mark": "4a63ec5200a1e712",
+   "t:Safe Water Mark": "3648fd7d9e250a2f",
+   "t:Liman Yanaşma Feneri": "1f32ba0b92f95a77",
+   "t:Racon": "1f41b5ff9c1cb382",
+   "t:Radar Shadow": "a569b651c8e4917e",
+   "t:Lubber Line": "95c5253376c65909",
+   "t:Pelorus": "5bc3667a4a24c481",
+   "t:Rate of Turn Indicator": "5b152b82b8c2f92a",
+   "t:Speed Log": "bf01fa7990a44dcc",
+   "t:Parallel Indexing": "7c6f302689d992aa",
+   "t:Stiff Ship (Sert Gemi)": "641f1db891ed37dd",
+   "t:Tender Ship (Yumuşak Gemi)": "f2bfa41c1d0c3a30",
+   "t:Hogging": "02ea8281b008bb77",
+   "t:Sagging": "9c510809d31e1cfa",
+   "t:Still Water Bending Moment": "8e349d9d618b0e6c",
+   "t:Wave Bending Moment": "def3e36d8c1f6a14",
+   "t:Torsional Stress": "fb4279100e556445",
+   "t:FWA (Fresh Water Allowance)": "47dd02900598403c",
+   "t:DWA (Dock Water Allowance)": "c47aea6ad8e49c3a",
+   "t:Displacement Table": "f163822fa25217c0",
+   "t:Hydrostatic Curves": "61b96a394112a32e",
+   "t:KN Curves": "5e46d67b971532f9",
+   "t:Wall-Sided Formula": "37fd1c320dce7896",
+   "t:Bilge Radius": "225b3f4b9c594cb5",
+   "t:Shifting Boards": "aa954050a660abb6",
+   "t:Grain Heeling Moment": "7f72b76874686c7a",
+   "t:Blowdown": "00058a2317038fd7",
+   "t:Cylinder Lubrication": "7c045094298b4deb",
+   "t:Crankcase Explosion": "1bacc1cc884e46d4",
+   "t:Oil Mist Detector (OMD)": "c6ea84605b94e833",
+   "t:Scavenge Fire": "e1e38a89d44b6e9d",
+   "t:Stuffing Box": "4527a268c3882bea",
+   "t:Governor (Regülatör)": "6510a72de3d20717",
+   "t:Indicator Card": "388dde65986fc108",
+   "t:Compression Ratio": "b68e207b4ec2b12b",
+   "t:Clearance Volume": "04ef795ff33d2dbf",
+   "t:TDC (Top Dead Centre)": "f479072205ebcf92",
+   "t:BDC (Bottom Dead Centre)": "c3743d1539172c72",
+   "t:Lub Oil Crosshead": "a56e77ebaf712686",
+   "t:Plate Cooler": "8a94ab5e215ce42f",
+   "t:Relief Valve": "ad3c3bc7170c8cde",
+   "t:Thermostat": "9c71a2b4280cc7f5",
+   "t:Jacket Water": "7d5c3d0b35685d7c",
+   "t:Expansion Tank": "aa6c08de56915fc1",
+   "t:Sea Chest": "dbeed1350b821ee4",
+   "t:Zinc Anode (Kurban Anot)": "8fcbbb3084d20d2e",
+   "t:ICCP": "d014f94929a72514",
+   "t:Tank Top": "7510425cc0adc533",
+   "t:Tweendeck": "d03f51af5b54d309",
+   "t:Feeder Vessel": "0a69f0f5cda93a09",
+   "t:FCL (Full Container Load)": "54984b2efb881df4",
+   "t:LCL (Less than Container Load)": "3865f7b13b5beab6",
+   "t:Outturn Report": "92e801472ccf80a7",
+   "t:Bagging": "e4ee6b9b0b9d6917",
+   "t:Ship's Figures": "399caeef756d01b3",
+   "t:Shore Figures": "53c977386ca8e12f",
+   "t:Loading Computer": "2ffbf873070f5bbf",
+   "t:COW (Crude Oil Washing)": "ad09ca2ba37f6004",
+   "t:Inert Gas (Asal Gaz)": "8eafa9ea5ef6ce8d",
+   "t:Cargo Plan (Yükleme Planı)": "d8d7df3a51b396c5",
+   "t:Bay Plan": "1db3853350beacbe",
+   "t:Segregation": "6d5f1da3ac5c3b6d",
+   "t:DSC (Digital Selective Calling)": "08a7066973ecb0d9",
+   "t:Inmarsat-C": "179080a8f94d4d5c",
+   "t:LRIT": "58b63d8febca2012",
+   "t:SSAS": "0c8e6f3127101651",
+   "t:Foam Monitor": "9aba733cfb673582",
+   "t:Quick-Closing Valve": "0ab3267c1483606d",
+   "t:Fire Damper": "d99734cd89f7a03c",
+   "t:Watertight Door": "e5c2ae6c5c27863c",
+   "t:Muster List": "82830dbc95c91d50",
+   "t:Emergency Towing Arrangement": "1866454c0715b1b9",
+   "t:Lifeboat Releasing Gear": "3cce1af8ed6f5eb9",
+   "t:Free-Fall Lifeboat": "4e922472fd05cc56",
+   "t:Rescue Boat": "1cb42b2e8e531a34",
+   "t:Line Throwing Appliance": "048520f9fbe9bff3",
+   "t:DPA (Designated Person Ashore)": "426127696029edf7",
+   "t:Katabatik Rüzgâr": "af39eef1f0cd6211",
+   "t:Anabatik Rüzgâr": "78aabd899b6a028b",
+   "t:Sea Breeze (Deniz Meltemi)": "812cbe25b0f9606e",
+   "t:Land Breeze (Kara Meltemi)": "ef869443115c36b0",
+   "t:Monsun": "796e775f2bc637a7",
+   "t:Mistral": "0e4bf0ae23439933",
+   "t:Poyraz": "d61b7aef67e895a6",
+   "t:Lodos": "1fdeb4d8fe0de7ed",
+   "t:Tramontana": "7ea723241e5d181f",
+   "t:Douglas Deniz Durumu Skalası": "d12085dd057cf9dd",
+   "t:Tropopoz": "93c47f66af190e8b",
+   "t:Bağıl Nem": "395121b67dca6999",
+   "t:Sling Psikrometresi": "eb93a9c4dfedface",
+   "t:Kümülonimbus (Cb)": "39e9259a46ac0321",
+   "t:Sirrus (Ci)": "689e902cb6ab4c63",
+   "t:Stratus (St)": "aa5138ae83bf128a",
+   "t:Okta": "22ad949f9c18d600",
+   "t:METAR": "895741658ddedb3d",
+   "t:Form Factor (1+k)": "f928ab609226ded7",
+   "t:Wave Pattern Resistance": "291f1951e041c2ab",
+   "t:Appendage Resistance": "b9570145d4cc1427",
+   "t:Air Resistance": "1144ce999143c7b3",
+   "t:Effective Power (PE)": "af29c04b2f3b5e58",
+   "t:Delivered Power (PD)": "8a4ecde9d7017719",
+   "t:Quasi-Propulsive Coefficient (QPC)": "6dd9f9f72157f0f6",
+   "t:Open Water Efficiency": "4bec27a512e6cf37",
+   "t:Hull Efficiency": "9c68bca5a2f1cf4a",
+   "t:Rudder Area Ratio": "a52a5b6989fff7f1",
+   "t:Resistance Test": "1cb6fa3273ae6241",
+   "t:Propeller Open Water Test": "b2680a65c8b6c3d0",
+   "t:Self-Propulsion Test": "3ac6d2ecb23d5003",
+   "t:Preferential Trip": "775a1795a44f32e5",
+   "t:Dead Ship Condition": "8a3578dbeb1e43cc",
+   "t:Power Management System (PMS)": "7f3cf590ac427834",
+   "t:Load Sharing": "fdf160c167d944f9",
+   "t:Synchronization": "2f4c72cd082be26a",
+   "t:Reverse Power Protection": "d4b2d2b2d9cec08f",
+   "t:VFD (Variable Frequency Drive)": "a53cca9194a190aa",
+   "t:Soft Starter": "763acfe07103fda2",
+   "t:Star-Delta Starter": "8e8f4e87d83daf54",
+   "t:Megger Test": "ee3fb8a9dcdf574b",
+   "t:Navtex Receiver": "adea2a9dc1a66057",
+   "t:S-Band / X-Band Radar": "80e266fc4fc47cdc",
+   "t:Gyro Repeater": "5cac73e8b37dc27a",
+   "t:BNWAS": "7d95ecdad865ee04",
+   "t:MARPOL Ek I": "cb9561909b81ac78",
+   "t:MARPOL Ek II": "1655a79e0f9d0664",
+   "t:MARPOL Ek III": "71ddef2a285e7ad7",
+   "t:MARPOL Ek IV": "722731127304fa02",
+   "t:MARPOL Ek V": "d6830a11394319cc",
+   "t:MARPOL Ek VI": "67f0d04d7d3f2417",
+   "t:ECA (Emission Control Area)": "f8bfe709435e4a01",
+   "t:SECA": "ffd8e85d001b66d0",
+   "t:NECA": "c546a7a70f8686ee",
+   "t:SIRE (Ship Inspection Report)": "8ff35b8100958b6d",
+   "t:CDI (Chemical Distribution Institute)": "065238b7d31c873d",
+   "t:Rightship": "dedd05bc153431a7",
+   "t:IHM (Inventory of Hazardous Materials)": "d78d4ad2a5820e81",
+   "t:Continuous Synopsis Record (CSR)": "fc9f5e22df0240c9",
+   "t:SMS (Safety Management System)": "a7de864148f1db1c",
+   "t:Warping": "0013ec7bcdd92d98",
+   "t:Kedging": "a01fb42bd134ff0a",
+   "t:Stern First Approach": "9f71675953b61c24",
+   "t:Wheel Over Point (WOP)": "4141fee0ad6211b1",
+   "t:Dragging Anchor": "cdb9ca88621612a7",
+   "t:Holding Ground": "b7ed9031fb3c8ac7",
+   "t:Scope (Zincir Uzunluğu)": "c256c90f58787c4b",
+   "t:Let Go (Demir Bırak)": "b60c832cf35194b6",
+   "t:Short Stay": "32b251a1e8fc34f6",
+   "t:Long Stay": "bf315954aefaff76",
+   "t:Breast Line": "524b87ca84f87909",
+   "t:Spring Line": "7048d5535de804a5",
+   "t:Head Line": "7f79d4a56f2cb4c8",
+   "t:Stern Line": "cf52f0ab90c6c2bd",
+   "t:Bow Stopper": "ab17df1c46e9e93c",
+   "t:Single Up": "786b2648d7616599",
+   "t:All Fast": "ece857805db2909c",
+   "t:Stand By Engine": "abde3d2e19f41733",
+   "t:Finished With Engine (FWE)": "969e4547efc0ff26"
+  }
+ }
+}

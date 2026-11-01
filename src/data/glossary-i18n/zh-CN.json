@@ -1,0 +1,3166 @@
+{
+ "categories": {
+  "Gemicilik": "航海技术",
+  "Seyir": "航行",
+  "Stabilite": "稳性",
+  "Makine": "海洋工程",
+  "Kargo": "货物",
+  "Güvenlik": "安全",
+  "Meteoroloji": "气象学",
+  "Hidrodinamik": "流体动力学",
+  "Halatçılık": "绳索",
+  "Elektrik & Elektronik": "电气与电子",
+  "Hukuk & Mevzuat": "法律法规",
+  "Liman & Manevra": "Port & Manoeuvring"
+ },
+ "terms": {
+  "Viyalamak": [
+   "Steady (helm order)",
+   "将舵收回，使船头保持在预定航线上； “维亚！”命令（Steady！）告诉舵手保持船头在该航线上保持稳定。"
+  ],
+  "Küpeşte": [
+   "Bulwark",
+   "沿甲板边缘的实心栏杆或板；它可以防止船上的人落水。"
+  ],
+  "Borda": [
+   "Ship's side",
+   "船的舷侧外壳；称为左舷或右舷。"
+  ],
+  "İskele (Port)": [
+   "Port (side)",
+   "船的左侧向前看；晚上通过红色侧灯显示。"
+  ],
+  "Sancak": [
+   "Starboard (side)",
+   "船的右侧向前看；夜间通过绿色侧灯显示。"
+  ],
+  "Pruva": [
+   "Bow",
+   "船的前端，形状适合分开水和迎接波浪。"
+  ],
+  "Kıç": [
+   "Stern",
+   "船的尾部，舵和螺旋桨所在的位置。"
+  ],
+  "Omurga (Keel)": [
+   "Keel",
+   "沿船底前后延伸的主要结构构件；船体的脊梁。"
+  ],
+  "Postalar (Frames)": [
+   "Frames",
+   "与龙骨成直角安装的横向结构构件；它们赋予船体形状。"
+  ],
+  "Güverte (Deck)": [
+   "Deck",
+   "船舶的水平面；用于行走、工作和搬运货物。"
+  ],
+  "Ambar (Hold)": [
+   "Cargo hold",
+   "甲板下方用于运载货物的封闭空间。"
+  ],
+  "Sintine (Bilge)": [
+   "Bilge",
+   "船体内部的最低部分，龙骨和船舷之间，漏水聚集的地方。"
+  ],
+  "Baca (Funnel)": [
+   "Funnel",
+   "将机舱废气排出船外的结构；它的颜色还可以识别运输公司。"
+  ],
+  "Köprü Üstü (Bridge)": [
+   "Bridge",
+   "船舶指挥中心：容纳导航、操纵和通信设备的封闭空间。"
+  ],
+  "Kamarot": [
+   "Steward",
+   "负责照顾和清洁乘客或船员舱的机组人员。"
+  ],
+  "Lostromo (Bosun)": [
+   "Bosun (Boatswain)",
+   "高级套牌等级；负责绳索工作、油漆和甲板维护。"
+  ],
+  "Vardiya": [
+   "Watch",
+   "船舶人员的值班期限；通常安排为四小时休息八小时 (4-8) 或六小时休息六小时 (6-6)。"
+  ],
+  "Alabanda": [
+   "Hard over",
+   "将舵转到最大角度；以命令“hard a-port”或“hard a-starboard”给出。"
+  ],
+  "Alesta": [
+   "Stand by",
+   "意思是“准备好”的海事命令。"
+  ],
+  "Apiko": [
+   "Up and down",
+   "锚索垂直，锚即将冲出海底的瞬间。"
+  ],
+  "Baş Bodoslama": [
+   "Stem",
+   "位于船头最前端的结构构件，从龙骨垂直升起。"
+  ],
+  "Kıç Bodoslama": [
+   "Sternpost",
+   "后端的结构构件，从龙骨垂直升起。"
+  ],
+  "Borda Feneri": [
+   "Sidelights",
+   "船舶左舷和右舷的航行灯；红色为左舷，绿色为右舷。"
+  ],
+  "Çarmık": [
+   "Shrouds",
+   "设置在桅杆和船舷之间以支撑桅杆的绳索或金属丝；上面的绳索让船员们可以爬到高处。"
+  ],
+  "Matafora": [
+   "Davit",
+   "一种类似起重机的机械装置，用于将救生艇和救援船放入水中。"
+  ],
+  "Karakol": [
+   "Lookout",
+   "值班人员不断留意任何影响船舶安全航行的情况。"
+  ],
+  "Grandi": [
+   "Mainsail",
+   "主帆通常是最大的帆，设置在主桅上。"
+  ],
+  "Flama": [
+   "Pennant",
+   "用于发出信号的又长又窄的旗帜。"
+  ],
+  "Çıma": [
+   "Rope end (working end)",
+   "绳子的自由端，打结或过线时移动的部分。"
+  ],
+  "Babafingo": [
+   "Topgallant sail",
+   "在方帆帆船上，帆位于中帆上方，高在桅杆上。"
+  ],
+  "Bocurgat (Windlass)": [
+   "Windlass",
+   "艏楼上的机器用于拉入和放出锚索。"
+  ],
+  "Palamar": [
+   "Mooring line",
+   "用于将船舶固定在泊位或浮标上的绳索的总称。"
+  ],
+  "Kaptan Köşkü": [
+   "Wheelhouse",
+   "舰桥上船长站立并发出航行命令的部分。"
+  ],
+  "Çamaşırlık": [
+   "Laundry",
+   "船员洗衣服的空间；大型船舶上的单独隔间。"
+  ],
+  "Karantina Bayrağı": [
+   "Quarantine flag (Q flag)",
+   "黄旗Q；它的意思是“我的船只健康，我请求免费通行证”。抵达的船只会驾驶它，直到获得通行证为止。"
+  ],
+  "Volta": [
+   "Making fast",
+   "通过轮流围绕系柱或系桩来固定绳索。"
+  ],
+  "Bağ (Knot)": [
+   "Knot",
+   "通过将一根绳子系在其自身或另一根绳子上而形成的紧固装置。"
+  ],
+  "Ek (Splice)": [
+   "Splice",
+   "通过将绳索末端的股线交织而成的永久连接。"
+  ],
+  "Kasa Bağı": [
+   "Eye splice",
+   "在绳索末端形成永久孔眼（环）的接头。"
+  ],
+  "Camadan": [
+   "Reef (reef knot)",
+   "通过收拢部分帆并将其系紧来减少帆的面积；用于此目的的平结是礁结。"
+  ],
+  "Palanga": [
+   "Tackle",
+   "块和绳子的组合，用于增加拉力。"
+  ],
+  "Makara (Block)": [
+   "Block",
+   "框架中的滑轮，绳索穿过该滑轮；它改变了拉力的方向，或者与铲球结合起来，使拉力倍增。"
+  ],
+  "Kıstırma (Stopper)": [
+   "Stopper",
+   "用于将绳索或链条固定在负载下的装置，以便将其转移到系桩或夹板上。"
+  ],
+  "Yeke": [
+   "Tiller",
+   "用于用手转动舵的杠杆；用于小船上的直接转向。"
+  ],
+  "Baba (Bollard)": [
+   "Bollard",
+   "码头或船上的短而坚固的垂直柱，用于固定系泊线。"
+  ],
+  "Bite (Bitt)": [
+   "Bitts",
+   "甲板上的一对坚固的柱子，系泊缆绳围绕着柱子向上翻起。"
+  ],
+  "Sapan (Sling)": [
+   "Sling",
+   "用于将负载连接到吊钩的钢丝或合成绳索装置。"
+  ],
+  "Mevki (Position)": [
+   "Position",
+   "船舶在给定时刻的位置，以纬度和经度表示。"
+  ],
+  "DGPS": [
+   "DGPS",
+   "差分 GPS：通过参考站的修正，卫星定位精度提高到米级或更高。"
+  ],
+  "Kerteriz (Bearing)": [
+   "Bearing",
+   "从观察者到物体的方向；用指南针测量并以度表示。"
+  ],
+  "Rota (Course)": [
+   "Course",
+   "船舶驾驶或计划行驶的方向；从北边顺时针测量。"
+  ],
+  "Büyük Daire Seyri (Great Circle)": [
+   "Great circle sailing",
+   "沿着大圆弧航行，这是地球表面两点之间的最短距离。"
+  ],
+  "Loksodrom (Rhumb Line)": [
+   "Rhumb line (loxodrome)",
+   "以相同角度穿过每条子午线的线；当罗盘航向未改变时所遵循的轨迹。"
+  ],
+  "Meridyen": [
+   "Meridian",
+   "从北极到南极的假想半圆；它定义经度。"
+  ],
+  "Paralel": [
+   "Parallel of latitude",
+   "与赤道平行的假想圆；它定义了纬度。"
+  ],
+  "Enlem (Latitude)": [
+   "Latitude",
+   "赤道以北或以南某个地点的角距离，测量范围为 0° 到 90°。"
+  ],
+  "Boylam (Longitude)": [
+   "Longitude",
+   "格林威治子午线以东或以西的某个地点的角距离，测量范围为 0° 到 180°。"
+  ],
+  "Deniz Mili (Nautical Mile)": [
+   "Nautical mile",
+   "距离单位等于纬度一弧分； 1852 米。"
+  ],
+  "Knot": [
+   "Knot (speed)",
+   "海上速度的单位：每小时一海里。"
+  ],
+  "ETA (Estimated Time of Arrival)": [
+   "ETA (Estimated Time of Arrival)",
+   "船舶预计到达港口或给定位置的时间。"
+  ],
+  "ETD (Estimated Time of Departure)": [
+   "ETD (Estimated Time of Departure)",
+   "船舶预计离港的时间。"
+  ],
+  "AIS (Automatic Identification System)": [
+   "AIS (Automatic Identification System)",
+   "自动传输船舶身份、位置、航向和速度的无线电系统。"
+  ],
+  "ECDIS": [
+   "ECDIS",
+   "电子海图显示及信息系统；当它符合运输规则时，它被视为与纸质海图等效。"
+  ],
+  "Radar": [
+   "Radar",
+   "使用无线电波来检测周围物体的位置、范围和运动的设备。"
+  ],
+  "ARPA": [
+   "ARPA",
+   "自动雷达绘图辅助；自动计算出跟踪目标的航向、速度和最近接近点。"
+  ],
+  "CPA (Closest Point of Approach)": [
+   "CPA (Closest Point of Approach)",
+   "两艘船相互擦肩而过的预测最小距离。"
+  ],
+  "TCPA (Time to CPA)": [
+   "TCPA (Time to CPA)",
+   "两艘船到达最近接近点之前的预计剩余时间。"
+  ],
+  "Pusula Hatası (Compass Error)": [
+   "Compass error",
+   "指南针显示的北方与真北之间的总差；变异和偏差的总和。"
+  ],
+  "Sapma (Variation)": [
+   "Variation",
+   "真北与磁北之间的角度；它随着地理位置的变化而变化。"
+  ],
+  "İnhiraf (Deviation)": [
+   "Deviation",
+   "磁北和罗盘北的差异，是由船舶本身的钢铁造成的。"
+  ],
+  "Seyir Planı (Passage Plan)": [
+   "Passage plan",
+   "制定详细的泊位计划，确保船舶安全航行。"
+  ],
+  "Waypoint": [
+   "Waypoint",
+   "通道计划中设置的中间转弯或检查点。"
+  ],
+  "Dümen Açısı": [
+   "Rudder angle",
+   "舵从船中位置转向左舷或右舷的角度。"
+  ],
+  "Derinlik Ölçer (Echo Sounder)": [
+   "Echo sounder",
+   "通过向海底发送声音脉冲来测量船下水深的设备。"
+  ],
+  "Fener (Lighthouse)": [
+   "Lighthouse",
+   "固定在海岸或海上、引导船只的灯。"
+  ],
+  "Şamandıra (Buoy)": [
+   "Buoy",
+   "停泊在海面以帮助安全航行的浮动标记。"
+  ],
+  "IALA İşaretleme Sistemi": [
+   "IALA Maritime Buoyage System",
+   "浮标和标志的国际规则；分为A区和B区。"
+  ],
+  "Kıyı Seyri (Coastal Navigation)": [
+   "Coastal navigation",
+   "使用视觉参考和电子辅助设备在海岸附近导航。"
+  ],
+  "Açık Deniz Seyri (Ocean Navigation)": [
+   "Ocean navigation",
+   "使用天体和电子系统在远离海岸的地方进行导航。"
+  ],
+  "GPS": [
+   "GPS",
+   "全球定位系统；根据卫星信号给出位置、速度和时间。"
+  ],
+  "Gyro Pusula": [
+   "Gyrocompass",
+   "利用地球自转来指向正北的指南针；机械或光学（激光/光纤）传感器。"
+  ],
+  "Manyetik Pusula": [
+   "Magnetic compass",
+   "传统的指南针，根据地球磁场指向北方。"
+  ],
+  "Running Fix": [
+   "Running fix",
+   "根据在不同时间拍摄的同一物体的两个方位找到的位置。"
+  ],
+  "Cross Bearing": [
+   "Cross bearing fix",
+   "根据同时拍摄的两个或多个物体的方位找到的位置。"
+  ],
+  "Set & Drift": [
+   "Set and drift",
+   "水流对船的影响：设定为水流方向，漂移为速度。"
+  ],
+  "Leeway": [
+   "Leeway",
+   "由风引起的船舶偏离航向的侧向移动。"
+  ],
+  "GM (Metasentrik Yükseklik)": [
+   "GM (Metacentric height)",
+   "重心G与超中心M之间的垂直距离；初始稳定性的主要衡量标准。"
+  ],
+  "Serbest Yüzey Etkisi": [
+   "Free surface effect",
+   "由于液体在部分填充的储罐中移动而导致的 GM 损失。"
+  ],
+  "Ağırlık Merkezleri (KG)": [
+   "Centre of gravity (KG)",
+   "船舶重心距龙骨以上的垂直距离；稳定性计算中的临界值。"
+  ],
+  "Trim": [
+   "Trim",
+   "The fore-and-aft inclination of the ship; trim by the head or trim by the stern."
+  ],
+  "Deplasman (Displacement)": [
+   "Displacement",
+   "船舶排出的水的重量；以吨表示。"
+  ],
+  "Yüzdürme Merkezi (B – Buoyancy)": [
+   "Centre of buoyancy (B)",
+   "船体水下体积的几何中心。"
+  ],
+  "GZ (Doğrultucu Kol)": [
+   "GZ (Righting lever)",
+   "船舶横倾时，重心与浮力作用线之间的水平距离。"
+  ],
+  "BM (Metasentrik Yarıçap)": [
+   "BM (Metacentric radius)",
+   "浮力中心B与超中心M之间的距离； BM = I / ∇。"
+  ],
+  "KB": [
+   "KB",
+   "龙骨至浮力中心的垂直距离。"
+  ],
+  "KM": [
+   "KM",
+   "龙骨至超中心的垂直距离； KM = KB + BM。"
+  ],
+  "KG": [
+   "KG",
+   "龙骨到船舶重心的垂直距离。"
+  ],
+  "Doğrultucu Moment": [
+   "Righting moment",
+   "使倾斜的船恢复直立的那一刻； M = Δ × GZ。"
+  ],
+  "Devrilme Momenti": [
+   "Heeling moment",
+   "外力使船倾斜的力矩；由风、波浪或货物移动引起的。"
+  ],
+  "Denge Açısı (Angle of Loll)": [
+   "Angle of loll",
+   "初始 GM 为负的船舶静止时的横倾角。"
+  ],
+  "Dinamik Stabilite": [
+   "Dynamic stability",
+   "GZ曲线下的面积；它显示了让船倾斜所需的工作。"
+  ],
+  "Statik Stabilite Eğrisi (GZ Curve)": [
+   "Curve of statical stability (GZ curve)",
+   "A graph of GZ against the angle of heel; the basic tool of stability assessment."
+  ],
+  "TPC (Tonnes Per Centimetre)": [
+   "TPC (Tonnes per centimetre immersion)",
+   "使平均吃水改变一厘米的重量。"
+  ],
+  "MCT (Moment to Change Trim)": [
+   "MCTC (Moment to change trim)",
+   "The moment that changes the trim by one centimetre; used in trim calculations."
+  ],
+  "LCG (Longitudinal Centre of Gravity)": [
+   "LCG (Longitudinal centre of gravity)",
+   "重心的前后位置。"
+  ],
+  "LCB (Longitudinal Centre of Buoyancy)": [
+   "LCB (Longitudinal centre of buoyancy)",
+   "浮力中心的前后位置。"
+  ],
+  "İnklinasyon Deneyi (Inclining Test)": [
+   "Inclining test",
+   "将已知重量移动到甲板上以找到船舶的 KG 的测试。"
+  ],
+  "Permeabilite": [
+   "Permeability",
+   "可以被水充满的空间的比例；用于损伤稳定性计算。"
+  ],
+  "Floodable Length": [
+   "Floodable length",
+   "在船舶不沉没超过边缘线的情况下，可被淹没的舱室的最大长度。"
+  ],
+  "Yük Kaydırma": [
+   "Cargo shift",
+   "货物的移动导致重心移动；它可能会导致危险列表。"
+  ],
+  "Karina (Hull)": [
+   "Underwater hull",
+   "船体水线以下的部分。"
+  ],
+  "Su Çekimi (Draft)": [
+   "Draught",
+   "水线至龙骨底部的垂直距离。"
+  ],
+  "Fribord (Freeboard)": [
+   "Freeboard",
+   "水线至甲板的垂直距离；足够的干舷对于适航性至关重要。"
+  ],
+  "Plimsoll Markası": [
+   "Plimsoll mark (load line mark)",
+   "船舷上的标记显示不同季节和水域的最大允许吃水。"
+  ],
+  "Kavitasyon": [
+   "Cavitation",
+   "当压力低于蒸气压时，液体中蒸气泡的形成和破裂。"
+  ],
+  "Dizel Motor (Marine Diesel)": [
+   "Marine diesel engine",
+   "一种压燃式内燃机，用作大多数船舶的主要推进装置。"
+  ],
+  "Turboşarj (Turbocharger)": [
+   "Turbocharger",
+   "由废气驱动的装置，将压缩空气输送到气缸；它提高了发动机的功率和效率。"
+  ],
+  "SFOC (Specific Fuel Oil Consumption)": [
+   "SFOC (Specific Fuel Oil Consumption)",
+   "发动机产生每单位功率所消耗的燃料量；以克/千瓦时表示。"
+  ],
+  "Separatör (Purifier)": [
+   "Separator (purifier)",
+   "去除燃油和润滑油中的水和固体颗粒的离心机。"
+  ],
+  "Yağlama Sistemi": [
+   "Lubrication system",
+   "循环油以减少发动机和机械部件之间摩擦的系统。"
+  ],
+  "Soğutma Sistemi": [
+   "Cooling system",
+   "防止主机和辅机过热的淡水和海水回路。"
+  ],
+  "Kazan (Boiler)": [
+   "Boiler",
+   "将水加热产生蒸汽以供辅助机械和供暖的压力容器。"
+  ],
+  "Jeneratör": [
+   "Generator",
+   "将机械能转换成电能并供给船舶电力负载的机器。"
+  ],
+  "Şaft (Shaft)": [
+   "Propeller shaft",
+   "将主机旋转传递至螺旋桨的轴。"
+  ],
+  "Pervane (Propeller)": [
+   "Propeller",
+   "一种带叶片的装置，在转动时产生推力并驱动船舶前进或后退。"
+  ],
+  "Dümen (Rudder)": [
+   "Rudder",
+   "船尾的可移动叶片通过转动来改变船的航向。"
+  ],
+  "Bow Thruster": [
+   "Bow thruster",
+   "船头横向隧道中的螺旋桨；它改善了低速时的机动性。"
+  ],
+  "Stern Tube": [
+   "Stern tube",
+   "螺旋桨轴离开船体的管子；它包含轴承和密封件。"
+  ],
+  "Yardımcı Motor": [
+   "Auxiliary engine",
+   "船上的发动机用于发电和驱动辅助系统。"
+  ],
+  "Emercensi Jeneratör": [
+   "Emergency generator",
+   "当主电源出现故障时启动并提供基本服务的发电机。"
+  ],
+  "Egzoz Gazı Temizleme (Scrubber)": [
+   "Exhaust gas cleaning system (scrubber)",
+   "一种通过清洗废气去除硫氧化物的排放控制系统。"
+  ],
+  "Balast Pompası": [
+   "Ballast pump",
+   "泵用于将海水吸入压载舱并从压载舱排出。"
+  ],
+  "Sintine Pompası": [
+   "Bilge pump",
+   "泵用于收集和抽出舱底水。"
+  ],
+  "OWS (Oil Water Separator)": [
+   "OWS (Oily Water Separator)",
+   "将油与舱底水分离的设备，使其可以在 15 ppm 的法定限值内排放。"
+  ],
+  "İncineratör (Yakma Fırını)": [
+   "Incinerator",
+   "高温燃烧船上产生的固体废物和油泥的炉子。"
+  ],
+  "Kompresör": [
+   "Air compressor",
+   "一种产生用于启动发动机和气动系统的压缩空气的机器。"
+  ],
+  "Piston": [
+   "Piston",
+   "在气缸内上下运动，将气体压力转换成机械功的发动机部件。"
+  ],
+  "Silindir Gömleği (Cylinder Liner)": [
+   "Cylinder liner",
+   "安装在气缸体中的可更换钢套筒，活塞在其中移动。"
+  ],
+  "Süpap (Valve)": [
+   "Valve (engine)",
+   "打开和关闭发动机进气通道和排气通道的机械零件。"
+  ],
+  "Dökme Yük (Bulk Cargo)": [
+   "Bulk cargo",
+   "谷物、煤炭或矿石等货物无需包装直接装入货舱。"
+  ],
+  "Konteyner": [
+   "Container",
+   "用于运载货物的标准尺寸金属箱（20英尺、40英尺）。"
+  ],
+  "TEU (Twenty-foot Equivalent Unit)": [
+   "TEU (Twenty-foot Equivalent Unit)",
+   "相当于 1 个 20 英尺集装箱；船舶和码头容量的标准单位。"
+  ],
+  "Stowage Factor": [
+   "Stowage factor",
+   "一吨货物在货舱中所占的体积；以立方米/吨表示。"
+  ],
+  "Broken Stowage": [
+   "Broken stowage",
+   "由于包装之间的间隙而无法使用的容纳空间的比例。"
+  ],
+  "Dunnage": [
+   "Dunnage",
+   "用于保护货物免受潮湿、损坏和移位的木材、木板、垫子或气囊。"
+  ],
+  "Lashing": [
+   "Lashing",
+   "用绑扎固定货物，使其不会在海上移动。"
+  ],
+  "Manifest": [
+   "Manifest",
+   "该文件列出了船上携带的所有货物。"
+  ],
+  "Bill of Lading (Konşimento)": [
+   "Bill of lading",
+   "承运人签发的文件：所运输货物的收据、运输合同证据和所有权文件。"
+  ],
+  "Ambar Kapağı (Hatch Cover)": [
+   "Hatch cover",
+   "关闭舱口防风雨的钢盖。"
+  ],
+  "Grain Stability": [
+   "Grain stability",
+   "粮食海上转移造成危险清单的风险稳定性评估。"
+  ],
+  "IMDG Code": [
+   "IMDG Code",
+   "国际海运危险货物规则：海上运输包装形式危险货物的规则。"
+  ],
+  "IMSBC Code": [
+   "IMSBC Code",
+   "固体散装货物安全运输的 IMO 代码。"
+  ],
+  "Draft Survey": [
+   "Draught survey",
+   "根据船舶吃水读数计算装载或卸载货物重量的方法。"
+  ],
+  "Ullage": [
+   "Ullage",
+   "罐中的空白空间，从液面到罐顶部的距离。"
+  ],
+  "Sounding": [
+   "Sounding",
+   "罐内液体的深度，从罐底部开始测量。"
+  ],
+  "Deadweight (DWT)": [
+   "Deadweight (DWT)",
+   "船舶可承载的总重量：货物、燃料、水、补给品和船员。"
+  ],
+  "Lightweight": [
+   "Lightweight",
+   "船舶本身的重量，不含货物、燃料、水和补给品。"
+  ],
+  "Tonnage (Gross / Net)": [
+   "Tonnage (gross / net)",
+   "船舶内容积的测量：总吨位涵盖整船，净吨位涵盖载货舱位。"
+  ],
+  "Reefer Konteyner": [
+   "Reefer container",
+   "带有自己的制冷装置的集装箱，用于控制温度的货物。"
+  ],
+  "Tanker": [
+   "Tanker",
+   "设计用于运输散装液体货物（石油、化学品、LPG/LNG）的船舶。"
+  ],
+  "RoRo (Roll-on Roll-off)": [
+   "Ro-Ro (Roll-on/Roll-off)",
+   "车辆和轮式货物在坡道上进出的船舶。"
+  ],
+  "SOLAS": [
+   "SOLAS",
+   "国际海上人命安全公约；它为船舶的建造、设备和运营制定了标准。"
+  ],
+  "MARPOL": [
+   "MARPOL",
+   "国际防止船舶污染公约。"
+  ],
+  "ISM Code": [
+   "ISM Code",
+   "国际安全管理准则；船舶营运安全管理标准。"
+  ],
+  "ISPS Code": [
+   "ISPS Code",
+   "国际船舶和港口设施保安规则；应对恐怖主义等安全威胁的措施。"
+  ],
+  "Can Yeleği (Life Jacket)": [
+   "Lifejacket",
+   "使人漂浮在水中的个人装备；船上每个人都需要。"
+  ],
+  "Can Simidi (Life Buoy)": [
+   "Lifebuoy",
+   "向水中的人扔出的环形浮力装置。"
+  ],
+  "Filika (Lifeboat)": [
+   "Lifeboat",
+   "一艘封闭的船，用于在船舶被遗弃时疏散船员和乘客。"
+  ],
+  "Can Salı (Life Raft)": [
+   "Liferaft",
+   "充气式救生艇；自动或手动充气。"
+  ],
+  "EPIRB": [
+   "EPIRB",
+   "紧急无线电示位标；通过卫星发送遇险警报。"
+  ],
+  "SART": [
+   "SART",
+   "搜救应答器；在搜索船只和飞机的雷达屏幕上显示其位置。"
+  ],
+  "GMDSS": [
+   "GMDSS",
+   "全球海上遇险和安全系统；国际遇险和安全通信系统。"
+  ],
+  "MOB (Man Overboard)": [
+   "Man overboard (MOB)",
+   "人落入海中的紧急情况；恢复操作和程序立即开始。"
+  ],
+  "Muster Station": [
+   "Muster station",
+   "紧急情况下机组人员和乘客集合的地方。"
+  ],
+  "Fire Drill": [
+   "Fire drill",
+   "船员练习消防程序的实际演习。"
+  ],
+  "Abandon Ship Drill": [
+   "Abandon ship drill",
+   "演习内容包括救生艇和救生筏的集合和使用。"
+  ],
+  "SCBA": [
+   "SCBA",
+   "自给式呼吸器；用于进入封闭空间和消防。"
+  ],
+  "CO₂ Söndürme Sistemi": [
+   "CO₂ fire extinguishing system",
+   "固定式二氧化碳系统，用于扑灭机舱和货舱内的火灾。"
+  ],
+  "Köpüklü Söndürme": [
+   "Foam fire extinguishing system",
+   "用于扑灭易燃液体火灾的泡沫系统。"
+  ],
+  "Yangın Tulumbası (Fire Pump)": [
+   "Fire pump",
+   "在压力下向消防总管和软管供水的泵；有主消防泵和应急消防泵。"
+  ],
+  "Emercensi Dümen": [
+   "Emergency steering",
+   "当主操舵系统发生故障时用于操纵船舶的装置。"
+  ],
+  "SOPEP": [
+   "SOPEP",
+   "船上油污应急预案；漏油事件发生后应遵循的程序。"
+  ],
+  "Enclosed Space Entry": [
+   "Enclosed space entry",
+   "进入封闭空间的程序；它需要大气测试、通风和监督。"
+  ],
+  "Hot Work Permit": [
+   "Hot work permit",
+   "焊接或切割等热加工前需要书面许可。"
+  ],
+  "Buharlaşma (Evaporation)": [
+   "Evaporation",
+   "水吸收热量时从液态变为气态；它会影响湿度和天气。"
+  ],
+  "Dew Point (Çiy Noktası)": [
+   "Dew point",
+   "空气必须冷却到饱和才能开始冷凝的温度。"
+  ],
+  "Beaufort Skalası": [
+   "Beaufort scale",
+   "国际上将风力分级为 0 至 12 级。"
+  ],
+  "Tropikal Siklon": [
+   "Tropical cyclone",
+   "在温暖的海洋上形成的旋转风暴，伴有狂风和大雨。"
+  ],
+  "Kasırga (Hurricane)": [
+   "Hurricane",
+   "大西洋和东北太平洋风速为 64 节或以上的热带气旋。"
+  ],
+  "Tayfun (Typhoon)": [
+   "Typhoon",
+   "西北太平洋飓风强度的热带气旋。"
+  ],
+  "Barometrik Basınç": [
+   "Atmospheric pressure",
+   "给定点的大气重量；以 hPa (mbar) 为单位测量。"
+  ],
+  "Antisiklon (High Pressure)": [
+   "Anticyclone (high)",
+   "高压中心；它通常会带来稳定、晴朗的天气。"
+  ],
+  "Siklon (Low Pressure)": [
+   "Depression (low)",
+   "低压中心；与风、雨和风暴有关。"
+  ],
+  "Cephe (Front)": [
+   "Front",
+   "不同温度和湿度的气团交汇的边界区域。"
+  ],
+  "Sis (Fog)": [
+   "Fog",
+   "地表附近的水蒸气凝结，使能见度降至 1000 米以下。"
+  ],
+  "Deniz Suyu Sıcaklığı (SST)": [
+   "Sea surface temperature (SST)",
+   "海面温度；对于天气预报和热带气旋的发展非常重要。"
+  ],
+  "Trade Winds (Alize Rüzgârları)": [
+   "Trade winds",
+   "热带地区有稳定的东北风和东南风。"
+  ],
+  "Gel-Git (Tide)": [
+   "Tide",
+   "由于月亮和太阳的吸引力而引起的海平面的周期性上升和下降。"
+  ],
+  "Spring Tide (Büyük Gel-Git)": [
+   "Spring tide",
+   "新月和满月时，当太阳和月亮的引力结合时，潮汐范围最大。"
+  ],
+  "Neap Tide (Küçük Gel-Git)": [
+   "Neap tide",
+   "当太阳和月亮成直角时，上弦和下弦的潮汐幅度最小。"
+  ],
+  "Swell (Ölü Deniz)": [
+   "Swell",
+   "长周期波离开产生它们的区域并变得规则。"
+  ],
+  "Navtex": [
+   "NAVTEX",
+   "自动接收打印或显示文本形式的导航和气象警报的系统。"
+  ],
+  "Rüzgâr Gülü": [
+   "Wind rose",
+   "该图表显示了给定地点各个方向吹风的频率和强度。"
+  ],
+  "İzobar": [
+   "Isobar",
+   "天气图上连接气压相等的地方的线。"
+  ],
+  "Dalga Yükü (Wave Load)": [
+   "Wave load",
+   "波浪对船体造成的动载荷；用于耐波性和强度计算。"
+  ],
+  "Direnç (Resistance)": [
+   "Resistance",
+   "阻碍船舶在水中运动的总力；主要是摩擦阻力和兴波阻力。"
+  ],
+  "Sürtünme Direnci (Frictional Resistance)": [
+   "Frictional resistance",
+   "由于船体与水之间的摩擦而产生的阻力部分。"
+  ],
+  "Dalga Direnci (Wave Resistance)": [
+   "Wave-making resistance",
+   "由创建船舶波浪系统所消耗的能量引起的部分阻力。"
+  ],
+  "Froude Sayısı": [
+   "Froude number",
+   "将船速与波浪形成相关的无量纲数； Fn = V / √(g × L)。"
+  ],
+  "Reynolds Sayısı": [
+   "Reynolds number",
+   "表征流量的无量纲数；它将层流与湍流分开。"
+  ],
+  "İtme Kuvveti (Thrust)": [
+   "Thrust",
+   "旋转螺旋桨产生的驱动船舶的力。"
+  ],
+  "Wake Fraction": [
+   "Wake fraction",
+   "船速与流入螺旋桨的水流速度之间的比例差。"
+  ],
+  "Thrust Deduction": [
+   "Thrust deduction",
+   "由于工作螺旋桨增加船体阻力而损失的螺旋桨推力部分。"
+  ],
+  "Propulsive Efficiency": [
+   "Propulsive efficiency",
+   "如何有效地将发动机动力转化为移动船舶的有效动力；船体、螺旋桨和其他效率的乘积。"
+  ],
+  "Squat Effect": [
+   "Squat",
+   "船舶在浅水中航行时的下沉和纵倾变化，随航速的增加而增加；整体船（高Cb）在船头蹲得更多，细线船在船尾。"
+  ],
+  "Bank Effect": [
+   "Bank effect",
+   "在狭窄的航道中，附近的河岸将船尾拉向自己，并将船头推开。"
+  ],
+  "Slamming": [
+   "Slamming",
+   "波浪中船头对海面的剧烈冲击；它会导致高结构应力。"
+  ],
+  "Broaching": [
+   "Broaching",
+   "在接下来的海域中，船不受控制地向波浪侧摇摆；它有倾覆的危险。"
+  ],
+  "Parametrik Rolling": [
+   "Parametric rolling",
+   "当波浪遭遇周期大约是船舶自然横摇周期的一半时，会引起大的、快速增长的横摇。"
+  ],
+  "Added Mass": [
+   "Added mass",
+   "当船的速度或运动发生变化时，水的额外质量效应必须随船加速。"
+  ],
+  "Sinkage & Trim": [
+   "Sinkage and trim",
+   "移动船舶的船体下沉和纵倾变化，在浅水中随着速度的增加而增加。"
+  ],
+  "Boundary Layer": [
+   "Boundary layer",
+   "船体旁边的薄水层，其中流速从零变化到自由流速度。"
+  ],
+  "Ana Şalt (Main Switchboard)": [
+   "Main switchboard",
+   "中央板，通过它分配发电机的电力。"
+  ],
+  "Shore Connection": [
+   "Shore power connection",
+   "将船舶与港口岸电连接，使发电机停止运转。"
+  ],
+  "UPS": [
+   "UPS",
+   "不间断电源；在电源故障期间保持关键设备运行。"
+  ],
+  "VHF Telsiz": [
+   "VHF radio",
+   "用于短程海上通信的甚高频无线电。"
+  ],
+  "MF/HF Telsiz": [
+   "MF/HF radio",
+   "用于中远程海上通信的无线电。"
+  ],
+  "Inmarsat": [
+   "Inmarsat",
+   "为船舶提供语音、数据和遇险通信的卫星系统。"
+  ],
+  "Log (Hız Ölçer)": [
+   "Speed log",
+   "测量船舶在水中或地面上的速度的仪器。"
+  ],
+  "Anemometre": [
+   "Anemometer",
+   "测量风速和风向的仪器。"
+  ],
+  "Voyage Data Recorder (VDR)": [
+   "VDR (Voyage Data Recorder)",
+   "记录导航、机械和桥梁数据的设备；船上的“黑匣子”。"
+  ],
+  "Autopilot": [
+   "Autopilot",
+   "一种电子转向控制系统，使船舶自动保持在设定的航线上。"
+  ],
+  "COLREG": [
+   "COLREG",
+   "国际海上避碰规则；船舶相遇时遵循的规则。"
+  ],
+  "STCW": [
+   "STCW",
+   "《国际海员培训、发证和值班标准公约》。"
+  ],
+  "MLC 2006": [
+   "MLC 2006",
+   "海事劳工公约；它规定了海员的工作和生活条件。"
+  ],
+  "Flag State (Bayrak Devleti)": [
+   "Flag State",
+   "船舶注册所在州；负责船舶的技术和安全监督。"
+  ],
+  "Port State Control (PSC)": [
+   "Port State Control (PSC)",
+   "对港口内的外国船舶进行检查，检查其是否符合国际标准。"
+  ],
+  "Class Survey (Klas Denetimi)": [
+   "Class survey",
+   "船级社定期进行检验，检查船舶的结构和机械。"
+  ],
+  "P&I Club": [
+   "P&I Club",
+   "承保船东第三方责任的互助保险协会。"
+  ],
+  "Charter Party": [
+   "Charter party",
+   "租船合同；以航次、定期或光船租赁形式安排。"
+  ],
+  "Salvage (Kurtarma)": [
+   "Salvage",
+   "拯救处于危险中的船舶或货物；成功的救助赋予获得救助奖励的权利。"
+  ],
+  "General Average (Müşterek Avarya)": [
+   "General average",
+   "为使船舶和货物免遭共同危险而做出的牺牲和费用由各方共同承担的原则。"
+  ],
+  "Demurrage": [
+   "Demurrage",
+   "当船舶在允许的装卸时间之外继续装货或卸货时支付的约定金额。"
+  ],
+  "Despatch": [
+   "Despatch",
+   "在装卸时间到期之前完成装载或卸货所赚取的金额。"
+  ],
+  "NOR (Notice of Readiness)": [
+   "NOR (Notice of Readiness)",
+   "船舶准备装货或卸货的书面通知。"
+  ],
+  "Lay Time (Starya Süresi)": [
+   "Laytime",
+   "允许装载和卸载的时间。"
+  ],
+  "LOF (Lloyd's Open Form)": [
+   "LOF (Lloyd's Open Form)",
+   "标准救助协议基于“不治愈，不付费”的原则。"
+  ],
+  "Yanaşma (Berthing)": [
+   "Berthing",
+   "控制沿码头或码头的船只并使其快速行驶。"
+  ],
+  "Kalkma (Unberthing)": [
+   "Unberthing",
+   "离开泊位并上路。"
+  ],
+  "Demir Atma (Anchoring)": [
+   "Anchoring",
+   "将锚释放到海底，使船保持在原位。"
+  ],
+  "Demir Alma (Weighing Anchor)": [
+   "Weighing anchor",
+   "将锚从海底升起以结束锚定。"
+  ],
+  "Römorkör (Tug)": [
+   "Tug",
+   "一种小型而强大的船只，可帮助大型船舶在港口内操纵。"
+  ],
+  "Kılavuz Kaptan (Pilot)": [
+   "Pilot",
+   "当船舶进出港口时，熟悉当地情况的人登船向驾驶台的船长提供建议。"
+  ],
+  "Pilot Merdiveni": [
+   "Pilot ladder",
+   "船舷上装有绳梯，供引航员登船。"
+  ],
+  "Çıpa (Anchor)": [
+   "Anchor",
+   "通过抓住海床将船舶固定到位的重型配件；类型包括 Hall、AC-14 和 Danforth。"
+  ],
+  "Zincir (Chain)": [
+   "Anchor cable",
+   "将锚与船连接起来的重型钢链；它的长度是用脚镣测量的。"
+  ],
+  "Posa (Shackle)": [
+   "Shackle (length of cable)",
+   "锚索长度单位；一根卸扣长 27.5 米（15 噚）。"
+  ],
+  "Usturmaça (Fender)": [
+   "Fender",
+   "放置在船舶和码头之间以吸收冲击力的缓冲垫。"
+  ],
+  "Swing Circle": [
+   "Swinging circle",
+   "停泊的船舶可以随风和水流摆动的圆圈；它决定安全锚定距离。"
+  ],
+  "Turning Circle": [
+   "Turning circle",
+   "船舶在全舵（硬转）转向时所绕的圈数；机动性的衡量标准。"
+  ],
+  "Advance & Transfer": [
+   "Advance and transfer",
+   "转舵后船舶向前（前进）和侧向（转移）移动的距离。"
+  ],
+  "Crash Stop": [
+   "Crash stop",
+   "在紧急情况下，通过从全速前进到全速后退来停止船舶。"
+  ],
+  "Dead Slow": [
+   "Dead slow",
+   "最低发动机转速顺序；操纵时使用。"
+  ],
+  "VTS (Vessel Traffic Service)": [
+   "VTS (Vessel Traffic Service)",
+   "一种岸基服务，用于监控和组织港口和狭窄水域的船舶交通。"
+  ],
+  "Kanal Seyrüseferi": [
+   "Canal transit",
+   "经过苏伊士、巴拿马等人工水道；它涉及特殊规则和领航。"
+  ],
+  "Dry Dock (Havuz)": [
+   "Dry dock",
+   "一个码头，可将水抽出，以便维护和修理船的水下船体。"
+  ],
+  "Şamandıraya Bağlanma": [
+   "Mooring to a buoy",
+   "用绳索而不是锚定将船舶固定在固定系泊浮标上。"
+  ],
+  "Amade": [
+   "Ready for sea",
+   "船已准备好起航；所有检查均已完成，她准备出发。"
+  ],
+  "Demir Yeri (Anchorage)": [
+   "Anchorage",
+   "具有适当深度和海底锚泊的指定区域。"
+  ],
+  "Enine Perde (Bulkhead)": [
+   "Transverse bulkhead",
+   "将船体分成水密隔间的垂直结构划分。"
+  ],
+  "Forkastel (Forecastle)": [
+   "Forecastle",
+   "船头甲板的凸起部分；它携带锚泊和系泊设备。"
+  ],
+  "Güverte Ambarı (Tweendeck)": [
+   "Tweendeck",
+   "下舱和上甲板之间的中间甲板；用于一般货物。"
+  ],
+  "Havuzlama (Dry Docking)": [
+   "Dry-docking",
+   "将船驶入干船坞，维护和修理水下船体。"
+  ],
+  "Koferdamı (Cofferdam)": [
+   "Cofferdam",
+   "两个储罐或隔室之间的狭窄空间，用于防止从一个储罐或隔室泄漏到另一个储罐或隔室。"
+  ],
+  "Lumboz (Porthole)": [
+   "Porthole (side scuttle)",
+   "船舷上的圆形窗户，提供光线和通风。"
+  ],
+  "Manika": [
+   "Cowl ventilator",
+   "甲板上通风箱的开口；蘑菇形或鹅颈形。"
+  ],
+  "Mayıstra": [
+   "Mainsail",
+   "最大的帆，设置在主桅上；帆船的主驱动帆。"
+  ],
+  "Neta": [
+   "Shipshape",
+   "甲板上的秩序和整洁；使所有松动的齿轮固定。"
+  ],
+  "Orsalamak": [
+   "To luff",
+   "将帆船的船头转向风向。"
+  ],
+  "Pupa": [
+   "Stern",
+   "船的尾端；船尾的风从右船尾吹来（随风）。"
+  ],
+  "Safra (Ballast)": [
+   "Ballast",
+   "储罐中携带海水或固体重量，为船舶提供所需的稳定性、吃水和纵倾。"
+  ],
+  "Uskuna (Schooner)": [
+   "Schooner",
+   "有两根或多根桅杆和前后帆的帆船。"
+  ],
+  "Mercator Projeksiyonu": [
+   "Mercator projection",
+   "一种圆柱图表投影，其恒向线是直线；区域不断向高纬度地区扩展。"
+  ],
+  "Gnomonic Projeksiyon": [
+   "Gnomonic projection",
+   "一种图表投影，其上的大圆是直线；用于规划大圆航行。"
+  ],
+  "Dead Reckoning (Tahmini Seyir)": [
+   "Dead reckoning (DR)",
+   "仅使用水中的航向和速度从最后已知的位置计算出船舶的位置。"
+  ],
+  "Fix (Kesin Mevki)": [
+   "Fix",
+   "通过观察或电子辅助设备找到的可靠位置。"
+  ],
+  "Estimated Position (EP)": [
+   "Estimated position (EP)",
+   "根据航位推测法估计的位置，并对海流和风进行修正；不如修复可靠。"
+  ],
+  "DLat (Enlem Değişimi)": [
+   "D.Lat (Difference of latitude)",
+   "两个位置之间的纬度差；以弧分表示。"
+  ],
+  "DLong (Boylam Değişimi)": [
+   "D.Long (Difference of longitude)",
+   "两个位置之间的经度差；以弧分表示。"
+  ],
+  "Departure": [
+   "Departure",
+   "与经度差相对应的东西距离（以海里为单位）；深度 = D.Long × cos(Lat)。"
+  ],
+  "Vertex (Tepe Noktası)": [
+   "Vertex",
+   "大圆上最接近极点的点；在那里，轨道达到了最高纬度。"
+  ],
+  "Composite Great Circle": [
+   "Composite great circle",
+   "沿着大圆圈和平行纬度行驶的路线，以免超出限制纬度。"
+  ],
+  "Course Made Good (CMG)": [
+   "Course made good (CMG)",
+   "船的方向实际上是正确的，包括水流和风的影响。"
+  ],
+  "Speed Made Good (SMG)": [
+   "Speed made good (SMG)",
+   "速度实际上在地面上表现良好，包括电流的影响。"
+  ],
+  "Chart Datum": [
+   "Chart datum",
+   "测量图表深度的参考水位；通常是最低天文潮 (LAT)。"
+  ],
+  "Sextant": [
+   "Sextant",
+   "测量天体与地平线夹角的光学仪器；用于天文导航。"
+  ],
+  "Chronometer": [
+   "Chronometer",
+   "保持格林威治时间的精确时钟；对于查找经度至关重要。"
+  ],
+  "Nautical Almanac": [
+   "Nautical Almanac",
+   "提供天体每日位置（GHA，12 月）的年度出版物。"
+  ],
+  "Sight Reduction Tables": [
+   "Sight reduction tables",
+   "用于解决天文导航瞄准问题的预先计算表。"
+  ],
+  "Height of Eye": [
+   "Height of eye",
+   "观察者眼睛距海面的高度；用于六分仪高度校正。"
+  ],
+  "Dip (Ufuk Alçalması)": [
+   "Dip of the horizon",
+   "真实水平线与可见地平线之间的角度，由观察者的眼睛高度引起。"
+  ],
+  "Index Error": [
+   "Index error",
+   "当索引镜和水平镜在零处不平行时存在的六分仪误差。"
+  ],
+  "Azimut": [
+   "Azimuth",
+   "天体或物体的水平方向，从北向顺时针测量。"
+  ],
+  "Amplitude": [
+   "Amplitude",
+   "正东或正西与太阳或其他天体升起或落下时的方向之间的角度。"
+  ],
+  "Intercept (Aradaki Fark)": [
+   "Intercept",
+   "观测到的高度与计算出的高度之间的差异；用于绘制位置线。"
+  ],
+  "Position Line (Mevki Doğrusu)": [
+   "Position line",
+   "通过观察获得的一条线，船舶位于该线的某处；两条交叉的位置线给出了定位。"
+  ],
+  "Under Keel Clearance (UKC)": [
+   "Under keel clearance (UKC)",
+   "龙骨底部至海底之间的安全水深。"
+  ],
+  "Traffic Separation Scheme (TSS)": [
+   "Traffic separation scheme (TSS)",
+   "将相对的交通流分隔成车道的路线措施。"
+  ],
+  "Precautionary Area": [
+   "Precautionary area",
+   "船舶必须特别小心航行的规定区域；通常在车道交汇处。"
+  ],
+  "Tidal Stream": [
+   "Tidal stream",
+   "潮汐引起的水的水平运动；它的方向和速率随着潮汐周期而变化。"
+  ],
+  "Chart Correction": [
+   "Chart correction",
+   "使用《海员须知》中发布的信息更新海图。"
+  ],
+  "Notice to Mariners (NtM)": [
+   "Notices to Mariners (NtM)",
+   "定期发布通知，以使海图和航海出版物保持最新状态。"
+  ],
+  "Metacenter (M)": [
+   "Metacentre (M)",
+   "在小横倾角处，浮力作用线与船舶中心线交叉的点。"
+  ],
+  "Vanishing Angle": [
+   "Angle of vanishing stability",
+   "GZ归零时的跟角；除此之外，船没有扶正杆。"
+  ],
+  "Range of Stability": [
+   "Range of stability",
+   "The range of heel over which GZ stays positive; a wide range means a large safety margin."
+  ],
+  "Righting Lever Maximum": [
+   "Maximum righting lever",
+   "GZ 曲线上的最大值，此时船舶的抗横倾能力最大。"
+  ],
+  "Cross Curves of Stability": [
+   "Cross curves of stability",
+   "显示不同位移的固定后跟角处的 KN 的曲线。"
+  ],
+  "Intact Stability": [
+   "Intact stability",
+   "未受损船舶的稳性；它必须满足 IMO 设定的最低标准。"
+  ],
+  "Damage Stability": [
+   "Damage stability",
+   "一个或多个舱室进水的船舶的稳定性。"
+  ],
+  "Subdivision": [
+   "Subdivision",
+   "用水密舱壁将船体分为多个舱室；它可以保护船免于沉没。"
+  ],
+  "Margin Line": [
+   "Margin line",
+   "舷侧舱壁甲板上表面以下76mm处的线；在损害计算中，吃水线不得高于其上方。"
+  ],
+  "Heel (Yatma)": [
+   "Heel",
+   "由于风、重量转移或转弯等外力造成的船舶横向倾斜。"
+  ],
+  "List": [
+   "List",
+   "由于内部原因（例如货物或罐内容物偏离中心）而保持的横向倾斜。"
+  ],
+  "Loll": [
+   "Loll",
+   "初始GM为负的船舶处于偏航角的状态；一种极其危险的情况。"
+  ],
+  "Waterplane Area": [
+   "Waterplane area",
+   "水线围成的面积；用于 TPC 和 BM 计算。"
+  ],
+  "Block Coefficient (Cb)": [
+   "Block coefficient (Cb)",
+   "船体丰满度的衡量标准：水下体积除以长×宽×吃水。"
+  ],
+  "Midship Coefficient (Cm)": [
+   "Midship section coefficient (Cm)",
+   "船中部浸没剖面面积与宽度×吃水之比。"
+  ],
+  "Prismatic Coefficient (Cp)": [
+   "Prismatic coefficient (Cp)",
+   "水下体积与船舯剖面面积×长度之比；它会影响阻力和速度。"
+  ],
+  "Crosshead (Çapraz Kafa)": [
+   "Crosshead",
+   "在二冲程低速发动机中，将活塞杆连接到连杆的滑动接头。"
+  ],
+  "Crankshaft (Krank Mili)": [
+   "Crankshaft",
+   "将活塞的往复运动转化为旋转运动的主机轴。"
+  ],
+  "Camshaft (Kam Mili)": [
+   "Camshaft",
+   "该轴的凸轮控制阀门和燃油泵的正时。"
+  ],
+  "Connecting Rod (Biyel Kolu)": [
+   "Connecting rod",
+   "将活塞（或十字头）连接到曲轴并将往复运动转换为旋转的连杆。"
+  ],
+  "Fuel Injector (Enjektör)": [
+   "Fuel injector",
+   "将雾化燃油高压喷入气缸的装置。"
+  ],
+  "Exhaust Valve (Egzoz Süpabı)": [
+   "Exhaust valve",
+   "将燃烧后的气体排出气缸的阀门。"
+  ],
+  "Scavenging (Süpürme)": [
+   "Scavenging",
+   "排除钢瓶中的燃烧气体并充入新鲜空气。"
+  ],
+  "Deaerator": [
+   "Deaerator",
+   "从锅炉给水中去除溶解氧和气体以防止腐蚀的设备。"
+  ],
+  "Economizer": [
+   "Economiser",
+   "利用废气热量预热锅炉给水或产生蒸汽的热交换器。"
+  ],
+  "Evaporator (Tatlı Su Üreteci)": [
+   "Fresh water generator (evaporator)",
+   "通过蒸发海水产生淡水的设备，通常使用发动机余热或低压蒸汽。"
+  ],
+  "Oily Water Separator (OWS)": [
+   "Oily water separator (OWS)",
+   "该分离器可将舱底水的含油量降低至 15 ppm 以下，以便合法排放。"
+  ],
+  "Sewage Treatment Plant": [
+   "Sewage treatment plant",
+   "在排放前对船舶污水进行生物或化学处理的系统。"
+  ],
+  "Ballast Water Treatment (BWTS)": [
+   "Ballast water treatment system (BWTS)",
+   "杀死或去除压载水中的生物和病原体以防止其扩散的系统。"
+  ],
+  "Stern Tube Seal": [
+   "Stern tube seal",
+   "在螺旋桨轴穿过船体的地方防止水进入的密封件。"
+  ],
+  "Controllable Pitch Propeller (CPP)": [
+   "Controllable pitch propeller (CPP)",
+   "叶片角度可改变的螺旋桨；在发动机转速保持恒定的情况下调节推力。"
+  ],
+  "Fixed Pitch Propeller (FPP)": [
+   "Fixed pitch propeller (FPP)",
+   "传统的固定叶片螺旋桨；推力由发动机速度和方向控制。"
+  ],
+  "Reduction Gear (Dişli Kutusu)": [
+   "Reduction gear",
+   "一种变速箱，可将高速发动机的转速降低至螺旋桨所需的转速。"
+  ],
+  "Heat Exchanger (Isı Değiştirici)": [
+   "Heat exchanger",
+   "在两种流体之间传递热量的设备；用于冷却和加热回路。"
+  ],
+  "Centrifugal Pump": [
+   "Centrifugal pump",
+   "带有旋转叶轮的泵，通过离心力使液体移动；常见于冷却和镇流器。"
+  ],
+  "Positive Displacement Pump": [
+   "Positive displacement pump",
+   "每个冲程或每转输送固定体积液体的泵；用于润滑油和燃油的输送。"
+  ],
+  "Air Compressor (Hava Kompresörü)": [
+   "Starting air compressor",
+   "一种压缩机，可产生约 30 bar 的压缩空气，用于启动主发动机和控制系统。"
+  ],
+  "Indicator Diagram": [
+   "Indicator diagram",
+   "气缸的压力-容积图；用于性能分析和故障查找。"
+  ],
+  "Mean Effective Pressure (MEP)": [
+   "Mean effective pressure (MEP)",
+   "一个周期内气缸内的平均有效压力；用于计算发动机功率。"
+  ],
+  "Brake Power": [
+   "Brake power",
+   "在发动机输出轴处测得的功率；以千瓦表示。"
+  ],
+  "Indicated Power": [
+   "Indicated power",
+   "气缸中产生的功率，根据气体压力计算得出；不扣除机械损失。"
+  ],
+  "Thermal Efficiency": [
+   "Thermal efficiency",
+   "燃料热能转化为机械功的比例；以百分比表示。"
+  ],
+  "LSA Code": [
+   "LSA Code",
+   "国际救生设备规范；救生艇、救生筏、救生衣和其他救生设备的标准。"
+  ],
+  "FSS Code": [
+   "FSS Code",
+   "国际消防安全系统规范；火灾探测和灭火系统标准。"
+  ],
+  "IAMSAR Manual": [
+   "IAMSAR Manual",
+   "《国际航空和海上搜救手册》；它规定了 SAR 操作的程序。"
+  ],
+  "Williamson Turn": [
+   "Williamson turn",
+   "一种人员落水救援操作，使船舶沿相反方向回到自己的轨道上。"
+  ],
+  "Scharnow Turn": [
+   "Scharnow turn",
+   "当人员失踪一段时间（延迟行动）时使用的人员落水机动。"
+  ],
+  "Anderson Turn": [
+   "Anderson turn",
+   "适用于转弯半径较小的船舶的快速、单转弯人员落水机动（立即行动）。"
+  ],
+  "Immersion Suit": [
+   "Immersion suit",
+   "一种防水、隔热的全身服，可在冷水中保护穿着者。"
+  ],
+  "Thermal Protective Aid (TPA)": [
+   "Thermal protective aid (TPA)",
+   "一种防水材料制成的袋子或套装，可减少救生筏或救生艇中的身体热量损失。"
+  ],
+  "Pyrotechnic Signals": [
+   "Pyrotechnic distress signals",
+   "求救信号，例如火箭降落伞照明弹、手持照明弹和浮力烟雾信号。"
+  ],
+  "EEBD (Emergency Escape Breathing Device)": [
+   "EEBD (Emergency Escape Breathing Device)",
+   "一种便携式呼吸装置，可为逃离危险环境提供短缺的空气。"
+  ],
+  "Fixed Fire Detection System": [
+   "Fixed fire detection and fire alarm system",
+   "一种固定系统，通过烟雾、热量或火焰探测器检测火灾并发出警报。"
+  ],
+  "Sprinkler System": [
+   "Sprinkler system",
+   "当热量打开喷头时自动运行的喷水系统；客船上需要。"
+  ],
+  "Inert Gas System (IGS)": [
+   "Inert gas system (IGS)",
+   "一种用低氧含量气体填充油轮货舱以防止爆炸的系统。"
+  ],
+  "Permit to Work": [
+   "Permit to work",
+   "在进行高温作业、进入封闭空间或高空作业等危险作业之前签发的书面许可证。"
+  ],
+  "Risk Assessment": [
+   "Risk assessment",
+   "识别工作危险并规划控制措施的系统审查。"
+  ],
+  "Toolbox Meeting": [
+   "Toolbox meeting",
+   "工作前简短的安全简报，向团队解释危险和预防措施。"
+  ],
+  "Near Miss Report": [
+   "Near-miss report",
+   "对可能导致事故的事件的报告；对于建设安全文化具有重要意义。"
+  ],
+  "Yoğunlaşma (Condensation)": [
+   "Condensation",
+   "水蒸气冷却时变成液体；云、雾和露背后的过程。"
+  ],
+  "Adveksiyon Sisi": [
+   "Advection fog",
+   "当温暖潮湿的空气流过较冷的海面时形成的雾。"
+  ],
+  "Radyasyon Sisi": [
+   "Radiation fog",
+   "当地面冷却且其上方的空气达到露点时，夜间在陆地上形成的雾。"
+  ],
+  "Coriolis Kuvveti": [
+   "Coriolis force",
+   "地球自转引起的视力；它使风和洋流在北半球向右偏转，在南半球向左偏转。"
+  ],
+  "Geostrofik Rüzgâr": [
+   "Geostrophic wind",
+   "当压力梯度力和科里奥利力平衡时，理论风平行于等压线吹动。"
+  ],
+  "Konveksiyon": [
+   "Convection",
+   "热空气上升和冷却时垂直空气运动；它产生积云和阵雨。"
+  ],
+  "Soğuk Cephe": [
+   "Cold front",
+   "冷气团推动暖气团并将其抬升的边界。"
+  ],
+  "Sıcak Cephe": [
+   "Warm front",
+   "暖气团在冷气团上方缓慢上升的边界。"
+  ],
+  "Oklüzyon Cephesi": [
+   "Occluded front",
+   "当冷锋超越暖锋并将暖空气从表面升起时形成锋。"
+  ],
+  "Hava Kütlesi": [
+   "Air mass",
+   "大范围内温度和湿度相似的大片空气体。"
+  ],
+  "Jet Stream": [
+   "Jet stream",
+   "对流层顶附近有一条狭窄的强风带；它可以达到200-300节。"
+  ],
+  "ITCZ (Ekvatoral Konverjans)": [
+   "ITCZ (Intertropical Convergence Zone)",
+   "两半球信风交汇的热带带；有大雨和雷暴的地区。"
+  ],
+  "Fetch": [
+   "Fetch",
+   "风畅通无阻地吹过的公海距离；它直接影响波浪的大小。"
+  ],
+  "Significant Wave Height (Hs)": [
+   "Significant wave height (Hs)",
+   "最高三分之一波浪的平均高度；是衡量海况的主要指标。"
+  ],
+  "Typhoon Signal": [
+   "Typhoon signal",
+   "宣布热带气旋即将来临的警告信号。"
+  ],
+  "Buys Ballot Kuralı": [
+   "Buys Ballot's law",
+   "在北半球，如果你背风站立，低压就在你的左边。"
+  ],
+  "Squall (Bora)": [
+   "Squall",
+   "风力突然、短暂、强劲；经常下大雨，能见度很差。"
+  ],
+  "Waterspout (Hortum)": [
+   "Waterspout",
+   "海面上旋转的风柱，悬挂在积雨云上并卷起水花。"
+  ],
+  "Bulbous Bow (Bodoslama Bülbü)": [
+   "Bulbous bow",
+   "一个灯泡在船头水线下方向前突出；它减少了兴波阻力并节省了燃料。"
+  ],
+  "Bilge Keel": [
+   "Bilge keel",
+   "沿着舭部的转弯处安装了一个鳍片以抑制滚动。"
+  ],
+  "Stabilizer Fin": [
+   "Fin stabiliser",
+   "从船侧伸出的活动鳍可以自动减少海上的摇晃。"
+  ],
+  "Slip (Kayma)": [
+   "Propeller slip",
+   "螺旋桨理论推进量与实际推进量的差异；以百分比表示。"
+  ],
+  "Pitch (Hatve)": [
+   "Pitch (propeller)",
+   "理论上，螺旋桨一转可以前进的距离。"
+  ],
+  "Cavitation": [
+   "Propeller cavitation",
+   "螺旋桨叶片上形成的气泡，压力下降后破裂；它会导致侵蚀和效率损失。"
+  ],
+  "Interaction Effect": [
+   "Interaction",
+   "两艘船之间的水动力相互靠近。"
+  ],
+  "Shallow Water Effect": [
+   "Shallow water effect",
+   "在浅水中，船下的水流加速，压力下降；船下沉并且驾驶性能较差。"
+  ],
+  "Trim Optimization": [
+   "Trim optimisation",
+   "选择船舶阻力最小的纵倾；它节省燃料。"
+  ],
+  "Alternator": [
+   "Alternator",
+   "产生交流电的发电机；船上通常为 440 V 60 Hz 或 380 V 50 Hz。"
+  ],
+  "Transformer": [
+   "Transformer",
+   "升高或降低交流电压的电磁装置。"
+  ],
+  "Circuit Breaker (Şalter)": [
+   "Circuit breaker",
+   "过流或短路时自动断开电路的保护开关。"
+  ],
+  "Frequency Converter": [
+   "Frequency converter",
+   "转换频率和电压的电子设备，例如用于岸电连接。"
+  ],
+  "Synchroscope": [
+   "Synchroscope",
+   "在并联之前显示输入发电机的频率和相位是否与母线匹配的仪器。"
+  ],
+  "AVR (Automatic Voltage Regulator)": [
+   "AVR (Automatic Voltage Regulator)",
+   "保持发电机输出电压恒定的电路。"
+  ],
+  "Earth Fault Monitor": [
+   "Earth fault monitor",
+   "一种检测绝缘（未接地）配电系统中接地故障的仪器。"
+  ],
+  "Motor Starter": [
+   "Motor starter",
+   "通过限制启动电流来控制启动电动机的电路。"
+  ],
+  "PLC (Programmable Logic Controller)": [
+   "PLC (Programmable Logic Controller)",
+   "用于船舶自动化中的机械和过程控制的可编程控制器。"
+  ],
+  "SCADA": [
+   "SCADA",
+   "用于机舱和辅助系统中央监控的软件。"
+  ],
+  "BWM Convention": [
+   "BWM Convention",
+   "压载水管理公约；它的目的是阻止船舶压载水中生物的传播。"
+  ],
+  "SEEMP": [
+   "SEEMP",
+   "船舶能效管理计划；运营能源效率措施的强制性计划。"
+  ],
+  "EEDI": [
+   "EEDI",
+   "能效设计指标；新船二氧化碳效率的强制性设计标准。"
+  ],
+  "CII Rating": [
+   "CII rating",
+   "碳强度指标；将船舶的年度运营碳效率从 A 级评定为 E 级。"
+  ],
+  "DOC (Document of Compliance)": [
+   "DOC (Document of Compliance)",
+   "ISM代码证书表明公司的安全管理体系符合要求。"
+  ],
+  "SMC (Safety Management Certificate)": [
+   "SMC (Safety Management Certificate)",
+   "向船舶颁发ISM Code证书，表明其安全管理体系符合要求。"
+  ],
+  "IOPP Certificate": [
+   "IOPP Certificate",
+   "根据 MARPOL 附件 I 颁发的国际防止油污染证书。"
+  ],
+  "Load Line Certificate": [
+   "Load Line Certificate",
+   "该证书确认船舶指定的载重线和干舷。"
+  ],
+  "Safety Equipment Certificate": [
+   "Safety Equipment Certificate",
+   "证明救生消防安全设备符合SOLAS的证书。"
+  ],
+  "Tonnage Certificate": [
+   "Tonnage Certificate",
+   "证明船舶总吨位和净吨位的证书。"
+  ],
+  "Grain Loading Diagram": [
+   "Grain loading diagram",
+   "该图显示了谷物货物对不同货舱填充物稳定性的影响。"
+  ],
+  "Lashing Calculator": [
+   "Lashing calculator",
+   "用于计算集装箱和货物绑扎上的力的工具。"
+  ],
+  "Cargo Securing Manual (CSM)": [
+   "Cargo Securing Manual (CSM)",
+   "关于货物系固程序和系固设备的强制性船舶专用手册。"
+  ],
+  "Ventilation Hold": [
+   "Hold ventilation",
+   "货舱通风以控制湿度和温度；它可以防止汗水和冷凝。"
+  ],
+  "Sweat (Terleme)": [
+   "Sweat",
+   "由于温差导致货物或货舱结构上出现凝结；分为货汗和船汗。"
+  ],
+  "TML (Transportable Moisture Limit)": [
+   "TML (Transportable Moisture Limit)",
+   "可能液化的固体散装货物可以安全运输的最大水分含量。"
+  ],
+  "Flow Moisture Point (FMP)": [
+   "Flow Moisture Point (FMP)",
+   "固体散装货物开始表现得像液体时的水分含量； TML = 0.9 × FMP。"
+  ],
+  "Liquefaction": [
+   "Liquefaction",
+   "固体散装货物在振动和船舶运动下开始表现得像液体；它可能导致失去稳定性和倾覆。"
+  ],
+  "Fumigation": [
+   "Fumigation",
+   "用有毒气体杀死货物中的昆虫和害虫。"
+  ],
+  "Classification Survey": [
+   "Classification survey",
+   "船级社按规定时间间隔对船舶结构和设备进行的技术检查。"
+  ],
+  "Damage Report (Hasar Raporu)": [
+   "Damage report",
+   "货物中发现的损坏或短缺的书面记录。"
+  ],
+  "Letter of Protest": [
+   "Letter of protest",
+   "反对货物损坏、延误或不适当条件的正式信件。"
+  ],
+  "Dangerous Goods Declaration": [
+   "Dangerous goods declaration",
+   "托运人申报危险货物的类别、性质和紧急情况信息的文件。"
+  ],
+  "Mediterranean Mooring": [
+   "Mediterranean mooring",
+   "船尾系泊在码头上，船头由锚固定；常见于地中海。"
+  ],
+  "Single Point Mooring (SPM)": [
+   "Single point mooring (SPM)",
+   "近海浮标，油轮在装货或卸货时停泊在某一点。"
+  ],
+  "Parallel Body": [
+   "Parallel body",
+   "横截面保持不变的船体中部长度。"
+  ],
+  "Pivot Point": [
+   "Pivot point",
+   "船似乎转向的点；向前行驶时，它位于前方。"
+  ],
+  "Tactical Diameter": [
+   "Tactical diameter",
+   "当船用硬舵转过 180° 时，船舶从原来的航迹侧向移动的距离。"
+  ],
+  "Kick (Başlangıç Sapması)": [
+   "Kick",
+   "舵刚转过，船尾就会偏离转弯方向，船舶会向相反方向短暂侧向移动。"
+  ],
+  "Transverse Thrust": [
+   "Transverse thrust",
+   "螺旋桨对船尾的侧向推力；它控制低速处理。"
+  ],
+  "Approach Speed": [
+   "Approach speed (berthing)",
+   "船舶靠泊时以侧向速度向泊位驶去；它不得超过挡泥板可以吸收的量。"
+  ],
+  "STS Operation": [
+   "STS operation",
+   "船对船转运：两艘船并排转运货物。"
+  ],
+  "Alabora": [
+   "Capsize",
+   "完全翻转的船或小船，使龙骨露出水面。"
+  ],
+  "Arma": [
+   "Rigging",
+   "在帆船上，桅杆、帆桁、横帆、撑杆和绳索的整体布置。"
+  ],
+  "Ayna Kıç": [
+   "Transom stern",
+   "船尾有平坦、垂直的一端；广泛应用于现代货船。"
+  ],
+  "Demir Taramak": [
+   "Dragging anchor",
+   "锚无法固定并沿海底拖行；由接地不良或电缆太少引起。"
+  ],
+  "Duba": [
+   "Pontoon",
+   "平底浮动平台，有或没有自己的发动机；用于货物转运、作为登陆台或工作平台。"
+  ],
+  "Gemiadamı": [
+   "Seafarer",
+   "以任何身份受雇于船上的人员；包括船长、高级船员和普通船员。"
+  ],
+  "Iskarmoz": [
+   "Thole pin",
+   "在小船上，船舷上的销钉或叉子，划船时桨靠在上面。"
+  ],
+  "Kontra": [
+   "Counter rudder",
+   "将舵转向对侧以检查船的摆动。"
+  ],
+  "Tayfa": [
+   "Rating",
+   "甲板或轮机部门的非高级船员。"
+  ],
+  "Kazık Bağı (Clove Hitch)": [
+   "Clove hitch",
+   "用于将绳子固定在柱子或系柱上的挂钩；快速打结和解开。"
+  ],
+  "Gemici Bağı (Bowline)": [
+   "Bowline",
+   "在绳子末端形成固定环的结，不会打滑或拉紧；最基本的海员结。"
+  ],
+  "Yoma (Sheet Bend)": [
+   "Sheet bend",
+   "用于连接两条粗细不同的绳子的结。"
+  ],
+  "Balıkçı Bağı (Fisherman's Knot)": [
+   "Fisherman's knot",
+   "用于永久连接两条线的强力结。"
+  ],
+  "Figure of Eight": [
+   "Figure-of-eight knot",
+   "一种止动结，可防止绳子末端穿过块或孔。"
+  ],
+  "Constrictor Bağı": [
+   "Constrictor knot",
+   "紧紧抓住圆形物体的挂钩；例如，用于固定软管。"
+  ],
+  "Rolling Hitch": [
+   "Rolling hitch",
+   "系在绳子或翼梁上的摩擦挂钩，可抵抗沿绳子的拉力；用于消除负载下绳索的张力。"
+  ],
+  "Kısa Ek (Short Splice)": [
+   "Short splice",
+   "通过交织绳股将两个绳端永久连接起来；它增加了绳索的直径。"
+  ],
+  "Uzun Ek (Long Splice)": [
+   "Long splice",
+   "在不增加直径的情况下连接两根绳索的接头；用于绳索必须穿过块的地方。"
+  ],
+  "Koçboynuzu": [
+   "Cleat",
+   "一种带有两个角的金属配件，其周围系有一根绳子。"
+  ],
+  "Panama Chock": [
+   "Panama chock",
+   "船侧的封闭式导缆器，系泊缆绳通过该导缆器引导；巴拿马运河过境所需的。"
+  ],
+  "Çıma Halatı (Heaving Line)": [
+   "Heaving line",
+   "带有加重端的轻型绳索，抛到岸上或抛到另一艘船上以穿过系泊绳。"
+  ],
+  "Sentetik Halat": [
+   "Synthetic rope",
+   "由尼龙、聚酯、聚丙烯或HMPE等人造纤维制成的绳索。"
+  ],
+  "Tel Halat (Wire Rope)": [
+   "Wire rope",
+   "采用钢丝制成的高强度绳索；用于起重机、井架和货物紧固。"
+  ],
+  "SWL (Safe Working Load)": [
+   "SWL (Safe Working Load)",
+   "绳索、链条或起重装置在正常使用中可以提升或保持的最大负载。"
+  ],
+  "MBL (Minimum Breaking Load)": [
+   "MBL (Minimum Breaking Load)",
+   "保证新绳索或链条不断裂的最小力；安全系数为 MBL 除以 SWL。"
+  ],
+  "Snap Back Zone": [
+   "Snap-back zone",
+   "处于拉力下的系泊线一旦断裂就会反弹到危险区域。"
+  ],
+  "Doubling the Angle": [
+   "Doubling the angle on the bow",
+   "通过观察相对方位何时加倍来确定与物体的距离；两个轴承之间的运行距离等于离开的距离。"
+  ],
+  "Four Point Bearing": [
+   "Four point bearing",
+   "找出物体与船首 45° 和 90° 方位的距离；运行距离等于偏离横梁的距离。"
+  ],
+  "Special Mark (Özel İşaret)": [
+   "Special mark",
+   "在IALA系统中，黄色标记显示特殊区域或特征，例如电缆区域或射程。"
+  ],
+  "Cardinal Mark": [
+   "Cardinal mark",
+   "在 IALA 系统中，位于危险的北、东、南或西的标记；它显示安全水域位于哪一侧。"
+  ],
+  "Isolated Danger Mark": [
+   "Isolated danger mark",
+   "在 IALA 系统中，在周围有可通航水域的有限大小的危险上放置一个标记。"
+  ],
+  "Safe Water Mark": [
+   "Safe water mark",
+   "在IALA系统中，周围有红白竖条纹标志，表示安全用水；用作登陆或中间通道标记。"
+  ],
+  "Liman Yanaşma Feneri": [
+   "Leading lights",
+   "港口入口处的灯光，当在直线上看到时，标志着航道或安全进场线的中心。"
+  ],
+  "Racon": [
+   "Racon",
+   "雷达应答器应答雷达脉冲并在雷达屏幕上显示编码标记。"
+  ],
+  "Radar Shadow": [
+   "Radar shadow",
+   "雷达波束无法到达的大型物体后面的盲区。"
+  ],
+  "Lubber Line": [
+   "Lubber line",
+   "罗盘碗或雷达显示器上标记船头的固定线。"
+  ],
+  "Pelorus": [
+   "Pelorus",
+   "用于获取方位的瞄准装置；它没有自己的磁罗盘。"
+  ],
+  "Rate of Turn Indicator": [
+   "Rate of turn indicator",
+   "显示船舶转动速度的仪器，以度/分钟为单位； SOLAS 对 50,000 GT 及以上船舶的要求。"
+  ],
+  "Speed Log": [
+   "Speed and distance log",
+   "测量船舶在水中或在地面上的速度的仪器；多普勒或电磁。"
+  ],
+  "Parallel Indexing": [
+   "Parallel indexing",
+   "雷达技术：在距固定目标一定距离处与计划航迹平行绘制的线用于监视船舶的位置。"
+  ],
+  "Stiff Ship (Sert Gemi)": [
+   "Stiff ship",
+   "GM较大的船舶；尽管她最初的稳定性很高，但她滚动得又快又猛，而且很不舒服。"
+  ],
+  "Tender Ship (Yumuşak Gemi)": [
+   "Tender ship",
+   "一艘小GM的船；她滚动缓慢，周期长，翻船的风险较高。"
+  ],
+  "Hogging": [
+   "Hogging",
+   "船的中部向上弯曲，两端下垂；它会导致结构应力。"
+  ],
+  "Sagging": [
+   "Sagging",
+   "船的中部向下弯曲，两端上升；与掠夺相反。"
+  ],
+  "Still Water Bending Moment": [
+   "Still water bending moment",
+   "静水中重量和浮力分布引起的纵向弯矩；强度计算的基础。"
+  ],
+  "Wave Bending Moment": [
+   "Wave bending moment",
+   "当波浪通过时作用在船体上的附加弯矩。"
+  ],
+  "Torsional Stress": [
+   "Torsional stress",
+   "船体扭转载荷引起的应力；对于大型集装箱船尤其重要。"
+  ],
+  "FWA (Fresh Water Allowance)": [
+   "FWA (Fresh Water Allowance)",
+   "当船舶从咸水进入淡水时吃水增加的量；以毫米表示。"
+  ],
+  "DWA (Dock Water Allowance)": [
+   "DWA (Dock Water Allowance)",
+   "淡水和咸水之间码头水密度的吃水修正。"
+  ],
+  "Displacement Table": [
+   "Displacement table",
+   "给出船舶在不同吃水深度下的排水量的静水压表。"
+  ],
+  "Hydrostatic Curves": [
+   "Hydrostatic curves",
+   "给出 TPC、MCTC、LCB 和 LCF 等抗拔力值的曲线。"
+  ],
+  "KN Curves": [
+   "KN curves",
+   "稳定性交叉曲线：针对固定后跟角的位移绘制 KN。"
+  ],
+  "Wall-Sided Formula": [
+   "Wall-sided formula",
+   "GZ = sin θ × (GM + ½ BM tan² θ);对于壁边船，给出 GZ，在甲板边缘浸没或舱底浮出之前有效。"
+  ],
+  "Bilge Radius": [
+   "Bilge radius",
+   "船底转向侧面的弧形板的半径。"
+  ],
+  "Shifting Boards": [
+   "Shifting boards",
+   "货舱内装有垂直纵向分隔装置，以防止谷物货物移动。"
+  ],
+  "Grain Heeling Moment": [
+   "Grain heeling moment",
+   "由假设的谷物货物移动引起的横倾力矩；受 IMO 谷物代码限制。"
+  ],
+  "Blowdown": [
+   "Boiler blowdown",
+   "控制锅炉水的排放，以减少其中的溶解固体。"
+  ],
+  "Cylinder Lubrication": [
+   "Cylinder lubrication",
+   "在二冲程发动机中，润滑气缸套和活塞环的独立系统。"
+  ],
+  "Crankcase Explosion": [
+   "Crankcase explosion",
+   "当曲轴箱内的油雾被热点点燃时会引起危险的爆炸。"
+  ],
+  "Oil Mist Detector (OMD)": [
+   "Oil mist detector (OMD)",
+   "监测曲轴箱内油雾浓度并在爆炸发生前发出警告的探测器。"
+  ],
+  "Scavenge Fire": [
+   "Scavenge fire",
+   "由于油和碳沉积物着火而导致扫气空间发生火灾。"
+  ],
+  "Stuffing Box": [
+   "Stuffing box",
+   "一种填料压盖，用于密封轴或杆穿过外壳或舱壁的位置。"
+  ],
+  "Governor (Regülatör)": [
+   "Governor",
+   "随着负载变化自动调节燃油供给量以保持发动机转速恒定的装置。"
+  ],
+  "Indicator Card": [
+   "Indicator card",
+   "气缸的压力-容积图；用于评估发动机性能并查找故障。"
+  ],
+  "Compression Ratio": [
+   "Compression ratio",
+   "活塞位于下止点时的气缸容积除以上止点时的容积。"
+  ],
+  "Clearance Volume": [
+   "Clearance volume",
+   "当活塞位于上止点时气缸内剩余的容积。"
+  ],
+  "TDC (Top Dead Centre)": [
+   "TDC (Top Dead Centre)",
+   "活塞在气缸中的最高位置。"
+  ],
+  "BDC (Bottom Dead Centre)": [
+   "BDC (Bottom Dead Centre)",
+   "活塞在气缸中的最低位置。"
+  ],
+  "Lub Oil Crosshead": [
+   "Crosshead lubricating oil",
+   "十字头轴承的润滑供应；它需要高压油。"
+  ],
+  "Plate Cooler": [
+   "Plate cooler",
+   "板式换热器；它在海水和淡水之间传递热量。"
+  ],
+  "Relief Valve": [
+   "Relief valve",
+   "安全阀在压力过大时自动打开以保护系统。"
+  ],
+  "Thermostat": [
+   "Thermostatic valve",
+   "使冷却水温度保持在设定范围内的自动控制元件。"
+  ],
+  "Jacket Water": [
+   "Jacket cooling water",
+   "发动机气缸周围的淡水冷却回路；闭合电路。"
+  ],
+  "Expansion Tank": [
+   "Expansion tank",
+   "冷却水回路的集水箱；它吸收水加热时的膨胀并让空气逸出。"
+  ],
+  "Sea Chest": [
+   "Sea chest",
+   "水下船体中的一个凹槽，上面覆盖着格栅，海水通过该凹槽被吸入。"
+  ],
+  "Zinc Anode (Kurban Anot)": [
+   "Sacrificial anode (zinc anode)",
+   "安装在水下船体上的锌阳极可以代替钢材进行腐蚀，并防止电偶腐蚀。"
+  ],
+  "ICCP": [
+   "ICCP (Impressed Current Cathodic Protection)",
+   "一种主动系统，通过外部电源提供的电流保护船体免受腐蚀。"
+  ],
+  "Tank Top": [
+   "Tank top",
+   "双层底的顶板；它形成货舱地板并承载货物重量。"
+  ],
+  "Tweendeck": [
+   "Tweendeck",
+   "下舱和上甲板之间的中间甲板；为普通货物提供额外的装载空间。"
+  ],
+  "Feeder Vessel": [
+   "Feeder vessel",
+   "小型集装箱船，在较小的港口和大型船舶服务的枢纽港口之间运输集装箱。"
+  ],
+  "FCL (Full Container Load)": [
+   "FCL (Full Container Load)",
+   "其全部内容物属于一个托运人的集装箱。"
+  ],
+  "LCL (Less than Container Load)": [
+   "LCL (Less than Container Load)",
+   "一个集装箱，装满了几个托运人的货物。"
+  ],
+  "Outturn Report": [
+   "Outturn report",
+   "卸货后货物的理货和状况报告。"
+  ],
+  "Bagging": [
+   "Bagging",
+   "将散装货物装入袋子中运输。"
+  ],
+  "Ship's Figures": [
+   "Ship's figures",
+   "船舶通过吃水检验发现的货物数量；与岸上的数字相比。"
+  ],
+  "Shore Figures": [
+   "Shore figures",
+   "岸上秤发现的货物数量；与船舶数据的差异可能会导致争议。"
+  ],
+  "Loading Computer": [
+   "Loading computer",
+   "计算载荷条件、稳定性和纵向强度的机载计算机系统。"
+  ],
+  "COW (Crude Oil Washing)": [
+   "COW (Crude Oil Washing)",
+   "用原油货物本身清洗原油油轮的货舱； MARPOL 要求。"
+  ],
+  "Inert Gas (Asal Gaz)": [
+   "Inert gas",
+   "含氧量低的气体；用于油轮货舱以防止爆炸。"
+  ],
+  "Cargo Plan (Yükleme Planı)": [
+   "Cargo plan",
+   "显示货物各部分存放位置的平面图；为稳定性和港口秩序做好准备。"
+  ],
+  "Bay Plan": [
+   "Bay plan",
+   "在集装箱船上，详细平面图显示了每个海湾中每个集装箱的积载位置。"
+  ],
+  "Segregation": [
+   "Segregation",
+   "将不相容类别的危险货物保持所需的距离。"
+  ],
+  "DSC (Digital Selective Calling)": [
+   "DSC (Digital Selective Calling)",
+   "VHF、MF 和 HF 无线电系统，用于发送自动遇险警报和呼叫站。"
+  ],
+  "Inmarsat-C": [
+   "Inmarsat-C",
+   "一种基于消息的卫星通信终端；用于遇险警报和接收海上安全信息。"
+  ],
+  "LRIT": [
+   "LRIT",
+   "远程识别和跟踪；船舶的位置将被报告给其船旗国并由其船旗国遵循。"
+  ],
+  "SSAS": [
+   "SSAS",
+   "船舶安全警报系统；针对海盗等安全威胁向岸上发送秘密警报。"
+  ],
+  "Foam Monitor": [
+   "Foam monitor",
+   "甲板上的固定式或便携式泡沫/水炮，射程长。"
+  ],
+  "Quick-Closing Valve": [
+   "Quick-closing valve",
+   "燃料箱或油箱上的阀门，火灾时可以远程关闭。"
+  ],
+  "Fire Damper": [
+   "Fire damper",
+   "通风管道中的挡板，关闭以阻止火势通过管道蔓延。"
+  ],
+  "Watertight Door": [
+   "Watertight door",
+   "水密舱壁上的门；它可以在本地或从远程位置关闭。"
+  ],
+  "Muster List": [
+   "Muster list",
+   "紧急情况下船上每个人的职责和位置的正式清单。"
+  ],
+  "Emergency Towing Arrangement": [
+   "Emergency towing arrangement",
+   "船头和船尾备有拖带设备，以便紧急情况下可以拖船。"
+  ],
+  "Lifeboat Releasing Gear": [
+   "Lifeboat release gear",
+   "将救生艇从吊艇架上释放的机构；存在加载和卸载类型。"
+  ],
+  "Free-Fall Lifeboat": [
+   "Free-fall lifeboat",
+   "一艘封闭式救生艇从船尾的坡道滑下并自由落入海中。"
+  ],
+  "Rescue Boat": [
+   "Rescue boat",
+   "用于从水中救出人员并编组救生筏的快艇。"
+  ],
+  "Line Throwing Appliance": [
+   "Line-throwing appliance",
+   "向另一艘船或救援行动中的人员发射绳索的装置。"
+  ],
+  "DPA (Designated Person Ashore)": [
+   "DPA (Designated Person Ashore)",
+   "根据 ISM 规则指定的岸上人员，负责就安全事务与船舶和公司建立联系。"
+  ],
+  "Katabatik Rüzgâr": [
+   "Katabatic wind",
+   "冷空气在重力作用下从高地向下流动而产生的风。"
+  ],
+  "Anabatik Rüzgâr": [
+   "Anabatic wind",
+   "风吹过白天被太阳加热的斜坡。"
+  ],
+  "Sea Breeze (Deniz Meltemi)": [
+   "Sea breeze",
+   "白天从海上吹向陆地的局部风，因为陆地变暖的速度比海洋快。"
+  ],
+  "Land Breeze (Kara Meltemi)": [
+   "Land breeze",
+   "夜间从陆地吹向海洋的局部风，因为陆地比海洋冷却得快。"
+  ],
+  "Monsun": [
+   "Monsoon",
+   "随季节改变方向的大规模风系统；印度洋上空最强。"
+  ],
+  "Mistral": [
+   "Mistral",
+   "寒冷干燥的北风从法国南部吹过地中海。"
+  ],
+  "Poyraz": [
+   "Poyraz",
+   "土耳其吹寒冷干燥的东北风；马尔马拉和黑海地区实力强劲。"
+  ],
+  "Lodos": [
+   "Lodos",
+   "土耳其有温暖、潮湿的南风或西南风；强于爱琴海和马尔马拉。"
+  ],
+  "Tramontana": [
+   "Tramontana",
+   "地中海的寒冷北风或西北风。"
+  ],
+  "Douglas Deniz Durumu Skalası": [
+   "Douglas sea scale",
+   "根据波浪高度将海洋状况分为 0 到 9 级的等级。"
+  ],
+  "Tropopoz": [
+   "Tropopause",
+   "对流层和平流层之间的边界；天气的上限。"
+  ],
+  "Bağıl Nem": [
+   "Relative humidity",
+   "空气中水蒸气含量占该温度下所能容纳的水蒸气含量的百分比。"
+  ],
+  "Sling Psikrometresi": [
+   "Sling psychrometer",
+   "带有湿球温度计和干球温度计的仪器，在空气中旋转以测量相对湿度。"
+  ],
+  "Kümülonimbus (Cb)": [
+   "Cumulonimbus (Cb)",
+   "高耸的风暴云；它会产生雷声、闪电、冰雹和大雨。"
+  ],
+  "Sirrus (Ci)": [
+   "Cirrus (Ci)",
+   "薄薄的、高高的冰晶云；通常天气晴朗，但也可能预示锋面即将来临。"
+  ],
+  "Stratus (St)": [
+   "Stratus (St)",
+   "低矮的灰色云层；有毛毛雨，能见度较差。"
+  ],
+  "Okta": [
+   "Okta",
+   "云量单位：八分之一的天空被覆盖，从 0（晴）到 8（阴）。"
+  ],
+  "METAR": [
+   "METAR",
+   "机场和沿海站日常天气观测的标准编码格式。"
+  ],
+  "Form Factor (1+k)": [
+   "Form factor (1+k)",
+   "显示船体形状如何增加摩擦阻力的因素；用于 Holtrop-Mennen 方法。"
+  ],
+  "Wave Pattern Resistance": [
+   "Wave pattern resistance",
+   "由于船舶波浪系统中的能量而产生的阻力分量。"
+  ],
+  "Appendage Resistance": [
+   "Appendage resistance",
+   "由舵、减摇鳍和舭龙骨等附属物引起的额外阻力。"
+  ],
+  "Air Resistance": [
+   "Air resistance",
+   "水面以上船体和上层建筑的空气动力阻力。"
+  ],
+  "Effective Power (PE)": [
+   "Effective power (PE)",
+   "在给定速度下克服船舶阻力所需的功率； PE=R×V。"
+  ],
+  "Delivered Power (PD)": [
+   "Delivered power (PD)",
+   "传递至螺旋桨的动力；轴系损失后剩余的功率。"
+  ],
+  "Quasi-Propulsive Coefficient (QPC)": [
+   "Quasi-propulsive coefficient (QPC)",
+   "整体推进效率；船体、相对旋转效率和敞水效率的乘积。"
+  ],
+  "Open Water Efficiency": [
+   "Open water efficiency",
+   "螺旋桨在开阔水域工作的效率，不受船体的影响。"
+  ],
+  "Hull Efficiency": [
+   "Hull efficiency",
+   "计算公式为 (1-t)/(1-w)，其中 t 是推力扣除分数，w 是尾流分数。"
+  ],
+  "Rudder Area Ratio": [
+   "Rudder area ratio",
+   "舵面积占水下横向面积的比例；通常至少约1.5-2%以获得良好的机动性。"
+  ],
+  "Resistance Test": [
+   "Resistance test",
+   "拖曳水池试验，拖曳船模以测量其阻力。"
+  ],
+  "Propeller Open Water Test": [
+   "Propeller open water test",
+   "在开放水域条件下对模型螺旋桨进行测试，以找出 KT、KQ 和 η₀。"
+  ],
+  "Self-Propulsion Test": [
+   "Self-propulsion test",
+   "模型试验，模型由自身的螺旋桨驱动，模拟服役条件。"
+  ],
+  "Preferential Trip": [
+   "Preferential trip",
+   "当发电机过载时自动断开非必要负载。"
+  ],
+  "Dead Ship Condition": [
+   "Dead ship condition",
+   "失去所有动力的情况；恢复使用应急发电机和电池。"
+  ],
+  "Power Management System (PMS)": [
+   "Power Management System (PMS)",
+   "自动启动和停止发电机并在发电机之间分担负载的控制系统。"
+  ],
+  "Load Sharing": [
+   "Load sharing",
+   "并联运行的发电机均等或按其额定值的比例分担负载。"
+  ],
+  "Synchronization": [
+   "Synchronising",
+   "当电压、频率和相位匹配时，将输入发电机连接至母线。"
+  ],
+  "Reverse Power Protection": [
+   "Reverse power protection",
+   "一种保护继电器，当发电机开始从母线获取电力并作为电动机运行时，使发电机跳闸。"
+  ],
+  "VFD (Variable Frequency Drive)": [
+   "VFD (Variable Frequency Drive)",
+   "通过改变电源频率来控制电动机速度的驱动器；它节省了泵和风扇的能源。"
+  ],
+  "Soft Starter": [
+   "Soft starter",
+   "通过逐渐升高电压来平稳启动电动机的电子电路。"
+  ],
+  "Star-Delta Starter": [
+   "Star-delta starter",
+   "一种将电机以星形连接运行，然后切换到三角形连接的启动方法，以减少启动电流。"
+  ],
+  "Megger Test": [
+   "Megger test",
+   "采用高测试电压进行绝缘电阻测试；结果以 MΩ 为单位。"
+  ],
+  "Navtex Receiver": [
+   "NAVTEX receiver",
+   "一种自动接收 518 kHz 导航和气象警报并打印或显示的接收器。"
+  ],
+  "S-Band / X-Band Radar": [
+   "S-band and X-band radar",
+   "S波段（10厘米）：范围更远，雨天性能更好。 X 波段 (3 cm)：分辨率更高，可检测 SART。"
+  ],
+  "Gyro Repeater": [
+   "Gyro repeater",
+   "由主陀螺罗盘驱动的罗盘中继器，用于读取航向并获取其他位置的方位。"
+  ],
+  "BNWAS": [
+   "BNWAS",
+   "驾驶台航行值班报警系统；定期检查值班人员是否保持警觉的强制性系统。"
+  ],
+  "MARPOL Ek I": [
+   "MARPOL Annex I",
+   "防止石油污染；除其他外，还需要油类记录簿和油类过滤系统。"
+  ],
+  "MARPOL Ek II": [
+   "MARPOL Annex II",
+   "防止散装运输有毒液体物质污染的规则。"
+  ],
+  "MARPOL Ek III": [
+   "MARPOL Annex III",
+   "防止海上包装有害物质污染。"
+  ],
+  "MARPOL Ek IV": [
+   "MARPOL Annex IV",
+   "防止船舶污水污染规则."
+  ],
+  "MARPOL Ek V": [
+   "MARPOL Annex V",
+   "防止船舶垃圾污染；特殊地区实行更严格的排放禁令。"
+  ],
+  "MARPOL Ek VI": [
+   "MARPOL Annex VI",
+   "防止船舶空气污染； SOx、NOx 和 CO2 排放限制。"
+  ],
+  "ECA (Emission Control Area)": [
+   "ECA (Emission Control Area)",
+   "燃油硫含量不得超过 0.10% (SOx ECA) 和/或适用 NOx Tier III 限制 (NOx ECA) 的海域。"
+  ],
+  "SECA": [
+   "SECA",
+   "硫排放控制区；所用燃料的硫含量限制为0.10%。"
+  ],
+  "NECA": [
+   "NECA",
+   "氮氧化物排放控制区；适用 Tier III 氮氧化物限值的区域。"
+  ],
+  "SIRE (Ship Inspection Report)": [
+   "SIRE (Ship Inspection Report Programme)",
+   "OCIMF 负责油轮和气体运输船的检验计划。"
+  ],
+  "CDI (Chemical Distribution Institute)": [
+   "CDI (Chemical Distribution Institute)",
+   "化学品船和码头的检验计划。"
+  ],
+  "Rightship": [
+   "RightShip",
+   "主要针对干散货船的审查和安全评级计划。"
+  ],
+  "IHM (Inventory of Hazardous Materials)": [
+   "IHM (Inventory of Hazardous Materials)",
+   "根据《香港公约》和《欧盟船舶回收条例》的要求，列出了船上有害物质的文件。"
+  ],
+  "Continuous Synopsis Record (CSR)": [
+   "Continuous Synopsis Record (CSR)",
+   "船舶名称、船旗、船东和船级的历史记录； SOLAS 第 XI-1 章要求。"
+  ],
+  "SMS (Safety Management System)": [
+   "SMS (Safety Management System)",
+   "ISM 规则下的公司和船舶安全政策和程序体系。"
+  ],
+  "Warping": [
+   "Warping",
+   "使用自己的绞车或岸上辅助设备，用系泊线沿着泊位移动船舶。"
+  ],
+  "Kedging": [
+   "Kedging",
+   "通过放置一个小（木楔）锚并将其拉入来移动船只。"
+  ],
+  "Stern First Approach": [
+   "Stern-first approach",
+   "先接近船尾泊位；用于狭窄区域和地中海系泊。"
+  ],
+  "Wheel Over Point (WOP)": [
+   "Wheel over point (WOP)",
+   "当然，舵必须转向以改变航向的点是根据船舶的前进和转移计算出来的。"
+  ],
+  "Dragging Anchor": [
+   "Dragging anchor",
+   "锚无法固定住海底并拖曳；它需要警报并立即采取行动。"
+  ],
+  "Holding Ground": [
+   "Holding ground",
+   "海床对锚的固定程度如何：泥土和沙子固定得很好，岩石和珊瑚则较差。"
+  ],
+  "Scope (Zincir Uzunluğu)": [
+   "Scope",
+   "放出的电缆长度与水深之比；为了保持良好的效果，建议进行约 5 至 7 次。"
+  ],
+  "Let Go (Demir Bırak)": [
+   "Let go (the anchor)",
+   "命令释放锚机制动器，使锚落入海底。"
+  ],
+  "Short Stay": [
+   "Short stay",
+   "上升时，锚索被缩短并急剧下降； “up and down”之前的阶段。"
+  ],
+  "Long Stay": [
+   "Long stay",
+   "锚索较长，近水平引出；表明锚固得很好的标志。"
+  ],
+  "Breast Line": [
+   "Breast line",
+   "系泊线与船的中心线成直角；它阻止船舶离开泊位。"
+  ],
+  "Spring Line": [
+   "Spring line",
+   "A mooring line led diagonally that stops the ship moving ahead or astern along the berth; there are forward and after springs."
+  ],
+  "Head Line": [
+   "Head line",
+   "一条系泊绳从船头向前延伸至泊位。"
+  ],
+  "Stern Line": [
+   "Stern line",
+   "系泊缆绳从船尾通向泊位。"
+  ],
+  "Bow Stopper": [
+   "Bow stopper (chain stopper)",
+   "艏楼上的配件，用于锁定锚索并减轻锚机上的负载。"
+  ],
+  "Single Up": [
+   "Single up",
+   "出发前的命令，将每个位置的系泊装置减少到一根。"
+  ],
+  "All Fast": [
+   "All fast",
+   "报告称所有系泊线均已紧固；靠泊作业完成。"
+  ],
+  "Stand By Engine": [
+   "Stand by engine",
+   "向机舱发出命令，让发动机做好操纵准备。"
+  ],
+  "Finished With Engine (FWE)": [
+   "Finished with engine (FWE)",
+   "不再需要发动机的电报命令；通常在船舶靠泊或抛锚后给出。"
+  ]
+ },
+ "meta": {
+  "generated": "pivot",
+  "gates": "1f852a1686b4",
+  "sources": {
+   "c:Gemicilik": "8c44fab82667b496",
+   "c:Seyir": "cf03cf2e9cdf95a2",
+   "c:Stabilite": "785ca9526809c90e",
+   "c:Makine": "435e36201c2989a8",
+   "c:Kargo": "6c98e86fc49b32d6",
+   "c:Güvenlik": "db6e7e410412f585",
+   "c:Meteoroloji": "dede2dd99c4c9dbc",
+   "c:Hidrodinamik": "afdf85eabb06d920",
+   "c:Halatçılık": "d2e76530e0d41f03",
+   "c:Elektrik & Elektronik": "7cf9da711a38bda9",
+   "c:Hukuk & Mevzuat": "7ac63081dc32a7fb",
+   "c:Liman & Manevra": "f3f9e22b563e4b65",
+   "t:Viyalamak": "92477d94dd88c73c",
+   "t:Küpeşte": "024f7a5c691c9e1a",
+   "t:Borda": "de36a16f17cd3d40",
+   "t:İskele (Port)": "0ec5eccf44e8e5c0",
+   "t:Sancak": "035ad3df01e0a750",
+   "t:Pruva": "2f8b67c0e657bd88",
+   "t:Kıç": "f177cdcf5065bf78",
+   "t:Omurga (Keel)": "f2da504c9be1dc39",
+   "t:Postalar (Frames)": "ab71ab7131ad6890",
+   "t:Güverte (Deck)": "c26f67bca7ac2ec5",
+   "t:Ambar (Hold)": "8f314378e94c2e8c",
+   "t:Sintine (Bilge)": "15829ed77275d669",
+   "t:Baca (Funnel)": "501c72f760f9251f",
+   "t:Köprü Üstü (Bridge)": "49c190e1989e2dc1",
+   "t:Kamarot": "62172886b319a8c3",
+   "t:Lostromo (Bosun)": "d0e62c934a25ac06",
+   "t:Vardiya": "03cc081dda41116b",
+   "t:Alabanda": "3bc3f6a4d1f22e25",
+   "t:Alesta": "92522188d8c84a87",
+   "t:Apiko": "ffd26b1b0e4b8cc0",
+   "t:Baş Bodoslama": "01f7fcd03aba94a0",
+   "t:Kıç Bodoslama": "b57cb209faea6bcd",
+   "t:Borda Feneri": "7902c2d9322c5cb2",
+   "t:Çarmık": "30e1433314aae726",
+   "t:Matafora": "0c827d18a34ad158",
+   "t:Karakol": "dc70fbdad0645095",
+   "t:Grandi": "2d8dfb0e2de0f4a9",
+   "t:Flama": "545fdb37e5744980",
+   "t:Çıma": "9a754d1b5f333d8a",
+   "t:Babafingo": "e0e57c12f5e5093d",
+   "t:Bocurgat (Windlass)": "b2048036e6a4d4a6",
+   "t:Palamar": "e4c0cde8aa5623ab",
+   "t:Kaptan Köşkü": "60be3ba93046db94",
+   "t:Çamaşırlık": "d3de1920f3f144fc",
+   "t:Karantina Bayrağı": "9bcc62630348ec7b",
+   "t:Volta": "0340747ff9d52872",
+   "t:Bağ (Knot)": "cfb0225acb82295f",
+   "t:Ek (Splice)": "83e2a86833b515e8",
+   "t:Kasa Bağı": "c33335b7c78958f9",
+   "t:Camadan": "011da1efd4cbc268",
+   "t:Palanga": "71425143b7226cdb",
+   "t:Makara (Block)": "a30b884fe8ef06cc",
+   "t:Kıstırma (Stopper)": "570bbe6cfd145d00",
+   "t:Yeke": "0fad1e9fe80429d2",
+   "t:Baba (Bollard)": "b42e8a8c1be44719",
+   "t:Bite (Bitt)": "85b2a8a691b48204",
+   "t:Sapan (Sling)": "d5b4a3c674508a33",
+   "t:Mevki (Position)": "59a17753a8f6dee3",
+   "t:DGPS": "32ad5f4b2b2eecbc",
+   "t:Kerteriz (Bearing)": "567e567c82809da1",
+   "t:Rota (Course)": "4fcc66cec8becf3f",
+   "t:Büyük Daire Seyri (Great Circle)": "9d172916a295174e",
+   "t:Loksodrom (Rhumb Line)": "957e7b9af7991156",
+   "t:Meridyen": "83c398a07635c5bb",
+   "t:Paralel": "ca84271878cfb8c6",
+   "t:Enlem (Latitude)": "3d19d33ef82026e9",
+   "t:Boylam (Longitude)": "e23e78b9656cc8f6",
+   "t:Deniz Mili (Nautical Mile)": "779c02561a41d156",
+   "t:Knot": "0aafe38af141c957",
+   "t:ETA (Estimated Time of Arrival)": "824cdd4bc4a12173",
+   "t:ETD (Estimated Time of Departure)": "77a63b112b066e2c",
+   "t:AIS (Automatic Identification System)": "d758a41261a59ec4",
+   "t:ECDIS": "6b0a0ecc96400eb8",
+   "t:Radar": "0cef4664aa3a0daf",
+   "t:ARPA": "eaade26e32f88895",
+   "t:CPA (Closest Point of Approach)": "2c0ba91a348912c5",
+   "t:TCPA (Time to CPA)": "2ca7cf280709a67f",
+   "t:Pusula Hatası (Compass Error)": "791dd19e5398bfd6",
+   "t:Sapma (Variation)": "7f571aa62f58242d",
+   "t:İnhiraf (Deviation)": "520e2a6849f9812f",
+   "t:Seyir Planı (Passage Plan)": "7267f1c7baf17d12",
+   "t:Waypoint": "2651d768ed9abd61",
+   "t:Dümen Açısı": "d05d1f65d753d329",
+   "t:Derinlik Ölçer (Echo Sounder)": "c567693672c96b6c",
+   "t:Fener (Lighthouse)": "695020c5af6d58da",
+   "t:Şamandıra (Buoy)": "9a6c16cadf243d4c",
+   "t:IALA İşaretleme Sistemi": "08c5d742ad968f52",
+   "t:Kıyı Seyri (Coastal Navigation)": "73d24357c0df88fe",
+   "t:Açık Deniz Seyri (Ocean Navigation)": "7cb31a50d95ea582",
+   "t:GPS": "ccca22bbc314a07f",
+   "t:Gyro Pusula": "8aad766d38938a96",
+   "t:Manyetik Pusula": "f7611d431edcc14c",
+   "t:Running Fix": "870d33e572af4816",
+   "t:Cross Bearing": "bed97e60d6f30cd2",
+   "t:Set & Drift": "567c19c7f8a9197a",
+   "t:Leeway": "63330d0c7abf913c",
+   "t:GM (Metasentrik Yükseklik)": "eea928b831cfb58f",
+   "t:Serbest Yüzey Etkisi": "3ad31a1c3bc5e546",
+   "t:Ağırlık Merkezleri (KG)": "f4627c15d1eb60e6",
+   "t:Trim": "30ed613be143023d",
+   "t:Deplasman (Displacement)": "fbbc88563cb43663",
+   "t:Yüzdürme Merkezi (B – Buoyancy)": "db4a3990603938e1",
+   "t:GZ (Doğrultucu Kol)": "5bcd6a363f013ecc",
+   "t:BM (Metasentrik Yarıçap)": "fc6f0efe4564d1c4",
+   "t:KB": "f38c2206fd0c59d8",
+   "t:KM": "05c68d9538a6569e",
+   "t:KG": "972be1170d758258",
+   "t:Doğrultucu Moment": "61d74b2fc4449672",
+   "t:Devrilme Momenti": "196e1c975638fb70",
+   "t:Denge Açısı (Angle of Loll)": "250cc7a1c3d4e293",
+   "t:Dinamik Stabilite": "1c510c66a237b22a",
+   "t:Statik Stabilite Eğrisi (GZ Curve)": "2f976d0d64fe6192",
+   "t:TPC (Tonnes Per Centimetre)": "ba3d8491f0fafe81",
+   "t:MCT (Moment to Change Trim)": "e758936bc000d36d",
+   "t:LCG (Longitudinal Centre of Gravity)": "2d1e033352941bee",
+   "t:LCB (Longitudinal Centre of Buoyancy)": "552707b99626fadc",
+   "t:İnklinasyon Deneyi (Inclining Test)": "7a1ccc777e6a8b11",
+   "t:Permeabilite": "d1bdcfa51b2fe194",
+   "t:Floodable Length": "b4dde981bdb5409f",
+   "t:Yük Kaydırma": "994a952bd3e46b64",
+   "t:Karina (Hull)": "f9bf2d4f8a7e0740",
+   "t:Su Çekimi (Draft)": "c788bb1b6c0dcafc",
+   "t:Fribord (Freeboard)": "bf741295fcc5f9ce",
+   "t:Plimsoll Markası": "25032f703439b7eb",
+   "t:Kavitasyon": "aeeb2052fea93863",
+   "t:Dizel Motor (Marine Diesel)": "4076bed0a95e33e5",
+   "t:Turboşarj (Turbocharger)": "73abdb3b5a788269",
+   "t:SFOC (Specific Fuel Oil Consumption)": "36d0ddaa5ba61fd1",
+   "t:Separatör (Purifier)": "dbbd639c3b4383c8",
+   "t:Yağlama Sistemi": "978e7cbd2bcf6271",
+   "t:Soğutma Sistemi": "2b0ab136121f180e",
+   "t:Kazan (Boiler)": "42e224f83484a6f8",
+   "t:Jeneratör": "577ed0b500844cc7",
+   "t:Şaft (Shaft)": "4bab08282741a8c7",
+   "t:Pervane (Propeller)": "e86fffed88b34980",
+   "t:Dümen (Rudder)": "810b94f5186c115f",
+   "t:Bow Thruster": "3b119d78df1fcc05",
+   "t:Stern Tube": "94f09521ee39a760",
+   "t:Yardımcı Motor": "3c0551851701c1c6",
+   "t:Emercensi Jeneratör": "858eb3aef761619e",
+   "t:Egzoz Gazı Temizleme (Scrubber)": "0f5a17896d3a73c5",
+   "t:Balast Pompası": "4e3964b343846047",
+   "t:Sintine Pompası": "2fa84fdcf99b5178",
+   "t:OWS (Oil Water Separator)": "5e550c589e6c4743",
+   "t:İncineratör (Yakma Fırını)": "c5d8eea5c2a25f87",
+   "t:Kompresör": "63f9cccf59307557",
+   "t:Piston": "9dcc7289f864fe3d",
+   "t:Silindir Gömleği (Cylinder Liner)": "31cf0cee33bd23c8",
+   "t:Süpap (Valve)": "4d280a690edb8eff",
+   "t:Dökme Yük (Bulk Cargo)": "6c0ccb04e43cb8f0",
+   "t:Konteyner": "ae5bfe5e88385df7",
+   "t:TEU (Twenty-foot Equivalent Unit)": "8bbe7ec2fbfd8561",
+   "t:Stowage Factor": "bd4d08deea6932f3",
+   "t:Broken Stowage": "5daf7ca5075893e4",
+   "t:Dunnage": "cd2241f9a2841c37",
+   "t:Lashing": "95e7d0d62f88febe",
+   "t:Manifest": "4de8d2c354f062ce",
+   "t:Bill of Lading (Konşimento)": "06610d0ce525e21d",
+   "t:Ambar Kapağı (Hatch Cover)": "799da713034b76ae",
+   "t:Grain Stability": "4b7d83dbfc4f8f55",
+   "t:IMDG Code": "67d1165ff4140eb3",
+   "t:IMSBC Code": "29d06a26f65aeeae",
+   "t:Draft Survey": "090ed3d9be5ad608",
+   "t:Ullage": "521bedd2ac2447ea",
+   "t:Sounding": "c66b5b82a223804e",
+   "t:Deadweight (DWT)": "1e2814f980f586ad",
+   "t:Lightweight": "26b6b176f0fdd786",
+   "t:Tonnage (Gross / Net)": "1d998a35469113e9",
+   "t:Reefer Konteyner": "cbd3de051c514703",
+   "t:Tanker": "c9e3df6c3b1c46ad",
+   "t:RoRo (Roll-on Roll-off)": "e6395b0823b73d88",
+   "t:SOLAS": "28b9b984d8200ef7",
+   "t:MARPOL": "e6f2ce0294e728b1",
+   "t:ISM Code": "158e4ad7ffa326c2",
+   "t:ISPS Code": "a95d59e6eaf5e752",
+   "t:Can Yeleği (Life Jacket)": "9ec16a290ad807c9",
+   "t:Can Simidi (Life Buoy)": "b156784c65d8f920",
+   "t:Filika (Lifeboat)": "5ef9328b967e93de",
+   "t:Can Salı (Life Raft)": "ab8647ee698208da",
+   "t:EPIRB": "69573f4b2cfe4bcd",
+   "t:SART": "0332bc100228a18f",
+   "t:GMDSS": "0975729b3f643325",
+   "t:MOB (Man Overboard)": "bc93288498b72616",
+   "t:Muster Station": "f58985b782027b3a",
+   "t:Fire Drill": "4aebe65dfe5f847a",
+   "t:Abandon Ship Drill": "ba3a2e68262d805b",
+   "t:SCBA": "bb8e53050a5e4f8a",
+   "t:CO₂ Söndürme Sistemi": "c1c24f3bb36fa766",
+   "t:Köpüklü Söndürme": "6a2092f5a82ad5a4",
+   "t:Yangın Tulumbası (Fire Pump)": "21ecbce1124fe181",
+   "t:Emercensi Dümen": "77651897012d57f9",
+   "t:SOPEP": "612a1b9fbf73f7b5",
+   "t:Enclosed Space Entry": "a765be0071877db0",
+   "t:Hot Work Permit": "66093dcee3bd7112",
+   "t:Buharlaşma (Evaporation)": "f6a35aa5cc15cca0",
+   "t:Dew Point (Çiy Noktası)": "439771eec253c797",
+   "t:Beaufort Skalası": "1155bf6b02dc8a6c",
+   "t:Tropikal Siklon": "1fa6e4dd1994aa5f",
+   "t:Kasırga (Hurricane)": "36ebce99fda331da",
+   "t:Tayfun (Typhoon)": "ef811fe2be43a5a6",
+   "t:Barometrik Basınç": "0fb2e5b1945b8d71",
+   "t:Antisiklon (High Pressure)": "72f8dacbe42700fb",
+   "t:Siklon (Low Pressure)": "9cb70b1e4b14e011",
+   "t:Cephe (Front)": "af334872ec924892",
+   "t:Sis (Fog)": "a3c1542683c1600d",
+   "t:Deniz Suyu Sıcaklığı (SST)": "02c9514a560c0677",
+   "t:Trade Winds (Alize Rüzgârları)": "0c12547df67e65a7",
+   "t:Gel-Git (Tide)": "ae64cda96ab6e22e",
+   "t:Spring Tide (Büyük Gel-Git)": "09a335d6ce66b9ca",
+   "t:Neap Tide (Küçük Gel-Git)": "272fa8499e2eda49",
+   "t:Swell (Ölü Deniz)": "3478cff2ce25cf28",
+   "t:Navtex": "f22652808cdc6380",
+   "t:Rüzgâr Gülü": "33ac7ad45cbf457e",
+   "t:İzobar": "8fe94dcb4a778206",
+   "t:Dalga Yükü (Wave Load)": "6c47609aba34f7c2",
+   "t:Direnç (Resistance)": "53801a39178cb854",
+   "t:Sürtünme Direnci (Frictional Resistance)": "f37983f28130c00c",
+   "t:Dalga Direnci (Wave Resistance)": "d33a84acc7b3a5d3",
+   "t:Froude Sayısı": "cabe19039e10eb05",
+   "t:Reynolds Sayısı": "4ff8c48680ccddf3",
+   "t:İtme Kuvveti (Thrust)": "96d6b990cbabb649",
+   "t:Wake Fraction": "dd555ee0ed0047fd",
+   "t:Thrust Deduction": "248bbe31348963c6",
+   "t:Propulsive Efficiency": "b255a3c1666c8e49",
+   "t:Squat Effect": "c2a1a93fb39762c2",
+   "t:Bank Effect": "9b487d533cabbc78",
+   "t:Slamming": "d1b78a1034eba416",
+   "t:Broaching": "c1232431471be17f",
+   "t:Parametrik Rolling": "288b54d87d68c7ec",
+   "t:Added Mass": "acf445899a07f794",
+   "t:Sinkage & Trim": "33fd559154b6c228",
+   "t:Boundary Layer": "40a2f2f0d55c2c68",
+   "t:Ana Şalt (Main Switchboard)": "47a245f484eb4a03",
+   "t:Shore Connection": "436f6d18ac1185af",
+   "t:UPS": "54f8e4f71fbe3a79",
+   "t:VHF Telsiz": "a21deb837945d77f",
+   "t:MF/HF Telsiz": "a3a72e4d58355401",
+   "t:Inmarsat": "041591278c81d14b",
+   "t:Log (Hız Ölçer)": "7bbcfa90d3524113",
+   "t:Anemometre": "0653bd37c443151b",
+   "t:Voyage Data Recorder (VDR)": "0ec7670656bb063c",
+   "t:Autopilot": "fb387c21bc40db30",
+   "t:COLREG": "c000797076b9d5f6",
+   "t:STCW": "0d07b294acc8b48b",
+   "t:MLC 2006": "4a22f4c804d00c4c",
+   "t:Flag State (Bayrak Devleti)": "63e0f0897888570c",
+   "t:Port State Control (PSC)": "49dd2014463bda73",
+   "t:Class Survey (Klas Denetimi)": "981a7b100b79a900",
+   "t:P&I Club": "aee1baa4c40604ef",
+   "t:Charter Party": "f0b85a0b93ef8af2",
+   "t:Salvage (Kurtarma)": "0e1ffc248acb901d",
+   "t:General Average (Müşterek Avarya)": "27fd0f72ec5c3bfb",
+   "t:Demurrage": "1d55b88535ee0088",
+   "t:Despatch": "7e4c54bf077bb81d",
+   "t:NOR (Notice of Readiness)": "0f6cfdc319910847",
+   "t:Lay Time (Starya Süresi)": "536b9914a7a76100",
+   "t:LOF (Lloyd's Open Form)": "777d72800a6ccfe7",
+   "t:Yanaşma (Berthing)": "096853fc729057fa",
+   "t:Kalkma (Unberthing)": "914031b829ca4ada",
+   "t:Demir Atma (Anchoring)": "4d64c24d927c839d",
+   "t:Demir Alma (Weighing Anchor)": "eadd3f535cb51b3d",
+   "t:Römorkör (Tug)": "eb448ea74b20ab19",
+   "t:Kılavuz Kaptan (Pilot)": "130ad44a4f459632",
+   "t:Pilot Merdiveni": "0ae7f3670ac6071d",
+   "t:Çıpa (Anchor)": "f5494b12f3892267",
+   "t:Zincir (Chain)": "52ac59647229a86d",
+   "t:Posa (Shackle)": "eb090757fa4266fa",
+   "t:Usturmaça (Fender)": "52eb428ea918a524",
+   "t:Swing Circle": "19164cdcaea153f6",
+   "t:Turning Circle": "7338c7c1d994a17d",
+   "t:Advance & Transfer": "a0fab07f3ad9e139",
+   "t:Crash Stop": "fe803a1faa84c91f",
+   "t:Dead Slow": "54ac966835f30ca2",
+   "t:VTS (Vessel Traffic Service)": "99767c30787a6a64",
+   "t:Kanal Seyrüseferi": "70c399068dc10064",
+   "t:Dry Dock (Havuz)": "703c652fc1a3d43b",
+   "t:Şamandıraya Bağlanma": "8216a22b2df0c356",
+   "t:Amade": "4c7655e15ad95485",
+   "t:Demir Yeri (Anchorage)": "12ba7f3b70a44036",
+   "t:Enine Perde (Bulkhead)": "f9c47e52b2b7f149",
+   "t:Forkastel (Forecastle)": "2044aa9ca186b2d9",
+   "t:Güverte Ambarı (Tweendeck)": "ae06a89cf43ec032",
+   "t:Havuzlama (Dry Docking)": "99ae718d883e057c",
+   "t:Koferdamı (Cofferdam)": "46b0b70606993743",
+   "t:Lumboz (Porthole)": "d5a941272cf3ca4d",
+   "t:Manika": "8330f89315c49a0b",
+   "t:Mayıstra": "8b881c34aee4a75d",
+   "t:Neta": "6f00399aba20f2c1",
+   "t:Orsalamak": "82b9acd4c483fdc7",
+   "t:Pupa": "842fc9e27e9ff950",
+   "t:Safra (Ballast)": "1f300bd727dc6a44",
+   "t:Uskuna (Schooner)": "37355a5af8b34fee",
+   "t:Mercator Projeksiyonu": "bbd7ca10d79296bb",
+   "t:Gnomonic Projeksiyon": "ccf9f7152b8ebebc",
+   "t:Dead Reckoning (Tahmini Seyir)": "82c07b098933dad1",
+   "t:Fix (Kesin Mevki)": "ed8221aef844b3d0",
+   "t:Estimated Position (EP)": "cbfd04a8d292fbf3",
+   "t:DLat (Enlem Değişimi)": "bee8a72681fb81e9",
+   "t:DLong (Boylam Değişimi)": "ae042d0faee8adf6",
+   "t:Departure": "02a0efb654d01664",
+   "t:Vertex (Tepe Noktası)": "b086c10360cdb0b8",
+   "t:Composite Great Circle": "a998fa51a1addb10",
+   "t:Course Made Good (CMG)": "6b710676d54a40c9",
+   "t:Speed Made Good (SMG)": "29fe2651bbce7f15",
+   "t:Chart Datum": "b6ff109b847c7241",
+   "t:Sextant": "724b0fc1fb4c29af",
+   "t:Chronometer": "74b54a5e8300ae7d",
+   "t:Nautical Almanac": "827ca1f15889efa1",
+   "t:Sight Reduction Tables": "4686d3b8330d9514",
+   "t:Height of Eye": "b2539673e3db7061",
+   "t:Dip (Ufuk Alçalması)": "18ad60f4b4580ce0",
+   "t:Index Error": "20522177d1501359",
+   "t:Azimut": "6e15e575509686ec",
+   "t:Amplitude": "eefddf447f0224ff",
+   "t:Intercept (Aradaki Fark)": "94e107783e12a110",
+   "t:Position Line (Mevki Doğrusu)": "0d86716fe4e76e02",
+   "t:Under Keel Clearance (UKC)": "95d810363f03d1e9",
+   "t:Traffic Separation Scheme (TSS)": "3344466aa7de93b6",
+   "t:Precautionary Area": "faeedb93bf265b4e",
+   "t:Tidal Stream": "94364deb87ee4f99",
+   "t:Chart Correction": "c08b696826d61408",
+   "t:Notice to Mariners (NtM)": "3df8c0f13e80ae7a",
+   "t:Metacenter (M)": "59553bba31b37f78",
+   "t:Vanishing Angle": "e9b2671e540b03cc",
+   "t:Range of Stability": "b69f911b5a26d27e",
+   "t:Righting Lever Maximum": "c38833fd6ab22357",
+   "t:Cross Curves of Stability": "e21dc4151a2b1a4d",
+   "t:Intact Stability": "e7b9983feafee5c1",
+   "t:Damage Stability": "5e72d42abd8bfa2e",
+   "t:Subdivision": "76f9e6c889b02467",
+   "t:Margin Line": "db859073d789620c",
+   "t:Heel (Yatma)": "5d7907f909ffd6ec",
+   "t:List": "6c2f7ee98c091f91",
+   "t:Loll": "7ba4f30d7b1182d5",
+   "t:Waterplane Area": "ea5413e9bebb36b2",
+   "t:Block Coefficient (Cb)": "1513ec179637bf39",
+   "t:Midship Coefficient (Cm)": "56a7b26bad03403e",
+   "t:Prismatic Coefficient (Cp)": "0f54b128f57b1934",
+   "t:Crosshead (Çapraz Kafa)": "9fbfc6df31e35243",
+   "t:Crankshaft (Krank Mili)": "7569c1efe6e34999",
+   "t:Camshaft (Kam Mili)": "6424b943fbfd8310",
+   "t:Connecting Rod (Biyel Kolu)": "c8ce9cc8d1e1c7ec",
+   "t:Fuel Injector (Enjektör)": "daab26d13b8f15e5",
+   "t:Exhaust Valve (Egzoz Süpabı)": "9696b058ae1e0b0c",
+   "t:Scavenging (Süpürme)": "e89590acb057df5d",
+   "t:Deaerator": "1fdd0fcb87102e94",
+   "t:Economizer": "3106ab3aa59dd1d3",
+   "t:Evaporator (Tatlı Su Üreteci)": "8285b4dc533e6241",
+   "t:Oily Water Separator (OWS)": "7c68af769555e5be",
+   "t:Sewage Treatment Plant": "7b3ce9acb6fac40d",
+   "t:Ballast Water Treatment (BWTS)": "989cdd0c835e47e4",
+   "t:Stern Tube Seal": "3276162a50d5adf3",
+   "t:Controllable Pitch Propeller (CPP)": "b65d29902b6f4443",
+   "t:Fixed Pitch Propeller (FPP)": "1a04fb364b12f25f",
+   "t:Reduction Gear (Dişli Kutusu)": "693169ea0be98098",
+   "t:Heat Exchanger (Isı Değiştirici)": "91fb4ab2234d0436",
+   "t:Centrifugal Pump": "951952a1c138d4f6",
+   "t:Positive Displacement Pump": "2013bc0ad02ca0a1",
+   "t:Air Compressor (Hava Kompresörü)": "04d4f03d93b6c9e4",
+   "t:Indicator Diagram": "5b5e0c40aa7102c4",
+   "t:Mean Effective Pressure (MEP)": "691aef3ea72b58fd",
+   "t:Brake Power": "e7a7c6fb433d4f8a",
+   "t:Indicated Power": "84bf4dffd897d921",
+   "t:Thermal Efficiency": "49253a55e15357a1",
+   "t:LSA Code": "35c7650b5128fd17",
+   "t:FSS Code": "67ea3489284aad43",
+   "t:IAMSAR Manual": "e21d8132a0d345f6",
+   "t:Williamson Turn": "013384c719997710",
+   "t:Scharnow Turn": "f4e9ddca3681b22c",
+   "t:Anderson Turn": "bca0d49396db0c39",
+   "t:Immersion Suit": "a8b30617868344d3",
+   "t:Thermal Protective Aid (TPA)": "33cc6dfa57140ad7",
+   "t:Pyrotechnic Signals": "724d28ba527dc698",
+   "t:EEBD (Emergency Escape Breathing Device)": "973f64df266ac2c8",
+   "t:Fixed Fire Detection System": "611b024d4058bc57",
+   "t:Sprinkler System": "2db0f61176f464b1",
+   "t:Inert Gas System (IGS)": "b3f73c3de9ffddcd",
+   "t:Permit to Work": "e1dbd2cc8629bb72",
+   "t:Risk Assessment": "6a939eee7649b573",
+   "t:Toolbox Meeting": "1088c03dc3be8a46",
+   "t:Near Miss Report": "da5e0764b937386c",
+   "t:Yoğunlaşma (Condensation)": "09b0480a5ce97d0f",
+   "t:Adveksiyon Sisi": "09edaa4b0191049b",
+   "t:Radyasyon Sisi": "8fa67741c2e29713",
+   "t:Coriolis Kuvveti": "58fd0ea1d695cfc2",
+   "t:Geostrofik Rüzgâr": "76fdcb402640749c",
+   "t:Konveksiyon": "d637d41e16c92fd4",
+   "t:Soğuk Cephe": "965ddf26e9aff82a",
+   "t:Sıcak Cephe": "ba55282caf7e4629",
+   "t:Oklüzyon Cephesi": "bf9d50fd6120d57b",
+   "t:Hava Kütlesi": "72d39fa4eddf9557",
+   "t:Jet Stream": "a25b7de037b80efa",
+   "t:ITCZ (Ekvatoral Konverjans)": "f6878e3bb8b8bc57",
+   "t:Fetch": "1252c9092c1ea580",
+   "t:Significant Wave Height (Hs)": "868a68a475b45cff",
+   "t:Typhoon Signal": "bcc453310c5e5af3",
+   "t:Buys Ballot Kuralı": "2a12a93336223cb3",
+   "t:Squall (Bora)": "e91ae0871491b817",
+   "t:Waterspout (Hortum)": "9b3c1429c99b494f",
+   "t:Bulbous Bow (Bodoslama Bülbü)": "b2e4ba4991c26d87",
+   "t:Bilge Keel": "0e89674752947996",
+   "t:Stabilizer Fin": "bdbfe583c924c853",
+   "t:Slip (Kayma)": "95b509d92abebe8a",
+   "t:Pitch (Hatve)": "f52bba14375c5be1",
+   "t:Cavitation": "67c3db6d3379dfc4",
+   "t:Interaction Effect": "33bf264755ddb7ac",
+   "t:Shallow Water Effect": "16e40cf0926f9958",
+   "t:Trim Optimization": "9cae2cbcc20770e5",
+   "t:Alternator": "4c17e312e254c315",
+   "t:Transformer": "77b7b3058d222202",
+   "t:Circuit Breaker (Şalter)": "69bcaa1266f1ccf4",
+   "t:Frequency Converter": "458646bb4054af8e",
+   "t:Synchroscope": "868a055bbecc8703",
+   "t:AVR (Automatic Voltage Regulator)": "bba437e151fd6b7e",
+   "t:Earth Fault Monitor": "4f60ddf1b788b94e",
+   "t:Motor Starter": "75bf714fdf2885ab",
+   "t:PLC (Programmable Logic Controller)": "c091ea89cc072f65",
+   "t:SCADA": "28abf3ff1abccf74",
+   "t:BWM Convention": "8817302732a90284",
+   "t:SEEMP": "b9518bd6959f19c6",
+   "t:EEDI": "5f77b05032965134",
+   "t:CII Rating": "13132dd605cd9510",
+   "t:DOC (Document of Compliance)": "3eb85c523b3901bc",
+   "t:SMC (Safety Management Certificate)": "1b438933da8e8ae9",
+   "t:IOPP Certificate": "85d07d555ead41a9",
+   "t:Load Line Certificate": "4e1b3c1a4c37a4b4",
+   "t:Safety Equipment Certificate": "76543102d7e80198",
+   "t:Tonnage Certificate": "844916c0909edf8c",
+   "t:Grain Loading Diagram": "3352ab5b887a6dad",
+   "t:Lashing Calculator": "3f31827109768b50",
+   "t:Cargo Securing Manual (CSM)": "2eb42b168b832c2b",
+   "t:Ventilation Hold": "50454e8fccdd3ea8",
+   "t:Sweat (Terleme)": "943b80589af5e8b1",
+   "t:TML (Transportable Moisture Limit)": "1de63c57c8984df3",
+   "t:Flow Moisture Point (FMP)": "424d3af790d7b53a",
+   "t:Liquefaction": "3de3858ccf0cc494",
+   "t:Fumigation": "8fa0724421ea45ca",
+   "t:Classification Survey": "6097f0e23ee0bcf0",
+   "t:Damage Report (Hasar Raporu)": "5cf3cbeefe589e4c",
+   "t:Letter of Protest": "fcb8a1f31efdcc18",
+   "t:Dangerous Goods Declaration": "3767f087a9e9a82c",
+   "t:Mediterranean Mooring": "618ed2f08f8d7354",
+   "t:Single Point Mooring (SPM)": "b5153ec46372d1a9",
+   "t:Parallel Body": "27369b3a502083d5",
+   "t:Pivot Point": "5e05fff747db154c",
+   "t:Tactical Diameter": "02909252e0ad00e0",
+   "t:Kick (Başlangıç Sapması)": "75b9d799c067f598",
+   "t:Transverse Thrust": "9dd921960db2f18d",
+   "t:Approach Speed": "f846e474fbefa6bd",
+   "t:STS Operation": "80ced8baf57f0250",
+   "t:Alabora": "7955319ff50e0c23",
+   "t:Arma": "a8fe4ef11015fa51",
+   "t:Ayna Kıç": "14cbc61a3188dd1b",
+   "t:Demir Taramak": "da689ff5b070c28e",
+   "t:Duba": "81bfda05ebe1fc13",
+   "t:Gemiadamı": "40c0e5f81b36e679",
+   "t:Iskarmoz": "39bff73a196de2ec",
+   "t:Kontra": "cd2bd42c6376b7e8",
+   "t:Tayfa": "6cb4d55f96f9f568",
+   "t:Kazık Bağı (Clove Hitch)": "451906a114853583",
+   "t:Gemici Bağı (Bowline)": "b43ad3dde1602e16",
+   "t:Yoma (Sheet Bend)": "b1e197e9c43434eb",
+   "t:Balıkçı Bağı (Fisherman's Knot)": "5e91f252bacab024",
+   "t:Figure of Eight": "e64e2d0267b5ad5a",
+   "t:Constrictor Bağı": "2737edf3fcf85637",
+   "t:Rolling Hitch": "51dffb70ff0b8ad2",
+   "t:Kısa Ek (Short Splice)": "a8597b21e9b34c35",
+   "t:Uzun Ek (Long Splice)": "2cf245726ff6b219",
+   "t:Koçboynuzu": "cb375573629882ed",
+   "t:Panama Chock": "58eece5ba00ba472",
+   "t:Çıma Halatı (Heaving Line)": "b1ce06ea93385a3c",
+   "t:Sentetik Halat": "51650ce18f8f6be6",
+   "t:Tel Halat (Wire Rope)": "b2d67d0d4098dae8",
+   "t:SWL (Safe Working Load)": "ece56e84286d535f",
+   "t:MBL (Minimum Breaking Load)": "432ebbf065335813",
+   "t:Snap Back Zone": "c16a8450d470d4e1",
+   "t:Doubling the Angle": "60f6641f926fe413",
+   "t:Four Point Bearing": "3b5af426105b59bc",
+   "t:Special Mark (Özel İşaret)": "523e7dbae6212d8d",
+   "t:Cardinal Mark": "2c615813d4d00703",
+   "t:Isolated Danger Mark": "4a63ec5200a1e712",
+   "t:Safe Water Mark": "3648fd7d9e250a2f",
+   "t:Liman Yanaşma Feneri": "1f32ba0b92f95a77",
+   "t:Racon": "1f41b5ff9c1cb382",
+   "t:Radar Shadow": "a569b651c8e4917e",
+   "t:Lubber Line": "95c5253376c65909",
+   "t:Pelorus": "5bc3667a4a24c481",
+   "t:Rate of Turn Indicator": "5b152b82b8c2f92a",
+   "t:Speed Log": "bf01fa7990a44dcc",
+   "t:Parallel Indexing": "7c6f302689d992aa",
+   "t:Stiff Ship (Sert Gemi)": "641f1db891ed37dd",
+   "t:Tender Ship (Yumuşak Gemi)": "f2bfa41c1d0c3a30",
+   "t:Hogging": "02ea8281b008bb77",
+   "t:Sagging": "9c510809d31e1cfa",
+   "t:Still Water Bending Moment": "8e349d9d618b0e6c",
+   "t:Wave Bending Moment": "def3e36d8c1f6a14",
+   "t:Torsional Stress": "fb4279100e556445",
+   "t:FWA (Fresh Water Allowance)": "47dd02900598403c",
+   "t:DWA (Dock Water Allowance)": "c47aea6ad8e49c3a",
+   "t:Displacement Table": "f163822fa25217c0",
+   "t:Hydrostatic Curves": "61b96a394112a32e",
+   "t:KN Curves": "5e46d67b971532f9",
+   "t:Wall-Sided Formula": "37fd1c320dce7896",
+   "t:Bilge Radius": "225b3f4b9c594cb5",
+   "t:Shifting Boards": "aa954050a660abb6",
+   "t:Grain Heeling Moment": "7f72b76874686c7a",
+   "t:Blowdown": "00058a2317038fd7",
+   "t:Cylinder Lubrication": "7c045094298b4deb",
+   "t:Crankcase Explosion": "1bacc1cc884e46d4",
+   "t:Oil Mist Detector (OMD)": "c6ea84605b94e833",
+   "t:Scavenge Fire": "e1e38a89d44b6e9d",
+   "t:Stuffing Box": "4527a268c3882bea",
+   "t:Governor (Regülatör)": "6510a72de3d20717",
+   "t:Indicator Card": "388dde65986fc108",
+   "t:Compression Ratio": "b68e207b4ec2b12b",
+   "t:Clearance Volume": "04ef795ff33d2dbf",
+   "t:TDC (Top Dead Centre)": "f479072205ebcf92",
+   "t:BDC (Bottom Dead Centre)": "c3743d1539172c72",
+   "t:Lub Oil Crosshead": "a56e77ebaf712686",
+   "t:Plate Cooler": "8a94ab5e215ce42f",
+   "t:Relief Valve": "ad3c3bc7170c8cde",
+   "t:Thermostat": "9c71a2b4280cc7f5",
+   "t:Jacket Water": "7d5c3d0b35685d7c",
+   "t:Expansion Tank": "aa6c08de56915fc1",
+   "t:Sea Chest": "dbeed1350b821ee4",
+   "t:Zinc Anode (Kurban Anot)": "8fcbbb3084d20d2e",
+   "t:ICCP": "d014f94929a72514",
+   "t:Tank Top": "7510425cc0adc533",
+   "t:Tweendeck": "d03f51af5b54d309",
+   "t:Feeder Vessel": "0a69f0f5cda93a09",
+   "t:FCL (Full Container Load)": "54984b2efb881df4",
+   "t:LCL (Less than Container Load)": "3865f7b13b5beab6",
+   "t:Outturn Report": "92e801472ccf80a7",
+   "t:Bagging": "e4ee6b9b0b9d6917",
+   "t:Ship's Figures": "399caeef756d01b3",
+   "t:Shore Figures": "53c977386ca8e12f",
+   "t:Loading Computer": "2ffbf873070f5bbf",
+   "t:COW (Crude Oil Washing)": "ad09ca2ba37f6004",
+   "t:Inert Gas (Asal Gaz)": "8eafa9ea5ef6ce8d",
+   "t:Cargo Plan (Yükleme Planı)": "d8d7df3a51b396c5",
+   "t:Bay Plan": "1db3853350beacbe",
+   "t:Segregation": "6d5f1da3ac5c3b6d",
+   "t:DSC (Digital Selective Calling)": "08a7066973ecb0d9",
+   "t:Inmarsat-C": "179080a8f94d4d5c",
+   "t:LRIT": "58b63d8febca2012",
+   "t:SSAS": "0c8e6f3127101651",
+   "t:Foam Monitor": "9aba733cfb673582",
+   "t:Quick-Closing Valve": "0ab3267c1483606d",
+   "t:Fire Damper": "d99734cd89f7a03c",
+   "t:Watertight Door": "e5c2ae6c5c27863c",
+   "t:Muster List": "82830dbc95c91d50",
+   "t:Emergency Towing Arrangement": "1866454c0715b1b9",
+   "t:Lifeboat Releasing Gear": "3cce1af8ed6f5eb9",
+   "t:Free-Fall Lifeboat": "4e922472fd05cc56",
+   "t:Rescue Boat": "1cb42b2e8e531a34",
+   "t:Line Throwing Appliance": "048520f9fbe9bff3",
+   "t:DPA (Designated Person Ashore)": "426127696029edf7",
+   "t:Katabatik Rüzgâr": "af39eef1f0cd6211",
+   "t:Anabatik Rüzgâr": "78aabd899b6a028b",
+   "t:Sea Breeze (Deniz Meltemi)": "812cbe25b0f9606e",
+   "t:Land Breeze (Kara Meltemi)": "ef869443115c36b0",
+   "t:Monsun": "796e775f2bc637a7",
+   "t:Mistral": "0e4bf0ae23439933",
+   "t:Poyraz": "d61b7aef67e895a6",
+   "t:Lodos": "1fdeb4d8fe0de7ed",
+   "t:Tramontana": "7ea723241e5d181f",
+   "t:Douglas Deniz Durumu Skalası": "d12085dd057cf9dd",
+   "t:Tropopoz": "93c47f66af190e8b",
+   "t:Bağıl Nem": "395121b67dca6999",
+   "t:Sling Psikrometresi": "eb93a9c4dfedface",
+   "t:Kümülonimbus (Cb)": "39e9259a46ac0321",
+   "t:Sirrus (Ci)": "689e902cb6ab4c63",
+   "t:Stratus (St)": "aa5138ae83bf128a",
+   "t:Okta": "22ad949f9c18d600",
+   "t:METAR": "895741658ddedb3d",
+   "t:Form Factor (1+k)": "f928ab609226ded7",
+   "t:Wave Pattern Resistance": "291f1951e041c2ab",
+   "t:Appendage Resistance": "b9570145d4cc1427",
+   "t:Air Resistance": "1144ce999143c7b3",
+   "t:Effective Power (PE)": "af29c04b2f3b5e58",
+   "t:Delivered Power (PD)": "8a4ecde9d7017719",
+   "t:Quasi-Propulsive Coefficient (QPC)": "6dd9f9f72157f0f6",
+   "t:Open Water Efficiency": "4bec27a512e6cf37",
+   "t:Hull Efficiency": "9c68bca5a2f1cf4a",
+   "t:Rudder Area Ratio": "a52a5b6989fff7f1",
+   "t:Resistance Test": "1cb6fa3273ae6241",
+   "t:Propeller Open Water Test": "b2680a65c8b6c3d0",
+   "t:Self-Propulsion Test": "3ac6d2ecb23d5003",
+   "t:Preferential Trip": "775a1795a44f32e5",
+   "t:Dead Ship Condition": "8a3578dbeb1e43cc",
+   "t:Power Management System (PMS)": "7f3cf590ac427834",
+   "t:Load Sharing": "fdf160c167d944f9",
+   "t:Synchronization": "2f4c72cd082be26a",
+   "t:Reverse Power Protection": "d4b2d2b2d9cec08f",
+   "t:VFD (Variable Frequency Drive)": "a53cca9194a190aa",
+   "t:Soft Starter": "763acfe07103fda2",
+   "t:Star-Delta Starter": "8e8f4e87d83daf54",
+   "t:Megger Test": "ee3fb8a9dcdf574b",
+   "t:Navtex Receiver": "adea2a9dc1a66057",
+   "t:S-Band / X-Band Radar": "80e266fc4fc47cdc",
+   "t:Gyro Repeater": "5cac73e8b37dc27a",
+   "t:BNWAS": "7d95ecdad865ee04",
+   "t:MARPOL Ek I": "cb9561909b81ac78",
+   "t:MARPOL Ek II": "1655a79e0f9d0664",
+   "t:MARPOL Ek III": "71ddef2a285e7ad7",
+   "t:MARPOL Ek IV": "722731127304fa02",
+   "t:MARPOL Ek V": "d6830a11394319cc",
+   "t:MARPOL Ek VI": "67f0d04d7d3f2417",
+   "t:ECA (Emission Control Area)": "f8bfe709435e4a01",
+   "t:SECA": "ffd8e85d001b66d0",
+   "t:NECA": "c546a7a70f8686ee",
+   "t:SIRE (Ship Inspection Report)": "8ff35b8100958b6d",
+   "t:CDI (Chemical Distribution Institute)": "065238b7d31c873d",
+   "t:Rightship": "dedd05bc153431a7",
+   "t:IHM (Inventory of Hazardous Materials)": "d78d4ad2a5820e81",
+   "t:Continuous Synopsis Record (CSR)": "fc9f5e22df0240c9",
+   "t:SMS (Safety Management System)": "a7de864148f1db1c",
+   "t:Warping": "0013ec7bcdd92d98",
+   "t:Kedging": "a01fb42bd134ff0a",
+   "t:Stern First Approach": "9f71675953b61c24",
+   "t:Wheel Over Point (WOP)": "4141fee0ad6211b1",
+   "t:Dragging Anchor": "cdb9ca88621612a7",
+   "t:Holding Ground": "b7ed9031fb3c8ac7",
+   "t:Scope (Zincir Uzunluğu)": "c256c90f58787c4b",
+   "t:Let Go (Demir Bırak)": "b60c832cf35194b6",
+   "t:Short Stay": "32b251a1e8fc34f6",
+   "t:Long Stay": "bf315954aefaff76",
+   "t:Breast Line": "524b87ca84f87909",
+   "t:Spring Line": "7048d5535de804a5",
+   "t:Head Line": "7f79d4a56f2cb4c8",
+   "t:Stern Line": "cf52f0ab90c6c2bd",
+   "t:Bow Stopper": "ab17df1c46e9e93c",
+   "t:Single Up": "786b2648d7616599",
+   "t:All Fast": "ece857805db2909c",
+   "t:Stand By Engine": "abde3d2e19f41733",
+   "t:Finished With Engine (FWE)": "969e4547efc0ff26"
+  }
+ }
+}
