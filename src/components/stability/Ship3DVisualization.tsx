@@ -207,7 +207,7 @@ export const Ship3DVisualization = () => {
             </Label>
             <Slider value={[heelAngle]} onValueChange={(v) => setHeelAngle(v[0])} min={-45} max={45} step={1} />
             <div className="flex justify-between text-micro text-muted-foreground">
-              <span>Pier -45°</span>
+              <span>Port -45°</span>
               <span>Starboard +45°</span>
             </div>
           </div>

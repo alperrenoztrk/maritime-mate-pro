@@ -445,7 +445,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
       });
       toast({
         title: "Calculation Completed",
-        description: "Machine calculations were completed in accordance with MARPOL regulations.",
+        description: "Engine calculations were completed in accordance with MARPOL regulations.",
       });
     } catch (error) {
       toast({
@@ -466,7 +466,7 @@ export const EngineCalculations = ({ initialTab }: { initialTab?: string } = {})
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Settings className="h-5 w-5" />
-            Machine Calculations
+            Engine Calculations
           </CardTitle>
         </CardHeader>
         <CardContent>

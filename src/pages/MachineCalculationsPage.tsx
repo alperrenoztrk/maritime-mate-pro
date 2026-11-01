@@ -105,7 +105,7 @@ const onboardMachines = [
     ],
   },
   {
-    name: "Deck Machines",
+    name: "Deck Machinery",
     detail: "Windlass, mooring winch, crane, capstan and Ro-Ro ramps",
     description:
       "Safe operation of load lifting and lashing equipment is critical in deck operations. Hydraulic systems, brake band settings and emergency stop stations require regular checks.",
@@ -124,7 +124,7 @@ export default function MachineCalculationsPage() {
   return (
     <MobileLayout>
       <CalculationPage
-        title="Machine Calculations"
+        title="Engine Calculations"
       >
         <Card className="border-border/70 bg-gradient-to-br from-blue-50 via-white to-slate-50 shadow-sm">
           <CardHeader className="pb-3">
@@ -134,7 +134,7 @@ export default function MachineCalculationsPage() {
                 Machinery on Board
               </CardTitle>
               <Button variant="outline" onClick={() => setShowMachines((prev) => !prev)}>
-                {showMachines ? "Hide List" : "Show All Machines"}
+                {showMachines ? "Hide List" : "Show All Machinery"}
               </Button>
             </div>
           </CardHeader>

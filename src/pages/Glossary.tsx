@@ -114,9 +114,9 @@ const Glossary = () => {
   const showCategoryLibrary = !activeCategory && !search.trim();
 
   return (
-    <LibraryPageShell title="Dictionary of Maritime Terms" icon={BookOpenText}>
+    <LibraryPageShell title="Glossary of Maritime Terms" icon={BookOpenText}>
       <SEO
-        title="Mariner's Book — Dictionary of Maritime Terms"
+        title="Mariner's Book — Glossary of Maritime Terms"
         description="Maritime glossary: learn maritime concepts quickly with category filters and search."
         path="/glossary"
       />

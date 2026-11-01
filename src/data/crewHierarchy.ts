@@ -181,7 +181,7 @@ export const crewHierarchy: CrewGroup[] = [
     ],
   },
   {
-    department: "Machine\n",
+    department: "Engine\n",
     focus: "Ana makine, yardımcı makineler ve enerji sistemleri",
     colorCode: "Makine",
     roles: [

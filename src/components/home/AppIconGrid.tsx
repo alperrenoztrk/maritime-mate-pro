@@ -24,7 +24,7 @@ const APPS: AppShortcut[] = [
   { label: "All resources", to: "/library", icon: Library },
   { label: "Lessons", to: "/lessons", icon: BookOpen },
   { label: "Saved", to: "/saved", icon: Bookmark },
-  { label: "Dictionary", to: "/glossary", icon: BookA },
+  { label: "Glossary", to: "/glossary", icon: BookA },
   { label: "Beta", to: "/beta", icon: FlaskConical },
   { label: "Notes", to: "/notes", icon: StickyNote },
   { label: "Settings", to: "/settings", icon: Settings },

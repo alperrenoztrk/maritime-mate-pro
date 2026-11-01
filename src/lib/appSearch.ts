@@ -80,7 +80,7 @@ export const displaySearchCategory = (item: SearchItem): string => {
   if (scope === "learn") return "Lessons";
   if (scope === "tools") return "Tools";
   if (startsWithAny(item.path, ["/ship-operations", "/ship-tasks"])) return "Operations";
-  if (startsWithAny(item.path, ["/crew"])) return "Personnel";
+  if (startsWithAny(item.path, ["/crew"])) return "Crew";
   if (startsWithAny(item.path, ["/ship-systems", "/bridge", "/glossary", "/regulations"])) {
     return "Resources";
   }

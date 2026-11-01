@@ -286,6 +286,233 @@ const engineSpeedRepair = (source: string, translation: string): string => {
   });
 };
 
+// ── Interface terminology families (T-156…, user-approved 2026-11-01) ──────
+// GLOSSARY.md "İngilizce arayüz terimleri" is the source of truth for these.
+
+/** Replaces each match of `pattern` unless `keep` says the occurrence is legitimate. */
+const replaceUnless = (
+  text: string,
+  pattern: RegExp,
+  keep: (before: string, after: string, match: string) => boolean,
+  replacement: (match: string, before: string, after: string) => string,
+): string => {
+  const flags = pattern.flags.includes('g') ? pattern.flags : `${pattern.flags}g`;
+  const re = new RegExp(pattern.source, flags);
+  return text.replace(re, (match: string, ...rest: unknown[]) => {
+    const offset = rest.find((value) => typeof value === 'number') as number;
+    const before = text.slice(Math.max(0, offset - 40), offset);
+    const after = text.slice(offset + match.length, offset + match.length + 40);
+    return keep(before, after, match) ? match : replacement(match, before, after);
+  });
+};
+
+/** matchCase that also keeps multi-word Title Case ("Deck Machines" → "Deck Machinery"). */
+const matchTitle = (match: string, replacement: string): string => {
+  const words = match.split(/\s+/u).filter((word) => /\p{L}/u.test(word));
+  if (words.length > 1 && words.every((word) => /^\p{Lu}/u.test(word))) {
+    return replacement.replace(/(^|[\s/-])(\p{Ll})/gu, (_m, lead: string, letter: string) => lead + letter.toLocaleUpperCase('en'));
+  }
+  return matchCase(match, replacement);
+};
+
+// Makine → Engine. "machine" stays where English uses it for something that is
+// not the ship's engine plant: galley/laundry appliances, machine learning,
+// Machine Elements (the engineering subject), human-machine interface, etc.
+const ENGINE_SOURCE_RE = /makin(?!ist)/iu;
+const MACHINE_KEEP_BEFORE_RE =
+  /(?:\b(?:washing|wash|ice|welding|mincing|slicing|mixer|cutter|cutting|refrigerating|refrigeration|electric|electrical|turbo|handling|rotating|cyclic|expansion|cleaning|coffee|vending|sewing|grinding|copy|virtual|dish|dishwashing|laundry|drying|ironing|bread|dough|meat|vacuum|packing|tank|load|deck|single-acting|human|on|shaft)[\s-]+|\/)$/iu;
+const MACHINE_KEEP_AFTER_RE =
+  /^(?:[\s-]+(?:learning|elements?|tools?|guns?|shop|readable|translation|vision|chamber|interface|code)\b|\/)/iu;
+const MACHINE_TARGET_RE = /\bmachines?\b/giu;
+// Sources where Turkish "makine" names some other machine (galley/laundry
+// appliances, alternators, refrigerating plant, cargo items, steering gear,
+// deck machinery) or defines a piece of equipment as "a machine that …".
+// Only the fixed phrase repairs apply there, never the generic engine swap.
+const GENERIC_MACHINE_SOURCE_EXCLUSION_RE =
+  /(?:bulaşık|çamaşır|buz\s*makine|kahve|kıyma|dilimle|doğrama|kurutma|ekmek|hamur|dikiş|fotokopi|alternatör|elektrik\s+makine|soğutma\s+makine|frigorifik|varil|makinedir|(?:eden|yapan|sağlayan|besleyen|üreten|dönüştüren|çeviren|kullanılan|çalışan)\s+(?:bir\s+)?makine|durulama|çekmece|zayıf\s+jet|\bCOW\b|ham\s+petrol\s+yıkama|makine\s+sayısı|motor\s+gibi|şüpheli\/kritik\s+makine|dümen|vinç|ırgat|kreyn|torna|kaynak\s+makine|yıkama\s+makine|makine\s+eleman|makine\s+öğren|insan-makine|makine\/hortum|makine\s+hazne|makine\s+üstü|et\s+kalıntı|ısı\s+aktaran)/iu;
+// English-side context in which "machine" is not the ship's engine.
+const GENERIC_MACHINE_TARGET_EXCLUSION_RE =
+  /\b(?:Butterworth|separators?|purifiers?|centrifug\w*|PTO|PTI|PTH|smoke\s+machines?|wash(?:ing)?|rotat\w*|dismantl\w*|blocked|high-speed\s+machines|Ishikawa|fishbone|incoming\s+machine|reverse\s+power|synchroni[sz]\w*|alternators?|meat|slicer|mincer|dishwash\w*|laundry|nozzles?|tank[- ]washing|transfers?\s+heat|heat\s+pump|refrigerat\w*)\b/iu;
+const engineRepair = (source: string, translation: string): string => {
+  let out = translation
+    .replace(/\b(?:main|host)\s*\/\s*slave\s+machine\b/giu, (m) => matchTitle(m, 'main/auxiliary engine'))
+    .replace(/\bslave\s+machines?\b/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'auxiliary engines' : 'auxiliary engine'))
+    .replace(/\b(?:rudder|steering)\s+machines?\b/giu, (m) => matchTitle(m, 'steering gear'))
+    .replace(/\bdeck\s+machines\b/giu, (m) => matchTitle(m, 'deck machinery'))
+    .replace(/\bmachine\s+oils?\b/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'lubricating oils' : 'lubricating oil'))
+    .replace(/\bmachine\s+rooms?\b/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'engine rooms' : 'engine room'))
+    .replace(/(?<!on-)\bmachine\s+spaces?\b/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'machinery spaces' : 'machinery space'))
+    .replace(/\bmachine\s+systems?\b/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'machinery systems' : 'machinery system'))
+    .replace(/\bmachine\s+age\b/giu, (m) => matchTitle(m, 'engine speed'))
+    .replace(/\bphysical\s+machine\b/giu, (m) => matchTitle(m, 'physical machinery'))
+    .replace(/\b(?:mechanical|machinery|machine)\s+department\b/giu, (m) => matchTitle(m, 'engine department'))
+    // Unambiguous engine collocations: applied even where the sentence also
+    // mentions other machinery (separators, steering gear, rotating parts).
+    .replace(/\b(bridge(?:\s*[-–]\s*|\s+to\s+|\s*\/\s*))machine\b/giu, (_m, lead: string) => `${lead}${/^B/.test(lead) && /M/.test(_m) ? 'Engine' : 'engine'}`)
+    .replace(/\bmachine(?=\s+(?:crews?|personnel|team|communication|commands?|stand-?by|damage|consumption|watch(?:es)?|log(?:book)?|control\s+room|readiness|preparation|failures?|malfunctions?|loss|telegraph|performance)\b)/giu, (m) => matchTitle(m, 'engine'))
+    .replace(/\bmachine(?=\s+is\s+kept\s+ready\b)/giu, (m) => matchTitle(m, 'engine'))
+    .replace(/\bmachine\s+areas\b/giu, (m) => matchTitle(m, 'machinery spaces'));
+  if (/dümen/iu.test(source) && !/(?:ana\s+makine|makine\s+daires|köprü)/iu.test(source)) {
+    out = out.replace(/\bthe\s+machine(?=\s+is\s+sized\b)/giu, (m) => matchTitle(m, 'the steering gear'));
+  }
+  if (/motor\s+gibi/iu.test(source)) {
+    out = out.replace(/\b(as|like)\s+an?\s+(?:machine|engine)\b/giu, (_m, word: string) => `${word} a motor`);
+  }
+  out = out.replace(/\ball\s+machines\b/giu, (m) => matchTitle(m, 'all machinery'));
+  if (GENERIC_MACHINE_SOURCE_EXCLUSION_RE.test(source) || GENERIC_MACHINE_TARGET_EXCLUSION_RE.test(out)) return out;
+  out = replaceUnless(
+    out,
+    MACHINE_TARGET_RE,
+    (before, after) => MACHINE_KEEP_BEFORE_RE.test(before) || MACHINE_KEEP_AFTER_RE.test(after),
+    (m) => matchTitle(m, /s$/i.test(m) ? 'engines' : 'engine'),
+  );
+  // "a machine" → "an engine".
+  return out.replace(/(?<!(?:type|class|group|category|zone|plan)\s)\b([Aa])(\s+)(engine\b)/giu, '$1n$2$3');
+};
+const hasWrongMachine = (_source: string, translation: string): boolean =>
+  engineRepair(_source, translation) !== translation;
+
+// Personel → Crew (shipboard) / Personnel (shore side). "cruise staff",
+// "catering staff" etc. are established job descriptions and stay.
+const CREW_STAFF_SOURCE_RE = /(?:personel|kadro|tayfa|mürettebat|çalışan)/iu;
+const SHORE_PERSONNEL_SOURCE_RE =
+  /(?:liman|terminal|tersane|şirket|ofis|kara|acente|shore|office|company)[\p{L}'’]*\s+(?:personel|çalışan)/iu;
+const STAFF_KEEP_BEFORE_RE =
+  /\b(?:cruise|catering|service|hotel|medical|galley|entertainment|shore|office|company|terminal|port|management|teaching|academic|hospitality|technical\s+superintendent)\s+$/iu;
+const crewRepair = (source: string, translation: string): string => {
+  const shore = SHORE_PERSONNEL_SOURCE_RE.test(source);
+  let out = translation.replace(/\bstaffing\b/giu, (m) => matchTitle(m, 'manning'));
+  if (!shore) {
+    out = out
+      .replace(/\b(new|junior|subordinate|additional|extra|intervening)\s+(staff)\b(?!\s+members?)(\s+(?:support|familiari[sz]ation|training|orientation|check|onboarding|integration)\b)?/giu,
+        (_m, adjective: string, staff: string, noun?: string) =>
+          noun ? `${adjective} ${matchCase(staff, 'crew')}${noun}` : `${adjective} ${matchCase(staff, 'crew members')}`)
+      .replace(/\bstaff\s+members?\b/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'crew members' : 'crew member'))
+      .replace(/\bcrew\s+members['’]s\b/giu, (m) => m.replace(/['’]s$/u, "'"));
+  }
+  return replaceUnless(
+    out,
+    /\bstaff\b/giu,
+    (before) => STAFF_KEEP_BEFORE_RE.test(before),
+    (m) => matchTitle(m, shore ? 'personnel' : 'crew'),
+  );
+};
+
+// Görev → duty/task. DP, SAR, ROV and survey operations legitimately speak of
+// "missions" (mission control centre, mission equipment), so they are excluded.
+const DUTY_MISSION_EXCLUSION_RE =
+  /(?:\bDP\b|DPO|ASOG|\bSAR\b|\bROV\b|CAMO|\bTAM\b|PSV|AHTS|IAMSAR|MRCC)|(?:offshore|dalış|sörvey|RadaScan|propulsion\s+unit|uydu|uzay|göreve\s+özel|görev\s+(?:aracı|safhası|ekipman|kontrol|merkez|plan|profil)|düşük\s+riskli\s+görev|failure\s+injection|watch\s+circle|batarya)/iu;
+// DP/ROV/survey sentences where the English already reads "mission …" correctly.
+const MISSION_TARGET_KEEP_RE =
+  /\bmission[- ](?:control|equipment|vehicle|phase|plan|geometry|profile|specific)|\bwatch\s+circle\b|\bumbilical\b|\bfailure\s+injection\b|\blow\s+risk\s+mission\b|\bpeople\s+and\s+mission\b|\bcritical\s+mission\b/iu;
+const dutyRepair = (_source: string, translation: string): string =>
+  translation
+    .replace(/\bShip\s+Missions\b/gu, 'Shipboard Duties')
+    .replace(/\bPMS\s+missions\b/giu, (m) => matchTitle(m, 'PMS tasks'))
+    .replace(/\bpre-mission\b/giu, (m) => matchTitle(m, 'pre-job'))
+    .replace(/\bmissions?\b(?![- ]critical)/giu, (m) => matchTitle(m, /s$/i.test(m) ? 'duties' : 'duty'));
+
+// Seyir → navigation / passage / underway, never leisure "cruising"/"travel".
+const passageRepair = (_source: string, translation: string): string =>
+  translation
+    .replace(/\bitinerar(?:y|ies)\b/giu, (m) => matchTitle(m, /ies$/i.test(m) ? 'passage plans' : 'passage plan'))
+    .replace(/\bAstronomical\s+Cruising\b/giu, (m) => matchTitle(m, 'Celestial Navigation'))
+    .replace(/\bwhen\s+cruising\s+in\s+mid-latitude\b/giu, (m) => matchTitle(m, 'in mid-latitude sailing'))
+    .replace(/\bmid-latitude\s+cruis(?:es|ing)\b/giu, (m) => matchTitle(m, 'mid-latitude sailing'))
+    .replace(/\bwhen\s+cruising\s+between\b/giu, (m) => matchTitle(m, 'for a passage between'))
+    .replace(/\bplane\s+(?:travel|cruising)\b/giu, (m) => matchTitle(m, 'plane sailing'))
+    .replace(/\bcruising\s+speed\b/giu, (m) => matchTitle(m, 'sea speed'))
+    .replace(/\bcruising\s+distance\b/giu, (m) => matchTitle(m, 'distance run'))
+    .replace(/\b(?:cruising|travel)\s+time\b/giu, (m) => matchTitle(m, 'passage time'))
+    .replace(/\bcruising\s+empty\b/giu, (m) => matchTitle(m, 'in ballast'))
+    .replace(/\bslow\s+travel\b/giu, (m) => matchTitle(m, 'slow steaming'))
+    .replace(/\bduring\s+travel\b/giu, (m) => matchTitle(m, 'on passage'))
+    .replace(/\badvanced\s+by\s+travel\b/giu, (m) => matchTitle(m, 'advanced by the run'))
+    .replace(/\b(cruising|travell?ing)(?=\s+(?:east|west|eastwards?|westwards?|parallel)\b)/giu, (m) => matchTitle(m, 'steaming'))
+    .replace(/\b(?:after|while)\s+travell?ing\b/giu, (m) => matchTitle(m, `${m.split(/\s+/)[0]} running`))
+    .replace(/\bport\/cruising\s+passage\b/giu, (m) => matchTitle(m, 'port-to-sea transition'))
+    .replace(/,\s*cruising\s+and\s+subject\b/giu, ', underway and subject')
+    .replace(/\bslow\s+cruising\b/giu, (m) => matchTitle(m, 'slow steaming'))
+    .replace(/\b(by|if|I'm|am|is|are)\s+cruising\b/gu, (_m, word: string) => `${word} sailing`)
+    .replace(/\b(and|ship|vessel|boat|it|she)\s+cruises\b/giu, (_m, word: string) => `${word} proceeds`)
+    .replace(/\bduring\s+cruising\b/giu, (m) => matchTitle(m, 'at sea'))
+    .replace(/\b(While|When)\s+Cruising\b/gu, (_m, word: string) => `${word} Underway`)
+    .replace(/\b(while|when)\s+cruising\b/giu, (_m, word: string) => `${word} underway`)
+    .replace(/\b(continue)\s+cruising\b/giu, (_m, word: string) => `${word} on passage`)
+    .replace(/\bcruising\s+with\b/giu, (m) => matchTitle(m, 'navigating with'))
+    .replace(/\b(port)(\s*(?:vs\.?|and|\/)\s*)cruising\b/giu, (_m, port: string, joiner: string) => `${port}${joiner}${/vs/i.test(joiner) ? '' : 'at '}${/^P/.test(port) ? 'Sea' : 'sea'}`)
+    .replace(/\b(?:the\s+)?ship\s+cruises\b/giu, (m) => matchTitle(m, `${/^the/i.test(m) ? 'the ' : ''}ship proceeds`))
+    .replace(/\bcruises\b(?!\s+(?:ships?|liners?|vessels?|lines?)\b)/giu, (m) => matchTitle(m, 'passages'))
+    .replace(/\bcruising\b(?!\s+(?:ships?|liners?|vessels?|yachts?)\b)/giu, (m) => matchTitle(m, 'navigation'));
+const hasWrongPassage = (source: string, translation: string): boolean =>
+  passageRepair(source, translation) !== translation;
+
+// Halat/palamar → line, only where the sentence is about mooring or towing and
+// not about knots, splices or lifting gear (where "rope" is the right word).
+const MOORING_LINE_SOURCE_RE =
+  /(?:bağlama|bağlan|mooring|palamar|rıhtım|bollard|babaya|babası|spring|breast|head\s+line|stern\s+line|fairlead|yanaş|çözme|unmoor|snap-back|teke\s+düşür|römork|yedek\s+halat|towline|heaving\s+line)/iu;
+const ROPEWORK_SOURCE_RE =
+  /(?:(?<!\p{L})bağ(?:ı|ıdır)?(?!\p{L})|çıma|(?<!\p{L})kasa(?!\p{L})|bedeni|savlo|uç\s+uca|yarım\s+anel|gözcü|volta(?:yı|ları)|sürtünme\s+bağ|kolay\s+çözülebilir|geçici\s+olarak\s+bağla|güvenilir\s+DEĞİL|düğüm|knot|splice|ekleme|örgü|kangal|izbarço|bowline|kroman|hitch|kaldırma|kreyn|crane|derrick|tel\s+kopma|çelik\s+tel|kurtarma\s+halat|can\s+halat|pilot)/iu;
+const ROPE_KEEP_AFTER_RE = /^(?:[\s-]+(?:drums?|stoppers?|construction|lay|strands?)\b|\s*maker)/iu;
+// Knot and hitch descriptions correctly speak of "rope".
+const ROPEWORK_TARGET_RE = /\b(?:hitch(?:es)?|knots?|bends?|splices?|whipping|monkey(?:['’]s)?\s+fist|working\s+ends?|standing\s+part|overhand|sheet\s+bend|carrick)\b|\brope\/sand\b|\brope,\s+wire,\s+paint\b/iu;
+const ROPE_KEEP_BEFORE_RE =
+  /\b(?:wire|steel|synthetic|fibre|fiber|rescue|life|safety|side|lifting|manila|haul|guide|grab|guardrail|hand|man|utility|gob)[\s-]+$/iu;
+const mooringLineRepair = (source: string, translation: string): string => {
+  let out = translation;
+  if (/teke\s+düşür/iu.test(source)) {
+    out = out
+      .replace(/\breduce\s+the\s+(?:ropes|lines)\s+to\s+one\b/giu, (m) => matchTitle(m, 'single up'))
+      .replace(/\breduce\s+the\s+(?:ropes|lines)\s+to\b/giu, (m) => matchTitle(m, 'single up to'));
+  }
+  return replaceUnless(
+    out,
+    /\bropes?\b/giu,
+    (before, after) => ROPE_KEEP_BEFORE_RE.test(before) || ROPE_KEEP_AFTER_RE.test(after),
+    (m) => matchTitle(m, /s$/i.test(m) ? 'lines' : 'line'),
+  ).replace(/\b(lines?)\s+line\b/giu, '$1');
+};
+
+// Yük/kargo → cargo where the Turkish clearly means the goods carried, never
+// for engine, electrical or structural load.
+const CARGO_LOAD_SOURCE_RE =
+  /(?:yük\s*(?:hasar|kayma|liste|yerleş|operasyon|işlem|bilgi|ağırlı|yüzey|sistem|ambar|elleçle|bölüm|kayd|güvenli|emniyet|sıcaklı|numune|hacm)|yük\s*\/\s*balast|yük\s+ve\s+balast|yük\s+donanım)/iu;
+const CARGO_LOAD_TARGET_RE =
+  /\bloads?\b(?=\s*(?:\/\s*ballast|damage|shift(?:ing)?|list|placement|operations?|information|weight|surface|systems?|hold|handling|plan|sections?|records?|safety|security|temperature|samples?|volume|equipment|gear)\b)/giu;
+const FREIGHT_EXCLUSION_RE = /(?:navlun|freight|charter|çarter|kiracı|kiralama|BDI|Baltic|CIF|FOB|deadfreight|lumpsum|avarya|tonaj|fiyat|vergi|program|taşımacılı|sahip)/iu;
+
+// Rıhtım → quay / berth (not "dock", which in British usage is a basin).
+const quayRepair = (_source: string, translation: string): string =>
+  replaceUnless(
+    translation.replace(/\bfrom\s+dock\s+to\s+berth\b/giu, (m) => matchTitle(m, 'from berth to berth')),
+    /\bdock(?:s|ing|ed)?\b/giu,
+    (before) => /\b(?:dry|floating|graving|wet)[\s-]+$/iu.test(before),
+    (m, before) => {
+      if (/ing$/i.test(m)) return matchTitle(m, 'berthing');
+      if (/ed$/i.test(m)) return matchTitle(m, 'berthed');
+      if (/s$/i.test(m)) {
+        const verb = /\b(?:ship|vessel|it|she|we|they)\s+(?:\w+ly\s+)?$/iu.test(before);
+        return matchTitle(m, verb ? 'berths' : 'quays');
+      }
+      return matchTitle(m, /\b(?:we|they|to)\s+$/iu.test(before) ? 'berth' : 'quay');
+    },
+  );
+
+// Tahrik → propulsion, only for the ship's propulsion plant (not belt, chain,
+// hydraulic or pump drives, which are correct engineering English).
+const PROPULSION_SOURCE_RE = /tahrik/iu;
+const PROPULSION_EXCLUSION_RE = /(?:kayış|zincir|pompa|hidrolik|dümen|elektro-hidrolik|T\/C|turbo|fan|kompresör|vinç|ırgat)/iu;
+const propulsionRepair = (_source: string, translation: string): string =>
+  translation
+    .replace(/\bmain\s+drive\b/giu, (m) => matchTitle(m, 'main propulsion'))
+    .replace(/\bdrive\s+(systems?|motors?|units?)\b/giu, (m, noun: string) => matchTitle(m, `propulsion ${noun.toLocaleLowerCase('en')}`))
+    .replace(/\/drive\b/giu, '/propulsion')
+    .replace(/^Drive$/u, 'Propulsion');
+
+/** applies() helper: the rule fires only when its repair would change the text. */
+const changes = (repair: (source: string, translation: string) => string) =>
+  (source: string, translation: string): boolean => repair(source, translation) !== translation;
+
 export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-001', label: 'Reis must be Bosun', source: /\breis/iu, wrong: /\b(?:the\s+)?(?:chief|chieftain|reis|boss)\b(?!\s+(?:officer|mate|engineer|cook)\b)(?:\s*\(Bosun\))?/iu, repair: bosunRepair },
   { id: 'T-002', label: 'crew AB must not become EU', source: /(?:^|[^\p{L}\p{N}])AB(?![\p{L}\p{N}])/u, wrong: CREW_AB_TARGET_RE, applies: isCrewAbSource, replacement: 'AB' },
@@ -445,6 +672,40 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-153', label: 'yüzme merkezi (LCF) is the centre of flotation, not of swimming', source: /yüzme\s+merkez/iu, wrong: /\b(?:cent(?:er|re)\s+of\s+swimming|swim(?:ming)?\s+cent(?:er|re))\b/giu, replacement: asTerm('centre of flotation') },
   { id: 'T-154', label: 'yüzme of a hull or a float is flotation, not swimming', source: /mekanik\s+yüzme|yüzme\s+ve\s+kaldırma\s+kuvvet/iu, wrong: /\bswimming\b/giu, replacement: asTerm('flotation') },
   { id: 'T-155', label: 'yüzdükten sonra (after refloating) must not become after swimming', source: /yüzdükten\s+sonra/iu, wrong: /\bafter\s+swimming\b/giu, replacement: asTerm('after refloating') },
+  // Interface terminology families approved on 2026-11-01 (GLOSSARY.md,
+  // "İngilizce arayüz terimleri").  Each rule that uses a repair function
+  // reports an issue only when that repair would actually change the text.
+  { id: 'T-156', label: 'Makine must be engine, not machine', source: ENGINE_SOURCE_RE, wrong: MACHINE_TARGET_RE, applies: hasWrongMachine, repair: engineRepair },
+  { id: 'T-157', label: 'Personel must be crew (shore: personnel), not staff', source: CREW_STAFF_SOURCE_RE, wrong: /\bstaff(?:ing)?\b/iu, applies: (source, translation) => !/\b(?:crowd|event\s+areas?|guests?)\b/iu.test(translation) && changes(crewRepair)(source, translation), repair: crewRepair },
+  { id: 'T-158', label: 'Görev must be duty/task, not mission', source: /görev/iu, wrong: /\b(?:pre-)?missions?\b/iu, applies: (source, translation) => !DUTY_MISSION_EXCLUSION_RE.test(source) && !MISSION_TARGET_KEEP_RE.test(translation) && changes(dutyRepair)(source, translation), repair: dutyRepair },
+  { id: 'T-159', label: 'Seyir must be navigation/passage, not cruising/travel', source: /sey(?:i|r)/iu, wrong: /\b(?:cruis(?:ing|es)|itinerar(?:y|ies)|travel(?:l?ing)?)\b/iu, applies: (source, translation) => !/(?:kruvaziyer|cruise)/iu.test(source) && hasWrongPassage(source, translation), repair: passageRepair },
+  { id: 'T-160', label: 'mooring halat/palamar must be line, not rope', source: MOORING_LINE_SOURCE_RE, wrong: /\bropes?\b/iu, applies: (source, translation) => !ROPEWORK_SOURCE_RE.test(source) && !ROPEWORK_TARGET_RE.test(translation) && changes(mooringLineRepair)(source, translation), repair: mooringLineRepair },
+  { id: 'T-161', label: 'cargo yük must be cargo, not load', source: CARGO_LOAD_SOURCE_RE, wrong: CARGO_LOAD_TARGET_RE, replacement: asTerm('cargo') },
+  { id: 'T-162', label: 'yük (goods) must be cargo, not freight', source: /(?:^|[^\p{L}])yük(?!le|sel|sek)/iu, wrong: /\bfreight\b(?!\s+(?:rates?|market|levels?|lines?))/giu, applies: (source) => !FREIGHT_EXCLUSION_RE.test(source), replacement: asTerm('cargo') },
+  { id: 'T-163', label: 'Yük hatları must be load lines', source: /yük\s+hat/iu, wrong: /\bfreight\s+lines?\b/giu, replacement: asPluralTerm('load line', 'load lines') },
+  { id: 'T-164', label: 'Kargo must be cargo, not shipping', source: /kargo/iu, wrong: /\bshipping\b/giu, applies: (source) => !FREIGHT_EXCLUSION_RE.test(source) && !/denizcilik/iu.test(source), replacement: asTerm('cargo') },
+  { id: 'T-165', label: 'Yaşam mahalli must be accommodation', source: /yaşam\s*mah/iu, wrong: /\bliving\s+(?:spaces?|areas?|range|quarters)\b/giu, repair: (_source, translation) => translation
+    .replace(/\bliving\s+(?:spaces?|areas?|range|quarters)\b/giu, (m) => matchCase(m, /spaces$|areas$/i.test(m) ? 'accommodation spaces' : 'accommodation'))
+    .replace(/\b([Aa])\s+accommodation\b(?!\s+spaces?)/gu, (_m, a: string) => (a === 'A' ? 'The' : 'the') + ' accommodation') },
+  { id: 'T-166', label: 'Rıhtım must be quay/berth, not dock', source: /rıhtım|rihtım/iu, wrong: /\b(?<!(?:dry|floating|graving|wet)[\s-])dock(?:s|ing|ed)?\b/iu, repair: quayRepair },
+  { id: 'T-167', label: 'machinery yatak must be bearing, not mattress', source: ENGINE_BEARING_SOURCE_RE, wrong: /\b(?:trust\s+)?mattress(?:es)?\b/giu, applies: (source) => !/(?:şilte|yastık|kamara|uyku|ranza|revir|hasta)/iu.test(source), replacement: (m) => matchCase(m, `${/^trust/i.test(m) ? 'thrust ' : ''}${/es$/i.test(m) ? 'bearings' : 'bearing'}`) },
+  { id: 'T-168', label: 'Gemici must be seaman, not sailor', source: /(?:^|[^\p{L}])gemici/iu, wrong: /\bsailors?\b(?!['’]s\s+knot)/giu, applies: (source) => !/usta\s+gemici/iu.test(source), replacement: (m) => matchCase(m, /s$/i.test(m) ? 'seamen' : 'seaman') },
+  { id: 'T-169', label: 'Mevzuat label must be Regulations', source: /mevzuat/iu, wrong: /^(?:[\d.]+\s+)?(?:\p{L}+\s+){0,2}Legislation$/u, replacement: (m) => m.replace(/Legislation$/u, 'Regulations') },
+  { id: 'T-170', label: 'Sözlük must be glossary, not dictionary', source: /sözlü/iu, wrong: /\bdictionar(?:y|ies)\b/giu, replacement: (m) => matchCase(m, /ies$/i.test(m) ? 'glossaries' : 'glossary') },
+  { id: 'T-171', label: 'ship tahrik must be propulsion, not drive', source: PROPULSION_SOURCE_RE, wrong: /\b(?:main\s+drive|drive\s+(?:systems?|motors?|units?))\b|\/drive\b|^Drive$/iu, applies: (source) => !PROPULSION_EXCLUSION_RE.test(source), repair: propulsionRepair },
+  { id: 'T-172', label: 'İkinci kaptan must be Chief Officer', source: /[iİ]kinci\s+kaptan/iu, wrong: /\bco-?master\b/giu, replacement: asTerm('Chief Officer') },
+  { id: 'T-173', label: 'makinist must be engineer, not mechanic', source: /makinist/iu, wrong: /\bmechanics?\b/giu, replacement: asPluralTerm('engineer', 'engineers') },
+  { id: 'T-174', label: 'mooring baba must be bollard, not bold', source: /baba(?:ya|sı|lar)?\b/iu, wrong: /\bbold\b/giu, replacement: asTerm('bollard') },
+  { id: 'T-175', label: 'bordo (ship side) must not become burgundy', source: /bordo/iu, wrong: /\b(?:the\s+)?burgundy\b/giu, replacement: (m) => matchCase(m, "the ship's side") },
+  { id: 'T-176', label: 'çözme (unmooring) must not become untying', source: /çözme/iu, wrong: /\buntying\b/giu, applies: (source) => /(?:bağlama|mooring|rıhtım|palamar)/iu.test(source), replacement: asTerm('unmooring') },
+  { id: 'T-177', label: 'Kalkış (departure) must not become takeoff', source: /kalkış/iu, wrong: /\btake-?off\b/giu, applies: (source) => !/(?:motor|makine|türbin|yağla|VFD|WIG|film|aşınma|kompresör|pompa|uçu|duruş|iniş)/iu.test(source) && !/^\s*(?:yalnızca|sadece)\s+kalkışta\s*$/iu.test(source), replacement: asTerm('departure') },
+  { id: 'T-178', label: 'Fundo/funda must be let go', source: /fund[oa]/iu, wrong: /\bFundo\b(?:\s*\(let\s+go\))?/giu, replacement: (m) => matchCase(m, 'let go') },
+  { id: 'T-179', label: 'two anchors must not become two irons', source: /[iİ]ki\s+demir/iu, wrong: /\btwo\s+irons\b/giu, replacement: asTerm('two anchors') },
+  { id: 'T-180', label: 'muster station must not become master station', source: /muster|müster/iu, wrong: /\bmaster\s+stations?\b/giu, replacement: asPluralTerm('muster station', 'muster stations') },
+  { id: 'T-181', label: 'müster list must not become customer list', source: /müster/iu, wrong: /\bcustomer\s+lists?\b/giu, replacement: asPluralTerm('muster list', 'muster lists') },
+  { id: 'T-183', label: 'generator motoring is a motor, not an engine', source: /jeneratör[\s\S]{0,80}motor\s+(?:gibi|olarak)/iu, wrong: /\b(?:like|as)\s+an\s+engine\b/giu, replacement: (m) => `${/^like/i.test(m) ? 'like' : 'as'} a motor` },
+  { id: 'T-184', label: 'dümen makinesi must be steering gear, not steering engine', source: /dümen\s+makines/iu, wrong: /\bsteering\s+engine\b/giu, replacement: (m) => matchCase(m, 'steering gear') },
+  { id: 'T-182', label: 'başüstü (anchor chain) must not become overhead', source: /başüstü\s+zincir/iu, wrong: /\boverhead\s+chain\b/giu, replacement: asTerm('anchor chain') },
 ];
 
 // Technical/formula strings that were incorrectly classified as language-
@@ -588,8 +849,88 @@ export const TECHNICAL_ENGLISH_OVERRIDES: Readonly<Record<string, string>> = {
   'Te ≈ Tr / 2  veya  Te ≈ Tr': 'Te ≈ Tr / 2  or  Te ≈ Tr',
 };
 
+// Short labels and quiz options that the T-156… families cannot repair
+// word-by-word without producing awkward English (GLOSSARY.md, 2026-11-01).
+export const INTERFACE_TERM_OVERRIDES: Readonly<Record<string, string>> = {
+  'Personel': 'Crew',
+  'Az personel': 'Too few crew',
+  'Daha az personel': 'Fewer crew',
+  'Fazla personel': 'Too many crew',
+  "Yeni personel familiarization'dan geçti mi, görevini biliyor mu?":
+    'Has the new crew member completed familiarization, and does he/she know his/her duties?',
+  'Gemici': 'Seaman',
+  'Yeni gemici': 'New seaman',
+  'Gemi Görevleri': 'Shipboard Duties',
+  'Görevi': 'Duty',
+  'Mevzuat': 'Regulations',
+  'Sözlük': 'Glossary',
+  'Tahrik': 'Propulsion',
+  'Yük': 'Cargo',
+  'Seyirde': 'Underway',
+  'Seyir (denizde)': 'Navigation (at sea)',
+  'Seyir Planı': 'Passage Plan',
+  'Astronomik Seyir': 'Celestial Navigation',
+  'Daha hızlı seyir': 'Faster passage',
+  'Geri seyir': 'Sternway',
+  'Navlun / Yük': 'Freight / Cargo',
+  'Kargo hızını artırmak': 'Increase the cargo rate',
+  'Kargo durdur, üretimi düzelt': 'Stop cargo, correct production',
+  'Kargo: 0.60; Makine: 0.70; Yaşam mah.: 0.85': 'Cargo: 0.60; Machinery: 0.70; Accommodation: 0.85',
+  'Kargo: 0.70; Makine: 0.85; Yaşam mah.: 0.95': 'Cargo: 0.70; Machinery: 0.85; Accommodation: 0.95',
+  'Kargo: 0.85; Makine: 0.70; Yaşam mah.: 0.60': 'Cargo: 0.85; Machinery: 0.70; Accommodation: 0.60',
+  'Kargo: 0.95; Makine: 0.60; Yaşam mah.: 0.70': 'Cargo: 0.95; Machinery: 0.60; Accommodation: 0.70',
+  'Makine ters döner': 'The engine runs astern',
+  'IMO A.893(21): appraisal → planning → execution → monitoring; plan rıhtımdan rıhtıma hazırlanır.':
+    'IMO A.893(21): appraisal → planning → execution → monitoring; the plan is prepared from berth to berth.',
+  'Dalış, ROV, hat gerilimi, riser, gangway, hortum veya kaldırma durumu (görev merkezinden teyit)':
+    'Diving, ROV, line tension, riser, gangway, hose or lifting status (confirmed with the mission control centre)',
+  '1.1 Irgadın temel görevleri': '1.1 Basic functions of the windlass',
+  "Muster station'ı ve görevini bil": 'Know your muster station and your duty',
+  'Kalkıştan 12 saat önce dümen testleri yapılır (yedek geçiş, acil kumanda, alarm) ve SOLAS gereği seyir jurnalına kaydedilir.':
+    'Steering gear tests are carried out 12 hours before departure (changeover to the standby unit, emergency control, alarms) and recorded in the deck logbook as required by SOLAS.',
+  "Ana pompa makine dairesinde erişilemezse, bağımsız tahrikli acil pompa fire main'i basınçlı tutar.":
+    'If the main pump in the engine room cannot be reached, the independently driven emergency fire pump keeps the fire main pressurized.',
+  'EGE seyirde egzoz atık ısısından buhar üretir (yakıt tasarrufu); düşük yük/yavaş seyirde kurum birikip soot fire riski oluşur.':
+    'The EGE produces steam from exhaust waste heat while underway (fuel saving); at low load/slow steaming soot accumulates and creates a soot fire risk.',
+  "EGE'de soot birikimi ve yüksek sıcaklık, soot fire riskini artırır; düzenli soot blowing ve izleme önemlidir.":
+    'Soot accumulation and high temperature in the EGE increase the risk of a soot fire; regular soot blowing and monitoring are important.',
+  'Acele ettirilen veya azarlanan yeni personel hata yapar ve sormaktan çekinir. Sabırlı, göstererek öğreten bir reis; hem güvenli hem yetkin bir tayfa yetiştirir.':
+    'New crew members who are rushed or scolded make mistakes and are reluctant to ask. A patient Bosun who teaches by showing trains ratings who are both safe and competent.',
+  'Asla gergin halatın doğrultusunda durma': 'Never stand in line with a taut line',
+  '3.1 Heaving line ve halat verme': '3.1 Heaving line and passing the lines',
+  'Halatı çöz ve at': 'Let go the line',
+  'Atma halatı ucuna cıvata, somun gibi metal koymak, karaya isabet eden kişide ölümcül yaralanmaya yol açabilir. Ağırlık yumuşak ve hafif olmalı; rıhtımdaki ekip atıştan önce uyarılmalıdır.':
+    'Putting metal such as bolts or nuts in the end of a heaving line can fatally injure the person struck ashore. The weight must be soft and light; the line handlers on the quay must be warned before the line is thrown.',
+  "Ekip PPE'li, snap-back/halat hattı dışında, kaçış yolu belli mi?":
+    "Is the team wearing PPE, clear of the snap-back zone and the line's path, with a clear escape route?",
+  'Auto-tension halat gerilimini sabit tutar; gelgit ve yükleme/boşaltma sırasındaki gemi hareketlerini kompanse eder. Bant fren aşırı yüklenmede kayarak korur.':
+    'Auto-tension keeps the line tension constant and compensates for ship movement with the tide and during loading/unloading. Under overload the band brake renders (slips) to protect the line.',
+  'Kalkış ve duruş anında (film oluşmadan)': 'At start-up and stop (before the oil film forms)',
+  'VFD sadece kalkışta': 'VFD only at start-up',
+  'Yalnızca kalkışta': 'Only at start-up',
+  'Kalkışa hazırlık: halatları iki halat ve bir spring kalacak şekilde azalt ':
+    'Preparation for departure: single up to two lines and a spring',
+  'Şüpheli/kritik makineler': 'Suspicious/critical machinery',
+  'Tüm makine ve alt bileşenlerin hiyerarşik kaydı': 'Hierarchical register of all machinery and subcomponents',
+  'Makine kontrol odasındaki ekranlar üzerinden trend, alarm ve kumanda işlevleri sunar.':
+    'Provides trend, alarm and control functions on the displays in the engine control room.',
+  'Demir vira/fundo': 'Heave up / let go anchor',
+  'Demiri fundo et': 'Let go the anchor',
+  'Demirleme donanımı': 'Anchoring equipment',
+  'Demirleme ışıkları': 'Anchor lights',
+  'Demirlemeli': 'At anchor',
+  'Başüstü Standart Raporları': 'Forecastle Standard Reports',
+  'Kaptanı çağırır, makineyi stand-by ettirir ve baş üstünü uyarırım':
+    'I call the Master, put the engine on stand-by and warn the forecastle',
+  'Slamming ve baş üstü su alma nedeniyle oluşan yapısal zorlanmayı azaltmak':
+    'Reducing structural strain caused by slamming and shipping green water over the bow',
+  'Kalkışa hazırlık: halatları iki halat ve bir spring kalacak şekilde teke düşür':
+    'Preparation for departure: single up to two lines and a spring.',
+};
+
 export const EXACT_ENGLISH_OVERRIDES: Readonly<Record<string, string>> = {
   ...TECHNICAL_ENGLISH_OVERRIDES,
+  ...INTERFACE_TERM_OVERRIDES,
   // ASCII-only Turkish fragments can bypass a Turkish-character residue scan.
   // Keep these source-exact because they mix formula notation with translatable
   // labels and must not be altered by broad token replacement.

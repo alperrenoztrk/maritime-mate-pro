@@ -733,7 +733,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Clock className="h-5 w-5 text-green-600" />
-                    Monitoring While Cruising
+                    Monitoring While Underway
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card className="border-blue-200">
@@ -1505,7 +1505,7 @@ const DetailedMeteorology = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center gap-2">
                     <Clock className="h-5 w-5 text-green-600" />
-                    Monitoring While Cruising
+                    Monitoring While Underway
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card className="border-blue-200">

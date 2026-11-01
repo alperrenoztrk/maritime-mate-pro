@@ -9,7 +9,7 @@ export interface StudyItem {
   at: number;
 }
 
-export type StudyKind = "Lesson" | "Exercise" | "Reference" | "Ship systems" | "Personnel" | "Operations" | "Formulas" | "Calculations";
+export type StudyKind = "Lesson" | "Exercise" | "Reference" | "Ship systems" | "Crew" | "Operations" | "Formulas" | "Calculations";
 
 const RECENT_KEY = "mb.study.recent.v1";
 const SAVED_KEY = "mb.study.saved.v1";
@@ -23,7 +23,7 @@ const RULES: Array<[RegExp, StudyKind]> = [
   [/^\/lessons\/[^/]+\/formulas$/, "Formulas"],
   [/^\/lessons\/[^/]+\/calculations$/, "Calculations"],
   [/^\/ship-systems\/.+/, "Ship systems"],
-  [/^\/crew\/.+/, "Personnel"],
+  [/^\/crew\/.+/, "Crew"],
   [/^\/ship-operations\/.+/, "Operations"],
 ];
 

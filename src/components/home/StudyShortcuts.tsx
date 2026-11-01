@@ -14,7 +14,7 @@ function Row({ item, icon: Icon }: { item: StudyItem; icon: typeof History }) {
       </span>
       <span className="min-w-0 flex-1">
         <span className="block truncate text-sm font-semibold text-foreground">{item.title}</span>
-        <span className="block text-xs text-muted-foreground">{item.kind}</span>
+        <span className="block text-xs text-muted-foreground">{(item.kind as string) === "Personnel" ? "Crew" : item.kind}</span>
       </span>
       <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
     </Link>

@@ -9,7 +9,7 @@ import { FormulaCard } from "@/components/ui/formula-card";
 const Engine = () => {
   return (
     <CalculationLayout
-      title="Machine Calculations"
+      title="Engine Calculations"
       icon={Cog}
       maxWidthClassName="max-w-6xl"
       rightRail={
@@ -77,7 +77,7 @@ const Engine = () => {
       below={
         <>
           <DiagramViewer
-            title="Machine System Flow Diagram"
+            title="Engine System Flow Diagram"
             data={{
               mcrPower: 8500,
               currentLoad: 75,
@@ -98,7 +98,7 @@ const Engine = () => {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-xl">
             <Cog className="h-6 w-6 text-sky-600 dark:text-sky-400" />
-            Machine Calculation Module
+            Engine Calculation Module
           </CardTitle>
         </CardHeader>
         <CardContent>

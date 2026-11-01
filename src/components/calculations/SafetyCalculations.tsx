@@ -573,7 +573,7 @@ export const SafetyCalculations = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="anchorWeight">Iron Weight (kg)</Label>
+                  <Label htmlFor="anchorWeight">Anchor Weight (kg)</Label>
                   <Input
                     id="anchorWeight"
                     type="number"
@@ -798,7 +798,7 @@ export const SafetyCalculations = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Anchor className="h-5 w-5" />
-                Iron Calculations
+                Anchor Calculations
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -830,7 +830,7 @@ export const SafetyCalculations = () => {
                   <p className="text-lg font-semibold">{result.totalEnvironmentalForce.toFixed(1)} ton</p>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium">Iron Holding Power</Label>
+                  <Label className="text-sm font-medium">Anchor Holding Power</Label>
                   <p className="text-lg font-semibold">{result.anchorHoldingPower.toFixed(1)} ton</p>
                 </div>
               </div>

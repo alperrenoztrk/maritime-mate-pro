@@ -205,7 +205,7 @@ export default function MachineFormulas() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 py-3">
 
-        <PageHeader className="mb-5" title="Machine Formulas" />
+        <PageHeader className="mb-5" title="Engine Formulas" />
 
         <div className="space-y-8">
           {formulaCategories.map((category) => (

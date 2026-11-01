@@ -198,7 +198,7 @@ const cargoTopics: CargoMainTopic[] = [
     title: "Cargo Maintenance and Damage Prevention",
     icon: Shield,
     subtopics: [
-      { id: "cargo-damage-types", title: "Load damage types", hasContent: true },
+      { id: "cargo-damage-types", title: "Cargo damage types", hasContent: true },
       { id: "sweat-damage", title: "Sweat damage (Ship vs Cargo Sweat)", hasContent: true },
       { id: "moisture-control", title: "Humidity control and dew point", hasContent: true },
       { id: "cargo-claims", title: "Cargo damage claims and liability", hasContent: true },
@@ -2055,7 +2055,7 @@ The ship being trimmed affects the liquid level. The tank calibration tables inc
     },
   },
   "cargo-calc-tanker": {
-    title: "Tanker Load Calculations",
+    title: "Tanker Cargo Calculations",
     introduction: "The tanker load quantity is calculated using liquid level measurements, temperature corrections and density data.",
     content: `CALCULATION STEPS:
 
@@ -2569,7 +2569,7 @@ SAFETY:
     keyPoints: [
       "Ro-Ro ships are particularly vulnerable to damaged stability",
       "Herald of Free Enterprise accident has tightened Ro-Ro safety rules",
-      "Cruising does not start until the bow/stern door is closed.",
+      "The ship does not get underway until the bow/stern door is closed.",
     ],
     warnings: [
       "Sailing with the bow door open has had fatal consequences",
@@ -2781,7 +2781,7 @@ THE CARRIER'S EXCEPTIONS:
 - Insufficient packing
 - Latent defect
 
-THE SHIP'S STAFF RESPONSIBILITIES:
+THE SHIP'S CREW RESPONSIBILITIES:
 1. Hold inspection before loading
 2. Recording the condition of the cargo (Mate's Receipt)
 3. A Letter of Protest for damaged cargo
@@ -3334,7 +3334,7 @@ export default function CargoTopicsPage() {
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
                 {[
-                  { title: "Load Calculations", href: "/cargo/calculations" },
+                  { title: "Cargo Calculations", href: "/cargo/calculations" },
                   { title: "Draft Survey Formulas", href: "/cargo/formulas" },
                 ].map((resource, index) => (
                   <Link

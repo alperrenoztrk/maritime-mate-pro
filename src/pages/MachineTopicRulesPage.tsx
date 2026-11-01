@@ -114,7 +114,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
   "cooling-hvac": [
     { title: "Refrigerant Rules", source: { code: "Kigali / Montreal Protocol", detail: "HFC reduction and leak management" }, rules: [
       { subtitle: "Kigali Amendment (Montreal Protocol)", content: ["Gradual reduction of HFC fluids (R-134a, R-404A) is mandatory", "Low GWP fluids should be preferred in new systems (R-290, R-744)", "Leak detection: annual inspection and registration is mandatory"] },
-      { subtitle: "SOLAS – Refrigeration Safety", content: ["Refrigerant gas leak alarm: should be displayed in the machine control room", "Breathing apparatus and alarm system are mandatory in NH₃ (R-717) systems", "Engine room ventilators should be activated automatically in case of leakage"] },
+      { subtitle: "SOLAS – Refrigeration Safety", content: ["Refrigerant gas leak alarm: should be displayed in the engine control room", "Breathing apparatus and alarm system are mandatory in NH₃ (R-717) systems", "Engine room ventilators should be activated automatically in case of leakage"] },
     ]},
     { title: "Food Cooling and Hygiene", source: { code: "SOLAS / Health Regulations", detail: "Cold store and food safety" }, rules: [
       { subtitle: "Cold Storage Temperatures", content: ["Frozen food stores are typically kept ≤ −18°C; temperature must be constantly monitored", "Separate cooling rooms/temperatures should be provided for different food groups"] },
@@ -142,7 +142,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
   automation: [
     { title: "Automation Standards", source: { code: "SOLAS II-1/Reg.51 / IACS UR E", detail: "Alarm and UMS requirements" }, rules: [
       { subtitle: "Alarm System (SOLAS II-1/Reg.51)", content: ["The alarm system must have independent power supply", "Unacknowledged alarm must alert again in 30 minutes", "Cabin alarm: critical alarms must be transmitted to crew quarters"] },
-      { subtitle: "Periodless Engine Room (UMS)", content: ["All critical parameters must be monitored for UMS certification", "Bridge alarm panel: main engine, generator and tank levels", "Fire detection: engine room fire detection must be independent"] },
+      { subtitle: "Periodically Unattended Machinery Space (UMS)", content: ["All critical parameters must be monitored for UMS certification", "Bridge alarm panel: main engine, generator and tank levels", "Fire detection: engine room fire detection must be independent"] },
     ]},
     { title: "Monitoring and Control Systems", source: { code: "IACS UR E10/E22", detail: "Sensors, PLC and type approval" }, rules: [
       { subtitle: "Sensor and Measurement", content: ["Redundancy and fail-safe design is applied in critical measurements", "Sensor calibration should be done periodically and records should be kept."] },
@@ -162,14 +162,14 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
       { subtitle: "Rest Limits", content: ["Min. 10 hours rest/24 hours and 77 hours/7 days should be provided", "Rest can be divided into two parts at most; one piece must be ≥ 6 hours"] },
       { subtitle: "Recording and Monitoring", content: ["A record of working/rest hours must be kept and be available for audit.", "Exceptions must remain within the limits of the regulation."] },
     ]},
-    { title: "Maneuvering and Bridge-Machine Coordination", source: { code: "ISM / Bridge-Engine Procedures", detail: "Stand-by and communications" }, rules: [
+    { title: "Manoeuvring and Bridge–Engine Coordination", source: { code: "ISM / Bridge-Engine Procedures", detail: "Stand-by and communications" }, rules: [
       { subtitle: "Stand-by Operation", content: ["Main engine, rudder and auxiliaries should be tested before the maneuver (pre-arrival checklist).", "Telegraph/command compliance and feedback must be verified"] },
-      { subtitle: "Contact", content: ["Clear command and confirmation (closed-loop) communication between the bridge and the machine is implemented", "Emergency procedures should be ready for critical situations (blackout, loss of control)"] },
+      { subtitle: "Communication", content: ["Clear command and confirmation (closed-loop) communication between the bridge and the engine room is implemented", "Emergency procedures should be ready for critical situations (blackout, loss of control)"] },
     ]},
   ],
   maintenance: [
     { title: "Maintenance Rules", source: { code: "Class Rules / ISM Code", detail: "PMS and survey regime" }, rules: [
-      { subtitle: "Class Requirements", content: ["PMS (Planned Maintenance System): all equipment maintenance records must be kept", "Special survey: full comprehensive check every 5 years", "Intermediate survey: within 2.5 years ± 6 months", "Continuous survey: specific groups of machines are checked sequentially"] },
+      { subtitle: "Class Requirements", content: ["PMS (Planned Maintenance System): all equipment maintenance records must be kept", "Special survey: full comprehensive check every 5 years", "Intermediate survey: within 2.5 years ± 6 months", "Continuous survey: specific groups of machinery are checked sequentially"] },
       { subtitle: "ISM Code – Maintenance", content: ["Critical equipment should be identified and placed on a priority maintenance plan", "In maintenance records: date, work done, spare parts, measurement results", "Malfunction and near-miss events must be reported"] },
     ]},
     { title: "Survey Regime and Condition Monitoring", source: { code: "IACS / Class", detail: "Survey types and CBM" }, rules: [
@@ -184,7 +184,7 @@ export const machineTopicRules: Record<string, RuleCategory[]> = {
   "engine-room-safety": [
     { title: "Engine Room Safety Rules", source: { code: "SOLAS II-2", detail: "Fire safety and emergency shutdown" }, rules: [
       { subtitle: "SOLAS II-2 – Fire Safety", content: ["The engine room must be surrounded by A-60 class partitions", "Fixed CO₂ or FM-200 extinguishing system is mandatory", "Quick-closing valves must operate from outside the engine room", "Ventilator shutdown: must be able to be stopped from outside the engine room"] },
-      { subtitle: "Emergency Stop", content: ["Main engine emergency stop: from the bridge and machine control room", "Fuel pumps: must be able to be stopped from outside the engine room", "Ventilators: must be shut down automatically or remotely in case of fire"] },
+      { subtitle: "Emergency Stop", content: ["Main engine emergency stop: from the bridge and engine control room", "Fuel pumps: must be able to be stopped from outside the engine room", "Ventilators: must be shut down automatically or remotely in case of fire"] },
     ]},
     { title: "Entry to Confined Space", source: { code: "SOLAS III/19 / IMO Res.A.1050(27)", detail: "Enclosed space entry" }, rules: [
       { subtitle: "Atmosphere Measurement", content: ["O₂ ≥ 20.9%, toxic gas and LEL should be measured before entry", "Measurement should be supported at multiple levels (top/middle/bottom) and continuous monitoring"] },

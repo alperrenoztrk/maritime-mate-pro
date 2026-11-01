@@ -31,7 +31,7 @@ const calloutMeta: Record<ShipOpCallout["type"], { Icon: typeof AlertTriangle; c
   reference:  { Icon: BookMarked,    cls: "border-blue-500/40 bg-blue-500/10 text-blue-900 dark:text-blue-200", label: "Reference" },
   tip:        { Icon: Lightbulb,     cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200", label: "hint" },
   example:    { Icon: FileText,      cls: "border-violet-500/40 bg-violet-500/10 text-violet-900 dark:text-violet-200", label: "Examples" },
-  regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Legislation" },
+  regulation: { Icon: Scale,         cls: "border-primary/40 bg-primary/10 text-foreground", label: "Regulations" },
 };
 
 export default function ShipOperationDeepDive() {
@@ -217,7 +217,7 @@ function OperationSummary({
       </ContentSection>
 
       {operation.regulations && operation.regulations.length > 0 && (
-        <ContentSection icon={ScrollText} title="Relevant Legislation">
+        <ContentSection icon={ScrollText} title="Relevant Regulations">
           <div className="flex flex-wrap gap-2">
             {operation.regulations.map((regulation) => (
               <span key={regulation} className="rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1 text-xs font-semibold text-primary">

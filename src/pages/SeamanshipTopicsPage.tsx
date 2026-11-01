@@ -2270,11 +2270,11 @@ The person giving the order: verifies the rudder angle indicator
 
 CRITICAL SITUATIONS:
 
-BRM training encourages junior personnel to challenge the master or a senior officer when necessary. This culture must be developed in order to prevent accidents caused by fear of the hierarchy.`,
+BRM training encourages junior crew members to challenge the master or a senior officer when necessary. This culture must be developed in order to prevent accidents caused by fear of the hierarchy.`,
     bulletPoints: [
       "BRM: teamwork, situation awareness, communication, decision making",
       "Closed loop communication: command → repeat → verification",
-      "Junior staff are encouraged to warn seniors",
+      "Junior crew members are encouraged to warn seniors",
     ],
     keyPoints: [
       "Many marine accidents are caused by lack of BRM",
@@ -2666,7 +2666,7 @@ Salvage: the saving of a ship in danger; the salvage award is high (LOF – Lloy
 Towage: a commercial towing service under contract.`,
     bulletPoints: [
       "ETA: pre-prepared emergency tow ports on board",
-      "First step in machine loss: slowing the drift by anchoring",
+      "First step in loss of propulsion: slowing the drift by anchoring",
       "LOF: Lloyd's Open Form, standard salvage contract",
       "Salvage ≠ Towage: salvage is a legal service, towing is a commercial service",
     ],
@@ -2725,7 +2725,7 @@ ENVIRONMENTAL RISK:
 
 In a grounding, fuel leakage and pollution are the greatest risk. The SOPEP (Shipboard Oil Pollution Emergency Plan) is put into effect. If there is a risk of pollution the coastal State must be notified immediately.`,
     bulletPoints: [
-      "First step: stop the machine, increase ground damage",
+      "First step: stop the engine, increase ground damage",
       "Water inlet is controlled with tank sounding",
       "High tide increases chance of survival",
       "SOPEP: fuel spill contingency plan",
@@ -2896,9 +2896,9 @@ or that you doubt whether sufficient action is being taken to avoid collision.
 Distress signals are a separate matter, dealt with in Rule 37 and Annex IV.`,
     bulletPoints: [
       "• = to starboard, •• = to port, ••• = astern",
-      "Long blast every 2 minutes in limited visibility (navigation by machine)",
+      "Prolonged blast every 2 minutes in restricted visibility (power-driven vessel making way)",
       "Anchored ship: bow bell + stern gong (>100 m)",
-      "5+ short blasts = suspicion/warning signal (Rule 34(d)) — not a danger signal",
+      "5+ short blasts = doubt/warning signal (Rule 34(d)) — not a distress signal",
     ],
   },
   "distress-signals": {

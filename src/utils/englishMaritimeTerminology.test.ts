@@ -8,8 +8,8 @@ import {
   repairEnglishMaritimeTerminology,
 } from './englishMaritimeTerminology.ts';
 
-test('all 155 audited terminology families have a regression rule', () => {
-  const expected = Array.from({ length: 155 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
+test('all 184 audited terminology families have a regression rule', () => {
+  const expected = Array.from({ length: 184 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
   assert.deepEqual([...new Set(ENGLISH_TERMINOLOGY_RULES.map(({ id }) => id))].sort(), expected);
 });
 
@@ -196,4 +196,79 @@ test('yüzme of a hull or a float is flotation, not swimming', () => {
     repairEnglishMaritimeTerminology('yüzdükten sonraki emniyetli mevkii içerir', 'safe position after swimming'),
     'safe position after refloating',
   );
+});
+
+test('interface terminology families (T-156…T-184) follow GLOSSARY.md', () => {
+  const cases: Array<[string, string, string]> = [
+    // Makine → engine
+    ['Makine vardiyası', 'Machine watch', 'Engine watch'],
+    ['Köprüüstü-makine koordinasyonu', 'Bridge-machine coordination', 'Bridge-engine coordination'],
+    ['Ana/yardımcı makine işletimi', 'Main/slave machine operation', 'Main/auxiliary engine operation'],
+    ['Güverte Makineleri', 'Deck Machines', 'Deck Machinery'],
+    ['Bir dizel makine 8,400 kW güçte', 'A diesel machine at 8,400 kW', 'A diesel engine at 8,400 kW'],
+    ['Makine yağının sıcaklığı', 'Temperature of machine oil', 'Temperature of lubricating oil'],
+    // Personel → crew / personnel
+    ['Personel Hiyerarşisi', 'Staff Hierarchy', 'Crew Hierarchy'],
+    ['Yeni Personel Oryantasyonu', 'New Staff Orientation', 'New Crew Orientation'],
+    ['Kadro, yetkinlik ve rotasyon', 'Staffing, competence and rotation', 'Manning, competence and rotation'],
+    ['Liman personeli bilgilendirilir', 'Port staff are informed', 'Port staff are informed'],
+    ['Terminal personeli onaylar', 'The staff confirm', 'The personnel confirm'],
+    // Görev → duty
+    ['Gemi Görevleri', 'Ship Missions', 'Shipboard Duties'],
+    ['Muster station ve görevi bil', 'Muster station and know the mission', 'Muster station and know the duty'],
+    ['DP görev safhası', 'DP mission phase', 'DP mission phase'],
+    // Seyir → navigation / passage
+    ['Seyir Planı', 'Itinerary', 'Passage Plan'],
+    ['Astronomik Seyir İçin Zaman', 'Time for Astronomical Cruising', 'Time for Celestial Navigation'],
+    ['Uzun seyirlerde su üretimi', 'Water production on long cruises', 'Water production on long passages'],
+    ['AIS seyirde rapor verir', 'AIS reports while cruising', 'AIS reports while underway'],
+    ['Seyir Mesafesi', 'Cruising Distance', 'Distance Run'],
+    // Halat → line (mooring only)
+    ['Halatı babaya bağlamak', 'Tie the rope to the bold', 'Tie the line to the bollard'],
+    ['Mooring halatları kontrol edildi', 'Mooring ropes and wire ropes checked', 'Mooring lines and wire ropes checked'],
+    ['İzbarço bağı ile halat', 'Bowline with a rope', 'Bowline with a rope'],
+    ['İki halatın çımalarını yan yana serin', 'Lay the two ropes side by side with their working ends', 'Lay the two ropes side by side with their working ends'],
+    ['Gob rope, römorkörde tow halatının hareketini sınırlar', 'Gob rope limits the tow rope', 'Gob rope limits the tow line'],
+    // Yük / kargo → cargo
+    ['Yük hasarı', 'Load damage', 'Cargo damage'],
+    ['Kargo Hesaplamaları', 'Shipping Calculations', 'Cargo Calculations'],
+    ['Büyük makine kalkışında yük kontrolü', 'Load control at large engine start-up', 'Load control at large engine start-up'],
+    ['Navlun = Yük × Oran', 'Freight = Load × Rate', 'Freight = Load × Rate'],
+    // Others
+    ['Yaşam mahallerinden atık', 'Waste from living spaces', 'Waste from accommodation spaces'],
+    ['Gemi rıhtıma yanaştığında', 'When the ship docks at the dock', 'When the ship berths at the quay'],
+    ['Kuru havuz ve rıhtım', 'Dry dock and dock', 'Dry dock and quay'],
+    ['Yatak Tipleri ve Ölçüm', 'Mattress Types and Measurement', 'Bearing Types and Measurement'],
+    ['Yatak şilte ve yastık', 'Mattresses and pillows', 'Mattresses and pillows'],
+    ['Ana Makine / Tahrik Sistemi', 'Main engine / Drive System', 'Main engine / Propulsion System'],
+    ['Kayış ve zincir tahrik sistemleri', 'Belt and chain drive systems', 'Belt and chain drive systems'],
+    ['İkinci kaptan', 'Co-Master', 'Chief Officer'],
+    ['Başmakinist, ikinci makinist', 'Chief mechanic, second mechanic', 'Chief engineer, second engineer'],
+    ['Breast line: bordoyu rıhtıma dik tutar', 'Breast line: keeps the burgundy perpendicular to the dock', "Breast line: keeps the ship's side perpendicular to the quay"],
+    ['Kalkış Kontrol Listesi', 'Takeoff Checklist', 'Departure Checklist'],
+    ['VFD sadece kalkışta', 'VFD only on takeoff', 'VFD only at start-up'],
+    ['Jeneratörün motor olarak çalışmasını engeller', 'Prevents the generator from operating as an engine', 'Prevents the generator from operating as a motor'],
+    ['Ana dümen makinesi testi', 'Main steering engine test', 'Main steering gear test'],
+    ['Orta enlem seyirde: Boylam hesabına girer', 'When cruising in mid-latitude: It is included', 'In mid-latitude sailing: It is included'],
+  ];
+  for (const [source, wrong, expected] of cases) {
+    const repaired = repairEnglishMaritimeTerminology(source, wrong);
+    assert.equal(repaired, expected, source);
+    assert.deepEqual(findEnglishMaritimeTerminologyIssues(source, repaired), [], source);
+    assert.equal(repairEnglishMaritimeTerminology(source, repaired), repaired, `${source} (idempotent)`);
+  }
+});
+
+test('legitimate "machine", "staff" and "mission" uses are preserved', () => {
+  const keep: Array<[string, string]> = [
+    ['Makine Elemanları', 'Machine Elements'],
+    ['Bulaşık makinesine konmadan önce', 'Before being placed in the dishwashing machine'],
+    ['Çamaşır makinesi ve makine dairesi', 'Washing machine and engine room'],
+    ['Yolcu gemilerinde mürettebat ve cruise staff', 'Crew and cruise staff on passenger ships'],
+    ['SAR görevlerinde', 'In SAR missions'],
+  ];
+  for (const [source, english] of keep) {
+    assert.equal(repairEnglishMaritimeTerminology(source, english), english, source);
+    assert.deepEqual(findEnglishMaritimeTerminologyIssues(source, english), [], source);
+  }
 });

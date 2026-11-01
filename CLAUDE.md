@@ -83,7 +83,7 @@ Ayrıntılar (Pro abonelik, Play yayını, beyaz ekran tuzakları):
   `npm run i18n:scan-senses`. `npm run i18n:fix` hatalı satırı İngilizceye
   çevirir (24 dilde ~40 dk, arka planda çalıştır).
 - İngilizce düzeltme kuralları:
-  `supabase/functions/_shared/englishMaritimeTerminology.ts` (T-001…T-155).
+  `supabase/functions/_shared/englishMaritimeTerminology.ts` (T-001…T-184).
 - Kaynak metin değişince: `npm run i18n:extract`, sonra `npm run i18n:fix`.
   Çıkarıcı JSX karakter referanslarını (`&amp;`, `&rsquo;` …) React gibi çözer.
   Yalnız yeni İngilizce arayüz metni eklendiyse hızlı yol:

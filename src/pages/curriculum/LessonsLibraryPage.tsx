@@ -50,7 +50,7 @@ export default function LessonsLibraryPage() {
     },
     {
       id: "machine" as const,
-      title: "Machine Library",
+      title: "Engine Library",
       icon: Wrench,
       accent: "accent-slate",
       description: "Mechanical, electrical, thermodynamics and maintenance courses",
@@ -76,7 +76,7 @@ export default function LessonsLibraryPage() {
         activeView === "deck"
           ? "Deck Library"
           : activeView === "machine"
-            ? "Machine Library"
+            ? "Engine Library"
             : "Dersler"
       }
       icon={activeView === "deck" ? Ship : activeView === "machine" ? Wrench : BookOpenText}

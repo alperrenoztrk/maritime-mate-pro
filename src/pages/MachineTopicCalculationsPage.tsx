@@ -1485,7 +1485,7 @@ function CalcToolCard({ tool }: { tool: CalcTool }) {
   const [copyStatus, setCopyStatus] = useState("");
 
   const groups: ProfessionalGroup[] = [{
-    title: "Machine Calculation Inputs",
+    title: "Engine Calculation Inputs",
     fields: tool.inputs.map((input) => ({ ...input })),
   }];
 

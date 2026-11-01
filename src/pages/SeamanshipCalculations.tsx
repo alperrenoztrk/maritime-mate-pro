@@ -228,7 +228,7 @@ function SeamanshipCalculationContent({ initialSection }: { initialSection?: Sec
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label>Iron Weight (kg)</Label>
+            <Label>Anchor Weight (kg)</Label>
             <Input placeholder="Anchor weight" value={anchorInputs.weight} onChange={(e) => setAnchorInputs({ ...anchorInputs, weight: e.target.value })} />
           </div>
           <div className="space-y-2">

@@ -106,6 +106,40 @@ Kaynak: kullanıcının CLAUDE.md metnindeki çekirdek sözlük (Ekim 2026).
 | Aganta | (boş bırakılır) | Hold on / avast |
 | Tornistan | "return", "U-turn" | Astern |
 
+## İngilizce arayüz terimleri (kullanıcı onaylı, 1 Kas 2026)
+
+Literal (genel sözlük) karşılıklar yerine kullanılacak denizcilik karşılıkları.
+Otomatik kural: `englishMaritimeTerminology.ts` T-156 ve sonrası.
+
+| Türkçe | Doğru İngilizce | YANLIŞ (literal) |
+|---|---|---|
+| Personel (gemi) | Crew | Staff |
+| Personel (liman, terminal, tersane, şirket, kara) | Personnel | Staff |
+| Makine (bölüm, vardiya, jurnal, kontrol odası, ekip, arıza, hesaplama) | Engine | Machine |
+| Dizel makine / Buhar makinesi | Diesel engine / Steam engine | Diesel/steam machine |
+| Güverte makineleri | Deck machinery | Deck machines |
+| Dümen makinesi | Steering gear | Rudder/steering machine |
+| Ana makine / Yardımcı makine | Main engine / Auxiliary engine (auxiliary machinery) | Main/slave machine |
+| Makine Elemanları (ders) | Machine Elements (değişmez) | — |
+| Halat / Palamar (bağlama) | (Mooring) line | Rope |
+| Yedek halat | Towline | Spare rope |
+| Seyir | Navigation / passage / underway | Cruising, travel |
+| Seyir planı | Passage plan | Itinerary |
+| Yük (yük operasyonu) / Kargo | Cargo | Load, freight, shipping |
+| Görev | Duty / task | Mission |
+| Gemi görevleri | Shipboard Duties | Ship Missions |
+| Yaşam mahalli | Accommodation | Living range / living space |
+| Rıhtım | Quay / berth | Dock |
+| Yatak (makine) | Bearing | Mattress, bed |
+| Demir / Demirleme | Anchor / Anchoring | Iron / Mooring |
+| Demirleme ışıkları | Anchor lights | Mooring lights |
+| İskele (yön) | Port | Pier |
+| Gemici / Tayfa | Seaman / Rating | Sailor / team |
+| Mevzuat / Sözlük | Regulations / Glossary | Legislation / Dictionary |
+| Tahrik | Propulsion | Drive |
+| İkinci kaptan | Chief Officer | Co-Master |
+| Başmakinist | Chief Engineer | Chief mechanic |
+
 Uygulamadaki otomatik kontroller: `scripts/i18n/sense-error-rules.mjs`
 (bağ → vineyard, demir → iron, kıç → vücut, cardinal → kuş/kardinal, trim →
 kesmek/budamak, list → liste, flooding → sel/su baskını, slack tank → gevşek

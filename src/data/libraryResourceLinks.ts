@@ -51,8 +51,8 @@ export const STATIC_SECTIONS: LibrarySection[] = [
     id: "reference",
     title: "Quick Reference",
     items: [
-      { title: "Maritime Dictionary", to: "/glossary", icon: BookA, accent: "accent-ocean" },
-      { title: "Legislation", to: "/regulations", icon: ScrollText, accent: "accent-deep" },
+      { title: "Maritime Glossary", to: "/glossary", icon: BookA, accent: "accent-ocean" },
+      { title: "Regulations", to: "/regulations", icon: ScrollText, accent: "accent-deep" },
       { title: "Signal Flags", to: "/communication/flags", icon: RadioTower, accent: "accent-amber" },
       { title: "Passage Plan", to: "/passage-plan", icon: Compass, accent: "accent-ocean" },
     ],
@@ -61,10 +61,10 @@ export const STATIC_SECTIONS: LibrarySection[] = [
     id: "ship",
     title: "Ship & Crew",
     items: [
-      { title: "Personnel and Duties", to: "/crew", icon: Users, accent: "accent-deep" },
+      { title: "Crew and Duties", to: "/crew", icon: Users, accent: "accent-deep" },
       { title: "Bridge Devices", to: "/bridge", icon: Compass, accent: "accent-ocean" },
       { title: "Ship Systems", to: "/ship-systems", icon: Ship, accent: "accent-amber" },
-      { title: "Ship Missions", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
+      { title: "Shipboard Duties", to: "/ship-tasks", icon: ClipboardCheck, accent: "accent-teal" },
       { title: "Ship Operations", to: "/ship-operations", icon: Anchor, accent: "accent-ocean" },
     ],
   },
