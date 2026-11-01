@@ -142,6 +142,20 @@ jobs:
       # WebView'ine paketlenirse gereksiz service worker ve ES5/nomodule ağacı
       # da paketlenir; bu, uygulamanın açılışta beyaz ekranda kalmasına yol
       # açabilir.
+      # Pro kilidi ve reklam anahtarının bu derlemede ne olduğu run sayfasına
+      # not olarak düşer; mağazaya yüklemeden önce telefondan görülebilir.
+      - name: Report build switches
+        env:
+          PRO_GATING: ${{ vars.PRO_GATING_ENABLED }}
+          ADS: ${{ vars.ADS_ENABLED }}
+        run: |
+          if [ "$(echo "$PRO_GATING" | tr '[:upper:]' '[:lower:]' | xargs)" = "true" ]; then
+            echo "::notice title=Pro locks ON::PRO_GATING_ENABLED=true — Pro content is locked in this AAB (production build)."
+          else
+            echo "::warning title=Pro locks OFF::PRO_GATING_ENABLED is '${PRO_GATING:-not set}' — everything is free in this AAB. Do not ship it to production."
+          fi
+          echo "Ads: ${ADS:-not set (off)}"
+
       - name: Build web (Vite, native profile)
         env:
           # Pro kilitleri (varsayılan KAPALI, bkz. src/config/proGating.ts).
