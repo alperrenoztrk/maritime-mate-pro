@@ -107,8 +107,13 @@ Kaynak: kullanıcının CLAUDE.md metnindeki çekirdek sözlük (Ekim 2026).
 | Tornistan | "return", "U-turn" | Astern |
 
 Uygulamadaki otomatik kontroller: `scripts/i18n/sense-error-rules.mjs`
-(bağ → vineyard, demir → iron, kıç → vücut, cardinal → kuş/kardinal vb.) ve
+(bağ → vineyard, demir → iron, kıç → vücut, cardinal → kuş/kardinal, trim →
+kesmek/budamak, list → liste, flooding → sel/su baskını, slack tank → gevşek
+tank, ship's head → kafa/kayıkçı vb.) ve
 `supabase/functions/_shared/englishMaritimeTerminology.ts` (İngilizce kurallar).
+Diğer dillere çeviri kontrol edilmiş İngilizceden yapılır
+(`scripts/i18n/translate-pivot.mjs`); bu tablodaki SMCP komutları o çeviride
+maskelenir ve her dilde aynen İngilizce kalır.
 
 ## Onay bekleyen
 

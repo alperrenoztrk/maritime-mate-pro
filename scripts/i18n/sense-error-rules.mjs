@@ -23,14 +23,14 @@ const s = (alts) => new RegExp(`${L}(?:${alts})`, 'iu');
 const any = (alts) => new RegExp(`(?:${alts})`, 'u');
 
 // Correct port-side and starboard terms per language (used as `right`).
-const PORT_SIDE = {
+export const PORT_SIDE = {
   en: w('port'), de: s('backbord'), fr: s('bâbord'), es: s('babor'), it: s('sinistra|babordo|mancina'),
   pt: s('bombordo'), nl: s('bakboord'), ja: any('左舷|左'), 'zh-CN': any('左舷|左'), ko: any('좌현|왼'),
   ru: s('лев'), uk: s('лів'), pl: s('lew|bakburt'), cs: s('lev|levobok'), sv: s('babord'),
   no: s('babord'), da: s('bagbord'), fi: s('paapuur|vasem|vasen'), hu: s('bal'), ro: s('babord|stâng'),
   el: s('αριστερ'), bg: s('ляв|лев'), ar: any('الميسرة|يسار'), hi: any('बाय|बाए|बाईं|पोर्ट'),
 };
-const STARBOARD = {
+export const STARBOARD = {
   en: w('starboard'), de: s('steuerbord'), fr: s('tribord'), es: s('estribor'), it: s('dritta|destra'),
   pt: s('estibordo|boreste'), nl: s('stuurboord'), ja: any('右舷|右'), 'zh-CN': any('右舷|右'), ko: any('우현|오른'),
   ru: s('прав'), uk: s('прав'), pl: s('praw|sterburt'), cs: s('prav'), sv: s('styrbord'),
@@ -239,7 +239,7 @@ export const SENSE_ERROR_RULES = [
 ];
 
 // Correct bow terms per language (used as `right` for the baş = bow rule).
-const BOW = {
+export const BOW = {
   en: w('bow|bows|forward|fore|forecastle|head-on'), de: s('bug|vorschiff|vorne|vorn'), fr: s('proue|avant|étrave|gaillard'),
   es: s('proa'), it: s('prua|prora'), pt: s('proa'), nl: s('boeg|voorschip|voor'), ja: any('船首|船首部|バウ'),
   'zh-CN': any('船首|船头'), ko: any('선수|선首|뱃머리'), ru: s('нос|бак'), uk: s('ніс|носов'), pl: s('dzi[oó]b'),
@@ -493,6 +493,119 @@ SENSE_ERROR_RULES.push(
       cs: s('pojďme|jdeme'), sv: /låt oss gå|vi går/iu, no: /la oss gå/iu, da: /lad os gå/iu, fi: s('mennään'),
       hu: s('menjünk|gyerünk'), ro: /să mergem|hai să/iu, el: s('πάμε'), bg: s('да вървим|хайде'),
       ja: any('行きましょう|行こう'), 'zh-CN': any('我们走|走吧'), ko: any('가자|갑시다'), ar: any('هيا بنا|لنذهب'), hi: any('चलो|चलिए'),
+    },
+  },
+);
+
+// Stability terms that machine translation from ENGLISH gets wrong (found while
+// building the checked-English pivot layer, scripts/i18n/translate-pivot.mjs):
+// "trim" becomes cutting/cropping, a "slack tank" a loose or military tank, a
+// flooded compartment a flood over land, and heeling a capsize.
+SENSE_ERROR_RULES.push(
+  {
+    id: 'trim-cut',
+    label: 'trim (longitudinal inclination) rendered as cutting, cropping or pruning',
+    src: /(?<!\p{L})trim/iu,
+    wrong: {
+      de: s('schneid|beschneid|zuschneid|abschneid'), nl: s('bijsnijd|bijgesned|bijknip|afknip|afsnijd|snoei'),
+      fr: w('tailler|taillé|taillée|taillés|taillées|rogner|rogné|rognée|couper|coupé|coupée|découper|découpé'),
+      es: w('recortar|recorte|recortes|recortado|recortada|cortar|cortado|podar|poda'),
+      it: w('tagliare|tagliato|tagliata|tagliarsi|rifilare|rifilato|potare|potatura'),
+      pt: w('cortar|cortado|cortada|aparar|aparado|podar|poda'),
+      ro: w('tăia|tăiat|tăiată|tăiate|taie|decupa|decupat|decupată'), cs: s('oříz|ořez|stříh|zastřih'),
+      pl: s('przycin|przycię|przytn|obcin|obcię'), hu: s('levág|lenyír|megnyes|nyírás|vágás|vágja|vágni'),
+      el: s('κόψ|κοπή|κόβ|ψαλίδ|περικοπ'), bg: s('подрязв|подрязан|изрязв|изрязан|отрязв|отрязан|отреж|подреж'),
+      ru: s('обрез|подрез|обреж|подреж'), uk: s('обріз|підріз'), sv: s('klipp|beskär|beskur'),
+      no: s('klipp|beskjær|kutt'), da: s('beskær|beskåret|klippet|klipper'), fi: s('leikat|leikata|leikkaa|karsi'),
+      ja: any('切り取|切り落|カット|刈り|剪定|トリミング'), 'zh-CN': any('修剪|剪裁|裁剪|切割|剪掉'),
+      ko: any('잘리|잘라|자르|자른|잘린|깎|다듬'), ar: /(?<!\p{L})(?:ال|و|ب|ف)?(?:تقليم|تشذيب|يقص|تقص|قص)(?!\p{L})/u,
+      hi: any('सिकुड़|काट|छंट|कतर'),
+    },
+    right: {
+      de: s('trimm|hecklast|kopflast'), nl: s('trim|stuurlast|koplast'), fr: s('assiette|trim'),
+      es: s('asiento|trimado|trim'), it: s('assetto|trim'), pt: s('trim|compasso'), ro: s('asiet|trim'),
+      cs: s('trim'), pl: s('przegłębi|trym'), hu: s('trim'), el: s('διαγωγ|τριμ'), bg: s('диферент|трим'),
+      ru: s('диферент|дифферент|трим'), uk: s('диферент|трим'), sv: s('trim'), no: s('trim'), da: s('trim'),
+      fi: s('trim'), ja: any('トリム|縦傾斜'), 'zh-CN': any('纵倾|吃水差'), ko: any('트림|종경사'), hi: any('ट्रिम'),
+    },
+  },
+  {
+    id: 'slack-tank-loose',
+    label: 'slack (partly filled) tank rendered as a loose, limp or military tank',
+    src: /slack\s+(?:ballast\s+|fuel\s+|fresh\s+water\s+|water\s+|oil\s+|cargo\s+)?tanks?/iu,
+    wrong: {
+      de: s('schlaff|locker|lose'), nl: s('slap|slappe'), es: s('floj'), it: s('allentat|carri armati|carro armato'),
+      pt: s('froux'), sv: s('slak|slapp'), no: s('slakk'), da: s('slakk|slap'), fi: s('löys'), pl: s('luź|luz'),
+      cs: s('uvoln'), hu: s('laza|meglaz'), ro: s('slăbit'), ru: s('слаб|провис'), uk: s('слаб|провис'),
+      bg: s('хлабав|провис'), el: s('χαλαρ'), ja: any('緩'), 'zh-CN': any('松弛|松动'), ko: any('느슨'),
+      ar: any('الركود|ركود|مرتخ'), hi: any('ढीले|ढीला'),
+    },
+  },
+  {
+    id: 'flooding-land-flood',
+    label: 'flooding of the hull rendered as a flood over land',
+    src: /\bflood(?:ing|ed)\b|downflood|su alma|su basma/iu,
+    wrong: {
+      de: s('überschwemm|hochwasser'), nl: s('overstrom|overstroom'), it: s('inondazion|alluvion'),
+      sv: s('översvämm'), no: s('oversvøm|flom(?!\\p{L})'), da: s('oversvøm'), pl: s('powod|powódź'),
+      cs: s('povod'), hu: s('árvíz'), ru: s('наводнен'), uk: s('повін|повен'), bg: s('наводнен'),
+      el: s('πλημμύρ'), ja: any('洪水|氾濫'), 'zh-CN': any('洪水|洪涝|水灾'), ko: any('범람|홍수'),
+      ar: any('فيضان'), hi: any('बाढ़'),
+    },
+    right: {
+      de: s('flut|geflutet|wassereinbruch|wassereintritt|überflut'), nl: s('vollop|volgelopen|ondergelopen|lek|binnendring'),
+      sv: s('vattenfyll|vatteninträng|läck'), no: s('vannfyll|vanninntreng|lekk'), da: s('vandfyld|vandindtræng|læk'),
+      ja: any('浸水'), 'zh-CN': any('进水'), ko: any('침수'),
+    },
+  },
+  {
+    id: 'list-enumeration',
+    label: 'list (heel of the ship) rendered as a list of items',
+    src: /\b(?:trim|heel(?:ing)?)\s*(?:and|or|\/|ve|veya|,)\s*list\b|\blist\s*(?:and|or|\/|ve|veya|,)\s*(?:trim|heel)|\blist(?:s|ing|ed)?\s+(?:to|of)\s+(?:port|starboard|\d)|\b(?:angle|degrees?)\s+of\s+list\b|\blist\s+angle\b|\bpermanent\s+list\b|\blist\s+correction\b|\blist\s+(?:düzelt|açısı|kontrol)/iu,
+    wrong: {
+      de: s('liste'), nl: s('lijst'), fr: s('liste'), es: w('lista|listas|listado'), it: s('elenco|lista'),
+      pt: s('lista'), cs: s('seznam'), pl: w('lista|listy|listę|wykaz'), ru: s('список'), uk: s('список'),
+      bg: s('списък'), el: s('λίστα|κατάλογ'), sv: s('lista'), no: s('liste'), da: s('liste'), fi: s('lista|luettelo'),
+      hu: s('lista|listá'), ro: s('listă|lista|listei'), ja: any('リスト|一覧'), 'zh-CN': any('列表|清单'),
+      ko: any('목록|리스트'), ar: any('قائمة'), hi: any('सूची'),
+    },
+    right: {
+      de: s('schlagseite|krängung'), nl: s('slagzij'), fr: s('gîte|bande'), es: s('escora'), it: s('sbandament'),
+      pt: s('adernament|banda'), cs: s('náklon'), pl: s('przechył'), ru: s('крен'), uk: s('крен'), bg: s('крен'),
+      sv: s('slagsida'), no: s('slagside'), da: s('slagside'),
+    },
+  },
+  {
+    id: 'ships-head-body',
+    label: "ship's head (heading, bow) rendered as a body part or a boatman",
+    src: /\bship['’]?s head\b|\bhead of the (?:ship|vessel)\b/iu,
+    wrong: {
+      de: s('kopf'), fr: w('tête'), es: s('cabeza'), it: s('testa'), pt: s('cabeça'), nl: w('hoofd'),
+      ru: s('голов'), uk: s('голов'), pl: s('głow'), cs: s('hlav'), sv: s('huvud'), no: s('hode'),
+      da: s('hoved'), hu: s('fej'), el: s('κεφάλ'), bg: s('глав'), ja: any('船頭|頭'), ko: any('머리'),
+      'zh-CN': any('头部|脑袋'), ar: any('رأس'), hi: any('सिर'),
+    },
+  },
+  {
+    id: 'yuzme-swimming',
+    label: 'yüzme (flotation of a ship) rendered as swimming',
+    src: /(?<!\p{L})yüzme(?:si|nin|ye|de)?(?!\p{L})|yüzebilirlik|yüzdürme/iu,
+    // People swimming (pools, survival in the water) is really swimming.
+    skipSrc: /havuz|ısı kayb|hipotermi|yüzme bil|yüzerek|yüzme hız|sadece yüzme|kazazede|insan|kişi|can yele|denize atla/iu,
+    wrong: {
+      en: w('swimming|swim'), nl: s('zwem'), fr: s('nage|nager|natation'), es: s('nadar|natación|nado'),
+      it: s('nuot'), pt: s('nadar|natação|nado'), sv: s('simning|simma'), no: s('svømm'), da: s('svømn|svømme'),
+      fi: s('uinti|uida|uimi'), ro: s('înot'), el: s('κολύμβ|κολυμπ'), bg: s('плуване'), ja: any('水泳|泳'),
+      'zh-CN': any('游泳'), ko: any('수영'), ar: any('السباحة|سباحة'), hi: any('तैराकी|तैरना'),
+    },
+  },
+  {
+    id: 'heel-capsize',
+    label: 'heel (list of the ship) rendered as capsizing or turning off course',
+    src: /\bheel(?:s|ing|ed)?\b(?!\s*(?:bolt|block|piece|pin))|yana yatma|meyil/iu,
+    skipSrc: /capsiz|alabora|devril/iu,
+    wrong: {
+      hi: any('पलट|उलट'), ar: any('ينقلب|انقلاب|تنقلب|تنحرف|ينحرف'),
     },
   },
 );

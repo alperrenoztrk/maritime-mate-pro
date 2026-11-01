@@ -8,8 +8,10 @@ export function CourseLearningOverview({ courseKey }: { courseKey: string }) {
   if (!course || !guide) return null;
   return (
     <section className="space-y-4 rounded-2xl border border-primary/20 bg-card p-4 sm:p-5">
-      <Link to="/lessons/map" className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4">Explore the maritime learning map</Link>
-      {["stability", "cargo", "seamanship", "safety", "environment", "economics"].includes(courseKey) && <Link to={`/lessons/${courseKey}/reference`} className="inline-flex min-h-11 items-center text-sm text-primary underline">Extended course reference</Link>}
+      <div className="flex flex-wrap gap-x-4">
+        <Link to="/lessons/map" className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4">Explore the maritime learning map</Link>
+        {["stability", "cargo", "seamanship", "safety", "environment", "economics"].includes(courseKey) && <Link to={`/lessons/${courseKey}/reference`} className="inline-flex min-h-11 items-center text-sm text-primary underline">Extended course reference</Link>}
+      </div>
       <p className="text-sm leading-relaxed text-muted-foreground">{guide.purpose}</p>
       <div>
         <h2 className="font-semibold">What you will learn</h2>

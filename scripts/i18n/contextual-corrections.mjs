@@ -25,7 +25,7 @@
 // Whole pages checked by hand (knots, sound signals, terminology fixes) live
 // in scripts/i18n/verified/ and are merged in below.
 
-import { withVerifiedCorrections } from './verified-corrections.mjs';
+import { VERIFIED_EXPLICIT_LANGS, withVerifiedCorrections } from './verified-corrections.mjs';
 
 const CURATED_CORRECTIONS = {
   // ── Settings/account: bare "Hesap" is Account, never Calculation ─────────
@@ -442,3 +442,13 @@ const CURATED_CORRECTIONS = {
 };
 
 export const CONTEXTUAL_CORRECTIONS = withVerifiedCorrections(CURATED_CORRECTIONS);
+
+/**
+ * True when a person wrote the `lang` text of `source` (a curated correction
+ * above or a language a verified pack lists). False for the English fill that
+ * verified packs copy into the other languages: the pivot layer may translate
+ * that line from the checked English.
+ */
+export const hasHumanTranslation = (source, lang) =>
+  CURATED_CORRECTIONS[source]?.[lang] !== undefined ||
+  (VERIFIED_EXPLICIT_LANGS.get(source)?.has(lang) ?? false);

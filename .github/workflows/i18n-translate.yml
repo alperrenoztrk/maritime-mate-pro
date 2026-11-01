@@ -1,0 +1,207 @@
+name: i18n translate (checked English → every language)
+
+# Lines that a language would show in checked English (verified-pack English
+# fill, i18n:fix fallbacks, new English UI text, lesson paragraphs, learning
+# guide) are machine translated from that checked English
+# (scripts/i18n/translate-pivot.mjs). Every line passes the pivot gates
+# (masks, numbers, abbreviations, word senses, port/starboard, script, length);
+# a rejected line keeps its English. The dictionary-page packs of the languages
+# without a hand-checked pack are refreshed too (build-glossary-packs.mjs). The
+# result is committed to main and the Android release is started.
+#
+# Runs by hand and once a week, so new content is translated without manual
+# work. A large backlog runs one language per runner (the free endpoint sees
+# different addresses); a small one runs in a single job. A language that did
+# not finish continues on the next run.
+on:
+  workflow_dispatch:
+    inputs:
+      languages:
+        description: "Language codes separated by commas (e.g. nl,de), or all"
+        default: all
+      max_minutes:
+        description: "Translation time per job, in minutes"
+        default: "150"
+  schedule:
+    - cron: "17 3 * * 1" # Mondays 03:17 UTC
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: i18n-translate
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      groups: ${{ steps.plan.outputs.groups }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Count the lines still in English
+        id: plan
+        env:
+          INPUT: ${{ inputs.languages || 'all' }}
+        run: |
+          npm run --silent i18n:extract > /dev/null
+          node --import tsx scripts/i18n/fill-english-coverage.mjs --ci > /dev/null
+          npm run --silent i18n:translate -- --lang=all --count-only | tail -n 1 > counts.json
+          python3 - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json, os
+          counts = json.load(open("counts.json"))
+          raw = os.environ["INPUT"].strip()
+          chosen = list(counts) if raw in ("", "all") else [x.strip() for x in raw.split(",") if x.strip() in counts]
+          wanted = [lang for lang in chosen if counts[lang] > 0]
+          # A small backlog (the weekly case) fits one job; a large one gets a runner per language.
+          groups = [] if not wanted else ([",".join(wanted)] if max(counts[l] for l in wanted) <= 400 else wanted)
+          print("groups=" + json.dumps(groups))
+          EOF
+          cat counts.json
+
+  translate:
+    needs: plan
+    if: needs.plan.outputs.groups != '[]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        langs: ${{ fromJSON(needs.plan.outputs.groups) }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      # New English UI text gets its English first, so it is translated here too.
+      - name: Fill new English UI text
+        run: |
+          npm run i18n:extract
+          node --import tsx scripts/i18n/fill-english-coverage.mjs --ci
+      - name: Translate ${{ matrix.langs }}
+        env:
+          I18N_CONCURRENCY: "4"
+          LANGS: ${{ matrix.langs }}
+          MAX_MINUTES: ${{ inputs.max_minutes || '150' }}
+        run: npm run i18n:translate -- --lang="$LANGS" --max-minutes="$MAX_MINUTES" | tee -a "$GITHUB_STEP_SUMMARY"
+      # Only this job's languages: the other dictionaries here hold just the fill.
+      - name: Stage the translated languages
+        env:
+          LANGS: ${{ matrix.langs }}
+        run: |
+          mkdir -p out/public/locales out/scripts/i18n/pivot
+          for lang in ${LANGS//,/ }; do
+            cp "public/locales/$lang.json" out/public/locales/
+            [ -f "scripts/i18n/pivot/$lang.json" ] && cp "scripts/i18n/pivot/$lang.json" out/scripts/i18n/pivot/
+          done
+          echo "ARTIFACT=pivot-$(echo "$LANGS" | tr ',' '-' | cut -c1-80)" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: out/
+          retention-days: 7
+
+  commit:
+    needs: [plan, translate]
+    if: always() && needs.plan.result == 'success' && needs.translate.result != 'cancelled'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Merge the translated languages
+        if: needs.translate.result != 'skipped'
+        uses: actions/download-artifact@v7
+        with:
+          pattern: pivot-*
+          path: .
+          merge-multiple: true
+      - name: Dictionary page (languages without a hand-checked pack)
+        run: npm run i18n:glossary -- --lang=all
+      # The same gates as the release build; nothing is committed when one fails.
+      - name: Checks
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run i18n:extract
+          node --import tsx scripts/i18n/fill-english-coverage.mjs --ci
+          npm run i18n:pivot -- --fix
+          npm run i18n:verify 2>&1 | tee "$RUNNER_TEMP/i18n-verify.log" || {
+            grep -E "❌|✗|not ok|stale|below 100|Error:|new: [1-9]" "$RUNNER_TEMP/i18n-verify.log" \
+              | head -n 25 | sed 's/%/%25/g; s/^/::error title=i18n gate::/'
+            exit 1
+          }
+      - name: Report
+        run: |
+          {
+            echo '### Lines still shown in checked English'
+            echo '```'
+            npm run --silent i18n:english-share
+            echo '```'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit to main
+        id: commit
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/locales scripts/i18n/pivot src/i18n/localeVersion.ts src/data/glossary-i18n
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          {
+            echo "i18n: translate checked-English lines into the other languages"
+            echo
+            echo "Automatic run of .github/workflows/i18n-translate.yml"
+            echo "(scripts/i18n/translate-pivot.mjs, build-glossary-packs.mjs). Lines"
+            echo "that showed checked English are machine translated from that English;"
+            echo "every line passed the pivot gates (masks, numbers, abbreviations, word"
+            echo "senses, port/starboard, script, length) and i18n:verify. Rejected lines"
+            echo "keep their English."
+            echo
+            npm run --silent i18n:english-share
+            echo
+            echo "Terim denetimi (self-check)"
+            echo "- GLOSSARY.md: SMCP komutları ve kısaltmalar maskelendi, aynen kaldı;"
+            echo "  anlam kuralları (sense-error-rules) ve terim denetimi geçti."
+            echo "- Komut fiili jenerik fiile çevrilmedi (komutlar maskeli)."
+            echo "- Sözlükte olmayan terim: makine çevirisi; denetimden geçmeyen satır"
+            echo "  kontrol edilmiş İngilizce kaldı."
+            echo "- Türkçe deyim sadeleştirilmedi: kaynak kontrol edilmiş İngilizce."
+            echo "- İskele/sancak: taraf kapısı geçti."
+            echo "- Sürüm yükseltilmedi."
+          } > "$RUNNER_TEMP/commit-message.txt"
+          git commit -q -F "$RUNNER_TEMP/commit-message.txt"
+          for attempt in 1 2 3 4; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            sleep $((2 ** attempt))
+          done
+          echo "::error title=i18n translate::Could not push to main"
+          exit 1
+      # A push made with the workflow token does not start other workflows.
+      - name: Start the Android release
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run android-release.yml --ref main

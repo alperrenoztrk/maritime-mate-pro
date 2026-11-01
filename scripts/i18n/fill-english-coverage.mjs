@@ -25,6 +25,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { hasTurkishText } from '../../src/utils/turkishText.ts';
+import { writeLocaleVersion } from './pivot-state.mjs';
 
 const repoRoot = process.cwd();
 const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
@@ -90,6 +91,9 @@ if (english.length) {
     }
   }
 }
+
+// The filled English is translated by the next pivot run (translate-pivot.mjs).
+if (written) writeLocaleVersion();
 
 if (record && english.length) {
   const pack = readJson(UI_COVERAGE, {});

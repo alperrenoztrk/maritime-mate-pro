@@ -113,6 +113,48 @@ context-dependent Turkish gets mistranslated ("Demir" → "iron" instead of
   `-- --check` fails on new leftovers (part of `i18n:verify`), `-- --update`
   rewrites the baseline, `-- --all` lists everything.
 
+## Checked-English pivot layer
+
+Everything added or corrected after the first machine translation was written
+only in checked English (verified packs, `i18n:fix` fallbacks, new English UI
+text, the shared lesson-paragraph and learning-guide packs). Without a further
+step every other language showed that English — about a third of the content.
+
+`translate-pivot.mjs` is that step: it machine translates the **checked
+English** (not the Turkish source) into each language and writes the result to
+`public/locales/<lang>.json`.
+
+```bash
+npm run i18n:translate -- --lang=nl               # one language (or all)
+npm run i18n:translate -- --lang=nl --limit=300   # pilot
+npm run i18n:english-share                        # what is still English, per language
+npm run i18n:pivot -- --check                     # stale lines / old rules (in i18n:verify)
+npm run i18n:pivot -- --fix                       # reset them, refresh localeVersion.ts
+npm run i18n:glossary -- --lang=all               # dictionary page, languages without a checked pack
+```
+
+- **Gates** (`pivot-gates.mjs`, tests in `pivot-gates.test.mjs`): SMCP orders
+  and abbreviations are masked and come back verbatim; numbers, abbreviations,
+  word senses (`sense-error-rules.mjs`, checked against the English and the
+  Turkish key), Turkish leftovers, port/starboard, script and length are
+  checked; one/two-word labels with a maritime homonym (trim, port, draft …)
+  only take a curated `maritimeTerms` translation. A rejected line keeps its
+  English.
+- **Precedence:** human text (curated correction, language listed in a
+  verified pack) > glossary override > pivot translation > checked English.
+  `i18n:fix` does not overwrite a current pivot line with the English fill.
+- **State** (`pivot-state.mjs`, `scripts/i18n/pivot/<lang>.json`): hash of
+  each translated key and of the English it came from. A changed English makes
+  the line stale (back to English until re-translated). The gate version is a
+  hash of the rule files: when a rule changes, `--fix` checks the accepted lines
+  again and rejected lines are retried.
+- **CI:** `.github/workflows/i18n-translate.yml` (by hand and weekly) runs one
+  language per runner, merges, runs `i18n:verify`, commits to `main` and starts
+  `android-release.yml`. The release build runs `i18n:pivot -- --fix` first.
+- **Cache:** `src/i18n/localeVersion.ts` is a content hash of `public/locales`;
+  the runtime puts it into the dictionary URLs so a changed dictionary is never
+  served from an old browser/PWA cache.
+
 ## Notes
 
 - **Order of precedence per string:** contextual correction
@@ -131,9 +173,9 @@ context-dependent Turkish gets mistranslated ("Demir" → "iron" instead of
 - **What is extracted:** every user-visible property in `ALLOWED_PROPS`,
   including the longform `lead` / `bullets` / `headers` / `rows` / `sources`
   fields (arrays are walked recursively — a table body is `string[][]`).
-  `paragraphs` is intentionally excluded: 11k strings of ~175 characters would
-  add ~4 MB per language, and long prose is where the engine holds up. Those
-  paragraphs are translated live, with the same protection applied.
+  `paragraphs` is intentionally excluded from extraction: their checked
+  English lives in `verified/paragraphs/` and the pivot layer writes their
+  translations into the dictionaries.
 - **Delivery:** locale JSONs are excluded from the PWA precache
   (`globIgnores`) and cached on demand (`runtimeCaching`), so only the selected
   language is downloaded.

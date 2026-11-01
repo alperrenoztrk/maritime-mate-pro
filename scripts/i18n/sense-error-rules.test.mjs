@@ -74,3 +74,43 @@ test('class (classification society) is not a classroom', () => {
   assert.deepEqual(findSenseErrors('Malzeme sınıf kurallarına uymalıdır.', 'Materials must comply with class rules.', 'en'), []);
   assert.deepEqual(findSenseErrors('Sınıf eğitimi', 'Classroom training', 'en'), []);
 });
+
+test('flags stability terms that machine translation from English gets wrong', () => {
+  assert.deepEqual(findSenseErrors('After flooding, the ship may heel and trim.', 'Μετά την πλημμύρα, το πλοίο μπορεί να στρίψει και να κόψει.', 'el'), ['trim-cut', 'flooding-land-flood']);
+  assert.deepEqual(findSenseErrors('Trim by the stern increases the draught aft.', 'Řez na zádi zvyšuje ponor na zádi a ořízne', 'cs'), ['trim-cut']);
+  assert.deepEqual(findSenseErrors('Slack tanks reduce the effective GM.', 'Slappe tanks verminderen de effectieve GM.', 'nl'), ['slack-tank-loose']);
+  assert.deepEqual(findSenseErrors('Flooding of a compartment reduces the reserve buoyancy.', 'Die Überschwemmung eines Abteils verringert die Reserveauftriebskraft.', 'de'), ['flooding-land-flood']);
+  assert.deepEqual(findSenseErrors('The ship heels to port.', 'जहाज बाईं ओर पलट जाता है।', 'hi'), ['heel-capsize']);
+});
+
+test('accepts the technical rendering of those stability terms', () => {
+  assert.deepEqual(findSenseErrors('After flooding, the ship may heel and trim.', 'Nach einem Wassereinbruch kann das Schiff krängen und trimmen.', 'de'), []);
+  assert.deepEqual(findSenseErrors('Trim by the stern increases the draught aft.', 'Een stuurlastige trim vergroot de diepgang achter.', 'nl'), []);
+  assert.deepEqual(findSenseErrors('Partially filled tanks reduce the effective GM.', 'Gedeeltelijk gevulde tanks verminderen de effectieve GM.', 'nl'), []);
+  assert.deepEqual(findSenseErrors('Flooding of a compartment reduces the reserve buoyancy.', 'Затопление отсека снижает запас плавучести.', 'ru'), []);
+  // Capsizing words are fine where the source itself speaks of capsizing.
+  assert.deepEqual(findSenseErrors('Excessive heel can capsize the ship.', 'अत्यधिक झुकाव जहाज को पलट सकता है।', 'hi'), []);
+});
+
+test('list (heel of the ship) is not a list of items', () => {
+  assert.deepEqual(findSenseErrors('2.1 Trim ve list düzeltmesi', '2.1 Oprava oříznutí a seznamu', 'cs'), ['trim-cut', 'list-enumeration']);
+  assert.deepEqual(findSenseErrors('The ship has a list to port.', 'Das Schiff hat Schlagseite nach Backbord.', 'de'), []);
+  // An ordinary list of documents is not touched.
+  assert.deepEqual(findSenseErrors('Check the list of certificates.', 'Controleer de lijst met certificaten.', 'nl'), []);
+});
+
+test("ship's head is the heading, not a head or a boatman", () => {
+  assert.deepEqual(findSenseErrors("Keep the ship's head on the course.", '船頭をコース上に保ちます。', 'ja'), ['ships-head-body']);
+  assert.deepEqual(findSenseErrors("Keep the ship's head on the course.", '船首をコース上に保ちます。', 'ja'), []);
+  assert.deepEqual(findSenseErrors("Keep the ship's head on the course.", 'Houd de kop van het schip op koers.', 'nl'), []);
+});
+
+test('yüzme is the flotation of a ship, not swimming', () => {
+  assert.deepEqual(findSenseErrors('Yüzme ve yüzerliğin fiziksel temeli', 'Fysieke basis van zwemmen en drijfvermogen', 'nl'), ['yuzme-swimming']);
+  assert.deepEqual(findSenseErrors('Yüzme ve yüzerliğin fiziksel temeli', 'Fysieke basis van drijven en drijfvermogen', 'nl'), []);
+});
+
+test('people swimming stays swimming', () => {
+  assert.deepEqual(findSenseErrors('Cruise gemilerinde yüzme havuzları', 'Zwembaden op cruiseschepen', 'nl'), []);
+  assert.deepEqual(findSenseErrors('LCF (Boyuna Yüzme Merkezi)', 'LCF (Longitudinaal Zwemcentrum)', 'nl'), ['yuzme-swimming']);
+});

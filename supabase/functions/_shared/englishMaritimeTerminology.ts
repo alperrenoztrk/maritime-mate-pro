@@ -442,6 +442,9 @@ export const ENGLISH_TERMINOLOGY_RULES: EnglishTerminologyRule[] = [
   { id: 'T-150', label: 'model deney havuzu is a towing tank', source: /deney\s+havuz/iu, wrong: /\b(?:model\s+)?test\s+pool\b/giu, replacement: asTerm('towing tank') },
   { id: 'T-151', label: 'kiralama (chartering) must not become leasing', source: /kiralama\s+süreç/iu, wrong: /\bleasing\s+processes\b/giu, replacement: asTerm('chartering processes') },
   { id: 'T-152', label: 'izolasyon sınırları are isolation boundaries', source: /izolasyon\s+sınır/iu, wrong: /\binsulation\s+(?:limits|boundaries)\b/giu, replacement: asTerm('isolation boundaries') },
+  { id: 'T-153', label: 'yüzme merkezi (LCF) is the centre of flotation, not of swimming', source: /yüzme\s+merkez/iu, wrong: /\b(?:cent(?:er|re)\s+of\s+swimming|swim(?:ming)?\s+cent(?:er|re))\b/giu, replacement: asTerm('centre of flotation') },
+  { id: 'T-154', label: 'yüzme of a hull or a float is flotation, not swimming', source: /mekanik\s+yüzme|yüzme\s+ve\s+kaldırma\s+kuvvet/iu, wrong: /\bswimming\b/giu, replacement: asTerm('flotation') },
+  { id: 'T-155', label: 'yüzdükten sonra (after refloating) must not become after swimming', source: /yüzdükten\s+sonra/iu, wrong: /\bafter\s+swimming\b/giu, replacement: asTerm('after refloating') },
 ];
 
 // Technical/formula strings that were incorrectly classified as language-

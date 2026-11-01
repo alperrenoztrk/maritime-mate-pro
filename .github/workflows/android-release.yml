@@ -104,6 +104,13 @@ jobs:
       - name: i18n — fill new English UI strings for this build
         run: node --import tsx scripts/i18n/fill-english-coverage.mjs --ci
 
+      # Makine çevirisi (kontrol edilmiş İngilizceden, i18n-translate.yml)
+      # İngilizcesi sonradan değişmiş bir satıra aitse o satır bu derlemede
+      # bayat çeviri yerine kontrol edilmiş İngilizce gösterir; sonraki
+      # çeviri turunda yeniden çevrilir.
+      - name: i18n — reset pivot translations whose English changed
+        run: npm run i18n:pivot -- --fix
+
       # Hata olursa ilk hata satırları run sayfasına not olarak düşer;
       # log indirilmeden neyin kaldığı telefondan da görülür.
       - name: i18n — terms, coverage and language packs

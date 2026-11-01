@@ -8,8 +8,8 @@ import {
   repairEnglishMaritimeTerminology,
 } from './englishMaritimeTerminology.ts';
 
-test('all 152 audited terminology families have a regression rule', () => {
-  const expected = Array.from({ length: 152 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
+test('all 155 audited terminology families have a regression rule', () => {
+  const expected = Array.from({ length: 155 }, (_, index) => `T-${String(index + 1).padStart(3, '0')}`);
   assert.deepEqual([...new Set(ENGLISH_TERMINOLOGY_RULES.map(({ id }) => id))].sort(), expected);
 });
 
@@ -175,5 +175,25 @@ test('havuzlama is dry-docking, but FuelEU pooling stays pooling', () => {
   assert.equal(
     repairEnglishMaritimeTerminology("Deficit'in maliyeti ve havuzlamanın ekonomik mantığı", 'The cost of the deficit and the economic logic of pooling'),
     'The cost of the deficit and the economic logic of pooling',
+  );
+});
+
+test('yüzme of a hull or a float is flotation, not swimming', () => {
+  assert.equal(
+    repairEnglishMaritimeTerminology('LCF: Yüzme merkezi konumu (midship\'ten)', 'LCF: Swim center location (from midship)'),
+    'LCF: Centre of flotation location (from midship)',
+  );
+  assert.equal(
+    repairEnglishMaritimeTerminology("d: LCF'ye (yüzme merkezine) göre boyuna mesafe (m)", 'd: Longitudinal distance relative to LCF (center of swimming) (m)'),
+    'd: Longitudinal distance relative to LCF (centre of flotation) (m)',
+  );
+  assert.equal(repairEnglishMaritimeTerminology('Mekanik yüzme', 'Mechanical swimming'), 'Mechanical flotation');
+  assert.equal(
+    repairEnglishMaritimeTerminology('Yüzme ve kaldırma kuvvetinin fiziksel temelleri', 'Physical foundations of swimming and buoyancy'),
+    'Physical foundations of flotation and buoyancy',
+  );
+  assert.equal(
+    repairEnglishMaritimeTerminology('yüzdükten sonraki emniyetli mevkii içerir', 'safe position after swimming'),
+    'safe position after refloating',
   );
 });

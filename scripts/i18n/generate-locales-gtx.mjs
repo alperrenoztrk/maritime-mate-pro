@@ -24,7 +24,10 @@ import {
   BATCH_SEPARATOR,
   buildTranslationBatches,
   splitBatchResult,
-} from '../../src/utils/pageTranslator.ts';
+  hasUsableTranslation,
+  runWithConcurrency,
+  translateText,
+} from './mt-engine.mjs';
 import { normalizeMachineTranslation } from '../../src/utils/translationQuality.ts';
 import { maskTechnicalTokens, unmaskTechnicalTokens } from '../../src/utils/technicalText.ts';
 import {
@@ -41,55 +44,12 @@ const SOURCE_FILE = path.join(repoRoot, 'scripts/i18n/source-strings.json');
 const CACHE_DIR   = path.join(repoRoot, 'scripts/i18n/.cache');
 const OUT_DIR     = path.join(repoRoot, 'public/locales');
 
-// Credential-free Google-compatible services expose several response shapes.
-// A privacy proxy is tried first so one build host cannot exhaust Google's
-// per-IP quota; the direct Chrome and canonical endpoints remain fallbacks.
-// Keeping all three makes a full dictionary rebuild reproducible instead of
-// silently shipping the previous cache's coverage.
-const GTX_PROVIDERS = [
-  {
-    buildUrl(text, targetLang, sourceLang) {
-      const params = new URLSearchParams({
-        engine: 'google',
-        from: sourceLang,
-        to: targetLang,
-        text,
-      });
-      return `https://simplytranslate.org/api/translate/?${params}`;
-    },
-    parse(data) {
-      return typeof data?.translated_text === 'string' ? data.translated_text : null;
-    },
-  },
-  {
-    buildUrl(text, targetLang, sourceLang) {
-      const params = new URLSearchParams({ client: 'at', sl: sourceLang, tl: targetLang, q: text });
-      return `https://clients5.google.com/translate_a/t?${params}`;
-    },
-    parse(data) {
-      return Array.isArray(data) && typeof data[0] === 'string' ? data.join('') : null;
-    },
-  },
-  {
-    buildUrl(text, targetLang, sourceLang) {
-      const params = new URLSearchParams({
-        client: 'gtx', sl: sourceLang, tl: targetLang, dt: 't', q: text,
-      });
-      return `https://translate.googleapis.com/translate_a/single?${params}`;
-    },
-    parse(data) {
-      if (!Array.isArray(data?.[0])) return null;
-      return data[0].map((item) => item[0]).join('');
-    },
-  },
-];
+// Providers, retries and provider pausing live in ./mt-engine.mjs (shared with
+// translate-pivot.mjs).
 // Each request now carries a whole BATCH (~up to 48 strings / 1200 chars), so a
 // lower worker count keeps us well under gtx's informal rate limits while still
 // translating the large corpus in a reasonable wall-time.
 const CONCURRENCY = Math.max(1, Number(process.env.I18N_CONCURRENCY) || 6);
-const RETRY_MAX   = 4;
-const RETRY_DELAY = 1500;  // ms between retries on 429 (grows linearly)
-const FETCH_TIMEOUT = 20_000;
 
 // Manual corrections for strings where the GTX engine is known to produce bad
 // output. Key = Turkish source string, value = map of langCode → correct translation.
@@ -142,9 +102,6 @@ function readJson(file, fallback) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return fallback; }
 }
 
-const hasUsableTranslation = (value) =>
-  typeof value === 'string' && value.trim().length > 0;
-
 function persistTranslationCache(cacheFile, cache) {
   fs.mkdirSync(path.dirname(cacheFile), { recursive: true });
   const tempFile = `${cacheFile}.tmp`;
@@ -152,49 +109,8 @@ function persistTranslationCache(cacheFile, cache) {
   fs.renameSync(tempFile, cacheFile);
 }
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function runWithConcurrency(items, concurrency, task) {
-  let cursor = 0;
-  const worker = async () => {
-    while (cursor < items.length) {
-      const index = cursor++;
-      await task(items[index], index);
-    }
-  };
-  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, worker));
-}
-
-async function gtxTranslate(text, targetLang, sourceLang = 'tr') {
-  for (const provider of GTX_PROVIDERS) {
-    const url = provider.buildUrl(text, targetLang, sourceLang);
-
-    for (let attempt = 0; attempt < RETRY_MAX; attempt++) {
-      try {
-        const res = await fetch(url, {
-          redirect: 'manual',
-          signal: AbortSignal.timeout(FETCH_TIMEOUT),
-        });
-        if (res.status === 429) {
-          await sleep(RETRY_DELAY * (attempt + 1));
-          continue;
-        }
-        // A bot-challenge redirect/non-JSON response is provider-specific; move
-        // to the fallback immediately rather than retrying the same challenge.
-        if (!res.ok || !res.headers.get('content-type')?.includes('json')) break;
-        const parsed = provider.parse(await res.json());
-        if (hasUsableTranslation(parsed)) return parsed;
-        break;
-      } catch {
-        if (attempt < RETRY_MAX - 1) {
-          await sleep(RETRY_DELAY);
-          continue;
-        }
-      }
-    }
-  }
-  return null;
-}
+const gtxTranslate = (text, targetLang, sourceLang = 'tr') =>
+  translateText(text, targetLang, sourceLang);
 
 // Hides from the engine what it would otherwise "correct": maritime
 // abbreviations ("DP" → "XP", "KB" → "NW") and math function names. Mirrors the

@@ -50,6 +50,15 @@ for (const file of fs.readdirSync(VERIFIED_DIR).filter((f) => f.endsWith('.json'
 export const VERIFIED_KEYS = new Set(entries.keys());
 
 /**
+ * Languages a verified pack lists explicitly for a source string (written and
+ * checked by hand). The other languages only carry the English fill, which the
+ * checked-English pivot layer (translate-pivot.mjs) may replace.
+ */
+export const VERIFIED_EXPLICIT_LANGS = new Map(
+  [...entries].map(([source, { explicit }]) => [source, new Set(Object.keys(explicit))]),
+);
+
+/**
  * Merges the verified packs into a curated corrections map. Explicit verified
  * texts win; curated texts win over the English fill.
  */
