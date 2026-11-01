@@ -47,7 +47,7 @@ const Index = () => {
   }, [queryClient]);
 
   return (
-    <main className="relative min-h-[100svh] px-[max(1rem,var(--safe-left))] pt-[calc(var(--safe-top)+1.5rem)] text-foreground sm:px-[max(1.25rem,var(--safe-left))]">
+    <main className="relative min-h-[100svh] w-full min-w-0 px-[max(1rem,var(--safe-left))] pb-6 pt-[calc(var(--safe-top)+1.5rem)] text-foreground sm:px-[max(1.25rem,var(--safe-left))]">
       <div className="mx-auto w-full max-w-3xl">
         <header className="flex items-center justify-between gap-3 pb-5">
           <h1
@@ -110,7 +110,7 @@ const Index = () => {
         </div>
 
         {/* Keep long study titles from widening the shared tab-panel track. */}
-        <div className="grid grid-cols-1 items-start">
+        <div className="grid w-full min-w-0 grid-cols-1 items-start">
         <AnimatePresence mode="sync" initial={false}>
           <motion.section
             key={activeView}
@@ -120,7 +120,7 @@ const Index = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : MOTION_SECONDS.control, ease: MOTION_EASE_OUT }}
-            className="col-start-1 row-start-1 min-w-0 py-5"
+            className="col-start-1 row-start-1 w-full min-w-0 py-5"
           >
             {activeView === "overview" && (
               <div className="space-y-6">
