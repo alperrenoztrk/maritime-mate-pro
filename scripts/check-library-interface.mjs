@@ -165,8 +165,6 @@ requireText(glossary, "useSearchParams", "sözlük derin bağlantıları");
 requireText(glossary, 'searchParams.get("q")', "sözlük arama derin bağlantısı");
 requireText(glossary, 'searchParams.get("cat")', "sözlük kategori derin bağlantısı");
 requireText(calculationsRoute, "SEO", "hesaplamalar SEO koruması");
-requireText(calculations, "FAVORITES_STORAGE_KEY", "hesaplama favorileri");
-requireText(calculations, "RECENT_STORAGE_KEY", "son kullanılan hesaplamalar");
 requireText(regulationsRoute, "RegulationsLibraryPage", "regülasyon rota yönlendirmesi");
 requireText(tasksRoute, "ShipTasksLibraryPage", "gemi görevleri rota yönlendirmesi");
 requireText(crew, "departmentParam === null", "personel varsayılan görünüm koruması");

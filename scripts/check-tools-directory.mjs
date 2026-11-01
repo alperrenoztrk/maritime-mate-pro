@@ -7,7 +7,10 @@ const targets = [...menu.matchAll(/\bto:\s*"([^"]+)"/g)].map((match) => match[1]
 const routes = [...app.matchAll(/\bpath="([^"]+)"/g)].map((match) => match[1]);
 const failures = [];
 
-if (targets.length < 10) failures.push("Tool directory unexpectedly contains fewer than ten linked tools.");
+// Tools intentionally lists only the unit converter.
+if (targets.length !== 1 || targets[0] !== "/converter") {
+  failures.push(`Tools must list only the unit converter (/converter); found: ${targets.join(", ") || "none"}`);
+}
 if (new Set(targets).size !== targets.length) failures.push("Duplicate tool routes were found.");
 for (const target of targets) {
   const exists = routes.some((route) => {
